@@ -183,8 +183,7 @@ webpackConfig = {
     autoprefixer({
       browsers: [
         'last 2 versions',
-        'android 4',
-        'opera 12'
+        'android 4'
       ]
     })
   ],
