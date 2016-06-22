@@ -37,7 +37,9 @@ $sage_includes = [
     'src/helpers.php',    // Helper functions
     'src/setup.php',      // Theme setup
     'src/filters.php',    // Filters
-    'src/admin.php'       // Admin
+    'src/admin.php',       // Admin
+    // Kiku
+    'src/lib/Kiku/modules/clean.php',
 ];
 
 foreach ($sage_includes as $file) {
