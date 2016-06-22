@@ -1,18 +1,4 @@
-import $ from 'jquery';
 import Router from './util/router';
-
-// Import Bootstrap
-import 'bootstrap/dist/js/umd/util.js';
-import 'bootstrap/dist/js/umd/alert.js';
-import 'bootstrap/dist/js/umd/button.js';
-import 'bootstrap/dist/js/umd/carousel.js';
-import 'bootstrap/dist/js/umd/collapse.js';
-import 'bootstrap/dist/js/umd/dropdown.js';
-import 'bootstrap/dist/js/umd/modal.js';
-import 'bootstrap/dist/js/umd/scrollspy.js';
-import 'bootstrap/dist/js/umd/tab.js';
-import 'bootstrap/dist/js/umd/tooltip.js';
-import 'bootstrap/dist/js/umd/popover.js';
 
 // Use this variable to set up the common and page specific functions. If you
 // rename this variable, you will also need to rename the namespace below.
@@ -35,6 +21,14 @@ var Sage = {
       // JavaScript to be fired on the home page, after the init JS
     }
   },
+  // single
+  'single': {
+    init: function() {}
+  },
+  // page
+  'page': {
+    init: function() {}
+  },
   // About us page, note the change from about-us to about_us.
   'about_us': {
     init: function() {
@@ -44,6 +38,4 @@ var Sage = {
 };
 
 // Load Events
-$(document).ready(function() {
-  new Router(Sage).loadEvents();
-});
+document.addEventListener("DOMContentLoaded", new Router(Sage).loadEvents(), false);

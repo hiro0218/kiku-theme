@@ -164,7 +164,7 @@ webpackConfig = {
     ]
   },
   externals: {
-    jquery: 'jQuery'
+    // jquery: 'jQuery'
   },
   plugins: [
     new Clean([config.output.path]),
@@ -173,9 +173,9 @@ webpackConfig = {
       disable: (argv.watch === true) // '--watch' disable ExtractTextPlugin
     }),
     new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery',
-      'window.jQuery': 'jquery',
+      // $: 'jquery',
+      // jQuery: 'jquery',
+      // 'window.jQuery': 'jquery',
       'window.Tether': 'tether'
     })
   ],
