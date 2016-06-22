@@ -39,6 +39,7 @@ $sage_includes = [
     'src/filters.php',    // Filters
     'src/admin.php',       // Admin
     // Kiku
+    'src/lib/Kiku/constant.php',
     'src/lib/Kiku/modules/clean.php',
 ];
 
