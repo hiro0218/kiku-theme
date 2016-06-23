@@ -1,7 +1,48 @@
-// Grid settings
-$enable-flex:           true;
-$main-sm-columns:       12;
-$sidebar-sm-columns:    4;
+//
+// Font
+// -------------------------
 
+$font-family-base:        "Open Sans", "Helvetica Neue", Helvetica, Arial, YuGothic, "Yu Gothic", "Noto Sans", "Hiragino Sans", Emoji, sans-serif !default;
+$font-family-monospace:   "Source Code Pro", Menlo, Monaco, Consolas, "Courier New", monospace !default;
+
+$font-size-base:          16px;
+$font-size-large:         1.25rem;
+$font-size-small:         0.85rem;
+
+$font-size-h1:            2.6rem;
+$font-size-h2:            2.15rem;
+$font-size-h3:            1.7rem;
+$font-size-h4:            1.25rem;
+$font-size-h5:            $font-size-base;
+$font-size-h6:            0.85rem;
+
+$line-height-base:        1.25; // 20/16
+$line-height-computed:    floor(($font-size-base * $line-height-base));
+
+
+//
+// Layout
+// -------------------------
+
+$spacer: 1rem;
+
+
+//
 // Colors
-$brand-primary:         #27ae60;
+// -------------------------
+// https://github.com/google/material-design-lite/blob/master/src/_color-definitions.scss
+
+// MDL
+$color-primary: $color-white;
+// $color-primary-dark: $palette-grey-700;
+// $color-accent: $palette-indigo-A200;
+$color-primary-contrast: $palette-grey-700;
+$color-accent-contrast: $palette-grey-700;
+
+// original
+$text-color: unquote("rgb(#{$palette-grey-800})");
+$body-bg:    unquote("rgb(#{$palette-grey-200})");
+
+$link-color:            unquote("rgb(#{$palette-light-blue-400})");
+$link-hover-color:      unquote("rgb(#{$palette-light-blue-800})");
+$link-hover-decoration: underline;

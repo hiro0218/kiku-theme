@@ -10,32 +10,19 @@
        url("~material-design-icons/iconfont/MaterialIcons-Regular.ttf") format('truetype');
 }
 .material-icons {
-  font-family: 'Material Icons';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;
+  @include typo-icon;
   /* Preferred icon size */
-  display: inline-block;
   width: 1em;
   height: 1em;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
   white-space: nowrap;
   direction: ltr;
   vertical-align: middle;
 
-  /* Support for all WebKit browsers. */
-  -webkit-font-smoothing: antialiased;
   /* Support for Safari and Chrome. */
   text-rendering: optimizeLegibility;
 
   /* Support for Firefox. */
   -moz-osx-font-smoothing: grayscale;
-
-  /* Support for IE. */
-  font-feature-settings: 'liga';
 }
 
 // Rules for sizing the icon.
@@ -66,4 +53,17 @@
 }
 .material-icons.md-light.md-inactive {
   color: rgba(255, 255, 255, 0.3);
+}
+
+
+// Emoji
+// @link https://hail2u.net/blog/webdesign/emoji-shotcut-family.html
+@font-face {
+  font-family: 'Emoji';
+  src: local('Apple Color Emoji'),
+       local('Gecko Emoji'),
+       local('Noto Sans Emoji'),
+       local('Segoe UI Emoji'),
+       local('Segoe UI Symbol'),
+       local('Noto Sans Symbols');
 }

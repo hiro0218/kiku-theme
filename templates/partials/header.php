@@ -1,4 +1,4 @@
-<header class="mdl-layout__header mdl-layout__header--scroll">
+<header class="mdl-layout__header mdl-layout__header--scroll mdl-shadow--2dp">
   <div class="mdl-layout__header-row">
     <span class="mdl-layout-title"><!-- Title -->
       <a class="brand" href="<?= BLOG_URL; ?>">
