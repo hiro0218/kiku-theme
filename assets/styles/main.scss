@@ -1,12 +1,12 @@
-@import "common/variables";
-
 // Import MDL from node_modules/...
 @import "~material-design-lite/src/color-definitions";
+@import "common/variables";
+@import "common/font";
 @import "~material-design-lite/src/material-design-lite-grid.scss";
 @import "~material-design-lite/src/material-design-lite.scss";
 
-@import "common/font";
 @import "common/global";
+@import "common/mdl";
 
 @import "components/buttons";
 @import "components/forms";
