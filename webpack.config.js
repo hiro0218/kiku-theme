@@ -141,17 +141,11 @@ webpackConfig = {
         ]
       },
       {
-        test: /\.(ttf|eot|svg)(\?.*)?$/,
-        loader: 'file?' + qs.stringify({
-          name: '[path][name].[ext]'
-        })
-      },
-      {
-        test: /\.woff(2)?(\?.*)?$/,
+        test: [/MaterialIcons-Regular.eot/, /MaterialIcons-Regular.woff2/, /MaterialIcons-Regular.woff/, /MaterialIcons-Regular.ttf/],
         loader: 'url?' + qs.stringify({
           limit: 10000,
           mimetype: "application/font-woff",
-          name: "[path][name].[ext]"
+          name: "fonts/[name].[ext]"
         })
       }
     ]

@@ -1,14 +1,18 @@
 @import "common/variables";
 
-// Import Boostrap from node_modules/...
-@import "~bootstrap/scss/bootstrap";
+// Import MDL from node_modules/...
+@import "~material-design-lite/src/color-definitions";
+@import "~material-design-lite/src/material-design-lite-grid.scss";
+@import "~material-design-lite/src/material-design-lite.scss";
 
+@import "common/font";
 @import "common/global";
+
 @import "components/buttons";
-@import "components/comments";
 @import "components/forms";
 @import "components/grid";
 @import "components/wp-classes";
+
 @import "layouts/header";
 @import "layouts/sidebar";
 @import "layouts/footer";
