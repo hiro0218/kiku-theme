@@ -6,8 +6,9 @@ use Roots\Sage\Template;
  * Theme assets
  */
 add_action('wp_enqueue_scripts', function () {
-    wp_enqueue_style('sage/main.css', asset_path('styles/main.css'), false, null);
-    wp_enqueue_script('sage/main.js', asset_path('scripts/main.js'), [], null, true);
+    wp_enqueue_style('normalize', 'https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css', false, null);
+    wp_enqueue_style('sage/main', asset_path('styles/main.css'), false, null);
+    wp_enqueue_script('sage/main', asset_path('scripts/main.js'), [], null, true);
 }, 100);
 
 /**
@@ -83,5 +84,5 @@ add_action('widgets_init', function () {
         'name'          => __('Primary', 'sage'),
         'id'            => 'sidebar-primary'
     ] + $config);
-    
+
 });
