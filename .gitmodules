@@ -1,0 +1,3 @@
+[submodule "lang"]
+	path = lang
+	url = https://github.com/roots/sage-translations.git
