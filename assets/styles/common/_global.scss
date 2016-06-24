@@ -18,8 +18,9 @@ body {
   font-family: $font-family-base;
   font-size: $font-size-base;
   line-height: $line-height-base;
-  color: $text-color;
-  background-color: $body-bg;
+
+  // bg, color
+  @extend .mdl-color--grey-200, .mdl-color-text--grey-800;
 }
 
 
@@ -41,4 +42,31 @@ a {
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px;
   }
+}
+
+// Code
+pre {
+  font-family: $font-family-monospace;
+  overflow: auto;
+}
+
+// Figures
+figure {
+  margin: 0 0 1rem;
+}
+
+// Images
+img {
+  vertical-align: middle;
+}
+
+
+// Tables
+table {
+  border-collapse: collapse;
+  @extend .mdl-color--white;
+}
+
+th {
+  text-align: left;
 }

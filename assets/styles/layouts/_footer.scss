@@ -1,6 +1,7 @@
-.mdl-mini-footer {
+.footer-navigation {
+  @extend .mdl-color--white;
+  
   .copyright {
-    // text-align: center;
     line-height: $footer-btn-size;
   }
 }
