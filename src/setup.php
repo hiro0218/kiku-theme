@@ -9,6 +9,7 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('normalize', 'https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css', false, null);
     wp_enqueue_style('sage/main', asset_path('styles/main.css'), false, null);
     wp_enqueue_script('sage/main', asset_path('scripts/main.js'), [], null, true);
+    wp_enqueue_style('google/font', 'https://fonts.googleapis.com/css?family=Open+Sans:400,600|Source+Code+Pro:400,700', false, null);
 }, 100);
 
 /**
