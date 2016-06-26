@@ -42,6 +42,7 @@ $sage_includes = [
     'src/lib/Kiku/Util.php',
     'src/lib/Kiku/constant.php',
     'src/lib/Kiku/modules/clean.php',
+    'src/lib/Kiku/modules/post.php',
 ];
 
 foreach ($sage_includes as $file) {

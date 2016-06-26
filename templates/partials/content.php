@@ -1,9 +1,15 @@
-<article <?php post_class(); ?>>
-  <header>
-    <h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-    <?php get_template_part('partials/entry-meta'); ?>
+<article class="mdl-cell mdl-cell--4-col card-container mdl-card mdl-color--white">
+  <header class="mdl-card__title">
+    <h2 class="entry-title mdl-card__title-text">
+      <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+        <?php the_title(); ?>
+      </a>
+    </h2>
   </header>
-  <div class="entry-summary">
+  <div class="entry-summary mdl-card__supporting-text mdl-card--expand">
     <?php the_excerpt(); ?>
+  </div>
+  <div class="mdl-card__supporting-text">
+    <?php get_template_part('partials/entry-meta'); ?>
   </div>
 </article>

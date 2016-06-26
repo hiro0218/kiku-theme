@@ -8,11 +8,9 @@
         get_template_part('partials/header');
       ?>
       <div class="wrap mdl-layout__content" role="document">
-        <div class="content mdl-grid">
-          <main class="main mdl-cell mdl-cell--12-col">
-            <?php include App\template_unwrap(); ?>
-          </main><!-- /.main -->
-        </div><!-- /.content -->
+        <main class="main mdl-grid">
+          <?php include App\template_unwrap(); ?>
+        </main><!-- /.main -->
       <?php
         do_action('get_footer');
         get_template_part('partials/footer');

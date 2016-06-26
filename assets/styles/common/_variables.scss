@@ -53,6 +53,6 @@ $color-accent-contrast: $palette-grey-700;
 // original
 $link-color:            unquote("rgb(#{$palette-blue-A200})");
 $link-hover-color:      unquote("rgb(#{$palette-blue-A400})");
-$link-hover-decoration: underline;
+$link-border-color:     unquote("rgb(#{$palette-blue-100})");
 
 $table-border-color:    unquote("rgb(#{$palette-grey-200})");

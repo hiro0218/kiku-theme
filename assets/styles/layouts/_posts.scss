@@ -6,7 +6,18 @@
 
   h1 {
     line-height: 1.7rem;
-    margin: ($line-height-computed / 2) auto;
+    margin: ($spacer / 2) auto;
+  }
+
+  a {
+    color: $link-color;
+    border-bottom: 1px solid $link-border-color;
+    padding: 0 0 1px 0;
+    transition: all .3s ease;
+
+    &:hover {
+      border-color: $link-color;
+    }
   }
 
   p, pre, blockquote, ul, ol, dl, figure, table, form {
@@ -14,9 +25,9 @@
   }
 
   code {
-    @extend .mdl-color--grey-50, .mdl-color-text--blue-grey-600;
+    @extend .mdl-color--blue-50, .mdl-color-text--blue-A200;
     border-radius: ($spacer * .125);
-    padding: .25rem;
+    padding: .2rem .4rem;
     white-space: nowrap;
     line-height: 2;
   }
@@ -41,7 +52,7 @@
 
   pre {
     @extend .mdl-color--grey-100;
-    padding: 1rem;
+    padding: 2rem;
     border-radius: ($spacer * .15);
     line-height: 1.25;
   }

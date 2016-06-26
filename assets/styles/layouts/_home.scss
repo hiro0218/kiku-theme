@@ -1,0 +1,32 @@
+.card-container {
+  display:flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-content: flex-start;
+  align-items: flex-start;
+
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
+
+  .mdl-card__title,
+  .mdl-card__supporting-text,
+  .mdl-card__actions {
+    width: 100%;
+    padding: ($spacer * 3);
+  }
+
+  .entry-title {
+    a {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      display: block;
+    }
+  }
+
+  .entry-summary {
+    overflow: hidden;
+    line-height: 1.75;
+  }
+
+}
