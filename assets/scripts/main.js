@@ -20,6 +20,19 @@ var Sage = {
     },
     finalize: function() {
       // JavaScript to be fired on the home page, after the init JS
+
+      // clickable
+      var entry = document.getElementsByTagName('article');
+      for (var i = 0, len = entry.length; i < len; i++) {
+        entry[i].addEventListener('click', function(e) {
+          //this.classList.add("animation-jelly");
+          e.preventDefault();
+          var title = this.getElementsByTagName('a')[0];
+          var permalink = title.getAttribute('href');
+          location.href = permalink;
+        });
+      }
+
     }
   },
   // single
