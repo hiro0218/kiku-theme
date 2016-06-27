@@ -1,0 +1,13 @@
+.wrap {
+  main {
+    padding: 0 ($layout-header-desktop-baseline - $base-size);
+  }
+
+  // @media screen and (max-width: $layout-screen-size-threshold) {
+  //   padding: 0 $layout-header-mobile-indent 0 $layout-header-mobile-baseline;
+  // }
+
+  // .mdl-grid {}
+  // .mdl-cell {}
+
+}

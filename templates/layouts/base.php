@@ -8,14 +8,18 @@
         get_template_part('partials/header');
       ?>
       <div class="wrap mdl-layout__content" role="document">
-        <main class="main mdl-grid">
-          <?php include App\template_unwrap(); ?>
-        </main><!-- /.main -->
-      <?php
-        do_action('get_footer');
-        get_template_part('partials/footer');
-        wp_footer();
-      ?>
+        <main>
+          <?php get_template_part('partials/page-header'); ?>
+          <div class="main-container mdl-grid">
+            <?php include App\template_unwrap(); ?>
+          </div>
+          <?php the_posts_navigation(); ?>
+        </main>
+        <?php
+          do_action('get_footer');
+          get_template_part('partials/footer');
+          wp_footer();
+        ?>
       </div><!-- /.wrap -->
     </div><!-- mdl-layout -->
   </body>

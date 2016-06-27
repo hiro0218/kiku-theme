@@ -1,6 +1,7 @@
 //
 // Modular scale
 // -------------------------
+$base-size: 16px;
 $modular-scale-base:  1rem;
 $modular-scale-ratio: $major-second;
 
@@ -16,7 +17,7 @@ $font-family-monospace:   "Source Code Pro", Menlo, Monaco, Consolas, "Courier N
 $preferred_font:   $font-family-base;
 $performance_font: $font-family-base;
 
-$font-size-base:          16px;
+$font-size-base:          $base-size;
 $font-size-lg:            modular-scale(1);
 $font-size-sm:            modular-scale(-1);
 
