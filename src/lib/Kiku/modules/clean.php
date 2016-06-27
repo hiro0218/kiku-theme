@@ -16,6 +16,7 @@ function head_cleanup() {
     add_filter('use_default_gallery_style', '__return_false');
 
     // emoji
+    // http://b.0218.jp/20150425235647.html
     remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
     remove_action( 'wp_print_styles', 'print_emoji_styles' );
     remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );

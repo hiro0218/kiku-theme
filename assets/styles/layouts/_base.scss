@@ -1,8 +1,7 @@
 main.main {
-  min-height: 100vh;
-}
+  min-height: calc(100vh - #{$layout-desktop-header-height});
 
-.entry-meta {
-  font-size: $font-size-sm;
-  @extend .mdl-color-text--grey-400;
+  @media screen and (max-width: $layout-screen-size-threshold) {
+    min-height: calc(100vh - #{$layout-mobile-header-height});
+  }
 }

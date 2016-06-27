@@ -7,3 +7,9 @@
 .mdl-textfield__input {
   border-width: 2px;
 }
+
+.mdl-layout__drawer-button {
+  &:focus {
+    outline: 0;
+  }
+}

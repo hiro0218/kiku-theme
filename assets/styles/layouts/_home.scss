@@ -1,4 +1,6 @@
 .card-container {
+  max-height: 16rem;
+  
   display:flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -12,7 +14,15 @@
   .mdl-card__supporting-text,
   .mdl-card__actions {
     width: 100%;
-    padding: ($spacer * 3);
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  > *:first-child {
+    padding-bottom: 0;
+  }
+  > *:last-child {
+    padding-top: 0;
   }
 
   .entry-title {
@@ -27,6 +37,7 @@
   .entry-summary {
     overflow: hidden;
     line-height: 1.75;
+    text-align: justify;
   }
 
 }

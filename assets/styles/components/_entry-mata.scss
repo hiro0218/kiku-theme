@@ -1,4 +1,7 @@
 .entry-meta {
+  font-size: $font-size-sm;
+  @extend .mdl-color-text--grey-400;
+
   ul {
     list-style: none;
     padding-left: 0;
