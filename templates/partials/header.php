@@ -1,9 +1,7 @@
 <header class="header-navigation mdl-layout__header mdl-layout__header--scroll">
   <div class="mdl-layout__header-row">
     <span class="mdl-layout-title"><!-- Title -->
-      <a class="brand" href="<?= BLOG_URL; ?>">
-        <?php bloginfo('name'); ?>
-      </a>
+      <a class="brand" href="<?= BLOG_URL; ?>"><?php bloginfo('name'); ?></a>
     </span>
     <div class="mdl-layout-spacer"></div>
     <!-- Search -->
