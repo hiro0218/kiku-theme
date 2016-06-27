@@ -1,7 +1,7 @@
-<article class="mdl-cell mdl-cell--4-col card-container mdl-card mdl-color--white">
+<article class="mdl-cell mdl-cell--4-col card-container mdl-card mdl-color--white" title="<?php the_title(); ?>">
   <header class="mdl-card__title">
     <h2 class="entry-title mdl-card__title-text">
-      <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+      <a href="<?php the_permalink(); ?>">
         <?php the_title(); ?>
       </a>
     </h2>

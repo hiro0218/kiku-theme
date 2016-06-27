@@ -1,6 +1,4 @@
 .card-container {
-  max-height: 16rem;
-  
   display:flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -9,6 +7,13 @@
   align-items: flex-start;
 
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
+  cursor: pointer;
+
+  &:hover {
+    .entry-title a {
+      color: $link-hover-color;
+    }
+  }
 
   .mdl-card__title,
   .mdl-card__supporting-text,
@@ -25,12 +30,16 @@
     padding-top: 0;
   }
 
-  .entry-title {
-    a {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      display: block;
+  .entry-title a {
+    color: inherit;
+    font-size: $font-size-h2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+
+    &:focus {
+      outline: 0;
     }
   }
 
