@@ -1,6 +1,7 @@
 .wrap {
   main {
-    padding: 0 ($layout-header-desktop-baseline - $base-size);
+    $grid-padding: $grid-desktop-margin + ($grid-desktop-gutter / 2);
+    padding: 0 ($layout-header-desktop-baseline - $grid-padding);
   }
 
   // @media screen and (max-width: $layout-screen-size-threshold) {
