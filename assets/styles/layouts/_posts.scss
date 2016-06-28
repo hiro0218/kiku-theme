@@ -19,7 +19,7 @@
     }
   }
 
-  p, pre, blockquote, ul, ol, dl, figure, table, form {
+  p, pre, blockquote, ul, ol, dl, figure, table, form, div {
     margin: 0 0 1.7rem;
   }
 
@@ -95,5 +95,29 @@
     margin-bottom: .5rem;
     margin-left: 0;
   }
+
+  img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin-left: auto;
+      margin-right: auto;
+  }
+
+  hr {
+    border: 0;
+    font-size: $font-size-h2;
+    height: 2rem;
+    line-height: 1;
+    margin: .85rem 0;
+    text-align: center;
+
+    &:before {
+      font-family: emoji;
+      content:"*";
+    }
+  }
+
+
 
 }

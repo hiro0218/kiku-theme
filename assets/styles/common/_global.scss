@@ -19,6 +19,9 @@ body {
   font-size: $font-size-base;
   line-height: $line-height-base;
 
+  scroll-behavior: smooth;
+	-webkit-font-smoothing: subpixel-antialiased;
+  
   // bg, color
   @extend .mdl-color--grey-200, .mdl-color-text--grey-800;
 }

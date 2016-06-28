@@ -8,8 +8,11 @@
 
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
   cursor: pointer;
+  transition: all .3s ease;
 
   &:hover {
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2);
+
     .entry-title a {
       color: $link-hover-color;
     }
