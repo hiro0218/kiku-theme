@@ -13,7 +13,9 @@
           <div class="main-container mdl-grid">
             <?php include App\template_unwrap(); ?>
           </div>
-          <?php the_posts_navigation(); ?>
+          <nav class="pagination-container">
+            <?php Kiku\Components\the_pagination(); ?>
+          </nav>
         </main>
         <?php
           do_action('get_footer');

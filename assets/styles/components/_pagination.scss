@@ -1,0 +1,75 @@
+.pagination-container {
+  text-align: center;
+}
+
+.pagination {
+  display: inline-block;
+  padding-left: 0;
+  margin: $spacer 0;
+
+  > li {
+    display: inline;
+
+    > a, > span {
+      position: relative;
+      font-size: $font-size-sm;
+      text-decoration: none;
+      line-height: $line-height-base;
+      margin: 0 ($spacer / 4);
+      padding: .75rem 1rem;
+      float: left;
+
+      border-radius: 2px;
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12);
+
+      @extend .mdl-color--white, .mdl-color-text--grey-600;
+
+      &:focus {
+        outline: 0;
+      }
+
+    }
+
+    .previous {
+      > a, > span {
+        margin-right: $spacer;
+      }
+    }
+    .next {
+      > a, > span {
+        margin-left: $spacer;
+      }
+    }
+  }
+
+  > li > a, > li > span {
+    &:hover,
+    &:focus {
+      z-index: 2;
+      @extend .mdl-color--grey-100, .mdl-color-text--grey-800;
+    }
+  }
+
+  > .active > a, > .active > span {
+    &,
+    &:hover,
+    &:focus {
+      z-index: 3;
+      font-weight: bold;
+      @extend .mdl-color--grey-600, .mdl-color-text--white;
+      cursor: default;
+    }
+  }
+
+  > .disabled {
+    > span,
+    > span:hover,
+    > span:focus,
+    > a,
+    > a:hover,
+    > a:focus {
+      @extend .mdl-color-text--grey-200;
+      cursor: not-allowed;
+    }
+  }
+}
