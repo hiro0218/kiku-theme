@@ -39,6 +39,12 @@ var Sage = {
       common.clickableElement(entry);
     }
   },
+  'search': {
+    init: function() {
+      var entry = document.getElementsByTagName('article');
+      common.clickableElement(entry);
+    }
+  },
   // About us page, note the change from about-us to about_us.
   'about_us': {
     init: function() {

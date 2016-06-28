@@ -8,5 +8,3 @@
 <?php while (have_posts()) : the_post(); ?>
   <?php get_template_part('partials/content-search'); ?>
 <?php endwhile; ?>
-
-<?php the_posts_navigation(); ?>
