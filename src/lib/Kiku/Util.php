@@ -1,4 +1,6 @@
 <?php
+namespace Kiku;
+
 class Util {
 
     public static $copyright_year;

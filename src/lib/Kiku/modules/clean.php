@@ -1,4 +1,5 @@
 <?php
+namespace Kiku\Modules;
 
 function head_cleanup() {
     // http://wpengineer.com/1438/wordpress-header/
@@ -48,19 +49,21 @@ function head_cleanup() {
     add_filter( 'wp_calculate_image_srcset', '__return_false' );
     add_filter( 'wp_calculate_image_sizes', '__return_false' );
 
+    add_filter('use_default_gallery_style', '__return_false');
+
     global $wp_widget_factory;
     if (isset($wp_widget_factory->widgets['WP_Widget_Recent_Comments'])) {
         remove_action('wp_head', [$wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style']);
     }
 
 }
-add_action('init', 'head_cleanup');
+add_action('init', __NAMESPACE__ . '\\head_cleanup');
 
 // Removing devicepx-jetpack.js
 function dequeue_devicepx() {
     wp_dequeue_script( 'devicepx' );
 }
-add_action( 'wp_enqueue_scripts', 'dequeue_devicepx', 20 );
+add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\dequeue_devicepx', 20 );
 
 // Remove the WordPress version from RSS feeds
 add_filter( 'the_generator', '__return_false' );
@@ -78,4 +81,4 @@ function remove_dashboard_widgets() {
     remove_meta_box( 'dashboard_primary', 'dashboard', 'normal' );
     remove_meta_box( 'dashboard_secondary', 'dashboard', 'normal' );
 }
-add_action('admin_init', 'remove_dashboard_widgets');
+add_action('admin_init', __NAMESPACE__ . '\\remove_dashboard_widgets');
