@@ -1,4 +1,5 @@
 import Router from './util/router';
+import common from './module/common.js';
 import 'material-design-lite/material.js';
 
 // Use this variable to set up the common and page specific functions. If you
@@ -20,19 +21,8 @@ var Sage = {
     },
     finalize: function() {
       // JavaScript to be fired on the home page, after the init JS
-
-      // clickable
       var entry = document.getElementsByTagName('article');
-      for (var i = 0, len = entry.length; i < len; i++) {
-        entry[i].addEventListener('click', function(e) {
-          //this.classList.add("animation-jelly");
-          e.preventDefault();
-          var title = this.getElementsByTagName('a')[0];
-          var permalink = title.getAttribute('href');
-          location.href = permalink;
-        });
-      }
-
+      common.clickableElement(entry);
     }
   },
   // single
@@ -42,6 +32,12 @@ var Sage = {
   // page
   'page': {
     init: function() {}
+  },
+  'archive': {
+    init: function() {
+      var entry = document.getElementsByTagName('article');
+      common.clickableElement(entry);
+    }
   },
   // About us page, note the change from about-us to about_us.
   'about_us': {
