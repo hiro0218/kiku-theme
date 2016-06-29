@@ -17,11 +17,12 @@ html {
 body {
   font-family: $font-family-base;
   font-size: $font-size-base;
+  font-weight: $font-weight-base;
   line-height: $line-height-base;
 
   scroll-behavior: smooth;
 	-webkit-font-smoothing: subpixel-antialiased;
-  
+
   // bg, color
   @extend .mdl-color--grey-200, .mdl-color-text--grey-800;
 }

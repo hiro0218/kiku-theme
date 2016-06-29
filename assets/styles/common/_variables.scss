@@ -12,6 +12,7 @@ $modular-scale-ratio: $major-second;
 $font-jpn:                YuGothic, "Yu Gothic", "Noto Sans", "Hiragino Sans";
 $font-family-base:        "Open Sans", "Helvetica Neue", Helvetica, Arial, #{$font-jpn}, Emoji, sans-serif !default;
 $font-family-monospace:   "Source Code Pro", Menlo, Monaco, Consolas, "Courier New", #{$font-jpn}, monospace !default;
+$font-weight-base:        500;
 
 // MDL
 $preferred_font:   $font-family-base;
