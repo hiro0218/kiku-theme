@@ -5,6 +5,7 @@ class Util {
 
     public static $copyright_year;
 
+    // コピーライト用の年号(開始-現在)を取得する
     public static function get_copyright_year() {
         if (self::$copyright_year === null) {
             self::$copyright_year = self::_get_copyright_year();
@@ -35,6 +36,11 @@ class Util {
 
         return $output;
     }
+
+
+    /**
+     * 記事関連
+     */
 
     // 記事内容の抜粋
     public static function get_excerpt_content($length = EXCERPT_LENGTH, $hellip = EXCERPT_HELLIP) {
@@ -73,4 +79,47 @@ class Util {
         $tag = preg_replace( '/>(\s|\n|\r)+</', '><', $tag );
         return trim( str_replace(["\r\n", "\r", "\n", "\t"], '', $tag) ) . $last_line_break;
     }
+
+
+    /**
+     *  日付関連
+     */
+
+    // 更新されているか
+    public static function is_modified_post() {
+        $mtime = get_the_modified_time('Ymd');
+        $ptime = get_the_time('Ymd');
+
+        return ($ptime >= $mtime) ? false : true;
+    }
+
+    // 更新時間差
+    public static function get_posted_time_ago($timestamp) {
+        if ($timestamp === null) {
+            return '';
+        }
+
+        $difference = (CURRENT_TIMESTAMP - $timestamp);
+        $periods = ['second', 'minute', 'hour', 'day', 'week', 'month', 'year', 'decade'];
+        $lengths = [60, 60, 24, 7, 4.35, 12, 10];
+
+        for ($j = 0; isset($lengths[$j]) and $difference >= $lengths[$j] and ( empty($unit) or $unit != $periods[$j]); $j++) {
+            $difference /= $lengths[$j];
+        }
+
+        $difference = round($difference);
+
+        // 1でなければ複数形にする
+        if ($difference != 1) {
+            $periods[$j] = $periods[$j] . 's';
+        }
+
+        // 0以下のとき
+        if ($difference <= 0) {
+            return "";
+        }
+
+        return $difference . ' ' . $periods[$j] . ' ago';
+    }
+
 }
