@@ -8,11 +8,25 @@
 
     > li {
       display: inline-block;
+      margin-bottom: 0;
 
       &:not(:last-child) {
         margin-right: 8px;
       }
+      a {
+        color: inherit;
+        border: none;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
     }
+  }
+
+  & .entry-time,
+  & .entry-category,
+  & .entry-tag {
+    margin-bottom: 0;
   }
 
 }

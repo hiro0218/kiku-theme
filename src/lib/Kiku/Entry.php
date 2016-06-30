@@ -45,5 +45,52 @@ class Entry {
 
     // クリーンな投稿タイトルを取得する
     private function get_clean_title() {
-		return the_title_attribute( 'echo=0' );
-	}
+        return the_title_attribute( 'echo=0' );
+    }
+
+    // 設定されたカテゴリの一覧を取得する
+    public function get_category() {
+        if ( !is_single() ) {
+            return null;
+        }
+
+        $categories = get_the_category();
+        $arr = [];
+        $i = 0;
+
+        foreach( $categories as $category ) {
+            $arr[$i] = [
+                "link"   => get_category_link( $category->cat_ID ),
+                "name" => esc_html( $category->cat_name ),
+            ];
+            $i++;
+        }
+
+        return array_reverse($arr);
+    }
+
+    // 設定されたタグの一覧を取得する
+    public function get_tag() {
+        if ( !is_single() ) {
+            return null;
+        }
+
+        $tags = get_the_tags();
+        if ( empty($tags) ) {
+            return null;
+        }
+
+        $arr = [];
+        $i = 0;
+        foreach( $tags as $tag ) {
+            $arr[$i] = [
+                "link"  => get_tag_link($tag->term_id),
+                "name" => $tag->name,
+            ];
+            $i++;
+        }
+
+        return $arr;
+    }
+
+}
