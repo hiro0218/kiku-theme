@@ -7,7 +7,18 @@
     <?php the_content(); ?>
   </div>
   <footer>
-    <?php wp_link_pages(['before' => '<nav class="page-nav"><p>' . __('Pages:', 'sage'), 'after' => '</p></nav>']); ?>
+  <?php global $Entry;
+      $similar = $Entry->get_similar_posts();
+      if( !empty($similar) ): ?>
+    <section class="entry-similar">
+      <h2><?= MSG_SIMILAR_ENTRY; ?></h2>
+      <ul>
+      <?php foreach($similar as $post): ?>
+        <li><a href="<?= $post['uri']; ?>"><?= $post['title']; ?></a></li>
+      <?php endforeach; ?>
+      </ul>
+    </section>
+  <?php endif; ?>
   </footer>
 </article>
 <nav class="mdl-cell mdl-cell--12-col"><?php Kiku\Components\the_pager(); ?></nav>

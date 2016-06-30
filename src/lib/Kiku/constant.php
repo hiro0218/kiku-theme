@@ -10,3 +10,6 @@ const DESCRIPTION_LENGTH = 199;
 const EXCERPT_LENGTH = 80;
 const EXCERPT_HELLIP = "…";
 const ENTRY_READ_MORE = "続きを読む ›";
+
+// Message
+const MSG_SIMILAR_ENTRY = "関連記事";
