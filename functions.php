@@ -38,12 +38,8 @@ $sage_includes = [
     'src/setup.php',      // Theme setup
     'src/filters.php',    // Filters
     'src/admin.php',       // Admin
-    // Kiku
-    'src/lib/Kiku/Util.php',
-    'src/lib/Kiku/constant.php',
-    'src/lib/Kiku/modules/clean.php',
-    'src/lib/Kiku/modules/post.php',
-    'src/lib/Kiku/components/pagination.php',
+    
+    'src/lib/Kiku/bootstrap.php',  // Kiku
 ];
 
 foreach ($sage_includes as $file) {
