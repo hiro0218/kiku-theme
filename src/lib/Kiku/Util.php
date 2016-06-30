@@ -14,7 +14,7 @@ class Util {
         return self::$copyright_year;
     }
 
-    public static function _get_copyright_year() {
+    private static function _get_copyright_year() {
         global $wpdb;
 
         $sql = "SELECT YEAR(min(post_date_gmt)) AS firstdate,

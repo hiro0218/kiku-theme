@@ -38,7 +38,7 @@ $sage_includes = [
     'src/setup.php',      // Theme setup
     'src/filters.php',    // Filters
     'src/admin.php',       // Admin
-    
+
     'src/lib/Kiku/bootstrap.php',  // Kiku
 ];
 
