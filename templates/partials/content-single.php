@@ -10,3 +10,4 @@
     <?php wp_link_pages(['before' => '<nav class="page-nav"><p>' . __('Pages:', 'sage'), 'after' => '</p></nav>']); ?>
   </footer>
 </article>
+<nav class="mdl-cell mdl-cell--12-col"><?php Kiku\Components\the_pager(); ?></nav>

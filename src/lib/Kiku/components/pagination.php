@@ -44,23 +44,23 @@ function the_pagination() {
         $max = $count;
     }
 
-    $echo = '';
+    $pagination = '';
     $previous  = esc_attr(get_pagenum_link(intval($page) - 1));
 	$firstpage = esc_attr(get_pagenum_link(1));
 
     if ( $firstpage && (1 != $page) ) {
-        $echo .= '<li class="previous"><a href="' . $firstpage . '">' . $args['first_page'] . '</a></li>';
+        $pagination .= '<li class="previous"><a href="' . $firstpage . '">' . $args['first_page'] . '</a></li>';
     }
     if ( $previous && (1 != $page) ) {
-        $echo .= '<li><a href="' . $previous . '">' . $args['previous_string'] . '</a></li>';
+        $pagination .= '<li><a href="' . $previous . '">' . $args['previous_string'] . '</a></li>';
     }
 
     if ( !empty($min) && !empty($max) ) {
         for( $i = $min; $i <= $max; $i++ ) {
             if ($page == $i) {
-                $echo .= '<li class="active"><span class="active">' . str_pad( (int)$i, 2, '0', STR_PAD_LEFT ) . '</span></li>';
+                $pagination .= '<li class="active"><span class="active">' . str_pad( (int)$i, 2, '0', STR_PAD_LEFT ) . '</span></li>';
             } else {
-                $echo .= sprintf( '<li><a href="%s">%002d</a></li>', esc_attr( get_pagenum_link($i) ), $i );
+                $pagination .= sprintf( '<li><a href="%s">%002d</a></li>', esc_attr( get_pagenum_link($i) ), $i );
             }
         }
     }
@@ -69,14 +69,60 @@ function the_pagination() {
     $lastpage = esc_attr( get_pagenum_link($count) );
 
     if ($next && ($count != $page) ) {
-        $echo .= '<li><a href="' . $next . '">' . $args['next_string'] . '</a></li>';
+        $pagination .= '<li><a href="' . $next . '">' . $args['next_string'] . '</a></li>';
     }
 
     if ( $lastpage && ($count != $page) ) {
-        $echo .= '<li class="next"><a href="' . $lastpage . '">' . $args['last_string'] . '</a></li>';
+        $pagination .= '<li class="next"><a href="' . $lastpage . '">' . $args['last_string'] . '</a></li>';
     }
 
-    if ( isset($echo) ) {
-        echo '<ul class="pagination">'. $echo .'</ul>';
+    if ( isset($pagination) ) {
+        echo '<ul class="pagination">'. $pagination .'</ul>';
     }
+}
+
+
+function the_pager() {
+    // article only
+    if ( !is_single() ) {
+        return;
+    }
+
+    $pager = "";
+    $args = [
+        'previous_string' => '<i class="material-icons">chevron_left</i>',
+        'next_string'     => '<i class="material-icons">chevron_right</i>',
+    ];
+    $prev = [];
+    $next = [];
+    $prev_post = get_previous_post();
+    $next_post = get_next_post();
+
+    // previous post
+    if (!empty($prev_post)) {
+        $prev['uri']   = get_permalink($prev_post->ID);
+        $prev['title'] = esc_html($prev_post->post_title);
+        $prev['attr']  = '';
+    } else {
+        // oldest
+        $prev['uri']   = 'javascript:void(0)';
+        $prev['title'] = '';
+        $prev['attr']  = 'disabled';
+    }
+    $pager .= '<li class="previous '. $prev['attr'] .'"><a href="' . $prev['uri'] . '" title="'. $prev['title'] .'">' . $args['previous_string'] . '</a></li>';
+
+    // next post
+    if (!empty($next_post)) {
+        $next['uri']   = get_permalink($next_post->ID);
+        $next['title'] = esc_html($next_post->post_title);
+        $next['attr']  = '';
+    } else {
+        // latest
+        $next['uri']   = 'javascript:void(0)';
+        $next['title'] = '';
+        $next['attr']  = 'disabled';
+    }
+    $pager .= '<li class="next '. $next['attr'] .'"><a href="' . $next['uri'] . '" title="'. $next['title'] .'">' . $args['next_string'] . '</a></li>';
+
+    echo '<ul class="pager">'. $pager .'</ul>';
 }
