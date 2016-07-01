@@ -1,5 +1,5 @@
-<div class="alert alert-warning">
-  <?php _e('Sorry, but the page you were trying to view does not exist.', 'sage'); ?>
+<div class="mdl-cell mdl-cell--12-col mdl-card mdl-color--transparent">
+  <div class="alert alert-danger">
+    <?php _e('Sorry, but the page you were trying to view does not exist.', 'sage'); ?>
+  </div>
 </div>
-
-<?php get_search_form(); ?>

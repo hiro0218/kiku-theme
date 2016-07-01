@@ -17,3 +17,13 @@
 .mdl-card {
   font-weight: inherit;
 }
+
+.mdl-layout__obfuscator {
+  &.is-visible {
+    background-color: rgba(255,255,255, 0.5);
+  }
+}
+
+.mdl-color--transparent {
+  background: transparent;
+}

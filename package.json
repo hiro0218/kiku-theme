@@ -7,12 +7,7 @@
     "type": "git",
     "url": "git://github.com/hiro0218/kiku-theme.git"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "http://opensource.org/licenses/MIT"
-    }
-  ],
+  "license": "MIT",
   "scripts": {
     "build:production": "webpack -p --progress --release",
     "build": "webpack -d --progress",
