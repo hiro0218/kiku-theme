@@ -1,0 +1,30 @@
+.breadcrumb {
+  font-size: $font-size-sm;
+  @extend .mdl-color-text--grey-400;
+
+  padding: 0;
+  margin-bottom: 0;
+  list-style: none;
+  @include clearfix;
+
+  > li {
+    float: left;
+
+    &.active {
+      @extend .mdl-color-text--grey-600;
+    }
+    &:not(:last-child) {
+     margin-right: 8px;
+    }
+
+    a {
+      color: inherit;
+      border: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+  }
+
+}

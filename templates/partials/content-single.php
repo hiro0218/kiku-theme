@@ -7,6 +7,9 @@
     <?php the_content(); ?>
   </div>
   <footer>
+    <nav>
+      <?php get_template_part('partials/entry/breadcrumb'); ?>
+    </nav>
   <?php global $Entry;
       $similar = $Entry->get_similar_posts();
       if( !empty($similar) ): ?>
