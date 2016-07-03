@@ -29,11 +29,16 @@ var Sage = {
   },
   // single
   'single': {
-    init: function() {}
+    init: function() {
+      var entry = document.getElementsByTagName('article')[0];
+      common.addExternalLink(entry);
+    }
   },
   // page
   'page': {
-    init: function() {}
+    init: function() {
+      Sage.single.init();
+    }
   },
   'archive': {
     init: function() {
