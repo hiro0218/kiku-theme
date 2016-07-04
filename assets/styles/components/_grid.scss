@@ -1,12 +1,13 @@
 .wrap {
   main {
-    $grid-padding: $grid-desktop-margin + ($grid-desktop-gutter / 2);
-    padding: 0 ($layout-header-desktop-baseline - $grid-padding);
-  }
+    padding: 0 ($layout-header-desktop-baseline - $grid-desktop-margin);
 
-  // @media screen and (max-width: $layout-screen-size-threshold) {
-  //   padding: 0 $layout-header-mobile-indent 0 $layout-header-mobile-baseline;
-  // }
+    @media screen and (max-width: $layout-screen-size-threshold) {
+      $grid-padding: $grid-desktop-margin + ($grid-desktop-gutter / 2);
+      padding: 0 ($layout-header-desktop-baseline - $grid-padding);
+    }
+
+  }
 
   // .mdl-grid {}
   // .mdl-cell {}

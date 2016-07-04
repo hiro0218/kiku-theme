@@ -1,5 +1,5 @@
 .entry {
-  padding: $spacer ($spacer*2);
+  padding: 1rem 1.5rem;
   border-radius: ($spacer * .125);
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
   @extend .mdl-color--white, .mdl-color-text--grey-600;

@@ -33,22 +33,24 @@
     padding-top: 0;
   }
 
-  .entry-title a {
-    color: inherit;
-    font-size: $font-size-h2;
-    font-weight: bold;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    display: block;
+  .entry-title {
+    font-weight: normal;
+    a {
+      color: inherit;
+      font-size: $font-size-h3;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      display: block;
 
-    &:focus {
-      outline: 0;
+      &:focus {
+        outline: 0;
+      }
     }
   }
 
   .entry-summary {
-    overflow: hidden;
+    font-size: $font-size-sm;
     line-height: 1.75;
     text-align: justify;
   }

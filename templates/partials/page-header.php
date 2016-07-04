@@ -1,5 +1,5 @@
 <?php if( !is_singular() ): ?>
-<div class="page-header">
-  <h1><?= App\title(); ?></h1>
-</div>
+<span class="mdl-layout-title section-title"><!--
+--><h1><?= App\title(); ?></h1>
+</span>
 <?php endif; ?>

@@ -3,6 +3,15 @@
   line-height: 1;
   @extend .mdl-color--white;
 
+  .mdl-layout-title {
+    font-size: $font-size-lg;
+
+    & + .section-title:before {
+      content: "-";
+      padding: 0 .5rem;
+    }
+
+  }
   .brand {
     @extend .mdl-color-text--grey-900;
     &:hover {
@@ -10,6 +19,18 @@
     }
     &:focus {
       outline: none;
+    }
+  }
+
+  .section-title {
+    width: 20rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    h1 {
+      display: inline;
+      font-size: $font-size-lg;
+      font-weight: normal;
     }
   }
 

@@ -9,7 +9,6 @@
       ?>
       <div class="wrap mdl-layout__content" role="document">
         <main>
-          <?php get_template_part('partials/page-header'); ?>
           <div class="main-container mdl-grid">
             <?php include App\template_unwrap(); ?>
           </div>
