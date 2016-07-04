@@ -78,6 +78,12 @@ function add_trailing_slash($string, $type_of_url) {
 }
 add_filter('user_trailingslashit', __NAMESPACE__ . '\\add_trailing_slash', 10, 2);
 
+// Remove <p> tags from images
+function remove_ptags_from_images($content){
+    return preg_replace('/<p>\\s*?(<a .*?><img.*?><\\/a>|<img.*?>)?\\s*<\\/p>/s', '$1', $content);
+}
+add_filter('the_content', __NAMESPACE__ . '\\remove_ptags_from_images');
+
 
 //
 // admin
