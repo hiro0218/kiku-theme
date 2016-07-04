@@ -65,6 +65,10 @@
     padding: 2rem;
     border-radius: ($spacer * .15);
     line-height: 1.25;
+
+    &.line-numbers {
+      padding-left: 4rem;
+    }
   }
 
   table {

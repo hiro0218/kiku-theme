@@ -36,6 +36,7 @@ if (argv.watch) { // '--watch' to add monkey-hot
  * @param  {Object} assets passed by processOutput
  * @return {String}        JSON
  */
+// fix https://github.com/roots/sage/issues/1659#issuecomment-223032889
 var assetsPluginProcessOutput = function (assets) {
   var name,
       ext,
@@ -44,14 +45,14 @@ var assetsPluginProcessOutput = function (assets) {
 
   for (name in assets) {
     if (assets.hasOwnProperty(name)) {
-      if (path.extname(assets[name]) === '') {
+      // if (path.extname(assets[name]) === '') {
         for (ext in assets[name]) {
           if (assets[name].hasOwnProperty(ext)) {
             filename = name + '.' + ext;
             results[filename] = path.basename(assets[name][ext]);
           }
         }
-      }
+      // }
     }
   }
   return JSON.stringify(results);
