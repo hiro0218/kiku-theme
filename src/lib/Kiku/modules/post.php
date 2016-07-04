@@ -26,3 +26,12 @@ function sort_query($query) {
     return $query;
 }
 add_action( 'pre_get_posts',  __NAMESPACE__ . '\\sort_query' );
+
+// remove page from search result
+function remove_page_from_search_result($query) {
+	if ( $query->is_search() ) {
+		$query->set('post_type', 'post');
+	}
+	return $query;
+}
+add_action( 'pre_get_posts', __NAMESPACE__ . '\\remove_page_from_search_result' );
