@@ -12,6 +12,7 @@ $Entry = new Kiku\Entry();
 // module
 require KIKU_LIB_PATH. 'modules/clean.php';
 require KIKU_LIB_PATH. 'modules/post.php';
+require KIKU_LIB_PATH. 'modules/disable.php';
 
 // component
 require KIKU_LIB_PATH. 'components/pagination.php';
