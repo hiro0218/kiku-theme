@@ -68,6 +68,16 @@ add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\dequeue_devicepx', 20 );
 // Remove the WordPress version from RSS feeds
 add_filter( 'the_generator', '__return_false' );
 
+// Add a slash to the end of the URL
+// http://b.0218.jp/20140413154158.html
+function add_trailing_slash($string, $type_of_url) {
+    if ($type_of_url != 'single') {
+        $string = trailingslashit($string);
+    }
+    return $string;
+}
+add_filter('user_trailingslashit', __NAMESPACE__ . '\\add_trailing_slash', 10, 2);
+
 
 //
 // admin
