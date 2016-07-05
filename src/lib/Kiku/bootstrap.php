@@ -10,6 +10,7 @@ require KIKU_LIB_PATH. 'Entry.php';
 $Entry = new Kiku\Entry();
 
 // module
+require KIKU_LIB_PATH. 'modules/admin.php';
 require KIKU_LIB_PATH. 'modules/clean.php';
 require KIKU_LIB_PATH. 'modules/post.php';
 require KIKU_LIB_PATH. 'modules/disable.php';
