@@ -1,4 +1,4 @@
-<header class="header-navigation mdl-layout__header">
+<header class="header-navigation mdl-layout__header mdl-layout__header--scroll">
   <div class="mdl-layout__header-row">
     <span class="mdl-layout-title"><!-- Title -->
       <a class="brand" href="<?= BLOG_URL; ?>"><?php bloginfo('name'); ?></a>
