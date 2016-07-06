@@ -63,6 +63,18 @@ function ogp_tags() {
 }
 add_action( 'wp_head',  __NAMESPACE__ . '\\ogp_tags', 12 );
 
+// Twitter Card
+function twitter_tags() {
+    $twitter_id = get_option('kiku_twitter');
+    if ($twitter_id) {
+        echo PHP_EOL;
+        echo '<meta name="twitter:site" content="'. $twitter_id .'">' . PHP_EOL;
+    	echo '<meta name="twitter:creator" content="'. $twitter_id .'">' . PHP_EOL;
+    	echo '<meta name="twitter:card" content="summary">' . PHP_EOL;
+    }
+}
+add_action( 'wp_head',  __NAMESPACE__ . '\\twitter_tags', 13 );
+
 // DNS Prefetch
 function dns_prefetch_tags() {
     echo PHP_EOL;

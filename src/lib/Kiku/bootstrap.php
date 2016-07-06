@@ -23,3 +23,4 @@ require KIKU_LIB_PATH. 'components/pagination.php';
 
 // plugin
 require KIKU_LIB_PATH. 'plugins/mokuji/kiku-mokuji.php';
+require KIKU_LIB_PATH. 'plugins/setting/kiku-setting.php';
