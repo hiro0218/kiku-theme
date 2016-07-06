@@ -1,4 +1,6 @@
 <?php
+date_default_timezone_set(get_option('timezone_string'));
+
 define('KIKU_LIB_PATH', realpath(__DIR__) .DIRECTORY_SEPARATOR);
 
 // constant
@@ -18,3 +20,6 @@ require KIKU_LIB_PATH. 'modules/seo.php';
 
 // component
 require KIKU_LIB_PATH. 'components/pagination.php';
+
+// plugin
+require KIKU_LIB_PATH. 'plugins/mokuji/kiku-mokuji.php';

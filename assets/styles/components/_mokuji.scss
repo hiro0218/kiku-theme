@@ -1,0 +1,20 @@
+.mokuji-title {
+  display: table-cell;
+  padding-right: 3rem;
+}
+
+.mokuji-content {
+  display: table-cell;
+  border-left: solid 3px unquote("rgb(#{$palette-blue-100})");
+  padding-left: 1rem;
+
+  ol {
+    list-style: none;
+    margin-bottom: 0;
+    ol {
+      margin-bottom: .5rem;
+      padding-left: 1rem;
+    }
+  }
+
+}

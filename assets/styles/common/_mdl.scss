@@ -1,4 +1,7 @@
 // mdl fix
+.mdl-layout {
+  scroll-behavior: smooth;
+}
 
 .mdl-layout__header {
   display: block !important;  // always visible
