@@ -42,10 +42,14 @@ class Kiku_Setting_Admin {
             return false;
         }
 
-        $this->options = array_merge($this->options, [
+        $input = [
             'kiku_twitter' => filter_input(INPUT_POST, 'kiku_twitter'),
-        ]);
+        ];
 
-        return update_option( 'kiku-setting-options', $this->options );
+        $this->options = array_merge($this->options, $input);
+        $result = update_option( 'kiku-setting-options', $this->options );
+
+        return $result;
     }
+
 }

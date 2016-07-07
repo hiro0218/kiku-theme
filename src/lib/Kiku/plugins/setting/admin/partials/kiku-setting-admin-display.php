@@ -1,17 +1,6 @@
 <div class='wrap'>
     <h2><?php _e('Setting', 'kiku'); ?></h2>
-    <?php
-        $this->message = '';
-        if (isset($_GET['update'])) {
-            $result = $this->save_admin_options();
-            if ($result === true) {
-                $this->message = '<div id="message" class="updated fade"><p>' . __('Options saved.', 'kiku') . '</p></div>';
-            } else if ($result === false) {
-                $this->message = '<div id="message" class="error fade"><p>' . __('Save failed.', 'kiku') . '</p></div>';
-            }
-        }
-        echo $this->message;
-    ?>
+    <?php settings_errors(); ?>
     <form method="post" action="options.php">
         <?php
             settings_fields( 'kiku-settings-group' );
