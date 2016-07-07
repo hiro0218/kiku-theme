@@ -13,7 +13,7 @@
 
   }
   .brand {
-    @extend .mdl-color-text--grey-900;
+    @extend .mdl-color-text--grey-800;
     &:hover {
       text-decoration: none;
     }
@@ -31,6 +31,7 @@
       display: inline;
       font-size: $font-size-lg;
       font-weight: normal;
+      @extend .mdl-color-text--grey-700;
     }
   }
 

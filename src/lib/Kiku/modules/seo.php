@@ -103,5 +103,6 @@ function mics_tags() {
     echo '<meta name="google" content="notranslate" />'. PHP_EOL;
     echo '<meta name="format-detection" content="telephone=no">'. PHP_EOL;
     echo '<meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE">'. PHP_EOL;
+    echo PHP_EOL;
 }
 add_action( 'wp_head',  __NAMESPACE__ . '\\mics_tags', 20 );
