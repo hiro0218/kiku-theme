@@ -9,7 +9,9 @@ require KIKU_LIB_PATH. 'constant.php';
 // class
 require KIKU_LIB_PATH. 'Util.php';
 require KIKU_LIB_PATH. 'Entry.php';
+require KIKU_LIB_PATH. 'Image.php';
 $Entry = new Kiku\Entry();
+$Image = new Kiku\Image();
 
 // module
 require KIKU_LIB_PATH. 'modules/admin.php';
