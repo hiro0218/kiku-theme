@@ -98,3 +98,6 @@ function remove_dashboard_widgets() {
     remove_meta_box( 'dashboard_secondary', 'dashboard', 'normal' );
 }
 add_action('admin_init', __NAMESPACE__ . '\\remove_dashboard_widgets');
+
+// Remove "thank you for creating with Wordpress"
+add_filter('admin_footer_text', '__return_false');
