@@ -74,3 +74,32 @@ function insert_post_data( $data, $postarr ) {
     return $data;
 }
 add_filter( 'wp_insert_post_data', __NAMESPACE__ . '\\insert_post_data', 10, 2 );
+
+
+/**
+ * shortcode
+ */
+function add_shortcode_CustomFieldView($atts){
+    extract( shortcode_atts([
+        'id'   => get_the_ID(),
+        'name' => false,
+        'ss'   => 0,
+    ], $atts) );
+
+    // escape
+    $id   = sprintf(esc_html("%s"), $id);
+    $name = sprintf(esc_html("%s"), $name);
+    $ss   = sprintf(esc_html("%s"), $ss);
+
+    if ( !$name ) {
+        return false;
+    }
+
+    $custom = get_post_meta($id, $name, true);
+
+    // shortcode permitted in a custom field
+    $custom = ($ss == 1) ? do_shortcode($custom) : $custom;
+
+    return $custom;
+}
+add_shortcode('cfview', __NAMESPACE__ . '\\add_shortcode_CustomFieldView');
