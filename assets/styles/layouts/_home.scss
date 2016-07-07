@@ -13,17 +13,20 @@
   &:hover {
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2);
 
+    .entry-image-sheet {
+      transform: scale(1.15);
+    }
     .entry-title a {
       color: $link-hover-color;
     }
+
   }
 
+  .entry-image,
   .mdl-card__title,
   .mdl-card__supporting-text,
   .mdl-card__actions {
     width: 100%;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
   }
 
   > *:first-child {
@@ -31,8 +34,37 @@
   }
   > *:last-child {
     padding-top: 0;
+    padding-bottom: 1rem;
   }
 
+  .entry-image {
+    height: 12rem;
+    overflow: hidden;
+
+    .entry-image-none {
+      display: table;
+      text-align: center;
+      height: 100%;
+      width: 100%;
+      .material-icons {
+        font-size: 6rem;
+        display: table-cell;
+        vertical-align: middle;
+        color: unquote("rgb(#{$palette-grey-300})");
+      }
+    }
+
+  }
+  .entry-image-sheet {
+    height: inherit;
+    background: unquote("rgb(#{$palette-grey-50})") 50% no-repeat;
+    background-size: cover;
+    transition: transform 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+
+  .mdl-card__title {
+    padding-bottom: 0;
+  }
   .entry-title {
     font-weight: normal;
     a {
