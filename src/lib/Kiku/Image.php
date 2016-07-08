@@ -79,6 +79,10 @@ class Image {
             if ( Util::is_url($src) && $this->is_image($src) ) {
                 return Util::relative_to_absolute_url($src);
             }
+            // not Data URI
+            if ( !$this->is_dataURI($src) ) {
+                $src = "";
+            }
         }
 
         return $src;
@@ -109,7 +113,11 @@ class Image {
     }
 
     private function is_shortcode($str) {
-        return (boolean)(strpos($str, '[') !== false) && (strpos($str, ']') !== false);
+        return (boolean)(substr($str, 0, 1) === '[') && (substr($str, strlen($str)-1, 1) === ']');
+    }
+
+    private function is_dataURI($str) {
+      return (boolean)(substr($str, 0, 5) === 'data:');
     }
 
 }
