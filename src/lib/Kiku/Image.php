@@ -53,7 +53,7 @@ class Image {
         return $url;
     }
 
-    public function get_post_image_from_tag() {
+    public function get_post_image_from_tag($datauri = true) {
         global $post;
         $src = "";
 
@@ -79,9 +79,13 @@ class Image {
             if ( Util::is_url($src) && $this->is_image($src) ) {
                 return Util::relative_to_absolute_url($src);
             }
+            // denied DataURI
+            if ( !$datauri ) {
+                return "";
+            }
             // not Data URI
             if ( !$this->is_dataURI($src) ) {
-                $src = "";
+                return "";
             }
         }
 

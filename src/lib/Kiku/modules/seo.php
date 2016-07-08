@@ -75,6 +75,29 @@ function twitter_tags() {
 }
 add_action( 'wp_head',  __NAMESPACE__ . '\\twitter_tags', 13 );
 
+function image_tags() {
+    $image_url = "";
+
+    if ( is_home() ) {
+        $image_url = get_site_icon_url();
+    } else if ( is_archive() || is_search() || is_404() ) {
+        $image_url = "";
+    } else {
+        global $Image;
+        $image_url = $Image->get_post_image_from_tag(false);
+        if ( !$image_url ) {
+            $image_url = get_site_icon_url();
+        }
+    }
+
+    if ( $image_url ) {
+        echo PHP_EOL;
+        echo '<meta property="og:image" content="'. $image_url. '" />'. PHP_EOL;
+        echo '<meta name="twitter:image" content="'. $image_url. '" />'. PHP_EOL;
+    }
+}
+add_action( 'wp_head',  __NAMESPACE__ . '\\image_tags', 14 );
+
 // DNS Prefetch
 function dns_prefetch_tags() {
     echo PHP_EOL;
@@ -95,7 +118,7 @@ function dns_prefetch_tags() {
         echo sprintf( $tag_template, $domain );
     }
 }
-add_action( 'wp_head',  __NAMESPACE__ . '\\dns_prefetch_tags', 13 );
+add_action( 'wp_head',  __NAMESPACE__ . '\\dns_prefetch_tags', 15 );
 
 // mics tags
 function mics_tags() {
