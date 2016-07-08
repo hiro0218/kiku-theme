@@ -35,9 +35,6 @@
 @import "~material-design-lite/src/shadow/shadow";
 @import "~material-design-lite/src/grid/grid";
 
-// Prism.js
-@import "~prismjs/themes/prism.css";
-@import "~prismjs/plugins/line-numbers/prism-line-numbers.css";
 
 @import "common/animation";
 @import "common/font";
@@ -63,3 +60,8 @@
 @import "layouts/pages";
 @import "layouts/posts";
 @import "layouts/tinymce";
+
+
+// Prism.js
+@import "plugins/prismjs";
+@import "~prismjs/plugins/line-numbers/prism-line-numbers.css";
