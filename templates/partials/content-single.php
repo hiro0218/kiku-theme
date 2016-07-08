@@ -14,7 +14,7 @@
       $similar = $Entry->get_similar_posts();
       if( !empty($similar) ): ?>
     <section class="entry-similar">
-      <h2><?= MSG_SIMILAR_ENTRY; ?></h2>
+      <h2><?php _e('Related Articles', 'kiku'); ?></h2>
       <ul>
       <?php foreach($similar as $post): ?>
         <li><a href="<?= $post['uri']; ?>"><?= $post['title']; ?></a></li>

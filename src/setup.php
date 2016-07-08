@@ -6,7 +6,7 @@ use Roots\Sage\Template;
  * Theme assets
  */
 add_action('wp_enqueue_scripts', function () {
-    wp_enqueue_style('normalize', 'https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css', false, null);
+    wp_enqueue_style('normalize', 'https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css', false, null);
     wp_enqueue_style('sage/main', asset_path('styles/main.css'), false, null);
     wp_enqueue_script('sage/main', asset_path('scripts/main.js'), [], null, true);
     if (!wp_is_mobile()) {
@@ -22,11 +22,11 @@ add_action('after_setup_theme', function () {
      * Enable features from Soil when plugin is activated
      * @link https://roots.io/plugins/soil/
      */
-    add_theme_support('soil-clean-up');
+    // add_theme_support('soil-clean-up');
     // add_theme_support('soil-jquery-cdn');
-    add_theme_support('soil-nav-walker');
-    add_theme_support('soil-nice-search');
-    add_theme_support('soil-relative-urls');
+    // add_theme_support('soil-nav-walker');
+    // add_theme_support('soil-nice-search');
+    // add_theme_support('soil-relative-urls');
 
     // Make theme available for translation
     // Community translations can be found at https://github.com/roots/sage-translations
