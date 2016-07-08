@@ -29,9 +29,19 @@ add_action( 'pre_get_posts',  __NAMESPACE__ . '\\sort_query' );
 
 // remove page from search result
 function remove_page_from_search_result($query) {
-	if ( $query->is_search() ) {
-		$query->set('post_type', 'post');
-	}
-	return $query;
+    if ( $query->is_search() ) {
+        $query->set('post_type', 'post');
+    }
+    return $query;
 }
 add_action( 'pre_get_posts', __NAMESPACE__ . '\\remove_page_from_search_result' );
+
+// Bug? (Wordpress 4.3)
+// DataURI form CustomField is destroyed.
+function repair_destroyed_datauri($content) {
+    if ( !is_singular() ) {
+        return $content;
+    }
+    return str_replace( ' src="image/', ' src="data:image/', $content );
+}
+add_filter('the_content', __NAMESPACE__ . '\\repair_destroyed_datauri', 11);

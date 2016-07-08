@@ -122,4 +122,40 @@ class Util {
         return $difference . ' ' . $periods[$j] . ' ago';
     }
 
+
+    /**
+     * URL
+     */
+
+    public static function is_url($str) {
+        return (preg_match('/^(https?|ftp)(:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+)$/', $str));
+    }
+
+    // 相対URIを絶対URIへ変換する
+    public static function relative_to_absolute_url($url) {
+        if ( self::is_url_relative( $url ) ) {
+            return self::base_url( $url );
+        } else {
+            return $url;
+        }
+    }
+
+    // 相対URLか
+    public static function is_url_relative( $url ) {
+        return ( strpos($url, 'http') !== 0 && strpos($url, '//') !== 0 );
+    }
+
+    // ベースURLを設定(絶対URL)
+    public static function base_url( $path = null ) {
+        $parts = parse_url( get_option('home') );
+        $base_url = trailingslashit( $parts['scheme'] . '://' . $parts['host'] .'/'. $parts['path']);
+
+        if ( !is_null($path) ) {
+            $base_url .= ltrim($path, '/' );
+        }
+
+        return $base_url;
+    }
+
+
 }

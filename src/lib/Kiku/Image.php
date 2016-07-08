@@ -57,12 +57,59 @@ class Image {
         global $post;
         $src = "";
 
-        //
+        // maybe URL or Path, sortcode?
         if ( preg_match('/<img.*?src=(["\'])(.+?)\1.*?>/i', $post->post_content, $match) ) {
             $src = $match[2];
         }
-        
+
+        // bye
+        if ( empty($src) ) {
+            return "";
+        }
+
+        // image file?
+        if ( $this->is_image($src) ) {
+            return Util::relative_to_absolute_url($src);
+        }
+
+        // shortcode?
+        if ( $this->is_shortcode($src) ) {
+            $src = do_shortcode($src);
+
+            if ( Util::is_url($src) && $this->is_image($src) ) {
+                return Util::relative_to_absolute_url($src);
+            }
+        }
+
         return $src;
+    }
+
+    public function is_image($path) {
+        $result = false;
+        $path_info = pathinfo($path);
+
+        if ( isset($path_info['extension']) ) {
+            switch ($path_info['extension']) {
+                case 'gif':
+                case 'jpg':
+                case 'jpeg':
+                case 'png':
+                case 'bmp':
+                case 'tif':
+                case 'tiff':
+                    $result = true;
+                    break;
+                default:
+                    $result = false;
+                    break;
+            }
+        }
+
+        return $result;
+    }
+
+    private function is_shortcode($str) {
+        return (boolean)(strpos($str, '[') !== false) && (strpos($str, ']') !== false);
     }
 
 }
