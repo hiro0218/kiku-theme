@@ -120,7 +120,7 @@ webpackConfig = {
         ])
       },
       {
-        test: /\.(png|jpg|jpeg|gif)(\?.*)?$/,
+        test: /\.(png|jpg|jpeg|gif|svg)(\?.*)?$/,
         loaders: [
           'file?' + qs.stringify({
             name: '[path][name].[ext]'

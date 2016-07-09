@@ -22,6 +22,7 @@ require KIKU_LIB_PATH. 'modules/seo.php';
 
 // component
 require KIKU_LIB_PATH. 'components/pagination.php';
+require KIKU_LIB_PATH. 'components/share.php';
 
 // plugin
 require KIKU_LIB_PATH. 'plugins/mokuji/kiku-mokuji.php';

@@ -30,7 +30,7 @@ var Sage = {
   // single
   'single': {
     init: function() {
-      var entry = document.getElementsByTagName('article')[0];
+      var entry = document.getElementsByTagName('article').getElementsByClassName('entry-content')[0];
       common.addExternalLink(entry);
     }
   },

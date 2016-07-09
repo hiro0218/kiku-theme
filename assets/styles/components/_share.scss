@@ -1,0 +1,57 @@
+$twitter-color:  #55acee;
+$facebook-color: #3b5998;
+$hatena-color:   #2c6ebd;
+
+.entry-share {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+
+  a {
+    border: none !important;
+  }
+
+  > li {
+    display: inline-block;
+    margin-bottom: 0;
+
+    &:not(:last-child) {
+      margin-right: 8px;
+    }
+  }
+}
+
+.btn-twitter,
+.btn-facebook,
+.btn-hatena {
+  display: block;
+  border-radius: 2px;
+  background-size: 80% 80%;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  @include hide-text;
+  @include size(40px);
+
+  &:active {
+    transform: scale(.95);
+  }
+}
+.line-it-button {
+  &:active {
+    transform: scale(.95);
+  }
+
+}
+
+.btn-twitter {
+  background-color: $twitter-color;
+  background-image: url("../../images/svg/twitter.svg");
+}
+.btn-facebook {
+  background-color: $facebook-color;
+  background-image: url("../../images/svg/facebook.svg");
+}
+.btn-hatena {
+  background-color: $hatena-color;
+  background-image: url("../../images/svg/hatena-bookmark.svg");
+}

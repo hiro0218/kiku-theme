@@ -10,6 +10,9 @@
     <nav>
       <?php get_template_part('partials/entry/breadcrumb'); ?>
     </nav>
+    <section>
+      <?php Kiku\Components\the_share(); ?>
+    </section>
   <?php global $Entry;
       $similar = $Entry->get_similar_posts();
       if( !empty($similar) ): ?>
