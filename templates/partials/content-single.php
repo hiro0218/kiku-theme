@@ -1,9 +1,9 @@
-<article class="entry mdl-cell mdl-cell--12-col">
+<article class="entry mdl-cell mdl-cell--12-col" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
   <header>
     <h1 class="entry-title"><?php the_title(); ?></h1>
     <?php get_template_part('partials/entry-meta'); ?>
   </header>
-  <div class="entry-content">
+  <div class="entry-content" itemprop="articleBody">
     <?php the_content(); ?>
   </div>
   <footer>
