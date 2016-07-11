@@ -68,15 +68,15 @@ class Image {
         }
 
         // image file?
-        if ( $this->is_image($src) ) {
+        if ( Util::is_image($src) ) {
             return Util::relative_to_absolute_url($src);
         }
 
         // shortcode?
-        if ( $this->is_shortcode($src) ) {
+        if ( Util::is_shortcode($src) ) {
             $src = do_shortcode($src);
 
-            if ( Util::is_url($src) && $this->is_image($src) ) {
+            if ( Util::is_url($src) && Util::is_image($src) ) {
                 return Util::relative_to_absolute_url($src);
             }
             // denied DataURI
@@ -84,44 +84,12 @@ class Image {
                 return "";
             }
             // not Data URI
-            if ( !$this->is_dataURI($src) ) {
+            if ( !Util::is_dataURI($src) ) {
                 return "";
             }
         }
 
         return $src;
-    }
-
-    public function is_image($path) {
-        $result = false;
-        $path_info = pathinfo($path);
-
-        if ( isset($path_info['extension']) ) {
-            switch ($path_info['extension']) {
-                case 'gif':
-                case 'jpg':
-                case 'jpeg':
-                case 'png':
-                case 'bmp':
-                case 'tif':
-                case 'tiff':
-                    $result = true;
-                    break;
-                default:
-                    $result = false;
-                    break;
-            }
-        }
-
-        return $result;
-    }
-
-    private function is_shortcode($str) {
-        return (boolean)(substr($str, 0, 1) === '[') && (substr($str, strlen($str)-1, 1) === ']');
-    }
-
-    private function is_dataURI($str) {
-      return (boolean)(substr($str, 0, 5) === 'data:');
     }
 
 }

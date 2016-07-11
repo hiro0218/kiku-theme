@@ -42,6 +42,22 @@ function repair_destroyed_datauri($content) {
     if ( !is_singular() ) {
         return $content;
     }
+
+    $content = replace_relative_to_absolute_img_src($content);
+
     return str_replace( ' src="image/', ' src="data:image/', $content );
 }
 add_filter('the_content', __NAMESPACE__ . '\\repair_destroyed_datauri', 11);
+
+function replace_relative_to_absolute_img_src($content) {
+    preg_match_all('/<img.*?src=(["\'])(.+?)\1.*?>/i', $content, $matches);
+    foreach ($matches[2] as $src_url) {
+        // to Absolute URL
+        if ( \Kiku\Util::is_image($src_url) ) {
+            $src_absolute_url = \Kiku\Util::relative_to_absolute_url($src_url);
+            $content = str_replace( 'src="'. $src_url, 'src="'. $src_absolute_url, $content );
+        }
+    }
+
+    return $content;
+}

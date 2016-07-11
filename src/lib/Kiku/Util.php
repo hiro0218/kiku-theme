@@ -148,7 +148,7 @@ class Util {
     // ベースURLを設定(絶対URL)
     public static function base_url( $path = null ) {
         $parts = parse_url( get_option('home') );
-        $base_url = trailingslashit( $parts['scheme'] . '://' . $parts['host'] .'/'. $parts['path']);
+        $base_url = trailingslashit( $parts['scheme'] . '://' . $parts['host']. $parts['path']);
 
         if ( !is_null($path) ) {
             $base_url .= ltrim($path, '/' );
@@ -157,5 +157,43 @@ class Util {
         return $base_url;
     }
 
+
+
+
+    /**
+     * Checker
+     */
+
+    public static function is_image($path) {
+        $result = false;
+        $path_info = pathinfo($path);
+
+        if ( isset($path_info['extension']) ) {
+            switch ($path_info['extension']) {
+                case 'gif':
+                case 'jpg':
+                case 'jpeg':
+                case 'png':
+                case 'bmp':
+                case 'tif':
+                case 'tiff':
+                    $result = true;
+                    break;
+                default:
+                    $result = false;
+                    break;
+            }
+        }
+
+        return $result;
+    }
+
+    public static function is_shortcode($str) {
+        return (boolean)(substr($str, 0, 1) === '[') && (substr($str, strlen($str)-1, 1) === ']');
+    }
+
+    public static function is_dataURI($str) {
+      return (boolean)(substr($str, 0, 5) === 'data:');
+    }
 
 }
