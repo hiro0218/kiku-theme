@@ -76,8 +76,7 @@ class Util {
 
     // スペースを除く
     public static function remove_white_space($tag, $last_line_break = PHP_EOL) {
-        $tag = preg_replace( '/>(\s|\n|\r)+</', '><', $tag );
-        return trim( str_replace(["\r\n", "\r", "\n", "\t"], '', $tag) ) . $last_line_break;
+        return preg_replace( '/>(\s|\n|\r)+</', '><', $tag ). $last_line_break;
     }
 
 

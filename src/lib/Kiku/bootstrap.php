@@ -19,6 +19,7 @@ require KIKU_LIB_PATH. 'modules/clean.php';
 require KIKU_LIB_PATH. 'modules/post.php';
 require KIKU_LIB_PATH. 'modules/disable.php';
 require KIKU_LIB_PATH. 'modules/seo.php';
+require KIKU_LIB_PATH. 'modules/widget.php';
 
 // component
 require KIKU_LIB_PATH. 'components/pagination.php';
