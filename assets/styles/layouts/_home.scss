@@ -1,5 +1,7 @@
 .card-container {
-  display:flex;
+  max-height: 23rem;
+
+  display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: space-between;
@@ -85,6 +87,8 @@
     font-size: $font-size-sm;
     line-height: 1.75;
     text-align: justify;
+    max-height: 6rem;
+    overflow: hidden;
   }
 
 }
