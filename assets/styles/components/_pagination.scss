@@ -46,7 +46,6 @@
   > li > a {
     &:hover,
     &:focus {
-      z-index: 2;
       @extend .mdl-color--grey-100, .mdl-color-text--grey-800;
     }
   }
@@ -55,7 +54,6 @@
     &,
     &:hover,
     &:focus {
-      z-index: 3;
       font-weight: bold;
       @extend .mdl-color--grey-600, .mdl-color-text--white;
       cursor: default;

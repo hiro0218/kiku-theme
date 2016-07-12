@@ -1,5 +1,6 @@
 import Router from './util/router';
 import common from './module/common.js';
+import animation from './module/animation.js';
 import './module/prism.js';
 import 'material-design-lite/material.js';
 
@@ -19,18 +20,17 @@ var Sage = {
   // Home page
   'home': {
     init: function() {
-      // JavaScript to be fired on the home page
+      var article = document.getElementsByTagName('article');
+      common.clickableElement(article);
+      animation.show(article, 'showIn');
     },
-    finalize: function() {
-      // JavaScript to be fired on the home page, after the init JS
-      var entry = document.getElementsByTagName('article');
-      common.clickableElement(entry);
-    }
+    finalize: function() {}
   },
   // single
   'single': {
     init: function() {
-      var entry = document.getElementsByTagName('article')[0].getElementsByClassName('entry-content')[0];
+      var article = document.getElementsByTagName('article')[0];
+      var entry = article.getElementsByClassName('entry-content')[0];
       common.addExternalLink(entry);
     }
   },
@@ -42,22 +42,22 @@ var Sage = {
   },
   'archive': {
     init: function() {
-      var entry = document.getElementsByTagName('article');
-      common.clickableElement(entry);
+      var article = document.getElementsByTagName('article');
+      common.clickableElement(article);
     }
   },
   'search': {
     init: function() {
-      var entry = document.getElementsByTagName('article');
-      common.clickableElement(entry);
+      var article = document.getElementsByTagName('article');
+      common.clickableElement(article);
     }
   },
   // About us page, note the change from about-us to about_us.
-  'about_us': {
-    init: function() {
-      // JavaScript to be fired on the about us page
-    }
-  }
+  // 'about_us': {
+  //   init: function() {
+  //     // JavaScript to be fired on the about us page
+  //   }
+  // }
 };
 
 // Load Events

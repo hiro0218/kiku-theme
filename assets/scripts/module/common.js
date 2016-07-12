@@ -1,10 +1,11 @@
 module.exports = {
   clickableElement: function(entry) {
     var self = this;
-    var length = entry.length;
-    for (var i = 0; i < length; i++) {
+
+    for (var i = 0, length = entry.length; i < length; i++) {
       entry[i].addEventListener('click', function(event) {
-        self._setClickEvent(event, this)
+        event.preventDefault();
+        self._setClickEvent(this);
       });
     }
   },
@@ -32,13 +33,17 @@ module.exports = {
 
     });
   },
-  _setClickEvent(event, element) {
-    event.preventDefault();
-    var title = element.getElementsByTagName('a')[0];
-    if (title) {
-      var permalink = title.getAttribute('href');
-      location.href = permalink;
+  _setClickEvent: function(element) {
+    var a = element.getElementsByTagName('a')[0];
+    if (a) {
+      location.href = a.getAttribute('href');
     }
+  },
+  delay: function(){
+    var timer = 0;
+    return function(callback, delay){
+      clearTimeout(timer);
+      timer = setTimeout(callback, delay);
+    };
   }
-
 }
