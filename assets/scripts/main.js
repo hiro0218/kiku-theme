@@ -42,22 +42,14 @@ var Sage = {
   },
   'archive': {
     init: function() {
-      var article = document.getElementsByTagName('article');
-      common.clickableElement(article);
+      Sage.home.init();
     }
   },
   'search': {
     init: function() {
-      var article = document.getElementsByTagName('article');
-      common.clickableElement(article);
+      Sage.home.init();
     }
-  },
-  // About us page, note the change from about-us to about_us.
-  // 'about_us': {
-  //   init: function() {
-  //     // JavaScript to be fired on the about us page
-  //   }
-  // }
+  }
 };
 
 // Load Events
