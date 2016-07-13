@@ -25,42 +25,49 @@
 
       @extend .mdl-color--white, .mdl-color-text--grey-600;
 
+      &:hover,
+      &:focus {
+        box-shadow: 0 3px 3px 0 rgba(0,0,0,0.2);
+      }
       &:focus {
         outline: 0;
       }
 
+      @media screen and (max-width: $screen-xs) {
+        display: none;
+      }
+
     }
 
-    .previous {
-      > a {
-        margin-right: $spacer;
-      }
-    }
-    .next {
-      > a {
-        margin-left: $spacer;
-      }
-    }
   }
 
-  > li > a {
-    &:hover,
-    &:focus {
-      @extend .mdl-color--grey-100, .mdl-color-text--grey-800;
-    }
+  .previous > a {
+    margin-right: $spacer;
   }
-
-  > .active > span {
+  .next > a {
+    margin-left: $spacer;
+  }
+  .active > span {
     &,
     &:hover,
     &:focus {
       font-weight: bold;
       @extend .mdl-color--grey-600, .mdl-color-text--white;
       cursor: default;
+      box-shadow: inherit;
+    }
+  }
+
+  .next > a,
+  .previous > a,
+  .active > span {
+    @media screen and (max-width: $screen-xs) {
+      display: block;
     }
   }
 
 }
+
 
 
 // pager

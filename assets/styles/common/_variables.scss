@@ -9,14 +9,22 @@ $modular-scale-ratio: $major-second;
 //
 // Font
 // -------------------------
-$font-jpn:                YuGothic, "Yu Gothic", "Noto Sans", "Hiragino Sans";
-$font-family-base:        "Open Sans", "Helvetica Neue", Helvetica, Arial, #{$font-jpn}, Emoji, sans-serif !default;
-$font-family-monospace:   "Source Code Pro", Menlo, Monaco, Consolas, "Courier New", #{$font-jpn}, monospace !default;
-$font-weight-base:        500;
+$font-base-eng:                "Open Sans", "Helvetica Neue", Helvetica, Arial;
+$font-base-jpn:                "Open Sans", "Noto Sans JP", YuGothic, "Yu Gothic", "游ゴシック体", "游ゴシック", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo;
+$font-family-base:             #{$font-base-eng}, #{$font-base-jpn}, Emoji, sans-serif !default;
+$font-family-base-eng:         #{$font-base-eng}, Emoji, sans-serif !default;
+$font-family-base-jpn:         #{$font-base-jpn}, Emoji, sans-serif !default;
+
+$font-mono-eng:                "Source Code Pro", Menlo, Monaco, Consolas, "Courier New";
+$font-mono-jpn:                "Source Code Pro", #{$font-base-jpn};
+$font-family-monospace:        #{$font-mono-eng}, #{$font-base-jpn}, Emoji, monospace !default;
+$font-family-monospace-eng:    #{$font-mono-eng}, Emoji, monospace !default;
+$font-family-monospace-jpn:    #{$font-base-jpn}, Emoji, monospace !default;
+$font-weight-base:             normal;
 
 // MDL
-$preferred_font:   $font-family-base;
-$performance_font: $font-family-base;
+$preferred_font:          $font-family-base;
+$performance_font:        $font-family-base;
 
 $font-size-base:          $base-size;
 $font-size-lg:            modular-scale(1);
@@ -38,6 +46,11 @@ $line-height-computed:    floor(($font-size-base * $line-height-base));
 // -------------------------
 
 $spacer: 1rem;
+
+$screen-xs:  480px !default;  // Extra small screen / phone
+$screen-sm:  768px !default;  // Small screen / tablet
+$screen-md:  992px !default;  // Medium screen / desktop
+$screen-lg:  1200px !default;
 
 
 //

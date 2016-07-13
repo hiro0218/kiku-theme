@@ -7,6 +7,10 @@
       padding: 0 ($layout-header-desktop-baseline - $grid-padding);
     }
 
+    @media screen and (max-width: $screen-xs) {
+      padding: 0;
+    }
+
   }
 
   // .mdl-grid {}

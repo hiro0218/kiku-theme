@@ -16,6 +16,13 @@ html {
 
 body {
   font-family: $font-family-base;
+  [lang=en] & {
+    font-family: $font-family-base-eng;
+  }
+  [lang=ja] & {
+    font-family: $font-family-base-jpn;
+  }
+
   font-size: $font-size-base;
   font-weight: $font-weight-base;
   line-height: $line-height-base;

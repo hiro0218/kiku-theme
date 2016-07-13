@@ -49,10 +49,10 @@ function the_pagination() {
 	$firstpage = esc_attr(get_pagenum_link(1));
 
     if ( $firstpage && (1 != $page) ) {
-        $pagination .= '<li class="previous"><a href="' . $firstpage . '">' . $args['first_page'] . '</a></li>';
+        $pagination .= '<li class="frist"><a href="' . $firstpage . '">' . $args['first_page'] . '</a></li>';
     }
     if ( $previous && (1 != $page) ) {
-        $pagination .= '<li><a href="' . $previous . '">' . $args['previous_string'] . '</a></li>';
+        $pagination .= '<li class="previous"><a href="' . $previous . '">' . $args['previous_string'] . '</a></li>';
     }
 
     if ( !empty($min) && !empty($max) ) {
@@ -69,11 +69,11 @@ function the_pagination() {
     $lastpage = esc_attr( get_pagenum_link($count) );
 
     if ($next && ($count != $page) ) {
-        $pagination .= '<li><a href="' . $next . '">' . $args['next_string'] . '</a></li>';
+        $pagination .= '<li class="next"><a href="' . $next . '">' . $args['next_string'] . '</a></li>';
     }
 
     if ( $lastpage && ($count != $page) ) {
-        $pagination .= '<li class="next"><a href="' . $lastpage . '">' . $args['last_string'] . '</a></li>';
+        $pagination .= '<li class="last"><a href="' . $lastpage . '">' . $args['last_string'] . '</a></li>';
     }
 
     if ( isset($pagination) ) {
