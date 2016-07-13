@@ -32,6 +32,9 @@
       &:focus {
         outline: 0;
       }
+      &:active {
+        transform: scale(0.95);
+      }
 
       @media screen and (max-width: $screen-xs) {
         display: none;
@@ -55,6 +58,9 @@
       @extend .mdl-color--grey-600, .mdl-color-text--white;
       cursor: default;
       box-shadow: inherit;
+    }
+    &:active {
+      transform: none;
     }
   }
 
@@ -88,12 +94,14 @@
     @extend .mdl-color--white, .mdl-color-text--grey-600;
 
     &:hover {
-      @extend .mdl-color--grey-100, .mdl-color-text--grey-800;
+      box-shadow: 0 3px 3px 0 rgba(0,0,0,0.2);
     }
     &:focus {
       outline: 0;
     }
-
+    &:active {
+      transform: scale(0.95);
+    }
   }
 
   .previous > a {

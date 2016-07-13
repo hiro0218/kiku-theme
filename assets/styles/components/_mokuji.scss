@@ -1,12 +1,21 @@
 .mokuji-title {
   display: table-cell;
   padding-right: 3rem;
+  white-space: nowrap;
+
+  @media screen and (max-width: $screen-xs) {
+    display: table-caption;
+  }
 }
 
 .mokuji-content {
   display: table-cell;
   border-left: solid 3px unquote("rgb(#{$palette-blue-100})");
   padding-left: 1rem;
+
+  a {
+    border: none;
+  }
 
   ol {
     list-style: none;
