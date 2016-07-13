@@ -18,6 +18,10 @@
   }
 }
 
+.mdl-layout__drawer {
+  @extend .mdl-color--white;
+}
+
 .mdl-card {
   font-weight: inherit;
 }
