@@ -171,7 +171,7 @@ webpackConfig = {
       // $: 'jquery',
       // jQuery: 'jquery',
       // 'window.jQuery': 'jquery',
-      'window.Tether': 'tether'
+      // 'window.Tether': 'tether'
     })
   ],
   postcss: [
