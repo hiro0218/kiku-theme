@@ -2,6 +2,8 @@ kiku
 ==
 A Simple WordPress Theme. (for myself)
 
+![Theme kiku screenshot](screenshot.png)
+
 ## Theme Features
 * WordPress Starter Theme
  * based on [Sage - WordPress Starter Theme](https://roots.io/sage/)  
