@@ -33,6 +33,32 @@ module.exports = {
 
     });
   },
+  zoomImage: function(entry) {
+    var ImageZoom = require('image-zoom');
+    var entryImg = entry.getElementsByTagName('img');
+
+    // img none
+    if (entryImg.length === 0) {
+      return;
+    }
+
+    for (var i = 0, length = entryImg.length; i < length; i++) {
+      // wrap Atag
+      if (entryImg[i].parentNode.nodeName.toUpperCase() === "A") {
+        continue;
+      }
+
+      // cursor zoom-in
+      entryImg[i].style.cursor = 'zoom-in';
+
+      entryImg[i].addEventListener('click', function(event) {
+        event.stopPropagation();
+        var zoom = new ImageZoom(this).overlay().padding(64);
+        zoom.show();
+      });
+    }
+
+  },
   _setClickEvent: function(element) {
     var a = element.getElementsByTagName('a')[0];
     if (a) {
