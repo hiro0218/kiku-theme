@@ -27,11 +27,11 @@
                         </label>
                         <label for="kiku_share_btn_hatena">
                             <input name="kiku_share_btn_hatena" id="kiku_share_btn_hatena" value="1" <?= ( get_option('kiku_share_btn_hatena') ) ? 'checked="checked"' : ''; ?> type="checkbox">
-                            <?php _e('hatena', 'kiku'); ?><br>
+                            <?php _e('Hatena', 'kiku'); ?><br>
                         </label>
                         <label for="kiku_share_btn_line">
                             <input name="kiku_share_btn_line" id="kiku_share_btn_line" value="1" <?= ( get_option('kiku_share_btn_line') ) ? 'checked="checked"' : ''; ?> type="checkbox">
-                            <?php _e('Line', 'kiku'); ?><br>
+                            <?php _e('LINE', 'kiku'); ?><br>
                         </label>
                     </td>
                 </tr>

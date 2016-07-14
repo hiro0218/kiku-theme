@@ -12,12 +12,18 @@ A Simple WordPress Theme. (for myself)
  * use [Google Material Design Icons](https://github.com/google/material-design-icons)
  * use [Google Fonts](https://fonts.google.com/)
 * Search Engine Optimization (SEO) ready
+ * OGP, Twitter Cards
 * Table of Contents ready
 * Syntax Highlighter ready
+ * use [Prism.js](http://prismjs.com/)
 * Share Button ready
+ * Twitter
+ * Facebook
+ * Hatena
+ * LINE
 * Don't use jQuery (Vanilla only)
 * Remove Comments function
-* Fit to Japanese Language.
+* Fit to Japanese Language
 
 ## Requirements
 Installation notes:
@@ -25,7 +31,7 @@ Installation notes:
 * Composer
 * Node.js >= 0.12.x
 
-### Browser Support:
+### Browser Support
 Supported browsers:
 * Chrome
 * Edge
