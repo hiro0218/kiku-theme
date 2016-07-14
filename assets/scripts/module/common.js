@@ -1,11 +1,12 @@
 module.exports = {
   clickableElement: function(entry) {
-    var self = this;
-
     for (var i = 0, length = entry.length; i < length; i++) {
       entry[i].addEventListener('click', function(event) {
         event.preventDefault();
-        self._setClickEvent(this);
+        var a = this.getElementsByTagName('a')[0];
+        if (a) {
+          location.href = a.getAttribute('href');
+        }
       });
     }
   },
@@ -58,12 +59,6 @@ module.exports = {
       });
     }
 
-  },
-  _setClickEvent: function(element) {
-    var a = element.getElementsByTagName('a')[0];
-    if (a) {
-      location.href = a.getAttribute('href');
-    }
   },
   delay: function(){
     var timer = 0;

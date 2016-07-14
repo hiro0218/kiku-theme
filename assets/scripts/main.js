@@ -19,7 +19,6 @@ var Sage = {
   'home': {
     init: function() {
       var article = document.getElementsByTagName('article');
-      common.clickableElement(article);
       animation.show(article, 'showIn');
     },
     finalize: function() {}
