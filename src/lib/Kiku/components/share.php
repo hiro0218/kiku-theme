@@ -6,27 +6,23 @@ function the_share() {
         return;
     }
 
-    $title = the_title_attribute('echo=0');
-    $title_encode = urlencode($title);
-    $url_esc = esc_url(get_permalink());
-    $lang = get_locale();
-
-    $tooltip_twitter = __('Share on Twitter.', 'kiku');
-    $tooltip_facebook = __('Share on Facebook.', 'kiku');
-    $tooltip_hatena = __('Share on Hatena.', 'kiku');
+    global $Entry;
+    $meta = $Entry->get_meta();
 
     $twitter = '';
     $facebook = '';
     $hatena = '';
     $line = '';
 
-    list($twitter_display, $facebook_display, $hatena_display, $line_display) = check_display();
+    list($twitter_display, $facebook_display, $hatena_display, $line_display) = is_display();
 
     if ($twitter_display) {
+        $tooltip_twitter = __('Share on Twitter.', 'kiku');
         $twitter = <<< EOM
 <li>
-    <a href="//twitter.com/share?url=$url_esc&text=$title"
-       class="btn-twitter" title="{$tooltip_twitter}"
+    <a href="//twitter.com/share?url={$meta['url']}&text={$meta['title']}"
+       class="btn-twitter"
+       title="{$tooltip_twitter}"
        rel="nofollow"
        onclick="openWindow(this.href,640,300); return false;">twitter
     </a>
@@ -35,10 +31,12 @@ EOM;
     }
 
     if ($facebook_display) {
+        $tooltip_facebook = __('Share on Facebook.', 'kiku');
         $facebook = <<< EOM
 <li>
-    <a href="//www.facebook.com/sharer/sharer.php?u=$url_esc"
-       class="btn-facebook" title="{$tooltip_facebook}"
+    <a href="//www.facebook.com/sharer/sharer.php?u={$meta['url']}"
+       class="btn-facebook"
+       title="{$tooltip_facebook}"
        rel="nofollow"
        onclick="openWindow(this.href); return false;">facebook
     </a>
@@ -47,11 +45,12 @@ EOM;
     }
 
     if ($hatena_display) {
+        $tooltip_hatena = __('Share on Hatena.', 'kiku');
         $hatena = <<< EOM
 <li>
-    <a href="//b.hatena.ne.jp/entry/$url_esc"
+    <a href="//b.hatena.ne.jp/entry/{$meta['url']}"
        class="hatena-bookmark-button btn-hatena"
-       data-hatena-bookmark-title="$title"
+       data-hatena-bookmark-title="{$meta['title']}"
        data-hatena-bookmark-layout="simple"
        title="{$tooltip_hatena}"
        rel="nofollow">hatena
@@ -61,6 +60,7 @@ EOM;
     }
 
     if ($line_display) {
+        $lang = get_locale();
         $line = <<< EOM
     <li>
         <div class="line-it-button" style="display: none;" data-type="share-d" data-lang="{$lang}"></div>
@@ -81,7 +81,7 @@ EOM;
 
 }
 
-function check_display() {
+function is_display() {
     return [
         (boolean) get_option('kiku_share_btn_twitter'),
         (boolean) get_option('kiku_share_btn_facebook'),
