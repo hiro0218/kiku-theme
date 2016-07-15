@@ -77,7 +77,7 @@ add_filter( 'wp_insert_post_data', __NAMESPACE__ . '\\insert_post_data', 10, 2 )
 
 
 /**
- * shortcode
+ * shortcode to view the contents of customfield.
  */
 function add_shortcode_CustomFieldView($atts){
     extract( shortcode_atts([
@@ -103,3 +103,84 @@ function add_shortcode_CustomFieldView($atts){
     return $custom;
 }
 add_shortcode('cfview', __NAMESPACE__ . '\\add_shortcode_CustomFieldView');
+
+
+/**
+ * insert custom data to the page
+ */
+function add_customCss_metabox() {
+    global $post;
+    echo '<input type="hidden" name="nonce_custom_css" value="'. wp_create_nonce('custom-css') .'" />';
+    echo '<textarea name="custom_css" rows="5" cols="30" style="width:100%;">'. get_post_meta($post->ID, '_custom_css', true) .'</textarea>';
+}
+
+function add_customJs_metabox() {
+    global $post;
+    echo '<input type="hidden" name="nonce_custom_js" value="'. wp_create_nonce('custom-js') .'" />';
+    echo '<textarea name="custom_js" rows="5" cols="30" style="width:100%;">'. get_post_meta($post->ID, '_custom_js', true) .'</textarea>';
+}
+
+function save_cusutom_data() {
+    if ( !verify_cusutom_data() ) {
+        return;
+    }
+
+    global $post;
+    $custom_css = filter_input(INPUT_POST, 'custom_css');
+    if ( isset($custom_css) ) {
+        update_post_meta($post->ID, '_custom_css', $custom_css);
+    }
+    $custom_js  = filter_input(INPUT_POST, 'custom_js');
+    if ( isset($custom_js) ) {
+        update_post_meta($post->ID, '_custom_js', $custom_js);
+    }
+}
+
+function verify_cusutom_data() {
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return false;
+    }
+
+    $css_nonce = filter_input(INPUT_POST, 'nonce_custom_css');
+    $js_nonce  = filter_input(INPUT_POST, 'nonce_custom_js');
+
+    if ( !isset($css_nonce) || !isset($js_nonce) ) {
+        return false;
+    }
+
+    if (!wp_verify_nonce($css_nonce, 'custom-css') || !wp_verify_nonce($js_nonce, 'custom-js')) {
+        return false;
+    }
+
+    return true;
+}
+
+function insert_custom_data_in_singular() {
+    if( !is_singular() ) {
+        return;
+    }
+
+    while( have_posts() ){
+        the_post();
+
+        $object = get_post_meta(get_the_ID(), '_custom_css', true);
+        if ( !empty($object) ) {
+            echo '<style>'. $object .'</style>'. PHP_EOL;
+        }
+
+        $object = get_post_meta(get_the_ID(), '_custom_js', true);
+        if ( !empty($object) ) {
+            echo '<script>'. $object .'</script>'. PHP_EOL;
+        }
+    }
+    rewind_posts();
+}
+
+add_action('admin_menu', function() {
+    add_meta_box('custom_css', __('custom CSS', 'kiku'), __NAMESPACE__ . '\\add_customCss_metabox', 'post', 'normal', 'low');
+    add_meta_box('custom_css', __('custom CSS', 'kiku'), __NAMESPACE__ . '\\add_customCss_metabox', 'page', 'normal', 'low');
+    add_meta_box('custom_js',  __('custom JavaScript', 'kiku'), __NAMESPACE__ . '\\add_customJs_metabox', 'post', 'normal', 'low');
+    add_meta_box('custom_js',  __('custom JavaScript', 'kiku'), __NAMESPACE__ . '\\add_customJs_metabox', 'page', 'normal', 'low');
+});
+add_action('save_post', __NAMESPACE__ . '\\save_cusutom_data');
+add_action('wp_footer', __NAMESPACE__ . '\\insert_custom_data_in_singular', 100);
