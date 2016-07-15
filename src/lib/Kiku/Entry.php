@@ -2,6 +2,29 @@
 namespace Kiku;
 
 class Entry {
+    private $meta = [];
+
+    public function get_meta() {
+        if ( !is_single() ) {
+            return null;
+        }
+
+        if ( !empty($this->meta) ) {
+            return $this->meta;
+        }
+
+        $this->meta = [
+            'title'          => $this->get_clean_title(),
+            'url'            => get_the_permalink(),
+            'category'       => $this->get_clean_category(),
+            'tag'            => $this->get_clean_tag(),
+            'date_published' => get_the_date('c'),
+            'date_modified'  => get_the_modified_date('c'),
+        ];
+
+        return $this->meta;
+    }
+
     // 関連する記事の一覧を取得する
     public function get_similar_posts() {
         if ( !is_single() ) {
@@ -46,6 +69,14 @@ class Entry {
     // クリーンな投稿タイトルを取得する
     private function get_clean_title() {
         return the_title_attribute( 'echo=0' );
+    }
+
+    private function get_clean_category() {
+        return strip_tags( get_the_category_list( ',' ) );
+    }
+
+    private function get_clean_tag() {
+        return strip_tags( get_the_tag_list( '', ",", '' ) );
     }
 
     // 設定されたカテゴリの一覧を取得する
