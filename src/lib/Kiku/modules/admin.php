@@ -106,6 +106,44 @@ add_shortcode('cfview', __NAMESPACE__ . '\\add_shortcode_CustomFieldView');
 
 
 /**
+ * shortcode to show Screenshot (WordPress API)
+ */
+function add_shortcode_wp_screenshot($attr) {
+    extract( shortcode_atts([
+        'url'   => '',
+        'alt'   => '',
+        'class' => '',
+        'width' => 0,  // 0: not display width attr
+        'link'  => 1   // 0: not link
+    ], $attr) );
+
+    if ($url == '') {
+        return;
+    }
+
+    $image = '//s.wordpress.com/mshots/v1/' . urlencode(esc_url($url));
+    $attr = '';
+    if ($width > 0) {
+        $height = floor($width / 4 * 3);
+        $image .= '?w=' . $width;
+        $attr = ' width="' . $width . '" height="' . $height . '"';
+    }
+
+    if ($class != '') {
+        $attr .= ' class="' . $class . '"';
+    }
+
+    $image_tag = '<img src="' . $image . '" alt="' . $alt . '"' . $attr . '>';
+    if ($link == 1) {
+        $image_tag = '<a href="' . $url . '" target="_blank">' . $image_tag . '</a>';
+    }
+
+    return $image_tag;
+}
+add_shortcode('scshot', __NAMESPACE__ . '\\add_shortcode_wp_screenshot');
+
+
+/**
  * insert custom data to the page
  */
 function add_customCss_metabox() {
