@@ -13,6 +13,8 @@ class Kiku_Setting_Admin {
             'kiku_share_btn_facebook' => true,
             'kiku_share_btn_hatena'   => true,
             'kiku_share_btn_line'     => true,
+            'kiku_insert_data_bottom_of_more_tag' => '',
+            'kiku_insert_data_bottom_of_more_tag_option' => '',
         ]);
         add_action( 'admin_init', [$this, 'register_settings'] );
     }
@@ -23,6 +25,8 @@ class Kiku_Setting_Admin {
         register_setting( 'kiku-settings-group', 'kiku_share_btn_facebook' );
         register_setting( 'kiku-settings-group', 'kiku_share_btn_hatena' );
         register_setting( 'kiku-settings-group', 'kiku_share_btn_line' );
+        register_setting( 'kiku-settings-group', 'kiku_insert_data_bottom_of_more_tag' );
+        register_setting( 'kiku-settings-group', 'kiku_insert_data_bottom_of_more_tag_option' );
     }
 
     private function get_mokuji_option($defaults) {
@@ -56,12 +60,41 @@ class Kiku_Setting_Admin {
             'kiku_share_btn_facebook' => (boolean) filter_input(INPUT_POST, 'kiku_share_btn_facebook') ? true : false,
             'kiku_share_btn_hatena'   => (boolean) filter_input(INPUT_POST, 'kiku_share_btn_hatena') ? true : false,
             'kiku_share_btn_line'     => (boolean) filter_input(INPUT_POST, 'kiku_share_btn_line') ? true : false,
+            'kiku_insert_data_bottom_of_more_tag' => filter_input(INPUT_POST, 'kiku_insert_data_bottom_of_more_tag'),
+            'kiku_insert_data_bottom_of_more_tag_option' => (boolean) filter_input(INPUT_POST, 'kiku_insert_data_bottom_of_more_tag_option') ? true : false,
         ];
 
         $this->options = array_merge($this->options, $input);
         $result = update_option( 'kiku-setting-options', $this->options );
 
         return $result;
+    }
+
+    public function add_insert_data_bottom_of_more_tag($content) {
+        if ( !is_singular() ) {
+            return $content;
+        }
+
+        $data = get_option('kiku_insert_data_bottom_of_more_tag');
+
+        if ( empty($data) ) {
+            return $content;
+        }
+
+        $pattern = '/(<[a-z0-9]+.*?>)?(<span id="more-[0-9]+"><\/span>)(<\/[a-z0-9]+>)?/i';
+        preg_match($pattern, $content, $matches);
+
+        if ( !empty($matches[0]) ){
+            if (strpos($matches[0], '</p>') !== false){
+                $content = preg_replace($pattern, '</p>'. $data, $content);
+            } else {
+                $content = preg_replace($pattern, '</p>'. $data .'<p>', $content);
+            }
+        } else if ( get_option('kiku_insert_data_bottom_of_more_tag_option') ) {
+            $content = $data. $content;
+        }
+
+        return $content;
     }
 
 }
