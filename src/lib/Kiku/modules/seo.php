@@ -75,6 +75,10 @@ add_action( 'wp_head',  __NAMESPACE__ . '\\ogp_tags', 12 );
 function twitter_tags() {
     $twitter_id = get_option('kiku_twitter');
     if ($twitter_id) {
+        if ( substr($twitter_id, 0, 1) != "@") {
+            $twitter_id = "@".$twitter_id;
+        }
+
         echo PHP_EOL;
         echo '<meta name="twitter:site" content="'. $twitter_id .'">' . PHP_EOL;
     	echo '<meta name="twitter:creator" content="'. $twitter_id .'">' . PHP_EOL;
