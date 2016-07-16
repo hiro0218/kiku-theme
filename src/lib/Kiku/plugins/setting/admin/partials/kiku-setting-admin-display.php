@@ -36,15 +36,23 @@
                     </td>
                 </tr>
                 <tr>
-                    <th><?php _e('Insert data', 'kiku'); ?></th>
+                    <th rowspan="2"><?php _e('Insert data', 'kiku'); ?></th>
                     <td>
                         <label>
                             <p><?php _e('Insert to the bottom of &lt;!--more--&gt; (post/page)', 'kiku'); ?></p>
                             <textarea name="kiku_insert_data_bottom_of_more_tag" rows="4" wrap="off" style="width:100%;"><?= get_option('kiku_insert_data_bottom_of_more_tag'); ?></textarea>
+                            <label>
+                                <input name="kiku_insert_data_bottom_of_more_tag_option" value="1" <?= ( get_option('kiku_insert_data_bottom_of_more_tag_option') ) ? 'checked="checked"' : ''; ?> type="checkbox">
+                                <?php _e('If the &lt;!--more--&gt; does not exist, to insert the data at the top of the post/page.', 'kiku'); ?><br>
+                            </label>
                         </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <label>
-                            <input name="kiku_insert_data_bottom_of_more_tag_option" value="1" <?= ( get_option('kiku_insert_data_bottom_of_more_tag_option') ) ? 'checked="checked"' : ''; ?> type="checkbox">
-                            <?php _e('If the &lt;!--more--&gt; does not exist, to insert the data at the top of the post/page.', 'kiku'); ?><br>
+                            <p><?php _e('Insert to the bottom of content (post/page)', 'kiku'); ?></p>
+                            <textarea name="kiku_insert_data_bottom_of_content" rows="4" wrap="off" style="width:100%;"><?= get_option('kiku_insert_data_bottom_of_content'); ?></textarea>
                         </label>
                     </td>
                 </tr>

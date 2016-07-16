@@ -15,6 +15,7 @@ class Kiku_Setting_Admin {
             'kiku_share_btn_line'     => true,
             'kiku_insert_data_bottom_of_more_tag' => '',
             'kiku_insert_data_bottom_of_more_tag_option' => '',
+            'kiku_insert_data_bottom_of_content' => '',
         ]);
         add_action( 'admin_init', [$this, 'register_settings'] );
     }
@@ -27,6 +28,7 @@ class Kiku_Setting_Admin {
         register_setting( 'kiku-settings-group', 'kiku_share_btn_line' );
         register_setting( 'kiku-settings-group', 'kiku_insert_data_bottom_of_more_tag' );
         register_setting( 'kiku-settings-group', 'kiku_insert_data_bottom_of_more_tag_option' );
+        register_setting( 'kiku-settings-group', 'kiku_insert_data_bottom_of_content' );
     }
 
     private function get_mokuji_option($defaults) {
@@ -62,6 +64,7 @@ class Kiku_Setting_Admin {
             'kiku_share_btn_line'     => (boolean) filter_input(INPUT_POST, 'kiku_share_btn_line') ? true : false,
             'kiku_insert_data_bottom_of_more_tag' => filter_input(INPUT_POST, 'kiku_insert_data_bottom_of_more_tag'),
             'kiku_insert_data_bottom_of_more_tag_option' => (boolean) filter_input(INPUT_POST, 'kiku_insert_data_bottom_of_more_tag_option') ? true : false,
+            'kiku_insert_data_bottom_of_content' => filter_input(INPUT_POST, 'kiku_insert_data_bottom_of_content'),
         ];
 
         $this->options = array_merge($this->options, $input);
@@ -92,6 +95,20 @@ class Kiku_Setting_Admin {
             }
         } else if ( get_option('kiku_insert_data_bottom_of_more_tag_option') ) {
             $content = $data. $content;
+        }
+
+        return $content;
+    }
+
+    public function add_insert_data_bottom_of_content($content) {
+        if ( !is_singular() ) {
+            return $content;
+        }
+
+        $data = get_option('kiku_insert_data_bottom_of_content');
+
+        if ( !empty($data) ) {
+            $content .= $data;
         }
 
         return $content;
