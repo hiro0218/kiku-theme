@@ -9,6 +9,7 @@ class Kiku_Setting_Admin {
     public function __construct( $plugin_name, $version ) {
         $this->options = $this->get_mokuji_option([
             'kiku_twitter' => "",
+            'kiku_appid' => '',
             'kiku_share_btn_twitter'  => true,
             'kiku_share_btn_facebook' => true,
             'kiku_share_btn_hatena'   => true,
@@ -23,6 +24,7 @@ class Kiku_Setting_Admin {
 
     public function register_settings() {
         register_setting( 'kiku-settings-group', 'kiku_twitter' );
+        register_setting( 'kiku-settings-group', 'kiku_appid' );
         register_setting( 'kiku-settings-group', 'kiku_share_btn_twitter' );
         register_setting( 'kiku-settings-group', 'kiku_share_btn_facebook' );
         register_setting( 'kiku-settings-group', 'kiku_share_btn_hatena' );
@@ -59,7 +61,8 @@ class Kiku_Setting_Admin {
         }
 
         $input = [
-            'kiku_twitter' => filter_input(INPUT_POST, 'kiku_twitter'),
+            'kiku_twitter' => trim( filter_input(INPUT_POST, 'kiku_twitter') ),
+            'kiku_appid' => trim( filter_input(INPUT_POST, 'kiku_appid') ),
             'kiku_share_btn_twitter'  => (boolean) filter_input(INPUT_POST, 'kiku_share_btn_twitter') ? true : false,
             'kiku_share_btn_facebook' => (boolean) filter_input(INPUT_POST, 'kiku_share_btn_facebook') ? true : false,
             'kiku_share_btn_hatena'   => (boolean) filter_input(INPUT_POST, 'kiku_share_btn_hatena') ? true : false,

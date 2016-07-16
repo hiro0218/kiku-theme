@@ -17,7 +17,7 @@ add_action( 'wp_head',  __NAMESPACE__ . '\\basic_tags', 11 );
 
 function ogp_tags() {
     $og_tag = [];
-    
+
     $og_tag['og:locale'] = get_locale();
     if ( $og_tag['og:locale'] == 'ja' ) {
         $og_tag['og:locale'] = 'ja_JP';
@@ -26,6 +26,8 @@ function ogp_tags() {
     }
 
     echo PHP_EOL;
+
+    $og_tag['fb:app_id'] = get_option('kiku_appid');
 
     if ( is_home() || is_front_page() ) {
         $og_tag['og:type']        = 'blog';
