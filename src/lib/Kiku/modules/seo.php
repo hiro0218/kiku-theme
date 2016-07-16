@@ -17,7 +17,13 @@ add_action( 'wp_head',  __NAMESPACE__ . '\\basic_tags', 11 );
 
 function ogp_tags() {
     $og_tag = [];
+    
     $og_tag['og:locale'] = get_locale();
+    if ( $og_tag['og:locale'] == 'ja' ) {
+        $og_tag['og:locale'] = 'ja_JP';
+    } else if ( $og_tag['og:locale'] == 'th' ) {
+        $og_tag['og:locale'] = 'th_TH';
+    }
 
     echo PHP_EOL;
 
