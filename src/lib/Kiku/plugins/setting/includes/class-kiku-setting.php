@@ -24,6 +24,7 @@ class Kiku_Setting {
     private function define_admin_hooks() {
         $plugin_admin = new Kiku_Setting_Admin( $this->get_plugin_name(), $this->get_version() );
         $this->loader->add_action('admin_menu', $plugin_admin, 'add_admin_page');
+        $this->loader->add_action('wp_head', $plugin_admin, 'add_insert_data_head', 100);
         $this->loader->add_filter('the_content', $plugin_admin, 'add_insert_data_bottom_of_more_tag');
         $this->loader->add_filter('the_content', $plugin_admin, 'add_insert_data_bottom_of_content');
     }

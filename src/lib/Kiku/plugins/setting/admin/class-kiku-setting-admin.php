@@ -13,6 +13,7 @@ class Kiku_Setting_Admin {
             'kiku_share_btn_facebook' => true,
             'kiku_share_btn_hatena'   => true,
             'kiku_share_btn_line'     => true,
+            'kiku_insert_data_head' => '',
             'kiku_insert_data_bottom_of_more_tag' => '',
             'kiku_insert_data_bottom_of_more_tag_option' => '',
             'kiku_insert_data_bottom_of_content' => '',
@@ -26,6 +27,7 @@ class Kiku_Setting_Admin {
         register_setting( 'kiku-settings-group', 'kiku_share_btn_facebook' );
         register_setting( 'kiku-settings-group', 'kiku_share_btn_hatena' );
         register_setting( 'kiku-settings-group', 'kiku_share_btn_line' );
+        register_setting( 'kiku-settings-group', 'kiku_insert_data_head' );
         register_setting( 'kiku-settings-group', 'kiku_insert_data_bottom_of_more_tag' );
         register_setting( 'kiku-settings-group', 'kiku_insert_data_bottom_of_more_tag_option' );
         register_setting( 'kiku-settings-group', 'kiku_insert_data_bottom_of_content' );
@@ -62,6 +64,7 @@ class Kiku_Setting_Admin {
             'kiku_share_btn_facebook' => (boolean) filter_input(INPUT_POST, 'kiku_share_btn_facebook') ? true : false,
             'kiku_share_btn_hatena'   => (boolean) filter_input(INPUT_POST, 'kiku_share_btn_hatena') ? true : false,
             'kiku_share_btn_line'     => (boolean) filter_input(INPUT_POST, 'kiku_share_btn_line') ? true : false,
+            'kiku_insert_data_head'   => filter_input(INPUT_POST, 'kiku_insert_data_head'),
             'kiku_insert_data_bottom_of_more_tag' => filter_input(INPUT_POST, 'kiku_insert_data_bottom_of_more_tag'),
             'kiku_insert_data_bottom_of_more_tag_option' => (boolean) filter_input(INPUT_POST, 'kiku_insert_data_bottom_of_more_tag_option') ? true : false,
             'kiku_insert_data_bottom_of_content' => filter_input(INPUT_POST, 'kiku_insert_data_bottom_of_content'),
@@ -71,6 +74,14 @@ class Kiku_Setting_Admin {
         $result = update_option( 'kiku-setting-options', $this->options );
 
         return $result;
+    }
+
+    public function add_insert_data_head() {
+        $data = get_option('kiku_insert_data_head');
+
+        if ( !empty($data) ) {
+            echo $data. PHP_EOL;
+        }
     }
 
     public function add_insert_data_bottom_of_more_tag($content) {
