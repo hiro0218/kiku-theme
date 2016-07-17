@@ -9,13 +9,13 @@ $modular-scale-ratio: $major-second;
 //
 // Font
 // -------------------------
-$font-base-eng:                "Open Sans", "Helvetica Neue", Helvetica, Arial;
-$font-base-jpn:                "Open Sans", "Noto Sans JP", YuGothic, "Yu Gothic", "游ゴシック体", "游ゴシック", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo;
+$font-base-eng:                -apple-system, BlinkMacSystemFont, "Roboto", "Droid Sans", "Helvetica Neue", Arial;
+$font-base-jpn:                -apple-system, BlinkMacSystemFont, "Noto Sans JP", YuGothic, "Yu Gothic", "游ゴシック体", "游ゴシック", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo;
 $font-family-base:             #{$font-base-eng}, #{$font-base-jpn}, Emoji, sans-serif !default;
 $font-family-base-eng:         #{$font-base-eng}, Emoji, sans-serif !default;
 $font-family-base-jpn:         #{$font-base-jpn}, Emoji, sans-serif !default;
 
-$font-mono-eng:                "Source Code Pro", Menlo, Monaco, Consolas, "Courier New";
+$font-mono-eng:                "Source Code Pro", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New";
 $font-mono-jpn:                "Source Code Pro", #{$font-base-jpn};
 $font-family-monospace:        #{$font-mono-eng}, #{$font-base-jpn}, Emoji, monospace !default;
 $font-family-monospace-eng:    #{$font-mono-eng}, Emoji, monospace !default;
@@ -52,6 +52,7 @@ $screen-sm:  768px !default;  // Small screen / tablet
 $screen-md:  992px !default;  // Medium screen / desktop
 $screen-lg:  1200px !default;
 
+$container-max-width:  1140px;
 
 //
 // Colors

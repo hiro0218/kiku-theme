@@ -3,7 +3,7 @@
   cursor: pointer;
   transition: all .3s ease;
   will-change: animation, transform;
-  
+
   &:hover {
     box-shadow: 0 3px 3px 0 rgba(0,0,0,0.2);
     .entry-image-sheet {
@@ -89,7 +89,7 @@
     font-size: $font-size-sm;
     line-height: 1.75;
     text-align: justify;
-    max-height: 6rem;
+    height: 6rem;
     overflow: hidden;
   }
 

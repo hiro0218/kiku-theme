@@ -14,7 +14,10 @@
   padding-left: 1rem;
 
   a {
-    border: none;
+    border: none !important;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   ol {
