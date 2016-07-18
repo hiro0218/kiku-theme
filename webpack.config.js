@@ -212,6 +212,7 @@ if (argv.release) {
   }));
   webpackConfig.plugins.push(new webpack.optimize.UglifyJsPlugin({
     compress: {
+      warnings: false,
       'drop_debugger': true
     }
   }));
