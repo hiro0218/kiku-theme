@@ -48,3 +48,13 @@
 .text-danger {
   color: unquote("rgb(#{$palette-red-400})");
 }
+
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+.text-center {
+  text-align: center;
+}
