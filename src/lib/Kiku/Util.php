@@ -3,18 +3,8 @@ namespace Kiku;
 
 class Util {
 
-    public static $copyright_year;
-
     // コピーライト用の年号(開始-現在)を取得する
     public static function get_copyright_year() {
-        if (self::$copyright_year === null) {
-            self::$copyright_year = self::_get_copyright_year();
-        }
-
-        return self::$copyright_year;
-    }
-
-    private static function _get_copyright_year() {
         global $wpdb;
 
         $sql = "SELECT YEAR(min(post_date_gmt)) AS firstdate,
