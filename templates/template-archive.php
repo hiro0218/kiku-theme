@@ -1,6 +1,6 @@
 <?php
 /*
- * Template Name: アーカイブ
+ * Template Name: Monthly Archive
  */
 
 global $wpdb;
@@ -32,13 +32,13 @@ $months = $wpdb->get_results($sql);
               echo '</ul>';  // 前のループのタグを閉じる
             }
 
-            echo '<h2>'. $year .'年</h2>';
+            echo '<h2>'. $year .'</h2>';
             echo '<ul class="archive-list">';
         }
         ?>
         <li>
           <a href="<?= BLOG_URL ?><?= $year; ?>/<?= str_pad($month, 2, 0, STR_PAD_LEFT); ?>">
-            <?= str_pad($month, 2, 0, STR_PAD_LEFT); ?>月 (<?= $row->count; ?>)
+            <?= jdmonthname($month, 1); ?> (<?= $row->count; ?>)
           </a>
         </li>
         <?php
