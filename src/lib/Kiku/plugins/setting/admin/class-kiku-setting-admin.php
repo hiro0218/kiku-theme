@@ -120,7 +120,7 @@ class Kiku_Setting_Admin {
         if ( $query->is_home() && $query->is_main_query() ) {
             $cats_str = get_option('kiku_exclude_category_frontpage');
             if (!empty($cats_str)) {
-                $query->set( 'category__not_in',  explode(",", $cats_str));
+                $query->set('category__not_in', explode(",", $cats_str));
             }
         }
 

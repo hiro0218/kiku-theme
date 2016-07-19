@@ -25,9 +25,9 @@ class Kiku_Setting {
         $plugin_admin = new Kiku_Setting_Admin( $this->get_plugin_name(), $this->get_version() );
         $this->loader->add_action('admin_menu', $plugin_admin, 'add_admin_page');
         $this->loader->add_action('wp_head', $plugin_admin, 'add_insert_data_head', 100);
-        $this->loader->add_filter('the_content', $plugin_admin, 'add_insert_data_bottom_of_more_tag');
-        $this->loader->add_filter('the_content', $plugin_admin, 'add_insert_data_bottom_of_content');
-        $this->loader->add_action('pre_get_posts', $plugin_admin, 'exclude_category_from_frontpage');
+        $this->loader->add_filter('the_content', $plugin_admin, 'add_insert_data_bottom_of_more_tag', 100);
+        $this->loader->add_filter('the_content', $plugin_admin, 'add_insert_data_bottom_of_content', 110);
+        $this->loader->add_action('pre_get_posts', $plugin_admin, 'exclude_category_from_frontpage', 100);
 
     }
 

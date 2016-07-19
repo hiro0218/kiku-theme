@@ -379,7 +379,7 @@ class Kiku_Mokuji_Admin {
 
         if ( !$this->is_eligible($custom_mokuji_pos) ) {
             // remove MKJ_TAG from content
-            $content = str_replace(MKJ_TAG, '', $content);
+            return str_replace(MKJ_TAG, '', $content);
         }
 
         list($items, $find, $replace) = $this->extract_headings($content);
@@ -411,6 +411,7 @@ class Kiku_Mokuji_Admin {
                         default:
                         $replace[0] = $html . $replace[0];
                         $content = $this->mb_find_replace($find, $replace, $content);
+                        break;
                     }
                 }
             }

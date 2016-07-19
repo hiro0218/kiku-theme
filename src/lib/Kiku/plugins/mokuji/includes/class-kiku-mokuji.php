@@ -26,7 +26,7 @@ class Kiku_Mokuji {
     private function define_admin_hooks() {
         $plugin_admin = new Kiku_Mokuji_Admin( $this->get_plugin_name(), $this->get_version() );
         $this->loader->add_action('admin_menu', $plugin_admin, 'add_admin_page');
-        $this->loader->add_filter('the_content', $plugin_admin, 'the_content', 100);
+        $this->loader->add_filter('the_content', $plugin_admin, 'the_content', 200);
     }
 
     private function define_public_hooks() {
