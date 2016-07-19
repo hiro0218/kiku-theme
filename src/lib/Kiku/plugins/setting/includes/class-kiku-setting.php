@@ -27,6 +27,8 @@ class Kiku_Setting {
         $this->loader->add_action('wp_head', $plugin_admin, 'add_insert_data_head', 100);
         $this->loader->add_filter('the_content', $plugin_admin, 'add_insert_data_bottom_of_more_tag');
         $this->loader->add_filter('the_content', $plugin_admin, 'add_insert_data_bottom_of_content');
+        $this->loader->add_action('pre_get_posts', $plugin_admin, 'exclude_category_from_frontpage');
+
     }
 
     public function run() {
