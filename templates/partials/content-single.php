@@ -8,6 +8,18 @@
   </div>
   <footer>
     <nav>
+      <?php wp_link_pages([
+        'before'         => '<p>' .  __('Pages:', 'sage'),
+        'after'          => '</p>',
+        'link_before'    => '',
+        'link_after'     => '',
+        'next_or_number' => 'number',
+        'separator'      => ', ',
+        'pagelink'       => '%',
+        'echo'           => 1
+      ]); ?>
+    </nav>
+    <nav>
       <?php get_template_part('partials/entry/breadcrumb'); ?>
     </nav>
     <section>

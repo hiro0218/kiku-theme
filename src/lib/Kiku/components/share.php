@@ -62,9 +62,9 @@ EOM;
     if ($line_display) {
         $lang = get_locale();
         $line = <<< EOM
-    <li>
-        <div class="line-it-button" style="display: none;" data-type="share-d" data-lang="{$lang}"></div>
-    </li>
+<li>
+    <div class="line-it-button" style="display: none;" data-type="share-d" data-lang="{$lang}"></div>
+</li>
 EOM;
     }
 

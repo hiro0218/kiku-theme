@@ -12,8 +12,37 @@ function basic_tags() {
 
     // author page
     echo '<link itemprop="author" href="'. BLOG_URL .'about/" />'. PHP_EOL;
+
+    // page
+    have_next_page();
 }
 add_action( 'wp_head',  __NAMESPACE__ . '\\basic_tags', 11 );
+
+function have_next_page() {
+    global $post, $page;
+
+    $pages = count( explode('<!--nextpage-->', $post->post_content) );
+    if ( $pages > 1 ) {
+        if ( $page == $pages ) {
+            if ( $page == 2 ) {
+                echo sprintf('<link rel="prev" href="%s">'. PHP_EOL, get_the_permalink());
+            } else {
+                echo sprintf('<link rel="prev" href="%s">'. PHP_EOL, get_the_permalink(). "/" .($page - 1) );
+            }
+        } else {
+            if ( $page == 0 ) {
+                echo sprintf('<link rel="next" href="%s">'. PHP_EOL, get_the_permalink(). "/" .($page + 2) );
+            } else {
+                if ( $page == 2 ) {
+                    echo sprintf('<link rel="prev" href="%s">'. PHP_EOL, get_the_permalink());
+                } else {
+                    echo sprintf('<link rel="prev" href="%s">'. PHP_EOL, get_the_permalink(). "/" .($page - 1) );
+                }
+                echo sprintf('<link rel="next" href="%s">'. PHP_EOL, get_the_permalink(). "/" .($page + 1) );
+            }
+        }
+    }
+}
 
 function ogp_tags() {
     $og_tag = [];
