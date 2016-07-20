@@ -26,13 +26,13 @@
       <?php Kiku\Components\the_share(); ?>
     </section>
   <?php global $Entry;
-      $similar = $Entry->get_similar_posts();
-      if( !empty($similar) ): ?>
+      $similars = $Entry->get_similar_posts();
+      if( !empty($similars) ): ?>
     <section class="entry-similar">
       <h2><?php _e('Related Articles', 'kiku'); ?></h2>
       <ul>
-      <?php foreach($similar as $post): ?>
-        <li><a href="<?= $post['uri']; ?>"><?= $post['title']; ?></a></li>
+      <?php foreach($similars as $similar): ?>
+        <li><a href="<?= $similar['uri']; ?>"><?= $similar['title']; ?></a></li>
       <?php endforeach; ?>
       </ul>
     </section>
