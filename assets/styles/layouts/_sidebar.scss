@@ -1,5 +1,6 @@
 // widget
-.widget_recent_entries {
+.widget_recent_entries,
+.jetpack-post-views {
   @extend .mdl-navigation;
 
   ul {
