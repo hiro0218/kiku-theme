@@ -18,6 +18,7 @@ class Entry {
             'url'            => get_the_permalink(),
             'category'       => $this->get_clean_category(),
             'tag'            => $this->get_clean_tag(),
+            'author'         => get_the_author(),
             'date_published' => get_the_date('c'),
             'date_modified'  => get_the_modified_date('c'),
         ];
@@ -28,41 +29,57 @@ class Entry {
     // 関連する記事の一覧を取得する
     public function get_similar_posts() {
         if ( !is_single() ) {
-            return;
+            return null;
         }
 
         global $post;
         $arr = [];
-        $post_id = $post->ID;
-        $category_id = get_the_category($post_id);
+        $term_ids = [];
+        $post_id = get_queried_object_id();//$post->ID;
+        $categories = get_the_category($post_id);
 
-        if( empty($category_id) ) {
+        if( empty($categories) ) {
             return null;
         }
 
-        $i = 0;
+        foreach ( $categories as $category ) {
+            if ( $category->parent == 0 ) {
+                $term_ids[] = $category->term_id;
+            } else {
+                $term_ids[] = $category->parent;
+                $term_ids[] = $category->term_id;
+            }
+        }
+
         $the_query = new \WP_Query([
             'post_status'          => 'publish',
             'post_type'            => 'post',
-            'category__in'         => $category_id[0]->term_id,
             'post__not_in'         => [$post_id],  // display post
             'orderby'              => 'modified', //'rand',
             'order'                => 'DESC',
             'posts_per_page'       => 5,  // show
-            'ignore_sticky_posts'  => 1
+            'ignore_sticky_posts'  => 1,
+            'tax_query' => [
+                [
+                    'taxonomy' => 'category',
+                    'terms' => array_unique( $term_ids ),
+                    'include_children' => false,
+                ],
+            ],
         ]);
 
-        while( $the_query->have_posts() ) {
-            $the_query->the_post();
-            $arr[$i] = [
-                "uri"   => get_the_permalink(),
-                "title" => $this->get_clean_title(),
-            ];
-            $i++;
+        if ( $the_query->have_posts() ) {
+            $i = 0;
+            while ( $the_query->have_posts() ) {
+                $the_query->the_post();
+                $arr[$i] = [
+                    "uri"   => get_the_permalink(),
+                    "title" => $this->get_clean_title(),
+                ];
+                $i++;
+            }
+            wp_reset_postdata();
         }
-
-        wp_reset_query();
-        unset($the_query);
 
         return $arr;
     }

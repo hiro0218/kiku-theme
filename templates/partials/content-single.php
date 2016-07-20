@@ -38,5 +38,6 @@
     </section>
   <?php endif; ?>
   </footer>
+  <?php get_template_part('partials/entry/schema'); ?>
 </article>
 <nav class="mdl-cell mdl-cell--12-col"><?php Kiku\Components\the_pager(); ?></nav>

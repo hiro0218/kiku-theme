@@ -4,9 +4,6 @@
 ?>
 <article class="card-container mdl-cell mdl-cell--4-col mdl-card mdl-color--white" title="<?php the_title(); ?>" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
   <a class="entry-wrap" href="<?php the_permalink(); ?>" itemprop="url">
-    <meta itemprop="author" content="<?= get_the_author(); ?>">
-    <meta itemprop="datePublished" content="<?= get_the_time('c'); ?>"/>
-    <meta itemprop="dateModified" content="<?= get_the_modified_time('c'); ?>"/>
     <div class="entry-image">
       <div class="entry-image-sheet" style="background-image: url('<?= $image_src ?>')">
         <?php if ( empty($image_src) ): ?>
@@ -24,4 +21,5 @@
       <?php get_template_part('partials/entry-meta'); ?>
     </footer>
   </a>
+  <?php get_template_part('partials/entry/schema'); ?>
 </article>
