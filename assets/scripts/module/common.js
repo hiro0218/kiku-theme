@@ -1,4 +1,11 @@
 module.exports = {
+  isSmartPhone: function() {
+    var ua = navigator.userAgent.toLowerCase();
+    if (ua.indexOf('iphone') > 0 || ua.indexOf('ipod') > 0 || ua.indexOf('android') > 0 && ua.indexOf('mobile') > 0){
+        return true;
+    }
+    return false;
+  },
   clickableElement: function(entry) {
     for (var i = 0, length = entry.length; i < length; i++) {
       entry[i].addEventListener('click', function(event) {
