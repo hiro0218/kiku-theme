@@ -51,8 +51,22 @@
                     </td>
                 <tr>
                     <td>
+                        <?php foreach (get_post_types() as $post_type): ?>
+                        <?php
+                            if (!in_array($post_type, $this->exclude_post_types)) {
+                                echo '<label for="kiku_insert_data_bottom_of_more_tag_post_types_' . $post_type . '"> ';
+                                echo '<input type="checkbox" value="' . $post_type . '" id="kiku_insert_data_bottom_of_more_tag_post_types_' . $post_type . '" name="kiku_insert_data_bottom_of_more_tag_post_types[]"';
+                                if ( !empty(get_option('kiku_insert_data_bottom_of_more_tag_post_types')) ) {
+                                    if ( in_array($post_type, get_option('kiku_insert_data_bottom_of_more_tag_post_types')) ) {
+                                        echo ' checked="checked"';
+                                    }
+                                }
+                                echo ' />' . $post_type . '</label>';
+                            }
+                        ?>
+                        <?php endforeach; ?>
                         <label>
-                            <p><?php _e('Insert to the bottom of <code>&lt;!--more--&gt;</code> (post/page)', 'kiku'); ?></p>
+                            <p><?php _e('Insert to the bottom of <code>&lt;!--more--&gt;</code>', 'kiku'); ?></p>
                             <textarea name="kiku_insert_data_bottom_of_more_tag" rows="4" wrap="off" class="large-text"><?= get_option('kiku_insert_data_bottom_of_more_tag'); ?></textarea>
                             <label>
                                 <input name="kiku_insert_data_bottom_of_more_tag_option" value="1" <?= ( get_option('kiku_insert_data_bottom_of_more_tag_option') ) ? 'checked="checked"' : ''; ?> type="checkbox">
@@ -64,8 +78,22 @@
                 </tr>
                 <tr>
                     <td>
+                        <?php foreach (get_post_types() as $post_type): ?>
+                        <?php
+                            if (!in_array($post_type, $this->exclude_post_types)) {
+                                echo '<label for="kiku_insert_data_bottom_of_content_post_types_' . $post_type . '"> ';
+                                echo '<input type="checkbox" value="' . $post_type . '" id="kiku_insert_data_bottom_of_content_post_types_' . $post_type . '" name="kiku_insert_data_bottom_of_content_post_types[]"';
+                                if ( !empty(get_option('kiku_insert_data_bottom_of_content_post_types')) ) {
+                                    if ( in_array($post_type, get_option('kiku_insert_data_bottom_of_content_post_types')) ) {
+                                        echo ' checked="checked"';
+                                    }
+                                }
+                                echo ' />' . $post_type . '</label>';
+                            }
+                        ?>
+                        <?php endforeach; ?>
                         <label>
-                            <p><?php _e('Insert to the bottom of content (post/page)', 'kiku'); ?></p>
+                            <p><?php _e('Insert to the bottom of content', 'kiku'); ?></p>
                             <textarea name="kiku_insert_data_bottom_of_content" rows="4" wrap="off" class="large-text"><?= get_option('kiku_insert_data_bottom_of_content'); ?></textarea>
                         </label>
                     </td>

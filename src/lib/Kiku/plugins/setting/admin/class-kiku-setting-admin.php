@@ -5,22 +5,9 @@ class Kiku_Setting_Admin {
     private $version;
     private $message;
     private $options;
+    private $exclude_post_types = ['attachment', 'revision', 'nav_menu_item', 'safecss'];
 
     public function __construct( $plugin_name, $version ) {
-        $this->options = $this->get_setting_option([
-            'kiku_twitter' => "",
-            'kiku_appid' => '',
-            'kiku_share_btn_twitter'  => true,
-            'kiku_share_btn_facebook' => true,
-            'kiku_share_btn_hatena'   => true,
-            'kiku_share_btn_line'     => true,
-            'kiku_insert_data_head' => '',
-            'kiku_insert_data_bottom_of_more_tag' => '',
-            'kiku_insert_data_bottom_of_more_tag_option' => '',
-            'kiku_insert_data_bottom_of_content' => '',
-            'kiku_insert_data_top_of_pagination' => '',
-            'kiku_exclude_category_frontpage' => '',
-        ]);
         add_action( 'admin_init', [$this, 'register_settings'] );
     }
 
@@ -32,6 +19,8 @@ class Kiku_Setting_Admin {
         register_setting( 'kiku-settings-group', 'kiku_share_btn_hatena' );
         register_setting( 'kiku-settings-group', 'kiku_share_btn_line' );
         register_setting( 'kiku-settings-group', 'kiku_insert_data_head' );
+        register_setting( 'kiku-settings-group', 'kiku_insert_data_bottom_of_more_tag_post_types' );
+        register_setting( 'kiku-settings-group', 'kiku_insert_data_bottom_of_content_post_types' );
         register_setting( 'kiku-settings-group', 'kiku_insert_data_bottom_of_more_tag' );
         register_setting( 'kiku-settings-group', 'kiku_insert_data_bottom_of_more_tag_option' );
         register_setting( 'kiku-settings-group', 'kiku_insert_data_bottom_of_content' );
@@ -78,7 +67,7 @@ class Kiku_Setting_Admin {
     }
 
     public function add_insert_data_bottom_of_more_tag($content) {
-        if ( !is_singular() ) {
+        if ( !is_singular() || !$this->is_insert_post_type( get_option('kiku_insert_data_bottom_of_more_tag_post_types') ) ) {
             return $content;
         }
 
@@ -105,7 +94,7 @@ class Kiku_Setting_Admin {
     }
 
     public function add_insert_data_bottom_of_content($content) {
-        if ( !is_singular() ) {
+        if ( !is_singular() || !$this->is_insert_post_type( get_option('kiku_insert_data_bottom_of_content_post_types') ) ) {
             return $content;
         }
 
@@ -116,6 +105,23 @@ class Kiku_Setting_Admin {
         }
 
         return $content;
+    }
+
+    private function is_insert_post_type($selected_post_types) {
+        $result = false;
+
+        if ( empty($selected_post_types) ) {
+            return $result;
+        }
+
+        foreach($selected_post_types as $post_type) {
+            if ( $post_type === get_post_type() ) {
+                $result = true;
+                break;
+            }
+        }
+
+        return $result;
     }
 
     public function exclude_category_from_frontpage($query) {
