@@ -34,3 +34,13 @@ function prefix_remove_menu_item_whitespace( $items ) {
     return \Kiku\Util::remove_white_space($items);
 }
 add_filter( 'wp_nav_menu_items', __NAMESPACE__ . '\\prefix_remove_menu_item_whitespace' );
+
+
+function exclude_category_widget_posts( $args ) {
+    $cats_str = get_option('kiku_exclude_category_frontpage');
+    if ( !empty($cats_str) ) {
+        $args['category__not_in'] = explode(",", $cats_str);
+    }
+    return $args;
+}
+add_filter( 'widget_posts_args', __NAMESPACE__ . '\\exclude_category_widget_posts');
