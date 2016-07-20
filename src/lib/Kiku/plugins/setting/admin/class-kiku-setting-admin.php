@@ -18,6 +18,7 @@ class Kiku_Setting_Admin {
             'kiku_insert_data_bottom_of_more_tag' => '',
             'kiku_insert_data_bottom_of_more_tag_option' => '',
             'kiku_insert_data_bottom_of_content' => '',
+            'kiku_insert_data_top_of_pagination' => '',
             'kiku_exclude_category_frontpage' => '',
         ]);
         add_action( 'admin_init', [$this, 'register_settings'] );
@@ -34,6 +35,7 @@ class Kiku_Setting_Admin {
         register_setting( 'kiku-settings-group', 'kiku_insert_data_bottom_of_more_tag' );
         register_setting( 'kiku-settings-group', 'kiku_insert_data_bottom_of_more_tag_option' );
         register_setting( 'kiku-settings-group', 'kiku_insert_data_bottom_of_content' );
+        register_setting( 'kiku-settings-group', 'kiku_insert_data_top_of_pagination' );
         register_setting( 'kiku-settings-group', 'kiku_exclude_category_frontpage', [$this, 'check_category_list']);
     }
 

@@ -42,7 +42,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <th rowspan="3"><?php _e('Insert data', 'kiku'); ?></th>
+                    <th rowspan="4"><?php _e('Insert data', 'kiku'); ?></th>
                     <td>
                         <label>
                             <p><?php _e('Insert to <code>&lt;head&gt;</code> tag', 'kiku'); ?></p>
@@ -67,6 +67,14 @@
                         <label>
                             <p><?php _e('Insert to the bottom of content (post/page)', 'kiku'); ?></p>
                             <textarea name="kiku_insert_data_bottom_of_content" rows="4" wrap="off" class="large-text"><?= get_option('kiku_insert_data_bottom_of_content'); ?></textarea>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            <p><?php _e('Insert to the top of pagination (home/archive)', 'kiku'); ?></p>
+                            <textarea name="kiku_insert_data_top_of_pagination" rows="4" wrap="off" class="large-text"><?= get_option('kiku_insert_data_top_of_pagination'); ?></textarea>
                         </label>
                     </td>
                 </tr>

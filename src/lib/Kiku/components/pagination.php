@@ -76,6 +76,12 @@ function the_pagination() {
         $pagination .= '<li class="last"><a href="' . $lastpage . '">' . $args['last_string'] . '</a></li>';
     }
 
+    // from setting
+    $data = get_option('kiku_insert_data_top_of_pagination');
+    if ( !empty($data) ) {
+        echo $data;
+    }
+
     if ( isset($pagination) ) {
         echo '<ul class="pagination">'. $pagination .'</ul>';
     }
