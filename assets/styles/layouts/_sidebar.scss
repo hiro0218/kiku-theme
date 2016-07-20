@@ -1,4 +1,8 @@
 // widget
+.widget-title {
+  padding-left: .5rem;
+}
+
 .widget_recent_entries,
 .jetpack-post-views {
   @extend .mdl-navigation;
