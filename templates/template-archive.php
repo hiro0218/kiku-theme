@@ -14,6 +14,7 @@ $sql = "SELECT DISTINCT MONTH( post_date ) AS month, YEAR( post_date ) AS year, 
         ORDER BY post_date DESC";
 $months = $wpdb->get_results($sql);
 ?>
+<?php while (have_posts()) : the_post(); ?>
 <article class="entry mdl-cell mdl-cell--12-col">
   <header>
     <h1 class="entry-title"><?php the_title(); ?></h1>
@@ -55,3 +56,4 @@ $months = $wpdb->get_results($sql);
     </section>
   </div>
 </article>
+<?php endwhile; ?>
