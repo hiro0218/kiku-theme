@@ -2,7 +2,7 @@
   global $Image;
   $image_src = $Image->get_entry_image();
 ?>
-<article class="card-container will-animation mdl-cell mdl-cell--4-col mdl-card mdl-color--white" title="<?php the_title(); ?>" style="visibility:hidden;" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+<article class="card-container mdl-cell mdl-cell--4-col mdl-card mdl-color--white" title="<?php the_title(); ?>" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
   <a class="entry-wrap" href="<?php the_permalink(); ?>" itemprop="url">
     <meta itemprop="author" content="<?= get_the_author(); ?>">
     <meta itemprop="datePublished" content="<?= get_the_time('c'); ?>"/>
