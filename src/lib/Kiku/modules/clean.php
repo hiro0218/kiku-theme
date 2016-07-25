@@ -84,6 +84,16 @@ function remove_ptags_from_images($content){
 }
 add_filter('the_content', __NAMESPACE__ . '\\remove_ptags_from_images');
 
+// Remove description from <title>
+function remove_description_from_title_tag($title) {
+    if ( is_home() || is_front_page() ) {
+        unset($title['tagline']);
+    }
+
+    return $title;
+}
+add_filter( 'document_title_parts', __NAMESPACE__ . '\\remove_description_from_title_tag', 10, 1 );
+
 
 //
 // admin
