@@ -12,6 +12,7 @@ function basic_tags() {
 
     // author page
     echo '<link itemprop="author" href="'. BLOG_URL .'about/" />'. PHP_EOL;
+    echo '<link rel="alternate" hreflang="'. get_locale() .'" href="'. BLOG_URL .'" />'. PHP_EOL;
 
     // page
     have_next_page();
