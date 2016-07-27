@@ -15,7 +15,9 @@ function basic_tags() {
     echo '<link rel="alternate" hreflang="'. get_locale() .'" href="'. BLOG_URL .'" />'. PHP_EOL;
 
     // page
-    have_next_page();
+    if ( is_singular() ) {
+        have_next_page();
+    }
 }
 add_action( 'wp_head',  __NAMESPACE__ . '\\basic_tags', 11 );
 
