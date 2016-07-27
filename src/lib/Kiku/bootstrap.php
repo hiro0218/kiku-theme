@@ -28,3 +28,4 @@ require KIKU_LIB_PATH. 'components/share.php';
 // plugin
 require KIKU_LIB_PATH. 'plugins/mokuji/kiku-mokuji.php';
 require KIKU_LIB_PATH. 'plugins/setting/kiku-setting.php';
+require KIKU_LIB_PATH. 'plugins/soil/nice-search.php';
