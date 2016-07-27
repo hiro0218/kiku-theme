@@ -10,7 +10,7 @@
       <div class="wrap mdl-layout__content" role="document">
         <main>
           <div class="main-container mdl-grid">
-            <?php include App\template_unwrap(); ?>
+            <?php include App\template()->main(); ?>
           </div>
           <nav class="pagination-container">
             <?php Kiku\Components\the_pagination(); ?>
