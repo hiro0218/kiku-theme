@@ -1,8 +1,11 @@
 <?php
-class Kiku_Mokuji {
-    protected $loader;
-    protected $plugin_name;
-    protected $version;
+require_once KIKU_LIB_PATH . 'plugins/Template/Kiku-base.php';
+require_once KIKU_LIB_PATH . 'plugins/Template/Kiku-loader.php';
+// require_once KIKU_LIB_PATH . 'plugins/Template/Kiku-i18n.php';
+require_once KIKU_LIB_PATH . 'plugins/mokuji/admin/class-kiku-mokuji-admin.php';
+// require_once KIKU_LIB_PATH . 'plugins/mokuji/public/class-kiku-mokuji-public.php';
+
+class Kiku_Mokuji extends Kiku_base {
 
     public function __construct() {
         $this->plugin_name = 'kiku-mokuji';
@@ -14,13 +17,7 @@ class Kiku_Mokuji {
     }
 
     private function load_dependencies() {
-        require_once KIKU_LIB_PATH . 'plugins/mokuji/includes/class-kiku-mokuji-loader.php';
-        // require_once KIKU_LIB_PATH . 'plugins/mokuji/includes/class-kiku-mokuji-i18n.php';
-
-        require_once KIKU_LIB_PATH . 'plugins/mokuji/admin/class-kiku-mokuji-admin.php';
-        // require_once KIKU_LIB_PATH . 'plugins/mokuji/public/class-kiku-mokuji-public.php';
-
-        $this->loader = new Kiku_Mokuji_Loader();
+        $this->loader = new Kiku_Loader();
     }
 
     private function define_admin_hooks() {
@@ -30,23 +27,7 @@ class Kiku_Mokuji {
     }
 
     private function define_public_hooks() {
-        $plugin_public = new Kiku_Mokuji_Public( $this->get_plugin_name(), $this->get_version() );
-    }
-
-    public function run() {
-        $this->loader->run();
-    }
-
-    public function get_plugin_name() {
-        return $this->plugin_name;
-    }
-
-    public function get_loader() {
-        return $this->loader;
-    }
-
-    public function get_version() {
-        return $this->version;
+        //$plugin_public = new Kiku_Mokuji_Public( $this->get_plugin_name(), $this->get_version() );
     }
 
 }

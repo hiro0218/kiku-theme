@@ -1,6 +1,6 @@
 <?php
 
-class Kiku_Setting_Loader {
+class Kiku_Loader {
 
     protected $actions;
     protected $filters;
