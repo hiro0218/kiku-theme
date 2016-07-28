@@ -21,6 +21,13 @@
                     </td>
                 </tr>
                 <tr>
+                    <th><label for="kiku_author_page"><?php _e('author page', 'kiku'); ?></label></th>
+                    <td>
+                        <input type="text" name="kiku_author_page" class="regular-text" value="<?= get_option('kiku_author_page'); ?>" id="kiku_appid" />
+                    </td>
+                </tr>
+
+                <tr>
                     <th><?php _e('Share Button', 'kiku'); ?></th>
                     <td>
                         <label for="kiku_share_btn_twitter">

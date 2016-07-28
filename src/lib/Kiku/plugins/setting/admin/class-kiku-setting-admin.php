@@ -14,6 +14,7 @@ class Kiku_Setting_Admin {
     public function register_settings() {
         register_setting( 'kiku-settings-group', 'kiku_twitter' );
         register_setting( 'kiku-settings-group', 'kiku_appid' );
+        register_setting( 'kiku-settings-group', 'kiku_author_page' );
         register_setting( 'kiku-settings-group', 'kiku_share_btn_twitter' );
         register_setting( 'kiku-settings-group', 'kiku_share_btn_facebook' );
         register_setting( 'kiku-settings-group', 'kiku_share_btn_hatena' );
