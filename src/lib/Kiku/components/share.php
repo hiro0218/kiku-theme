@@ -14,37 +14,35 @@ function the_share() {
     $hatena = '';
     $line = '';
 
-    list($twitter_display, $facebook_display, $hatena_display, $line_display) = is_display();
+    list($is_twitter, $is_facebook, $is_hatena, $is_line) = is_display();
 
-    if ($twitter_display) {
+    if ($is_twitter) {
         $tooltip_twitter = __('Share on Twitter.', 'kiku');
         $twitter = <<< EOM
 <li>
-    <a href="//twitter.com/share?url={$meta['url']}&text={$meta['title']}"
+    <a href="javascript:void(0)"
        class="btn-twitter"
        title="{$tooltip_twitter}"
-       rel="nofollow"
-       onclick="openWindow(this.href,640,300); return false;">twitter
+       onclick="openWindow('//twitter.com/share?url={$meta['url']}&text={$meta['title']}',620,310); return false;">twitter
     </a>
 </li>
 EOM;
     }
 
-    if ($facebook_display) {
+    if ($is_facebook) {
         $tooltip_facebook = __('Share on Facebook.', 'kiku');
         $facebook = <<< EOM
 <li>
-    <a href="//www.facebook.com/sharer/sharer.php?u={$meta['url']}"
+    <a href="javascript:void(0)"
        class="btn-facebook"
        title="{$tooltip_facebook}"
-       rel="nofollow"
-       onclick="openWindow(this.href); return false;">facebook
+       onclick="openWindow('//www.facebook.com/sharer/sharer.php?u={$meta['url']}', 560,550); return false;">facebook
     </a>
 </li>
 EOM;
     }
 
-    if ($hatena_display) {
+    if ($is_hatena) {
         $tooltip_hatena = __('Share on Hatena.', 'kiku');
         $hatena = <<< EOM
 <li>
@@ -52,23 +50,26 @@ EOM;
        class="hatena-bookmark-button btn-hatena"
        data-hatena-bookmark-title="{$meta['title']}"
        data-hatena-bookmark-layout="simple"
-       title="{$tooltip_hatena}"
-       rel="nofollow">hatena
+       title="{$tooltip_hatena}">hatena
     </a>
 </li>
 EOM;
     }
 
-    if ($line_display) {
-        $lang = get_locale();
+    if ($is_line) {
+        $tooltip_line = __('Share on LINE.', 'kiku');
         $line = <<< EOM
 <li>
-    <div class="line-it-button" style="display: none;" data-type="share-d" data-lang="{$lang}"></div>
+    <a href="javascript:void(0)"
+       class="btn-line"
+       title="{$tooltip_line}"
+       onclick="openWindow('//lineit.line.me/share/ui?url={$meta['url']}', 565,500); return false;">LINE
+    </a>
 </li>
 EOM;
     }
 
-    if ($twitter_display || $facebook_display || $hatena_display || $line_display) {
+    if ($is_twitter || $is_facebook || $is_hatena || $is_line) {
         echo '<ul class="entry-share">';
         echo $twitter;
         echo $facebook;
@@ -76,7 +77,7 @@ EOM;
         echo $line;
         echo '</ul>';
 
-        echo get_share_script($twitter_display, $facebook_display, $hatena_display ,$line_display);
+        echo get_share_script($is_twitter, $is_facebook, $is_hatena ,$is_line);
     }
 
 }
@@ -90,31 +91,24 @@ function is_display() {
     ];
 }
 
-function get_share_script($twitter_display, $facebook_display, $hatena_display ,$line_display) {
+function get_share_script($is_twitter, $is_facebook, $is_hatena, $is_line) {
     $hatena = '';
-    $line = '';
     $script = '';
 
-    if ($hatena_display) {
+    if ($is_hatena) {
         $hatena = <<< EOM
 <script src="//b.st-hatena.com/js/bookmark_button.js" defer="defer" async="async"></script>
 EOM;
     }
 
-    if ($line_display) {
-        $line = <<< EOM
-<script src="//scdn.line-apps.com/n/line_it/thirdparty/loader.min.js" async="async" defer="defer"></script>
-EOM;
-    }
-
-    if ($twitter_display || $facebook_display) {
+    if ($is_twitter || $is_facebook || $is_line) {
         $script = <<< EOM
 <script>
-function openWindow(href, w, h) {
-    var w = (w) ? w : 480,
-    h = (h) ? h : 450,
-    x = (screen.width/2) - (w/2),
-    y = (screen.height/2) - (h/2);
+function openWindow(href, width, height) {
+    var w = (width)  ? width  : 480,
+        h = (height) ? height : 450,
+        x = (screen.width/2)  - (w/2),
+        y = (screen.height/2) - (h/2);
     var features = "width="+ w +",height="+ h +",top="+ y +",left="+ x +",menubar=0,toolbar=0,directories=0,toolbar=0,status=0,resizable=0";
 
     window.open(href, '', features);
@@ -124,5 +118,5 @@ function openWindow(href, w, h) {
 EOM;
     }
 
-    return $hatena . $line . $script;
+    return $hatena . $script;
 }

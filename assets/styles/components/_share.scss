@@ -1,6 +1,7 @@
 $twitter-color:  #55acee;
 $facebook-color: #3b5998;
 $hatena-color:   #2c6ebd;
+$line-color:     #00C300;
 
 .entry-share {
   list-style: none;
@@ -23,7 +24,8 @@ $hatena-color:   #2c6ebd;
 
 .btn-twitter,
 .btn-facebook,
-.btn-hatena {
+.btn-hatena,
+.btn-line {
   display: block;
   border-radius: 2px;
   background-size: 80% 80%;
@@ -35,12 +37,6 @@ $hatena-color:   #2c6ebd;
   &:active {
     transform: scale(.95);
   }
-}
-.line-it-button {
-  &:active {
-    transform: scale(.95);
-  }
-
 }
 
 .btn-twitter {
@@ -54,4 +50,8 @@ $hatena-color:   #2c6ebd;
 .btn-hatena {
   background-color: $hatena-color;
   background-image: url("../images/svg/hatena-bookmark.svg");
+}
+.btn-line {
+  background-color: $line-color;
+  background-image: url("../images/svg/line.svg");
 }
