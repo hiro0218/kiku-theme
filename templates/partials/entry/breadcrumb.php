@@ -25,8 +25,8 @@
     <a href="<?= get_category_link($catid); ?>" itemprop="item">
       <span itemprop="name"><?= get_cat_name($catid); ?></span>
     </a>
+    <i class="material-icons">navigate_next</i>
   </li>
-  <li class="list-icon-arrow"><i class="material-icons">navigate_next</i></li>
   <?php endforeach; ?>
   <?php endif; ?>
   <li class="active" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
