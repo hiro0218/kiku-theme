@@ -165,7 +165,20 @@ function dns_prefetch_tags() {
         echo sprintf( $tag_template, $domain );
     }
 }
-add_action( 'wp_head',  __NAMESPACE__ . '\\dns_prefetch_tags', 15 );
+// Until WordPress 4.6 Release
+if ( !function_exists('wp_resource_hints') ) {
+    add_action( 'wp_head',  __NAMESPACE__ . '\\dns_prefetch_tags', 15 );
+}
+
+function add_resource_hints( $hints, $relation_type ){
+    if ( $relation_type == 'dns-prefetch' ){
+        $hints[] = "//www.google-analytics.com";
+        $hints[] = "//images-amazon.com";
+        $hints[] = "//images-na.ssl-images-amazon.com";
+    }
+    return $hints;
+}
+add_filter( 'wp_resource_hints',  __NAMESPACE__ . '\\add_resource_hints', 10, 2 );
 
 // mics tags
 function mics_tags() {

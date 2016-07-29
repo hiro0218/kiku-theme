@@ -30,6 +30,7 @@ Installation notes:
 * PHP >= 5.6.x
 * Composer
 * Node.js >= 0.12.x
+* WordPress >= 4.5.x (latest)
 
 ### Browser Support
 Supported browsers:
