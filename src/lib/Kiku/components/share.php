@@ -77,7 +77,13 @@ EOM;
         echo $line;
         echo '</ul>';
 
-        echo get_share_script($is_twitter, $is_facebook, $is_hatena ,$is_line);
+        if ($is_hatena) {
+            wp_enqueue_script('bookmark_button', "//b.st-hatena.com/js/bookmark_button.js", [], null, true);
+        }
+
+        if ($is_twitter || $is_facebook || $is_line) {
+            add_filter( 'script_loader_tag', __NAMESPACE__ . '\\add_share_script', 10, 3 );
+        }
     }
 
 }
@@ -91,17 +97,8 @@ function is_display() {
     ];
 }
 
-function get_share_script($is_twitter, $is_facebook, $is_hatena, $is_line) {
-    $hatena = '';
-    $script = '';
-
-    if ($is_hatena) {
-        $hatena = <<< EOM
-<script src="//b.st-hatena.com/js/bookmark_button.js" defer="defer" async="async"></script>
-EOM;
-    }
-
-    if ($is_twitter || $is_facebook || $is_line) {
+function add_share_script($tag, $handle, $src) {
+    if ( $handle == 'sage/main' ) {
         $script = <<< EOM
 <script>
 function openWindow(href, width, height) {
@@ -116,7 +113,7 @@ function openWindow(href, width, height) {
 }
 </script>
 EOM;
+        $tag .= $script . PHP_EOL;
     }
-
-    return $hatena . $script;
+    return $tag;
 }
