@@ -115,8 +115,11 @@
     > a,
     > a:hover,
     > a:focus {
-      @extend .mdl-color--grey-200, .mdl-color-text--grey-400;
+      @extend .mdl-color--grey-100, .mdl-color-text--grey-400;
       cursor: not-allowed;
+    }
+    a:active {
+      transform: scale(1);
     }
   }
 

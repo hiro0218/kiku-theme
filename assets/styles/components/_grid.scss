@@ -7,7 +7,7 @@
       padding: 0 ($layout-header-desktop-baseline - $grid-padding);
     }
 
-    @media screen and (max-width: $screen-xs) {
+    @media screen and (max-width: $screen-sm) {
       padding: 0;
     }
 
