@@ -6,7 +6,7 @@
 <?php if (is_singular()): ?>
   <li class="date-published"><i class="material-icons">update</i>
   <time itemprop="datePublished" datetime="<?= get_post_time('c', true); ?>"><?= get_the_date('Y/m/d'); ?></time>
-  <i class="material-icons">navigate_next</i></li>
+  <?php if ($is_modified_post): ?><i class="material-icons">navigate_next</i><?php endif; ?></li>
   <?php if ($is_modified_post): ?>
   <li class="date-modified"><time itemprop="dateModified" datetime="<?= get_post_time('c', true); ?>"><?= get_the_modified_date('Y/m/d'); ?></time></li>
   <?php endif; ?>
