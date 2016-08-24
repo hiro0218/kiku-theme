@@ -31,10 +31,11 @@
   }
 
   blockquote {
-    position: relative;
-    padding: 1rem 1rem 1rem 1.5rem;
-    border-left: 4px solid unquote("rgb(#{$palette-grey-500})");
-    @extend .mdl-color-text--grey-500;
+    // position: relative;
+    padding: .8rem;
+    margin-left: .8em;
+    border-left: 4px solid unquote("rgb(#{$palette-grey-200})");
+    @extend .mdl-color-text--grey-700;
 
     // &:before {
     //   position: absolute;
