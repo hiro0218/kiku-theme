@@ -15,7 +15,7 @@ function basic_tags() {
     if ( !empty($author_page) ) {
         echo '<link itemprop="author" href="'. $author_page .'" />'. PHP_EOL;
     }
-    echo '<link rel="alternate" hreflang="'. get_locale() .'" href="'. BLOG_URL .'" />'. PHP_EOL;
+    // echo '<link rel="alternate" hreflang="'. get_locale() .'" href="'. BLOG_URL .'" />'. PHP_EOL;
 
     // page
     if ( is_singular() ) {
