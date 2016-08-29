@@ -3,23 +3,31 @@
 // -------------------------
 $base-size: 16px;
 $modular-scale-base:  1rem;
-$modular-scale-ratio: $major-second;
+$modular-scale-ratio: $minor-third;
+// $golden:           1.618;
+// $minor-second:     1.067;
+// $major-second:     1.125;
+// $minor-third:      1.2;
+// $major-third:      1.25;
+// $perfect-fourth:   1.333;
+// $augmented-fourth: 1.414;
+// $perfect-fifth:    1.5;
+// $minor-sixth:      1.6;
+// $major-sixth:      1.667;
+// $minor-seventh:    1.778;
+// $major-seventh:    1.875;
+// $octave:           2;
+// $major-tenth:      2.5;
+// $major-eleventh:   2.667;
+// $major-twelfth:    3;
+// $double-octave:    4;
 
 
 //
 // Font
 // -------------------------
-$font-base-eng:                -apple-system, BlinkMacSystemFont, "Roboto", "Droid Sans", "Helvetica Neue", Arial;
-$font-base-jpn:                -apple-system, BlinkMacSystemFont, "Noto Sans JP", YuGothic, "Yu Gothic", "游ゴシック体", "游ゴシック", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo;
-$font-family-base:             #{$font-base-eng}, #{$font-base-jpn}, Emoji, sans-serif !default;
-$font-family-base-eng:         #{$font-base-eng}, Emoji, sans-serif !default;
-$font-family-base-jpn:         #{$font-base-jpn}, Emoji, sans-serif !default;
-
-$font-mono-eng:                "Source Code Pro", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New";
-$font-mono-jpn:                "Source Code Pro", #{$font-base-jpn};
-$font-family-monospace:        #{$font-mono-eng}, #{$font-base-jpn}, Emoji, monospace !default;
-$font-family-monospace-eng:    #{$font-mono-eng}, Emoji, monospace !default;
-$font-family-monospace-jpn:    #{$font-base-jpn}, Emoji, monospace !default;
+$font-family-base:             -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, Emoji !default;
+$font-family-monospace:        Consolas, "Liberation Mono", Menlo, Courier, monospace, Emoji !default;
 $font-weight-base:             normal;
 
 // MDL

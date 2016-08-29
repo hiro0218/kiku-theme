@@ -7,22 +7,20 @@
   box-sizing: border-box;
 }
 
+:root {
+  font-size: 100%;
+  font-family: $font-family-base;
+  line-height: $line-height-base;
+  font-feature-settings: "kern" 1, "lnum" 1, "pnum" 1;
+  scroll-behavior: smooth;
+}
 
 // Body reset
 html {
-  font-size: 100%;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 body {
-  font-family: $font-family-base;
-  [lang=en] & {
-    font-family: $font-family-base-eng;
-  }
-  [lang=ja] & {
-    font-family: $font-family-base-jpn;
-  }
-
   font-size: $font-size-base;
   @media screen and (max-width: $screen-sm) {
     font-size: $font-size-base - 1;
@@ -32,10 +30,9 @@ body {
   }
 
   font-weight: $font-weight-base;
-  line-height: $line-height-base;
 
-  scroll-behavior: smooth;
-	-webkit-font-smoothing: subpixel-antialiased;
+	-webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 
   // bg, color
   @extend .mdl-color--grey-200, .mdl-color-text--grey-800;

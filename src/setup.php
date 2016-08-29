@@ -9,9 +9,6 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('normalize', 'https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css', false, null);
     wp_enqueue_style('sage/main', asset_path('styles/main.css'), false, null);
     wp_enqueue_script('sage/main', asset_path('scripts/main.js'), [], null, true);
-    if (!wp_is_mobile()) {
-        wp_enqueue_style('google/font', 'https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700', false, null);
-    }
 }, 100);
 
 /**
