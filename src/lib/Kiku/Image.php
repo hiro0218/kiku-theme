@@ -3,7 +3,7 @@ namespace Kiku;
 
 class Image {
 
-    public function get_entry_image() {
+    public function get_entry_image($datauri = true) {
         global $post;
         $image_src = '';
 
@@ -21,7 +21,7 @@ class Image {
         }
 
         // has img tag
-        $image_src = $this->get_post_image_from_tag();
+        $image_src = $this->get_post_image_from_tag($datauri);
 
         return $image_src;
     }
