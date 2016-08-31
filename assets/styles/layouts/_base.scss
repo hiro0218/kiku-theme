@@ -1,8 +1,0 @@
-.main-container {
-  min-height: calc(100vh - #{$layout-desktop-header-height});
-  max-width: $container-max-width;
-
-  @media screen and (max-width: $layout-screen-size-threshold) {
-    min-height: calc(100vh - #{$layout-mobile-header-height});
-  }
-}
