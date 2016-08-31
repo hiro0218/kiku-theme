@@ -38,3 +38,30 @@ h3 { font-size: $font-size-h3; }
 h4 { font-size: $font-size-h4; }
 h5 { font-size: $font-size-h5; }
 h6 { font-size: $font-size-h6; }
+
+pre {
+  overflow: auto;
+}
+
+pre,
+code {
+  font-family: $font-family-monospace;
+}
+
+ul,
+ol {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+ol ol,
+ul ol {
+  list-style-type: lower-roman;
+}
+
+ul ul ol,
+ul ol ol,
+ol ul ol,
+ol ol ol {
+  list-style-type: lower-alpha;
+}

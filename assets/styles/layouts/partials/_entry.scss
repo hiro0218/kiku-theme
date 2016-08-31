@@ -4,6 +4,10 @@
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
   @extend .mdl-color--white, .mdl-color-text--grey-600;
 
+  > header {
+    margin-bottom: 2rem;
+  }
+
   h1 {
     font-weight: normal;
     line-height: 1.3;
@@ -20,15 +24,30 @@
     }
   }
 
+}
+
+.entry-content {
   p, pre, blockquote, ul, ol, dl, figure, table, form, img, div {
-    margin: 0 0 1.7rem;
+    margin: 0 0 1.8rem;
   }
 
-  p > code {
-    @extend .mdl-color--blue-50, .mdl-color-text--blue-A200;
-    border-radius: ($spacer * .125);
-    padding: .2rem .4rem;
+  *:not(pre) > code {
+    font-size: $font-size-sm;
     line-height: 2;
+    margin: 0;
+    padding: .2rem 0;
+    border-radius: ($spacer * .125);
+    @extend .mdl-color--blue-50, .mdl-color-text--blue-400;
+
+    &:before,
+    &:after {
+      letter-spacing: -0.2rem;
+      content: "\00a0";
+    }
+  }
+
+  li + li {
+    margin-top: 0.25rem;
   }
 
   blockquote {
@@ -50,14 +69,14 @@
 
     > *:first-child,
     > *:last-child {
-        margin-bottom: 0;
+      margin-bottom: 0;
     }
 
     small,
     footer {
       display: block;
       font-size: $font-size-sm;
-      margin-top: 1.7rem !important;
+      margin-top: 1.8rem !important;
       text-align: right;
     }
   }
@@ -113,11 +132,11 @@
   }
 
   img {
-      display: block;
-      max-width: 100%;
-      height: auto;
-      margin-left: auto;
-      margin-right: auto;
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   hr {
@@ -133,8 +152,6 @@
       content:"***";
     }
   }
-
-
 
 }
 
