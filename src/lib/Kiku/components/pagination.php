@@ -111,17 +111,19 @@ function the_pager() {
         $prev['attr']  = '';
     } else {
         // oldest
-        $prev['uri']   = 'javascript:void(0)';
+        $prev['uri']   = '';
         $prev['title'] = '';
-        $prev['attr']  = 'disabled';
+        $prev['attr']  = '';
     }
-    $pager .= '<li class="previous '. $prev['attr'] .'">';
-    $pager .= '<a href="' . $prev['uri'] . '" title="'. $prev['title'] .'">';
-    $pager .= $args['previous_string'];
-    $pager .= '<span class="instruct">prev</span>';
-    $pager .= '<span class="title">'. $prev['title'] .'</span>';
-    $pager .= '</a>';
-    $pager .= '</li>';
+    if (!empty($prev['uri'])) {
+        $pager .= '<li class="previous '. $prev['attr'] .'">';
+        $pager .= '<a href="' . $prev['uri'] . '" title="'. $prev['title'] .'">';
+        $pager .= $args['previous_string'];
+        $pager .= '<span class="instruct">prev</span>';
+        $pager .= '<span class="title">'. $prev['title'] .'</span>';
+        $pager .= '</a>';
+        $pager .= '</li>';
+    }
 
     // next post
     if (!empty($next_post)) {
@@ -130,17 +132,19 @@ function the_pager() {
         $next['attr']  = '';
     } else {
         // latest
-        $next['uri']   = 'javascript:void(0)';
+        $next['uri']   = '';
         $next['title'] = '';
-        $next['attr']  = 'disabled';
+        $next['attr']  = '';
     }
-    $pager .= '<li class="next '. $next['attr'] .'">';
-    $pager .= '<a href="' . $next['uri'] . '" title="'. $next['title'] .'">';
-    $pager .= $args['next_string'];
-    $pager .= '<span class="instruct">next</span>';
-    $pager .= '<span class="title">'. $next['title'] .'</span>';
-    $pager .= '</a>';
-    $pager .= '</li>';
+    if (!empty($next['uri'])) {
+        $pager .= '<li class="next '. $next['attr'] .'">';
+        $pager .= '<a href="' . $next['uri'] . '" title="'. $next['title'] .'">';
+        $pager .= $args['next_string'];
+        $pager .= '<span class="instruct">next</span>';
+        $pager .= '<span class="title">'. $next['title'] .'</span>';
+        $pager .= '</a>';
+        $pager .= '</li>';
+    }
 
     echo '<ul class="pager">'. $pager .'</ul>';
 }
