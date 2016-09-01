@@ -115,7 +115,13 @@ function the_pager() {
         $prev['title'] = '';
         $prev['attr']  = 'disabled';
     }
-    $pager .= '<li class="previous '. $prev['attr'] .'"><a href="' . $prev['uri'] . '" title="'. $prev['title'] .'">' . $args['previous_string'] . '</a></li>';
+    $pager .= '<li class="previous '. $prev['attr'] .'">';
+    $pager .= '<a href="' . $prev['uri'] . '" title="'. $prev['title'] .'">';
+    $pager .= $args['previous_string'];
+    $pager .= '<span class="instruct">prev</span>';
+    $pager .= '<span class="title">'. $prev['title'] .'</span>';
+    $pager .= '</a>';
+    $pager .= '</li>';
 
     // next post
     if (!empty($next_post)) {
@@ -128,7 +134,13 @@ function the_pager() {
         $next['title'] = '';
         $next['attr']  = 'disabled';
     }
-    $pager .= '<li class="next '. $next['attr'] .'"><a href="' . $next['uri'] . '" title="'. $next['title'] .'">' . $args['next_string'] . '</a></li>';
+    $pager .= '<li class="next '. $next['attr'] .'">';
+    $pager .= '<a href="' . $next['uri'] . '" title="'. $next['title'] .'">';
+    $pager .= $args['next_string'];
+    $pager .= '<span class="instruct">next</span>';
+    $pager .= '<span class="title">'. $next['title'] .'</span>';
+    $pager .= '</a>';
+    $pager .= '</li>';
 
     echo '<ul class="pager">'. $pager .'</ul>';
 }

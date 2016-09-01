@@ -87,28 +87,54 @@
 
   li > a {
     text-decoration: none;
-    line-height: $line-height-base;
+    line-height: 2;
     padding: .75rem 1rem;
-    border-radius: 2px;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12);
-    @extend .mdl-color--white, .mdl-color-text--grey-600;
+    width: 50%;
+    @extend .mdl-color-text--grey-600;
 
-    &:hover {
-      box-shadow: 0 3px 3px 0 rgba(0,0,0,0.2);
+    .instruct {
+      text-transform: uppercase;
+      font-weight: bold;
     }
+    .title,
+    .instruct {
+      display: block;
+    }
+    .material-icons {
+      font-size: 1.5rem;
+      width: 2rem;
+      padding-top: 1.5rem;
+      @extend .mdl-color-text--grey-800;
+    }
+
     &:focus {
       outline: 0;
     }
-    &:active {
-      transform: scale(0.95);
+
+    @media screen and (max-width: $screen-xs) {
+      width: 100%;
     }
   }
 
   .previous > a {
     float: left;
+    text-align: left;
+    .material-icons {
+      float: left;
+    }
+    .title {
+      padding-left: 2rem;
+    }
   }
   .next > a {
     float: right;
+    text-align: right;
+    .material-icons {
+      float: right;
+    }
+    .title {
+      padding-right: 2rem;
+    }
   }
 
   .disabled {
