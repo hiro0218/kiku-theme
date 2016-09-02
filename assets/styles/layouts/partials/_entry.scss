@@ -2,7 +2,7 @@
   padding: 1rem 1.5rem;
   border-radius: ($spacer * .125);
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
-  @extend .mdl-color--white, .mdl-color-text--grey-600;
+  @extend .mdl-color--white, .mdl-color-text--grey-700;
 
   > header {
     margin-bottom: 2rem;
@@ -52,7 +52,7 @@
   li + li {
     margin-top: 0.25rem;
   }
-
+  
   blockquote {
     // position: relative;
     padding: 1.6rem;
@@ -142,16 +142,16 @@
     margin-right: auto;
   }
 
-  hr {
+  > hr {
     border: 0;
     font-size: $font-size-h2;
     height: 2rem;
     line-height: 1;
     margin: 2rem 0;
     text-align: center;
+    @extend .mdl-color-text--grey-600;
 
     &:before {
-      font-family: emoji;
       content:"***";
     }
   }
