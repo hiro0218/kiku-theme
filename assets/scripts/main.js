@@ -6,8 +6,8 @@ import search  from './routes/Home';   // same home
 import single  from './routes/Single';
 import page    from './routes/Single'; // same single
 
-import './module/prism.js';
-import 'material-design-lite/material.js';  // Import npm dependencies
+import './vendor/prism.js';
+import './vendor/mdl.js';
 
 // Use this variable to set up the common and page specific functions. If you
 // rename this variable, you will also need to rename the namespace below.
