@@ -10,7 +10,6 @@ A Simple WordPress Theme. (for myself)
 * Simple Design (Material Design)
  * use [Material Design Lite](https://getmdl.io/)
  * use [Google Material Design Icons](https://github.com/google/material-design-icons)
- * use [Google Fonts](https://fonts.google.com/)
 * Search Engine Optimization (SEO) ready
  * OGP, Twitter Cards
 * Table of Contents ready
