@@ -14,6 +14,7 @@ $sql = "SELECT ID, post_title, post_date
 $archives = $wpdb->get_results($sql, ARRAY_A);
 $tmp_year = 0;
 ?>
+<?php while (have_posts()) : the_post(); ?>
 <article class="entry mdl-cell mdl-cell--12-col">
   <header>
     <h1 class="entry-title"><?php the_title(); ?></h1>
@@ -46,3 +47,4 @@ $tmp_year = 0;
     </section>
   </div>
 </article>
+<?php endwhile; ?>
