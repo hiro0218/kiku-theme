@@ -67,11 +67,25 @@ module.exports = {
     }
 
   },
+  /**
+   * delay()(function(){console.log("hello1");}, 5000);
+   */
   delay: function(){
     var timer = 0;
     return function(callback, delay){
       clearTimeout(timer);
       timer = setTimeout(callback, delay);
     };
+  },
+  fadeOut: function (element) {
+    element.style.opacity = 1;
+
+    (function fade() {
+      if ((element.style.opacity -= 0.1) < 0) {
+        element.style.display = "none";
+      } else {
+        requestAnimationFrame(fade);
+      }
+    })();
   }
 }

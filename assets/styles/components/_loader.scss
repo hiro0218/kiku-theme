@@ -1,0 +1,32 @@
+.loader {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+  transition: opacity .6s linear;
+  @extend .mdl-color--white;
+
+  .loader-inner {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     height: 100%;
+     width: 100%;
+  }
+
+  .loader-spinner {
+    border-top: .8rem solid rgba(0,0,0, .2);
+    border-right: .8rem solid rgba(0,0,0, .2);
+    border-bottom: .8rem solid rgba(0,0,0, .2);
+    border-left: .8rem solid #333;
+    animation: spiner .8s infinite linear;
+
+    &,
+    &:after {
+      border-radius: 50%;
+      width: 5rem;
+      height: 5rem;
+    }
+  }
+
+}

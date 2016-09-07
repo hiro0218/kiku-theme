@@ -2,6 +2,7 @@
 <html <?php language_attributes(); ?>>
   <?php get_template_part('partials/head'); ?>
   <body <?php body_class(); ?>>
+    <?php get_template_part('components/loader'); ?>
     <div class="mdl-layout mdl-js-layout"><!-- mdl-layout -->
       <?php
         do_action('get_header');
