@@ -1,6 +1,6 @@
 <?php
 /*
- * Template Name: Monthly Archive
+ * Template Name: Archive
  */
 
 global $wpdb;
