@@ -1,6 +1,11 @@
-//
+// Global Prefixer
+$prefix-for-webkit:    true;
+$prefix-for-mozilla:   true;
+$prefix-for-microsoft: false;
+$prefix-for-opera:     false;
+$prefix-for-spec:      true;
+
 // Modular scale
-// -------------------------
 $base-size: 16px;
 $modular-scale-base:  1rem;
 $modular-scale-ratio: $major-second;

@@ -25,7 +25,7 @@
   /* Support for Firefox. */
   -moz-osx-font-smoothing: grayscale;
 
-  user-select: none;
+  @include user-select(none);
 }
 
 // Rules for sizing the icon.
