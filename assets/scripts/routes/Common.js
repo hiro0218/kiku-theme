@@ -11,7 +11,7 @@ export default {
       if (typeof e.target.MaterialLayout !== 'undefined') {
         common.delay()(function() {
           var loader = document.getElementsByClassName('loader')[0];
-          common.fadeOut(loader);
+          loader.classList.add('is-loaded');
         }, 250);
       }
     });

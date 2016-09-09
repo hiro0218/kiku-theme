@@ -6,6 +6,10 @@
   background-color: rgba(0,0,0, .5);  // same mdl-layout__obfuscator BG
   pointer-events: none;
 
+  &.is-loaded {
+    animation: fadeOut 0.8s $animation-curve-fast-out-slow-in forwards;
+  }
+
   .loader-inner {
     display: flex;
     align-items: center;
