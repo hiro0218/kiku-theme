@@ -1,10 +1,12 @@
 .loader {
   position: fixed;
-  height: 100%;
-  width: 100%;
-  z-index: 10;
+  z-index: 1050;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   background-color: rgba(0,0,0, .5);  // same mdl-layout__obfuscator BG
-  pointer-events: none;
+  pointer-events: all;
 
   &.is-loaded {
     animation: fadeOut 0.8s $animation-curve-fast-out-slow-in forwards;
