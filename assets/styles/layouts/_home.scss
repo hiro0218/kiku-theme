@@ -2,8 +2,8 @@
   max-height: 23rem;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
   cursor: pointer;
-  transition: all .3s ease;
-  will-change: animation, transform;
+  transition: box-shadow .3s ease;
+  will-change: transform;
 
   &:hover {
     box-shadow: 0 3px 3px 0 rgba(0,0,0,0.2);
@@ -17,12 +17,6 @@
 
   .entry-wrap {  // <a>
     max-height: inherit;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-content: flex-start;
-    align-items: flex-start;
 
     &:active,
     &:focus {
@@ -90,7 +84,6 @@
     position: relative;
     font-size: $font-size-sm;
     line-height: 1.75;
-    text-align: justify;
     height: 6rem;
     overflow: hidden;
     &:after {
