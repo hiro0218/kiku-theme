@@ -10,6 +10,7 @@
 
   &.is-loaded {
     animation: fadeOut 0.8s $animation-curve-fast-out-slow-in forwards;
+    pointer-events: none;
   }
 
   .loader-inner {
