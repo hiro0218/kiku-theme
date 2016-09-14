@@ -15,7 +15,7 @@ $archives = $wpdb->get_results($sql, ARRAY_A);
 $tmp_year = 0;
 ?>
 <?php while (have_posts()) : the_post(); ?>
-<article class="entry mdl-cell mdl-cell--12-col">
+<article class="entry">
   <header>
     <h1 class="entry-title"><?php the_title(); ?></h1>
   </header>

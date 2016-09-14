@@ -1,8 +1,9 @@
 <?php
   global $Image;
   $image_src = $Image->get_entry_image();
+  // mdl-cell mdl-cell--4-col 
 ?>
-<article class="card-container mdl-cell mdl-cell--4-col mdl-card mdl-color--white" title="<?php the_title(); ?>" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+<article class="card-container mdl-card mdl-color--white" title="<?php the_title(); ?>" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
   <a class="entry-wrap" href="<?php the_permalink(); ?>" itemprop="url">
     <div class="entry-image">
       <div class="entry-image-sheet" style="background-image: url('<?= $image_src ?>')">

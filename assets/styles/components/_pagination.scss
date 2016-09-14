@@ -1,6 +1,7 @@
 // pagination
 .pagination-container {
   text-align: center;
+  @include flex-item(100%, 1);  // $min-width, $max-cols
 }
 
 .pagination {
@@ -77,64 +78,58 @@
 
 
 // pager
+.pager-container {
+  @include flex-item(100%, 1);
+  margin-bottom: $spacer;
+}
 .pager {
+  display: flex;
   padding-left: 0;
-  margin: $spacer 0;
   list-style: none;
-  text-align: center;
 
-  @include clearfix;
+  li {
+    flex: 1 0 50%;
 
-  li > a {
-    text-decoration: none;
-    line-height: 2;
-    padding: .75rem 1rem;
-    width: 50%;
-    @extend .mdl-color-text--grey-600;
+    > a {
+      text-decoration: none;
+      line-height: 2;
+      padding: .75rem 0;
+      @extend .mdl-color-text--grey-600;
 
-    .instruct {
-      text-transform: uppercase;
-      font-weight: bold;
-    }
-    .title,
-    .instruct {
-      display: block;
-    }
-    .material-icons {
-      font-size: 1.5rem;
-      width: 2rem;
-      padding-top: 1.5rem;
-      @extend .mdl-color-text--grey-800;
-    }
+      .arrow-icon,
+      .instruct,
+      .title {
+        display: block;
+      }
 
-    &:focus {
-      outline: 0;
-    }
+      .instruct {
+        display: block;
+        text-transform: uppercase;
+        font-weight: bold;
+        @extend .mdl-color-text--grey-500;
+      }
 
-    @media screen and (max-width: $screen-xs) {
-      width: 100%;
+      .material-icons {
+        font-size: 2rem;
+        width: 2rem;
+        @extend .mdl-color-text--grey-800;
+      }
+
+      &:focus {
+        outline: 0;
+      }
+
+      @media screen and (max-width: $screen-xs) {
+        width: 100%;
+      }
     }
   }
 
   .previous > a {
-    float: left;
     text-align: left;
-    .material-icons {
-      float: left;
-    }
-    .title {
-      padding-left: 2rem;
-    }
   }
   .next > a {
-    float: right;
     text-align: right;
-    .material-icons {
-      float: right;
-    }
-    .title {
-      padding-right: 2rem;
-    }
   }
 
 }
