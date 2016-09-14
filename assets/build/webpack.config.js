@@ -143,11 +143,11 @@ const webpackConfig = {
       disable: (config.enabled.watcher),
     }),
     // new webpack.ProvidePlugin({
-      // $: 'jquery',
-      // jQuery: 'jquery',
-      // 'window.jQuery': 'jquery',
-      // Tether: 'tether',
-      // 'window.Tether': 'tether',
+    // $: 'jquery',
+    // jQuery: 'jquery',
+    // 'window.jQuery': 'jquery',
+    // Tether: 'tether',
+    // 'window.Tether': 'tether',
     // }),
     new webpack.DefinePlugin({
       WEBPACK_PUBLIC_PATH: (config.enabled.watcher)
