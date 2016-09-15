@@ -7,9 +7,13 @@
     </a>
   </li>
   <li class="list-icon-arrow"><i class="material-icons">navigate_next</i></li>
-  <?php if ( is_single() ): ?>
+  <?php if ( is_singular() ): ?>
   <?php
-    $catid = get_the_category()[0]->cat_ID;
+    $category = get_the_category();
+    if (!empty($category)):
+  ?>
+  <?php
+    $catid = $category[0]->cat_ID;
     $allcats = array($catid);
 
     while( !$catid == 0 ) {
@@ -28,7 +32,8 @@
     <i class="material-icons">navigate_next</i>
   </li>
   <?php endforeach; ?>
-  <?php endif; ?>
+  <?php endif;  // $category is not empty ?>
+  <?php endif;  // is_singular() ?>
   <li class="active" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
     <a href="<?= get_the_permalink(); ?>" itemprop="item">
       <i class="material-icons">location_on</i>
