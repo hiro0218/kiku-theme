@@ -8,6 +8,6 @@ export default {
     common.zoomImage(entry);
   },
   finalize() {
-    
+
   }
 };

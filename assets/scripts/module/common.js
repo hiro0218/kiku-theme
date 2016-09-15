@@ -1,14 +1,7 @@
 module.exports = {
-  isSmartPhone: function() {
-    var ua = navigator.userAgent.toLowerCase();
-    if (ua.indexOf('iphone') > 0 || ua.indexOf('ipod') > 0 || ua.indexOf('android') > 0 && ua.indexOf('mobile') > 0){
-        return true;
-    }
-    return false;
-  },
-  clickableElement: function(entry) {
-    for (var i = 0, length = entry.length; i < length; i++) {
-      entry[i].addEventListener('click', function(event) {
+  clickableElement: function (entry) {
+    for (var i = 0, length = entry.length; i < length; i += 1) {
+      entry[i].addEventListener('click', function (event) {
         event.preventDefault();
         var a = this.getElementsByTagName('a')[0];
         if (a) {
@@ -17,19 +10,20 @@ module.exports = {
       });
     }
   },
-  addExternalLink: function(entry) {
+  addExternalLink: function (entry) {
+    var self = this;
     var icon = document.createElement('i');
     icon.appendChild(document.createTextNode('open_in_new'));
     icon.classList.add('material-icons', 'external-link');
-
-    [].forEach.call(entry.getElementsByTagName('a'), function(element) {
-      // ブックマークレットなどは除く
-      if (element.getAttribute('href').substring(0, 10) == "javascript") {
-        return false;
-      }
-
+    [].forEach.call(entry.getElementsByTagName('a'), function (element) {
+      self.setLinkIcon(element, icon);
+    });
+  },
+  setLinkIcon: function (element, icon) {
+    // ブックマークレットなどは除く
+    if (element.getAttribute('href').substring(0, 10) !== 'javascript') {
       // 外部リンクだった場合
-      if (element.origin !== location.origin && element.origin !== undefined) {
+      if (element.origin !== location.origin && element.origin !== 'undefined') {
         element.setAttribute('target', '_blank');
         element.setAttribute('rel', 'nofollow');
 
@@ -38,10 +32,9 @@ module.exports = {
           element.appendChild(icon.cloneNode(true));
         }
       }
-
-    });
+    }
   },
-  zoomImage: function(entry) {
+  zoomImage: function (entry) {
     var ImageZoom = require('image-zoom');
     var entryImg = entry.getElementsByTagName('img');
 
@@ -50,42 +43,30 @@ module.exports = {
       return;
     }
 
-    for (var i = 0, length = entryImg.length; i < length; i++) {
+    for (var i = 0, length = entryImg.length; i < length; i += 1) {
       // wrap Atag
-      if (entryImg[i].parentNode.nodeName.toUpperCase() === "A") {
+      if (entryImg[i].parentNode.nodeName.toUpperCase() === 'A') {
         continue;
       }
 
       // cursor zoom-in
       entryImg[i].style.cursor = 'zoom-in';
 
-      entryImg[i].addEventListener('click', function(event) {
+      entryImg[i].addEventListener('click', function (event) {
         event.stopPropagation();
         var zoom = new ImageZoom(this).overlay().padding(64);
         zoom.show();
       });
     }
-
   },
   /**
    * delay()(function(){console.log("hello1");}, 5000);
    */
-  delay: function(){
+  delay: function () {
     var timer = 0;
-    return function(callback, delay){
+    return function (callback, delay) {
       clearTimeout(timer);
       timer = setTimeout(callback, delay);
     };
-  },
-  fadeOut: function (element) {
-    element.style.opacity = 1;
-
-    (function fade() {
-      if ((element.style.opacity -= 0.1) < 0.1) {
-        element.style.display = "none";
-      } else {
-        requestAnimationFrame(fade);
-      }
-    })();
   }
-}
+};
