@@ -4,6 +4,7 @@
     <?php get_template_part('partials/entry-meta'); ?>
   </header>
   <div class="entry-content" itemprop="articleBody">
+    <?= get_the_post_thumbnail(null, 'full', ['class' => 'eyecatch']); ?>
     <?php the_content(); ?>
   </div>
   <footer>
