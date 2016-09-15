@@ -18,9 +18,8 @@
 }
 
 .main-container {
-  @include flex-grid;
   min-height: calc(100vh - #{$layout-desktop-header-height});
-  // max-width: $container-max-width;
+  max-width: $container-max-width;
 
   @media screen and (max-width: $layout-screen-size-threshold) {
     min-height: calc(100vh - #{$layout-mobile-header-height});

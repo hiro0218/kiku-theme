@@ -10,11 +10,12 @@
       ?>
       <div class="wrap mdl-layout__content" role="document">
         <main>
-          <div class="main-container">
+          <div class="main-container mdl-grid">
             <?php include App\template()->main(); ?>
           </div>
-          <?php Kiku\Components\the_pager(); ?>
-          <?php Kiku\Components\the_pagination(); ?>
+          <nav class="pagination-container">
+            <?php Kiku\Components\the_pagination(); ?>
+          </nav>
         </main>
         <?php
           do_action('get_footer');

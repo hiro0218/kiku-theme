@@ -83,7 +83,7 @@ function the_pagination() {
     }
 
     if ( isset($pagination) ) {
-        echo '<nav class="pagination-container"><ul class="pagination">'. $pagination .'</ul></nav>';
+        echo '<ul class="pagination">'. $pagination .'</ul>';
     }
 }
 
@@ -96,8 +96,8 @@ function the_pager() {
 
     $pager = "";
     $args = [
-        'previous_string' => '<span class="arrow-icon"><i class="material-icons">chevron_left</i></span>',
-        'next_string'     => '<span class="arrow-icon"><i class="material-icons">chevron_right</i></span>',
+        'previous_string' => '<i class="material-icons">chevron_left</i>',
+        'next_string'     => '<i class="material-icons">chevron_right</i>',
     ];
     $prev = [];
     $next = [];
@@ -146,5 +146,5 @@ function the_pager() {
         $pager .= '</li>';
     }
 
-    echo '<nav class="pager-container"><ul class="pager">'. $pager .'</ul></nav>';
+    echo '<ul class="pager">'. $pager .'</ul>';
 }

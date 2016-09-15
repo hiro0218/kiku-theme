@@ -1,6 +1,4 @@
 .card-container {
-  @include flex-item(15rem, 3);  // $min-width, $max-cols
-  max-width: $card-width !important;
   max-height: 23rem;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
   cursor: pointer;
