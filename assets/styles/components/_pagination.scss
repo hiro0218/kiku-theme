@@ -1,39 +1,25 @@
 // pagination
 .pagination-container {
   text-align: center;
+  margin: ($spacer * 2) 0;
 }
 
 .pagination {
-  display: inline-block;
   padding-left: 0;
-  margin: $spacer 0;
 
   > li {
     display: inline;
 
     > a, > span {
-      position: relative;
       font-size: $font-size-sm;
-      text-decoration: none;
-      line-height: $line-height-base;
       margin: 0 ($spacer / 4);
-      padding: .75rem 1rem;
-      float: left;
+      padding: .75rem;
 
-      border-radius: 2px;
-      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12);
-
-      @extend .mdl-color--white, .mdl-color-text--grey-600;
+      @extend .mdl-color-text--grey-600;
 
       &:hover,
       &:focus {
-        box-shadow: 0 3px 3px 0 rgba(0,0,0,0.2);
-      }
-      &:focus {
         outline: 0;
-      }
-      &:active {
-        transform: scale(0.95);
       }
 
       @media screen and (max-width: $screen-xs) {
@@ -51,17 +37,10 @@
     margin-left: $spacer;
   }
   .active > span {
-    &,
-    &:hover,
-    &:focus {
-      font-weight: bold;
-      @extend .mdl-color--grey-600, .mdl-color-text--white;
-      cursor: default;
-      box-shadow: inherit;
-    }
-    &:active {
-      transform: none;
-    }
+    font-weight: bold;
+    cursor: default;
+    border-radius: 2px;
+    @extend .mdl-color--grey-600, .mdl-color-text--white;
   }
 
   .next > a,
