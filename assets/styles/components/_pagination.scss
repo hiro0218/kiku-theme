@@ -78,61 +78,51 @@
 
 // pager
 .pager {
-  padding-left: 0;
-  margin: $spacer 0;
-  list-style: none;
-  text-align: center;
-
-  @include clearfix;
-
-  li > a {
-    text-decoration: none;
-    line-height: 2;
-    padding: .75rem 1rem;
-    width: 50%;
+  a {
+    border-radius: ($spacer * .125);
+    padding: .5rem;
     @extend .mdl-color-text--grey-600;
 
-    .instruct {
-      text-transform: uppercase;
-      font-weight: bold;
+    &:hover {
+      @extend .mdl-color--grey-300;
     }
-    .title,
-    .instruct {
+
+    .pager-icon,
+    .pager-title,
+    .pager-instruct {
       display: block;
     }
-    .material-icons {
-      font-size: 1.5rem;
+    .pager-icon {
       width: 2rem;
-      padding-top: 1.5rem;
+      text-align: center;
       @extend .mdl-color-text--grey-800;
+    }
+    .pager-instruct {
+      text-transform: uppercase;
+      font-weight: bold;
+      @extend .mdl-color-text--grey-500;
     }
 
     &:focus {
       outline: 0;
     }
-
-    @media screen and (max-width: $screen-xs) {
-      width: 100%;
-    }
   }
 
-  .previous > a {
-    float: left;
+  .previous {
     text-align: left;
-    .material-icons {
+    .pager-icon {
       float: left;
     }
-    .title {
+    .pager-title {
       padding-left: 2rem;
     }
   }
-  .next > a {
-    float: right;
+  .next {
     text-align: right;
-    .material-icons {
+    .pager-icon {
       float: right;
     }
-    .title {
+    .pager-title {
       padding-right: 2rem;
     }
   }

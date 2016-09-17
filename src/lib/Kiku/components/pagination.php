@@ -83,7 +83,9 @@ function the_pagination() {
     }
 
     if ( isset($pagination) ) {
+        echo '<nav class="pagination-container">';
         echo '<ul class="pagination">'. $pagination .'</ul>';
+        echo '</nav>';
     }
 }
 
@@ -96,8 +98,8 @@ function the_pager() {
 
     $pager = "";
     $args = [
-        'previous_string' => '<i class="material-icons">chevron_left</i>',
-        'next_string'     => '<i class="material-icons">chevron_right</i>',
+        'previous_string' => '<span class="pager-icon"><i class="material-icons">chevron_left</i></span>',
+        'next_string'     => '<span class="pager-icon"><i class="material-icons">chevron_right</i></span>',
     ];
     $prev = [];
     $next = [];
@@ -116,13 +118,11 @@ function the_pager() {
         $prev['attr']  = '';
     }
     if (!empty($prev['uri'])) {
-        $pager .= '<li class="previous '. $prev['attr'] .'">';
-        $pager .= '<a href="' . $prev['uri'] . '" title="'. $prev['title'] .'">';
+        $pager .= '<a href="' . $prev['uri'] . '"  class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet previous '. $prev['attr'] .'" title="'. $prev['title'] .'">';
         $pager .= $args['previous_string'];
-        $pager .= '<span class="instruct">prev</span>';
-        $pager .= '<span class="title">'. $prev['title'] .'</span>';
+        $pager .= '<span class="pager-instruct">prev</span>';
+        $pager .= '<span class="pager-title">'. $prev['title'] .'</span>';
         $pager .= '</a>';
-        $pager .= '</li>';
     }
 
     // next post
@@ -137,14 +137,14 @@ function the_pager() {
         $next['attr']  = '';
     }
     if (!empty($next['uri'])) {
-        $pager .= '<li class="next '. $next['attr'] .'">';
-        $pager .= '<a href="' . $next['uri'] . '" title="'. $next['title'] .'">';
+        $pager .= '<a href="' . $next['uri'] . '" class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet next '. $next['attr'] .'" title="'. $next['title'] .'">';
         $pager .= $args['next_string'];
-        $pager .= '<span class="instruct">next</span>';
-        $pager .= '<span class="title">'. $next['title'] .'</span>';
+        $pager .= '<span class="pager-instruct">next</span>';
+        $pager .= '<span class="pager-title">'. $next['title'] .'</span>';
         $pager .= '</a>';
-        $pager .= '</li>';
     }
 
-    echo '<ul class="pager">'. $pager .'</ul>';
+    echo '<nav class="pager mdl-grid">';
+    echo $pager;
+    echo '</nav>';
 }
