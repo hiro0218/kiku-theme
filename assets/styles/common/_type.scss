@@ -42,7 +42,10 @@ h5 { font-size: $font-size-h5; }
 h6 { font-size: $font-size-h6; }
 
 pre {
-  overflow: auto;
+  overflow: visible;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 pre,
