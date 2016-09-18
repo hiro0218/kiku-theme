@@ -1,6 +1,7 @@
 // pagination
 .pagination-container {
-  text-align: center;
+  display: flex;
+  justify-content: center;
   margin: ($spacer * 2) 0;
 }
 
@@ -23,9 +24,15 @@
       }
 
       @media screen and (max-width: $screen-xs) {
-        display: none;
+        // display: none;
       }
 
+    }
+
+    @media screen and (max-width: $screen-xs) {
+      &:not(.frist):not(.next):not(.previous):not(.last):not(.active) {
+        display: none;
+      }
     }
 
   }
@@ -41,14 +48,6 @@
     cursor: default;
     border-radius: 2px;
     @extend .mdl-color--grey-600, .mdl-color-text--white;
-  }
-
-  .next > a,
-  .previous > a,
-  .active > span {
-    @media screen and (max-width: $screen-xs) {
-      display: block;
-    }
   }
 
 }
