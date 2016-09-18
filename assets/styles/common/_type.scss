@@ -1,7 +1,11 @@
-
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   line-height: 1.2;
-  margin: 1.414rem 0 0.5rem;
+  margin: 1.414rem 0 .5rem;
   @extend .mdl-color-text--grey-800;
 
   small,
@@ -34,7 +38,10 @@ h6 {
   }
 }
 
-h1 { font-size: $font-size-h1; margin-top: 0; }
+h1 {
+  font-size: $font-size-h1;
+  margin-top: 0;
+}
 h2 { font-size: $font-size-h2; }
 h3 { font-size: $font-size-h3; }
 h4 { font-size: $font-size-h4; }

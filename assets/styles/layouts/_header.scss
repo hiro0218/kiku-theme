@@ -1,5 +1,5 @@
 .header-navigation {
-  box-shadow: 0 0 3px 0 rgba(0,0,0,0.24);
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, .24);
   line-height: 1;
   @extend .mdl-color--white;
 
@@ -23,7 +23,6 @@
   }
 
   .section-title {
-    // max-width: 20rem;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

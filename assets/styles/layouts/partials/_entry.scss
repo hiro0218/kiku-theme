@@ -52,23 +52,13 @@
   li + li {
     margin-top: 0.25rem;
   }
-  
+
   blockquote {
     // position: relative;
     padding: 1.6rem;
     margin-left: .8em;
     border-left: 4px solid unquote("rgb(#{$palette-grey-200})");
     @extend .mdl-color-text--grey-500;
-
-    // &:before {
-    //   position: absolute;
-    //   top: 0;
-    //   left: 0;
-    //   content: '"';
-    //   font-family: emoji;
-    //   font-size: 2rem;
-    //   line-height: 1rem;
-    // }
 
     > *:first-child,
     > *:last-child {
@@ -152,7 +142,7 @@
     @extend .mdl-color-text--grey-600;
 
     &:before {
-      content:"***";
+      content: "***";
     }
   }
 

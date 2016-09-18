@@ -2,62 +2,59 @@
   font-family: 'Material Icons';
   font-style: normal;
   font-weight: 400;
-  src: url("~material-design-icons/iconfont/MaterialIcons-Regular.eot");
   src: local('Material Icons'),
        local('MaterialIcons-Regular'),
+       url("~material-design-icons/iconfont/MaterialIcons-Regular.eot"),
        url("~material-design-icons/iconfont/MaterialIcons-Regular.woff2") format('woff2'),
        url("~material-design-icons/iconfont/MaterialIcons-Regular.woff") format('woff'),
        url("~material-design-icons/iconfont/MaterialIcons-Regular.ttf") format('truetype');
 }
 .material-icons {
   @include typo-icon;
+  @include user-select(none);
+  @include size(1rem);
 
-  width: 1rem;
-  height: 1rem;
   font-size: 1rem;
   white-space: nowrap;
   direction: ltr;
   vertical-align: middle;
 
-  /* Support for Safari and Chrome. */
+  // Support for Safari and Chrome
   text-rendering: optimizeLegibility;
 
-  /* Support for Firefox. */
+  // Support for Firefox
   -moz-osx-font-smoothing: grayscale;
 
-  @include user-select(none);
-}
+  // Rules for sizing the icon.
+  .md-18 {
+    font-size: 18px;
+  }
+  .md-24 {
+    font-size: 24px;
+  }
+  .md-36 {
+    font-size: 36px;
+  }
+  .md-48 {
+    font-size: 48px;
+  }
 
-// Rules for sizing the icon.
-.material-icons.md-18 {
-  font-size: 18px;
-}
-.material-icons.md-24 {
-  font-size: 24px;
-}
-.material-icons.md-36 {
-  font-size: 36px;
-}
-.material-icons.md-48 {
-  font-size: 48px;
-}
+  // Rules for using icons as black on a light background.
+  .md-dark {
+    color: rgba(0, 0, 0, 0.54);
+    .md-inactive {
+      color: rgba(0, 0, 0, 0.26);
+    }
+  }
 
-// Rules for using icons as black on a light background.
-.material-icons.md-dark {
-  color: rgba(0, 0, 0, 0.54);
+  // Rules for using icons as white on a dark background.
+  .md-light {
+    color: rgba(255, 255, 255, 1);
+    .md-inactive {
+      color: rgba(255, 255, 255, 0.3);
+    }
+  }
 }
-.material-icons.md-dark.md-inactive {
-  color: rgba(0, 0, 0, 0.26);
-}
-
-// Rules for using icons as white on a dark background.
-.material-icons.md-light {
-  color: rgba(255, 255, 255, 1);
-}
-.material-icons.md-light.md-inactive {
-  color: rgba(255, 255, 255, 0.3);
-}
-
 
 // Emoji
 // @link https://hail2u.net/blog/webdesign/emoji-shotcut-family.html

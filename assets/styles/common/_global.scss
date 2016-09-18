@@ -19,7 +19,7 @@
 
 // Body reset
 html {
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 body {
@@ -45,7 +45,7 @@ body {
 a {
   color: $link-color;
   text-decoration: none;
-  transition: all .3s ease;
+  transition: color .3s ease, border .3s ease;
 
   &:hover,
   &:focus {

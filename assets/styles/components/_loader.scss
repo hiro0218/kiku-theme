@@ -5,11 +5,11 @@
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: rgba(0,0,0, .5);  // same mdl-layout__obfuscator BG
+  background-color: rgba(0, 0, 0, .5);  // same mdl-layout__obfuscator BG
   pointer-events: all;
 
   &.is-loaded {
-    animation: fadeOut 0.8s $animation-curve-fast-out-slow-in forwards;
+    animation: fadeOut .8s $animation-curve-fast-out-slow-in forwards;
     pointer-events: none;
   }
 
@@ -17,14 +17,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100%;
-    width: 100%;
+    @include size(100%);
   }
 
   .loader-spinner {
     svg {
-      width: 5rem;
-      height: 5rem;
+      @include size(5rem);
       path,
       rect {
         fill: #fff;

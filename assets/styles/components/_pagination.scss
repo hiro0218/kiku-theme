@@ -11,7 +11,8 @@
   > li {
     display: inline;
 
-    > a, > span {
+    > a,
+    > span {
       font-size: $font-size-sm;
       margin: 0 ($spacer / 4);
       padding: .75rem;
@@ -22,11 +23,6 @@
       &:focus {
         outline: 0;
       }
-
-      @media screen and (max-width: $screen-xs) {
-        // display: none;
-      }
-
     }
 
     @media screen and (max-width: $screen-xs) {

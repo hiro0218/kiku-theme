@@ -28,8 +28,12 @@
     padding: 0;
 
     &.children {
-      a { padding-left: 2rem; }
-      .children a { padding-left: 3rem; }
+      a {
+        padding-left: 2rem;
+      }
+      .children a {
+        padding-left: 3rem;
+      }
     }
   }
 
