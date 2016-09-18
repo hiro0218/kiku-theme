@@ -54,6 +54,7 @@ const webpackConfig = {
           loader: [
             `css?${sourceMapQueryStr}`,
             'postcss',
+            'csscomb',
           ],
         }),
       },
@@ -65,6 +66,7 @@ const webpackConfig = {
           loader: [
             `css?${sourceMapQueryStr}`,
             'postcss',
+            'csscomb',
             `resolve-url?${sourceMapQueryStr}`,
             `sass?${sourceMapQueryStr}`,
           ],
