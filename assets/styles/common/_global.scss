@@ -12,6 +12,11 @@
   scroll-behavior: smooth;
 }
 
+@include selection {
+  color: unquote("rgb(#{$palette-grey-900})");
+  background: unquote("rgb(#{$palette-grey-300})");
+}
+
 // Body reset
 html {
   -webkit-tap-highlight-color: rgba(0,0,0,0);
