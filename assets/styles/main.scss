@@ -8,10 +8,10 @@
 
 // prism.js
 @import "plugins/prismjs";
-@import "~prismjs/plugins/line-numbers/prism-line-numbers.css";
+@import "plugins/prism-line-numbers";
 
 // image-zoom
-@import "~image-zoom/dist/imagezoom.css";
+@import "plugins/image-zoom";
 
 // styles
 @import "animation";
