@@ -8,7 +8,10 @@
       "./scripts/customizer.js"
     ]
   },
-  "path": "dist",
+  "watch": [
+    "templates/**/*.php",
+    "src/**/*.php"
+  ],
   "publicPath": "../",
   "devUrl": "https://example.dev",
   "proxyUrl": "https://localhost:3000",

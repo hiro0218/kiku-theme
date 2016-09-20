@@ -1,22 +1,21 @@
-/* eslint-disable import/no-extraneous-dependencies */
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
-const url = require('url');
+const webpack = require('webpack');
+const BrowserSyncPlugin = require('./webpack.plugin.browsersync');
 
 const config = require('./config');
 
 module.exports = {
   output: { pathinfo: true },
   debug: true,
-  devTool: 'cheap-module-source-map',
+  devtool: '#cheap-module-source-map',
   plugins: [
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin(),
     new BrowserSyncPlugin({
-      host: url.parse(config.proxyUrl).hostname,
-      port: url.parse(config.proxyUrl).port,
-      proxy: config.devUrl,
-      files: [
-        'templates/**/*.php',
-        'src/**/*.php',
-      ],
+      target: config.devUrl,
+      publicPath: config.publicPath,
+      proxyUrl: config.proxyUrl,
+      browserSyncOptions: { files: config.watch },
     }),
   ],
 };
