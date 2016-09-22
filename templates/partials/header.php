@@ -3,7 +3,6 @@
     <span class="mdl-layout-title"><!-- Title -->
       <a class="brand" href="<?= BLOG_URL; ?>"><?php bloginfo('name'); ?></a>
     </span>
-    <?php get_template_part('partials/page-header'); ?>
     <div class="mdl-layout-spacer"></div>
     <!-- Search -->
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
