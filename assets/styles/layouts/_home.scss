@@ -10,7 +10,7 @@
     padding: 1rem;
     font-size: $font-size-h2;
     font-weight: normal;
-    border-bottom: 1px solid unquote("rgb(#{$palette-grey-100})");
+    border-bottom: 1px solid unquote("rgb(#{$palette-grey-300})");
   }
 
   .entry-wrap {
@@ -29,7 +29,7 @@
 
     &:hover {
       cursor: pointer;
-      @extend .mdl-color--grey-100;
+      @extend .mdl-color--grey-200;
       .entry-image-sheet {
         transform: scale(1.15);
       }
@@ -50,6 +50,7 @@
     .entry-image-none {
       text-align: center;
       line-height: 80px;
+      border: 1px solid unquote("rgb(#{$palette-grey-300})");
       > .material-icons {
         font-size: 2rem;
         @include size(2rem);

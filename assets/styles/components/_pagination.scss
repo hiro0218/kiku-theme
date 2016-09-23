@@ -10,6 +10,13 @@
 
   > li {
     display: inline;
+    > a {
+      transition: background .3s;
+
+      &:hover {
+        @extend .mdl-color--grey-300;
+      }
+    }
 
     > a,
     > span {
@@ -55,6 +62,7 @@
   a {
     border-radius: ($spacer * .125);
     padding: .5rem;
+    transition: background .3s;
     @extend .mdl-color-text--grey-600;
 
     &:hover {
