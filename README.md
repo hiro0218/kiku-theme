@@ -12,15 +12,15 @@ A Simple WordPress Theme. (for myself)
  * use [Google Material Design Icons](https://github.com/google/material-design-icons)
 * Ready
  * Search Engine Optimization (SEO)
-   * OGP, Twitter Cards
+    * OGP, Twitter Cards
  * Table of Contents
  * Syntax Highlighter
-   * use [Prism.js](http://prismjs.com/)
+    * use [Prism.js](http://prismjs.com/)
  * Share Button
-   * Twitter
-   * Facebook
-   * Hatena
-   * LINE
+    * Twitter
+    * Facebook
+    * Hatena
+    * LINE
 * Don't use jQuery (Vanilla only)
 * Remove Comments function
 * Fit to Japanese Language
