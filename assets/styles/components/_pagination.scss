@@ -23,7 +23,7 @@
       font-size: $font-size-sm;
       margin: 0 ($spacer / 4);
       padding: .75rem;
-
+      border-radius: 2px;
       @extend .mdl-color-text--grey-600;
 
       &:hover,
@@ -49,7 +49,6 @@
   .active > span {
     font-weight: bold;
     cursor: default;
-    border-radius: 2px;
     @extend .mdl-color--grey-600, .mdl-color-text--white;
   }
 
@@ -64,6 +63,7 @@
     padding: .5rem;
     transition: background .3s;
     @extend .mdl-color-text--grey-600;
+    @include ellipsis(100%);
 
     &:hover {
       @extend .mdl-color--grey-300;

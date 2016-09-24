@@ -1,6 +1,8 @@
 .entry-similar {
   a {
     border: 0 !important;
+    @include ellipsis(100%);
+
     &:hover {
       text-decoration: underline;
     }
