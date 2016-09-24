@@ -10,33 +10,31 @@ A Simple WordPress Theme. (for myself)
 * Simple Design (Material Design)
  * use [Material Design Lite](https://getmdl.io/)
  * use [Google Material Design Icons](https://github.com/google/material-design-icons)
-* Search Engine Optimization (SEO) ready
- * OGP, Twitter Cards
-* Table of Contents ready
-* Syntax Highlighter ready
- * use [Prism.js](http://prismjs.com/)
-* Share Button ready
- * Twitter
- * Facebook
- * Hatena
- * LINE
+* Ready
+ * Search Engine Optimization (SEO)
+   * OGP, Twitter Cards
+ * Table of Contents
+ * Syntax Highlighter
+   * use [Prism.js](http://prismjs.com/)
+ * Share Button
+   * Twitter
+   * Facebook
+   * Hatena
+   * LINE
 * Don't use jQuery (Vanilla only)
 * Remove Comments function
 * Fit to Japanese Language
 
 ## Requirements
 Installation notes:
-* PHP >= 5.6.x
-* Composer
-* Node.js >= 0.12.x
-* WordPress >= 4.5.x (latest)
+* [PHP](http://php.net/manual/en/install.php) >= 5.6.x
+* [Composer](https://getcomposer.org/download/)
+* [Node.js](http://nodejs.org/) >= 4.5
+* [WordPress](https://wordpress.org/) >= 4.6.x (latest)
 
 ### Browser Support
-Supported browsers:
+Supported browsers: (latest)
 * Chrome
 * Edge
 * Firefox
-
-Supported versioned browsers (passive):
-* Internet Explorer 11
-* Safari 8
+* Safari 10
