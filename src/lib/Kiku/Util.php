@@ -33,7 +33,7 @@ class Util {
      */
 
     // 記事内容の抜粋
-    public static function get_excerpt_content($length = EXCERPT_LENGTH, $hellip = EXCERPT_HELLIP) {
+    public static function get_excerpt_content() {
         global $post;
 
         if ( has_excerpt( $post->ID ) ) {
@@ -52,11 +52,11 @@ class Util {
         }
 
         // 整形
-        return wp_trim_words($content, EXCERPT_LENGTH, EXCERPT_HELLIP);
+        return mb_substr($content, 0, EXCERPT_LENGTH) . EXCERPT_HELLIP;
     }
 
     private static function remove_tags($str) {
-        $str = strip_tags($str);
+        $str = wp_strip_all_tags($str);
         $str = strip_shortcodes($str);
 
         $str = self::remove_white_space($str, "");
