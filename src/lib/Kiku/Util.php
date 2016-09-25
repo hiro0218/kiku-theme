@@ -35,16 +35,18 @@ class Util {
     // 記事内容の抜粋
     public static function get_excerpt_content() {
         global $post;
+        $content = "";
 
         if ( has_excerpt( $post->ID ) ) {
             // This post has excerpt
-            $content = self::remove_tags( get_the_excerpt() );
-
+            $content = get_the_excerpt();
         } else {
             // This post has no excerpt
-            // タグを省いて取得
-            $content = self::remove_tags( $post->post_content );
+            $content = $post->post_content;
         }
+
+        // タグを省いて取得
+        $content = self::remove_tags( $content );
 
         // 何も取得できない
         if ( empty($content) ) {
@@ -66,6 +68,7 @@ class Util {
 
     // スペースを除く
     public static function remove_white_space($tag, $last_line_break = PHP_EOL) {
+        $tag = preg_replace( '/(?:\n|\r|\r\n)/', '', $tag );
         return preg_replace( '/>(\s|\n|\r)+</', '><', $tag ). $last_line_break;
     }
 
