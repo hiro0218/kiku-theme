@@ -5,32 +5,14 @@
 
   .mdl-layout-title {
     font-size: $font-size-lg;
-
-    & + .section-title:before {
-      content: "-";
-      padding: 0 .5rem;
-    }
-
   }
   .brand {
-    @extend .mdl-color-text--grey-800;
+    @extend .mdl-color-text--grey-900;
     &:hover {
       text-decoration: none;
     }
     &:focus {
       outline: none;
-    }
-  }
-
-  .section-title {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    h1 {
-      display: inline;
-      font-size: $font-size-lg;
-      font-weight: normal;
-      @extend .mdl-color-text--grey-700;
     }
   }
 
