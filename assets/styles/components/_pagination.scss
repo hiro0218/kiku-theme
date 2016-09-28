@@ -63,7 +63,6 @@
     padding: .5rem;
     transition: background .3s;
     @extend .mdl-color-text--grey-600;
-    @include ellipsis(100%);
 
     &:hover {
       @extend .mdl-color--grey-300;
@@ -83,6 +82,9 @@
       text-transform: uppercase;
       font-weight: bold;
       @extend .mdl-color-text--grey-500;
+    }
+    .pager-title {
+      @include ellipsis(100%);
     }
 
     &:focus {
