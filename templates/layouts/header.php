@@ -18,7 +18,7 @@
   </div>
 </header>
 <div class="mdl-layout__drawer">
-  <?php if (App\display_sidebar()) : ?>
-    <?php get_template_part('partials/sidebar'); ?>
-  <?php endif; ?>
+<?php if (App\display_sidebar()) : ?>
+  <?php get_template_part('layouts/sidebar'); ?>
+<?php endif; ?>
 </div>

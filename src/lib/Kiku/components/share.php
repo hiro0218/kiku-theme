@@ -70,12 +70,14 @@ EOM;
     }
 
     if ($is_twitter || $is_facebook || $is_hatena || $is_line) {
+        echo '<section>';
         echo '<ul class="entry-share">';
         echo $twitter;
         echo $facebook;
         echo $hatena;
         echo $line;
         echo '</ul>';
+        echo '</section>';
 
         if ($is_hatena) {
             wp_enqueue_script('bookmark_button', "//b.st-hatena.com/js/bookmark_button.js", [], null, true);

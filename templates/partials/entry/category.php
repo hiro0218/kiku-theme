@@ -1,7 +1,8 @@
 <?php
   global $Entry;
   $categories = $Entry->get_category();
-  if (!empty($categories)): ?>
+?>
+<?php if (!empty($categories)): ?>
 <ul class="entry-category">
   <li><i class="material-icons">&#xE2C7;</i></li>
 <?php foreach($categories as $category): ?>

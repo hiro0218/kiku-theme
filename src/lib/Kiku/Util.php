@@ -50,7 +50,7 @@ class Util {
 
         // 何も取得できない
         if ( empty($content) ) {
-            return "👻";
+            return NOTHING_CONTENT;
         }
 
         // 整形
@@ -60,7 +60,6 @@ class Util {
     private static function remove_tags($str) {
         $str = wp_strip_all_tags($str);
         $str = strip_shortcodes($str);
-
         $str = self::remove_white_space($str, "");
 
         return $str;
@@ -79,10 +78,7 @@ class Util {
 
     // 更新されているか
     public static function is_modified_post() {
-        $mtime = get_the_modified_time('Ymd');
-        $ptime = get_the_time('Ymd');
-
-        return ($ptime >= $mtime) ? false : true;
+        return (get_the_time('Ymd') <= get_the_modified_time('Ymd'));
     }
 
     // 更新時間差
@@ -91,7 +87,8 @@ class Util {
             return '';
         }
 
-        $difference = (CURRENT_TIMESTAMP - $timestamp);
+        $current_time = CURRENT_TIMESTAMP ?: time();
+        $difference = ($current_time - $timestamp);
         $periods = ['second', 'minute', 'hour', 'day', 'week', 'month', 'year', 'decade'];
         $lengths = [60, 60, 24, 7, 4.35, 12, 10];
 

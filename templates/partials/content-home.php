@@ -21,7 +21,7 @@
         <?php the_excerpt(); ?>
       </div>
       <footer class="entry-footer">
-        <?php get_template_part('partials/entry-meta'); ?>
+        <?php get_template_part('partials/entry/meta'); ?>
       </footer>
     </div>
   </a>

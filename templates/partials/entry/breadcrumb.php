@@ -1,4 +1,5 @@
 <?php if( is_singular() ): ?>
+<nav>
 <ol itemscope itemtype="http://schema.org/BreadcrumbList" class="breadcrumb">
   <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
     <a href="<?= BLOG_URL ?>" itemprop="item">
@@ -26,9 +27,7 @@
   ?>
   <?php foreach ( $allcats as $catid ): ?>
   <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-    <a href="<?= get_category_link($catid); ?>" itemprop="item">
-      <span itemprop="name"><?= get_cat_name($catid); ?></span>
-    </a>
+    <a href="<?= get_category_link($catid); ?>" itemprop="item"><span itemprop="name"><?= get_cat_name($catid); ?></span></a>
     <i class="material-icons">navigate_next</i>
   </li>
   <?php endforeach; ?>
@@ -41,4 +40,5 @@
     </a>
   </li>
 </ol>
+</nav>
 <?php endif; ?>
