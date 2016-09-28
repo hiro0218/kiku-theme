@@ -12,10 +12,17 @@ class Image {
             return null;
         }
 
+        // has thumbnail custom field
+        //defined('CF_THUMBNAIL')
+        $image_src = get_post_meta($post->ID, CF_THUMBNAIL, true);
+        if ( $this->is_correct_image($image_src) ) {
+            return $image_src;
+        }
+
         // has thumbnail
         if ( has_post_thumbnail() ) {
             $image_src = $this->get_post_thumbnail_image();
-            if ( !empty($image_src) ) {
+            if ( $this->is_correct_image($image_src) ) {
                 return $image_src;
             }
         }
@@ -92,4 +99,7 @@ class Image {
         return $src;
     }
 
+    private function is_correct_image($src) {
+        return Util::is_url($src) && Util::is_image($src);
+    }
 }
