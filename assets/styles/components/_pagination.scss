@@ -11,7 +11,7 @@
   > li {
     display: inline;
     > a {
-      transition: background .3s;
+      transition: background .3s $animation-curve-default;
 
       &:hover {
         @extend .mdl-color--grey-300;
@@ -61,7 +61,7 @@
   a {
     border-radius: ($spacer * .125);
     padding: .5rem;
-    transition: background .3s;
+    transition: background .3s $animation-curve-default;
     @extend .mdl-color-text--grey-600;
 
     &:hover {

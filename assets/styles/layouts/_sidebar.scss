@@ -14,7 +14,7 @@
   }
 
   a {
-    transition: background .3s;
+    transition: background .3s $animation-curve-default;
     @extend .mdl-navigation__link;
   }
 
