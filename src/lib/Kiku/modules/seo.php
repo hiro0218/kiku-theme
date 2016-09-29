@@ -138,6 +138,7 @@ function image_tags() {
     }
 
     if ( $image_url ) {
+        $image_url = \Kiku\Util::add_scheme_relative_url($image_url);
         echo PHP_EOL;
         echo '<meta property="og:image" content="'. $image_url. '" />'. PHP_EOL;
         echo '<meta name="twitter:image" content="'. $image_url. '" />'. PHP_EOL;

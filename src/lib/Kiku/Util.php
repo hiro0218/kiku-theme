@@ -71,6 +71,14 @@ class Util {
         return preg_replace( '/>(\s|\n|\r)+</', '><', $tag ). $last_line_break;
     }
 
+    // "//example.com" -> "http://example.com"
+    public static function add_scheme_relative_url($url, $scheme = "http") {
+        if ( preg_match("/^\/\//", $url) === 1 ) {
+            return $scheme. ':' .$url;
+        }
+        return $url;
+    }
+
 
     /**
      *  日付関連
@@ -122,22 +130,29 @@ class Util {
 
     // 相対URIを絶対URIへ変換する
     public static function relative_to_absolute_url($url) {
-        if ( self::is_url_relative( $url ) ) {
+        if ( self::is_relative_url( $url ) ) {
             return self::base_url( $url );
         } else {
             return $url;
         }
     }
 
-    // 相対URLか
-    public static function is_url_relative( $url ) {
-        return ( strpos($url, 'http') !== 0 && strpos($url, '//') !== 0 );
+    public static function is_absolute_url($url) {
+        return (preg_match("/^((https?:)?\/\/|data:)/", $url) === 1);
+    }
+
+    public static function is_root_relative_url($url) {
+        return (!self::is_absolute_url($url) && preg_match("/^\//", $url) === 1);
+    }
+
+    public static function is_relative_url($url) {
+        return ( !(self::is_absolute_url($url) || self::is_root_relative_url($url)) );
     }
 
     // ベースURLを設定(絶対URL)
     public static function base_url( $path = null ) {
         $parts = parse_url( get_option('home') );
-        $base_url = trailingslashit( $parts['scheme'] . '://' . $parts['host']. $parts['path']);
+        $base_url = trailingslashit($parts['scheme'] . '://' . $parts['host']. $parts['path']);
 
         if ( !is_null($path) ) {
             $base_url .= ltrim($path, '/' );

@@ -1,6 +1,7 @@
 <?php
   global $Image;
-  $image_src = $Image->get_entry_image();
+  $image_src = $Image->get_entry_image(false);
+  $image_src = \Kiku\Util::add_scheme_relative_url($image_src);
   $site_icon = esc_url( get_site_icon_url() );
   $height = 512;
   $width = 512;
