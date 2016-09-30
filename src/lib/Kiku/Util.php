@@ -86,7 +86,7 @@ class Util {
 
     // 更新されているか
     public static function is_modified_post() {
-        return (get_the_time('Ymd') <= get_the_modified_time('Ymd'));
+        return (get_the_time('Ymd') < get_the_modified_time('Ymd'));
     }
 
     // 更新時間差
