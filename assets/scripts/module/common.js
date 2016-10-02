@@ -45,7 +45,7 @@ module.exports = {
 
     for (var i = 0, length = entryImg.length; i < length; i += 1) {
       // wrap Atag
-      if (entryImg[i].parentNode.nodeName.toUpperCase() === 'A') {
+      if (entryImg[i].getAttribute('data-zoom-diasbled') === 'true' || entryImg[i].parentNode.nodeName.toUpperCase() === 'A') {
         continue;
       }
 

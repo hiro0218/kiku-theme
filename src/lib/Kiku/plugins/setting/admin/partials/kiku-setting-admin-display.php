@@ -21,12 +21,19 @@
                     </td>
                 </tr>
                 <tr>
+                    <th><label><?php _e('Amazon Product Advertising API', 'kiku'); ?></label></th>
+                    <td>
+                        <label><input type="text" name="kiku_amazon_api_key" class="regular-text" value="<?= get_option('kiku_amazon_api_key'); ?>" placeholder="access key id" /></label>
+                        <label><input type="text" name="kiku_amazon_secret_key" class="regular-text" value="<?= get_option('kiku_amazon_secret_key'); ?>" placeholder="secret access key" /></label>
+                        <label><input type="text" name="kiku_amazon_associate_tag" class="regular-text" value="<?= get_option('kiku_amazon_associate_tag'); ?>" placeholder="associate tag" /></label>
+                    </td>
+                </tr>
+                <tr>
                     <th><label for="kiku_author_page"><?php _e('author page', 'kiku'); ?></label></th>
                     <td>
                         <input type="text" name="kiku_author_page" class="regular-text" value="<?= get_option('kiku_author_page'); ?>" id="kiku_appid" />
                     </td>
                 </tr>
-
                 <tr>
                     <th><?php _e('Share Button', 'kiku'); ?></th>
                     <td>

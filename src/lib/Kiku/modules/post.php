@@ -61,3 +61,52 @@ function replace_relative_to_absolute_img_src($content) {
 
     return $content;
 }
+
+function add_amazon_associate($content) {
+    if ( !is_singular() ) {
+        return $content;
+    }
+
+    global $post, $Amazon;
+    $asin = get_post_meta($post->ID, CF_ASIN, true);
+    if (empty($asin) || empty($Amazon)) {
+        return $content;
+    }
+
+    $result = $Amazon->lookupASIN(strtoupper($asin));
+    if ( !empty($result) ) {
+        $content .= _make_amazon_product_tag($result);
+    }
+
+    return $content;
+}
+add_filter('the_content', __NAMESPACE__ . '\\add_amazon_associate', 50);
+
+function _make_amazon_product_tag($info) {
+    $tag = '';
+
+    $title = (string)$info->ItemAttributes->Title;
+    $url = (string)$info->DetailPageURL;
+    $author = (string)$info->ItemAttributes->Author;
+    $date = (string)$info->ItemAttributes->PublicationDate;
+    $img = replace_amazon_image_scheme( (string)$info->LargeImage->URL );
+
+    $tag .= "<a href='". $url ."' class='amazon-product' target='_blank'>";
+    $tag .= "<div class='mdl-grid'>";
+    $tag .= "<div class='mdl-cell mdl-cell--3-col mdl-cell--12-col-phone mdl-cell--order-2-tablet'>";
+    $tag .= "<img src='". $img ."' data-zoom-diasbled='true'>";
+    $tag .= "</div>";
+    $tag .= "<div class='mdl-cell mdl-cell--9-col mdl-cell--hide-phone mdl-cell--order-1-tablet'>";
+    $tag .= "<span class='amazon-title'>". $title ."</span>";
+    $tag .= "<span class='amazon-author'>". $author ."</span>";
+    $tag .= "<span class='amazon-date'>". $date ."</span>";
+    $tag .= "</div>";
+    $tag .= "</div>";
+    $tag .= "</a>";
+
+    return $tag;
+}
+
+function replace_amazon_image_scheme($image_url) {
+    return str_replace('http://ecx.', 'https://images-na.ssl-', $image_url);
+}

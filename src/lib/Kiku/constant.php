@@ -5,6 +5,7 @@ const EXCERPT_LENGTH = 80;
 const EXCERPT_HELLIP = "…";
 const NOTHING_CONTENT = "👻";
 const CF_THUMBNAIL = "thumbnail";
+const CF_ASIN = "ASIN";
 
 define('BLOG_NAME', get_option('blogname') );
 define('BLOG_URL', esc_url(home_url('/')) );

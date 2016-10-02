@@ -21,6 +21,8 @@ A Simple WordPress Theme. (for myself)
     * Facebook
     * Hatena
     * LINE
+ * Amazon Product Link  
+    ASIN code to Amazon Product Link
 * Don't use jQuery (Vanilla only)
 * Remove Comments function
 * Fit to Japanese Language

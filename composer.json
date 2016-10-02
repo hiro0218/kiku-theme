@@ -30,7 +30,8 @@
   },
   "require": {
     "php": ">=5.5.0",
-    "composer/installers": "~1.0"
+    "composer/installers": "~1.0",
+    "exeu/apai-io": "^2.0"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^2.5.1",

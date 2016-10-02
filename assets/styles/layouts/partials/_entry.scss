@@ -41,7 +41,7 @@
   > table,
   form,
   > img,
-  div {
+  > div {
     margin-bottom: 2rem;
   }
 
@@ -61,7 +61,7 @@
   }
 
   li + li {
-    margin-top: 0.25rem;
+    margin-top: .25rem;
   }
 
   blockquote {
@@ -160,7 +160,34 @@
 
 }
 
-// amazlet
+// amazon
+.amazon-product {
+  display: block;
+  margin: 1rem 0;
+  border-radius: ($spacer * .125);
+  border: 0 !important;
+  @extend .mdl-color-text--grey-700;
+
+  &:focus {
+    outline: 0;
+  }
+  .mdl-grid {
+    @extend .mdl-color--grey-50;
+  }
+  img {
+    max-height: 10rem;
+  }
+  .amazon-title,
+  .amazon-author,
+  .amazon-date {
+    display: block;
+  }
+  .amazon-title {
+    font-weight: bold;
+    line-height: 2;
+  }
+}
+
 .amazlet-image img {
   max-height: 10rem;
 }
