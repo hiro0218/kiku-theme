@@ -62,27 +62,43 @@ function replace_relative_to_absolute_img_src($content) {
     return $content;
 }
 
-function add_amazon_associate($content) {
+// make Amazon Product Tag when save post
+function save_amazon_associate_tag( $post_id ) {
+    if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ) {
+        return;
+    }
+
+    global $Amazon;
+    $asin = get_post_meta($post_id, CF_ASIN, true);
+    if (empty($asin) || empty($Amazon)) {
+        return;
+    }
+    $result = $Amazon->lookupASIN(strtoupper($asin));
+    if ( !empty($result) ) {
+        $tag = make_amazon_product_tag($result);
+        update_post_meta($post_id, CF_AMAZON_PRODUCT_TAG, $tag);
+    }
+}
+add_action('save_post', __NAMESPACE__ . '\\save_amazon_associate_tag', 11, 2);
+
+// add Amazon Product Tag in content footer
+function add_content_footer_amazon_associate($content) {
     if ( !is_singular() ) {
         return $content;
     }
 
-    global $post, $Amazon;
-    $asin = get_post_meta($post->ID, CF_ASIN, true);
-    if (empty($asin) || empty($Amazon)) {
-        return $content;
-    }
-
-    $result = $Amazon->lookupASIN(strtoupper($asin));
-    if ( !empty($result) ) {
-        $content .= _make_amazon_product_tag($result);
+    global $post;
+    $tag = get_post_meta($post->ID, CF_AMAZON_PRODUCT_TAG, true);
+    if ( !empty($tag) ) {
+        $content .= $tag;
     }
 
     return $content;
 }
-add_filter('the_content', __NAMESPACE__ . '\\add_amazon_associate', 50);
+add_filter('the_content', __NAMESPACE__ . '\\add_content_footer_amazon_associate', 50);
 
-function _make_amazon_product_tag($info) {
+// make Amazon Product Tag
+function make_amazon_product_tag($info) {
     $tag = '';
 
     $title = (string)$info->ItemAttributes->Title;
@@ -110,3 +126,11 @@ function _make_amazon_product_tag($info) {
 function replace_amazon_image_scheme($image_url) {
     return str_replace('http://ecx.', 'https://images-na.ssl-', $image_url);
 }
+
+// delete CF_AMAZON_PRODUCT_TAG when delete CF_ASIN
+function deleted_asin_meta( $meta_id, $post_id, $meta_key, $meta_value ) {
+    if ( CF_ASIN == $meta_key ) {
+        delete_post_meta( $post_id, CF_AMAZON_PRODUCT_TAG );
+    }
+}
+add_action( 'deleted_post_meta', __NAMESPACE__ . '\\deleted_asin_meta', 10, 4 );

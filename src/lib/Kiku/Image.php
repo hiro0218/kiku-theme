@@ -13,7 +13,6 @@ class Image {
         }
 
         // has thumbnail custom field
-        //defined('CF_THUMBNAIL')
         $image_src = get_post_meta($post->ID, CF_THUMBNAIL, true);
         if ( $this->is_correct_image($image_src) ) {
             return $image_src;
@@ -63,9 +62,17 @@ class Image {
     public function get_post_image_from_tag($datauri = true) {
         global $post;
         $src = "";
+        $content = "";
+
+        // get from Amazon Product Tag
+        $content = get_post_meta($post->ID, CF_AMAZON_PRODUCT_TAG, true);
+
+        if ( empty($content) ) {
+            $content = $post->post_content;
+        }
 
         // maybe URL or Path, sortcode?
-        if ( preg_match('/<img.*?src=(["\'])(.+?)\1.*?>/i', $post->post_content, $match) ) {
+        if ( preg_match('/<img.*?src=(["\'])(.+?)\1.*?>/i', $content, $match) ) {
             $src = $match[2];
         }
 
