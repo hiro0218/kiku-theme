@@ -27,6 +27,9 @@
   .entry-tag {
     line-height: 2;
     margin-left: 1rem;
+    li {
+      margin-right: .5rem;
+    }
     a {
       padding: .2rem .4rem;
       border-radius: ($spacer * .125);
