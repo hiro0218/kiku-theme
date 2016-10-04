@@ -18,6 +18,10 @@
     margin: ($spacer / 2) auto;
   }
 
+
+}
+
+.entry-content {
   a {
     color: $link-color;
     border-bottom: 1px solid $link-border-color;
@@ -28,9 +32,6 @@
     }
   }
 
-}
-
-.entry-content {
   p,
   pre,
   > blockquote,
@@ -183,6 +184,7 @@
     display: block;
   }
   .amazon-title {
+    font-size: $font-size-lg;
     font-weight: bold;
     line-height: 2;
   }

@@ -1,7 +1,8 @@
-$twitter-color:  #55acee;
-$facebook-color: #3b5998;
-$hatena-color:   #2c6ebd;
-$line-color:     #00c300;
+$twitter-color:     #55acee;
+$facebook-color:    #3b5998;
+$hatena-color:      #2c6ebd;
+$line-color:        #00c300;
+$share-base-color:  unquote("rgb(#{$palette-grey-300})");
 
 .entry-share {
   list-style: none;
@@ -31,6 +32,7 @@ $line-color:     #00c300;
   background-size: 80% 80%;
   background-position: 50% 50%;
   background-repeat: no-repeat;
+  transition: background .3s;
   @include hide-text;
   @include size(40px);
 
@@ -40,18 +42,34 @@ $line-color:     #00c300;
 }
 
 .btn-twitter {
-  background-color: $twitter-color;
   background-image: url("../images/svg/twitter.svg");
+  background-color: $share-base-color;
+
+  &:hover {
+    background-color: $twitter-color;
+  }
 }
 .btn-facebook {
-  background-color: $facebook-color;
   background-image: url("../images/svg/facebook.svg");
+  background-color: $share-base-color;
+
+  &:hover {
+    background-color: $facebook-color;
+  }
 }
 .btn-hatena {
-  background-color: $hatena-color;
   background-image: url("../images/svg/hatena-bookmark.svg");
+  background-color: $share-base-color;
+
+  &:hover {
+    background-color: $hatena-color;
+  }
 }
 .btn-line {
-  background-color: $line-color;
   background-image: url("../images/svg/line.svg");
+  background-color: $share-base-color;
+
+  &:hover {
+    background-color: $line-color;
+  }
 }

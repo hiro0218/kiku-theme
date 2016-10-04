@@ -11,7 +11,7 @@
       margin-bottom: 0;
 
       &:not(:first-child):not(:last-child) {
-        margin-right: 8px;
+        margin-right: .5rem;
       }
       a {
         color: inherit;
@@ -21,6 +21,20 @@
         }
       }
 
+    }
+  }
+
+  .entry-tag {
+    line-height: 2;
+    margin-left: 1rem;
+    a {
+      padding: .2rem .4rem;
+      border-radius: ($spacer * .125);
+      @extend .mdl-color--grey-100;
+      &:hover {
+        text-decoration: none !important;
+        @extend .mdl-color--grey-200;
+      }
     }
   }
 

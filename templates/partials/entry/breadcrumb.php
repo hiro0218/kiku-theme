@@ -2,8 +2,8 @@
 <nav>
 <ol itemscope itemtype="http://schema.org/BreadcrumbList" class="breadcrumb">
   <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <i class="material-icons">home</i>
     <a href="<?= BLOG_URL ?>" itemprop="item">
-      <i class="material-icons">home</i>
       <span itemprop="name"><?= BLOG_NAME ?></span>
     </a>
   </li>
@@ -34,8 +34,8 @@
   <?php endif;  // $category is not empty ?>
   <?php endif;  // is_singular() ?>
   <li class="active" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <i class="material-icons">location_on</i>
     <a href="<?= get_the_permalink(); ?>" itemprop="item">
-      <i class="material-icons">location_on</i>
       <span itemprop="name"><?php the_title_attribute(); ?></span>
     </a>
   </li>
