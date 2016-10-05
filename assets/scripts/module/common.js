@@ -20,8 +20,9 @@ module.exports = {
     });
   },
   setLinkIcon: function (element, icon) {
+    var href = element.getAttribute('href');
     // ブックマークレットなどは除く
-    if (element.getAttribute('href').substring(0, 10) !== 'javascript') {
+    if ((href.substring(0, 10) !== 'javascript') && (href.substring(0, 1) !== '#')) {
       // 外部リンクだった場合
       if (element.origin !== location.origin && element.origin !== 'undefined') {
         element.setAttribute('target', '_blank');
