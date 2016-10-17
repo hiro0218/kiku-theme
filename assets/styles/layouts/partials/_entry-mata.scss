@@ -24,27 +24,33 @@
     }
   }
 
-  .entry-tag {
-    line-height: 2;
-    margin-left: 1rem;
-    li {
-      margin-right: .5rem;
-    }
-    a {
-      padding: .2rem .4rem;
-      border-radius: ($spacer * .125);
-      @extend .mdl-color--grey-100;
-      &:hover {
-        text-decoration: none !important;
-        @extend .mdl-color--grey-200;
-      }
-    }
-  }
-
   & .entry-time,
   & .entry-category,
   & .entry-tag {
     margin-bottom: 0;
   }
 
+}
+
+.entry-tag {
+  font-size: $font-size-sm;
+  list-style: none;
+  line-height: 2rem;
+  padding-left: 0;
+  margin-bottom: 1rem;
+  @include clearfix;
+
+  li {
+    float: left;
+    margin-right: .5rem;
+  }
+  a {
+    padding: .2rem .4rem;
+    border-radius: ($spacer * .125);
+    @extend .mdl-color-text--grey-400, .mdl-color--grey-200;
+    &:hover {
+      opacity: .8;
+      text-decoration: none !important;
+    }
+  }
 }
