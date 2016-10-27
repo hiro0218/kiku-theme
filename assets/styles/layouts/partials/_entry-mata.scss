@@ -43,14 +43,15 @@
   li {
     float: left;
     margin-right: .5rem;
+    margin-bottom: .5rem;
   }
   a {
-    padding: .2rem .4rem;
+    padding: .5rem .7rem;
     border-radius: ($spacer * .125);
-    @extend .mdl-color-text--grey-400, .mdl-color--grey-200;
+    @extend .mdl-color-text--grey-700, .mdl-color--grey-100;
     &:hover {
-      opacity: .8;
       text-decoration: none !important;
+      @extend .mdl-color--grey-200;
     }
   }
 }

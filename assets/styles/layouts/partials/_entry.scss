@@ -1,7 +1,8 @@
 .entry {
   padding: 1rem 1.5rem;
   border-radius: ($spacer * .125);
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .12);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .04);
+  border: 1px solid rgba(0, 0, 0, .09);
   @extend .mdl-color--white, .mdl-color-text--grey-700;
 
   > header {
@@ -165,7 +166,6 @@
 .amazon-product {
   display: block;
   margin: 1rem 0;
-  border-radius: ($spacer * .125);
   border: 0 !important;
   @extend .mdl-color-text--grey-700;
 
@@ -173,7 +173,7 @@
     outline: 0;
   }
   .mdl-grid {
-    @extend .mdl-color--grey-50;
+    border: 1px solid rgba(0, 0, 0, .09);
   }
   img {
     max-height: 10rem;

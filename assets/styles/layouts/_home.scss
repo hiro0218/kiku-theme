@@ -1,16 +1,16 @@
 $entry-thumbnail-size: 80px;
 
 .article-container {
-  padding-bottom: 1rem;
   border-radius: ($spacer * .125);
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .12);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .04);
+  border: 1px solid rgba(0, 0, 0, .09);
   overflow: hidden;
   @extend .mdl-color--white;
 
   h1 {
     margin: 0;
     padding: 1rem;
-    font-size: $font-size-h2;
+    font-size: $font-size-h4;
     font-weight: normal;
     border-bottom: 1px solid unquote("rgb(#{$palette-grey-300})");
   }
@@ -31,7 +31,7 @@ $entry-thumbnail-size: 80px;
 
     &:hover {
       cursor: pointer;
-      @extend .mdl-color--grey-200;
+      @extend .mdl-color--grey-100;
       .entry-image-sheet {
         transform: scale(1.15);
       }
