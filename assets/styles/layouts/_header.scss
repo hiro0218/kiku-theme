@@ -1,19 +1,27 @@
 .header-navigation {
   box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .15);
-  line-height: 1;
-  @extend .mdl-color--white;
 
-  .mdl-layout-title {
-    font-size: $font-size-lg;
-  }
   .brand {
     @extend .mdl-color-text--grey-900;
-    &:hover {
-      text-decoration: none;
-    }
-    &:focus {
-      outline: none;
+  }
+
+  .header-search {
+    @media screen and (max-width: $screen-xs) {
+        display: none;
     }
   }
 
+  .mdl-textfield {
+    padding: 0;
+    .mdl-button {
+      bottom: auto;
+    }
+  }
+
+  .mdl-textfield--expandable .mdl-button--icon {
+    top: 0;
+    .material-icons {
+      height: auto;
+    }
+  }
 }
