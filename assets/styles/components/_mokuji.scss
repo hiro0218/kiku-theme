@@ -2,9 +2,14 @@
   display: table-cell;
   padding-right: 3rem;
   white-space: nowrap;
+  font-weight: normal;
+  width: 30%;
 
   @media screen and (max-width: $screen-xs) {
     display: table-caption;
+    padding-right: auto;
+    margin-bottom: 1rem;
+    width: 100%;
   }
 }
 
@@ -12,6 +17,7 @@
   display: table-cell;
   border-left: solid 3px unquote("rgb(#{$palette-blue-100})");
   padding-left: 1rem;
+  margin-bottom: 1rem;
 
   a {
     border: 0 !important;
