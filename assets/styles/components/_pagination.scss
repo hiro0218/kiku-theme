@@ -58,6 +58,8 @@
 
 // pager
 .pager {
+  padding-left: 0;
+  padding-right: 0;
   a {
     border-radius: ($spacer * .125);
     padding: .5rem;
