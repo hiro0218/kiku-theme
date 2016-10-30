@@ -3,7 +3,7 @@
   <?php get_template_part('layouts/head'); ?>
   <body <?php body_class(); ?>>
     <?php get_template_part('components/loader'); ?>
-    <div class="mdl-layout mdl-js-layout"><!-- mdl-layout -->
+    <div class="mdl-layout mdl-js-layout  mdl-layout--fixed-header">
       <?php
         do_action('get_header');
         get_template_part('layouts/header');
