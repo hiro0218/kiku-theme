@@ -4,9 +4,9 @@ namespace Kiku;
 class Entry {
     private $meta = [];
 
-    public function get_meta() {
+    public function get_meta(): array {
         if ( !is_single() ) {
-            return null;
+            return [];
         }
 
         if ( !empty($this->meta) ) {
@@ -27,9 +27,9 @@ class Entry {
     }
 
     // 関連する記事の一覧を取得する
-    public function get_similar_posts() {
+    public function get_similar_posts(): array {
         if ( !is_single() ) {
-            return null;
+            return [];
         }
 
         global $post;
@@ -39,7 +39,7 @@ class Entry {
         $categories = get_the_category($post_id);
 
         if( empty($categories) ) {
-            return null;
+            return [];
         }
 
         foreach ( $categories as $category ) {
@@ -85,22 +85,22 @@ class Entry {
     }
 
     // クリーンな投稿タイトルを取得する
-    private function get_clean_title() {
+    private function get_clean_title(): string {
         return the_title_attribute( 'echo=0' );
     }
 
-    private function get_clean_category() {
+    private function get_clean_category(): string {
         return strip_tags( get_the_category_list( ',' ) );
     }
 
-    private function get_clean_tag() {
+    private function get_clean_tag(): string {
         return strip_tags( get_the_tag_list( '', ",", '' ) );
     }
 
     // 設定されたカテゴリの一覧を取得する
-    public function get_category() {
+    public function get_category(): array {
         if ( !is_single() ) {
-            return null;
+            return [];
         }
 
         $categories = get_the_category();
@@ -119,14 +119,14 @@ class Entry {
     }
 
     // 設定されたタグの一覧を取得する
-    public function get_tag() {
+    public function get_tag(): array {
         if ( !is_single() ) {
-            return null;
+            return [];
         }
 
         $tags = get_the_tags();
         if ( empty($tags) ) {
-            return null;
+            return [];
         }
 
         $arr = [];

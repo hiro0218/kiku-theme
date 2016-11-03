@@ -4,7 +4,7 @@ namespace Kiku;
 class Util {
 
     // コピーライト用の年号(開始-現在)を取得する
-    public static function get_copyright_year() {
+    public static function get_copyright_year(): string {
         global $wpdb;
 
         $sql = "SELECT YEAR(min(post_date_gmt)) AS firstdate,
@@ -33,7 +33,7 @@ class Util {
      */
 
     // 記事内容の抜粋
-    public static function get_excerpt_content() {
+    public static function get_excerpt_content(): string {
         global $post;
         $content = "";
 
@@ -57,7 +57,7 @@ class Util {
         return mb_substr($content, 0, EXCERPT_LENGTH) . EXCERPT_HELLIP;
     }
 
-    private static function remove_tags($str) {
+    private static function remove_tags(string $str): string {
         $str = wp_strip_all_tags($str);
         $str = strip_shortcodes($str);
         $str = self::remove_white_space($str, "");
@@ -66,13 +66,13 @@ class Util {
     }
 
     // スペースを除く
-    public static function remove_white_space($tag, $last_line_break = PHP_EOL) {
+    public static function remove_white_space(string $tag, $last_line_break = PHP_EOL): string {
         $tag = preg_replace( '/(?:\n|\r|\r\n)/', '', $tag );
         return preg_replace( '/>(\s|\n|\r)+</', '><', $tag ). $last_line_break;
     }
 
     // "//example.com" -> "http://example.com"
-    public static function add_scheme_relative_url($url, $scheme = "http") {
+    public static function add_scheme_relative_url($url, $scheme = "http"): string {
         if ( preg_match("/^\/\//", $url) === 1 ) {
             return $scheme. ':' .$url;
         }
@@ -85,12 +85,12 @@ class Util {
      */
 
     // 更新されているか
-    public static function is_modified_post() {
+    public static function is_modified_post(): bool {
         return (get_the_time('Ymd') < get_the_modified_time('Ymd'));
     }
 
     // 更新時間差
-    public static function get_posted_time_ago($timestamp) {
+    public static function get_posted_time_ago($timestamp): string {
         if ($timestamp === null) {
             return '';
         }
@@ -124,12 +124,12 @@ class Util {
      * URL
      */
 
-    public static function is_url($str) {
+    public static function is_url($str): bool {
         return (preg_match('/^(https?|ftp)(:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+)$/', $str));
     }
 
     // 相対URIを絶対URIへ変換する
-    public static function relative_to_absolute_url($url) {
+    public static function relative_to_absolute_url($url): string {
         if ( self::is_relative_url( $url ) ) {
             return self::base_url( $url );
         } else {
@@ -137,20 +137,20 @@ class Util {
         }
     }
 
-    public static function is_absolute_url($url) {
+    public static function is_absolute_url($url): bool {
         return (preg_match("/^((https?:)?\/\/|data:)/", $url) === 1);
     }
 
-    public static function is_root_relative_url($url) {
+    public static function is_root_relative_url($url): bool {
         return (!self::is_absolute_url($url) && preg_match("/^\//", $url) === 1);
     }
 
-    public static function is_relative_url($url) {
+    public static function is_relative_url($url): bool {
         return ( !(self::is_absolute_url($url) || self::is_root_relative_url($url)) );
     }
 
     // ベースURLを設定(絶対URL)
-    public static function base_url( $path = null ) {
+    public static function base_url( $path = null ): string {
         $parts = parse_url( get_option('home') );
         $base_url = trailingslashit($parts['scheme'] . '://' . $parts['host']. $parts['path']);
 
@@ -168,7 +168,7 @@ class Util {
      * Checker
      */
 
-    public static function is_image($path) {
+    public static function is_image($path): bool {
         $result = false;
         $path_info = pathinfo($path);
 
@@ -192,11 +192,11 @@ class Util {
         return $result;
     }
 
-    public static function is_shortcode($str) {
+    public static function is_shortcode($str): bool {
         return (boolean)(substr($str, 0, 1) === '[') && (substr($str, strlen($str)-1, 1) === ']');
     }
 
-    public static function is_dataURI($str) {
+    public static function is_dataURI($str): bool {
       return (boolean)(substr($str, 0, 5) === 'data:');
     }
 

@@ -3,7 +3,7 @@ namespace Kiku;
 
 class Image {
 
-    public function get_entry_image($datauri = true) {
+    public function get_entry_image(bool $datauri = true): string {
         global $post;
         $image_src = '';
 
@@ -32,7 +32,7 @@ class Image {
         return $image_src;
     }
 
-    public function get_post_thumbnail_image($size = null) {
+    public function get_post_thumbnail_image($size = null): string {
         global $post;
         $url = "";
 
@@ -59,7 +59,7 @@ class Image {
         return $url;
     }
 
-    public function get_post_image_from_tag($datauri = true) {
+    public function get_post_image_from_tag($datauri = true): string {
         global $post;
         $src = "";
         $content = "";
@@ -106,7 +106,7 @@ class Image {
         return $src;
     }
 
-    private function is_correct_image($src) {
+    private function is_correct_image(string $src): bool {
         return Util::is_url($src) && Util::is_image($src);
     }
 }
