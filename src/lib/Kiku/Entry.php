@@ -86,7 +86,7 @@ class Entry {
 
     // クリーンな投稿タイトルを取得する
     private function get_clean_title(): string {
-        return the_title_attribute( 'echo=0' );
+        return (string)the_title_attribute( 'echo=0' );
     }
 
     private function get_clean_category(): string {

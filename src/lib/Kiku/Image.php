@@ -9,7 +9,7 @@ class Image {
 
         // denied post
         if ( post_password_required() ) {
-            return null;
+            return "";
         }
 
         // has thumbnail custom field
@@ -37,7 +37,7 @@ class Image {
         $url = "";
 
         if ( !has_post_thumbnail() ) {
-            return null;
+            return "";
         }
 
         $thumbnail_id = get_post_thumbnail_id();
