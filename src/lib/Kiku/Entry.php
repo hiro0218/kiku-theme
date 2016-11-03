@@ -72,9 +72,13 @@ class Entry {
             $i = 0;
             while ( $the_query->have_posts() ) {
                 $the_query->the_post();
+                $title = $this->get_clean_title();
+                if ( empty($title) ) {
+                    continue;
+                }
                 $arr[$i] = [
                     "uri"   => get_the_permalink(),
-                    "title" => $this->get_clean_title(),
+                    "title" => $title,
                 ];
                 $i++;
             }
