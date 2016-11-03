@@ -4,49 +4,47 @@ h3,
 h4,
 h5,
 h6 {
-  line-height: 1.2;
-  margin: 1.414rem 0 .5rem;
-  @extend .mdl-color-text--grey-800;
-
-  small,
-  .small {
-    font-weight: normal;
-    line-height: 1;
-  }
+  line-height: $major-third;
 }
 
 h1,
 h2,
 h3 {
-  margin-top: $spacer;
-  margin-bottom: ($spacer / 2);
-
-  small,
-  .small {
-    font-size: 65%;
-  }
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
 }
 h4,
 h5,
 h6 {
-  margin-top: ($spacer / 2);
-  margin-bottom: ($spacer / 2);
-
-  small,
-  .small {
-    font-size: 75%;
-  }
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 h1 {
+  color: $font-color-h1;
   font-size: $font-size-h1;
   margin-top: 0;
 }
-h2 { font-size: $font-size-h2; }
-h3 { font-size: $font-size-h3; }
-h4 { font-size: $font-size-h4; }
-h5 { font-size: $font-size-h5; }
-h6 { font-size: $font-size-h6; }
+h2 {
+  color: $font-color-h2;
+  font-size: $font-size-h2;
+}
+h3 {
+  color: $font-color-h3;
+  font-size: $font-size-h3;
+}
+h4 {
+  color: $font-color-h4;
+  font-size: $font-size-h4;
+}
+h5 {
+  color: $font-color-h5;
+  font-size: $font-size-h5;
+}
+h6 {
+  color: $font-color-h6;
+  font-size: $font-size-h6;
+}
 
 pre {
   overflow: visible;
@@ -77,4 +75,8 @@ ul ol ol,
 ol ul ol,
 ol ol ol {
   list-style-type: lower-alpha;
+}
+
+mark {
+  @extend .mdl-color--yellow-100, .mdl-color-text--grey-900;
 }

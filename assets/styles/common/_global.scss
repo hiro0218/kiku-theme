@@ -25,10 +25,10 @@ html {
 body {
   font-size: $font-size-base;
   @media screen and (max-width: $screen-sm) {
-    font-size: $font-size-base - 1;
+    font-size: ($font-size-base - 1);
   }
-  @media screen and (min-width: $screen-md) {
-    font-size: $font-size-base + 1;
+  @media screen and (min-width: $screen-lg) {
+    font-size: ($font-size-base + 2);
   }
 
   font-weight: $font-weight-base;

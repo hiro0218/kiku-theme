@@ -6,9 +6,9 @@ $prefix-for-opera:     false;
 $prefix-for-spec:      true;
 
 // Modular scale
-$base-size: 16px;
-$modular-scale-base:  1rem;
-$modular-scale-ratio: $major-second;
+$base-size:            16px;
+$modular-scale-base:   1rem;
+$modular-scale-ratio:  $major-second;
 // $golden:           1.618;
 // $minor-second:     1.067;
 // $major-second:     1.125;
@@ -31,9 +31,9 @@ $modular-scale-ratio: $major-second;
 //
 // Font
 // -------------------------
-$font-family-base:             -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", YuGoMedium, Meiryo, sans-serif, Emoji !default;
-$font-family-monospace:        Consolas, "Liberation Mono", Menlo, Courier, monospace, Emoji !default;
-$font-weight-base:             normal;
+$font-family-base:        -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", YuGoMedium, Meiryo, sans-serif, Emoji !default;
+$font-family-monospace:   Consolas, "Liberation Mono", Menlo, Courier, monospace, Emoji !default;
+$font-weight-base:        normal;
 
 // MDL
 $preferred_font:          $font-family-base;
@@ -57,13 +57,12 @@ $line-height-computed:    floor(($font-size-base * $line-height-base));
 //
 // Layout
 // -------------------------
+$spacer:               1rem;
 
-$spacer: 1rem;
-
-$screen-xs:  480px !default;  // Extra small screen / phone
-$screen-sm:  768px !default;  // Small screen / tablet
-$screen-md:  992px !default;  // Medium screen / desktop
-$screen-lg:  1200px !default;
+$screen-xs:            480px;  // Extra small screen / phone
+$screen-sm:            768px;  // Small screen / tablet
+$screen-md:            992px;  // Medium screen / desktop
+$screen-lg:            1200px;
 
 $container-max-width:  1140px;
 
@@ -73,11 +72,11 @@ $container-max-width:  1140px;
 // https://github.com/google/material-design-lite/blob/master/src/_color-definitions.scss
 
 // MDL
-$color-primary: $color-white;
-$color-primary-dark: $palette-grey-700;
-$color-accent: $palette-grey-200;
-$color-primary-contrast: $palette-grey-700;
-$color-accent-contrast: $palette-grey-700;
+$color-primary:             $color-white;
+$color-primary-dark:        $palette-grey-700;
+$color-accent:              $palette-grey-200;
+$color-primary-contrast:    $palette-grey-700;
+$color-accent-contrast:     $palette-grey-700;
 
 // original
 $link-color:            unquote("rgb(#{$palette-blue-A200})");
@@ -86,3 +85,10 @@ $link-visit-color:      unquote("rgb(#{$palette-purple-A400})");
 $link-border-color:     unquote("rgb(#{$palette-blue-100})");
 
 $table-border-color:    unquote("rgb(#{$palette-grey-200})");
+
+$font-color-h1:         unquote("rgb(#{$palette-grey-900})");
+$font-color-h2:         unquote("rgb(#{$palette-grey-800})");
+$font-color-h3:         unquote("rgb(#{$palette-grey-700})");
+$font-color-h4:         unquote("rgb(#{$palette-grey-600})");
+$font-color-h5:         unquote("rgb(#{$palette-grey-500})");
+$font-color-h6:         unquote("rgb(#{$palette-grey-400})");

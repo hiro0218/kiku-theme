@@ -1,3 +1,8 @@
+#mokuji-container {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
 .mokuji-title {
   display: table-cell;
   padding-right: 3rem;
@@ -17,7 +22,6 @@
   display: table-cell;
   border-left: solid 3px unquote("rgb(#{$palette-blue-100})");
   padding-left: 1rem;
-  margin-bottom: 1rem;
 
   a {
     border: 0 !important;

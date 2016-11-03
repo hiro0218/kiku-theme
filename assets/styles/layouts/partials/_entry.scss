@@ -19,7 +19,6 @@
     margin: ($spacer / 2) auto;
   }
 
-
 }
 
 .entry-content {
@@ -31,6 +30,10 @@
     &:hover {
       border-color: $link-color;
     }
+  }
+
+  h2 {
+    margin-top: 2rem;
   }
 
   p,
@@ -103,7 +106,6 @@
 
     width: 100%;
     max-width: 100%;
-    margin-bottom: $spacer;
     border: $table-border-width solid $table-border-color;
 
     th, td {
