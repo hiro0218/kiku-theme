@@ -42,7 +42,7 @@ let webpackConfig = {
         enforce: 'pre',
         test: /\.js?$/,
         include: config.paths.assets,
-        loader: 'eslint',
+        loader: 'babel',
       },
       {
         test: /\.css$/,

@@ -1,21 +1,19 @@
 {
-  "root": true,
-  "extends": ["airbnb-base/legacy"],
-  "globals": {
-    "wp": true
-  },
+  "extends": ["airbnb"],
   "env": {
     "es6": true,
     "browser": true,
-    "jquery": true,
-    "node": true,
-    "amd": true
+    "node": true
   },
   "parserOptions": {
     "sourceType": "module"
   },
   "parser": "babel-eslint",
   "rules": {
+    "no-var": 0,
+    "no-unused-vars": 0,
+    "comma-dangle": 0,
+    "prefer-arrow-callback": 0,
     "no-console": 0,
     "no-continue": 0,
     "object-shorthand": 0,

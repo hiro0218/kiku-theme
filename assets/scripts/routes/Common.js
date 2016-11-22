@@ -1,4 +1,4 @@
-import load from '../module/load.js';
+import load from '../module/load';
 
 export default {
   init() {

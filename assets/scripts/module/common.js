@@ -1,5 +1,5 @@
 module.exports = {
-  clickableElement: function (entry) {
+  clickableElement(entry) {
     for (var i = 0, length = entry.length; i < length; i += 1) {
       entry[i].addEventListener('click', function (event) {
         event.preventDefault();
@@ -10,7 +10,7 @@ module.exports = {
       });
     }
   },
-  addExternalLink: function (entry) {
+  addExternalLink(entry) {
     var self = this;
     var icon = document.createElement('i');
     icon.appendChild(document.createTextNode('open_in_new'));
@@ -19,7 +19,7 @@ module.exports = {
       self.setLinkIcon(element, icon);
     });
   },
-  setLinkIcon: function (element, icon) {
+  setLinkIcon(element, icon) {
     var href = element.getAttribute('href');
     // ブックマークレットなどは除く
     if ((href.substring(0, 10) !== 'javascript') && (href.substring(0, 1) !== '#')) {
@@ -35,7 +35,7 @@ module.exports = {
       }
     }
   },
-  zoomImage: function (entry) {
+  zoomImage(entry) {
     var ImageZoom = require('image-zoom');
     var entryImg = entry.getElementsByTagName('img');
 
@@ -63,7 +63,7 @@ module.exports = {
   /**
    * delay()(function(){console.log("hello1");}, 5000);
    */
-  delay: function () {
+  delay() {
     var timer = 0;
     return function (callback, delay) {
       clearTimeout(timer);

@@ -1,4 +1,4 @@
-import common from '../module/common.js';
+import common from '../module/common';
 
 export default {
   init() {

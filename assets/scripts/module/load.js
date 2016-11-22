@@ -1,28 +1,35 @@
-import common from '../module/common.js';
+import 'babel-polyfill';
+import common from '../module/common';
 
 module.exports = {
-  checkLoaded: function () {
+  checkLoaded() {
     var self = this;
     document.addEventListener('mdl-componentupgraded', function (e) {
       if (typeof e.target.MaterialLayout !== 'undefined') {
-        common.delay()(function () {
-          var loader = document.getElementsByClassName('loader')[0];
-          loader.classList.add('is-loaded');
-          self.moveAnchorTagPosition();
-        }, 250);
+        (async () => {
+          const result = await self.compleatedLoading();
+          if (result) {
+            self.moveAnchorTagPosition();
+          }
+        })();
       }
     });
   },
-  moveAnchorTagPosition: function () {
-    var anchor = this.removeFristSharpString(window.location.hash);
-
-    if (!anchor) {
-      return;
-    }
-
-    location.hash = anchor;
+  compleatedLoading() {
+    return new Promise((resolve, reject) => {
+      var loader = document.getElementsByClassName('loader')[0];
+      loader.classList.add('is-loaded');
+      resolve(true);
+    });
   },
-  removeFristSharpString: function (str) {
+  moveAnchorTagPosition() {
+    var anchor = this.removeFristSharp(window.location.hash);
+    if (anchor) {
+      window.location.hash = '';
+      window.location.hash = anchor;
+    }
+  },
+  removeFristSharp(str) {
     var url = str.split('#');
 
     if (url.length !== 2) {
