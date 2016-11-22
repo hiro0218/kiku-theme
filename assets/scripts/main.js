@@ -1,8 +1,11 @@
 import Router from './util/router';
 
 import common from './routes/Common';
-import { home, archive, search } from './routes/Home';
-import { single, page } from './routes/Single';
+import home from './routes/Home';
+import archive from './routes/Home';
+import search from './routes/Home';
+import single from './routes/Single';
+import page from './routes/Single';
 
 import './vendor/prism';
 import './vendor/mdl';
