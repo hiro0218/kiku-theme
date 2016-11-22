@@ -5,8 +5,8 @@ const config = require('./config');
 
 module.exports = {
   output: { pathinfo: true },
-  debug: true,
   devtool: '#cheap-module-source-map',
+  stats: false,
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
@@ -15,7 +15,7 @@ module.exports = {
       target: config.devUrl,
       publicPath: config.publicPath,
       proxyUrl: config.proxyUrl,
-      browserSyncOptions: { files: config.watch },
+      watch: config.watch,
     }),
   ],
 };

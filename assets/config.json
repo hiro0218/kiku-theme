@@ -3,17 +3,14 @@
     "main": [
       "./scripts/main.js",
       "./styles/main.scss"
-    ],
-    "customizer": [
-      "./scripts/customizer.js"
     ]
   },
   "watch": [
     "templates/**/*.php",
     "src/**/*.php"
   ],
-  "publicPath": "../",
-  "devUrl": "https://example.dev",
-  "proxyUrl": "https://localhost:3000",
+  "publicPath": "../../",
+  "devUrl": "http://example.dev",
+  "proxyUrl": "http://localhost:3000",
   "cacheBusting": "[name]_[hash:8]"
 }
