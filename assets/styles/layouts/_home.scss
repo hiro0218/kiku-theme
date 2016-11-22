@@ -18,6 +18,10 @@ $entry-thumbnail-size: 80px;
   .entry-wrap {
     padding: 1rem;
     transition: background .3s $animation-curve-default;
+    border-bottom: 1px solid unquote("rgb(#{$palette-grey-200})");
+    &:last-child {
+      border-bottom: 0;
+    }
 
     a {
       color: inherit;
