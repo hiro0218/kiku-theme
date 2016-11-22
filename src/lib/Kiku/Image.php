@@ -35,6 +35,7 @@ class Image {
     public function get_post_thumbnail_image($size = null): string {
         global $post;
         $url = "";
+        $attachment_image_src = null;
 
         if ( !has_post_thumbnail() ) {
             return "";
@@ -45,15 +46,24 @@ class Image {
         if ($size == null) {
             // wp_get_attachment_image_src -> thumbnail, medium, large, full
             // try large size
-            list($url, $width, $height) = wp_get_attachment_image_src($thumbnail_id, 'large');
+            $attachment_image_src = wp_get_attachment_image_src($thumbnail_id, 'large');
+
+            // try full
+            if ( empty($attachment_image_src) ) {
+                $attachment_image_src = wp_get_attachment_image_src($thumbnail_id, 'full');
+            }
 
             // retry medium
-            if ( empty($url) ) {
-                list($url, $width, $height) = wp_get_attachment_image_src($thumbnail_id, 'medium');
+            if ( empty($attachment_image_src) ) {
+                $attachment_image_src = wp_get_attachment_image_src($thumbnail_id, 'medium');
             }
 
         } else {
-            list($url, $width, $height) = wp_get_attachment_image_src($thumbnail_id, $size);
+            $attachment_image_src = wp_get_attachment_image_src($thumbnail_id, $size);
+        }
+
+        if ($attachment_image_src) {
+            $url = (string)$attachment_image_src[0];
         }
 
         return $url;
