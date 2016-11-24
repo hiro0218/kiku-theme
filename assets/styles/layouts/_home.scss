@@ -90,6 +90,7 @@ $entry-thumbnail-size: 80px;
     }
     .entry-summary {
       font-size: $font-size-sm;
+      text-align: justify;
       @extend .mdl-color-text--grey-600;
     }
     .entry-footer {

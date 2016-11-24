@@ -50,6 +50,10 @@
     margin-bottom: 2rem;
   }
 
+  p {
+    text-align: justify;
+  }
+
   *:not(pre) > code {
     font-size: $font-size-sm;
     line-height: 2;
@@ -60,7 +64,7 @@
 
     &:before,
     &:after {
-      letter-spacing: -0.2rem;
+      letter-spacing: -.2rem;
       content: "\00a0";
     }
   }
