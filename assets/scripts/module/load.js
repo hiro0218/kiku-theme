@@ -31,14 +31,8 @@ module.exports = {
     if (!hash) {
       return;
     }
-    var content = document.getElementsByClassName('mdl-layout__content')[0];
-    var anchor = document.getElementById(hash);
-    if (content && anchor) {
-      content.scrollTop = anchor.offsetTop;
-    } else {
-      window.location.hash = '';
-      window.location.hash = anchor;
-    }
+    window.location.hash = '';
+    window.location.hash = hash;
   },
   removeFristSharp(str) {
     var url = str.split('#');
