@@ -11,7 +11,19 @@ module.exports = {
   plugins: [
     new OptimizeCssAssetsPlugin({
       cssProcessor: cssnano,
-      cssProcessorOptions: { discardComments: { removeAll: true } },
+      cssProcessorOptions: {
+        colormin: true,
+        convertValues: true,
+        discardComments: { removeAll: true },
+        discardDuplicates: true,
+        discardEmpty: true,
+        discardOverridden: true,
+        mergeLonghand: true,
+        mergeRules: true,
+        minifySelectors: true,
+        minifyFontValues: true,
+        uniqueSelectors: true,
+      },
       canPrint: true,
     }),
     new ImageminPlugin({

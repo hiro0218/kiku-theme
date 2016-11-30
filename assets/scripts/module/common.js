@@ -1,15 +1,15 @@
 module.exports = {
-  clickableElement(entry) {
-    for (var i = 0, length = entry.length; i < length; i += 1) {
-      entry[i].addEventListener('click', function (event) {
-        event.preventDefault();
-        var a = this.getElementsByTagName('a')[0];
-        if (a) {
-          location.href = a.getAttribute('href');
-        }
-      });
-    }
-  },
+  // clickableElement(entry) {
+  //   for (var i = 0, length = entry.length; i < length; i += 1) {
+  //     entry[i].addEventListener('click', function (event) {
+  //       event.preventDefault();
+  //       var a = this.getElementsByTagName('a')[0];
+  //       if (a) {
+  //         location.href = a.getAttribute('href');
+  //       }
+  //     });
+  //   }
+  // },
   addExternalLink(entry) {
     var self = this;
     var icon = document.createElement('i');

@@ -3,6 +3,7 @@
 const webpack = require('webpack');
 const qs = require('qs');
 const autoprefixer = require('autoprefixer');
+const mqpacker = require('css-mqpacker');
 const CleanPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -159,6 +160,7 @@ let webpackConfig = {
         output: { path: config.paths.dist },
         context: config.paths.assets,
         postcss: [
+          mqpacker({ sort: true }),
           autoprefixer({ browsers: ['last 2 versions', 'android 4'] }),
         ],
       },

@@ -1,6 +1,6 @@
 {
   "root": false,
-  "extends": "airbnb",
+  "extends": "airbnb-base/legacy",
   "rules": {
     "import/no-extraneous-dependencies": 0,
     "prefer-rest-params": 0,
