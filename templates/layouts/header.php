@@ -8,7 +8,7 @@
       <form method="get" action="<?= BLOG_URL; ?>">
         <label class="mdl-button mdl-js-button mdl-button--icon" for="fixed-header-drawer"><i class="material-icons">search</i></label>
         <div class="mdl-textfield__expandable-holder">
-          <input class="mdl-textfield__input" type="search" value="<?= get_search_query(); ?>" name="s" id="fixed-header-drawer" required>
+          <input class="mdl-textfield__input" type="search" value="<?= get_search_query(); ?>" placeholder="<?php _e('Search', 'kiku'); ?> <?= bloginfo('name') ?>" name="s" id="fixed-header-drawer" required>
         </div>
       </form>
     </div>
