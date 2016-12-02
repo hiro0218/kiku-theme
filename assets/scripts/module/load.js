@@ -1,5 +1,6 @@
 import 'babel-polyfill';
 import common from '../module/common';
+import adsbygoogle from '../module/adsbygoogle';
 
 module.exports = {
   checkLoaded() {
@@ -7,10 +8,9 @@ module.exports = {
     document.addEventListener('mdl-componentupgraded', function (e) {
       if (typeof e.target.MaterialLayout !== 'undefined') {
         (async () => {
-          const result = await self.compleatedLoading();
-          if (result) {
-            self.moveAnchorTagPosition();
-          }
+          await adsbygoogle.isLoaded();
+          await self.compleatedLoading();
+          self.moveAnchorTagPosition();
         })();
       }
     });
@@ -18,12 +18,8 @@ module.exports = {
   compleatedLoading() {
     return new Promise((resolve, reject) => {
       var loader = document.getElementsByClassName('loader')[0];
-      if (loader) {
-        loader.classList.add('is-loaded');
-        resolve(true);
-      } else {
-        resolve(false);
-      }
+      loader.classList.add('is-loaded');
+      resolve(true);
     });
   },
   moveAnchorTagPosition() {
