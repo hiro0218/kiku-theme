@@ -21,7 +21,7 @@
           get_template_part('layouts/footer');
           wp_footer();
         ?>
-      </div><!-- /.wrap -->
-    </div><!-- mdl-layout -->
+      </div>
+    </div>
   </body>
 </html>
