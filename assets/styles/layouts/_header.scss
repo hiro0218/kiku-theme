@@ -12,16 +12,11 @@
   }
 
   .mdl-textfield {
-    padding: 0;
-    .mdl-button {
-      bottom: auto;
-    }
+    padding: .5rem 0;
   }
 
-  .mdl-textfield--expandable .mdl-button--icon {
-    top: 0;
-    .material-icons {
-      height: auto;
-    }
+  .mdl-button:hover {
+    background: none;
   }
+
 }

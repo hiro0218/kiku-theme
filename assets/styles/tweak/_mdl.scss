@@ -4,12 +4,7 @@
   scroll-behavior: smooth;
 }
 
-// header fixed
-// .mdl-layout__content {
-  // flex-shrink: 0;
-// }
 .mdl-layout__drawer.is-visible~.mdl-layout__content {
-  overflow: hidden;
   height: calc(100vh - #{$layout-desktop-header-height});
 
   @media screen and (max-width: $layout-screen-size-threshold) {
@@ -17,12 +12,14 @@
   }
 }
 
-// .mdl-layout__header {
-  // display: block !important;  // always visible
-// }
-
 .mdl-textfield__input {
   border-width: 2px;
+  margin: .5rem;
+  padding: .5rem 0;
+}
+
+.mdl-textfield--expandable .mdl-button--icon {
+  top: 24px;
 }
 
 .mdl-layout__drawer-button {
@@ -47,14 +44,12 @@
 // }
 
 .mdl-color--transparent {
-  background: transparent;
+  background: transparent;  // white -> transparent
 }
 
-.mdl-layout__drawer-button,
 .mdl-layout__drawer-button {
-  line-height: 1.75;
+  line-height: inherit;
 }
-
 
 // mdl-ext
 .mdlext-layout__sticky-header.mdlext-is-scroll {
