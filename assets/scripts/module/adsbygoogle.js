@@ -14,7 +14,7 @@ module.exports = {
     self.init();
     return new Promise((resolve, reject) => {
       // without ads
-      if (self.count === 0) {
+      if (self.count() === 0) {
         resolve(true);
       }
       // Create observer
