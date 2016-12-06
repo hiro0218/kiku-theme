@@ -58,3 +58,12 @@ function disable_self_ping($links) {
     }
 }
 add_action('pre_ping', 'disable_self_ping');
+
+// Disable Redirect
+function disable_completion_redirect($redirect_url) {
+    if (is_404()) {
+        return false;
+    }
+    return $redirect_url;
+}
+add_filter( 'redirect_canonical', 'disable_completion_redirect' );
