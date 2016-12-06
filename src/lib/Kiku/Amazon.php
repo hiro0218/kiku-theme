@@ -11,46 +11,40 @@ class Kiku_Amazon {
     protected $request = null;
 
     public function __construct($accessKeyId, $secretKey, $associateId) {
-        if ( empty($accessKeyId) && empty($secretKey) && empty($associateId) ) {
+        if ( empty($accessKeyId) || empty($secretKey) || empty($associateId) ) {
             return;
         }
-        if ( class_exists('Client') && class_exists('GuzzleRequest') && class_exists('GenericConfiguration') ) {
-            $this->client = new Client();
-            $this->config = new GenericConfiguration();
-            $this->config->setCountry($this->get_country())
-                         ->setAccessKey($accessKeyId)
-                         ->setSecretKey($secretKey)
-                         ->setAssociateTag($associateId)
-                         ->setRequest($this->request);
-        } else {
-            return;
-        }
+
+        $this->client = new Client();
+        $this->request = new GuzzleRequest($this->client);
+        $this->config = new GenericConfiguration();
+        $this->config->setCountry($this->get_country())
+                     ->setAccessKey($accessKeyId)
+                     ->setSecretKey($secretKey)
+                     ->setAssociateTag($associateId)
+                     ->setRequest($this->request);
     }
 
     public function lookupASIN($asin) {
-        if ( empty($this->config) || empty($asin) ) {
+        if ( empty($asin) ) {
             return null;
         }
 
+        $results = null;
         try {
-            if ( class_exists('ApaiIO') && class_exists('Lookup') ) {
-                $apaiIO = new ApaiIO($this->config);
-                $lookup = new Lookup();
+            $apaiIO = new ApaiIO($this->config);
+            $lookup = new Lookup();
 
-                $lookup->setItemId($asin);
-                $lookup->setResponseGroup(['ItemAttributes', 'Images']);
-                $formattedResponse = $apaiIO->runOperation($lookup);
+            $lookup->setItemId($asin);
+            $lookup->setResponseGroup(['ItemAttributes', 'Images']);
+            $formattedResponse = $apaiIO->runOperation($lookup);
+            $results = simplexml_load_string( $formattedResponse );
 
-                $results = null;
-                $results = simplexml_load_string( $formattedResponse );
-
-                return $results->Items->Item;
-            }
+            return $results->Items->Item;
         } catch (Exception $e) {
             return null;
         }
 
-        return null;
     }
 
     private function get_country() {

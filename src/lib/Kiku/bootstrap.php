@@ -34,9 +34,9 @@ require KIKU_LIB_PATH. 'plugins/soil/nice-search.php';
 
 require KIKU_LIB_PATH. 'Amazon.php';
 $Amazon = null;
-$accessKeyId = get_option('kiku_amazon_api_key');
-$secretKey = get_option('kiku_amazon_secret_key');
-$associateId = get_option('kiku_amazon_associate_tag');
-if ($accessKeyId || $secretKey || $associateId) {
+if (is_admin()) {
+    $accessKeyId = get_option('kiku_amazon_api_key');
+    $secretKey = get_option('kiku_amazon_secret_key');
+    $associateId = get_option('kiku_amazon_associate_tag');
     $Amazon = new Kiku_Amazon($accessKeyId, $secretKey, $associateId);
 }
