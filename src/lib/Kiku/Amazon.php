@@ -26,12 +26,12 @@ class Kiku_Amazon {
     }
 
     public function lookupASIN($asin) {
-        if ( empty($asin) ) {
+        if ( !$asin || !$this->config ) {
             return null;
         }
 
-        $results = null;
         try {
+            $results = null;
             $apaiIO = new ApaiIO($this->config);
             $lookup = new Lookup();
 
