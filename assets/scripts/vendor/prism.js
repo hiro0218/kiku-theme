@@ -18,5 +18,6 @@ import 'prismjs/components/prism-powershell.min';
 import 'prismjs/components/prism-scss.min';
 import 'prismjs/components/prism-sql.min';
 import 'prismjs/components/prism-swift.min';
+import 'prismjs/plugins/command-line/prism-command-line.min';
 import 'prismjs/plugins/line-numbers/prism-line-numbers.min';
 import 'prismjs/plugins/remove-initial-line-feed/prism-remove-initial-line-feed.min';
