@@ -1,4 +1,6 @@
 <?php
+namespace Kiku;
+
 date_default_timezone_set(get_option('timezone_string'));
 
 define('KIKU_LIB_PATH', realpath(__DIR__) .DIRECTORY_SEPARATOR);
@@ -10,8 +12,8 @@ require KIKU_LIB_PATH. 'constant.php';
 require KIKU_LIB_PATH. 'Util.php';
 require KIKU_LIB_PATH. 'Entry.php';
 require KIKU_LIB_PATH. 'Image.php';
-$Entry = new Kiku\Entry();
-$Image = new Kiku\Image();
+$Entry = new Entry();
+$Image = new Image();
 
 // module
 require KIKU_LIB_PATH. 'modules/admin.php';
@@ -38,5 +40,5 @@ if (is_admin()) {
     $accessKeyId = get_option('kiku_amazon_api_key');
     $secretKey = get_option('kiku_amazon_secret_key');
     $associateId = get_option('kiku_amazon_associate_tag');
-    $Amazon = new Kiku_Amazon($accessKeyId, $secretKey, $associateId);
+    $Amazon = new Amazon($accessKeyId, $secretKey, $associateId);
 }

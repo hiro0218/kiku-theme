@@ -1,11 +1,13 @@
 <?php
+namespace Kiku;
+
 use ApaiIO\ApaiIO;
 use ApaiIO\Configuration\GenericConfiguration;
 use ApaiIO\Operations\Lookup;
 use ApaiIO\Request\GuzzleRequest;
 use GuzzleHttp\Client;
 
-class Kiku_Amazon {
+class Amazon {
     protected $config = null;
     protected $client = null;
     protected $request = null;
