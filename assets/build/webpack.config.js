@@ -161,7 +161,7 @@ let webpackConfig = {
         context: config.paths.assets,
         postcss: [
           mqpacker({ sort: true }),
-          autoprefixer({ browsers: ['last 2 versions', 'android 4'] }),
+          autoprefixer({ browsers: ['last 2 versions'] }),
         ],
       },
     }),

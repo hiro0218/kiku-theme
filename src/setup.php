@@ -8,9 +8,18 @@ use Roots\Sage\Template;
  * Theme assets
  */
 add_action('wp_enqueue_scripts', function () {
+    // style
     wp_enqueue_style('normalize', 'https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css', false, null);
-    wp_enqueue_style('sage/main', asset_path('styles/main.css'), false, null);
-    wp_enqueue_script('sage/main', asset_path('scripts/main.js'), [], null, true);
+    wp_enqueue_style('styles/main', asset_path('styles/main.css'), false, null);
+
+    // script
+    wp_enqueue_script('scripts/main', asset_path('scripts/main.js'), [], null, true);
+
+    // syntax highlighter
+    if (is_singular()) {
+        wp_enqueue_script('scripts/prism', asset_path('scripts/prism.js'), [], null, true);
+    }
+
 }, 100);
 
 /**

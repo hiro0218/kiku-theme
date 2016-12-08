@@ -3,6 +3,9 @@
     "main": [
       "./scripts/main.js",
       "./styles/main.scss"
+    ],
+    "prism": [
+      "./scripts/vendor/prism.js"
     ]
   },
   "watch": [

@@ -7,7 +7,6 @@ import search from './routes/Home';
 import single from './routes/Single';
 import page from './routes/Single';
 
-import './vendor/prism';
 import './vendor/mdl';
 
 // Use this variable to set up the common and page specific functions. If you
