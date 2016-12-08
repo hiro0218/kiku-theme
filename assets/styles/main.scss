@@ -2,9 +2,13 @@
 @import "~bourbon/app/assets/stylesheets/bourbon";
 @import "~bourbon-neat/app/assets/stylesheets/neat";
 
-// Material Deign Lite
-@import "material-design-lite";
-@import "tweak/mdl";
+// config
+@import "config/variables";
+
+// vendor
+@import "vendor/material-design-lite";
+@import "vendor/mdl-tweak";
+@import "vendor/bootstrap-migration";
 
 // prism.js
 @import "plugins/prismjs";
@@ -18,16 +22,16 @@
 @import "animation";
 @import "font";
 
-@import "common/global";
-@import "common/type";
-@import "common/grid";
+@import "base/global";
+@import "base/type";
+@import "base/grid";
 
-@import "components/wp-classes";
-@import "components/pagination";
-@import "components/breadcrumb";
-@import "components/mokuji";
-@import "components/loader";
-@import "components/sandbox";
+@import "organisms/wp-classes";
+@import "organisms/pagination";
+@import "organisms/breadcrumb";
+@import "organisms/mokuji";
+@import "organisms/loader";
+@import "organisms/sandbox";
 
 // Layout
 @import "layouts/header";
@@ -39,6 +43,3 @@
 @import "layouts/partials/entry-mata";
 @import "layouts/partials/entry-share";
 @import "layouts/partials/entry-similar";
-
-// migration
-@import "migration/bootstrap";

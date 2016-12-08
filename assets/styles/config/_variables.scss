@@ -1,3 +1,6 @@
+// Material Design Lite define
+@import "~material-design-lite/src/color-definitions";
+
 // Global Prefixer
 $prefix-for-webkit:    true;
 $prefix-for-mozilla:   true;
@@ -9,23 +12,25 @@ $prefix-for-spec:      true;
 $base-size:            16px;
 $modular-scale-base:   1rem;
 $modular-scale-ratio:  $major-second;
-// $golden:           1.618;
-// $minor-second:     1.067;
-// $major-second:     1.125;
-// $minor-third:      1.2;
-// $major-third:      1.25;
-// $perfect-fourth:   1.333;
-// $augmented-fourth: 1.414;
-// $perfect-fifth:    1.5;
-// $minor-sixth:      1.6;
-// $major-sixth:      1.667;
-// $minor-seventh:    1.778;
-// $major-seventh:    1.875;
-// $octave:           2;
-// $major-tenth:      2.5;
-// $major-eleventh:   2.667;
-// $major-twelfth:    3;
-// $double-octave:    4;
+/*
+ * $golden:           1.618;
+ * $minor-second:     1.067;
+ * $major-second:     1.125;
+ * $minor-third:      1.2;
+ * $major-third:      1.25;
+ * $perfect-fourth:   1.333;
+ * $augmented-fourth: 1.414;
+ * $perfect-fifth:    1.5;
+ * $minor-sixth:      1.6;
+ * $major-sixth:      1.667;
+ * $minor-seventh:    1.778;
+ * $major-seventh:    1.875;
+ * $octave:           2;
+ * $major-tenth:      2.5;
+ * $major-eleventh:   2.667;
+ * $major-twelfth:    3;
+ * $double-octave:    4;
+*/
 
 
 //
@@ -36,8 +41,8 @@ $font-family-monospace:   Consolas, "Liberation Mono", Menlo, Courier, monospace
 $font-weight-base:        normal;
 
 // MDL
-$preferred_font:          $font-family-base;
-$performance_font:        $font-family-base;
+$preferred_font:          inherit;
+$performance_font:        inherit;
 
 $font-size-base:          $base-size;
 $font-size-lg:            modular-scale(1);
