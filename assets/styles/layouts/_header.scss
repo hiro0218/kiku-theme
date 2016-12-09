@@ -17,6 +17,7 @@
 
   .mdl-textfield {
     padding: .5rem 0;
+    @extend .mdl-color-text--grey-800;
   }
 
   .mdl-button:hover {
