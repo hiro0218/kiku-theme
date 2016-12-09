@@ -5,10 +5,14 @@
     @extend .mdl-color-text--grey-900;
   }
 
-  .header-search {
-    @media screen and (max-width: $screen-xs) {
-        display: none;
+  @media screen and (max-width: $screen-xs) {
+    .header-search {
+      display: none;
     }
+  }
+
+  .material-icons {
+    @extend .mdl-color-text--grey-800;
   }
 
   .mdl-textfield {

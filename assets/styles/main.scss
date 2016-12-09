@@ -5,41 +5,43 @@
 // config
 @import "config/variables";
 
-// vendor
+// Material Deign Lite
 @import "vendor/material-design-lite";
 @import "vendor/mdl-tweak";
 @import "vendor/bootstrap-migration";
-
-// prism.js
-@import "plugins/prismjs";
-@import "plugins/prism-line-numbers";
-@import "plugins/prism-command-line";
-
-// image-zoom
-@import "plugins/image-zoom";
 
 // styles
 @import "animation";
 @import "font";
 
+// base
 @import "base/global";
 @import "base/type";
 @import "base/grid";
 
-@import "organisms/wp-classes";
-@import "organisms/pagination";
-@import "organisms/breadcrumb";
-@import "organisms/mokuji";
-@import "organisms/loader";
-@import "organisms/sandbox";
+// pages
+@import "pages/home";
+@import "pages/single";
+@import "pages/archive";
 
-// Layout
+// parts
+@import "parts/wp-classes";
+@import "parts/pagination";
+@import "parts/breadcrumb";
+@import "parts/mokuji";
+@import "parts/loader";
+@import "parts/sandbox";
+@import "parts/entry-mata";
+@import "parts/entry-share";
+@import "parts/entry-similar";
+
+// layouts
 @import "layouts/header";
-@import "layouts/home";
 @import "layouts/sidebar";
 @import "layouts/footer";
-@import "layouts/archive";
-@import "layouts/partials/entry";
-@import "layouts/partials/entry-mata";
-@import "layouts/partials/entry-share";
-@import "layouts/partials/entry-similar";
+
+// vendor
+@import "vendor/prismjs";
+@import "vendor/prism-line-numbers";
+@import "vendor/prism-command-line";
+@import "vendor/image-zoom";
