@@ -49,7 +49,6 @@ $sage_includes = [
     'src/helpers.php',
     'src/setup.php',
     'src/filters.php',
-    'src/admin.php',
 
     'src/lib/Kiku/bootstrap.php',  // Kiku
 ];
