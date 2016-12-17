@@ -84,7 +84,7 @@ EOM;
         }
 
         if ($is_twitter || $is_facebook || $is_line) {
-            add_filter( 'script_loader_tag', __NAMESPACE__ . '\\add_share_script', 10, 3 );
+            add_action('wp_footer', __NAMESPACE__ . '\\add_share_script', 100);
         }
     }
 
@@ -99,9 +99,8 @@ function is_display() {
     ];
 }
 
-function add_share_script($tag, $handle, $src) {
-    if ( $handle == 'sage/main' ) {
-        $script = <<< EOM
+function add_share_script() {
+    $script = <<< EOM
 <script>
 function openWindow(href, width, height) {
     var w = (width)  ? width  : 480,
@@ -115,7 +114,7 @@ function openWindow(href, width, height) {
 }
 </script>
 EOM;
-        $tag .= $script . PHP_EOL;
-    }
-    return $tag;
+    $script .= PHP_EOL;
+
+    echo $script;
 }
