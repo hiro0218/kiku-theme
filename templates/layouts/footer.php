@@ -1,4 +1,4 @@
-<footer class="footer-navigation mdl-mini-footer">
+<footer id="footer" class="footer-navigation mdl-mini-footer">
   <div class="mdl-mini-footer__left-section">
     <?php if (has_nav_menu('primary_navigation')): ?>
       <nav><?php wp_nav_menu([
@@ -9,6 +9,6 @@
     <?php endif; ?>
   </div>
   <div class="mdl-mini-footer__right-section">
-    <div class="copyright">&copy; <?php echo Kiku\Util::get_copyright_year(); ?> <a href="<?= BLOG_URL; ?>"><?= BLOG_NAME; ?></a>.</div>
+    <span>&copy; <?php echo Kiku\Util::get_copyright_year(); ?> <a href="<?= BLOG_URL; ?>"><?= BLOG_NAME; ?></a>.</span>
   </div>
 </footer>

@@ -4,7 +4,7 @@
   float: left;
   font-size: 100%;
   letter-spacing: -1px;
-  margin-right: 1em;
+  margin-right: 1rem;
   pointer-events: none;
 
   user-select: none;
@@ -14,7 +14,7 @@
   color: #999;
   content: ' ';
   display: block;
-  padding-right: 0.8em;
+  padding-right: 0.8rem;
 }
 
 .command-line-prompt > span[data-user]:before {

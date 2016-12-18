@@ -77,5 +77,6 @@ ol ol ol {
 }
 
 mark {
-  @extend .mdl-color--yellow-100, .mdl-color-text--grey-900;
+  color: unquote("rgb(#{$palette-grey-900})");
+  background: unquote("rgb(#{$palette-yellow-100})");
 }

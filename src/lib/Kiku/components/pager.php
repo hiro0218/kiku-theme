@@ -29,7 +29,7 @@ function the_pager() {
         $prev['attr']  = '';
     }
     if (!empty($prev['uri'])) {
-        $pager .= '<a href="' . $prev['uri'] . '"  class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet previous '. $prev['attr'] .'" title="'. $prev['title'] .'">';
+        $pager .= '<a href="' . $prev['uri'] . '"  class="pager-previous mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet '. $prev['attr'] .'" title="'. $prev['title'] .'">';
         $pager .= $args['previous_string'];
         $pager .= '<span class="pager-instruct">prev</span>';
         $pager .= '<span class="pager-title">'. $prev['title'] .'</span>';
@@ -48,7 +48,7 @@ function the_pager() {
         $next['attr']  = '';
     }
     if (!empty($next['uri'])) {
-        $pager .= '<a href="' . $next['uri'] . '" class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet next '. $next['attr'] .'" title="'. $next['title'] .'">';
+        $pager .= '<a href="' . $next['uri'] . '" class="pager-next mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet '. $next['attr'] .'" title="'. $next['title'] .'">';
         $pager .= $args['next_string'];
         $pager .= '<span class="pager-instruct">next</span>';
         $pager .= '<span class="pager-title">'. $next['title'] .'</span>';

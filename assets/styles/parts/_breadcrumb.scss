@@ -4,27 +4,24 @@
   list-style: none;
   padding: 0;
   margin-bottom: 1rem;
-  @extend .mdl-color-text--grey-400;
+  color: unquote("rgb(#{$palette-grey-400})");
   @include clearfix;
 
-  > li {
-    float: left;
-
-    &.active {
-      @extend .mdl-color-text--grey-600;
+  a {
+    color: inherit;
+    border: 0;
+    &:hover {
+      text-decoration: underline;
     }
+  }
+  li {
+    float: left;
     &:not(:last-child) {
      margin-right: .5rem;
     }
-
-    a {
-      color: inherit;
-      border: 0;
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-
   }
+}
 
+.breadcrumb-active {
+  color: unquote("rgb(#{$palette-grey-600})");
 }

@@ -8,109 +8,105 @@
 .pagination {
   padding-left: 0;
 
-  > li {
+  li {
     display: inline;
-    > a {
-      transition: background .3s $animation-curve-default;
-
-      &:hover {
-        @extend .mdl-color--grey-300;
-      }
-    }
-
-    > a,
-    > span {
-      font-size: $font-size-sm;
-      margin: 0 ($spacer / 4);
-      padding: .75rem;
-      border-radius: 2px;
-      @extend .mdl-color-text--grey-600;
-
-      &:hover,
-      &:focus {
-        outline: 0;
-      }
-    }
-
     @media screen and (max-width: $screen-xs) {
-      &:not(.frist):not(.next):not(.previous):not(.last):not(.active) {
+      &:not(.pagination-frist):not(.pagination-next):not(.pagination-previous):not(.pagination-last):not(.pagination-active) {
         display: none;
       }
     }
-
   }
 
-  .previous > a {
-    margin-right: $spacer;
-  }
-  .next > a {
-    margin-left: $spacer;
-  }
-  .active > span {
-    font-weight: bold;
-    cursor: default;
-    @extend .mdl-color--grey-600, .mdl-color-text--white;
-  }
-
-}
-
-
-
-// pager
-.pager {
-  padding-left: 0;
-  padding-right: 0;
   a {
-    border-radius: ($spacer * .125);
-    padding: .5rem;
     transition: background .3s $animation-curve-default;
-    @extend .mdl-color-text--grey-600;
-
     &:hover {
-      @extend .mdl-color--grey-300;
+      background: unquote("rgb(#{$palette-grey-300})");
     }
+  }
 
-    .pager-icon,
-    .pager-title,
-    .pager-instruct {
-      display: block;
-    }
-    .pager-icon {
-      width: 2rem;
-      text-align: center;
-      @extend .mdl-color-text--grey-800;
-    }
-    .pager-instruct {
-      text-transform: uppercase;
-      font-weight: bold;
-      @extend .mdl-color-text--grey-500;
-    }
-    .pager-title {
-      @include ellipsis(100%);
-    }
-
+  a,
+  span {
+    font-size: $font-size-sm;
+    margin: 0 ($spacer / 4);
+    padding: .75rem;
+    border-radius: 2px;
+    color: unquote("rgb(#{$palette-grey-600})");
+    &:hover,
     &:focus {
       outline: 0;
     }
   }
 
-  .previous {
-    text-align: left;
-    .pager-icon {
-      float: left;
-    }
-    .pager-title {
-      padding-left: 2rem;
-    }
-  }
-  .next {
-    text-align: right;
-    .pager-icon {
-      float: right;
-    }
-    .pager-title {
-      padding-right: 2rem;
-    }
-  }
+}
 
+.pagination-previous a {
+  margin-right: $spacer;
+}
+
+.pagination-next a {
+  margin-left: $spacer;
+}
+
+.pagination-active span {
+  font-weight: bold;
+  cursor: default;
+  background: unquote("rgb(#{$palette-grey-600})");
+  color: #fff;
+}
+
+
+// pager
+.pager {
+
+  a {
+    border-radius: ($spacer * .125);
+    padding: .5rem;
+    color: unquote("rgb(#{$palette-grey-600})");
+    transition: background .3s $animation-curve-default;
+
+    &:hover {
+      background: unquote("rgb(#{$palette-grey-300})");
+    }
+    &:focus {
+      outline: 0;
+    }
+  }
+}
+
+.pager-previous {
+  text-align: left;
+  .pager-icon {
+    float: left;
+  }
+  .pager-title {
+    padding-left: 2rem;
+  }
+}
+.pager-next {
+  text-align: right;
+  .pager-icon {
+    float: right;
+  }
+  .pager-title {
+    padding-right: 2rem;
+  }
+}
+
+.pager-icon,
+.pager-title,
+.pager-instruct {
+  display: block;
+}
+.pager-icon {
+  width: 2rem;
+  text-align: center;
+  color: unquote("rgb(#{$palette-grey-800})");
+}
+.pager-instruct {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: unquote("rgb(#{$palette-grey-500})");
+}
+.pager-title {
+  @include ellipsis(100%);
 }

@@ -1,7 +1,9 @@
-.footer-navigation {
-  @extend .mdl-color--white;
-
-  .copyright {
-    line-height: $footer-btn-size;
+#footer {
+  margin-top: 1rem;
+  a {
+    color: unquote("rgb(#{$palette-grey-200})");
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }

@@ -49,16 +49,16 @@ function the_pagination() {
 	$firstpage = esc_attr(get_pagenum_link(1));
 
     if ( $firstpage && (1 != $page) ) {
-        $pagination .= '<li class="frist"><a href="' . $firstpage . '">' . $args['first_page'] . '</a></li>';
+        $pagination .= '<li class="pagination-frist"><a href="' . $firstpage . '">' . $args['first_page'] . '</a></li>';
     }
     if ( $previous && (1 != $page) ) {
-        $pagination .= '<li class="previous"><a href="' . $previous . '">' . $args['previous_string'] . '</a></li>';
+        $pagination .= '<li class="pagination-previous"><a href="' . $previous . '">' . $args['previous_string'] . '</a></li>';
     }
 
     if ( !empty($min) && !empty($max) ) {
         for( $i = $min; $i <= $max; $i++ ) {
             if ($page == $i) {
-                $pagination .= '<li class="active"><span>' . str_pad( (int)$i, 2, '0', STR_PAD_LEFT ) . '</span></li>';
+                $pagination .= '<li class="pagination-active"><span>' . str_pad( (int)$i, 2, '0', STR_PAD_LEFT ) . '</span></li>';
             } else {
                 $pagination .= sprintf( '<li><a href="%s">%002d</a></li>', esc_attr( get_pagenum_link($i) ), $i );
             }
@@ -69,11 +69,11 @@ function the_pagination() {
     $lastpage = esc_attr( get_pagenum_link($count) );
 
     if ($next && ($count != $page) ) {
-        $pagination .= '<li class="next"><a href="' . $next . '">' . $args['next_string'] . '</a></li>';
+        $pagination .= '<li class="pagination-next"><a href="' . $next . '">' . $args['next_string'] . '</a></li>';
     }
 
     if ( $lastpage && ($count != $page) ) {
-        $pagination .= '<li class="last"><a href="' . $lastpage . '">' . $args['last_string'] . '</a></li>';
+        $pagination .= '<li class="pagination-last"><a href="' . $lastpage . '">' . $args['last_string'] . '</a></li>';
     }
 
     // from setting

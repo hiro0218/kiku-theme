@@ -29,7 +29,7 @@ $tmp_year = 0;
         echo "</ul>";  // for prev loop's
         $tmp_year = $current_year;
         echo "<h2>". $tmp_year ."</h2>";
-        echo "<ul class='archive-list'>";
+        echo "<ul class='page-archive-list'>";
       }
       $post_date = strtotime($entry['post_date']);
     ?>

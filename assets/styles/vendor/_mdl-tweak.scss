@@ -27,7 +27,9 @@
 }
 
 .mdl-layout__drawer {
-  @extend .mdl-color--white;
+  border-right: 0;
+  box-shadow: none;
+  background: #fff;
 }
 
 .mdl-card {

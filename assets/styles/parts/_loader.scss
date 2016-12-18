@@ -12,22 +12,17 @@
     animation: fadeOut .8s $animation-curve-fast-out-slow-in forwards;
     pointer-events: none;
   }
+}
 
-  .loader-inner {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    @include size(100%);
+.loader-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @include size(100%);
+}
+
+.loader-spinner {
+  img {
+    @include size(5rem);
   }
-
-  .loader-spinner {
-    svg {
-      @include size(5rem);
-      path,
-      rect {
-        fill: #fff;
-      }
-    }
-  }
-
 }

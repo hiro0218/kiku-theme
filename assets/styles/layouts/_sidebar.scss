@@ -1,45 +1,33 @@
 // widget
+.sidebar {
+  ul {
+    list-style: none;
+    margin-top: 0;
+    padding: 0;
+  }
+}
+
 .widget-title {
   padding-left: .5rem;
 }
 
+.widget_categories,
 .widget_recent_entries,
 .jetpack-post-views {
-  @extend .mdl-navigation;
-
-  ul {
-    list-style: none;
-    margin-top: 0;
-    padding: 0;
-  }
-
   a {
     transition: background .3s $animation-curve-default;
     @extend .mdl-navigation__link;
   }
-
+  @extend .mdl-navigation;
 }
 
 .widget_categories {
-  @extend .mdl-navigation;
-
-  ul {
-    list-style: none;
-    margin-top: 0;
-    padding: 0;
-
-    &.children {
-      a {
-        padding-left: 2rem;
-      }
-      .children a {
-        padding-left: 3rem;
-      }
+  ul.children {
+    a {
+      padding-left: 2rem;
+    }
+    .children a {
+      padding-left: 3rem;
     }
   }
-
-  a {
-    @extend .mdl-navigation__link;
-  }
-
 }

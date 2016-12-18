@@ -33,7 +33,7 @@
   <?php endforeach; ?>
   <?php endif;  // $category is not empty ?>
   <?php endif;  // is_singular() ?>
-  <li class="active" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+  <li class="breadcrumb-active" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
     <i class="material-icons">location_on</i>
     <a href="<?= get_the_permalink(); ?>" itemprop="item">
       <span itemprop="name"><?php the_title_attribute(); ?></span>

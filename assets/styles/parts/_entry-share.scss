@@ -6,14 +6,10 @@ $share-base-color:  unquote("rgb(#{$palette-grey-300})");
 
 .entry-share {
   list-style: none;
-  padding: 0;
+  padding: 1rem 0;
   text-align: center;
 
-  a {
-    border: 0 !important;
-  }
-
-  > li {
+  li {
     display: inline-block;
     margin-bottom: 0;
 
@@ -28,11 +24,9 @@ $share-base-color:  unquote("rgb(#{$palette-grey-300})");
 .btn-hatena,
 .btn-line {
   display: block;
-  border-radius: 2px;
   background-size: 80% 80%;
   background-position: 50% 50%;
   background-repeat: no-repeat;
-  transition: background .3s;
   @include hide-text;
   @include size(40px);
 
@@ -43,33 +37,13 @@ $share-base-color:  unquote("rgb(#{$palette-grey-300})");
 
 .btn-twitter {
   background-image: url("../images/svg/twitter.svg");
-  background-color: $share-base-color;
-
-  &:hover {
-    background-color: $twitter-color;
-  }
 }
 .btn-facebook {
   background-image: url("../images/svg/facebook.svg");
-  background-color: $share-base-color;
-
-  &:hover {
-    background-color: $facebook-color;
-  }
 }
 .btn-hatena {
   background-image: url("../images/svg/hatena-bookmark.svg");
-  background-color: $share-base-color;
-
-  &:hover {
-    background-color: $hatena-color;
-  }
 }
 .btn-line {
   background-image: url("../images/svg/line.svg");
-  background-color: $share-base-color;
-
-  &:hover {
-    background-color: $line-color;
-  }
 }

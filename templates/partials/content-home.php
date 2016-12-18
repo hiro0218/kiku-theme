@@ -17,9 +17,7 @@
       <header class="entry-header">
         <h2 class="entry-title"><?php the_title(); ?></h2>
       </header>
-      <div class="entry-summary">
-        <?php the_excerpt(); ?>
-      </div>
+      <div class="entry-summary"><?php the_excerpt(); ?></div>
       <footer class="entry-footer">
         <?php get_template_part('partials/entry/meta'); ?>
       </footer>

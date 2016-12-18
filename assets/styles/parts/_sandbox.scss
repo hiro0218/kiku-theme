@@ -1,11 +1,4 @@
-// ".bs-docs-example", ".bd-example":
-//   This is deprecated and will be deleted in the future.
-//   It is currently implemented for backward compatibility.
-// --------------------------------------------------
-
-.sandbox,
-.bd-example,
-.bs-docs-example {
+.sandbox {
   position: relative;
   padding: 2rem;
   border: .15rem solid unquote("rgb(#{$palette-grey-100})"); // same: pre bgColor

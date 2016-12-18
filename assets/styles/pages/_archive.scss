@@ -1,14 +1,12 @@
-.page-template-template-archive {
-  .archive-list {
-    padding: 0;
-    li {
-      display: flex;
-      list-style-type: none;
-      padding: 0 1rem;
-    }
-    time {
-      flex: 0 0 6rem;
-      @extend .mdl-color-text--grey-400;
-    }
+.page-archive-list {
+  padding: 0;
+  li {
+    display: flex;
+    list-style-type: none;
+    padding: 0 1rem;
+  }
+  time {
+    flex: 0 0 6rem;
+    color: unquote("rgb(#{$palette-grey-400})");
   }
 }
