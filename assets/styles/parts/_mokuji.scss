@@ -23,12 +23,6 @@
   border-left: solid 3px unquote("rgb(#{$palette-blue-100})");
   padding-left: 1rem;
 
-  a {
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-
   ol {
     list-style: none;
     margin-bottom: 0;
