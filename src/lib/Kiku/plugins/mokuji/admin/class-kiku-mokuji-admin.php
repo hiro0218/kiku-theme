@@ -7,15 +7,13 @@ define('MKJ_POSITION_AFTER_FIRST_HEADING', 4);
 define('MKJ_TAG', '<!--MOKUJI-->');
 
 class Kiku_Mokuji_Admin {
-    private $plugin_name;
-    private $version;
     private $message;
     private $options;
     private $show_mokuji = true;
     private $exclude_post_types = ['attachment', 'revision', 'nav_menu_item', 'safecss'];
     private $collision_collector = [];
 
-    public function __construct( $plugin_name, $version ) {
+    public function __construct() {
         $defaultOptions = [
             'position' => MKJ_POSITION_BEFORE_FIRST_HEADING,
             'start' => 1,
