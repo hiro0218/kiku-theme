@@ -5,20 +5,13 @@ class Util {
 
     // コピーライト用の年号(開始-現在)を取得する
     public static function get_copyright_year(): string {
-        global $wpdb;
-
-        $sql = "SELECT YEAR(min(post_date_gmt)) AS firstdate,
-                YEAR(max(post_date_gmt)) AS lastdate
-                FROM $wpdb->posts
-                WHERE
-                 post_type = 'post' AND
-                 post_status = 'publish'";
-        $copyright_dates = $wpdb->get_results($sql);
+        $DB = new \Kiku\DB();
+        $copyright_dates = $DB->get_frist_last_post_year();
 
         $output = '';
-        if($copyright_dates) {
+        if ($copyright_dates) {
             $copyright = $copyright_dates[0]->firstdate;
-            if( $copyright_dates[0]->firstdate != $copyright_dates[0]->lastdate ) {
+            if ( $copyright_dates[0]->firstdate != $copyright_dates[0]->lastdate ) {
                 $copyright .= '-' . $copyright_dates[0]->lastdate;
             }
             $output = $copyright;

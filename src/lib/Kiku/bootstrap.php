@@ -12,6 +12,7 @@ require KIKU_LIB_PATH. 'constant.php';
 require KIKU_LIB_PATH. 'Util.php';
 require KIKU_LIB_PATH. 'Entry.php';
 require KIKU_LIB_PATH. 'Image.php';
+require KIKU_LIB_PATH. 'DB.php';
 $Entry = new Entry();
 $Image = new Image();
 

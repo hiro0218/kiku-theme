@@ -3,15 +3,9 @@
  * Template Name: Archive
  */
 
-global $wpdb;
+$DB = new \Kiku\DB();
+$archives = $DB->get_archive_list();
 
-$sql = "SELECT ID, post_title, post_date
-        FROM $wpdb->posts
-        WHERE post_status = 'publish'
-          AND post_date <= now()
-          AND post_type = 'post'
-        ORDER BY post_date DESC";
-$archives = $wpdb->get_results($sql, ARRAY_A);
 $tmp_year = 0;
 ?>
 <?php while (have_posts()) : the_post(); ?>
