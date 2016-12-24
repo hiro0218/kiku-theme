@@ -26,3 +26,7 @@
     min-height: calc(100vh - #{$layout-mobile-header-height});
   }
 }
+
+.pager {
+  max-width: $container-max-width;
+}

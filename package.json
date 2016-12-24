@@ -27,8 +27,8 @@
     "test": "npm run lint -s"
   },
   "devDependencies": {
-    "autoprefixer": "^6.5.4",
-    "babel-core": "^6.20.0",
+    "autoprefixer": "^6.6.0",
+    "babel-core": "^6.21.0",
     "babel-eslint": "^7.1.1",
     "babel-loader": "^6.2.10",
     "babel-preset-es2015": "^6.18.0",
@@ -39,7 +39,7 @@
     "bourbon-neat": "^1.8.0",
     "browser-sync": "^2.18.5",
     "buble": "^0.15.1",
-    "buble-loader": "^0.3.2",
+    "buble-loader": "^0.4.0",
     "clean-webpack-plugin": "^0.1.14",
     "css-loader": "^0.26.1",
     "css-mqpacker": "^5.0.1",
@@ -60,7 +60,7 @@
     "lodash": "^4.17.2",
     "minimist": "^1.2.0",
     "monkey-hot-loader": "github:rmarscher/monkey-hot-loader#webpack2-import",
-    "node-sass": "^4.0.0",
+    "node-sass": "^4.1.1",
     "optimize-css-assets-webpack-plugin": "^1.3.0",
     "postcss": "^5.2.6",
     "postcss-loader": "^1.2.1",
@@ -68,19 +68,19 @@
     "resolve-url-loader": "^1.6.1",
     "rimraf": "^2.5.4",
     "sass-lint": "^1.10.2",
-    "sass-loader": "^4.1.0",
+    "sass-loader": "^4.1.1",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^2.2.0-rc.0",
     "webpack-assets-manifest": "^0.6.1",
-    "webpack-dev-middleware": "^1.8.4",
+    "webpack-dev-middleware": "^1.9.0",
     "webpack-hot-middleware": "^2.13.2"
   },
   "dependencies": {
     "babel-polyfill": "^6.20.0",
     "image-zoom": "^1.1.1",
     "material-design-icons": "^3.0.1",
-    "material-design-lite": "^1.2.1",
+    "material-design-lite": "^1.3.0",
     "mdl-ext": "^0.13.10",
     "prismjs": "^1.6.0"
   }
