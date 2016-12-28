@@ -81,6 +81,16 @@ th {
   text-align: left;
 }
 
+// define list
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-bottom: .5rem;
+  margin-left: 0;
+}
+
 // input
 input {
   font-feature-settings: "liga" 0;

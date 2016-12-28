@@ -43,21 +43,20 @@
     margin: 2rem 0 .5rem;
   }
 
-  p,
-  pre,
+  > p,
+  > pre,
   > blockquote,
   > ul,
   > ol,
-  dl,
+  > dl,
   > figure,
   > table,
-  form,
   > img,
   > div {
     margin-bottom: 2rem;
   }
 
-  p {
+  > p {
     text-align: justify;
   }
 
@@ -81,7 +80,7 @@
     margin-top: .25rem;
   }
 
-  blockquote {
+  > blockquote {
     padding: 1.6rem;
     margin-left: .8em;
     border-left: 4px solid unquote("rgb(#{$palette-grey-200})");
@@ -103,7 +102,7 @@
     }
   }
 
-  pre {
+  > pre {
     padding: 2rem;
     border-radius: ($spacer * .15);
     background: unquote("rgb(#{$palette-grey-100})");
@@ -113,47 +112,38 @@
     }
   }
 
-  table {
-    $table-border-width: 1px;
 
+  $table-border-width: 1px;
+  table {
     width: 100%;
     max-width: 100%;
     border: $table-border-width solid $table-border-color;
+  }
 
+  th, td {
+    padding: 1rem;
+    vertical-align: top;
+    border-top: $table-border-width solid $table-border-color;
+    border: $table-border-width solid $table-border-color;
+  }
+
+  tbody + tbody {
+    border-top: (2 * $table-border-width) solid $table-border-color;
+  }
+
+  thead {
+    th {
+      color: unquote("rgb(#{$palette-grey-800})");
+      background: unquote("rgb(#{$palette-grey-100})");
+      vertical-align: bottom;
+      border-bottom: (2 * $table-border-width) solid $table-border-color;
+    }
     th, td {
-      vertical-align: top;
-      padding: 1rem;
-      border-top: $table-border-width solid $table-border-color;
-      border: $table-border-width solid $table-border-color;
-    }
-
-    tbody + tbody {
-      border-top: (2 * $table-border-width) solid $table-border-color;
-    }
-
-    thead {
-      th {
-        color: unquote("rgb(#{$palette-grey-800})");
-        background: unquote("rgb(#{$palette-grey-100})");
-        vertical-align: bottom;
-        border-bottom: (2 * $table-border-width) solid $table-border-color;
-      }
-      th, td {
-        border-bottom-width: (2 * $table-border-width);
-      }
+      border-bottom-width: (2 * $table-border-width);
     }
   }
 
-  dt {
-    font-weight: bold;
-  }
-
-  dd {
-    margin-bottom: .5rem;
-    margin-left: 0;
-  }
-
-  img {
+  > img {
     display: block;
     max-width: 100%;
     height: auto;
