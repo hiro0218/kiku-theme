@@ -1,5 +1,13 @@
 module.exports = {
-  ua: navigator.userAgent.toLowerCase(),
+  parser: null,
+  info() {
+    if (!this.parser) {
+      var UAParser = require('ua-parser-js');
+      this.parser = new UAParser();
+      this.parser.setUA(navigator.userAgent.toLowerCase());
+    }
+    return this.parser;
+  },
   isSmartPhone() {
     return ((this.isiPhone()) || (this.isiPod()) || (this.isAndroid())) && (this.isMobile());
   },

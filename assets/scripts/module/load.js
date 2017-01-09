@@ -1,5 +1,6 @@
 import 'babel-polyfill';
 import common from '../module/common';
+import ua from '../module/useragent';
 import adsbygoogle from '../module/adsbygoogle';
 
 module.exports = {
@@ -23,11 +24,18 @@ module.exports = {
     });
   },
   moveAnchorTagPosition() {
+    // frist scroll position
+    var content = document.getElementsByClassName('mdl-layout__content')[0];
+    content.scrollTop = 0;
+
     var hash = this.removeFristSharp(window.location.hash);
     if (!hash) {
       return;
     }
-    window.location.hash = '';
+    // hash reset for WebKit
+    if (ua.info().getEngine() === 'WebKit') {
+      window.location.hash = '';
+    }
     window.location.hash = hash;
   },
   removeFristSharp(str) {
