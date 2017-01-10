@@ -4,21 +4,16 @@
     list-style: none;
     margin-top: 0;
     padding: 0;
+    @extend .mdl-navigation;
+    a {
+      transition: background .3s $animation-curve-default;
+      @extend .mdl-navigation__link;
+    }
   }
 }
-
 .widget-title {
   padding-left: .5rem;
-}
-
-.widget_categories,
-.widget_recent_entries,
-.jetpack-post-views {
-  a {
-    transition: background .3s $animation-curve-default;
-    @extend .mdl-navigation__link;
-  }
-  @extend .mdl-navigation;
+  margin-bottom: 0;
 }
 
 .widget_categories {
