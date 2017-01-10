@@ -40,7 +40,7 @@ module.exports = {
       });
       // time over
       setTimeout(() => {
-        if (window.adsbygoogle.length === 2) {  // is load failure
+        if (window.adsbygoogle && window.adsbygoogle.length === 2) {  // is load failure
           resolve(true);
         }
       }, 2000);
