@@ -70,6 +70,10 @@
     &:focus {
       outline: 0;
     }
+
+    &:only-child {
+      flex-grow: 1;
+    }
   }
 }
 
