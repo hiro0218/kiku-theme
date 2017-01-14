@@ -1,4 +1,6 @@
 .entry {
+  display: flex;
+  flex-direction: column;
   padding: 1rem 1.5rem;
   border-radius: ($spacer * .125);
   box-shadow: 0 1px 4px rgba(0, 0, 0, .04);
@@ -11,7 +13,7 @@
   // }
 
   > header {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
   }
 
   h1 {
@@ -23,6 +25,9 @@
 }
 
 .entry-content {
+  flex: 1;
+  margin-bottom: 1rem;
+
   a {
     color: $link-color;
     border-bottom: 1px solid $link-border-color;
