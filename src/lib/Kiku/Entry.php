@@ -27,7 +27,7 @@ class Entry {
     }
 
     // 関連する記事の一覧を取得する
-    public function get_similar_posts(): array {
+    public function get_similar_posts($post_count = 5): array {
         if ( !is_single() ) {
             return [];
         }
@@ -57,7 +57,7 @@ class Entry {
             'post__not_in'         => [$post_id],  // display post
             'orderby'              => 'modified', //'rand',
             'order'                => 'DESC',
-            'posts_per_page'       => 5,  // show
+            'posts_per_page'       => $post_count,  // show
             'ignore_sticky_posts'  => 1,
             'tax_query' => [
                 [
@@ -79,6 +79,7 @@ class Entry {
                 $arr[$i] = [
                     "uri"   => get_the_permalink(),
                     "title" => $title,
+                    "description" => get_the_excerpt(),
                 ];
                 $i++;
             }
