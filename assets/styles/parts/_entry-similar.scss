@@ -1,13 +1,28 @@
 .entry-similar {
+  border-top: 1px solid unquote("rgb(#{$palette-grey-300})");
+  padding-top: 1.5rem;
   a {
-    @include ellipsis(100%);
+    display: block;
+  }
+}
 
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-  .mdl-list__item {
-    padding: .5rem;
-    line-height: 1.5rem;
-  }
+.similar-title,
+.similar-description {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.similar-title {
+  color: unquote("rgb(#{$palette-grey-800})");
+  font-weight: bold;
+  line-height: 2;
+}
+
+.similar-description {
+  color: unquote("rgb(#{$palette-grey-500})");
+  font-size: $font-size-sm;
 }

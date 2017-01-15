@@ -3,9 +3,13 @@ namespace Kiku;
 
 class Image {
 
-    public function get_entry_image(bool $datauri = true): string {
+    public function get_entry_image(bool $datauri = true, int $post_id = 0): string {
         global $post;
         $image_src = '';
+
+        if ($post_id == 0) {
+            $post_id = $post->ID;
+        }
 
         // denied post
         if ( post_password_required() ) {
@@ -13,7 +17,7 @@ class Image {
         }
 
         // has thumbnail custom field
-        $image_src = get_post_meta($post->ID, CF_THUMBNAIL, true);
+        $image_src = get_post_meta($post_id, CF_THUMBNAIL, true);
         if ( $this->is_correct_image($image_src) ) {
             return $image_src;
         }

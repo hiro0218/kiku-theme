@@ -57,7 +57,6 @@
 
 // pager
 .pager {
-
   a {
     border-radius: ($spacer * .125);
     padding: .5rem;
@@ -69,6 +68,10 @@
     }
     &:focus {
       outline: 0;
+    }
+
+    &:only-child {
+      flex-grow: 1;
     }
   }
 }
@@ -109,4 +112,5 @@
 }
 .pager-title {
   @include ellipsis(100%);
+  font-size: $font-size-sm;
 }

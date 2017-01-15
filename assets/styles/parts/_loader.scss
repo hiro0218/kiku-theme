@@ -24,5 +24,6 @@
 .loader-spinner {
   img {
     @include size(5rem);
+    @include user-select(none);
   }
 }

@@ -12,6 +12,7 @@ module.exports = {
   isLoaded() {
     var self = this;
     self.init();
+
     return new Promise((resolve, reject) => {
       // without ads
       if (self.count() === 0) {
@@ -37,6 +38,12 @@ module.exports = {
       [].forEach.call(this.element, (_element) => {
         observer.observe(_element, { attributes: true });
       });
+      // time over
+      setTimeout(() => {
+        if (window.adsbygoogle && window.adsbygoogle.length === 2) {  // is load failure
+          resolve(true);
+        }
+      }, 2000);
     });
   }
 };

@@ -1,12 +1,13 @@
-<article class="entry mdl-cell mdl-cell--12-col" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+<article class="entry mdl-cell mdl-cell--12-col"
+         itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
   <header>
     <h1 class="entry-title"><?php the_title(); ?></h1>
     <?php get_template_part('partials/entry/meta'); ?>
   </header>
-  <div class="entry-content" itemprop="articleBody">
+  <section class="entry-content" itemprop="articleBody">
     <?= get_the_post_thumbnail(null, 'full', ['class' => 'eyecatch']); ?>
     <?php the_content(); ?>
-  </div>
+  </section>
   <footer>
     <?php get_template_part('partials/entry/paginated'); ?>
     <?php get_template_part('partials/entry/breadcrumb'); ?>

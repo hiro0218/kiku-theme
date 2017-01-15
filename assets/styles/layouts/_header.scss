@@ -6,16 +6,11 @@
   }
 
   .mdl-textfield {
-    padding: .5rem 0;
     color: unquote("rgb(#{$palette-grey-800})");
   }
 
-  .mdl-button:hover {
-    background: none;
-  }
-
-  .mdl-layout__drawer-button {
-    line-height: inherit;
+  .mdl-textfield--expandable .mdl-button--icon {
+    top: 2rem;
   }
 }
 

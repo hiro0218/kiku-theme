@@ -2,7 +2,7 @@
 namespace Kiku\Modules;
 
 function highlight_search_results($content) {
-    if ( is_search() ) {
+    if ( !is_admin() && is_search() ) {
         $keys = implode('|', explode(' ', get_search_query()));
         $content = preg_replace('/'. $keys .'/iu', '<mark>$0</mark>', $content);
     }
