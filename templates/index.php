@@ -1,7 +1,7 @@
 <?php if (!have_posts()) : ?>
 <div class="mdl-cell mdl-cell--12-col mdl-card mdl-color--transparent">
   <div class="alert alert-warning">
-    <?php Kiku\Components\the_alert('alert-warning', 'Sorry, no results were found.', 'sage');  ?>
+    <?php Kiku\Components\the_alert('alert-warning', 'Sorry, no results were found.', 'kiku');  ?>
   </div>
 </div>
 <?php else: ?>

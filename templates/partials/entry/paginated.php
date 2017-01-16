@@ -1,6 +1,6 @@
 <?php 
 wp_link_pages([
-  'before'         => '<nav><p>' .  __('Pages:', 'sage'),
+  'before'         => '<nav><p>' .  __('Pages:', 'kiku'),
   'after'          => '</nav></p>',
   'link_before'    => '',
   'link_after'     => '',
