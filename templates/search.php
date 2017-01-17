@@ -6,7 +6,7 @@
 <div class="entry-home-container mdl-cell mdl-cell--12-col">
   <?php get_template_part('components/page-header'); ?>
   <?php while (have_posts()) : the_post(); ?>
-    <?php get_template_part('partials/content', 'search'); ?>
+    <?php get_template_part('partials/content', 'home'); ?>
   <?php endwhile; ?>
 </div>
 <?php endif; ?>
