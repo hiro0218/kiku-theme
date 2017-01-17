@@ -1,3 +1,4 @@
+<?php while (have_posts()) : the_post(); ?>
 <article class="entry mdl-cell mdl-cell--12-col">
   <header>
     <h1 class="entry-title"><?php the_title(); ?></h1>
@@ -12,3 +13,4 @@
     </nav>
   </footer>
 </article>
+<?php endwhile; ?>

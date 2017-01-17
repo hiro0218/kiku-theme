@@ -1,3 +1,4 @@
+<?php while (have_posts()) : the_post(); ?>
 <article class="entry mdl-cell mdl-cell--12-col"
          itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
   <header>
@@ -17,3 +18,4 @@
   </footer>
   <?php get_template_part('partials/entry/schema'); ?>
 </article>
+<?php endwhile; ?>

@@ -1,3 +1,4 @@
+<?php while (have_posts()) : the_post(); ?>
 <article class="entry-home" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
   <a href="<?php the_permalink(); ?>" itemprop="url">
     <?php get_template_part('partials/entry/thumbnail'); ?>
@@ -13,3 +14,4 @@
   </a>
   <?php get_template_part('partials/entry/schema'); ?>
 </article>
+<?php endwhile; ?>
