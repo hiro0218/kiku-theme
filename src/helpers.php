@@ -49,16 +49,16 @@ function title()
         if ($home = get_option('page_for_posts', true)) {
             return get_the_title($home);
         }
-        return __('Latest Posts', 'kiku');
+        return __('Recent Posts');
     }
     if (is_archive()) {
         return get_the_archive_title();
     }
     if (is_search()) {
-        return sprintf(__('Search Results for %s', 'kiku'), get_search_query());
+        return sprintf(__('Search results for &#8220;%s&#8221;'), get_search_query());
     }
     if (is_404()) {
-        return __('Not Found', 'kiku');
+        return __('Page not found');
     }
     return get_the_title();
 }
