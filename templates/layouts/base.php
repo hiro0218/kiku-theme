@@ -10,7 +10,7 @@
       ?>
       <div class="wrap mdl-layout__content" role="document">
         <main>
-          <div class="main-container mdl-grid">
+          <div class="main-container columns is-gapless">
             <?php include App\template()->main(); ?>
           </div>
           <?php Kiku\Components\the_pager(); ?>
