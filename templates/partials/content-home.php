@@ -1,4 +1,4 @@
-<div class="entry-home-container column">
+<div class="entry-home-container">
   <?php get_template_part('components/page-header'); ?>
   <?php while (have_posts()) : the_post(); ?>
   <article class="entry-home" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">

@@ -9,13 +9,13 @@
         get_template_part('layouts/header');
       ?>
       <div class="wrap mdl-layout__content" role="document">
-        <main>
-          <div class="main-container columns is-gapless">
-            <?php include App\template()->main(); ?>
-          </div>
-          <?php Kiku\Components\the_pager(); ?>
-          <?php Kiku\Components\the_pagination(); ?>
+        <main class="container">
+          <?php include App\template()->main(); ?>
         </main>
+        <div class="container">
+        <?php Kiku\Components\the_pager(); ?>
+        <?php Kiku\Components\the_pagination(); ?>
+        </div>
         <?php
           do_action('get_footer');
           get_template_part('layouts/footer');
