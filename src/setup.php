@@ -27,8 +27,7 @@ add_action('wp_enqueue_scripts', function () {
  */
 add_action('after_setup_theme', function () {
     // Make theme available for translation
-    // Community translations can be found at https://github.com/roots/sage-translations
-    load_theme_textdomain('sage', get_template_directory() . '/lang');
+    // load_theme_textdomain('kiku', get_template_directory() . '/lang');
 
     /**
      * Enable plugins to manage the document title
@@ -41,7 +40,7 @@ add_action('after_setup_theme', function () {
      * @link https://developer.wordpress.org/reference/functions/register_nav_menus/
      */
     register_nav_menus([
-        'primary_navigation' => __('Primary Navigation', 'sage')
+        'primary_navigation' => __('Primary Navigation', 'kiku')
     ]);
 
     /**
@@ -74,7 +73,7 @@ add_action('widgets_init', function () {
         'after_title'   => '</h3>'
     ];
     register_sidebar([
-        'name'          => __('Primary', 'sage'),
+        'name'          => __('Primary', 'kiku'),
         'id'            => 'sidebar-primary'
     ] + $config);
 
