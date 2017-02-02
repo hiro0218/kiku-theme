@@ -1,4 +1,4 @@
-<header class="header-navigation mdl-layout__header mdlext-layout__sticky-header mdlext-js-sticky-header">
+<header class="header-navigation mdl-layout__header">
   <div class="mdl-layout__header-row">
     <span class="mdl-layout-title">
       <a class="header-title" href="<?= BLOG_URL; ?>"><?php bloginfo('name'); ?></a>
