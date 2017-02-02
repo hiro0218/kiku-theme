@@ -1,17 +1,13 @@
 .header-navigation {
+  margin-bottom: 1rem;
+  padding: 1rem 0;
+  background: $white;
   box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .15);
-
-  .material-icons {
-    color: $grey-800;
-  }
 }
 
 .header-title {
   color: $grey-900;
-}
-
-@media screen and (max-width: $screen-xs) {
-  .header-search {
-    display: none;
+  a {
+    color: inherit;
   }
 }
