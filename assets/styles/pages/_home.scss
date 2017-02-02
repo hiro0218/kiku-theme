@@ -18,7 +18,7 @@ $entry-thumbnail-size: 5rem;//80px;
 
 // Image
 .entry-home {
-  transition: background .3s $animation-curve-default;
+  transition: background .3s $animation-curve-fast-out-slow-in;
   border-bottom: 1px solid $grey-200;
   user-select: none;
 

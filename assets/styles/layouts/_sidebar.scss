@@ -4,10 +4,9 @@
     list-style: none;
     margin-top: 0;
     padding: 0;
-    @extend .mdl-navigation;
+
     a {
-      transition: background .3s $animation-curve-default;
-      @extend .mdl-navigation__link;
+      transition: background .3s $animation-curve-fast-out-slow-in;
     }
   }
 }

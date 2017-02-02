@@ -1,8 +1,3 @@
-// Material Design Lite define
-@import "~material-design-lite/src/color-definitions";
-@import "~material-design-lite/src/variables";
-@import "~material-design-lite/src/mixins";
-
 // Global Prefixer
 $prefix-for-webkit:    true;
 $prefix-for-mozilla:   true;
@@ -99,3 +94,7 @@ $font-color-h3:         $grey-700;
 $font-color-h4:         $grey-600;
 $font-color-h5:         $grey-500;
 $font-color-h6:         $grey-400;
+
+
+// animation
+$animation-curve-fast-out-slow-in: cubic-bezier(.4, 0, .2, 1);

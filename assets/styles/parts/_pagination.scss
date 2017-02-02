@@ -18,7 +18,7 @@
   }
 
   a {
-    transition: background .3s $animation-curve-default;
+    transition: background .3s $animation-curve-fast-out-slow-in;
     &:hover {
       background: $grey-300;
     }
@@ -61,7 +61,7 @@
     border-radius: ($spacer * .125);
     padding: .5rem;
     color: $grey-600;
-    transition: background .3s $animation-curve-default;
+    transition: background .3s $animation-curve-fast-out-slow-in;
 
     &:hover {
       background: $grey-300;

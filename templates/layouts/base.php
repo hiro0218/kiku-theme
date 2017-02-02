@@ -3,12 +3,12 @@
   <?php get_template_part('layouts/head'); ?>
   <body <?php body_class(); ?>>
     <?php get_template_part('components/loader'); ?>
-    <div class="mdl-layout mdl-js-layout  mdl-layout--fixed-header">
+    <div class="">
       <?php
         do_action('get_header');
         get_template_part('layouts/header');
       ?>
-      <div class="wrap mdl-layout__content" role="document">
+      <div class="wrap" role="document">
         <main class="container">
           <?php include App\template()->main(); ?>
         </main>
