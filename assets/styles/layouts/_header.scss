@@ -2,11 +2,11 @@
   box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .15);
 
   .material-icons {
-    color: unquote("rgb(#{$palette-grey-800})");
+    color: $grey-800;
   }
 
   .mdl-textfield {
-    color: unquote("rgb(#{$palette-grey-800})");
+    color: $grey-800;
   }
 
   .mdl-textfield--expandable .mdl-button--icon {
@@ -15,7 +15,7 @@
 }
 
 .header-title {
-  color: unquote("rgb(#{$palette-grey-900})");
+  color: $grey-900;
 }
 
 @media screen and (max-width: $screen-xs) {

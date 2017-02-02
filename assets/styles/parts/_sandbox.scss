@@ -1,7 +1,7 @@
 .sandbox {
   position: relative;
   padding: 2rem;
-  border: .15rem solid unquote("rgb(#{$palette-grey-100})"); // same: pre bgColor
+  border: .15rem solid $grey-100; // same: pre bgColor
 
   // proximity
   & + pre {

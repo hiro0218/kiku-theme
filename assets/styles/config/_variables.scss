@@ -79,23 +79,23 @@ $container-max-width:  1140px;
 // https://github.com/google/material-design-lite/blob/master/src/_color-definitions.scss
 
 // MDL
-$color-primary:             $color-white;
-$color-primary-dark:        $palette-grey-700;
-$color-accent:              $palette-grey-200;
-$color-primary-contrast:    $palette-grey-700;
-$color-accent-contrast:     $palette-grey-700;
+$color-primary:             $white;
+$color-primary-dark:        $grey-700;
+$color-accent:              $grey-200;
+$color-primary-contrast:    $grey-700;
+$color-accent-contrast:     $grey-700;
 
 // original
-$link-color:            unquote("rgb(#{$palette-blue-A200})");
-$link-hover-color:      unquote("rgb(#{$palette-blue-A400})");
-$link-visit-color:      unquote("rgb(#{$palette-purple-A400})");
-$link-border-color:     unquote("rgb(#{$palette-blue-100})");
+$link-color:            $blue-A200;
+$link-hover-color:      $blue-A400;
+$link-visit-color:      $light-blue-A100;
+$link-border-color:     $blue-100;
 
-$table-border-color:    unquote("rgb(#{$palette-grey-200})");
+$table-border-color:    $grey-200;
 
-$font-color-h1:         unquote("rgb(#{$palette-grey-900})");
-$font-color-h2:         unquote("rgb(#{$palette-grey-800})");
-$font-color-h3:         unquote("rgb(#{$palette-grey-700})");
-$font-color-h4:         unquote("rgb(#{$palette-grey-600})");
-$font-color-h5:         unquote("rgb(#{$palette-grey-500})");
-$font-color-h6:         unquote("rgb(#{$palette-grey-400})");
+$font-color-h1:         $grey-900;
+$font-color-h2:         $grey-800;
+$font-color-h3:         $grey-700;
+$font-color-h4:         $grey-600;
+$font-color-h5:         $grey-500;
+$font-color-h6:         $grey-400;

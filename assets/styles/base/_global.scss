@@ -13,8 +13,8 @@
 }
 
 @include selection {
-  color: unquote("rgb(#{$palette-grey-900})");
-  background: unquote("rgb(#{$palette-grey-300})");
+  color: $grey-900;
+  background: $grey-300;
 }
 
 // Body reset
@@ -32,8 +32,8 @@ body {
   }
 
   font-weight: $font-weight-base;
-  color: unquote("rgb(#{$palette-grey-700})");
-  background: unquote("rgb(#{$palette-grey-100})");
+  color: $grey-700;
+  background: $grey-100;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

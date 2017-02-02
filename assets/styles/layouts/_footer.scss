@@ -1,7 +1,7 @@
 #footer {
   margin-top: 1rem;
   a {
-    color: unquote("rgb(#{$palette-grey-200})");
+    color: $grey-200;
     &:hover {
       text-decoration: underline;
     }

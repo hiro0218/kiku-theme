@@ -1,6 +1,6 @@
 .entry-meta {
   font-size: $font-size-sm;
-  color: unquote("rgb(#{$palette-grey-400})");
+  color: $grey-400;
 
   a {
     color: inherit;
@@ -45,11 +45,11 @@
   a {
     padding: .5rem .7rem;
     border-radius: ($spacer * .125);
-    color: unquote("rgb(#{$palette-grey-700})");
-    background: unquote("rgb(#{$palette-grey-100})");
+    color: $grey-700;
+    background: $grey-100;
     &:hover {
       text-decoration: none !important;
-      background: unquote("rgb(#{$palette-grey-200})");
+      background: $grey-200;
     }
   }
 }
