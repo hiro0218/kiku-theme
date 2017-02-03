@@ -1,12 +1,13 @@
 .header-navigation {
   margin-bottom: 1rem;
-  padding: 1rem 0;
+  padding: 1rem;
   background: $white;
   box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .15);
 }
 
 .header-title {
   color: $grey-900;
+  font-size: 1.25rem;
   a {
     color: inherit;
   }
