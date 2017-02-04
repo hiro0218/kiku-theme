@@ -12,11 +12,12 @@ export default {
     var trigger = document.getElementsByClassName('off-canvas-checkbox')[0];
     if (trigger) {
       var body = document.body;
+      var className = 'open-drawer';
       trigger.addEventListener('change', function (e) {
         if (trigger.checked) {
-          body.classList.add('no-scroll');
+          body.classList.add(className);
         } else {
-          body.classList.remove('no-scroll');
+          body.classList.remove(className);
         }
       });
     }

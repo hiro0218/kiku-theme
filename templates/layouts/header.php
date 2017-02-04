@@ -9,11 +9,12 @@
       <label for="off-canvas-trigger" class="off-canvas-trigger">
         <i class="material-icons">menu</i>
       </label>
-      <label for="off-canvas-trigger" class="off-canvas-overlay"></label>
-      <aside class="sidebar off-canvas" data-comes-from="left">
-      <?php get_template_part('layouts/sidebar'); ?>
-      </aside>
     </div>
     <?php endif; ?>
   </div>
 </header>
+
+<label for="off-canvas-trigger" class="off-canvas-overlay"></label>
+<aside class="sidebar off-canvas" data-comes-from="left">
+<?php get_template_part('layouts/sidebar'); ?>
+</aside>
