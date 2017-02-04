@@ -9,7 +9,7 @@ export default {
     load.checkLoaded();
 
     // drawer
-    var trigger = document.getElementsByClassName('off-canvas-checkbox')[0];
+    var trigger = document.getElementsByClassName('drawer-checkbox')[0];
     if (trigger) {
       var body = document.body;
       var className = 'open-drawer';

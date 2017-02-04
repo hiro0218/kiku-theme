@@ -1,20 +1,20 @@
-<header class="header-navigation">
-  <div class="container columns">
-    <div class="header-title column is-11">
-      <a href="<?= BLOG_URL; ?>"><?php bloginfo('name'); ?></a>
+<header class="header-navigation nav">
+    <div class="header-title nav-left">
+      <a class="nav-item" href="<?= BLOG_URL; ?>"><?php bloginfo('name'); ?></a>
     </div>
     <?php if (App\display_sidebar()) : ?>
-    <div class="column">
-      <input id="off-canvas-trigger" class="off-canvas-checkbox" type="checkbox">
-      <label for="off-canvas-trigger" class="off-canvas-trigger">
-        <i class="material-icons">menu</i>
-      </label>
+    <div class="header-menu nav-center">
+      <div class="nav-item">
+        <input id="drawer-trigger" class="drawer-checkbox" type="checkbox">
+        <label for="drawer-trigger" class="drawer-trigger">
+          <i class="material-icons">menu</i>
+        </label>
+      </div>
     </div>
     <?php endif; ?>
-  </div>
 </header>
 
-<label for="off-canvas-trigger" class="off-canvas-overlay"></label>
-<aside class="sidebar off-canvas" data-comes-from="left">
+<label for="drawer-trigger" class="drawer-overlay"></label>
+<aside class="sidebar drawer" data-comes-from="left">
 <?php get_template_part('layouts/sidebar'); ?>
 </aside>

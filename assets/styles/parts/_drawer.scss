@@ -1,6 +1,6 @@
-.off-canvas-trigger {
+.drawer-trigger {
   font-size: 1.25rem;
-  padding: 1rem;
+  padding-left: 1rem;
   &:hover {
     cursor: pointer;
   }
@@ -9,20 +9,20 @@
 .open-drawer {
   @extend .no-scroll;
 
-  .off-canvas {
+  .drawer {
     overflow-y: auto;
     overflow-x: hidden;
     opacity: 1;
     transform: translate(0, 0) translate3d(0, 0, 0);
   }
 
-  .off-canvas-overlay {
+  .drawer-overlay {
     opacity: 1;
     visibility: visible;
   }
 }
 
-.off-canvas-checkbox {
+.drawer-checkbox {
   position: absolute;
   top: 0;
   right: 0;
@@ -31,9 +31,9 @@
   opacity: 0;
 }
 
-.off-canvas-overlay {
+.drawer-overlay {
   position: fixed;
-  z-index: 1;
+  z-index: 2;
   top: 0;
   bottom: 0;
   left: 0;
@@ -44,38 +44,38 @@
   background: rgba(0, 0, 0, .5);
 }
 
-.off-canvas {
+.drawer {
   position: fixed;
   z-index: 2;
   height: 100%;
-  width: 100%;
+  max-height: 100%;
+  width: 240px;
   opacity: 0;
-  transition: transform .2s ease, opacity .2s ease;
   top: 0;
   bottom: 0;
   left: 0;
+  transition: transform .2s ease, opacity .2s ease;
   transform: translate(-100%, 0) translate3d(-100%, 0, 0);
-  max-width: 33.3333%;
   padding: .75rem;
   background: $white;
   border-right: 1px solid rgba(0, 0, 0, .14);
 }
 
-// .off-canvas[data-comes-from="top"] {
+// .drawer[data-comes-from="top"] {
 //   top: 0;
 //   left: 0;
 //   right: 0;
 //   transform: translate(0, -100%) translate3d(0, -100%, 0);
 // }
 
-// .off-canvas[data-comes-from="bottom"] {
+// .drawer[data-comes-from="bottom"] {
 //   bottom: 0;
 //   left: 0;
 //   right: 0;
 //   transform: translate(0, 100%) translate3d(0, 100%, 0);
 // }
 
-// .off-canvas[data-comes-from="right"] {
+// .drawer[data-comes-from="right"] {
 //   top: 0;
 //   bottom: 0;
 //   right: 0;
