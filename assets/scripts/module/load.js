@@ -13,7 +13,7 @@ module.exports = {
   },
   compleatedLoading() {
     return new Promise((resolve, reject) => {
-      var loader = document.getElementsByClassName('loader')[0];
+      var loader = document.getElementsByClassName('loader-container')[0];
       loader.classList.add('is-loaded');
       resolve(true);
     });
