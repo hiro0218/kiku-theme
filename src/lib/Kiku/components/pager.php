@@ -58,6 +58,6 @@ function the_pager() {
     echo '<nav class="pager">';
     echo '<div class="columns is-gapless">';
     echo $pager;
-    echo '<div>';
+    echo '</div>';
     echo '</nav>';
 }

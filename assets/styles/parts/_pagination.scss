@@ -61,7 +61,7 @@
 
   a {
     border-radius: ($spacer * .125);
-    padding: .5rem;
+    padding: .5rem !important;
     color: $grey-600;
     transition: background .3s $animation-curve-fast-out-slow-in;
 
