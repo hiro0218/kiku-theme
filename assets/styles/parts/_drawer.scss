@@ -56,7 +56,6 @@
   left: 0;
   transition: transform .2s ease, opacity .2s ease;
   transform: translate(-100%, 0) translate3d(-100%, 0, 0);
-  padding: .75rem;
   background: $white;
   border-right: 1px solid rgba(0, 0, 0, .14);
 }
