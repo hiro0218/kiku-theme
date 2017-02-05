@@ -1,5 +1,8 @@
 .header-navigation {
-  margin-bottom: 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   padding: .5rem;
   background: $white;
   box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .15);
@@ -11,4 +14,10 @@
   a {
     color: inherit;
   }
+}
+
+// nav min-height from bulma = 3.5rem
+// for header's position:fixed
+.main-container {
+  padding-top: 3.5rem + 1.5rem;
 }

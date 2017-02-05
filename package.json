@@ -82,6 +82,7 @@
   "dependencies": {
     "babel-polyfill": "^6.22.0",
     "bulma": "^0.3.1",
+    "headroom.js": "^0.9.3",
     "image-zoom": "^1.1.1",
     "material-design-icons": "^3.0.1",
     "prismjs": "^1.6.0",

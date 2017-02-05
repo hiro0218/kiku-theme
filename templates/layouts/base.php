@@ -7,7 +7,7 @@
     do_action('get_header');
     get_template_part('layouts/header');
   ?>
-    <main class="container">
+    <main class="main-container container">
     <?php include App\template()->main(); ?>
     <?php Kiku\Components\the_pager(); ?>
     <?php Kiku\Components\the_pagination(); ?>
