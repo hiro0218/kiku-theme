@@ -1,5 +1,5 @@
 <?php if (!have_posts()) : ?>
-<div class="mdl-cell mdl-cell--12-col mdl-card mdl-color--transparent">
+<div class="column  ">
   <?php Kiku\Components\the_alert('alert-warning', __('No results found.'));  ?>
 </div>
 <?php else: ?>

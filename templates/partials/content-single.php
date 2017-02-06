@@ -1,6 +1,6 @@
 <?php while (have_posts()) : the_post(); ?>
-<article class="entry mdl-cell mdl-cell--12-col"
-         itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+<article class="entry"
+           itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
   <header>
     <h1 class="entry-title"><?php the_title(); ?></h1>
     <?php get_template_part('partials/entry/meta'); ?>

@@ -1,16 +1,10 @@
 .entry {
-  display: flex;
-  flex-direction: column;
   padding: 1rem 1.5rem;
   border-radius: ($spacer * .125);
   box-shadow: 0 1px 4px rgba(0, 0, 0, .04);
   border: 1px solid rgba(0, 0, 0, .09);
-  color: unquote("rgb(#{$palette-grey-700})");
+  color: $grey-700;
   background: #fff;
-
-  // &.mdl-cell {
-  //   margin: 0;
-  // }
 
   > header {
     margin-bottom: 1rem;
@@ -25,7 +19,6 @@
 }
 
 .entry-content {
-  flex: 1;
   margin-bottom: 1rem;
 
   a {
@@ -41,7 +34,7 @@
   > h2 {
     margin: 4rem 0 1rem;
     padding-bottom: .75rem;
-    border-bottom: 2px solid unquote("rgb(#{$palette-grey-200})");
+    border-bottom: 2px solid $grey-200;
   }
 
   > h3 {
@@ -71,8 +64,8 @@
     margin: 0;
     padding: .2rem 0;
     border-radius: .15rem;
-    color: unquote("rgb(#{$palette-blue-400})");
-    background: unquote("rgb(#{$palette-blue-50})");
+    color: $blue-400;
+    background: $blue-50;
 
     &:before,
     &:after {
@@ -88,8 +81,8 @@
   > blockquote {
     padding: 1.6rem;
     margin-left: .8em;
-    border-left: 4px solid unquote("rgb(#{$palette-grey-200})");
-    color: unquote("rgb(#{$palette-grey-500})");
+    border-left: 4px solid $grey-200;
+    color: $grey-500;
 
     p:first-child {
       margin-top: 0;
@@ -110,7 +103,7 @@
   > pre {
     padding: 2rem;
     border-radius: ($spacer * .15);
-    background: unquote("rgb(#{$palette-grey-100})");
+    background: $grey-100;
 
     &.line-numbers {
       padding-left: 4rem;
@@ -138,8 +131,8 @@
 
   thead {
     th {
-      color: unquote("rgb(#{$palette-grey-800})");
-      background: unquote("rgb(#{$palette-grey-100})");
+      color: $grey-800;
+      background: $grey-100;
       vertical-align: bottom;
       border-bottom: (2 * $table-border-width) solid $table-border-color;
     }
@@ -163,7 +156,7 @@
     line-height: 1;
     margin: 2rem 0;
     text-align: center;
-    color: unquote("rgb(#{$palette-grey-600})");
+    color: $grey-600;
 
     &:before {
       content: "***";
@@ -177,8 +170,8 @@
   display: block;
   margin: 1rem 0;
   border: 1px solid rgba(0, 0, 0, .09) !important;
-  color: unquote("rgb(#{$palette-grey-600})") !important;
-  background: unquote("rgb(#{$palette-grey-50})");
+  color: $grey-600 !important;
+  background: $grey-50;
 
   &:focus {
     outline: 0;

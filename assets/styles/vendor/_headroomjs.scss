@@ -1,0 +1,12 @@
+.headroom {
+  will-change: transform;
+  transition: transform .2s $animation-curve-fast-out-slow-in;
+}
+
+.headroom--pinned {
+  transform: translateY(0%);
+}
+
+.headroom--unpinned {
+  transform: translateY(-100%);
+}

@@ -3,11 +3,12 @@
 @import "~bourbon-neat/app/assets/stylesheets/neat";
 
 // config
+@import "config/colors";
 @import "config/variables";
 
-// Material Deign Lite
-@import "vendor/material-design-lite";
-@import "vendor/mdl-tweak";
+// grid framework: bulma
+@import "vendor/bulma";
+
 @import "vendor/bootstrap-migration";
 
 // styles
@@ -18,6 +19,7 @@
 @import "base/global";
 @import "base/type";
 @import "base/grid";
+@import "base/helper";
 
 // pages
 @import "pages/home";
@@ -28,16 +30,19 @@
 @import "parts/wp-classes";
 @import "parts/pagination";
 @import "parts/breadcrumb";
+@import "parts/drawer";
 @import "parts/mokuji";
 @import "parts/loader";
 @import "parts/sandbox";
 @import "parts/entry-meta";
 @import "parts/entry-share";
 @import "parts/entry-similar";
+@import "parts/search";
 
 // layouts
 @import "layouts/header";
 @import "layouts/sidebar";
+@import "layouts/main";
 @import "layouts/footer";
 
 // vendor
@@ -45,3 +50,4 @@
 @import "vendor/prism-line-numbers";
 @import "vendor/prism-command-line";
 @import "vendor/image-zoom";
+@import "vendor/headroomjs";

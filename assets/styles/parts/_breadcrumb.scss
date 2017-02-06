@@ -4,7 +4,7 @@
   list-style: none;
   padding: 0;
   margin-bottom: 1rem;
-  color: unquote("rgb(#{$palette-grey-400})");
+  color: $grey-400;
   @include clearfix;
 
   a {
@@ -22,5 +22,5 @@
 }
 
 .breadcrumb-active {
-  color: unquote("rgb(#{$palette-grey-600})");
+  color: $grey-600;
 }

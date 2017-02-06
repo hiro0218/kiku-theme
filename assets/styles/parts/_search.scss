@@ -1,0 +1,28 @@
+.search-container {
+  display: flex;
+  flex-wrap: nowrap;
+  margin: 0 .5rem;
+
+  label {
+    display: none;
+  }
+}
+
+.search-input {
+  border: 0;
+  width: 100%;
+  padding: .5rem 0;
+  color: $grey-800;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.search-icon {
+  color: $grey-800;
+  width: 2rem;
+  text-align: center;
+}

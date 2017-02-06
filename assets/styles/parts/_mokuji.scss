@@ -20,7 +20,7 @@
 
 .mokuji-content {
   display: table-cell;
-  border-left: solid 3px unquote("rgb(#{$palette-blue-100})");
+  border-left: solid 3px $blue-100;
   padding-left: 1rem;
 
   ol {
@@ -35,6 +35,6 @@
 }
 
 .mokuji_number {
-  color: unquote("rgb(#{$palette-grey-700})");
+  color: $grey-700;
   padding-right: .5rem;
 }

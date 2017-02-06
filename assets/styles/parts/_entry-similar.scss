@@ -1,9 +1,10 @@
 .entry-similar {
-  border-top: 1px solid unquote("rgb(#{$palette-grey-300})");
-  padding-top: 1.5rem;
+  border-top: 1px solid $grey-300;
+
   a {
     display: block;
   }
+
 }
 
 .similar-title,
@@ -17,12 +18,12 @@
 }
 
 .similar-title {
-  color: unquote("rgb(#{$palette-grey-800})");
+  color: $grey-800;
   font-weight: bold;
   line-height: 2;
 }
 
 .similar-description {
-  color: unquote("rgb(#{$palette-grey-500})");
+  color: $grey-500;
   font-size: $font-size-sm;
 }

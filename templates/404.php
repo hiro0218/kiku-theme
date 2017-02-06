@@ -1,3 +1,3 @@
-<div class="mdl-cell mdl-cell--12-col mdl-card mdl-color--transparent">
+<div class="column ">
   <?php Kiku\Components\the_alert('alert-danger', __('Page not found')); ?>
 </div>

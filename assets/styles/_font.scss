@@ -26,9 +26,20 @@
        url("~material-design-icons/iconfont/MaterialIcons-Regular.ttf") format('truetype');
 }
 .material-icons {
-  @include typo-icon;
   @include user-select(none);
   @include size(1rem);
+
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  word-wrap: normal;
+  font-feature-settings: 'liga';
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
 
   font-size: 1rem;
   color: inherit;

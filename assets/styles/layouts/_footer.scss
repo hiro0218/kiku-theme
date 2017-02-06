@@ -1,9 +1,34 @@
-#footer {
+.footer-navigation {
   margin-top: 1rem;
+  padding: 2rem 1rem;
+  color: $grey-400;
+  background: $grey-800;
+
   a {
-    color: unquote("rgb(#{$palette-grey-200})");
+    color: $grey-200;
     &:hover {
       text-decoration: underline;
     }
   }
+
+  ul {
+    padding-left: 0;
+    list-style: none;
+  }
+
+  li {
+    display: inline-block;
+
+    &:not(:last-child) {
+      margin-right: .5rem;
+    }
+  }
+}
+
+.footer-menu {
+  text-align: left;
+}
+
+.footer-copytight {
+  text-align: right;
 }

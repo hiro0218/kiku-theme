@@ -77,6 +77,6 @@ ol ol ol {
 }
 
 mark {
-  color: unquote("rgb(#{$palette-grey-900})");
-  background: unquote("rgb(#{$palette-yellow-100})");
+  color: $grey-900;
+  background: $yellow-100;
 }
