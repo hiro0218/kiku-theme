@@ -1,8 +1,14 @@
 options:
   merge-default-rules: false
 
-scss_files: "assets/styles/**/*.scss"
+scss_files: "assets/styles/**/*.s+(a|c)ss"
 exclude: "node_modules/**/*"
+
+# File Options
+files:
+  include: "assets/styles/**/*.s+(a|c)ss"
+  ignore:
+    - "node_modules/**/*"
 
 severity: warning
 rules:
@@ -77,7 +83,12 @@ rules:
       order: smacss
   pseudo-element: 0
   quotes: 0
-  shorthand-values: 1
+  shorthand-values:
+    - 1
+    -
+      allowed-shorthands:
+        - 1
+        - 2
   url-quotes: 1
   variable-for-property: 1
   zero-unit: 1
