@@ -1,6 +1,6 @@
 .entry-meta {
-  font-size: $font-size-sm;
   color: $grey-400;
+  font-size: $font-size-sm;
 
   a {
     color: inherit;
@@ -10,8 +10,8 @@
   }
 
   ul {
-    list-style: none;
     padding-left: 0;
+    list-style: none;
   }
 
   li {
@@ -32,27 +32,27 @@
 }
 
 .entry-tag {
-  font-size: $font-size-xs;
-  list-style: none;
-  line-height: 2rem;
-  padding-left: 0;
   margin-bottom: 1rem;
+  padding-left: 0;
+  font-size: $font-size-xs;
+  line-height: 2rem;
+  list-style: none;
   @include clearfix;
 
   li {
-    float: left;
     margin-right: .5rem;
     margin-bottom: .5rem;
+    float: left;
   }
 
   a {
     padding: .5rem .7rem;
     border-radius: ($spacer * .125);
-    color: $grey-700;
     background: $grey-100;
+    color: $grey-700;
     &:hover {
-      text-decoration: none !important;
       background: $grey-200;
+      text-decoration: none !important;
     }
   }
 

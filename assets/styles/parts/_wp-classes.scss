@@ -3,20 +3,20 @@
 
 // Media alignment
 .alignnone {
-  margin-left: 0;
-  margin-right: 0;
   max-width: 100%;
   height: auto;
+  margin-right: 0;
+  margin-left: 0;
 }
 .aligncenter {
   display: block;
-  margin: ($spacer / 2) auto;
   height: auto;
+  margin: ($spacer / 2) auto;
 }
 .alignleft,
 .alignright {
-  margin-bottom: ($spacer / 2);
   height: auto;
+  margin-bottom: ($spacer / 2);
 }
 
 // Captions

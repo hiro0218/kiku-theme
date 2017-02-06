@@ -26,11 +26,11 @@
 
   a,
   span {
-    font-size: $font-size-sm;
     margin: 0 ($spacer / 4);
     padding: .75rem;
     border-radius: 2px;
     color: $grey-600;
+    font-size: $font-size-sm;
     &:hover,
     &:focus {
       outline: 0;
@@ -48,10 +48,10 @@
 }
 
 .pagination-active span {
-  font-weight: bold;
-  cursor: default;
   background: $grey-600;
   color: #fff;
+  font-weight: bold;
+  cursor: default;
 }
 
 
@@ -60,10 +60,10 @@
   margin-top: 1rem;
 
   a {
-    border-radius: ($spacer * .125);
     padding: .5rem !important;
-    color: $grey-600;
     transition: background .3s $animation-curve-fast-out-slow-in;
+    border-radius: ($spacer * .125);
+    color: $grey-600;
 
     &:hover {
       background: $grey-300;
@@ -104,13 +104,13 @@
 }
 .pager-icon {
   width: 2rem;
-  text-align: center;
   color: $grey-800;
+  text-align: center;
 }
 .pager-instruct {
-  text-transform: uppercase;
-  font-weight: bold;
   color: $grey-500;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 .pager-title {
   @include ellipsis(100%);

@@ -5,16 +5,16 @@
 }
 
 :root {
-  font-size: 100%;
   font-family: $font-family-base;
+  font-size: 100%;
   line-height: $line-height-base;
   font-feature-settings: "kern" 1, "lnum" 1, "pnum" 1;
   scroll-behavior: smooth;
 }
 
 @include selection {
-  color: $grey-900;
   background: $grey-300;
+  color: $grey-900;
 }
 
 // Body reset
@@ -23,17 +23,17 @@ html {
 }
 
 body {
+  background: $grey-100;
+  color: $grey-700;
   font-size: $font-size-base;
+  font-weight: $font-weight-base;
+
   @media screen and (max-width: $screen-sm) {
     font-size: ($font-size-base - 1);
   }
   @media screen and (min-width: $screen-lg) {
     font-size: ($font-size-base + 2);
   }
-
-  font-weight: $font-weight-base;
-  color: $grey-700;
-  background: $grey-100;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -42,9 +42,9 @@ body {
 
 // Links
 a {
+  transition: color .3s ease, border .3s ease;
   color: $link-color;
   text-decoration: none;
-  transition: color .3s ease, border .3s ease;
 
   &:hover,
   &:focus {
@@ -73,8 +73,8 @@ img {
 
 // Tables
 table {
-  border-collapse: collapse;
   background: #fff;
+  border-collapse: collapse;
 }
 
 th {
