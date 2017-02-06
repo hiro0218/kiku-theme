@@ -6,9 +6,8 @@ A Simple WordPress Theme. (for myself)
 
 ## Theme Features
 * WordPress Starter Theme
- * based on [Sage - WordPress Starter Theme](https://roots.io/sage/)  
+ * based on [Sage - WordPress Starter Theme](https://roots.io/sage/)
 * Simple Design (Material Design)
- * use [Material Design Lite](https://getmdl.io/)
  * use [Google Material Design Icons](https://github.com/google/material-design-icons)
 * Ready
  * Search Engine Optimization (SEO)
@@ -21,7 +20,7 @@ A Simple WordPress Theme. (for myself)
     * Facebook
     * Hatena
     * LINE
- * Amazon Product Link  
+ * Amazon Product Link
     ASIN code to Amazon Product Link
 * Don't use jQuery (Vanilla only)
 * Remove Comments function
@@ -39,4 +38,4 @@ Supported browsers: (latest)
 * Chrome
 * Edge
 * Firefox
-* Safari 10
+* Safari

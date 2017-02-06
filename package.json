@@ -13,9 +13,7 @@
   "license": "MIT",
   "keyword": [
     "wordpress",
-    "theme",
-    "mdl",
-    "material design lite"
+    "theme"
   ],
   "scripts": {
     "build": "webpack --progress --config assets/build/webpack.config.js",
