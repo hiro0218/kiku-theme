@@ -5,8 +5,8 @@ $line-color:        #00c300;
 $share-base-color:  $grey-300;
 
 .entry-share {
-  list-style: none;
   padding: 1rem 0;
+  list-style: none;
   text-align: center;
 
   li {
@@ -24,9 +24,9 @@ $share-base-color:  $grey-300;
 .btn-hatena,
 .btn-line {
   display: block;
-  background-size: 80% 80%;
-  background-position: 50% 50%;
   background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 80% 80%;
   @include hide-text;
   @include size(40px);
 

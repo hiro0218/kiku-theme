@@ -1,19 +1,19 @@
 .entry {
   padding: 1rem 1.5rem;
-  border-radius: ($spacer * .125);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, .04);
   border: 1px solid rgba(0, 0, 0, .09);
-  color: $grey-700;
+  border-radius: ($spacer * .125);
   background: #fff;
+  color: $grey-700;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .04);
 
   > header {
     margin-bottom: 1rem;
   }
 
   h1 {
+    margin: ($spacer / 2) auto;
     font-weight: normal;
     word-wrap: break-word;
-    margin: ($spacer / 2) auto;
   }
 
 }
@@ -22,9 +22,9 @@
   margin-bottom: 1rem;
 
   a {
-    color: $link-color;
-    border-bottom: 1px solid $link-border-color;
     padding-bottom: 1px;
+    border-bottom: 1px solid $link-border-color;
+    color: $link-color;
 
     &:hover {
       border-color: $link-color;
@@ -59,13 +59,13 @@
   }
 
   *:not(pre) > code {
-    font-size: $font-size-sm;
-    line-height: 2;
     margin: 0;
     padding: .2rem 0;
     border-radius: .15rem;
-    color: $blue-400;
     background: $blue-50;
+    color: $blue-400;
+    font-size: $font-size-sm;
+    line-height: 2;
 
     &:before,
     &:after {
@@ -79,8 +79,8 @@
   }
 
   > blockquote {
-    padding: 1.6rem;
     margin-left: .8em;
+    padding: 1.6rem;
     border-left: 4px solid $grey-200;
     color: $grey-500;
 
@@ -94,8 +94,8 @@
     small,
     footer {
       display: block;
-      font-size: $font-size-sm;
       margin-top: 1.8rem !important;
+      font-size: $font-size-sm;
       text-align: right;
     }
   }
@@ -120,9 +120,9 @@
 
   th, td {
     padding: 1rem;
-    vertical-align: top;
-    border-top: $table-border-width solid $table-border-color;
     border: $table-border-width solid $table-border-color;
+    border-top: $table-border-width solid $table-border-color;
+    vertical-align: top;
   }
 
   tbody + tbody {
@@ -131,10 +131,10 @@
 
   thead {
     th {
-      color: $grey-800;
-      background: $grey-100;
-      vertical-align: bottom;
       border-bottom: (2 * $table-border-width) solid $table-border-color;
+      background: $grey-100;
+      color: $grey-800;
+      vertical-align: bottom;
     }
     th, td {
       border-bottom-width: (2 * $table-border-width);
@@ -145,18 +145,18 @@
     display: block;
     max-width: 100%;
     height: auto;
-    margin-left: auto;
     margin-right: auto;
+    margin-left: auto;
   }
 
   > hr {
-    border: 0;
-    font-size: $font-size-h2;
     height: 2rem;
-    line-height: 1;
     margin: 2rem 0;
-    text-align: center;
+    border: 0;
     color: $grey-600;
+    font-size: $font-size-h2;
+    line-height: 1;
+    text-align: center;
 
     &:before {
       content: "***";
@@ -170,8 +170,8 @@
   display: block;
   margin: 1rem 0;
   border: 1px solid rgba(0, 0, 0, .09) !important;
-  color: $grey-600 !important;
   background: $grey-50;
+  color: $grey-600 !important;
 
   &:focus {
     outline: 0;

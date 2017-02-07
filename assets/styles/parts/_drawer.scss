@@ -1,6 +1,7 @@
 .drawer-trigger {
-  font-size: 1.25rem;
   padding-left: 1rem;
+  font-size: 1.25rem;
+
   &:hover {
     cursor: pointer;
   }
@@ -10,10 +11,10 @@
   @extend .no-scroll;
 
   .drawer {
-    overflow-y: auto;
-    overflow-x: hidden;
-    opacity: 1;
     transform: translate(0, 0) translate3d(0, 0, 0);
+    opacity: 1;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 
   .drawer-overlay {
@@ -26,38 +27,38 @@
   position: absolute;
   top: 0;
   right: 0;
-  height: 0;
   width: 0;
+  height: 0;
   opacity: 0;
 }
 
 .drawer-overlay {
   position: fixed;
-  z-index: 2;
   top: 0;
+  right: 0;
   bottom: 0;
   left: 0;
-  right: 0;
-  opacity: 0;
-  visibility: hidden;
   transition: opacity .2s ease, visibility .2s ease;
   background: rgba(0, 0, 0, .5);
+  opacity: 0;
+  visibility: hidden;
+  z-index: 2;
 }
 
 .drawer {
   position: fixed;
-  z-index: 2;
-  height: 100%;
-  max-height: 100%;
-  width: 240px;
-  opacity: 0;
   top: 0;
   bottom: 0;
   left: 0;
-  transition: transform .2s ease, opacity .2s ease;
+  width: 240px;
+  height: 100%;
+  max-height: 100%;
   transform: translate(-100%, 0) translate3d(-100%, 0, 0);
-  background: $white;
+  transition: transform .2s ease, opacity .2s ease;
   border-right: 1px solid rgba(0, 0, 0, .14);
+  background: $white;
+  opacity: 0;
+  z-index: 2;
 }
 
 // .drawer[data-comes-from="top"] {

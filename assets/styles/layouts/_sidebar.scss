@@ -1,17 +1,17 @@
 // widget
 .sidebar {
   ul {
-    list-style: none;
     margin-top: 0;
     padding: 0;
+    list-style: none;
   }
 
   a {
     display: block;
     padding: 1rem 1.5rem;
+    transition: background .3s $animation-curve-fast-out-slow-in;
     color: $grey-600;
     font-size: $font-size-sm;
-    transition: background .3s $animation-curve-fast-out-slow-in;
     &:hover {
       background: $grey-300;
     }
@@ -19,8 +19,8 @@
 }
 
 .widget-title {
-  padding: 0 0 0 .75rem;
   margin-bottom: .5rem;
+  padding: 0 0 0 .75rem;
 }
 
 .widget_categories {

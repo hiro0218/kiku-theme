@@ -1,10 +1,10 @@
 .breadcrumb {
-  font-size: $font-size-sm;
-  word-wrap: break-word;
-  list-style: none;
-  padding: 0;
   margin-bottom: 1rem;
+  padding: 0;
   color: $grey-400;
+  font-size: $font-size-sm;
+  list-style: none;
+  word-wrap: break-word;
   @include clearfix;
 
   a {

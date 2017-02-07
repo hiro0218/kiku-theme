@@ -5,27 +5,27 @@
 
 .mokuji-title {
   display: table-cell;
-  padding-right: 3rem;
-  white-space: nowrap;
-  font-weight: normal;
   width: 30%;
+  padding-right: 3rem;
+  font-weight: normal;
+  white-space: nowrap;
 
   @media screen and (max-width: $screen-xs) {
     display: table-caption;
-    padding-right: auto;
-    margin-bottom: 1rem;
     width: 100%;
+    margin-bottom: 1rem;
+    padding-right: auto;
   }
 }
 
 .mokuji-content {
   display: table-cell;
-  border-left: solid 3px $blue-100;
   padding-left: 1rem;
+  border-left: solid 3px $blue-100;
 
   ol {
-    list-style: none;
     margin-bottom: 0;
+    list-style: none;
     ol {
       margin-bottom: .5rem;
       padding-left: 1rem;
@@ -35,6 +35,6 @@
 }
 
 .mokuji_number {
-  color: $grey-700;
   padding-right: .5rem;
+  color: $grey-700;
 }

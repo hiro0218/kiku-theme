@@ -32,6 +32,7 @@ Installation notes:
 * [Composer](https://getcomposer.org/download/)
 * [Node.js](http://nodejs.org/) >= 6.x
 * [WordPress](https://wordpress.org/) >= 4.6.x (latest)
+* [Yarn](https://yarnpkg.com/en/docs/install)
 
 ### Browser Support
 Supported browsers: (latest)

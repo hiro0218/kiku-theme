@@ -3,17 +3,17 @@ $entry-thumbnail-size: 5rem;//80px;
 .page-header {
   margin: 0;
   padding: 1rem;
+  border-bottom: 1px solid $grey-300;
   font-size: $font-size-h4;
   font-weight: normal;
-  border-bottom: 1px solid $grey-300;
 }
 
 .entry-home-container {
-  border-radius: ($spacer * .125);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, .04);
   border: 1px solid rgba(0, 0, 0, .09);
-  overflow: hidden;
+  border-radius: ($spacer * .125);
   background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .04);
+  overflow: hidden;
 }
 
 // Image
@@ -23,8 +23,8 @@ $entry-thumbnail-size: 5rem;//80px;
   user-select: none;
 
   &:hover {
-    cursor: pointer;
     background: $grey-100;
+    cursor: pointer;
     .entry-home-image-sheet {
       transform: scale(1.15);
     }
@@ -36,8 +36,8 @@ $entry-thumbnail-size: 5rem;//80px;
 
   a {
     display: block;
-    color: inherit;
     padding: 1rem;
+    color: inherit;
     // for display:table
     border-collapse: separate;
     border-spacing: 1rem 0;
@@ -56,28 +56,28 @@ $entry-thumbnail-size: 5rem;//80px;
 
 .entry-home-image-frame {
   @include size($entry-thumbnail-size);
+  border: 1px solid $grey-200;
   border-radius: ($spacer * .125);
   overflow: hidden;
-  border: 1px solid $grey-200;
 
   &.none {
     .material-icons {
+      color: $grey-400;
       font-size: 2rem;
       @include size(2rem);
-      color: $grey-400;
     }
   }
 
 }
 
 .entry-home-image-sheet {
-  text-align: center;
-  line-height: $entry-thumbnail-size;
-  @include size($entry-thumbnail-size);
   max-height: $entry-thumbnail-size;
+  transition: transform .2s cubic-bezier(.08, .82, .17, 1);
   background: $grey-50 50% no-repeat;
   background-size: cover;
-  transition: transform .2s cubic-bezier(.08, .82, .17, 1);
+  line-height: $entry-thumbnail-size;
+  text-align: center;
+  @include size($entry-thumbnail-size);
 }
 
 // Text
@@ -86,9 +86,9 @@ $entry-thumbnail-size: 5rem;//80px;
   height: ($entry-thumbnail-size * 1.2);
 }
 .entry-home-title {
-  font-weight: normal;
-  font-size: $font-size-h3;
   margin: 0 0 .5rem;
+  font-size: $font-size-h3;
+  font-weight: normal;
   word-wrap: break-word;
 }
 .entry-home-summary {

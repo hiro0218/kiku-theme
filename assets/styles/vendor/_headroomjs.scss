@@ -1,6 +1,6 @@
 .headroom {
-  will-change: transform;
   transition: transform .2s $animation-curve-fast-out-slow-in;
+  will-change: transform;
 }
 
 .headroom--pinned {
