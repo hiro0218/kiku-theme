@@ -1,6 +1,6 @@
 <footer class="footer footer-navigation">
   <div class="container">
-    <div class="columns is-mobile is-gapless">
+    <div class="columns is-gapless">
       <div class="footer-menu column">
         <?php if (has_nav_menu('primary_navigation')): ?>
           <nav><?php wp_nav_menu([
