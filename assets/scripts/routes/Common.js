@@ -1,5 +1,5 @@
 import load from '../module/load';
-const Headroom = require('headroom.js/dist/headroom.js');
+import fixedHeader from '../module/fixedHeader';
 
 export default {
   init() {
@@ -9,10 +9,8 @@ export default {
     // JavaScript to be fired on all pages, after page specific JS is fired
     load.checkLoaded();
 
-    // headroom
-    var headerNav = document.getElementsByClassName('header-navigation')[0];
-    var headroom = new Headroom(headerNav);
-    headroom.init();
+    // header fixed
+    fixedHeader.init();
 
     // drawer
     var trigger = document.getElementsByClassName('drawer-checkbox')[0];
