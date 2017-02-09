@@ -14,7 +14,6 @@
     <?php get_template_part('partials/entry/breadcrumb'); ?>
     <?php get_template_part('partials/entry/tag'); ?>
     <?php Kiku\Components\the_share(); ?>
-    <?php get_template_part('partials/entry/similar'); ?>
   </footer>
   <?php get_template_part('partials/entry/schema'); ?>
 </article>

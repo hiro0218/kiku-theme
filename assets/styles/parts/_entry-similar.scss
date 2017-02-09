@@ -1,26 +1,37 @@
 .entry-similar {
-  border-top: 1px solid $grey-300;
+  margin: 1rem 0;
 
   a {
     display: block;
+    height: 100%;
+    padding: 1rem 1.5rem;
+    border: 1px solid rgba(0, 0, 0, .09);
+    border-radius: ($spacer * .125);
+    background: $white;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .04);
+    &:focus {
+      outline: 0;
+    }
   }
+}
 
+.smilar-container {
+  &:first-child {
+    padding-left: 0;
+  }
+  &:last-child {
+    padding-right: 0;
+  }
 }
 
 .similar-title,
 .similar-description {
   display: block;
-  max-width: 100%;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  word-wrap: normal;
 }
 
 .similar-title {
   color: $grey-800;
   font-weight: bold;
-  line-height: 2;
 }
 
 .similar-description {
