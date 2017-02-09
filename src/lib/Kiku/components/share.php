@@ -19,64 +19,54 @@ function the_share() {
     if ($is_twitter) {
         $tooltip_twitter = __('Share on Twitter.', 'kiku');
         $twitter = <<< EOM
-<li>
-    <a href="javascript:void(0)"
-       class="btn-twitter"
-       title="{$tooltip_twitter}"
-       onclick="openWindow('//twitter.com/share?url={$meta['url']}&text={$meta['title']}',620,310); return false;">twitter
-    </a>
-</li>
+<a href="javascript:void(0)"
+   class="btn-twitter"
+   title="{$tooltip_twitter}"
+   onclick="openWindow('//twitter.com/share?url={$meta['url']}&text={$meta['title']}',620,310); return false;">twitter
+</a>
 EOM;
     }
 
     if ($is_facebook) {
         $tooltip_facebook = __('Share on Facebook.', 'kiku');
         $facebook = <<< EOM
-<li>
-    <a href="javascript:void(0)"
-       class="btn-facebook"
-       title="{$tooltip_facebook}"
-       onclick="openWindow('//www.facebook.com/sharer/sharer.php?u={$meta['url']}', 560,550); return false;">facebook
-    </a>
-</li>
+<a href="javascript:void(0)"
+   class="btn-facebook"
+   title="{$tooltip_facebook}"
+   onclick="openWindow('//www.facebook.com/sharer/sharer.php?u={$meta['url']}', 560,550); return false;">facebook
+</a>
 EOM;
     }
 
     if ($is_hatena) {
         $tooltip_hatena = __('Share on Hatena.', 'kiku');
         $hatena = <<< EOM
-<li>
-    <a href="//b.hatena.ne.jp/entry/{$meta['url']}"
-       class="hatena-bookmark-button btn-hatena"
-       data-hatena-bookmark-title="{$meta['title']}"
-       data-hatena-bookmark-layout="simple"
-       title="{$tooltip_hatena}">hatena
-    </a>
-</li>
+<a href="//b.hatena.ne.jp/entry/{$meta['url']}"
+   class="hatena-bookmark-button btn-hatena"
+   data-hatena-bookmark-title="{$meta['title']}"
+   data-hatena-bookmark-layout="simple"
+   title="{$tooltip_hatena}">hatena
+</a>
 EOM;
     }
 
     if ($is_line) {
         $tooltip_line = __('Share on LINE.', 'kiku');
         $line = <<< EOM
-<li>
-    <a href="javascript:void(0)"
-       class="btn-line"
-       title="{$tooltip_line}"
-       onclick="openWindow('//lineit.line.me/share/ui?url={$meta['url']}', 565,500); return false;">LINE
-    </a>
-</li>
+<a href="javascript:void(0)"
+   class="btn-line"
+   title="{$tooltip_line}"
+   onclick="openWindow('//lineit.line.me/share/ui?url={$meta['url']}', 565,500); return false;">LINE
+</a>
 EOM;
     }
 
     if ($is_twitter || $is_facebook || $is_hatena || $is_line) {
-        echo '<section>';
-        echo '<ul class="entry-share">';
+        echo '<section class="entry-share">';
         echo $twitter;
         echo $facebook;
         echo $hatena;
         echo $line;
-        echo '</ul>';
         echo '</section>';
 
         if ($is_hatena) {

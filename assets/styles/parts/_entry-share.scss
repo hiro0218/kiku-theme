@@ -5,13 +5,13 @@ $line-color:        #00c300;
 $share-base-color:  $grey-300;
 
 .entry-share {
-  padding: 1rem 0;
-  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
   text-align: center;
 
-  li {
-    display: inline-block;
-    margin-bottom: 0;
+  a {
+    margin: 0 .5rem;
 
     &:not(:last-child) {
       margin-right: .5rem;
@@ -23,7 +23,6 @@ $share-base-color:  $grey-300;
 .btn-facebook,
 .btn-hatena,
 .btn-line {
-  display: block;
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-size: 80% 80%;
