@@ -62,11 +62,13 @@ EOM;
     }
 
     if ($is_twitter || $is_facebook || $is_hatena || $is_line) {
-        echo '<section class="entry-share">';
+        echo '<section>';
+        echo '<div class="entry-share">';
         echo $twitter;
         echo $facebook;
         echo $hatena;
         echo $line;
+        echo '</div>';
         echo '</section>';
 
         if ($is_hatena) {
