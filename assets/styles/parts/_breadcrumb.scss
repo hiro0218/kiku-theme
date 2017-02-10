@@ -1,11 +1,5 @@
 .breadcrumb {
   margin-bottom: 1rem;
-  padding: 0;
-  color: $grey-400;
-  font-size: $font-size-sm;
-  list-style: none;
-  word-wrap: break-word;
-  @include clearfix;
 
   a {
     color: inherit;
@@ -13,6 +7,16 @@
       text-decoration: underline;
     }
   }
+
+  ol {
+    padding: 0;
+    color: $grey-400;
+    font-size: $font-size-sm;
+    list-style: none;
+    word-wrap: break-word;
+    @include clearfix;
+  }
+
   li {
     float: left;
     &:not(:last-child) {

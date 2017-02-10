@@ -1,6 +1,6 @@
 <?php if( is_singular() ): ?>
-<nav>
-<ol itemscope itemtype="http://schema.org/BreadcrumbList" class="breadcrumb">
+<nav class="breadcrumb">
+<ol itemscope itemtype="http://schema.org/BreadcrumbList">
   <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
     <i class="material-icons">home</i>
     <a href="<?= BLOG_URL ?>" itemprop="item">

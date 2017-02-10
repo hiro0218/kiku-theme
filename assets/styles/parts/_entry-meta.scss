@@ -33,11 +33,14 @@
 
 .entry-tag {
   margin-bottom: 1rem;
-  padding-left: 0;
-  font-size: $font-size-xs;
-  line-height: 2rem;
-  list-style: none;
-  @include clearfix;
+
+  ul {
+    padding-left: 0;
+    font-size: $font-size-xs;
+    line-height: 2rem;
+    list-style: none;
+    @include clearfix;
+  }
 
   li {
     margin-right: .5rem;
