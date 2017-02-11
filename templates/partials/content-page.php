@@ -8,9 +8,7 @@
     <?php the_content(); ?>
   </div>
   <footer>
-    <nav>
-      <?php get_template_part('partials/entry/breadcrumb'); ?>
-    </nav>
+    <?php get_template_part('partials/entry/breadcrumb'); ?>
   </footer>
 </article>
 <?php endwhile; ?>
