@@ -9,7 +9,6 @@
   ?>
     <main class="main-container container">
     <?php include App\template()->main(); ?>
-    <?php Kiku\Components\the_pager(); ?>
     <?php Kiku\Components\the_pagination(); ?>
     </main>
   <?php
