@@ -1,14 +1,28 @@
+// bulma variable
+// --------------------
+$widescreen: 1000px;  // disable widescreen
+
+
+// import
+// --------------------
+
+// utilities
 @import "~bulma/sass/utilities/all";
 
+// base
 // @import "~bulma/sass/base/all";
 
+// elements
 // @import "~bulma/sass/elements/all";
 @import "~bulma/sass/elements/other";
 
+// components
 // @import "~bulma/sass/components/all";
 @import "~bulma/sass/components/nav";
 
+// grid
 // @import "~bulma/sass/grid/all";
 @import "~bulma/sass/grid/columns";
 
+// layout
 // @import "~bulma/sass/layout/all";

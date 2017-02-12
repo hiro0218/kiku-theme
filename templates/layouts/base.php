@@ -7,9 +7,11 @@
     do_action('get_header');
     get_template_part('layouts/header');
   ?>
-    <main class="main-container container">
-    <?php include App\template()->main(); ?>
-    <?php Kiku\Components\the_pagination(); ?>
+    <main class="main-container">
+      <div class="container">
+      <?php include App\template()->main(); ?>
+      <?php Kiku\Components\the_pagination(); ?>
+      </div>
     </main>
   <?php
     do_action('get_footer');
