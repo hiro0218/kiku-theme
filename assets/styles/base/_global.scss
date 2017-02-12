@@ -29,10 +29,10 @@ body {
   font-weight: $font-weight-base;
 
   @media screen and (max-width: $screen-sm) {
-    font-size: ($font-size-base - 1);
+    font-size: $font-size-sm;
   }
   @media screen and (min-width: $screen-lg) {
-    font-size: ($font-size-base + 2);
+    font-size: $font-size-lg;
   }
 
   -webkit-font-smoothing: antialiased;
