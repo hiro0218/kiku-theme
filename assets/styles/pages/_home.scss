@@ -23,9 +23,6 @@ $entry-thumbnail-size: 5rem;//80px;
     padding: .5rem 0;
     color: inherit;
     border-spacing: 1rem;  // for display:table
-    &:focus {
-      outline: 0;
-    }
   }
 
   .entry-image,

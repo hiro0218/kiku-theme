@@ -36,6 +36,10 @@
     &:hover {
       border-color: $link-color;
     }
+    &:focus {
+      outline: thin dotted;
+      outline-offset: -2px;
+    }
   }
 
   > h2 {
