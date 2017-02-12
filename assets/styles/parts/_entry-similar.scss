@@ -13,10 +13,32 @@
       outline: 0;
     }
   }
+
+  .columns {
+    margin-top: 0;
+    margin-right: 0;
+    margin-left: 0;
+  }
 }
 
 .smilar-container {
   overflow: hidden;
+
+  &.column {
+    padding-top: 0;
+
+    &:first-child {
+      padding-left: 0;
+    }
+    &:last-child {
+      padding-right: 0;
+    }
+
+    @include mobile {
+      padding: 0 0 .5rem 0;
+    }
+  }
+
 }
 
 .similar-title {
