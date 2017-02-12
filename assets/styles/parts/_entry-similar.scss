@@ -42,10 +42,15 @@
 }
 
 .similar-title {
+  display: block;
+  max-width: 100%;
   margin-bottom: .5rem;
   color: $grey-800;
   font-weight: bold;
-  @include ellipsis(100%);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  word-wrap: normal;
 }
 
 .similar-description {
