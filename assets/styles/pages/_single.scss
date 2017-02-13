@@ -58,10 +58,10 @@
   > ul,
   > ol,
   > dl,
-  > figure,
   > table,
-  > img,
-  > div {
+  figure,
+  img,
+  div {
     margin-bottom: 2rem;
   }
 
@@ -152,7 +152,7 @@
     }
   }
 
-  > img {
+  img {
     display: block;
     max-width: 100%;
     height: auto;
