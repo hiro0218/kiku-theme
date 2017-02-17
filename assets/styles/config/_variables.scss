@@ -52,6 +52,7 @@ $font-size-h6:            modular-scale(-1);
 $line-height-base:        1.75; // 28/16
 $line-height-computed:    floor(($font-size-base * $line-height-base));
 
+$table-border-width: 1px;
 
 //
 // Layout
@@ -74,7 +75,9 @@ $link-hover-color:      $blue-A400;
 $link-visit-color:      $light-blue-A100;
 $link-border-color:     $blue-100;
 
-$table-border-color:    $grey-200;
+$table-background-color: $grey-100;
+$table-border-color:     $grey-200;
+$table-hover-color:      $grey-50;
 
 $font-color-h1:         $grey-900;
 $font-color-h2:         $grey-800;

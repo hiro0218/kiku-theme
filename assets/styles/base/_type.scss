@@ -58,6 +58,40 @@ code {
   font-feature-settings: "zero" 1;
 }
 
+table {
+  width: 100%;
+  max-width: 100%;
+  border: $table-border-width solid $table-border-color;
+}
+
+th, td {
+  padding: 1rem;
+  border: $table-border-width solid $table-border-color;
+  border-top: $table-border-width solid $table-border-color;
+  vertical-align: top;
+}
+
+thead {
+  th {
+    border-bottom: ($table-border-width * 2) solid $table-border-color;
+    background: $table-background-color;
+    vertical-align: bottom;
+  }
+  th, td {
+    border-bottom-width: (2 * $table-border-width);
+  }
+}
+
+tbody {
+  tr:hover {
+    background: $table-hover-color;
+  }
+  & + & {
+    border-top: ($table-border-width * 2) solid $table-border-color;
+  }
+}
+
+
 ul,
 ol {
   margin-top: 0;
