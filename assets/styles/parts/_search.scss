@@ -2,27 +2,29 @@
   display: flex;
   flex-wrap: nowrap;
   margin: 0 .5rem;
+  padding: .5rem 0;
 
   label {
     display: none;
   }
 }
 
-.search-input {
-  width: 100%;
-  padding: .5rem 0;
-  border: 0;
-  color: $grey-800;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-
-  &:focus {
-    outline: none;
-  }
+.search-icon {
+  display: inline-block;
+  width: 2rem;
+  color: $grey-700;
+  text-align: center;
 }
 
-.search-icon {
-  width: 2rem;
+.search-input {
+  width: 100%;
+  margin-left: .25rem;
+  border: 0;
+  border-radius: 0;
+  outline: none;
   color: $grey-800;
-  text-align: center;
+  box-shadow: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
