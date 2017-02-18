@@ -79,7 +79,7 @@ class Entry {
                 $arr[$i] = [
                     "uri"   => get_the_permalink(),
                     "title" => $title,
-                    "description" => get_the_excerpt(),
+                    "description" => \Kiku\Util::get_excerpt_content(),
                 ];
                 $i++;
             }
