@@ -68,12 +68,12 @@ function save_amazon_associate_tag( $post_id ) {
         return;
     }
 
-    global $Amazon;
+    global $Aapapi;
     $asin = get_post_meta($post_id, CF_ASIN, true);
-    if (empty($asin) || empty($Amazon)) {
+    if (empty($asin) || empty($Aapapi)) {
         return;
     }
-    $result = $Amazon->lookupASIN(strtoupper($asin));
+    $result = $Aapapi->lookupASIN(strtoupper($asin));
     if ( !empty($result) ) {
         $tag = make_amazon_product_tag($result);
         update_post_meta($post_id, CF_AMAZON_PRODUCT_TAG, $tag);

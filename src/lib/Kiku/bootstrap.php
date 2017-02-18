@@ -38,11 +38,11 @@ require KIKU_LIB_PATH. 'plugins/setting/kiku-setting.php';
 require KIKU_LIB_PATH. '../Sage/Soil/nice-search.php';
 require KIKU_LIB_PATH. '../Sage/Soil/nav-walker.php';
 
-require KIKU_LIB_PATH. 'Amazon.php';
-$Amazon = null;
+require KIKU_LIB_PATH. '../vendor/papapi/papapi.php';
+$Aapapi = null;
 if (is_admin()) {
     $accessKeyId = get_option('kiku_amazon_api_key');
     $secretKey = get_option('kiku_amazon_secret_key');
     $associateId = get_option('kiku_amazon_associate_tag');
-    $Amazon = new Amazon($accessKeyId, $secretKey, $associateId);
+    $Aapapi = new \Aapapi\Aapapi($accessKeyId, $secretKey, $associateId);
 }
