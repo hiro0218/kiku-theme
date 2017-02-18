@@ -1,4 +1,4 @@
-import load from '../module/load';
+// import load from '../module/load';
 import fixedHeader from '../module/fixedHeader';
 import drawer from '../module/drawer';
 
@@ -8,7 +8,7 @@ export default {
   },
   finalize() {
     // JavaScript to be fired on all pages, after page specific JS is fired
-    load.checkLoaded();
+    // load.checkLoaded();
 
     // header fixed
     fixedHeader.init();
