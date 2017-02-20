@@ -108,14 +108,14 @@ function make_amazon_product_tag($info) {
     $img = replace_amazon_image_scheme( (string)$info->LargeImage->URL );
 
     $tag .= "<a href='". $url ."' class='amazon-product' target='_blank'>";
-    $tag .= "<div class='columns is-gapless'>";
+    $tag .= "<div class='columns'>";
     $tag .= "<div class='column'>";
     $tag .= "<img src='". $img ."' data-zoom-diasbled='true'>";
     $tag .= "</div>";
     $tag .= "<div class='column'>";
-    $tag .= "<span class='amazon-title'>". $title ."</span>";
-    $tag .= "<span class='amazon-author'>". $author ."</span>";
-    $tag .= "<span class='amazon-date'>". $date ."</span>";
+    $tag .= $title ?? "<span class='amazon-title'>". $title ."</span>";
+    $tag .= $author ?? "<span class='amazon-author'>". $author ."</span>";
+    $tag .= $date ?? "<span class='amazon-date'>". $date ."</span>";
     $tag .= "</div>";
     $tag .= "</div>";
     $tag .= "</a>";
