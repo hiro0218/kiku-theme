@@ -25,8 +25,8 @@ class Amazon {
         $product_data = self::get_amazon_product($post_id);
 
         if (!empty($product_data)) {
-            $tag = self::make_amazon_product_tag($product_data);
-            self::update_asin_meta($post_id, $tag);
+            $product_data = json_encode($product_data, JSON_UNESCAPED_UNICODE);
+            self::update_asin_meta($post_id, $product_data);
         }
     }
 
@@ -38,32 +38,37 @@ class Amazon {
             return $content;
         }
 
-        $tag = get_post_meta($post->ID, CF_AMAZON_PRODUCT_TAG, true);
+        $product_data = get_post_meta($post->ID, CF_AMAZON_PRODUCT_TAG, true);
 
-        if (!empty($tag)) {
-            $content .= $tag;
+        if (!empty($product_data)) {
+            $content .= self::make_amazon_product_tag($product_data);
         }
 
         return $content;
     }
 
     // make Amazon Product Tag
-    public static function make_amazon_product_tag($info) {
-        $tag = '';
+    public static function make_amazon_product_tag($product_data) {
+        $data = json_decode($product_data, true);
 
-        $title = (string)$info->ItemAttributes->Title;
-        $url = (string)$info->DetailPageURL;
-        $author = (string)$info->ItemAttributes->Author;
-        $date = (string)$info->ItemAttributes->PublicationDate;
-        $img = self::replace_amazon_image_scheme( (string)$info->LargeImage->URL );
+        if (!is_array($data)) {
+            return "";
+        }
 
-        $tag .= "<a href='". $url ."' class='amazon-product' target='_blank'>";
+        $tag = "";
+
+        $title = $data["ItemAttributes"]["Title"];
+        $author = $data["ItemAttributes"]["Author"];
+        $date = $data["ItemAttributes"]["PublicationDate"];
+        $img = self::replace_amazon_image_scheme($data["LargeImage"]["URL"]);
+
+        $tag .= "<a href='". $data["DetailPageURL"] ."' class='amazon-product' target='_blank'>";
         $tag .= "<div class='columns'>";
         $tag .= "<div class='column'>";
         $tag .= "<img src='". $img ."' data-zoom-diasbled='true'>";
         $tag .= "</div>";
         $tag .= "<div class='column'>";
-        $tag .= $title ?? "<span class='amazon-title'>". $title ."</span>";
+        $tag .= $title ?? "<span class='amazon-title'>a". $title ."</span>";
         $tag .= $author ?? "<span class='amazon-author'>". $author ."</span>";
         $tag .= $date ?? "<span class='amazon-date'>". $date ."</span>";
         $tag .= "</div>";
