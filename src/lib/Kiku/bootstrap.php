@@ -13,6 +13,7 @@ require KIKU_LIB_PATH. 'Util.php';
 require KIKU_LIB_PATH. 'Entry.php';
 require KIKU_LIB_PATH. 'Image.php';
 require KIKU_LIB_PATH. 'DB.php';
+require KIKU_LIB_PATH. 'Amazon.php';
 $Entry = new Entry();
 $Image = new Image();
 

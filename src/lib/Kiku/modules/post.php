@@ -62,75 +62,7 @@ function replace_relative_to_absolute_img_src($content) {
     return $content;
 }
 
-// make Amazon Product Tag when save post
-function save_amazon_associate_tag( $post_id ) {
-    if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ) {
-        return;
-    }
-
-    global $Aapapi;
-    $asin = get_post_meta($post_id, CF_ASIN, true);
-    if (empty($asin) || empty($Aapapi)) {
-        return;
-    }
-    $result = $Aapapi->lookupASIN(strtoupper($asin));
-    if ( !empty($result) ) {
-        $tag = make_amazon_product_tag($result);
-        update_post_meta($post_id, CF_AMAZON_PRODUCT_TAG, $tag);
-    }
-}
-add_action('save_post', __NAMESPACE__ . '\\save_amazon_associate_tag', 11, 2);
-
-// add Amazon Product Tag in content footer
-function add_content_footer_amazon_associate($content) {
-    if ( !is_singular() ) {
-        return $content;
-    }
-
-    global $post;
-    $tag = get_post_meta($post->ID, CF_AMAZON_PRODUCT_TAG, true);
-    if ( !empty($tag) ) {
-        $content .= $tag;
-    }
-
-    return $content;
-}
-add_filter('the_content', __NAMESPACE__ . '\\add_content_footer_amazon_associate', 50);
-
-// make Amazon Product Tag
-function make_amazon_product_tag($info) {
-    $tag = '';
-
-    $title = (string)$info->ItemAttributes->Title;
-    $url = (string)$info->DetailPageURL;
-    $author = (string)$info->ItemAttributes->Author;
-    $date = (string)$info->ItemAttributes->PublicationDate;
-    $img = replace_amazon_image_scheme( (string)$info->LargeImage->URL );
-
-    $tag .= "<a href='". $url ."' class='amazon-product' target='_blank'>";
-    $tag .= "<div class='columns'>";
-    $tag .= "<div class='column'>";
-    $tag .= "<img src='". $img ."' data-zoom-diasbled='true'>";
-    $tag .= "</div>";
-    $tag .= "<div class='column'>";
-    $tag .= $title ?? "<span class='amazon-title'>". $title ."</span>";
-    $tag .= $author ?? "<span class='amazon-author'>". $author ."</span>";
-    $tag .= $date ?? "<span class='amazon-date'>". $date ."</span>";
-    $tag .= "</div>";
-    $tag .= "</div>";
-    $tag .= "</a>";
-
-    return $tag;
-}
-
-function replace_amazon_image_scheme($image_url) {
-    return str_replace('http://ecx.', 'https://images-na.ssl-', $image_url);
-}
-
-// delete CF_AMAZON_PRODUCT_TAG when delete CF_ASIN
-function deleted_asin_meta( $meta_id, $post_id, $meta_key, $meta_value ) {
-    if ( CF_ASIN == $meta_key ) {
-        delete_post_meta( $post_id, CF_AMAZON_PRODUCT_TAG );
-    }
-}
-add_action( 'deleted_post_meta', __NAMESPACE__ . '\\deleted_asin_meta', 10, 4 );
+// Amazon ASIN tag
+add_action('save_post', ['\Kiku\Amazon', 'save_amazon_associate_tag'], 11, 2);
+add_action('deleted_post_meta', ['\Kiku\Amazon', 'deleted_asin_meta'], 10, 4);
+add_filter('the_content', ['\Kiku\Amazon', 'add_content_footer_amazon_associate'], 50);
