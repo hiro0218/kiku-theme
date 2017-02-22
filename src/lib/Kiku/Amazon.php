@@ -2,33 +2,45 @@
 namespace Kiku;
 
 class Amazon {
+    public static function get_amazon_product($post_id) {
+        global $Aapapi;
+
+        $asin = get_post_meta($post_id, CF_ASIN, true);
+
+        if (empty($asin) || empty($Aapapi)) {
+            return null;
+        }
+
+        $product_data = $Aapapi->lookupASIN(strtoupper($asin));
+
+        return $product_data;
+    }
+
     // make Amazon Product Tag when save post
-    public function save_amazon_associate_tag($post_id) {
-        if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ) {
+    public function save_amazon_product_tag($post_id) {
+        if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
             return;
         }
 
-        global $Aapapi;
-        $asin = get_post_meta($post_id, CF_ASIN, true);
-        if (empty($asin) || empty($Aapapi)) {
-            return;
-        }
-        $result = $Aapapi->lookupASIN(strtoupper($asin));
-        if ( !empty($result) ) {
-            $tag = self::make_amazon_product_tag($result);
-            update_post_meta($post_id, CF_AMAZON_PRODUCT_TAG, $tag);
+        $product_data = self::get_amazon_product($post_id);
+
+        if (!empty($product_data)) {
+            $tag = self::make_amazon_product_tag($product_data);
+            self::update_asin_meta($post_id, $tag);
         }
     }
 
     // add Amazon Product Tag in content footer
-    public function add_content_footer_amazon_associate($content) {
-        if ( !is_singular() ) {
+    public function append_amazon_product_tag($content) {
+        global $post;
+
+        if (!is_singular()) {
             return $content;
         }
 
-        global $post;
         $tag = get_post_meta($post->ID, CF_AMAZON_PRODUCT_TAG, true);
-        if ( !empty($tag) ) {
+
+        if (!empty($tag)) {
             $content .= $tag;
         }
 
@@ -65,10 +77,14 @@ class Amazon {
         return str_replace('http://ecx.', 'https://images-na.ssl-', $image_url);
     }
 
+    public static function update_asin_meta($post_id, $value) {
+        update_post_meta($post_id, CF_AMAZON_PRODUCT_TAG, $value);
+    }
+
     // delete CF_AMAZON_PRODUCT_TAG when delete CF_ASIN
-    public function deleted_asin_meta( $meta_id, $post_id, $meta_key, $meta_value ) {
-        if ( CF_ASIN == $meta_key ) {
-            delete_post_meta( $post_id, CF_AMAZON_PRODUCT_TAG );
+    public static function deleted_asin_meta($meta_id, $post_id, $meta_key, $meta_value) {
+        if (CF_ASIN == $meta_key) {
+            delete_post_meta($post_id, CF_AMAZON_PRODUCT_TAG);
         }
     }
 }

@@ -42,8 +42,9 @@ require KIKU_LIB_PATH. '../Sage/Soil/nav-walker.php';
 require KIKU_LIB_PATH. '../vendor/papapi/papapi.php';
 $Aapapi = null;
 if (is_admin()) {
-    $accessKeyId = get_option('kiku_amazon_api_key');
-    $secretKey = get_option('kiku_amazon_secret_key');
-    $associateId = get_option('kiku_amazon_associate_tag');
-    $Aapapi = new \Aapapi\Aapapi($accessKeyId, $secretKey, $associateId);
+    $access_key = get_option('kiku_amazon_api_key');
+    $secret_key = get_option('kiku_amazon_secret_key');
+    $associate_id = get_option('kiku_amazon_associate_tag');
+
+    $Aapapi = new \Aapapi\Aapapi($access_key, $secret_key, $associate_id);
 }
