@@ -61,7 +61,7 @@
   > table,
   figure,
   img,
-  div {
+  > div {
     margin-bottom: 2rem;
   }
 
@@ -143,30 +143,4 @@
     }
   }
 
-}
-
-// amazon
-.amazon-product {
-  display: block;
-  margin: 1rem 0;
-  border: 1px solid rgba(0, 0, 0, .09) !important;
-  background: $grey-50;
-  color: $grey-600 !important;
-
-  &:focus {
-    outline: 0;
-  }
-  img {
-    max-height: 10rem;
-  }
-}
-.amazon-title,
-.amazon-author,
-.amazon-date {
-  display: block;
-}
-.amazon-title {
-  font-size: $font-size-lg;
-  font-weight: bold;
-  line-height: 2;
 }

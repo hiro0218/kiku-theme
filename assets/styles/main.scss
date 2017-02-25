@@ -28,6 +28,7 @@ $output-bourbon-deprecation-warnings: false;
 
 // parts
 @import "parts/wp-classes";
+@import "parts/amazon";
 @import "parts/pagination";
 @import "parts/breadcrumb";
 @import "parts/drawer";

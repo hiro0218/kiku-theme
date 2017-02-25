@@ -4,8 +4,53 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "509dd8b662212a92fe97d7a5835c9289",
+    "content-hash": "02fc0a6049ff4f249f75c68dbe2e9ab0",
     "packages": [
+        {
+            "name": "avplab/php-html-builder",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/avplab/php-html-builder.git",
+                "reference": "f6efc782991c72406d418f0f9da1e0adfcb6a87d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/avplab/php-html-builder/zipball/f6efc782991c72406d418f0f9da1e0adfcb6a87d",
+                "reference": "f6efc782991c72406d418f0f9da1e0adfcb6a87d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.2"
+            },
+            "type": "package",
+            "autoload": {
+                "psr-4": {
+                    "AvpLab\\": "./src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andrew Polupanov",
+                    "email": "andrewfortalking@gmail.com"
+                }
+            ],
+            "description": "PHP Html builder simplifies creation of an html code in php scripts",
+            "homepage": "http://github.com/avplab/php-html-builder",
+            "keywords": [
+                "builder",
+                "html",
+                "php"
+            ],
+            "time": "2016-02-04T14:48:48+00:00"
+        },
         {
             "name": "composer/installers",
             "version": "v1.2.0",
@@ -115,16 +160,16 @@
         },
         {
             "name": "exeu/apai-io",
-            "version": "2.0.0",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Exeu/apai-io.git",
-                "reference": "86c554a06883374fae7c0ad726231dc087f87e92"
+                "reference": "fb171b5654c8a24a075976fc927f488a2ea0c15b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Exeu/apai-io/zipball/86c554a06883374fae7c0ad726231dc087f87e92",
-                "reference": "86c554a06883374fae7c0ad726231dc087f87e92",
+                "url": "https://api.github.com/repos/Exeu/apai-io/zipball/fb171b5654c8a24a075976fc927f488a2ea0c15b",
+                "reference": "fb171b5654c8a24a075976fc927f488a2ea0c15b",
                 "shasum": ""
             },
             "require": {
@@ -165,7 +210,7 @@
                 "products",
                 "rest"
             ],
-            "time": "2016-05-28T20:30:49+00:00"
+            "time": "2017-02-24T10:12:27+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",

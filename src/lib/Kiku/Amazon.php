@@ -1,6 +1,8 @@
 <?php
 namespace Kiku;
 
+use AvpLab\PhpHtmlBuilder;
+
 class Amazon {
     public static function get_amazon_product($post_id) {
         global $Aapapi;
@@ -55,27 +57,23 @@ class Amazon {
             return "";
         }
 
-        $tag = "";
-
         $title = $data["ItemAttributes"]["Title"];
-        $author = $data["ItemAttributes"]["Author"];
-        $date = $data["ItemAttributes"]["PublicationDate"];
-        $img = self::replace_amazon_image_scheme($data["LargeImage"]["URL"]);
+        $image_url = self::replace_amazon_image_scheme($data["LargeImage"]["URL"]);
 
-        $tag .= "<a href='". $data["DetailPageURL"] ."' class='amazon-product' target='_blank'>";
-        $tag .= "<div class='columns'>";
-        $tag .= "<div class='column'>";
-        $tag .= "<img src='". $img ."' data-zoom-diasbled='true'>";
-        $tag .= "</div>";
-        $tag .= "<div class='column'>";
-        $tag .= $title ?? "<span class='amazon-title'>a". $title ."</span>";
-        $tag .= $author ?? "<span class='amazon-author'>". $author ."</span>";
-        $tag .= $date ?? "<span class='amazon-date'>". $date ."</span>";
-        $tag .= "</div>";
-        $tag .= "</div>";
-        $tag .= "</a>";
+        $builder = new PhpHtmlBuilder();
 
-        return $tag;
+        $builder->div()->setClass('amazon-product')->setStyle('background-image: url("'.$image_url.'")')
+                    ->a()->setHref($data["DetailPageURL"])->setClass('columns is-multiline is-vcentered')
+                        ->div()->setClass('column is-12')
+                            ->img()->setSrc($image_url)->setDataZoomDisabled('true')->end()
+                        ->end()
+                        ->div()->setClass('column is-12')
+                            ->span($title)->setClass('amazon-title')->end()
+                        ->end()
+                    ->end()
+                ->end();
+
+        return $builder->build();
     }
 
     public static function replace_amazon_image_scheme($image_url) {
