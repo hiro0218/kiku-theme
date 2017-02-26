@@ -5,7 +5,7 @@ class Image {
 
     public function get_entry_image(bool $datauri = true, int $post_id = 0): string {
         global $post;
-        $image_src = '';
+        $image_src = "";
 
         if ($post_id == 0) {
             $post_id = $post->ID;
@@ -17,8 +17,8 @@ class Image {
         }
 
         // has thumbnail custom field
-        $image_src = get_post_meta($post_id, CF_THUMBNAIL, true);
-        if ( $this->is_correct_image($image_src) ) {
+        $image_src = $this->get_meta_thumbnail_image($post_id);
+        if (!empty($image_src)) {
             return $image_src;
         }
 
@@ -29,11 +29,9 @@ class Image {
         }
 
         // has thumbnail
-        if ( has_post_thumbnail() ) {
-            $image_src = $this->get_post_thumbnail_image();
-            if ( $this->is_correct_image($image_src) ) {
-                return $image_src;
-            }
+        $image_src = $this->get_post_thumbnail_image();
+        if (!empty($image_src)) {
+            return $image_src;
         }
 
         // has img tag
@@ -76,7 +74,7 @@ class Image {
             $url = (string)$attachment_image_src[0];
         }
 
-        return $url;
+        return $this->is_correct_image($url) ? $url : "";
     }
 
     public function get_post_image_from_tag($datauri = true): string {
@@ -128,6 +126,12 @@ class Image {
 
     private function is_correct_image(string $src): bool {
         return Util::is_url($src) && Util::is_image($src);
+    }
+
+    public function get_meta_thumbnail_image($post_id) {
+        $thumbnail_data = get_post_meta($post_id, CF_THUMBNAIL, true);
+
+        return $this->is_correct_image($thumbnail_data) ? $thumbnail_data : "";
     }
 
     public function get_asin_image($post_id) {
