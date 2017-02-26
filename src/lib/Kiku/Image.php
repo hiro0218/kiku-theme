@@ -22,6 +22,12 @@ class Image {
             return $image_src;
         }
 
+        // has ASIN custom field
+        $image_src = $this->get_asin_image($post_id);
+        if (!empty($image_src)) {
+            return $image_src;
+        }
+
         // has thumbnail
         if ( has_post_thumbnail() ) {
             $image_src = $this->get_post_thumbnail_image();
@@ -123,4 +129,25 @@ class Image {
     private function is_correct_image(string $src): bool {
         return Util::is_url($src) && Util::is_image($src);
     }
+
+    public function get_asin_image($post_id) {
+        $product_data = get_post_meta($post_id, CF_AMAZON_PRODUCT_TAG, true);
+        $data = json_decode($product_data, true);
+
+        if (!is_array($data)) {
+            return "";
+        }
+
+        $url = $data["LargeImage"]["URL"];
+        if (empty($url)) {
+            return "";
+        }
+
+        if ( $this->is_correct_image($url) ) {
+            return $url;
+        }
+
+        return "";
+    }
+
 }
