@@ -1,6 +1,8 @@
 <?php
 namespace Kiku\Components;
 
+use AvpLab\PhpHtmlBuilder;
+
 function the_share() {
     if ( !is_singular() ) {
         return;
@@ -17,59 +19,62 @@ function the_share() {
     list($is_twitter, $is_facebook, $is_hatena, $is_line) = is_display();
 
     if ($is_twitter) {
-        $tooltip_twitter = __('Share on Twitter.', 'kiku');
-        $twitter = <<< EOM
-<a href="javascript:void(0)"
-   class="btn-twitter"
-   title="{$tooltip_twitter}"
-   onclick="openWindow('//twitter.com/share?url={$meta['url']}&text={$meta['title']}',620,310); return false;">twitter
-</a>
-EOM;
+        $builder = new PhpHtmlBuilder();
+        $twitter = $builder->a('twitter')
+                                ->setHref('javascript:void(0)')
+                                ->setClass('btn-twitter')
+                                ->setTitle(__('Share on Twitter.', 'kiku'))
+                                ->setOnclick("openWindow('//twitter.com/share?url={$meta['url']}&text={$meta['title']}',620,310); return false;")
+                            ->end();
+        $builder = null;
     }
 
     if ($is_facebook) {
-        $tooltip_facebook = __('Share on Facebook.', 'kiku');
-        $facebook = <<< EOM
-<a href="javascript:void(0)"
-   class="btn-facebook"
-   title="{$tooltip_facebook}"
-   onclick="openWindow('//www.facebook.com/sharer/sharer.php?u={$meta['url']}', 560,550); return false;">facebook
-</a>
-EOM;
+        $builder = new PhpHtmlBuilder();
+        $facebook = $builder->a('facebook')
+                                ->setHref('javascript:void(0)')
+                                ->setClass('btn-facebook')
+                                ->setTitle(__('Share on Facebook.', 'kiku'))
+                                ->setOnclick("openWindow('//www.facebook.com/sharer/sharer.php?u={$meta['url']}', 560,550); return false;")
+                            ->end();
+        $builder = null;
     }
 
     if ($is_hatena) {
-        $tooltip_hatena = __('Share on Hatena.', 'kiku');
-        $hatena = <<< EOM
-<a href="//b.hatena.ne.jp/entry/{$meta['url']}"
-   class="hatena-bookmark-button btn-hatena"
-   data-hatena-bookmark-title="{$meta['title']}"
-   data-hatena-bookmark-layout="simple"
-   title="{$tooltip_hatena}">hatena
-</a>
-EOM;
+        $builder = new PhpHtmlBuilder();
+        $hatena = $builder->a('hatena')
+                            ->setHref("//b.hatena.ne.jp/entry/{$meta['url']}")
+                            ->setClass("hatena-bookmark-button btn-hatena")
+                            ->setTitle(__('Share on Hatena.', 'kiku'))
+                            ->setDataHatenaBookmarkTitle($meta['title'])
+                            ->setDataHatenaBookmarkLayout("simple")
+                        ->end();
+        $builder = null;
     }
 
     if ($is_line) {
-        $tooltip_line = __('Share on LINE.', 'kiku');
-        $line = <<< EOM
-<a href="javascript:void(0)"
-   class="btn-line"
-   title="{$tooltip_line}"
-   onclick="openWindow('//lineit.line.me/share/ui?url={$meta['url']}', 565,500); return false;">LINE
-</a>
-EOM;
+        $builder = new PhpHtmlBuilder();
+        $line = $builder->a('facebook')
+                            ->setHref('javascript:void(0)')
+                            ->setClass('btn-line')
+                            ->setTitle(__('Share on LINE.', 'kiku'))
+                            ->setOnclick("openWindow('//lineit.line.me/share/ui?url={$meta['url']}', 565,500); return false;")
+                        ->end();
+        $builder = null;
     }
 
     if ($is_twitter || $is_facebook || $is_hatena || $is_line) {
-        echo '<section>';
-        echo '<div class="entry-share">';
-        echo $twitter;
-        echo $facebook;
-        echo $hatena;
-        echo $line;
-        echo '</div>';
-        echo '</section>';
+        $builder = new PhpHtmlBuilder();
+        $builder = $builder->section()
+                                ->div()->setClass('entry-share')
+                                    ->prepend($twitter)
+                                    ->prepend($facebook)
+                                    ->prepend($hatena)
+                                    ->prepend($line)
+                                ->end()
+                            ->end();
+        echo $builder->build();
+        $builder = null;
 
         if ($is_hatena) {
             wp_enqueue_script('bookmark_button', "//b.st-hatena.com/js/bookmark_button.js", [], null, true);
