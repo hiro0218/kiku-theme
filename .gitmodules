@@ -1,4 +1,0 @@
-[submodule "src/lib/vendor/papapi"]
-	path = src/lib/vendor/papapi
-	url = https://github.com/hiro0218/papapi.git
-	ignore = dirty

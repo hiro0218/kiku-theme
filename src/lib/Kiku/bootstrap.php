@@ -14,6 +14,7 @@ require KIKU_LIB_PATH. 'Entry.php';
 require KIKU_LIB_PATH. 'Image.php';
 require KIKU_LIB_PATH. 'DB.php';
 require KIKU_LIB_PATH. 'Amazon.php';
+require KIKU_LIB_PATH. 'papapi.php';
 $Entry = new Entry();
 $Image = new Image();
 
@@ -39,7 +40,6 @@ require KIKU_LIB_PATH. 'plugins/setting/kiku-setting.php';
 require KIKU_LIB_PATH. '../Sage/Soil/nice-search.php';
 require KIKU_LIB_PATH. '../Sage/Soil/nav-walker.php';
 
-require KIKU_LIB_PATH. '../vendor/papapi/papapi.php';
 $Aapapi = null;
 if (is_admin()) {
     $access_key = get_option('kiku_amazon_api_key');
