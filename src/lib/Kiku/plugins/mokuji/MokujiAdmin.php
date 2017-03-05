@@ -1,4 +1,7 @@
 <?php
+
+namespace Kiku;
+
 // inspired by Table of Contents Plus
 define('MKJ_POSITION_BEFORE_FIRST_HEADING', 1);
 define('MKJ_POSITION_CONTENTS_TOP', 2);
@@ -6,11 +9,11 @@ define('MKJ_POSITION_CONTENTS_BOTTOM', 3);
 define('MKJ_POSITION_AFTER_FIRST_HEADING', 4);
 define('MKJ_TAG', '<!--MOKUJI-->');
 
-class Kiku_Mokuji_Admin {
+class Mokuji_Admin {
     private $message;
     private $options;
     private $show_mokuji = true;
-    private $exclude_post_types = ['attachment', 'revision', 'nav_menu_item', 'safecss'];
+    private $exclude_post_types = ['attachment', 'revision', 'nav_menu_item', 'safecss', 'customize_changeset', 'custom_css', 'custom_js'];
     private $collision_collector = [];
 
     public function __construct() {
@@ -21,7 +24,6 @@ class Kiku_Mokuji_Admin {
             'auto_insert_post_types' => [],
             'show_heirarchy' => true,  // 階層構造
             'ordered_list' => true,
-            'include_homepage' => false,
             'exclude' => '',
             'heading_levels' => [1, 2, 3, 4, 5, 6],
             'restrict_path' => '',
@@ -46,7 +48,7 @@ class Kiku_Mokuji_Admin {
     }
 
     public function admin_options(){
-        require_once KIKU_LIB_PATH . 'plugins/mokuji/admin/partials/kiku-mokuji-admin-display.php';
+        require_once KIKU_LIB_PATH . 'plugins/mokuji/kiku-mokuji-admin-display.php';
     }
 
     public function save_admin_options() {
@@ -321,7 +323,7 @@ class Kiku_Mokuji_Admin {
     private function is_eligible($shortcode_used = false) {
         // if the shortcode was used, this bypasses many of the global options
         if ($shortcode_used !== false) {
-            return is_singular() ? true : false;
+            return is_singular();
         } else {
             if ( !$this->is_show_page() ) {
                 return false;
@@ -337,29 +339,28 @@ class Kiku_Mokuji_Admin {
     }
 
     public function get_table_of_content($items) {
-        $html = '<nav>';
-        $html .= '<div id="mokuji-container">';
-
         $mokuji_title = $this->options['heading_text'];
-        if ($mokuji_title) {
-            if (strpos($mokuji_title, '%PAGE_TITLE%') !== false) {
-                $mokuji_title = str_replace('%PAGE_TITLE%', get_the_title(), $mokuji_title);
-            }
-            if (strpos($mokuji_title, '%PAGE_NAME%') !== false) {
-                $mokuji_title = str_replace('%PAGE_NAME%', get_the_title(), $mokuji_title);
-            }
-            $html .= '<h2 class="mokuji-title">';
-            $html .= esc_html($mokuji_title, ENT_COMPAT, 'UTF-8');
-            $html .= '</h2>';
+        if (empty($mokuji_title)) {
+            return "";
         }
 
+        if (strpos($mokuji_title, '%PAGE_TITLE%') !== false) {
+            $mokuji_title = str_replace('%PAGE_TITLE%', get_the_title(), $mokuji_title);
+        }
+        if (strpos($mokuji_title, '%PAGE_NAME%') !== false) {
+            $mokuji_title = str_replace('%PAGE_NAME%', get_the_title(), $mokuji_title);
+        }
 
+        $html = '<nav>';
+        $html .= '<div id="mokuji-container">';
+        $html .= '<h2 class="mokuji-title">';
+        $html .= esc_html($mokuji_title, ENT_COMPAT, 'UTF-8');
+        $html .= '</h2>';
         $html .= '<section class="mokuji-content">';
         $html .= '<ol class="mokuji-list">';
         $html .= $items;
         $html .= '</ol>';
         $html .= '</section>';
-
         $html .= '</div>';
         $html .= '</nav>';
 
@@ -386,33 +387,39 @@ class Kiku_Mokuji_Admin {
 
             // タグがない場合は指定の位置に埋め込む
             if ($custom_mokuji_pos !== false) {
-                $find[] = MKJ_TAG;
-                $replace[] = $html;
-                $content = $this->mb_find_replace($find, $replace, $content);
+                $content = $this->mb_find_replace([MKJ_TAG], [$html], $content);
             } else {
-                if (count($find) > 0) {
-                    switch ($this->options['position']) {
-                        case MKJ_POSITION_CONTENTS_TOP:
-                        $content = $html . $this->mb_find_replace($find, $replace, $content);
-                        break;
-
-                        case MKJ_POSITION_CONTENTS_BOTTOM:
-                        $content = $this->mb_find_replace($find, $replace, $content) . $html;
-                        break;
-
-                        case MKJ_POSITION_AFTER_FIRST_HEADING:
-                        $replace[0] = $replace[0] . $html;
-                        $content = $this->mb_find_replace($find, $replace, $content);
-                        break;
-
-                        case MKJ_POSITION_BEFORE_FIRST_HEADING:
-                        default:
-                        $replace[0] = $html . $replace[0];
-                        $content = $this->mb_find_replace($find, $replace, $content);
-                        break;
-                    }
-                }
+                $content = $this->insert_mokuji_to_content($html, $find, $replace, $content);
             }
+        }
+
+        return $content;
+    }
+
+    private function insert_mokuji_to_content($html, $find, $replace, $content) {
+        if (count($find) <= 0) {
+            return $content;
+        }
+
+        switch ($this->options['position']) {
+            case MKJ_POSITION_CONTENTS_TOP:
+                $content = $html . $this->mb_find_replace($find, $replace, $content);
+                break;
+
+            case MKJ_POSITION_CONTENTS_BOTTOM:
+                $content = $this->mb_find_replace($find, $replace, $content) . $html;
+                break;
+
+            case MKJ_POSITION_AFTER_FIRST_HEADING:
+                $replace[0] = $replace[0] . $html;
+                $content = $this->mb_find_replace($find, $replace, $content);
+                break;
+
+            case MKJ_POSITION_BEFORE_FIRST_HEADING:
+            default:
+                $replace[0] = $html . $replace[0];
+                $content = $this->mb_find_replace($find, $replace, $content);
+                break;
         }
 
         return $content;

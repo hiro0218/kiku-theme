@@ -34,7 +34,8 @@ require KIKU_LIB_PATH. 'components/pagination.php';
 require KIKU_LIB_PATH. 'components/share.php';
 
 // plugin
-require KIKU_LIB_PATH. 'plugins/mokuji/kiku-mokuji.php';
+require KIKU_LIB_PATH . 'plugins/mokuji/Mokuji.php';
+$Mokuji = new Mokuji();
 require KIKU_LIB_PATH. 'plugins/setting/kiku-setting.php';
 
 require KIKU_LIB_PATH. '../Sage/Soil/nice-search.php';
