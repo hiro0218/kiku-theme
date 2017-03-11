@@ -1,16 +1,16 @@
 <div class='wrap'>
     <h2><?php _e('Mokuji', 'kiku'); ?></h2>
     <?php
-        $this->message = '';
+        $message = '';
         if (isset($_GET['update'])) {
             $result = $this->save_admin_options();
             if ($result === true) {
-                $this->message = '<div id="message" class="updated fade"><p>' . __('Options saved.', 'kiku') . '</p></div>';
+                $message = '<div id="message" class="updated fade"><p>' . __('Options saved.', 'kiku') . '</p></div>';
             } else if ($result === false) {
-                $this->message = '<div id="message" class="error fade"><p>' . __('Save failed.', 'kiku') . '</p></div>';
+                $message = '<div id="message" class="error fade"><p>' . __('Save failed.', 'kiku') . '</p></div>';
             }
         }
-        echo $this->message;
+        echo $message;
     ?>
     <form method="post" action="<?= esc_html('?page=' . $_GET['page'] . '&update'); ?>">
         <?php wp_nonce_field(plugin_basename(__FILE__), 'mokuji-admin-options'); ?>
@@ -63,7 +63,7 @@
                     <th><label for="show_heading_text"><?php _e('Heading text', 'kiku'); ?></label></th>
                     <td>
                         <div class="more_mokuji_options<?php if (!$this->options['show_heading_text']) echo ' disabled'; ?>">
-                            <input type="text" class="regular-text" value="<?= esc_html($this->options['heading_text'], ENT_COMPAT, 'UTF-8'); ?>" id="heading_text" name="heading_text" />
+                            <input type="text" class="regular-text" value="<?= esc_html($this->options['heading_text'], ENT_COMPAT, 'UTF-8'); ?>" id="show_heading_text" name="heading_text" />
                         </div>
                     </td>
                 </tr>
@@ -72,7 +72,7 @@
                     <td><input type="checkbox" value="1" id="show_heirarchy" name="show_heirarchy"<?php if ($this->options['show_heirarchy']) echo ' checked="checked"'; ?> /></td>
                 </tr>
                 <tr>
-                    <th><label for="ordered_list"><?php _e('Number list items', 'kiku'); ?></label></th>
+                    <th><label for="ordered_list"><?php _e('Show List Number', 'kiku'); ?></label></th>
                     <td><input type="checkbox" value="1" id="ordered_list" name="ordered_list"<?php if ($this->options['ordered_list']) echo ' checked="checked"'; ?> /></td>
                 </tr>
                 <tr>
@@ -104,18 +104,6 @@
                                 <li><?php _e('<code>*Fruit Diet*</code> ignore headings with "Fruit Diet" somewhere in the heading', 'kiku'); ?></li>
                                 <li><?php _e('<code>Apple Tree|Oranges|Yellow Bananas</code> ignore headings that are exactly "Apple Tree", "Oranges" or "Yellow Bananas"', 'kiku'); ?></li>
                             </ul>
-                        </label>
-                    </td>
-                </tr>
-                <tr>
-                    <th><label for="restrict_path"><?php _e('Restrict path', 'kiku'); ?></label></th>
-                    <td>
-                        <input type="text" class="regular-text" value="<?= esc_html($this->options['restrict_path'], ENT_COMPAT, 'UTF-8'); ?>" id="restrict_path" name="restrict_path" /><br>
-                        <label for="restrict_path">
-                            <?php _e('Restrict generation of the table of contents to pages that match the required path. This path is from the root of your site and always begins with a forward slash.', 'kiku'); ?><br>
-                            <span class="description">
-                                <?php _e('Eg: /wiki/, /corporate/annual-reports/', 'kiku'); ?>
-                            </span>
                         </label>
                     </td>
                 </tr>

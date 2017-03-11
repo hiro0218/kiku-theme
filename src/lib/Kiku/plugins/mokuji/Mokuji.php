@@ -6,6 +6,11 @@ require_once KIKU_LIB_PATH . 'plugins/Template/Kiku-base.php';
 require_once KIKU_LIB_PATH . 'plugins/Template/Kiku-loader.php';
 require_once KIKU_LIB_PATH . 'plugins/mokuji/MokujiAdmin.php';
 
+define('MKJ_POSITION_BEFORE_FIRST_HEADING', 1);
+define('MKJ_POSITION_CONTENTS_TOP', 2);
+define('MKJ_POSITION_CONTENTS_BOTTOM', 3);
+define('MKJ_POSITION_AFTER_FIRST_HEADING', 4);
+define('MKJ_TAG', '<!--MOKUJI-->');
 
 class Mokuji extends \Kiku_base {
 
