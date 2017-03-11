@@ -6,7 +6,7 @@
       <?php get_template_part('partials/entry/thumbnail'); ?>
       <div class="entry-home-body">
         <header>
-          <h2 class="entry-home-title"><?php the_title(); ?></h2>
+          <h2 class="entry-home-title"><?= esc_html(get_the_title()); ?></h2>
         </header>
         <div class="entry-home-summary"><?php the_excerpt(); ?></div>
         <footer>

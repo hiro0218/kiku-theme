@@ -2,7 +2,7 @@
 <article class="entry"
            itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
   <header>
-    <h1 class="entry-title"><?php the_title(); ?></h1>
+    <h1 class="entry-title"><?= esc_html(get_the_title()); ?></h1>
     <?php get_template_part('partials/entry/meta'); ?>
   </header>
   <section class="entry-content" itemprop="articleBody">
