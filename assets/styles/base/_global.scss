@@ -1,15 +1,7 @@
 *,
-*:before,
-*:after {
+*::before,
+*::after {
   box-sizing: border-box;
-}
-
-:root {
-  font-family: $font-family-base;
-  font-size: 100%;
-  line-height: $line-height-base;
-  font-feature-settings: "kern" 1, "lnum" 1, "pnum" 1;
-  scroll-behavior: smooth;
 }
 
 @include selection {
@@ -19,21 +11,27 @@
 
 // Body reset
 html {
+  font-family: $font-family-base;
+  font-size: 100%;
+  line-height: $line-height-base;
+  font-feature-settings: "kern" 1, "lnum" 1, "pnum" 1;
+  scroll-behavior: smooth;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+  @media screen and (max-width: $screen-sm) {
+    font-size: 87.5%;
+  }
+
+  @media screen and (min-width: $screen-lg) {
+    font-size: 106.25%;
+  }
+
 }
 
 body {
   background: $grey-100;
   color: $grey-700;
-  font-size: $font-size-base;
   font-weight: $font-weight-base;
-
-  @media screen and (max-width: $screen-sm) {
-    font-size: $font-size-sm;
-  }
-  @media screen and (min-width: $screen-lg) {
-    font-size: $font-size-lg;
-  }
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

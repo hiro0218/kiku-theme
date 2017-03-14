@@ -8,7 +8,7 @@ $prefix-for-spec:      true;
 // Modular scale
 $base-size:            16px;
 $modular-scale-base:   1rem;
-$modular-scale-ratio:  $major-second;
+$modular-scale-ratio:  $augmented-fourth;
 //
 // $golden:           1.618;
 // $minor-second:     1.067;
@@ -38,18 +38,18 @@ $font-family-monospace:   Consolas, "Liberation Mono", Menlo, Courier, monospace
 $font-weight-base:        normal;
 
 $font-size-base:          $base-size;
-$font-size-lg:            modular-scale(1);
-$font-size-sm:            modular-scale(-1);
-$font-size-xs:            modular-scale(-2);
+$font-size-lg:            106.25%;
+$font-size-sm:            93.75%;
+$font-size-xs:            87.5%;
 
-$font-size-h1:            modular-scale(4);
-$font-size-h2:            modular-scale(3);
-$font-size-h3:            modular-scale(2);
-$font-size-h4:            modular-scale(1);
+$font-size-h1:            modular-scale(3);
+$font-size-h2:            modular-scale(2);
+$font-size-h3:            modular-scale(1);
+$font-size-h4:            modular-scale(0);
 $font-size-h5:            modular-scale(0);
-$font-size-h6:            modular-scale(-1);
+$font-size-h6:            modular-scale(0);
 
-$line-height-base:        1.75; // 28/16
+$line-height-base:        2rem;
 $line-height-computed:    floor(($font-size-base * $line-height-base));
 
 $table-border-width: 1px;
