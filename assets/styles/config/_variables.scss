@@ -42,15 +42,15 @@ $font-size-lg:            106.25%;
 $font-size-sm:            93.75%;
 $font-size-xs:            87.5%;
 
-$font-size-h1:            modular-scale(3);
-$font-size-h2:            modular-scale(2);
-$font-size-h3:            modular-scale(1);
-$font-size-h4:            modular-scale(0);
+$line-height-base:        2rem;
+
+$font-size-h1:            modular-scale(2);
+$font-size-h2:            modular-scale(1, 1.2rem);
+$font-size-h3:            modular-scale(1, 1.1rem);
+$font-size-h4:            modular-scale(1);
 $font-size-h5:            modular-scale(0);
 $font-size-h6:            modular-scale(0);
 
-$line-height-base:        2rem;
-$line-height-computed:    floor(($font-size-base * $line-height-base));
 
 $table-border-width: 1px;
 
@@ -89,3 +89,9 @@ $font-color-h6:         $grey-400;
 
 // animation
 $animation-curve-fast-out-slow-in: cubic-bezier(.4, 0, .2, 1);
+
+//
+// Layout
+// -------------------------
+
+$header-nav-height:          4rem;

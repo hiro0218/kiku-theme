@@ -3,7 +3,7 @@
   top: 0;
   right: 0;
   left: 0;
-  padding: .5rem;
+  height: $header-nav-height;
   background: $white;
   box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .15);
 }
@@ -14,4 +14,8 @@
   a {
     color: inherit;
   }
+}
+
+.nav-item {
+  padding: 0 1rem;
 }

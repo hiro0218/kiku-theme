@@ -1,10 +1,9 @@
 // nav min-height from bulma = 3.5rem
 // for header's position:fixed
 .main-container {
-  $bulma-nav-height: 3.5rem;
-  min-height: calc(100vh - #{$bulma-nav-height});  // for footer
+  min-height: calc(100vh - #{$header-nav-height});  // for footer
   margin: 0 1rem;
-  padding-top: $bulma-nav-height + 1.5rem;  // for header
+  padding-top: $header-nav-height + 1rem;  // for header
 
   @include mobile {
     margin: 0;
