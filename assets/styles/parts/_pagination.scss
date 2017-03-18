@@ -60,7 +60,6 @@
   margin-bottom: 1rem;
 
   a {
-    padding: .5rem !important;
     transition: background .3s $animation-curve-fast-out-slow-in;
     border-radius: ($spacer * .125);
     color: $grey-600;
@@ -72,6 +71,14 @@
       flex-grow: 1;
     }
   }
+
+  .pager-previous,
+  .pager-next {
+    &.column {
+      padding: .5rem;
+    }
+  }
+
 }
 
 .pager-previous {

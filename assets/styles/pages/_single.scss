@@ -1,6 +1,6 @@
 .entry {
   margin-bottom: 1rem;
-  padding: 1rem 1.5rem;
+  padding: 1rem $article-padding-side;
   border: 1px solid rgba(0, 0, 0, .09);
   border-radius: ($spacer * .125);
   background: $white;
@@ -90,8 +90,8 @@
     font-size: $font-size-sm;
     line-height: 2;
 
-    &:before,
-    &:after {
+    &::before,
+    &::after {
       letter-spacing: -.2rem;
       content: "\00a0";
     }
@@ -150,7 +150,7 @@
     line-height: 1;
     text-align: center;
 
-    &:before {
+    &::before {
       content: "***";
     }
   }
