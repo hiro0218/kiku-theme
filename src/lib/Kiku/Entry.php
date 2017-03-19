@@ -120,7 +120,7 @@ class Entry {
             $i++;
         }
 
-        return array_reverse($arr);
+        return $arr;
     }
 
     // 設定されたタグの一覧を取得する
