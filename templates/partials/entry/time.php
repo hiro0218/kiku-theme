@@ -10,7 +10,7 @@
   <li class="date-modified"><time itemprop="dateModified" datetime="<?= get_post_time('c', true); ?>"><?= get_the_modified_date('Y/m/d'); ?></time>
   </li>
 <?php endif; ?>
-  <li><?php edit_post_link('<i class="material-icons">edit</i>'); ?></li>
+<?php edit_post_link('<li><i class="material-icons">edit</i></li>'); ?>
 <?php else: ?>
   <li><?= $posted_time_ago; ?></li>
 <?php endif; ?>
