@@ -17,15 +17,19 @@ $widescreen: 1000px;  // disable widescreen
 .container {
   position: relative;
   @include desktop {
-    max-width: $desktop - 40px ;// 960px
+    width: $desktop - 40px;
     margin: 0 auto;
     &.is-fluid {
+      width: auto;
       max-width: none;
       margin: 0 20px;
     }
   }
   @include widescreen {
-    max-width: $widescreen - 40px; // 1152px
+    width: $widescreen - 40px;
+  }
+  @include fullhd {
+    width: $fullhd - 40px;
   }
 }
 
