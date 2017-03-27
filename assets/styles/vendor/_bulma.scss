@@ -18,6 +18,7 @@ $widescreen: 1000px;  // disable widescreen
   position: relative;
   @include desktop {
     width: $desktop - 40px;
+    max-width: $desktop - 40px;
     margin: 0 auto;
     &.is-fluid {
       width: auto;
@@ -27,15 +28,25 @@ $widescreen: 1000px;  // disable widescreen
   }
   @include widescreen {
     width: $widescreen - 40px;
+    max-width: $widescreen - 40px;
   }
   @include fullhd {
     width: $fullhd - 40px;
+    max-width: $fullhd - 40px;
   }
 }
 
 // components
 // @import "~bulma/sass/components/all";
 @import "~bulma/sass/components/nav";
+// Note: .nav needs width:100% when tablet-only
+.nav {
+  @include tablet-only {
+    & > .container {
+      width: 100%;
+    }
+  }
+}
 
 // grid
 // @import "~bulma/sass/grid/all";
