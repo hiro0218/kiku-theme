@@ -1,4 +1,8 @@
 <?php while (have_posts()) : the_post(); ?>
+<?php
+global $Schema;
+$Schema->make_article();
+?>
 <article class="entry"
            itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
   <header>
@@ -15,6 +19,5 @@
     <?php get_template_part('partials/entry/tag'); ?>
     <?php Kiku\Components\the_share(); ?>
   </footer>
-  <?php get_template_part('partials/entry/schema'); ?>
 </article>
 <?php endwhile; ?>
