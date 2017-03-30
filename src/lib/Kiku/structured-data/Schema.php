@@ -28,9 +28,12 @@ class Schema {
     }
 
     public function make_breadcrumb_list() {
-        require_once('BreadcrumbList.php');
+        require_once(realpath(__DIR__) .DIRECTORY_SEPARATOR .'BreadcrumbList.php');
         $BreadcrumbList = new BreadcrumbList();
-        $BreadcrumbList->render();
+        $array = $BreadcrumbList->render();
+        if ($array) {
+            echo $this->make_script_tag($this->array_to_json($array));
+        }
     }
 
     public function make_website() {
