@@ -1,15 +1,14 @@
 <?php while (have_posts()) : the_post(); ?>
 <?php
 global $Schema;
-$Schema->make_article();
+$Schema->make_blog_posting();
 ?>
-<article class="entry"
-           itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+<article class="entry">
   <header>
     <h1 class="entry-title"><?= esc_html(get_the_title()); ?></h1>
     <?php get_template_part('partials/entry/meta'); ?>
   </header>
-  <section class="entry-content" itemprop="articleBody">
+  <section class="entry-content">
     <?= get_the_post_thumbnail(null, 'full', ['class' => 'eyecatch']); ?>
     <?php the_content(); ?>
   </section>

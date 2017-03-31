@@ -1,5 +1,7 @@
 <?php
 
+// checked output data: https://search.google.com/structured-data/testing-tool?hl=ja
+
 class Schema {
     public function __construct() {}
 
@@ -24,7 +26,10 @@ class Schema {
     public function make_blog_posting() {
         require_once('BlogPosting.php');
         $BlogPosting = new BlogPosting();
-        $BlogPosting->render();
+        $array = $BlogPosting->render();
+        if ($array) {
+            echo $this->make_script_tag($this->array_to_json($array));
+        }
     }
 
     public function make_breadcrumb_list() {
@@ -39,7 +44,10 @@ class Schema {
     public function make_website() {
         require_once('WebSite.php');
         $WebSite = new WebSite();
-        $WebSite->render();
+        $array = $WebSite->render();
+        if ($array) {
+            echo $this->make_script_tag($this->array_to_json($array));
+        }
     }
 
 }
