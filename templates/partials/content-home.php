@@ -1,8 +1,8 @@
 <?php get_template_part('components/page-header'); ?>
 <div class="entry-home">
   <?php while (have_posts()) : the_post(); ?>
-  <article class="entry-container" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-    <a href="<?php the_permalink(); ?>" itemprop="url">
+  <article class="entry-container">
+    <a href="<?php the_permalink(); ?>">
       <?php get_template_part('partials/entry/thumbnail'); ?>
       <div class="entry-body">
         <header>
@@ -14,7 +14,6 @@
         </footer>
       </div>
     </a>
-    <?php get_template_part('partials/entry/schema'); ?>
   </article>
   <?php endwhile; ?>
 </div>
