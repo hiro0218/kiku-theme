@@ -24,7 +24,7 @@ class Schema {
     }
 
     public function make_blog_posting() {
-        require_once('BlogPosting.php');
+        require_once(realpath(__DIR__) .DIRECTORY_SEPARATOR .'BlogPosting.php');
         $BlogPosting = new BlogPosting();
         $array = $BlogPosting->render();
         if ($array) {
@@ -41,17 +41,8 @@ class Schema {
         }
     }
 
-    public function make_website() {
-        require_once('WebSite.php');
-        $WebSite = new WebSite();
-        $array = $WebSite->render();
-        if ($array) {
-            echo $this->make_script_tag($this->array_to_json($array));
-        }
-    }
-
     public function make_search_action() {
-      require_once('SearchAction.php');
+      require_once(realpath(__DIR__) .DIRECTORY_SEPARATOR .'SearchAction.php');
       $SearchAction = new SearchAction();
       $array = $SearchAction->render();
       if ($array) {
