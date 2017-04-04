@@ -4,7 +4,7 @@ class Opengraph {
     public $og_tag = [];
 
     public function __construct() {
-
+        add_action('wp_head', [$this, 'set_og_tags'], 20);
     }
 
     public function output_og_tag($og_tag) {
@@ -37,7 +37,7 @@ class Opengraph {
             $this->og_tag['og:title']       = get_the_title();
             $this->og_tag['og:url']         = get_permalink();
             $this->og_tag['og:description'] = \Kiku\Util::get_excerpt_content();
-            $this->og_tag['og:image']       = '';  // TODO
+            $this->og_tag['og:image']       = $this->get_singular_image();
 
             $this->set_publish_date();
         } else if ( is_404() ) {
@@ -79,4 +79,16 @@ class Opengraph {
             $this->og_tag['fb:app_id'] = get_option('kiku_appid');
         }
     }
+
+    private function get_singular_image() {
+        global $Image;
+        $image_url = $Image->get_post_image_from_tag(false);
+
+        if (!$image_url) {
+            return get_site_icon_url();
+        }
+
+        return \Kiku\Util::add_scheme_relative_url($image_url);
+    }
+
 }
