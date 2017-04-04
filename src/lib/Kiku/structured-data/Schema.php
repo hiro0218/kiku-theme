@@ -3,7 +3,9 @@
 // checked output data: https://search.google.com/structured-data/testing-tool?hl=ja
 
 class Schema {
-    public function __construct() {}
+    public function __construct() {
+        add_action('wp_head', [$this, 'make_search_action'], 25);
+    }
 
     private function make_script_tag(string $json) {
         $script = '<script type="application/ld+json">'. PHP_EOL .'%s</script>'. PHP_EOL;
