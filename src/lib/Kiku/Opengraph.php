@@ -3,8 +3,8 @@
 class Opengraph {
     private $og_tag = [];
     private $og_twtr_tag = [];
-    private $template_meta_prop = '<meta property="%s" content="%s" />'. PHP_EOL;
-    private $template_meta_name = '<meta name="%s" content="%s" />'. PHP_EOL;
+    private $template_meta_prop = '<meta property="%s" content="%s">'. PHP_EOL;
+    private $template_meta_name = '<meta name="%s" content="%s">'. PHP_EOL;
 
     public function __construct() {
         add_action('wp_head', [$this, 'set_og_tags'], 20);
