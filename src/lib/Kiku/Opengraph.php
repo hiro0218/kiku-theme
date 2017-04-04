@@ -1,7 +1,10 @@
 <?php
 
 class Opengraph {
-    public $og_tag = [];
+    private $og_tag = [];
+    private $og_twtr_tag = [];
+    private $template_meta_prop = '<meta property="%s" content="%s" />'. PHP_EOL;
+    private $template_meta_name = '<meta name="%s" content="%s" />'. PHP_EOL;
 
     public function __construct() {
         add_action('wp_head', [$this, 'set_og_tags'], 20);
@@ -19,9 +22,7 @@ class Opengraph {
         return $prefix;
     }
 
-    public function output_og_tag($og_tag) {
-        $template = '<meta property="%s" content="%s" />'. PHP_EOL;
-
+    public function output_og_tag($template, $og_tag) {
         foreach( $og_tag as $tag_property => $tag_content ) {
             $tag_content = array_unique( (array)$tag_content );
 
@@ -32,12 +33,31 @@ class Opengraph {
                 echo sprintf( $template, esc_attr( $tag_property ), esc_attr( $tag_content_single ) );
             }
         }
-
     }
 
     public function set_og_tags() {
+        // default ogp
         $this->set_locale();
+        $this->set_page();
+        $this->set_fb();
+        $this->output_og_tag($this->template_meta_prop, $this->og_tag);
 
+        // twitter ogp
+        $this->set_twitter();
+        $this->output_og_tag($this->template_meta_name, $this->og_twtr_tag);
+    }
+
+    private function set_locale() {
+        $locale = get_locale();
+
+        if ($locale == 'ja') {
+            $this->og_tag['og:locale'] = 'ja_JP';
+        } else if ($locale == 'th') {
+            $this->og_tag['og:locale'] = 'th_TH';
+        }
+    }
+
+    private function set_page() {
         if ( is_home() || is_front_page() ) {
             $this->og_tag['og:type']        = 'website';
             $this->og_tag['og:title']       = BLOG_NAME;
@@ -56,21 +76,6 @@ class Opengraph {
             $this->og_tag['og:type']  = 'object';
             $this->og_tag['og:title'] = 'Page Not Found - '. BLOG_NAME;
         }
-
-        $this->set_others();
-
-        $this->output_og_tag($this->og_tag);
-    }
-
-    private function set_locale() {
-        $locale = get_locale();
-
-        if ($locale == 'ja') {
-            $this->og_tag['og:locale'] = 'ja_JP';
-        } else if ($locale == 'th') {
-            $this->og_tag['og:locale'] = 'th_TH';
-        }
-
     }
 
     private function set_publish_date() {
@@ -85,10 +90,23 @@ class Opengraph {
         }
     }
 
-    private function set_others() {
+    private function set_twitter() {
+        $id = get_option('kiku_twitter');
+
+        if ($id && substr($id, 0, 1) != "@") {
+            $id = "@".$id;
+        }
+
+        $this->og_twtr_tag['twitter:site']    = $id;
+        $this->og_twtr_tag['twitter:creator'] = $id;
+        $this->og_twtr_tag['twitter:card']    = summary;
+        $this->og_twtr_tag['twitter:image']   = $this->og_tag['og:image'];
+    }
+
+    private function set_fb() {
         $appid = get_option('kiku_appid');
         if ($appid) {
-            $this->og_tag['fb:app_id'] = get_option('kiku_appid');
+            $this->og_tag['fb:app_id'] = $appid;
         }
     }
 
