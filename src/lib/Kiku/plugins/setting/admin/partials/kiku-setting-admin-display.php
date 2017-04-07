@@ -31,7 +31,20 @@
                 <tr>
                     <th><label for="kiku_author_page"><?php _e('author page', 'kiku'); ?></label></th>
                     <td>
-                        <input type="text" name="kiku_author_page" class="regular-text" value="<?= get_option('kiku_author_page'); ?>" id="kiku_appid" />
+                        <select id="kiku_appid" name="kiku_author_page">
+                        <?php
+                            $pages = get_pages();
+                            $kiku_page = get_option('kiku_author_page');
+                            foreach($pages as $page) {
+                                $link = get_page_link($page->ID);
+                                $selected = ($kiku_page == $link) ? 'selected' : '';
+                                $option = '<option value="'. $link .'" '. $selected .'>';
+                                $option .= $page->post_title;
+                                $option .= '</option>';
+                                echo $option;
+                            }
+                        ?>
+                        </select>
                     </td>
                 </tr>
                 <tr>
