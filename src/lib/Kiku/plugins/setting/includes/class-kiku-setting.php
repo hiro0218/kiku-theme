@@ -23,8 +23,8 @@ class Kiku_Setting extends Kiku_base {
 
         $this->loader->add_action('admin_menu', $plugin_admin, 'add_admin_page');
         $this->loader->add_action('wp_head', $plugin_admin, 'add_insert_data_head', 100);
-        $this->loader->add_filter('the_content', $plugin_admin, 'add_insert_data_bottom_of_more_tag', 100);
-        $this->loader->add_filter('the_content', $plugin_admin, 'add_insert_data_bottom_of_content', 110);
+        $this->loader->add_filter('the_content', $plugin_admin, 'add_insert_data_bottom_of_more_tag', 50);
+        $this->loader->add_filter('the_content', $plugin_admin, 'add_insert_data_bottom_of_content', 60);
         $this->loader->add_action('pre_get_posts', $plugin_admin, 'exclude_category_from_frontpage', 100);
     }
 
