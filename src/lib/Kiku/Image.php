@@ -154,4 +154,13 @@ class Image {
         return "";
     }
 
+    public function get_image_size($url) {
+        $image = wp_get_image_editor( $url );
+
+        if ( !is_wp_error( $image ) ) {
+            return $image->get_size();
+        }
+
+        return null;
+    }
 }

@@ -15,8 +15,12 @@ require KIKU_LIB_PATH. 'Image.php';
 require KIKU_LIB_PATH. 'DB.php';
 require KIKU_LIB_PATH. 'Amazon.php';
 require KIKU_LIB_PATH. 'papapi.php';
+require KIKU_LIB_PATH. 'Opengraph.php';
+require KIKU_LIB_PATH. 'structured-data/Schema.php';
 $Entry = new Entry();
 $Image = new Image();
+$Ogp = new \Opengraph();
+$Schema = new \Schema();
 
 // module
 require KIKU_LIB_PATH. 'modules/admin.php';
