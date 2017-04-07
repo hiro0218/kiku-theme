@@ -112,7 +112,7 @@ class Opengraph {
 
     private function get_singular_image() {
         global $Image;
-        $image_url = $Image->get_post_image_from_tag(false);
+        $image_url = $Image->get_entry_image(false);
 
         if (!$image_url) {
             return get_site_icon_url();
