@@ -77,7 +77,7 @@ function the_share() {
         $builder = null;
 
         if ($is_hatena) {
-            wp_enqueue_script('bookmark_button', "//b.st-hatena.com/js/bookmark_button.js", [], null, true);
+            wp_enqueue_script('bookmark_button', "https://cdn-ak.b.st-hatena.com/js/bookmark_button.js", [], null, true);
         }
 
         if ($is_twitter || $is_facebook || $is_line) {
