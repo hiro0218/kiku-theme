@@ -86,8 +86,25 @@ dd {
 }
 
 // input
-input {
+input,
+button,
+select,
+textarea {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
   font-feature-settings: "liga" 0;
+}
+
+button,
+input {
+  overflow: visible;
+}
+
+button,
+select {
+  text-transform: none;
 }
 
 hr {

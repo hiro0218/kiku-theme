@@ -39,7 +39,7 @@
   background: rgba(0, 0, 0, .5);
   opacity: 0;
   visibility: hidden;
-  z-index: 2;
+  z-index: 20;
 }
 
 .drawer {
@@ -55,7 +55,7 @@
   background: $white;
   box-shadow: 0 3px 10px rgba(0, 0, 0, .16), 0 3px 10px rgba(0, 0, 0, .23);
   opacity: 0;
-  z-index: 2;
+  z-index: 25;
 }
 
 // .drawer[data-comes-from="top"] {
