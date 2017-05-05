@@ -1,11 +1,6 @@
 .entry {
   margin-bottom: 1rem;
   padding: 1rem $article-padding-side;
-  border: 1px solid rgba(0, 0, 0, .09);
-  border-radius: ($spacer * .125);
-  background: $white;
-  color: $grey-800;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, .04);
 
   > header {
     margin-bottom: 1rem;

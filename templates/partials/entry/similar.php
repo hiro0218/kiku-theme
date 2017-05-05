@@ -7,7 +7,7 @@
   <div class="columns">
 <?php foreach($similars as $similar): ?>
     <div class="smilar-container column">
-      <a href="<?= $similar['uri']; ?>">
+      <a href="<?= $similar['uri']; ?>" class="card">
         <div class="similar-title"><?= $similar['title']; ?></div>
         <div class="similar-description"><?= $similar['description']; ?></div>
       </a>

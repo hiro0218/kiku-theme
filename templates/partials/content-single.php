@@ -3,7 +3,7 @@
 global $Schema;
 $Schema->make_blog_posting();
 ?>
-<article class="entry">
+<article class="entry card">
   <header>
     <h1 class="entry-title"><?= esc_html(get_the_title()); ?></h1>
     <?php get_template_part('partials/entry/meta'); ?>

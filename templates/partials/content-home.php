@@ -1,5 +1,5 @@
 <?php get_template_part('components/page-header'); ?>
-<div class="entry-home">
+<div class="entry-home card">
   <?php while (have_posts()) : the_post(); ?>
   <article class="entry-container">
     <a href="<?php the_permalink(); ?>">
