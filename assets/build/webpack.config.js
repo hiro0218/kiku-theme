@@ -1,27 +1,17 @@
 'use strict'; // eslint-disable-line
 
 const webpack = require('webpack');
-const qs = require('qs');
+const merge = require('webpack-merge');
 const autoprefixer = require('autoprefixer');
 const mqpacker = require('css-mqpacker');
 const CleanPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const CopyGlobsPlugin = require('./webpack.plugin.copyglobs');
-const mergeWithConcat = require('./util/mergeWithConcat');
+const CopyGlobsPlugin = require('copy-globs-webpack-plugin');
 const config = require('./config');
 
 const assetsFilenames = (config.enabled.cacheBusting) ? config.cacheBusting : '[name]';
 const sourceMapQueryStr = (config.enabled.sourceMaps) ? '+sourceMap' : '-sourceMap';
-
-const jsLoader = {
-  test: /\.js$/,
-  exclude: [/(node_modules|bower_components)(?![/|\\](bootstrap|foundation-sites))/],
-  use: [{
-    loader: 'buble',
-    options: { objectAssign: 'Object.assign' },
-  }],
-};
 
 if (config.enabled.watcher) {
   jsLoader.use.unshift('monkey-hot?sourceType=module');
@@ -38,7 +28,6 @@ let webpackConfig = {
   },
   module: {
     rules: [
-      jsLoader,
       {
         enforce: 'pre',
         test: /\.js?$/,
@@ -46,9 +35,15 @@ let webpackConfig = {
         loader: 'babel',
       },
       {
+        test: /\.js$/,
+        exclude: [/(node_modules|bower_components)(?![/|\\](bootstrap|foundation-sites))/],
+        loader: 'buble',
+        options: { objectAssign: 'Object.assign' },
+      },
+      {
         test: /\.css$/,
         include: config.paths.assets,
-        loader: ExtractTextPlugin.extract({
+        use: ExtractTextPlugin.extract({
           fallback: 'style',
           use: [
             `css?${sourceMapQueryStr}`,
@@ -74,27 +69,28 @@ let webpackConfig = {
       {
         test: /\.(png|jpe?g|gif|svg|ico)$/,
         include: config.paths.assets,
-        use: [
-          `file?${qs.stringify({
-            name: `[path]${assetsFilenames}.[ext]`,
-          })}`,
-        ],
+        loader: 'file',
+        options: {
+          name: `[path]${assetsFilenames}.[ext]`,
+        },
       },
       {
         test: /\.(ttf|eot)$/,
         include: config.paths.assets,
-        loader: `file?${qs.stringify({
+        loader: 'file',
+        options: {
           name: `[path]${assetsFilenames}.[ext]`,
-        })}`,
+        },
       },
       {
         test: /\.woff2?$/,
         include: config.paths.assets,
-        loader: `url?${qs.stringify({
+        loader: 'url',
+        options: {
           limit: 10000,
           mimetype: 'application/font-woff',
           name: `[path]${assetsFilenames}.[ext]`,
-        })}`,
+        },
       },
       {
         test: /\.(ttf|eot|woff2?|png|jpe?g|gif|svg)$/,
@@ -161,7 +157,7 @@ let webpackConfig = {
         context: config.paths.assets,
         postcss: [
           mqpacker({ sort: true }),
-          autoprefixer({ browsers: ['last 2 versions'] }),
+          autoprefixer({ browsers: config.browsers }),
         ],
       },
     }),
@@ -177,11 +173,11 @@ let webpackConfig = {
 /* eslint-disable global-require */ /** Let's only load dependencies as needed */
 
 if (config.enabled.optimize) {
-  webpackConfig = mergeWithConcat(webpackConfig, require('./webpack.config.optimize'));
+  webpackConfig = merge(webpackConfig, require('./webpack.config.optimize'));
 }
 
 if (config.env.production) {
-  webpackConfig.plugins.push(new webpack.NoErrorsPlugin());
+  webpackConfig.plugins.push(new webpack.NoEmitOnErrorsPlugin());
 }
 
 if (config.enabled.cacheBusting) {
@@ -196,11 +192,6 @@ if (config.enabled.cacheBusting) {
       replacer: require('./util/assetManifestsFormatter'),
     })
   );
-}
-
-if (config.enabled.watcher) {
-  webpackConfig.entry = require('./util/addHotMiddleware')(webpackConfig.entry);
-  webpackConfig = mergeWithConcat(webpackConfig, require('./webpack.config.watch'));
 }
 
 module.exports = webpackConfig;

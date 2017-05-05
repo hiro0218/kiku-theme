@@ -1,8 +1,7 @@
 const path = require('path');
-const argv = require('minimist')(process.argv.slice(2));
-const uniq = require('lodash/uniq');
+const { argv } = require('yargs');
+const merge = require('webpack-merge');
 
-const mergeWithConcat = require('./util/mergeWithConcat');
 const userConfig = require('../config');
 
 const isProduction = !!((argv.env && argv.env.production) || argv.p);
@@ -10,7 +9,7 @@ const rootPath = (userConfig.paths && userConfig.paths.root)
   ? userConfig.paths.root
   : process.cwd();
 
-const config = mergeWithConcat({
+const config = merge({
   copy: 'images/**/*',
   proxyUrl: 'http://localhost:3000',
   cacheBusting: '[name]_[hash]',
@@ -23,20 +22,14 @@ const config = mergeWithConcat({
     sourceMaps: !isProduction,
     optimize: isProduction,
     cacheBusting: isProduction,
-    watcher: !!argv.watch,
   },
-  watch: [],
 }, userConfig);
-
-config.watch.push(`${path.basename(config.paths.assets)}/${config.copy}`);
-config.watch = uniq(config.watch);
 
 Object.keys(config.entry).forEach(id =>
   config.entry[id].unshift(path.join(__dirname, 'public-path.js')));
 
-module.exports = mergeWithConcat(config, {
+module.exports = merge(config, {
   env: Object.assign({ production: isProduction, development: !isProduction }, argv.env),
   publicPath: `${config.publicPath}/${path.basename(config.paths.dist)}/`,
   manifest: {},
 });
-
