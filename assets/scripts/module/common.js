@@ -69,5 +69,15 @@ module.exports = {
       clearTimeout(timer);
       timer = setTimeout(callback, delay);
     };
+  },
+  getStyleSheetValue(element, property) {
+    if (!element || property) {
+      return null;
+    }
+
+    var style = window.getComputedStyle(element);
+    var value = style.getPropertyValue(property);
+
+    return value;
   }
 };
