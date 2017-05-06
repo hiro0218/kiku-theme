@@ -10,7 +10,7 @@ import page from './routes/Single';
 
 // Use this variable to set up the common and page specific functions. If you
 // rename this variable, you will also need to rename the namespace below.
-const routes = {
+const routes = new Router({
   // All pages
   common,
   // Home page
@@ -19,8 +19,8 @@ const routes = {
   search,
   // Single
   single,
-  page
-};
+  page,
+});
 
 // Load Events
-document.addEventListener('DOMContentLoaded', new Router(routes).loadEvents(), false);
+document.addEventListener('DOMContentLoaded', routes.loadEvents(), false);

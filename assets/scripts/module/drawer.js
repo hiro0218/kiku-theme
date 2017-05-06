@@ -4,14 +4,13 @@ module.exports = {
     var trigger = document.getElementsByClassName('drawer-checkbox')[0];
     if (trigger) {
       var self = this;
-      var body = document.body;
       var className = 'open-drawer';
       trigger.addEventListener('change', function (e) {
         if (trigger.checked) {
-          body.classList.add(className);
+          document.body.classList.add(className);
           self.focusSearchInput();
         } else {
-          body.classList.remove(className);
+          document.body.classList.remove(className);
         }
       });
     }

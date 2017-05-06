@@ -15,46 +15,59 @@ module.exports = {
     var icon = document.createElement('i');
     icon.appendChild(document.createTextNode('open_in_new'));
     icon.classList.add('material-icons', 'external-link');
+
     [].forEach.call(entry.getElementsByTagName('a'), function (element) {
-      self.setLinkIcon(element, icon);
+      self.setExternalLinkIcon(element, icon);
     });
   },
-  setLinkIcon(element, icon) {
-    var href = element.getAttribute('href');
-    // ブックマークレットなどは除く
-    if ((href.substring(0, 10) !== 'javascript') && (href.substring(0, 1) !== '#')) {
-      // 外部リンクだった場合
-      if (element.origin !== location.origin && element.origin !== 'undefined') {
-        element.setAttribute('target', '_blank');
-        element.setAttribute('rel', 'nofollow');
-
-        // 子要素がテキストならアイコン付与
-        if (element.childNodes[0].nodeType === 3) { // is text
-          element.appendChild(icon.cloneNode(true));
-        }
-      }
-    }
-  },
-  zoomImage(entry) {
-    var ImageZoom = require('image-zoom');
-    var entryImg = entry.getElementsByTagName('img');
-
-    // img none
-    if (entryImg.length === 0) {
+  setExternalLinkIcon(element, icon) {
+    if (typeof element.origin === 'undefined') {
       return;
     }
 
-    for (var i = 0, length = entryImg.length; i < length; i += 1) {
-      // wrap Atag
+    var href = element.getAttribute('href');
+    // exclude javascript and anchor
+    if ((href.substring(0, 10).toLowerCase() === 'javascript') || (href.substring(0, 1) === '#')) {
+      return;
+    }
+
+    // check hostname
+    if (element.hostname === location.hostname) {
+      return;
+    }
+
+    // set target and rel
+    element.setAttribute('target', '_blank');
+    element.setAttribute('rel', 'nofollow');
+
+    // set icon when childNode is text
+    if (element.hasChildNodes()) {
+      if (element.childNodes[0].nodeType === 3) {
+        element.appendChild(icon.cloneNode(true));
+      }
+    }
+  },
+  zoomImage(element) {
+    var ImageZoom = require('image-zoom');
+    var entryImg = element.getElementsByTagName('img');
+    var length = entryImg.length;
+
+    // entry has no img
+    if (length === 0) {
+      return;
+    }
+
+    for (var i = 0; i < length; i += 1) {
+      // parentNode is <a> Tag
       if (entryImg[i].getAttribute('data-zoom-disabled') === 'true' || entryImg[i].parentNode.nodeName.toUpperCase() === 'A') {
         continue;
       }
 
-      // cursor zoom-in
+      // set cursor zoom-in
       entryImg[i].style.cursor = 'zoom-in';
 
-      entryImg[i].addEventListener('click', function (event) {
-        event.stopPropagation();
+      entryImg[i].addEventListener('click', function (e) {
+        e.stopPropagation();
         var zoom = new ImageZoom(this).overlay().padding(64);
         zoom.show();
       });
@@ -71,7 +84,7 @@ module.exports = {
     };
   },
   getStyleSheetValue(element, property) {
-    if (!element || property) {
+    if (!element || !property) {
       return null;
     }
 
