@@ -12,6 +12,8 @@
   "rules": {
     "no-var": 0,
     "no-unused-vars": 0,
+    "no-underscore-dangle": 0,
+    "no-inner-declarations": 0,
     "comma-dangle": 0,
     "prefer-arrow-callback": 0,
     "no-console": 0,
