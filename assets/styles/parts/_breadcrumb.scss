@@ -20,19 +20,15 @@
     display: inline-block;
 
     &:first-child::before {
-      font-family: 'Material Icons';
-      line-height: 1;
+      @extend .material-icons;
       content: 'home';
-      vertical-align: middle;
     }
 
     & + li {
       margin-left: .25rem;
       &::before {
-        font-family: 'Material Icons';
-        line-height: 1;
+        @extend .material-icons;
         content: 'keyboard_arrow_right';
-        vertical-align: middle;
       }
     }
   }
@@ -41,10 +37,9 @@
     color: $grey-600;
 
     &::before {
-      font-family: 'Material Icons';
-      line-height: 1;
+      @extend .material-icons;
+      width: 2rem;
       content: 'keyboard_arrow_right' + 'location_on';
-      vertical-align: middle;
     }
   }
 
