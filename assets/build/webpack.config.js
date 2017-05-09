@@ -2,8 +2,6 @@
 
 const webpack = require('webpack');
 const merge = require('webpack-merge');
-const autoprefixer = require('autoprefixer');
-const mqpacker = require('css-mqpacker');
 const CleanPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -12,10 +10,6 @@ const config = require('./config');
 
 const assetsFilenames = (config.enabled.cacheBusting) ? config.cacheBusting : '[name]';
 const sourceMapQueryStr = (config.enabled.sourceMaps) ? '+sourceMap' : '-sourceMap';
-
-if (config.enabled.watcher) {
-  jsLoader.use.unshift('monkey-hot?sourceType=module');
-}
 
 let webpackConfig = {
   context: config.paths.assets,
@@ -48,7 +42,6 @@ let webpackConfig = {
           use: [
             `css?${sourceMapQueryStr}`,
             'postcss',
-            'csscomb',
           ],
         }),
       },
@@ -60,7 +53,6 @@ let webpackConfig = {
           use: [
             `css?${sourceMapQueryStr}`,
             'postcss',
-            'csscomb',
             `resolve-url?${sourceMapQueryStr}`,
             `sass?${sourceMapQueryStr}`,
           ],
@@ -75,29 +67,11 @@ let webpackConfig = {
         },
       },
       {
-        test: /\.(ttf|eot)$/,
-        include: config.paths.assets,
-        loader: 'file',
-        options: {
-          name: `[path]${assetsFilenames}.[ext]`,
-        },
-      },
-      {
-        test: /\.woff2?$/,
-        include: config.paths.assets,
-        loader: 'url',
-        options: {
-          limit: 10000,
-          mimetype: 'application/font-woff',
-          name: `[path]${assetsFilenames}.[ext]`,
-        },
-      },
-      {
         test: /\.(ttf|eot|woff2?|png|jpe?g|gif|svg)$/,
-        include: /node_modules|bower_components/,
+        include: /node_modules/,
         loader: 'file',
         options: {
-          name: `vendor/${config.cacheBusting}.[ext]`,
+          name: `vendor/${assetsFilenames}.[ext]`,
         },
       },
     ],
@@ -106,24 +80,18 @@ let webpackConfig = {
     modules: [
       config.paths.assets,
       'node_modules',
-      'bower_components',
     ],
     enforceExtension: false,
   },
   resolveLoader: {
     moduleExtensions: ['-loader'],
   },
-  // externals: {
-    // jquery: 'jQuery',
-  // },
   plugins: [
     new CleanPlugin([config.paths.dist], {
       root: config.paths.root,
       verbose: false,
     }),
     new CopyGlobsPlugin({
-      // It would be nice to switch to copy-webpack-plugin, but unfortunately it doesn't
-      // provide a reliable way of tracking the before/after file names
       pattern: config.copy,
       output: `[path]${assetsFilenames}.[ext]`,
       manifest: config.manifest,
@@ -131,35 +99,13 @@ let webpackConfig = {
     new ExtractTextPlugin({
       filename: `styles/${assetsFilenames}.css`,
       allChunks: true,
-      disable: (config.enabled.watcher),
     }),
-    // new webpack.ProvidePlugin({
-    // $: 'jquery',
-    // jQuery: 'jquery',
-    // 'window.jQuery': 'jquery',
-    // Tether: 'tether',
-    // 'window.Tether': 'tether',
-    // }),
     new webpack.DefinePlugin({
-      WEBPACK_PUBLIC_PATH: (config.enabled.watcher)
-        ? JSON.stringify(config.publicPath)
-        : false,
+      WEBPACK_PUBLIC_PATH: false,
     }),
     new webpack.LoaderOptionsPlugin({
       minimize: config.enabled.optimize,
-      debug: config.enabled.watcher,
       stats: { colors: true },
-    }),
-    new webpack.LoaderOptionsPlugin({
-      test: /\.s?css$/,
-      options: {
-        output: { path: config.paths.dist },
-        context: config.paths.assets,
-        postcss: [
-          mqpacker({ sort: true }),
-          autoprefixer({ browsers: config.browsers }),
-        ],
-      },
     }),
     new webpack.LoaderOptionsPlugin({
       test: /\.js$/,

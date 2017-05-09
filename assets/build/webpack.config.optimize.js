@@ -3,29 +3,11 @@
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const imageminMozjpeg = require('imagemin-mozjpeg');
-const cssnano = require('cssnano');
 
 const config = require('./config');
 
 module.exports = {
   plugins: [
-    new OptimizeCssAssetsPlugin({
-      cssProcessor: cssnano,
-      cssProcessorOptions: {
-        colormin: true,
-        convertValues: true,
-        discardComments: { removeAll: true },
-        discardDuplicates: true,
-        discardEmpty: true,
-        discardOverridden: true,
-        mergeLonghand: true,
-        mergeRules: true,
-        minifySelectors: true,
-        minifyFontValues: true,
-        uniqueSelectors: true,
-      },
-      canPrint: true,
-    }),
     new ImageminPlugin({
       optipng: { optimizationLevel: 7 },
       gifsicle: { optimizationLevel: 3 },

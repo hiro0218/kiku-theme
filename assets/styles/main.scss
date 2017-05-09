@@ -6,9 +6,6 @@ $output-bourbon-deprecation-warnings: false;
 @import "config/colors";
 @import "config/variables";
 
-// normalize.css
-@import "~normalize.css/normalize.css";
-
 // grid framework: bulma
 @import "vendor/bulma";
 
