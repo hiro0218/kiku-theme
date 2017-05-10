@@ -21,7 +21,7 @@
     "build:profile": "webpack --progress --profile --json --config assets/build/webpack.config.js",
     "start": "webpack --hide-modules --watch --config assets/build/webpack.config.js",
     "clean": "rimraf dist",
-    "lint:js": "eslint assets/scripts assets/build",
+    "lint:js": "eslint -c .eslintrc assets/scripts assets/build",
     "lint:sass": "sass-lint -c .sass-lint.yml -q -v",
     "test": "yarn run lint -s"
   },
