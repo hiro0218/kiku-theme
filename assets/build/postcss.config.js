@@ -1,4 +1,4 @@
-const config = require('./assets/build/config.js');
+const config = require('./config.js');
 const sortingOption = {
   order: [
     'custom-properties',
@@ -68,5 +68,6 @@ module.exports = {
   options: {
     output: { path: config.paths.dist },
     context: config.paths.assets,
+    sourceMap: 'inline',
   },
 };

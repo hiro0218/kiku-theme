@@ -41,7 +41,16 @@ let webpackConfig = {
           fallback: 'style',
           use: [
             `css?${sourceMapQueryStr}`,
-            'postcss',
+            {
+              loader: 'postcss-loader',
+              options: {
+                sourceMap: sourceMapQueryStr,
+                config: {
+                  ctx: {},
+                  path: './assets/build/postcss.config.js',
+                },
+              },
+            },
           ],
         }),
       },
@@ -52,7 +61,16 @@ let webpackConfig = {
           fallback: 'style',
           use: [
             `css?${sourceMapQueryStr}`,
-            'postcss',
+            {
+              loader: 'postcss-loader',
+              options: {
+                sourceMap: sourceMapQueryStr,
+                config: {
+                  ctx: {},
+                  path: './assets/build/postcss.config.js',
+                },
+              },
+            },
             `resolve-url?${sourceMapQueryStr}`,
             `sass?${sourceMapQueryStr}`,
           ],
