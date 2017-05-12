@@ -4,50 +4,54 @@ h3,
 h4,
 h5,
 h6 {
-  line-height: $perfect-fourth;
+  font-weight: normal;
 }
 
-h1,
-h2,
-h3 {
-  margin-top: 1.5rem;
-  margin-bottom: 1rem;
+h1 {
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+  color: $font-color-h1;
+  font-size: $font-size-h1;
 }
+
+h2 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: $font-color-h2;
+  font-size: $font-size-h2;
+}
+
+h3 {
+  margin-top: 2rem;
+  margin-bottom: .5rem;
+  color: $font-color-h3;
+  font-size: $font-size-h3;
+}
+
 h4,
 h5,
 h6 {
   margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: .5rem;
 }
 
-h1 {
-  margin-top: 0;
-  color: $font-color-h1;
-  font-size: $font-size-h1;
-}
-h2 {
-  color: $font-color-h2;
-  font-size: $font-size-h2;
-}
-h3 {
-  color: $font-color-h3;
-  font-size: $font-size-h3;
-}
 h4 {
   color: $font-color-h4;
   font-size: $font-size-h4;
 }
+
 h5 {
   color: $font-color-h5;
   font-size: $font-size-h5;
 }
+
 h6 {
   color: $font-color-h6;
   font-size: $font-size-h6;
 }
 
 pre {
-  overflow: visible;
+  overflow: auto;
   overflow-wrap: break-word;
   word-wrap: break-word;
 }
@@ -58,14 +62,55 @@ code {
   font-feature-settings: "zero" 1;
 }
 
+blockquote {
+  width: 100%;
+}
+
+table {
+  width: 100%;
+  max-width: 100%;
+  border: $table-border-width solid $table-border-color;
+}
+
+th, td {
+  padding: 1rem;
+  border: $table-border-width solid $table-border-color;
+  border-top: $table-border-width solid $table-border-color;
+  vertical-align: top;
+}
+
+thead {
+  th {
+    border-bottom: ($table-border-width * 2) solid $table-border-color;
+    background: $table-background-color;
+    vertical-align: bottom;
+  }
+  th, td {
+    border-bottom-width: (2 * $table-border-width);
+  }
+}
+
+tbody {
+  tr:hover {
+    background: $table-hover-color;
+  }
+  & + & {
+    border-top: ($table-border-width * 2) solid $table-border-color;
+  }
+}
+
+
 ul,
 ol {
   margin-top: 0;
   margin-bottom: 0;
+  padding-left: 2rem;
 }
 
 ol ol,
 ul ol {
+  margin-top: 0;
+  margin-bottom: 0;
   list-style-type: lower-roman;
 }
 
@@ -73,6 +118,8 @@ ul ul ol,
 ul ol ol,
 ol ul ol,
 ol ol ol {
+  margin-top: 0;
+  margin-bottom: 0;
   list-style-type: lower-alpha;
 }
 

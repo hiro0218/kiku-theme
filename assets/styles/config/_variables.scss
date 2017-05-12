@@ -8,7 +8,7 @@ $prefix-for-spec:      true;
 // Modular scale
 $base-size:            16px;
 $modular-scale-base:   1rem;
-$modular-scale-ratio:  $major-second;
+$modular-scale-ratio:  $augmented-fourth;
 //
 // $golden:           1.618;
 // $minor-second:     1.067;
@@ -38,20 +38,21 @@ $font-family-monospace:   Consolas, "Liberation Mono", Menlo, Courier, monospace
 $font-weight-base:        normal;
 
 $font-size-base:          $base-size;
-$font-size-lg:            modular-scale(1);
-$font-size-sm:            modular-scale(-1);
-$font-size-xs:            modular-scale(-2);
+$font-size-lg:            106.25%;
+$font-size-sm:            93.75%;
+$font-size-xs:            87.5%;
 
-$font-size-h1:            modular-scale(4);
-$font-size-h2:            modular-scale(3);
-$font-size-h3:            modular-scale(2);
+$line-height-base:        2rem;
+
+$font-size-h1:            modular-scale(2);
+$font-size-h2:            modular-scale(1, 1.2rem);
+$font-size-h3:            modular-scale(1, 1.1rem);
 $font-size-h4:            modular-scale(1);
 $font-size-h5:            modular-scale(0);
-$font-size-h6:            modular-scale(-1);
+$font-size-h6:            modular-scale(0);
 
-$line-height-base:        1.75; // 28/16
-$line-height-computed:    floor(($font-size-base * $line-height-base));
 
+$table-border-width: 1px;
 
 //
 // Layout
@@ -74,7 +75,9 @@ $link-hover-color:      $blue-A400;
 $link-visit-color:      $light-blue-A100;
 $link-border-color:     $blue-100;
 
-$table-border-color:    $grey-200;
+$table-background-color: $grey-100;
+$table-border-color:     $grey-200;
+$table-hover-color:      $grey-50;
 
 $font-color-h1:         $grey-900;
 $font-color-h2:         $grey-800;
@@ -86,3 +89,10 @@ $font-color-h6:         $grey-400;
 
 // animation
 $animation-curve-fast-out-slow-in: cubic-bezier(.4, 0, .2, 1);
+
+//
+// Layout
+// -------------------------
+
+$header-nav-height:        4rem;
+$article-padding-side:     1.5rem;

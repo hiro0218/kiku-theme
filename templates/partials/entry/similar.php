@@ -1,16 +1,18 @@
 <?php
   global $Entry;
-  $similars = $Entry->get_similar_posts(4);
+  $similars = $Entry->get_similar_posts(3);
 ?>
 <?php if( !empty($similars) ): ?>
-<section class="entry-similar columns is-multiline">
+<section class="entry-similar">
+  <div class="columns">
 <?php foreach($similars as $similar): ?>
-  <div class="smilar-container column is-half">
-    <a href="<?= $similar['uri']; ?>">
-      <span class="similar-title"><?= $similar['title']; ?></span>
-      <span class="similar-description"><?= $similar['description']; ?></span>
-    </a>
-  </div>
+    <div class="smilar-container column">
+      <a href="<?= $similar['uri']; ?>" class="card">
+        <div class="similar-title"><?= $similar['title']; ?></div>
+        <div class="similar-description"><?= $similar['description']; ?></div>
+      </a>
+    </div>
 <?php endforeach; ?>
+  </div>
 </section>
 <?php endif; ?>

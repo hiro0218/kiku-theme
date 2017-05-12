@@ -1,13 +1,13 @@
 <?php if( is_singular() ): ?>
-<nav>
-<ol itemscope itemtype="http://schema.org/BreadcrumbList" class="breadcrumb">
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-    <i class="material-icons">home</i>
-    <a href="<?= BLOG_URL ?>" itemprop="item">
-      <span itemprop="name"><?= BLOG_NAME ?></span>
-    </a>
+<?php
+global $Schema;
+$Schema->make_breadcrumb_list();
+?>
+<nav class="breadcrumb">
+<ol>
+  <li>
+    <a href="<?= BLOG_URL ?>"><?= BLOG_NAME ?></a>
   </li>
-  <li class="list-icon-arrow"><i class="material-icons">navigate_next</i></li>
   <?php if ( is_singular() ): ?>
   <?php
     $category = get_the_category();
@@ -26,17 +26,15 @@
     $allcats = array_reverse($allcats);
   ?>
   <?php foreach ( $allcats as $catid ): ?>
-  <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-    <a href="<?= get_category_link($catid); ?>" itemprop="item"><span itemprop="name"><?= get_cat_name($catid); ?></span></a>
-    <i class="material-icons">navigate_next</i>
+  <li>
+    <a href="<?= get_category_link($catid); ?>"><?= get_cat_name($catid); ?></a>
   </li>
   <?php endforeach; ?>
   <?php endif;  // $category is not empty ?>
   <?php endif;  // is_singular() ?>
-  <li class="breadcrumb-active" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-    <i class="material-icons">location_on</i>
-    <a href="<?= get_the_permalink(); ?>" itemprop="item">
-      <span itemprop="name"><?php the_title_attribute(); ?></span>
+  <li class="breadcrumb-active">
+    <a href="<?= get_the_permalink(); ?>">
+      <?php the_title_attribute(); ?>
     </a>
   </li>
 </ol>

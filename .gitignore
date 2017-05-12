@@ -10,3 +10,5 @@ yarn-error.log
 *.DS_Store
 ._*
 Thumbs.db
+
+.idea/

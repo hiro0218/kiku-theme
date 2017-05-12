@@ -14,10 +14,24 @@ module.exports = {
     self.init();
 
     return new Promise((resolve, reject) => {
-      // without ads
+      // without ads code
       if (self.count() === 0) {
         resolve(true);
       }
+
+      // without ads script
+      var hasAdsJs = false;
+      var scripts = document.getElementsByTagName('script');
+      [].forEach.call(scripts, (script) => {
+        var adsjs = 'adsbygoogle.js';
+        if (script.src.indexOf(adsjs) !== -1) {
+          hasAdsJs = true;
+        }
+      });
+      if (!hasAdsJs) {
+        resolve(true);
+      }
+
       // Create observer
       var observer = new MutationObserver((mutations) => {
         mutations.forEach((mutation) => {

@@ -1,5 +1,13 @@
 .page-archive-list {
-  padding: 0;
+  .archive-year {
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  ul {
+    padding: 0;
+  }
   li {
     display: flex;
     padding: 0 1rem;

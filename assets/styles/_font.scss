@@ -22,8 +22,7 @@
   src: local('Material Icons'),
        local('MaterialIcons-Regular'),
        url("~material-design-icons/iconfont/MaterialIcons-Regular.woff2") format('woff2'),
-       url("~material-design-icons/iconfont/MaterialIcons-Regular.woff") format('woff'),
-       url("~material-design-icons/iconfont/MaterialIcons-Regular.ttf") format('truetype');
+       url("~material-design-icons/iconfont/MaterialIcons-Regular.woff") format('woff');
 }
 .material-icons {
   @include user-select(none);
@@ -32,7 +31,6 @@
   display: inline-block;
   color: inherit;
   font-family: 'Material Icons';
-  font-size: 1rem;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -48,10 +46,6 @@
   word-wrap: normal;
   font-feature-settings: 'liga';
   -webkit-font-feature-settings: 'liga';
-  -webkit-font-smoothing: antialiased;
-
-  // Support for Firefox
-  -moz-osx-font-smoothing: grayscale;
 
   // Rules for sizing the icon.
   .md-18 {

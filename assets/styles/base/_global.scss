@@ -1,15 +1,7 @@
 *,
-*:before,
-*:after {
+*::before,
+*::after {
   box-sizing: border-box;
-}
-
-:root {
-  font-family: $font-family-base;
-  font-size: 100%;
-  line-height: $line-height-base;
-  font-feature-settings: "kern" 1, "lnum" 1, "pnum" 1;
-  scroll-behavior: smooth;
 }
 
 @include selection {
@@ -19,21 +11,28 @@
 
 // Body reset
 html {
+  font-family: $font-family-base;
+  font-size: 100%;
+  line-height: $line-height-base;
+  font-feature-settings: "kern" 1, "lnum" 1, "pnum" 1;
+  scroll-behavior: smooth;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+  @media screen and (max-width: $screen-sm) {
+    font-size: 93.75%;
+  }
+
+  @media screen and (min-width: $screen-lg) {
+    font-size: 106.25%;
+  }
+
 }
 
 body {
+  margin: 0;
   background: $grey-100;
   color: $grey-700;
-  font-size: $font-size-base;
   font-weight: $font-weight-base;
-
-  @media screen and (max-width: $screen-sm) {
-    font-size: ($font-size-base - 1);
-  }
-  @media screen and (min-width: $screen-lg) {
-    font-size: ($font-size-base + 2);
-  }
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -50,13 +49,8 @@ a {
   &:focus {
     color: $link-hover-color;
   }
-
   &:focus {
-    // Default
-    outline: thin dotted;
-    // WebKit
-    outline: 5px auto -webkit-focus-ring-color;
-    outline-offset: -2px;
+    outline: 0;
   }
 }
 
@@ -73,7 +67,7 @@ img {
 
 // Tables
 table {
-  background: #fff;
+  background: $white;
   border-collapse: collapse;
 }
 
@@ -92,8 +86,25 @@ dd {
 }
 
 // input
-input {
+input,
+button,
+select,
+textarea {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
   font-feature-settings: "liga" 0;
+}
+
+button,
+input {
+  overflow: visible;
+}
+
+button,
+select {
+  text-transform: none;
 }
 
 hr {

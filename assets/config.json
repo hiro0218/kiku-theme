@@ -2,18 +2,16 @@
   "entry": {
     "main": [
       "./scripts/main.js",
+      "./styles/reset.scss",
       "./styles/main.scss"
     ],
     "prism": [
       "./scripts/vendor/prism.js"
     ]
   },
-  "watch": [
-    "templates/**/*.php",
-    "src/**/*.php"
-  ],
-  "publicPath": "../../",
-  "devUrl": "http://example.dev",
-  "proxyUrl": "http://localhost:3000",
-  "cacheBusting": "[name]_[hash:8]"
+  "publicPath": "/wp-content/themes/kiku-theme",
+  "cacheBusting": "[name]_[hash:8]",
+  "browsers": [
+    "last 2 versions"
+  ]
 }

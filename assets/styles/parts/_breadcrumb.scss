@@ -1,11 +1,6 @@
 .breadcrumb {
   margin-bottom: 1rem;
-  padding: 0;
-  color: $grey-400;
-  font-size: $font-size-sm;
-  list-style: none;
-  word-wrap: break-word;
-  @include clearfix;
+  line-height: 1.5rem;
 
   a {
     color: inherit;
@@ -13,14 +8,39 @@
       text-decoration: underline;
     }
   }
+
+  ol {
+    padding: 0;
+    color: $grey-400;
+    font-size: $font-size-sm;
+    list-style: none;
+  }
+
   li {
-    float: left;
-    &:not(:last-child) {
-     margin-right: .5rem;
+    display: inline-block;
+
+    &:first-child::before {
+      @extend .material-icons;
+      content: 'home';
+    }
+
+    & + li {
+      margin-left: .25rem;
+      &::before {
+        @extend .material-icons;
+        content: 'keyboard_arrow_right';
+      }
     }
   }
-}
 
-.breadcrumb-active {
-  color: $grey-600;
+  .breadcrumb-active {
+    color: $grey-600;
+
+    &::before {
+      @extend .material-icons;
+      width: 2rem;
+      content: 'keyboard_arrow_right' + 'location_on';
+    }
+  }
+
 }

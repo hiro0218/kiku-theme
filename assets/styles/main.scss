@@ -28,11 +28,13 @@ $output-bourbon-deprecation-warnings: false;
 
 // parts
 @import "parts/wp-classes";
+@import "parts/amazon";
 @import "parts/pagination";
 @import "parts/breadcrumb";
+@import "parts/card";
 @import "parts/drawer";
 @import "parts/mokuji";
-@import "parts/loader";
+// @import "parts/loader";
 @import "parts/sandbox";
 @import "parts/entry-meta";
 @import "parts/entry-share";

@@ -9,7 +9,6 @@ use Roots\Sage\Template;
  */
 add_action('wp_enqueue_scripts', function () {
     // style
-    wp_enqueue_style('normalize', 'https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css', false, null);
     wp_enqueue_style('styles/main', asset_path('styles/main.css'), false, null);
 
     // script

@@ -1,7 +1,4 @@
 .drawer-trigger {
-  padding-left: 1rem;
-  font-size: 1.25rem;
-
   &:hover {
     cursor: pointer;
   }
@@ -42,7 +39,7 @@
   background: rgba(0, 0, 0, .5);
   opacity: 0;
   visibility: hidden;
-  z-index: 2;
+  z-index: 20;
 }
 
 .drawer {
@@ -50,15 +47,15 @@
   top: 0;
   bottom: 0;
   left: 0;
-  width: 240px;
+  width: 256px;
   height: 100%;
   max-height: 100%;
   transform: translate(-100%, 0) translate3d(-100%, 0, 0);
   transition: transform .2s ease, opacity .2s ease;
-  border-right: 1px solid rgba(0, 0, 0, .14);
   background: $white;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, .16), 0 3px 10px rgba(0, 0, 0, .23);
   opacity: 0;
-  z-index: 2;
+  z-index: 25;
 }
 
 // .drawer[data-comes-from="top"] {

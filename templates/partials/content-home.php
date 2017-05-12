@@ -1,20 +1,19 @@
-<div class="entry-home-container">
-  <?php get_template_part('components/page-header'); ?>
+<?php get_template_part('components/page-header'); ?>
+<div class="entry-home card">
   <?php while (have_posts()) : the_post(); ?>
-  <article class="entry-home" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-    <a href="<?php the_permalink(); ?>" itemprop="url">
+  <article class="entry-container">
+    <a href="<?php the_permalink(); ?>">
       <?php get_template_part('partials/entry/thumbnail'); ?>
-      <div class="entry-home-body">
+      <div class="entry-body">
         <header>
-          <h2 class="entry-home-title"><?php the_title(); ?></h2>
+          <h2 class="entry-title"><?= esc_html(get_the_title()); ?></h2>
         </header>
-        <div class="entry-home-summary"><?php the_excerpt(); ?></div>
-        <footer class="entry-home-footer">
+        <div class="entry-summary"><?php the_excerpt(); ?></div>
+        <footer>
           <?php get_template_part('partials/entry/meta'); ?>
         </footer>
       </div>
     </a>
-    <?php get_template_part('partials/entry/schema'); ?>
   </article>
   <?php endwhile; ?>
 </div>

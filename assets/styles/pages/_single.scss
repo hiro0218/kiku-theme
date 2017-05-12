@@ -1,18 +1,22 @@
 .entry {
-  padding: 1rem 1.5rem;
-  border: 1px solid rgba(0, 0, 0, .09);
-  border-radius: ($spacer * .125);
-  background: #fff;
-  color: $grey-700;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, .04);
+  margin-bottom: 1rem;
+  padding: 1rem $article-padding-side;
 
   > header {
     margin-bottom: 1rem;
   }
 
-  h1 {
-    margin: ($spacer / 2) auto;
+  > footer {
+    *:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .entry-title {
+    margin: 0 0 .5rem;
+    font-size: $font-size-h2;
     font-weight: normal;
+    line-height: 3rem;
     word-wrap: break-word;
   }
 
@@ -29,16 +33,30 @@
     &:hover {
       border-color: $link-color;
     }
+    &:focus {
+      outline: thin dotted;
+      outline-offset: -2px;
+    }
   }
 
-  > h2 {
-    margin: 4rem 0 1rem;
-    padding-bottom: .75rem;
-    border-bottom: 2px solid $grey-200;
+  h1, h2, h3, h4, h5, h6 {
+    &:hover {
+      .anchor {
+        visibility: visible;
+      }
+    }
   }
 
-  > h3 {
-    margin: 2rem 0 .5rem;
+  .anchor {
+    margin-left: -1rem;
+    border: 0;
+    color: $grey-400;
+    font-family: $font-family-monospace;
+    font-size: 1.5rem;
+    font-weight: normal;
+    vertical-align: middle;
+    visibility: hidden;
+    user-select: none;
   }
 
   > p,
@@ -47,15 +65,11 @@
   > ul,
   > ol,
   > dl,
-  > figure,
   > table,
-  > img,
+  figure,
+  img,
   > div {
     margin-bottom: 2rem;
-  }
-
-  > p {
-    text-align: justify;
   }
 
   *:not(pre) > code {
@@ -67,8 +81,8 @@
     font-size: $font-size-sm;
     line-height: 2;
 
-    &:before,
-    &:after {
+    &::before,
+    &::after {
       letter-spacing: -.2rem;
       content: "\00a0";
     }
@@ -110,38 +124,7 @@
     }
   }
 
-
-  $table-border-width: 1px;
-  table {
-    width: 100%;
-    max-width: 100%;
-    border: $table-border-width solid $table-border-color;
-  }
-
-  th, td {
-    padding: 1rem;
-    border: $table-border-width solid $table-border-color;
-    border-top: $table-border-width solid $table-border-color;
-    vertical-align: top;
-  }
-
-  tbody + tbody {
-    border-top: (2 * $table-border-width) solid $table-border-color;
-  }
-
-  thead {
-    th {
-      border-bottom: (2 * $table-border-width) solid $table-border-color;
-      background: $grey-100;
-      color: $grey-800;
-      vertical-align: bottom;
-    }
-    th, td {
-      border-bottom-width: (2 * $table-border-width);
-    }
-  }
-
-  > img {
+  img {
     display: block;
     max-width: 100%;
     height: auto;
@@ -158,48 +141,9 @@
     line-height: 1;
     text-align: center;
 
-    &:before {
+    &::before {
       content: "***";
     }
   }
 
-}
-
-// amazon
-.amazon-product {
-  display: block;
-  margin: 1rem 0;
-  border: 1px solid rgba(0, 0, 0, .09) !important;
-  background: $grey-50;
-  color: $grey-600 !important;
-
-  &:focus {
-    outline: 0;
-  }
-  img {
-    max-height: 10rem;
-  }
-}
-.amazon-title,
-.amazon-author,
-.amazon-date {
-  display: block;
-}
-.amazon-title {
-  font-size: $font-size-lg;
-  font-weight: bold;
-  line-height: 2;
-}
-
-
-.amazlet-image img {
-  max-height: 10rem;
-}
-.amazlet-name {
-  line-height: 2 !important;
-}
-.amazlet-detail,
-.amazlet-powered-date,
-.amazlet-sub-info {
-  display: none;
 }

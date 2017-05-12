@@ -12,6 +12,7 @@ insert_final_newline = true
 
 [*.php]
 indent_size = 4
+indent_style = space
 
 [templates/**.php]
 indent_size = 2
