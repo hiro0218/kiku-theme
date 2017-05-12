@@ -22,16 +22,16 @@ A Simple WordPress Theme. (for myself)
     * LINE
  * Amazon Product Link
     ASIN code to Amazon Product Link
-* Don't use jQuery (Vanilla only)
-* Remove Comments function
+* Don't use jQuery (use pure JavaScript)
+* Remove WordPress Comments function
 * Fit to Japanese Language
 
 ## Requirements
 Installation notes:
 * [PHP](http://php.net/manual/en/install.php) >= 7.0.x
 * [Composer](https://getcomposer.org/download/)
-* [Node.js](http://nodejs.org/) >= 6.x
-* [WordPress](https://wordpress.org/) >= 4.6.x (latest)
+* [Node.js](http://nodejs.org/) >= 7.x
+* [WordPress](https://wordpress.org/) >= 4.7.x (latest)
 * [Yarn](https://yarnpkg.com/en/docs/install)
 
 ### Browser Support
