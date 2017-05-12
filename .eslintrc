@@ -6,11 +6,16 @@
   },
   "extends": [
     "eslint:recommended",
-    "airbnb-base/legacy",
   ],
   "env": {
     "es6": true,
     "browser": true,
+  },
+  "globals": {
+    "module": true,
+    "__dirname": true,
+    "require": true,
+    "process": true,
   },
   "rules": {
     "no-var": 0,
