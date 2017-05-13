@@ -5,7 +5,7 @@
       "./styles/reset.scss",
       "./styles/main.scss"
     ],
-    "prism": [
+    "single": [
       "./scripts/vendor/prism.js"
     ]
   },

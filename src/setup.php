@@ -16,7 +16,7 @@ add_action('wp_enqueue_scripts', function () {
 
     // syntax highlighter
     if (is_singular()) {
-        wp_enqueue_script('scripts/prism', asset_path('scripts/prism.js'), [], null, true);
+        wp_enqueue_script('scripts/single', asset_path('scripts/single.js'), [], null, true);
     }
 
 }, 100);
