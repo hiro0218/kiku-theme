@@ -23,6 +23,9 @@ $entry-thumbnail-size: 5rem;  // 80px;
   .entry-body {
     display: table-cell;
     vertical-align: top;
+    @include mobile {
+      vertical-align: middle;
+    }
   }
 
   .entry {
@@ -47,6 +50,9 @@ $entry-thumbnail-size: 5rem;  // 80px;
     &-body {
       width: 100%;
       height: $entry-thumbnail-size + 1rem;
+      @include mobile {
+        height: auto;
+      }
     }
 
     &-title {
@@ -62,11 +68,17 @@ $entry-thumbnail-size: 5rem;  // 80px;
       font-size: $font-size-sm;
       text-align: justify;
       word-break: break-all;
+      @include mobile {
+        display: none;
+      }
     }
   }
 
   .entry-meta {
     text-align: right;
+    @include mobile {
+      text-align: left;
+    }
   }
 }
 
