@@ -1,4 +1,4 @@
-#mokuji-container {
+.mokuji-container {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
@@ -26,10 +26,10 @@
 
   ol {
     margin-bottom: 0;
-    list-style: none;
     ol {
       margin-bottom: .5rem;
       padding-left: 1rem;
+      list-style-type: decimal;
     }
   }
 
