@@ -65,6 +65,10 @@ class Mokuji_Admin {
 
         // headingタグを抽出
         $heading_list = $Builder->extract_headings($content);
+        // headingタグが存在しない場合は非表示
+        if (empty($heading_list)) {
+            return $content;
+        }
 
         // 目次のDOMを作成
         $mokuji_dom = $Builder->table_of_content($this->options['heading_text']);
