@@ -37,6 +37,9 @@ require KIKU_LIB_PATH. 'components/pager.php';
 require KIKU_LIB_PATH. 'components/pagination.php';
 require KIKU_LIB_PATH. 'components/share.php';
 
+// api
+require KIKU_LIB_PATH. 'api/posts.php';
+
 // plugin
 require KIKU_LIB_PATH . 'plugins/mokuji/Mokuji.php';
 $Mokuji = new Mokuji();

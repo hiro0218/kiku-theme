@@ -27,15 +27,11 @@ class Entry {
     }
 
     // 関連する記事の一覧を取得する
-    public function get_similar_posts($post_count = 5): array {
-        if ( !is_single() ) {
-            return [];
-        }
-
+    public function get_similar_posts($post_count = 5, $post_id = null): array {
         global $post;
         $arr = [];
         $term_ids = [];
-        $post_id = get_queried_object_id();//$post->ID;
+        $post_id = $post_id || get_queried_object_id();//$post->ID;
         $categories = get_the_category($post_id);
 
         if( empty($categories) ) {
