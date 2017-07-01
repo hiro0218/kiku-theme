@@ -53,10 +53,7 @@ class Mokuji_Admin {
     }
 
     public function the_content($content) {
-        global $post;
-        $post_type = get_post_type($post);
-
-        if (!is_singular() || !in_array($post_type, $this->options['auto_insert_post_types'])) {
+        if (!$this->is_suitabe_page()) {
             return $content;
         }
 
@@ -79,5 +76,36 @@ class Mokuji_Admin {
         return $content;
     }
 
+    private function is_suitabe_page() {
+        global $post;
+        $post_type = get_post_type($post);
 
+        if (!$this->is_rest_api() && (!is_singular() || !in_array($post_type, $this->options['auto_insert_post_types']))) {
+            return false;
+        }
+
+        return true;
+    }
+
+    private function is_rest_api() {
+        $rest_route = $GLOBALS['wp']->query_vars['rest_route'];
+
+        if (!$rest_route) {
+            return false;
+        }
+
+        $url_array = preg_split('/\//', $rest_route);
+        if (in_array('posts', $url_array)) {
+            if (in_array('post', $this->options['auto_insert_post_types'])) {
+                return true;
+            }
+        }
+        if (in_array('pages', $url_array)) {
+            if (in_array('page', $this->options['auto_insert_post_types'])) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
