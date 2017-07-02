@@ -1,18 +1,10 @@
-<?php
-  global $Entry;
-  $similars = $Entry->get_similar_posts(3);
-?>
-<?php if( !empty($similars) ): ?>
-<section class="entry-similar">
+<section class="entry-related">
   <div class="columns">
-<?php foreach($similars as $similar): ?>
-    <div class="smilar-container column">
-      <a href="<?= $similar['uri']; ?>" class="card">
-        <div class="similar-title"><?= $similar['title']; ?></div>
-        <div class="similar-description"><?= $similar['description']; ?></div>
+    <div class="related-container column" v-for="(related,index) in relatedData" v-if="index >= 3">
+      <a v-bind:href="related.uri" class="card">
+        <div class="related-title">{{ related.title }}</div>
+        <div class="related-description">{{ related.description }}</div>
       </a>
     </div>
-<?php endforeach; ?>
   </div>
 </section>
-<?php endif; ?>

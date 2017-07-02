@@ -1,4 +1,4 @@
-.entry-similar {
+.entry-related {
   margin-bottom: 1rem;
 
   a {
@@ -18,7 +18,7 @@
   }
 }
 
-.smilar-container {
+.related-container {
   overflow: hidden;
 
   &.column {
@@ -38,7 +38,7 @@
 
 }
 
-.similar-title {
+.related-title {
   display: block;
   max-width: 100%;
   margin-bottom: .5rem;
@@ -50,7 +50,7 @@
   word-wrap: normal;
 }
 
-.similar-description {
+.related-description {
   color: $grey-500;
   font-size: $font-size-sm;
   word-break: break-all;
