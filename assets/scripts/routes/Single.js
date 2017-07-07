@@ -22,6 +22,9 @@ export default {
       },
       methods: {
         fetchPostData: function () {
+          if (!post_id) {
+            return;
+          }
           var self = this;
           fetch(`/wp-json/wp/v2/posts/${post_id}`).then(function(response) {
             return response.json();
