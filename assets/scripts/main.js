@@ -5,7 +5,7 @@ import home from './routes/Home';
 import archive from './routes/Home';
 import search from './routes/Home';
 import single from './routes/Single';
-import page from './routes/Single';
+import page from './routes/Page';
 
 
 // Use this variable to set up the common and page specific functions. If you
