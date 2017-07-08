@@ -5,13 +5,6 @@ import common from '../module/common';
 
 export default {
   init() {
-    var article = document.getElementsByTagName('article')[0];
-    var post_id = article.dataset.pageId;
-    var entry = article.getElementsByClassName('entry-content')[0];
-    common.addExternalLink(entry);
-    common.zoomImage(entry);
-    mokuji.init(entry);
-
     var app = new Vue({
       el: '.main-container',
       data: {
@@ -19,10 +12,18 @@ export default {
         pagers: null,
       },
       created: function () {
-        this.fetchPostData();
+        var article = document.getElementsByTagName('article')[0];
+        var post_id = article.dataset.pageId;
+        this.fetchPostData(post_id);
+      },
+      mounted: function () {
+        var entry = this.$el.getElementsByClassName('entry-content')[0];
+        common.addExternalLink(entry);
+        common.zoomImage(entry);
+        mokuji.init(entry);
       },
       methods: {
-        fetchPostData: function () {
+        fetchPostData: function (post_id) {
           if (!post_id) {
             return;
           }

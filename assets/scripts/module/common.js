@@ -1,3 +1,5 @@
+import Zooming from 'zooming';
+
 module.exports = {
   // clickableElement(entry) {
   //   for (var i = 0, length = entry.length; i < length; i += 1) {
@@ -48,7 +50,7 @@ module.exports = {
     }
   },
   zoomImage(element) {
-    var ImageZoom = require('image-zoom');
+    var zoom = new Zooming();
     var entryImg = element.getElementsByTagName('img');
     var length = entryImg.length;
 
@@ -62,15 +64,9 @@ module.exports = {
       if (entryImg[i].getAttribute('data-zoom-disabled') === 'true' || entryImg[i].parentNode.nodeName.toUpperCase() === 'A') {
         continue;
       }
-
       // set cursor zoom-in
       entryImg[i].style.cursor = 'zoom-in';
-
-      entryImg[i].addEventListener('click', function (e) {
-        e.stopPropagation();
-        var zoom = new ImageZoom(this).overlay().padding(64);
-        zoom.show();
-      });
+      zoom.listen(entryImg[i]);
     }
   },
   /**
