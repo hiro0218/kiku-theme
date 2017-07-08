@@ -143,4 +143,32 @@ class Entry {
         return $arr;
     }
 
+    public function pager($post_id = null) {
+        global $post;
+        $post = get_post($post_id);
+
+        $pager = [];
+        $prev_post = get_previous_post();
+        $next_post = get_next_post();
+
+        // previous post
+        if (!empty($prev_post)) {
+            $pager['prev'] = [
+                'id' => $prev_post->ID,
+                'url' => get_permalink($prev_post->ID),
+                'title' => $prev_post->post_title,
+            ];
+        }
+
+        // next post
+        if (!empty($next_post)) {
+            $pager['next'] = [
+                'id' => $next_post->ID,
+                'url' => get_permalink($next_post->ID),
+                'title' => $next_post->post_title,
+            ];
+        }
+
+        return $pager;
+    }
 }

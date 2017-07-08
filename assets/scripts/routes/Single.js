@@ -13,9 +13,10 @@ export default {
     mokuji.init(entry);
 
     var app = new Vue({
-      el: '.entry-related',
+      el: '.main-container',
       data: {
-        relatedData: null,
+        relateds: null,
+        pagers: null,
       },
       created: function () {
         this.fetchPostData();
@@ -29,7 +30,8 @@ export default {
           fetch(`/wp-json/wp/v2/posts/${post_id}`).then(function(response) {
             return response.json();
           }).then(function(json) {
-            self.relatedData = json.related;
+            self.relateds = json.related;
+            self.pagers = json.pager;
           });
         }
       }
