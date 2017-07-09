@@ -20,4 +20,16 @@ add_action('rest_api_init', function() {
         'schema' => null,
     ]);
 
+    // amazon product data
+    register_rest_field('post', 'content', [
+        'get_callback' => function($object, $field_name, $request) {
+            global $post;
+            $post = get_post($object['id']);
+            $product_data = json_decode(get_post_meta($post->ID, CF_AMAZON_PRODUCT_TAG, true));
+            $object['content']['amazon_product'] = $product_data;
+            return $object['content'];
+        },
+        'update_callback' => null,
+        'schema' => null,
+    ]);
 });

@@ -8,6 +8,7 @@ export default {
     var app = new Vue({
       el: '.main-container',
       data: {
+        amazon_product: null,
         relateds: null,
         pagers: null,
       },
@@ -31,6 +32,7 @@ export default {
           fetch(`/wp-json/wp/v2/posts/${post_id}`).then(function(response) {
             return response.json();
           }).then(function(json) {
+            self.amazon_product = json.content.amazon_product;
             self.relateds = json.related;
             self.pagers = json.pager;
           });

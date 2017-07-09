@@ -65,4 +65,3 @@ function replace_relative_to_absolute_img_src($content) {
 // Amazon ASIN tag
 add_action('save_post', ['\Kiku\Amazon', 'save_amazon_product_tag'], 11, 2);
 add_action('deleted_post_meta', ['\Kiku\Amazon', 'deleted_asin_meta'], 10, 4);
-add_filter('the_content', ['\Kiku\Amazon', 'append_amazon_product_tag'], 100);

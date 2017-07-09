@@ -11,6 +11,7 @@ $Schema->make_blog_posting();
   <section class="entry-content">
     <?= get_the_post_thumbnail(null, 'full', ['class' => 'eyecatch']); ?>
     <?php the_content(); ?>
+    <?php get_template_part('partials/entry/amazon_product'); ?>
   </section>
   <footer>
     <?php get_template_part('partials/entry/paginated'); ?>

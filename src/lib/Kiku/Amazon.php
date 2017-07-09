@@ -27,67 +27,25 @@ class Amazon {
         $product_data = self::get_amazon_product($post_id);
 
         if (!empty($product_data)) {
-            $product_data = json_encode($product_data, JSON_UNESCAPED_UNICODE);
-            $product_data = self::replace_detailPageUrl($product_data);
+            $product_data = self::format_product_data($product_data);
             self::update_asin_meta($post_id, $product_data);
         }
     }
 
-    // add Amazon Product Tag in content footer
-    public function append_amazon_product_tag($content) {
-        global $post;
-
-        if (!is_singular()) {
-            return $content;
-        }
-
-        $product_data = get_post_meta($post->ID, CF_AMAZON_PRODUCT_TAG, true);
-
-        if (!empty($product_data)) {
-            $content .= self::make_amazon_product_tag($product_data);
-        }
-
-        return $content;
-    }
-
-    // make Amazon Product Tag
-    public static function make_amazon_product_tag($product_data) {
-        $data = json_decode($product_data, true);
-
-        if (!is_array($data)) {
-            return "";
-        }
-
-        $title = $data["ItemAttributes"]["Title"];
-        $image_url = self::replace_amazon_image_scheme($data["LargeImage"]["URL"]);
-
-        $builder = new PhpHtmlBuilder();
-
-        $builder->div()->setClass('amazon-product')->setStyle('background-image: url("'.$image_url.'")')
-                    ->a()->setHref($data["DetailPageURL"])->setClass('columns is-multiline is-vcentered')
-                        ->div()->setClass('column is-12')
-                            ->img()->setSrc($image_url)->setDataZoomDisabled('true')->end()
-                        ->end()
-                        ->div()->setClass('column is-12')
-                            ->span($title)->setClass('amazon-title')->end()
-                        ->end()
-                    ->end()
-                ->end();
-
-        return $builder->build();
-    }
-
-    public static function replace_amazon_image_scheme($image_url) {
-        return str_replace('http://ecx.', 'https://images-na.ssl-', $image_url);
-    }
-
-    public static function replace_detailPageUrl($product_data) {
+    public static function format_product_data($product_data) {
+        $product_data = json_encode($product_data, JSON_UNESCAPED_UNICODE);
         $product_data = json_decode($product_data, true);
+
+        if (empty($product_data)) {
+            return null;
+        }
 
         $url = self::normalize_amazon_url($product_data['ASIN'], get_option('kiku_amazon_associate_tag'));
         if (!empty($url)) {
             $product_data["DetailPageURL"] = $url;
         }
+
+        unset($product_data['ItemLinks']);
 
         $product_data = json_encode($product_data, JSON_UNESCAPED_UNICODE);
 
