@@ -8,6 +8,7 @@ export default {
     var app = new Vue({
       el: '.main-container',
       data: {
+        categories: null,
         amazon_product: null,
         tags: null,
         relateds: null,
@@ -18,6 +19,7 @@ export default {
         var post_id = article.dataset.pageId;
         if (post_id) {
           this.fetchPostData(post_id);
+          this.fetchCategoryData(post_id);
           this.fetchTagData(post_id);
         }
       },
@@ -42,6 +44,13 @@ export default {
             self.amazon_product = json.content.amazon_product;
             self.relateds = json.related;
             self.pagers = json.pager;
+          });
+        },
+        fetchCategoryData: function (post_id) {
+          var self = this;
+          self.fetchAPI(`/wp-json/wp/v2/categories?post=${post_id}`)
+          .then(function(json) {
+            self.categories = json;
           });
         },
         fetchTagData: function (post_id) {

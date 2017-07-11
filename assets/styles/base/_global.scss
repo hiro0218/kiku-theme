@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+[v-cloak] {
+  display: none !important;
+}
+
 @include selection {
   background: $grey-300;
   color: $grey-900;
