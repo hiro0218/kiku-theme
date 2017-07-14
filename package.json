@@ -42,8 +42,8 @@
     "css-loader": "^0.28.4",
     "css-mqpacker": "^6.0.1",
     "cssnano": "^3.10.0",
-    "eslint": "^4.1.0",
-    "extract-text-webpack-plugin": "^2.1.2",
+    "eslint": "^4.2.0",
+    "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
     "imagemin-mozjpeg": "^6.0.0",
     "imagemin-webpack-plugin": "^1.4.4",
@@ -62,7 +62,7 @@
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
     "url-loader": "^0.5.9",
-    "webpack": "^3.1.0",
+    "webpack": "^3.2.0",
     "webpack-assets-manifest": "^0.7.0",
     "webpack-dev-middleware": "^1.11.0",
     "webpack-hot-middleware": "^2.18.2",
@@ -78,7 +78,7 @@
     "normalize.css": "^7.0.0",
     "prismjs": "^1.6.0",
     "s-ago": "^1.1.0",
-    "vue": "^2.3.4",
+    "vue": "^2.4.1",
     "whatwg-fetch": "^2.0.3",
     "zooming": "^1.2.2"
   }
