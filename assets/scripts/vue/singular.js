@@ -70,7 +70,7 @@ module.exports = {
         },
         setDatetime: function (json) {
           this.date.publish = json.date;
-          this.date.modified = json.modified;
+          this.date.modified = (json.date !== json.modified) ? json.modified : null;
           this.date.timeAgo = ago(new Date(json.modified));
         }
       },
