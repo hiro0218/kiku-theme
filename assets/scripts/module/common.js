@@ -1,6 +1,32 @@
 import Zooming from 'zooming';
 
 module.exports = {
+  getSingularType() {
+    var type = null;
+    var classNames = document.body.className.toLowerCase().replace(/-/g, '_').split(/\s+/);
+
+    classNames.forEach((className) => {
+      switch (className) {
+        case 'single':
+        type = 'posts';
+        break;
+        case 'page':
+        type = 'pages';
+        break;
+      }
+      if (!type) {
+        return false;
+      }
+    });
+
+    return type;
+    // if (classNames.indexOf('single') != -1) {
+    //   return 'posts';
+    // }
+    // if (classNames.indexOf('page') != -1) {
+    //   return 'pages';
+    // }
+  },
   // clickableElement(entry) {
   //   for (var i = 0, length = entry.length; i < length; i += 1) {
   //     entry[i].addEventListener('click', function (event) {
