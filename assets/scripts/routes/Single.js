@@ -1,5 +1,6 @@
 import 'whatwg-fetch';
 import Vue from 'vue';
+import ago from 's-ago';
 import mokuji from '../module/mokuji';
 import common from '../module/common';
 
@@ -8,6 +9,11 @@ export default {
     var app = new Vue({
       el: '.main-container',
       data: {
+        date: {
+          publish: null,
+          modified: null,
+          timeAgo: null,
+        },
         categories: null,
         amazon_product: null,
         tags: null,
@@ -41,6 +47,7 @@ export default {
           var self = this;
           self.fetchAPI(`/wp-json/wp/v2/posts/${post_id}`)
           .then(function(json) {
+            self.setDatetime(json);
             self.amazon_product = json.content.amazon_product;
             self.relateds = json.related;
             self.pagers = json.pager;
@@ -59,6 +66,22 @@ export default {
           .then(function(json) {
             self.tags = json;
           });
+        },
+        setDatetime: function (json) {
+          this.date.publish = json.date;
+          this.date.modified = json.modified;
+          this.date.timeAgo = ago(new Date(json.modified));
+        }
+      },
+      filters: {
+        formatDate: function(date) {
+          if (!date) {
+            return;
+          }
+          if (typeof date === 'string') {
+            date = new Date(date);
+          }
+          return date.toISOString().split('T')[0].replace(/-/g , '/');
         }
       }
     });
