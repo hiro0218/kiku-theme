@@ -31,7 +31,9 @@ class Entry {
         global $post;
         $arr = [];
         $term_ids = [];
-        $post_id = $post_id || get_queried_object_id();//$post->ID;
+        if (empty($post_id)) {
+            $post_id = get_queried_object_id();
+        }
         $categories = get_the_category($post_id);
 
         if( empty($categories) ) {
