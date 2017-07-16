@@ -1,4 +1,7 @@
+/* global Prism */
 import 'prismjs/prism';
+
+// components
 import 'prismjs/components/prism-markup';
 import 'prismjs/components/prism-css';
 import 'prismjs/components/prism-clike';
@@ -18,6 +21,15 @@ import 'prismjs/components/prism-powershell';
 import 'prismjs/components/prism-scss';
 import 'prismjs/components/prism-sql';
 import 'prismjs/components/prism-swift';
+
+// plugins
 import 'prismjs/plugins/command-line/prism-command-line';
 import 'prismjs/plugins/line-numbers/prism-line-numbers';
 import 'prismjs/plugins/remove-initial-line-feed/prism-remove-initial-line-feed';
+
+// config
+if (window.Prism) {
+  document.removeEventListener('DOMContentLoaded', Prism.highlightAll);
+} else {
+  window.Prism = { manual: true };
+}

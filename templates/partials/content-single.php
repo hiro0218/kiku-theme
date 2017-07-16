@@ -4,16 +4,14 @@ global $Schema;
 $Schema->make_blog_posting();
 ?>
 <article class="entry card" data-page-id="<?= get_the_ID(); ?>">
-  <header>
-    <h1 class="entry-title"><?= esc_html(get_the_title()); ?></h1>
+  <header v-cloak>
+    <h1 class="entry-title">{{title}}</h1>
     <?php get_template_part('partials/entry/meta'); ?>
   </header>
-  <section class="entry-content">
-    <?= get_the_post_thumbnail(null, 'full', ['class' => 'eyecatch']); ?>
-    <?php the_content(); ?>
-    <?php get_template_part('partials/entry/amazon_product'); ?>
-  </section>
-  <footer>
+  <?= get_the_post_thumbnail(null, 'full', ['class' => 'eyecatch']); ?>
+  <section class="entry-content"></section>
+  <?php get_template_part('partials/entry/amazon_product'); ?>
+  <footer v-cloak>
     <?php get_template_part('partials/entry/paginated'); ?>
     <?php get_template_part('partials/entry/breadcrumb'); ?>
     <?php get_template_part('partials/entry/tag'); ?>

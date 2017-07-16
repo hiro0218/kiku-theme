@@ -1,3 +1,4 @@
+/* global Prism */
 import 'whatwg-fetch';
 import Vue from 'vue';
 import ago from 's-ago';
@@ -6,14 +7,20 @@ import common from '../module/common';
 
 module.exports = {
   init() {
+    var article = document.getElementsByTagName('article')[0];
+    var post_id = article.dataset.pageId;
+    var page_type = common.getSingularType();
+
     var app = new Vue({
       el: '.main-container',
       data: {
+        title: null,
         date: {
           publish: null,
           modified: null,
           timeAgo: null,
         },
+        content: null,
         categories: null,
         amazon_product: null,
         tags: null,
@@ -21,20 +28,25 @@ module.exports = {
         pagers: null,
       },
       created: function () {
-        var article = document.getElementsByTagName('article')[0];
-        var post_id = article.dataset.pageId;
-        var page_type = common.getSingularType();
         if (post_id) {
           this.fetchPostData(post_id, page_type);
+        }
+      },
+      mounted: function() {
+        if (post_id) {
           this.fetchCategoryData(post_id);
           this.fetchTagData(post_id);
         }
       },
-      mounted: function () {
-        var entry = this.$el.getElementsByClassName('entry-content')[0];
-        common.addExternalLink(entry);
-        common.zoomImage(entry);
-        mokuji.init(entry);
+      watch: {
+        content: function (data) {
+          var entry = this.$el.getElementsByClassName('entry-content')[0];
+          entry.innerHTML = data;
+          common.addExternalLink(entry);
+          common.zoomImage(entry);
+          mokuji.init(entry);
+          Prism.highlightAll();
+        }
       },
       methods: {
         fetchAPI: function(url) {
@@ -48,7 +60,9 @@ module.exports = {
           var self = this;
           self.fetchAPI(`/wp-json/wp/v2/${page_type}/${post_id}`)
           .then(function(json) {
+            self.title = json.title.rendered;
             self.setDatetime(json);
+            self.content = json.content.rendered;
             self.amazon_product = json.content.amazon_product;
             self.relateds = json.related;
             self.pagers = json.pager;
