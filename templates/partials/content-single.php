@@ -9,7 +9,6 @@ $Schema->make_blog_posting();
     <h1 class="entry-title">{{title}}</h1>
     <?php get_template_part('partials/entry/meta'); ?>
   </header>
-  <?= get_the_post_thumbnail(null, 'full', ['class' => 'eyecatch']); ?>
   <section class="entry-content"></section>
   <?php get_template_part('partials/entry/amazon_product'); ?>
   <footer>
