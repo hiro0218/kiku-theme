@@ -12,6 +12,7 @@
   "publicPath": "/wp-content/themes/kiku-theme",
   "cacheBusting": "[name]_[hash:8]",
   "browsers": [
-    "last 2 versions"
+    "last 2 versions",
+    "not ie <= 11"
   ]
 }
