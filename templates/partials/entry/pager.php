@@ -1,4 +1,4 @@
-<div class="pager" v-if="pagers">
+<div class="pager" v-cloak v-if="pagers">
   <div class="columns is-gapless">
     <a v-if="pagers.prev" v-bind:href="pagers.prev.url" v-bind:title="pagers.prev.title" class="pager-previous column is-half">
       <span class="pager-icon"><i class="material-icons">chevron_left</i></span>
