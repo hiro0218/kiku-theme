@@ -40,12 +40,16 @@ module.exports = {
       },
       watch: {
         content: function (data) {
-          var entry = this.$el.getElementsByClassName('entry-content')[0];
-          entry.innerHTML = data;
-          common.addExternalLink(entry);
-          common.zoomImage(entry);
-          mokuji.init(entry);
-          Prism.highlightAll();
+          // After displaying DOM
+          this.$nextTick(function() {
+            var entry = this.$el.getElementsByClassName('entry-content')[0];
+            if (entry) {
+              common.addExternalLink(entry);
+              common.zoomImage(entry);
+              mokuji.init(entry);
+              Prism.highlightAll();
+            }
+          });
         }
       },
       methods: {
