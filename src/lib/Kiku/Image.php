@@ -3,12 +3,11 @@ namespace Kiku;
 
 class Image {
 
-    public function get_entry_image(bool $datauri = true, int $post_id = 0): string {
-        global $post;
+    public function get_entry_image(bool $datauri = true, int $post_id = null): string {
         $image_src = "";
 
-        if ($post_id == 0) {
-            $post_id = $post->ID;
+        if (empty($post_id)) {
+            $post_id = get_queried_object_id();
         }
 
         // denied post

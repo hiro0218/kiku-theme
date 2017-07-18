@@ -32,4 +32,15 @@ add_action('rest_api_init', function() {
         'update_callback' => null,
         'schema' => null,
     ]);
+
+    // post thumbnail
+    register_rest_field('post', 'thumbnail', [
+        'get_callback' => function($object, $field_name, $request) {
+            global $Image;
+            $url = $Image->get_entry_image(true, $object['id']);
+            return empty($url) ? null : $url;
+        },
+        'update_callback' => null,
+        'schema' => null,
+    ]);
 });
