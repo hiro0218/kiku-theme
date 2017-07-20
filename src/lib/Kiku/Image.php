@@ -41,6 +41,10 @@ class Image {
 
     public function get_post_thumbnail_image($size = null): string {
         global $post;
+        if (empty($post_id)) {
+            $post_id = get_queried_object_id();
+        }
+
         $url = "";
         $attachment_image_src = null;
 
@@ -78,6 +82,10 @@ class Image {
 
     public function get_post_image_from_tag($datauri = true): string {
         global $post;
+        if (empty($post_id)) {
+            $post_id = get_queried_object_id();
+        }
+
         $src = "";
         $content = "";
 
