@@ -1,4 +1,3 @@
-<?php while (have_posts()) : the_post(); ?>
 <article class="entry card" data-page-id="<?= get_the_ID(); ?>">
 <template v-if="loaded">
   <header>
@@ -14,4 +13,3 @@
   <?php get_template_part('partials/placeholder/single'); ?>
 </template>
 </article>
-<?php endwhile; ?>

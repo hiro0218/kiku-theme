@@ -1,4 +1,3 @@
-<?php while (have_posts()) : the_post(); ?>
 <?php
 global $Schema;
 $Schema->make_blog_posting();
@@ -22,4 +21,3 @@ $Schema->make_blog_posting();
   <?php get_template_part('partials/placeholder/single'); ?>
 </template>
 </article>
-<?php endwhile; ?>
