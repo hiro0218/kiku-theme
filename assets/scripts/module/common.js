@@ -20,24 +20,38 @@ module.exports = {
     });
 
     return type;
-    // if (classNames.indexOf('single') != -1) {
-    //   return 'posts';
-    // }
-    // if (classNames.indexOf('page') != -1) {
-    //   return 'pages';
-    // }
   },
-  // clickableElement(entry) {
-  //   for (var i = 0, length = entry.length; i < length; i += 1) {
-  //     entry[i].addEventListener('click', function (event) {
-  //       event.preventDefault();
-  //       var a = this.getElementsByTagName('a')[0];
-  //       if (a) {
-  //         location.href = a.getAttribute('href');
-  //       }
-  //     });
-  //   }
-  // },
+  setThumbnailImage() {
+    var tmbContainer = document.getElementsByClassName('entry-image');
+    var length = tmbContainer.length;
+    if (length === 0) {
+      return;
+    }
+
+    for (var i = 0; i < length; i += 1) {
+      var container = tmbContainer[i];
+      var imageUrl = container.dataset.thumbnailImage;
+      if (!imageUrl) {
+        continue;
+      }
+
+      var sheet = container.getElementsByClassName('image-sheet')[0];
+
+      function _loadImage(element, url) {
+        return function () {
+          // set background image
+          element.style.backgroundImage = 'url(' + url + ')';
+          // remove no image icon
+          var icon = element.getElementsByClassName('icon')[0];
+          icon.remove();
+        };
+      }
+
+      var img = new Image();
+      img.onload = _loadImage(sheet, imageUrl);
+      img.src = imageUrl;
+    }
+  },
   addExternalLink(entry) {
     var self = this;
     var icon = document.createElement('i');
