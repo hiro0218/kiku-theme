@@ -18,6 +18,7 @@ module.exports = {
     var app = new Vue({
       el: '.main-container',
       data: {
+        loaded: false,
         title: null,
         date: {
           publish: null,
@@ -43,7 +44,7 @@ module.exports = {
         }
       },
       watch: {
-        content: function (data) {
+        loaded: function (data) {
           // After displaying DOM
           this.$nextTick(function() {
             var entry = this.$el.getElementsByClassName('entry-content')[0];
@@ -74,6 +75,7 @@ module.exports = {
             self.amazon_product = json.content.amazon_product;
             self.relateds = json.related;
             self.pagers = json.pager;
+            self.loaded = true;
           });
         },
         fetchCategoryData: function (post_id) {

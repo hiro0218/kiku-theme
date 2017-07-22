@@ -4,7 +4,7 @@ global $Schema;
 $Schema->make_blog_posting();
 ?>
 <article class="entry card" data-page-id="<?= get_the_ID(); ?>">
-<template v-if="content">
+<template v-if="loaded">
   <header>
     <h1 class="entry-title">{{title}}</h1>
     <?php get_template_part('partials/entry/meta'); ?>
