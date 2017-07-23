@@ -34,7 +34,7 @@ module.exports = {
         },
         fetchPostData: function () {
           var self = this;
-          self.fetchAPI(`/wp-json/wp/v2/posts?per_page=${WP.per_page}&page=${WP.paged}`)
+          self.fetchAPI(`/wp-json/wp/v2/posts?per_page=${WP.per_page}&page=${WP.paged}&orderby=modified`)
           .then(function(jsons) {
             for (var key in jsons) {
               var json = jsons[key];
