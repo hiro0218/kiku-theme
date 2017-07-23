@@ -6,7 +6,10 @@ $Schema->make_blog_posting();
 <template v-if="loaded">
   <header>
     <h1 class="entry-title">{{title}}</h1>
-    <?php get_template_part('partials/entry/meta'); ?>
+    <div class="entry-meta">
+      <?php get_template_part('partials/entry/time'); ?>
+      <?php get_template_part('partials/entry/category'); ?>
+    </div>
   </header>
   <section class="entry-content" v-html="content"></section>
   <?php get_template_part('partials/entry/amazon_product'); ?>
@@ -21,3 +24,5 @@ $Schema->make_blog_posting();
   <?php get_template_part('partials/placeholder/single'); ?>
 </template>
 </article>
+<?php get_template_part('partials/entry/similar'); ?>
+<?php get_template_part('partials/entry/pager'); ?>
