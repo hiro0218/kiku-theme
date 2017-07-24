@@ -5,7 +5,7 @@ import ago from 's-ago';
 import common from '../module/common';
 
 module.exports = {
-  init() {
+  view(api_url) {
     var app = new Vue({
       el: '.main-container',
       data: {
@@ -16,7 +16,7 @@ module.exports = {
         this.fetchPostData();
       },
       watch: {
-        posts: function (data) {
+        loaded: function (data) {
           // After displaying DOM
           this.$nextTick(function() {
             common.setThumbnailImage();
@@ -34,7 +34,7 @@ module.exports = {
         },
         fetchPostData: function () {
           var self = this;
-          self.fetchAPI(`/wp-json/wp/v2/posts?per_page=${WP.per_page}&page=${WP.paged}&orderby=modified&categories_exclude=${WP.categories_exclude}`)
+          self.fetchAPI(api_url)
           .then(function(jsons) {
             for (var key in jsons) {
               var json = jsons[key];
