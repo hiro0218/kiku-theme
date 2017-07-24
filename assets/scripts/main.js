@@ -4,7 +4,7 @@ import common from './routes/Common';
 import home from './routes/Home';
 import date from './routes/Date';
 import category from './routes/Category';
-import search from './routes/Home';
+import search from './routes/Search';
 import single from './routes/Single';
 import page from './routes/Page';
 
@@ -19,7 +19,7 @@ const routes = new Router({
   date,
   category,
   search,
-  // Single
+  // Singular
   single,
   page,
 });

@@ -53,6 +53,7 @@ add_action('wp_head', function () {
         'archive' => get_archive_date(),
         'category' => get_query_var('cat'),
         'categories_exclude' => get_option('kiku_exclude_category_frontpage') ? get_option('kiku_exclude_category_frontpage') : 0,
+        'search' => get_query_var('s'),
     ];
     $vars = json_encode($vars, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT);
 
