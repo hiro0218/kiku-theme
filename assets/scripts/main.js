@@ -5,6 +5,7 @@ import home from './routes/Home';
 import date from './routes/Date';
 import category from './routes/Category';
 import search from './routes/Search';
+import tag from './routes/Tag';
 import single from './routes/Single';
 import page from './routes/Page';
 
@@ -19,6 +20,7 @@ const routes = new Router({
   date,
   category,
   search,
+  tag,
   // Singular
   single,
   page,

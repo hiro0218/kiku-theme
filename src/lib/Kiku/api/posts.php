@@ -51,9 +51,10 @@ add_action('wp_head', function () {
         'per_page' => (int)get_option('posts_per_page'),
         'paged' => (int)(get_query_var('paged')) ? get_query_var('paged') : 1,
         'archive' => get_archive_date(),
-        'category' => get_query_var('cat'),
+        'category' => get_query_var('cat'),  // cat id
         'categories_exclude' => get_option('kiku_exclude_category_frontpage') ? get_option('kiku_exclude_category_frontpage') : 0,
         'search' => get_query_var('s'),
+        'tag' => get_query_var('tag_id'),
     ];
     $vars = json_encode($vars, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT);
 
