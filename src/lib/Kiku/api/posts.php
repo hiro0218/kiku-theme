@@ -2,7 +2,10 @@
 add_action('rest_api_init', function() {
     // related posts
     register_rest_field('post', 'related', [
-        'get_callback' => function($object, $field_name, $request) {
+        'get_callback' => function($object, $field_name, $request, $type) {
+            if (!is_postId_route($request, $type)) {
+                return null;
+            }
             global $Entry;
             return $Entry->get_similar_posts(RELATED_POST_NUM, $object['id']);
         },
@@ -12,7 +15,10 @@ add_action('rest_api_init', function() {
 
     // next/prev posts
     register_rest_field('post', 'pager', [
-        'get_callback' => function($object, $field_name, $request) {
+        'get_callback' => function($object, $field_name, $request, $type) {
+            if (!is_postId_route($request, $type)) {
+                return null;
+            }
             global $Entry;
             return $Entry->pager($object['id']);
         },
@@ -22,7 +28,10 @@ add_action('rest_api_init', function() {
 
     // amazon product data
     register_rest_field('post', 'content', [
-        'get_callback' => function($object, $field_name, $request) {
+        'get_callback' => function($object, $field_name, $request, $type) {
+            if (!is_postId_route($request, $type)) {
+                return null;
+            }
             global $post;
             $post = get_post($object['id']);
             $product_data = json_decode(get_post_meta($post->ID, CF_AMAZON_PRODUCT_TAG, true));
@@ -35,7 +44,7 @@ add_action('rest_api_init', function() {
 
     // post thumbnail
     register_rest_field('post', 'thumbnail', [
-        'get_callback' => function($object, $field_name, $request) {
+        'get_callback' => function($object, $field_name, $request, $type) {
             global $Image;
             $url = $Image->get_entry_image(true, $object['id']);
             return empty($url) ? null : $url;
@@ -86,4 +95,19 @@ function get_archive_date() {
     }
 
     return $archive;
+}
+
+function is_postId_route($request, $type) {
+    if ($type !== 'post') {
+        return false;
+    }
+
+    $route = preg_split('/\//', $request->get_route());
+    $post_id = (int)end($route);
+
+    if ($post_id === 0) {
+        return false;
+    }
+
+    return true;
 }
