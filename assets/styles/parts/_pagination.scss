@@ -3,13 +3,16 @@
   display: flex;
   justify-content: center;
   margin: ($spacer * 2) 0;
+  user-select: none;
 }
 
 .pagination {
   padding-left: 0;
+  font-size: 0;
 
   li {
     display: inline;
+    font-size: 1rem;
     @media screen and (max-width: $screen-xs) {
       &:not(.pagination-frist):not(.pagination-next):not(.pagination-previous):not(.pagination-last):not(.pagination-active) {
         display: none;

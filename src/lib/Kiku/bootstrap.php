@@ -33,7 +33,6 @@ require KIKU_LIB_PATH. 'modules/widget.php';
 
 // component
 require KIKU_LIB_PATH. 'components/alert.php';
-require KIKU_LIB_PATH. 'components/pagination.php';
 require KIKU_LIB_PATH. 'components/share.php';
 
 // api
