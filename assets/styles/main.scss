@@ -29,6 +29,7 @@ $output-bourbon-deprecation-warnings: false;
 // parts
 @import "parts/wp-classes";
 @import "parts/amazon";
+@import "parts/pager";
 @import "parts/pagination";
 @import "parts/breadcrumb";
 @import "parts/card";
