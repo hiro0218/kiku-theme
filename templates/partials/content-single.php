@@ -11,7 +11,9 @@ $Schema->make_blog_posting();
       <?php get_template_part('partials/entry/category'); ?>
     </div>
   </header>
-  <section class="entry-content" v-html="content"></section>
+  <section class="entry-content">
+    <?php the_content(); ?>
+  </section>
   <?php get_template_part('partials/entry/amazon_product'); ?>
   <footer>
     <?php get_template_part('partials/entry/paginated'); ?>

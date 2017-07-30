@@ -7,7 +7,9 @@
       <?php get_template_part('partials/entry/category'); ?>
     </div>
   </header>
-  <section class="entry-content" v-html="content"></section>
+  <section class="entry-content">
+    <?php the_content(); ?>
+  </section>
   <footer>
     <?php get_template_part('partials/entry/breadcrumb'); ?>
   </footer>
