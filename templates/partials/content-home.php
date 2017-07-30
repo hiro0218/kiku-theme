@@ -1,8 +1,8 @@
 <?php get_template_part('components/page-header'); ?>
 <template v-if="loaded">
-<div class="entry-home card">
-  <article class="entry-container" v-for="(post,index) in posts">
-    <a v-bind:href="post.link">
+<div class="entry-list">
+  <a v-bind:href="post.link" v-for="(post,index) in posts">
+  <article class="entry-container">
       <div class="entry-image" v-bind:data-thumbnail-image="post.thumbnail">
         <div class="image-container">
           <div class="image-sheet">
@@ -23,7 +23,7 @@
           </div>
         </footer>
       </div>
-    </a>
   </article>
+</a>
 </div>
 </template>

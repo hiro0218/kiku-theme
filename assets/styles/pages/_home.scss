@@ -3,90 +3,73 @@ $entry-thumbnail-size: 5rem;  // 80px;
 .page-header {
   margin: 0 0 1rem 0;
   font-size: $font-size-lg;
-
   @include mobile {
-    padding-left: 1rem;
+    padding: 0 1rem;
   }
 }
 
-.entry-home {
+.entry-list {
   overflow: hidden;
+
+  @include mobile {
+    padding: 0 1rem;
+  }
 
   a {
     display: block;
-    padding: .5rem 0;
+    padding: 1rem 0;
     color: inherit;
-    border-spacing: 1rem;  // for display:table
-  }
-
-  .entry-image,
-  .entry-body {
-    display: table-cell;
-    vertical-align: top;
-    @include mobile {
-      vertical-align: middle;
+    & + a {
+      border-top: 1px solid $grey-200;
     }
   }
 
   .entry {
     &-container {
-      cursor: pointer;
-      user-select: none;
-
-      & + .entry-container {
-        border-top: 1px solid $grey-200;
-      }
+      display: flex;
 
       &:hover {
         .entry-title {
           color: $blue-300;
         }
-        .image-sheet {
-          transform: scale(1.15);
-        }
       }
     }
 
+    &-image {
+      flex-basis: $entry-thumbnail-size;
+      margin-right: 1rem;
+    }
+
     &-body {
-      width: 100%;
-      height: $entry-thumbnail-size + 1rem;
-      @include mobile {
-        height: auto;
-      }
+      flex-basis: 0;
+      flex-direction: column;
+      flex-grow: 1;
+      flex-shrink: 1;
     }
 
     &-title {
       margin: 0 0 .5rem 0;
       transition: color .3s $animation-curve-fast-out-slow-in;
       font-size: $font-size-h4;
-      line-height: 1.75rem;
     }
 
     &-summary {
       margin-bottom: .5rem;
       color: $grey-600;
       font-size: $font-size-sm;
-      text-align: justify;
       word-break: break-all;
-      @include mobile {
-        display: none;
-      }
     }
   }
 
   .entry-meta {
     text-align: right;
-    @include mobile {
-      text-align: left;
-    }
   }
 }
 
 // image
 .image-container {
   @include size($entry-thumbnail-size);
-  border-radius: .125rem;
-  box-shadow: 0 0 0 1px $grey-200;
+  border: 1px solid $grey-200;
   overflow: hidden;
 
   .material-icons {
@@ -98,7 +81,6 @@ $entry-thumbnail-size: 5rem;  // 80px;
 
 .image-sheet {
   max-height: $entry-thumbnail-size;
-  transition: transform .2s cubic-bezier(.08, .82, .17, 1);
   background: $grey-50 50% no-repeat;
   background-size: cover;
   line-height: $entry-thumbnail-size;
