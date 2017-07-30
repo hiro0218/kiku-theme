@@ -2,7 +2,7 @@
 global $Schema;
 $Schema->make_blog_posting();
 ?>
-<article class="entry card" data-page-id="<?= get_the_ID(); ?>">
+<article class="entry" data-page-id="<?= get_the_ID(); ?>">
 <template v-if="loaded">
   <header>
     <h1 class="entry-title">{{title}}</h1>

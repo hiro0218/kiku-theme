@@ -1,6 +1,9 @@
 .entry {
   margin-bottom: 1rem;
-  padding: 1rem $article-padding-side;
+
+  @include mobile {
+    padding: 0 1rem;
+  }
 
   > header {
     margin-bottom: 1rem;
