@@ -80,7 +80,7 @@
                     <td>
                         <?php foreach (get_post_types() as $post_type): ?>
                         <?php
-                            if (!in_array($post_type, $this->exclude_post_types)) {
+                            if (in_array($post_type, ['post', 'page'])) {
                                 echo '<label for="kiku_insert_data_bottom_of_more_tag_post_types_' . $post_type . '"> ';
                                 echo '<input type="checkbox" value="' . $post_type . '" id="kiku_insert_data_bottom_of_more_tag_post_types_' . $post_type . '" name="kiku_insert_data_bottom_of_more_tag_post_types[]"';
                                 if ( !empty(get_option('kiku_insert_data_bottom_of_more_tag_post_types')) ) {
@@ -107,7 +107,7 @@
                     <td>
                         <?php foreach (get_post_types() as $post_type): ?>
                         <?php
-                            if (!in_array($post_type, $this->exclude_post_types)) {
+                            if (in_array($post_type, ['post', 'page'])) {
                                 echo '<label for="kiku_insert_data_bottom_of_content_post_types_' . $post_type . '"> ';
                                 echo '<input type="checkbox" value="' . $post_type . '" id="kiku_insert_data_bottom_of_content_post_types_' . $post_type . '" name="kiku_insert_data_bottom_of_content_post_types[]"';
                                 if ( !empty(get_option('kiku_insert_data_bottom_of_content_post_types')) ) {
