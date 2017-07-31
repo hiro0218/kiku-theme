@@ -35,15 +35,14 @@
 .footer-menu ,
 .footer-copytight {
   display: flex;
-  flex-basis: 0;
-  flex-grow: 1;
-  flex-shrink: 1;
+  flex: 1;
+  justify-content: center;
 }
 
 .footer-menu {
-  justify-content: start;
+  justify-content: flex-start;
 }
 
 .footer-copytight {
-  justify-content: end;
+  justify-content: flex-end;
 }
