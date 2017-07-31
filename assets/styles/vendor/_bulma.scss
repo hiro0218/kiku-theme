@@ -38,15 +38,6 @@ $widescreen: 1000px;  // disable widescreen
 
 // components
 // @import "~bulma/sass/components/all";
-@import "~bulma/sass/components/nav";
-// Note: .nav needs width:100% when tablet-only
-.nav {
-  @include tablet-only {
-    & > .container {
-      width: 100%;
-    }
-  }
-}
 
 // grid
 // @import "~bulma/sass/grid/all";

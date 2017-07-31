@@ -7,7 +7,6 @@
   transform: translateY(0%);
   &:not(.headroom--top) {
     background: rgba(255, 255, 255, .8);
-    box-shadow: 0 2px 2px -1px rgba(0, 0, 0, .15);
   }
 }
 
