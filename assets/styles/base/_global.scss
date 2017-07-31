@@ -52,7 +52,7 @@ body {
 
 // Links
 a {
-  transition: color .3s ease, border .3s ease;
+  transition: color .3s ease, border .3s ease, background .3s $animation-curve-fast-out-slow-in;
   color: $link-color;
   text-decoration: none;
 

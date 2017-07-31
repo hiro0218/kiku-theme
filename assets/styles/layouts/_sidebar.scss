@@ -11,7 +11,6 @@
   a {
     display: block;
     padding: 1rem 1.5rem;
-    transition: background .3s $animation-curve-fast-out-slow-in;
     color: $grey-600;
     font-size: $font-size-sm;
     &:hover {

@@ -1,6 +1,6 @@
-<nav class="pagination-container" v-if="pagination">
-  <ul class="pagination">
-    <li v-if="pagination.first">
+<nav class="pagination" v-if="pagination">
+  <ul>
+    <li class="pagination-first" v-if="pagination.first">
       <a href="/"><i class="material-icons">first_page</i></a>
     </li>
     <li class="pagination-previous" v-if="pagination.prev">
