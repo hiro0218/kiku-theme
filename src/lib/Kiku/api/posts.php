@@ -30,7 +30,7 @@ add_action('rest_api_init', function() {
     register_rest_field('post', 'content', [
         'get_callback' => function($object, $field_name, $request, $type) {
             if (!is_postId_route($request, $type)) {
-                return null;
+                return $object['content'];
             }
             global $post;
             $post = get_post($object['id']);
