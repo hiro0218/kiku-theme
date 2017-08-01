@@ -1,6 +1,5 @@
 .entry-meta {
   color: $grey-400;
-  font-size: $font-size-sm;
 
   a {
     color: inherit;
@@ -11,23 +10,19 @@
 
   ul {
     padding-left: 0;
-    line-height: 1.75rem;
+    font-size: 0;
     list-style: none;
+    vertical-align: middle;
   }
 
   li {
     display: inline-block;
     margin-bottom: 0;
     font-size: $font-size-sm;
-
-    // & + li {
-    //   margin-left: .5rem;
-    // }
+    line-height: 1;
 
     & + li::before {
-      @extend .material-icons;
-      margin: 0 .25rem;
-      content: 'keyboard_arrow_right';
+      @extend .icon-keyboard_arrow_right;
     }
 
   }
@@ -41,26 +36,10 @@
 }
 
 // time
-.entry-time {
-  li {
-    &:first-child::before {
-      @extend .material-icons;
-      margin-right: .25rem;
-      content: 'update';
-    }
-  }
-}
+// .entry-time {}
 
 // category
-.entry-category {
-  li {
-    &:first-child::before {
-      @extend .material-icons;
-      margin-right: .25rem;
-      content: 'folder';
-    }
-  }
-}
+// .entry-category {}
 
 // tag
 .entry-tag {

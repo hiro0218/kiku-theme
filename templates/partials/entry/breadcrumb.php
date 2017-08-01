@@ -11,7 +11,7 @@ $Schema->make_breadcrumb_list(); ?>
     </li>
     <li class="breadcrumb-active">
       <a href="<?= get_the_permalink(); ?>">
-        <?php the_title_attribute(); ?>
+        <span class="icon-location_on"></span><?php the_title_attribute(); ?>
       </a>
     </li>
   </ol>
