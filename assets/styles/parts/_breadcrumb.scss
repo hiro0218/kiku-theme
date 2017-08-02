@@ -17,13 +17,10 @@
   }
 
   li {
-    display: inline-block;
+    display: inline-flex;
     font-size: $font-size-sm;
     line-height: 1;
-
-    &:first-child::before {
-      @extend .icon-home;
-    }
+    vertical-align: middle;
 
     & + li {
       margin-left: .25rem;
