@@ -40,13 +40,11 @@ class Mokuji_Builder {
     public function table_of_content($mokuji_title) {
         $html = '';
 
-        $html .= '<nav>';
-        $html .= '<div class="mokuji-container">';
+        $html .= '<nav class="mokuji-container">';
         $html .= '<span class="mokuji-title">';
         $html .= esc_html($mokuji_title, ENT_COMPAT, 'UTF-8');
         $html .= '</span>';
         $html .= '<section class="mokuji-content"></section>';
-        $html .= '</div>';
         $html .= '</nav>';
 
         return $html;
