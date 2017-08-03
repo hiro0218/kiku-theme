@@ -23,16 +23,21 @@
 
     & + li::before {
       @extend .icon-keyboard_arrow_right;
+      margin: 0 .125rem;
     }
 
   }
 
-  & .entry-time,
-  & .entry-category,
-  & .entry-tag {
+  .entry-time,
+  .entry-category,
+  .entry-tag {
     margin-bottom: 0;
   }
 
+  .icon-folder,
+  .icon-update {
+    margin-right: .25rem;
+  }
 }
 
 // time
@@ -62,12 +67,11 @@
 
   a {
     padding: .5rem .7rem;
-    border-radius: ($spacer * .125);
+    border-radius: .125rem;
     background: $grey-100;
     color: $grey-700;
     &:hover {
       background: $grey-200;
-      text-decoration: none !important;
     }
   }
 
