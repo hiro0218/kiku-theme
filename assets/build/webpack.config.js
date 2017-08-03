@@ -77,7 +77,7 @@ let webpackConfig = {
         }),
       },
       {
-        test: /\.(png|jpe?g|gif|svg|ico)$/,
+        test: /\.(ttf|eot|woff2?|png|jpe?g|gif|svg)$/,
         include: config.paths.assets,
         loader: 'file',
         options: {

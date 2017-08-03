@@ -6,7 +6,7 @@
       <div class="entry-image" v-bind:data-thumbnail-image="post.thumbnail">
         <div class="image-container">
           <div class="image-sheet">
-            <i class="icon material-icons">photo_camera</i>
+            <span class="icon icon-image"></span>
           </div>
         </div>
       </div>
@@ -18,7 +18,7 @@
         <footer>
           <div class="entry-meta">
             <ul class="entry-time">
-              <li>{{post.date.timeAgo}}</li>
+              <li><span class="icon-update"></span>{{post.date.timeAgo}}</li>
             </ul>
           </div>
         </footer>

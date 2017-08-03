@@ -1,63 +1,57 @@
-// pager
 .pager {
+  display: flex;
   margin-bottom: 1rem;
+  font-size: $font-size-sm;
 
   a {
-    border-radius: ($spacer * .125);
+    display: flex;
+    flex: none;
+    flex-direction: column;
+    width: 50%;
+    padding: .5rem;
+    border-radius: .125rem;
     color: $grey-500;
 
     &:hover {
       background: $grey-200;
     }
+
     &:only-child {
       flex-grow: 1;
     }
   }
 
-  .pager-previous,
-  .pager-next {
-    &.column {
-      padding: .5rem;
+  .pager-prev {
+    text-align: left;
+    .pager-icon {
+      margin-right: .5rem;
+    }
+    .pager-title {
+      margin-left: 1.5rem;
     }
   }
 
-}
+  .pager-next {
+    text-align: right;
+    .pager-icon {
+      margin-left: .5rem;
+    }
+    .pager-title {
+      margin-right: 1.5rem;
+    }
+  }
 
-.pager-previous {
-  text-align: left;
   .pager-icon {
-    float: left;
+    color: $grey-800;
   }
-  .pager-title {
-    padding-left: 2rem;
-  }
-}
-.pager-next {
-  text-align: right;
-  .pager-icon {
-    float: right;
-  }
-  .pager-title {
-    padding-right: 2rem;
-  }
-}
 
-.pager-icon,
-.pager-title,
-.pager-instruct {
-  display: block;
-}
-.pager-icon {
-  width: 2rem;
-  color: $grey-800;
-  text-align: center;
-}
-.pager-instruct {
-  color: $grey-500;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-.pager-title {
-  @include ellipsis(100%);
-  font-size: $font-size-sm;
+  .pager-label {
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .pager-title {
+    @include ellipsis(100%);
+  }
+
 }

@@ -55,8 +55,7 @@ module.exports = {
   addExternalLink(entry) {
     var self = this;
     var icon = document.createElement('i');
-    icon.appendChild(document.createTextNode('open_in_new'));
-    icon.classList.add('material-icons', 'external-link');
+    icon.classList.add('icon-open_in_new');
 
     [].forEach.call(entry.getElementsByTagName('a'), function (element) {
       self.setExternalLinkIcon(element, icon);

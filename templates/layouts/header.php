@@ -7,7 +7,7 @@
     <div class="header-menu">
       <input id="drawer-trigger" class="drawer-checkbox" type="checkbox">
       <label for="drawer-trigger" class="drawer-trigger">
-        <i class="material-icons">menu</i>
+        <span class="icon-menu"></span>
       </label>
     </div>
     <?php endif; ?>
