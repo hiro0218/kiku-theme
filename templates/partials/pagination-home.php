@@ -1,4 +1,4 @@
-<nav class="pagination" v-if="pagination">
+<nav class="pagination">
   <ul>
     <li class="pagination-first" v-if="pagination.first">
       <a href="/"><span class="icon-first_page"></span></a>

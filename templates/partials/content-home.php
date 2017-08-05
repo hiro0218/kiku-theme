@@ -26,4 +26,5 @@
       </article>
     </a>
   </div>
+  <?php get_template_part('partials/pagination', 'home'); ?>
 </template>
