@@ -2,20 +2,8 @@
 <html <?php language_attributes(); ?>>
   <?php get_template_part('layouts/head'); ?>
   <body <?php body_class(); ?>>
-  <?php // get_template_part('components/loader'); ?>
-  <?php
-    do_action('get_header');
-    get_template_part('layouts/header');
-  ?>
-    <main class="main-container">
-      <div class="container">
-      <?php include App\template()->main(); ?>
-      </div>
-    </main>
-  <?php
-    do_action('get_footer');
-    get_template_part('layouts/footer');
-    wp_footer();
-  ?>
+  <?php get_template_part('layouts/header');?>
+  <?php get_template_part('layouts/main');?>
+  <?php get_template_part('layouts/footer'); ?>
   </body>
 </html>
