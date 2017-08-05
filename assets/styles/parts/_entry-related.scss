@@ -1,22 +1,29 @@
 .entry-related {
   display: flex;
   margin-bottom: 1rem;
+  font-size: $font-size-sm;
   overflow-x: scroll;
 
   a {
     display: block;
-    width: 360px;
-    height: 222px;
-    padding: 1rem 1.5rem;
+    width: 20rem;
+    height: calc(20rem / 1.618);
+    padding: .5rem 1rem;
     overflow: hidden;
+    &:hover {
+      background: $grey-100;
+    }
   }
 
 }
 
+.related-heading {
+  font-size: $font-size-h3;
+}
+
 .related-container {
-  border: 1px solid $grey-200;
   & + & {
-    margin-left: .5rem;
+    margin-left: 1rem;
   }
 }
 
@@ -25,7 +32,6 @@
   max-width: 100%;
   margin-bottom: .5rem;
   color: $grey-800;
-  font-weight: bold;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;

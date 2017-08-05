@@ -16,22 +16,23 @@ $widescreen: 1000px;  // disable widescreen
 // Note: @import "~bulma/sass/elements/other";
 .container {
   position: relative;
-  margin: 0 20px;
+  margin: 0 auto;
   @include desktop {
-    width: $desktop - 40px;
-    max-width: $desktop - 40px;
+    width: $desktop - (2 * $base-size);
+    max-width: $desktop - (2 * $base-size);
     &.is-fluid {
       width: auto;
       max-width: none;
+      margin: 0 $base-size;
     }
   }
   @include widescreen {
-    width: $widescreen - 40px;
-    max-width: $widescreen - 40px;
+    width: $widescreen - (2 * $base-size);
+    max-width: $widescreen - (2 * $base-size);
   }
   @include fullhd {
-    width: $fullhd - 40px;
-    max-width: $fullhd - 40px;
+    width: $fullhd - (2 * $base-size);
+    max-width: $fullhd - (2 * $base-size);
   }
 }
 

@@ -1,10 +1,6 @@
 .entry {
   margin-bottom: 1rem;
 
-  @include mobile {
-    padding: 0 1rem;
-  }
-
   > header {
     margin-bottom: 1rem;
   }
