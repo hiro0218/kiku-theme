@@ -1,4 +1,4 @@
-<section class="entry-related" v-cloak if="relateds">
+<section class="entry-related">
   <div class="related-container" v-for="(related,index) in relateds">
     <a v-bind:href="related.uri">
       <div class="related-title">{{ related.title }}</div>

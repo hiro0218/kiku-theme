@@ -2,7 +2,6 @@
 // for header's position:fixed
 .main-container {
   flex: 1;
-  margin: 0 1rem;
   padding-top: $header-nav-height + 1rem;  // for header
 
   @include mobile {
