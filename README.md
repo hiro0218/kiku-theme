@@ -8,7 +8,6 @@ A Simple WordPress Theme. (for myself)
 * WordPress Starter Theme
  * based on [Sage - WordPress Starter Theme](https://roots.io/sage/)
 * Simple Design (Material Design)
- * use [Google Material Design Icons](https://github.com/google/material-design-icons)
 * Ready
  * Search Engine Optimization (SEO)
     * OGP, Twitter Cards
