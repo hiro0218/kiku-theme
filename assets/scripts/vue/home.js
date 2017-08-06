@@ -1,6 +1,7 @@
 /* global WP */
 import 'whatwg-fetch';
 import Vue from 'vue';
+import NProgress from 'nprogress/nprogress.js';
 import ago from 's-ago';
 import common from '../module/common';
 
@@ -24,8 +25,12 @@ module.exports = {
         },
         posts: [],
       },
+      beforeCreate: function () {
+        NProgress.start();
+      },
       created: function () {
         this.fetchPostData();
+        NProgress.inc();
       },
       watch: {
         loaded: function (data) {
@@ -33,6 +38,7 @@ module.exports = {
           this.$nextTick(function() {
             common.setThumbnailImage();
           });
+          NProgress.done();
         },
         'headers.totalpages': function () {
           if (this.headers.totalpages <= 1) {
