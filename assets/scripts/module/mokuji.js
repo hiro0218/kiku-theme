@@ -8,7 +8,7 @@ module.exports = {
         anchorType: 'wikipedia',
         anchorLink: true,
         anchorLinkSymbol: '#',
-        anchorLinkBefore: true,
+        anchorLinkBefore: false,
         anchorLinkClassName: 'anchor',
         smoothScroll: true
       });
