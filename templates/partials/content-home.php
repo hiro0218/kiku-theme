@@ -28,3 +28,6 @@
   </div>
   <?php get_template_part('partials/pagination', 'home'); ?>
 </template>
+<template v-else>
+  <?php get_template_part('partials/placeholder-home'); ?>
+</template>
