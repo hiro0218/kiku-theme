@@ -146,7 +146,6 @@ if (config.enabled.optimize) {
 if (config.env.production) {
   webpackConfig.plugins.push(new webpack.NoEmitOnErrorsPlugin());
   webpackConfig.plugins.push(new webpack.optimize.ModuleConcatenationPlugin());
-  webpackConfig.plugins.push(new webpack.optimize.DedupePlugin());
   webpackConfig.plugins.push(new webpack.optimize.AggressiveMergingPlugin());
 }
 
