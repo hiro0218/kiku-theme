@@ -18,7 +18,7 @@ $Schema->make_blog_posting();
     <footer>
       <?php get_template_part('partials/entry-breadcrumb'); ?>
       <?php get_template_part('partials/entry-tag'); ?>
-      <?php Kiku\Components\the_share(); ?>
+      <?php get_template_part('partials/entry-share'); ?>
     </footer>
   </template>
   <template v-else>

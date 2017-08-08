@@ -16,6 +16,7 @@ require KIKU_LIB_PATH. 'DB.php';
 require KIKU_LIB_PATH. 'Amazon.php';
 require KIKU_LIB_PATH. 'papapi.php';
 require KIKU_LIB_PATH. 'Opengraph.php';
+require KIKU_LIB_PATH. 'Share.php';
 require KIKU_LIB_PATH. 'structured-data/Schema.php';
 $Entry = new Entry();
 $Image = new Image();
@@ -33,7 +34,6 @@ require KIKU_LIB_PATH. 'modules/widget.php';
 
 // component
 require KIKU_LIB_PATH. 'components/alert.php';
-require KIKU_LIB_PATH. 'components/share.php';
 
 // api
 require KIKU_LIB_PATH. 'api/posts.php';
