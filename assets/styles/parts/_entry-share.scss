@@ -1,8 +1,8 @@
-$twitter-color:     #55acee;
-$facebook-color:    #3b5998;
-$hatena-color:      #2c6ebd;
-$line-color:        #00c300;
-$share-base-color:  $grey-300;
+// $twitter-color:     #55acee;
+// $facebook-color:    #3b5998;
+// $hatena-color:      #2c6ebd;
+// $line-color:        #00c300;
+// $share-base-color:  $grey-300;
 
 .entry-share {
   display: flex;
@@ -11,10 +11,8 @@ $share-base-color:  $grey-300;
   text-align: center;
 
   a {
-    margin: 0 .5rem;
-
-    &:not(:last-child) {
-      margin-right: .5rem;
+    & + a {
+      margin-left: .5rem;
     }
   }
 }
