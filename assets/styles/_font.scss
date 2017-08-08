@@ -48,7 +48,11 @@
 .icon-menu,
 .icon-open_in_new,
 .icon-search,
-.icon-update {
+.icon-update,
+.icon-twitter,
+.icon-facebook,
+.icon-line,
+.icon-hatena {
   width: 1rem;
   height: 1rem;
   color: inherit;
@@ -134,5 +138,25 @@
 .icon-update {
   &::before {
     content: "\e90d";
+  }
+}
+.icon-twitter {
+  &:before {
+    content: "\e90e";
+  }
+}
+.icon-facebook {
+  &:before {
+    content: "\e90f";
+  }
+}
+.icon-line {
+  &:before {
+    content: "\e910";
+  }
+}
+.icon-hatena {
+  &:before {
+    content: "\e911";
   }
 }

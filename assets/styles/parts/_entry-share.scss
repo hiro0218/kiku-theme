@@ -2,7 +2,6 @@
 // $facebook-color:    #3b5998;
 // $hatena-color:      #2c6ebd;
 // $line-color:        #00c300;
-// $share-base-color:  $grey-300;
 
 .entry-share {
   display: flex;
@@ -11,8 +10,15 @@
   text-align: center;
 
   a {
+    color: $grey-800;
+    font-size: 2rem;
+
+    &:hover {
+      color: inherit;
+    }
+
     & + a {
-      margin-left: .5rem;
+      margin-left: 1rem;
     }
   }
 }
@@ -21,26 +27,7 @@
 .btn-facebook,
 .btn-hatena,
 .btn-line {
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  background-size: 80% 80%;
-  @include hide-text;
-  @include size(40px);
-
   &:active {
     transform: scale(.95);
   }
-}
-
-.btn-twitter {
-  background-image: url("../images/svg/twitter.svg");
-}
-.btn-facebook {
-  background-image: url("../images/svg/facebook.svg");
-}
-.btn-hatena {
-  background-image: url("../images/svg/hatena-bookmark.svg");
-}
-.btn-line {
-  background-image: url("../images/svg/line.svg");
 }
