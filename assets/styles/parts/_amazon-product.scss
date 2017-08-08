@@ -11,7 +11,11 @@
   z-index: 0;
 
   &::before {
-    @include position(absolute, -6px);
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    bottom: -6px;
+    left: -6px;
     background: inherit;
     content: "";
     z-index: -1;
@@ -40,7 +44,5 @@
   display: block;
   color: $white;
   font-weight: bold;
-  line-height: 1.5;
-  text-align: center;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, .4), -2px -2px 1px rgba(0, 0, 0, .08);
 }
