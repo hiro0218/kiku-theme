@@ -84,14 +84,18 @@ module.exports = {
           var self = this;
           self.fetchAPI(`/wp-json/wp/v2/categories?post=${post_id}`)
           .then(function(json) {
-            self.categories = json;
+            if (json.length !== 0) {
+              self.categories = json;
+            }
           });
         },
         fetchTagData: function (post_id) {
           var self = this;
           self.fetchAPI(`/wp-json/wp/v2/tags?post=${post_id}`)
           .then(function(json) {
-            self.tags = json;
+            if (json.length !== 0) {
+              self.tags = json;
+            }
           });
         },
         setDatetime: function (json) {
