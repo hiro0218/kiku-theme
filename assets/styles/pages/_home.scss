@@ -3,17 +3,10 @@ $entry-thumbnail-size: 5rem;  // 80px;
 .page-header {
   margin: 0 0 1rem 0;
   font-size: $font-size-lg;
-  @include mobile {
-    padding: 0 1rem;
-  }
 }
 
 .entry-list {
   overflow: hidden;
-
-  @include mobile {
-    padding: 0 1rem;
-  }
 
   a {
     display: block;

@@ -43,7 +43,7 @@ module.exports = {
           element.style.backgroundImage = 'url(' + url + ')';
           // remove no image icon
           var icon = element.getElementsByClassName('icon')[0];
-          icon.remove();
+          element.removeChild(icon);
         };
       }
 

@@ -1,11 +1,7 @@
 // nav min-height from bulma = 3.5rem
 // for header's position:fixed
 .main-container {
-  flex: 1;
+  flex: 1 0 auto;
   margin-bottom: 1rem;
   padding-top: $header-nav-height + 1rem;  // for header
-
-  @include mobile {
-    margin: 0;
-  }
 }
