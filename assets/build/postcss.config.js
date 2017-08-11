@@ -16,22 +16,6 @@ const sortingOption = {
     },
     'rules',
   ],
-  'properties-order': [
-    {
-      emptyLineBefore: true,
-      properties: [
-        'margin',
-        'padding',
-      ],
-    },
-    {
-      emptyLineBefore: true,
-      properties: [
-        'border',
-        'background',
-      ],
-    },
-  ],
   'unspecified-properties-position': 'bottom',
 };
 
