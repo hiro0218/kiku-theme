@@ -44,6 +44,9 @@ function head_cleanup() {
     // Jetpack
     remove_action( 'wp_head', 'jetpack_og_tags' );
     add_filter( 'jetpack_implode_frontend_css', '__return_false' );
+    add_action( 'wp_print_styles', function () {
+        wp_dequeue_style('simple-payments');
+    }, 100 );
 
     // WordPress 4.4 Response image
     add_filter( 'wp_calculate_image_srcset', '__return_false' );
