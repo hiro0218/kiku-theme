@@ -149,7 +149,7 @@ class Image {
             return "";
         }
 
-        $url = $data["LargeImage"]["URL"];
+        $url = $data["LargeImage"];
         if (empty($url)) {
             return "";
         }
