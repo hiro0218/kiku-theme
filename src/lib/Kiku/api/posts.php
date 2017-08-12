@@ -43,6 +43,21 @@ add_action('rest_api_init', function() {
     ]);
 });
 
+// To decimate API information.
+add_filter('rest_prepare_post', function ( $response, $post, $request ) {
+    unset($response->data['author']);
+    unset($response->data['slug']);
+    unset($response->data['content']);
+    unset($response->data['status']);
+    unset($response->data['featured_media']);
+    unset($response->data['comment_status']);
+    unset($response->data['ping_status']);
+    unset($response->data['sticky']);
+    unset($response->data['template']);
+    unset($response->data['format']);
+    return $response;
+}, 10, 3 );
+
 // Global javaScript variables
 add_action('wp_head', function () {
     $vars = [

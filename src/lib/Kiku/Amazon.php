@@ -24,15 +24,17 @@ class Amazon {
             return;
         }
 
+        $current_data = get_post_meta($post_id, CF_AMAZON_PRODUCT_TAG, true);
         $product_data = self::get_amazon_product($post_id);
 
-        if (!empty($product_data)) {
+        if ($current_data !== $product_data && !empty($product_data)) {
             $product_data = self::format_product_data($product_data);
             self::update_asin_meta($post_id, $product_data);
         }
     }
 
     public static function format_product_data($product_data) {
+        $data = [];
         $product_data = json_encode($product_data, JSON_UNESCAPED_UNICODE);
         $product_data = json_decode($product_data, true);
 
@@ -40,16 +42,13 @@ class Amazon {
             return null;
         }
 
-        $url = self::normalize_amazon_url($product_data['ASIN'], get_option('kiku_amazon_associate_tag'));
-        if (!empty($url)) {
-            $product_data["DetailPageURL"] = $url;
-        }
+        $data['ASIN'] = $product_data['ASIN'];
+        $data['DetailPageURL'] = self::normalize_amazon_url($product_data['ASIN'], get_option('kiku_amazon_associate_tag'));
+        $data['Title'] = $product_data['ItemAttributes']['Title'];
+        $data['Author'] = $product_data['ItemAttributes']['Author'];
+        $data['LargeImage'] = $product_data['LargeImage']['URL'];
 
-        unset($product_data['ItemLinks']);
-
-        $product_data = json_encode($product_data, JSON_UNESCAPED_UNICODE);
-
-        return $product_data;
+        return json_encode($data, JSON_UNESCAPED_UNICODE);
     }
 
     public static function normalize_amazon_url($asin, $associate = null) {
