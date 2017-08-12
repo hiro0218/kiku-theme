@@ -96,7 +96,7 @@ let webpackConfig = {
   },
   resolve: {
     alias: {
-      vue: 'vue/dist/vue.js',
+      'vue$': 'vue/dist/vue.esm.js',
     },
     modules: [
       config.paths.assets,
