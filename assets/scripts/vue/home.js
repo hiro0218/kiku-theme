@@ -1,5 +1,4 @@
 /* global WP */
-import 'whatwg-fetch';
 import Vue from 'vue';
 import NProgress from 'nprogress/nprogress.js';
 import ago from 's-ago';
@@ -29,7 +28,7 @@ module.exports = {
         NProgress.start();
       },
       created: function () {
-        this.fetchPostData();
+        this.requestPostData();
         NProgress.inc();
       },
       watch: {
@@ -99,19 +98,23 @@ module.exports = {
         },
       },
       methods: {
-        fetchAPI: function(url) {
+        requestXHR: function(url, callback) {
           var self = this;
-          return fetch(url, {
-            method: 'GET'
-          }).then(function(response) {
-            self.getWpTotalValue(response);
-            return response.json();
-          });
+          var xhr = new XMLHttpRequest();
+          xhr.onreadystatechange = function(){
+            if (this.readyState === 4 && this.status === 200) {
+              self.headers.total = Number(this.getResponseHeader('X-WP-Total'));
+              self.headers.totalpages = Number(this.getResponseHeader('X-WP-TotalPages'));
+              callback(this.response);
+            }
+          };
+          xhr.responseType = 'json';
+          xhr.open('GET', url, true);
+          xhr.send();
         },
-        fetchPostData: function () {
+        requestPostData: function () {
           var self = this;
-          self.fetchAPI(api_url)
-          .then(function(jsons) {
+          self.requestXHR(api_url, function(jsons) {
             for (var key in jsons) {
               var json = jsons[key];
               var post = {
@@ -132,17 +135,6 @@ module.exports = {
             }
             if (self.posts) {
               self.loaded = true;
-            }
-          });
-        },
-        getWpTotalValue: function (response) {
-          var self = this;
-          response.headers.forEach(function(value, key) {
-            if (key === 'x-wp-total') {
-              self.headers.total = Number(value);
-            }
-            if (key === 'x-wp-totalpages') {
-              self.headers.totalpages = Number(value);
             }
           });
         },

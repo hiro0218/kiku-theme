@@ -1,9 +1,4 @@
 /* global Prism WP */
-import Promise from 'promise-polyfill';
-if (!window.Promise) {
-  window.Promise = Promise;
-}
-import 'whatwg-fetch';
 import Vue from 'vue';
 import NProgress from 'nprogress/nprogress.js';
 import ago from 's-ago';
@@ -38,12 +33,12 @@ module.exports = {
         NProgress.start();
       },
       created: function () {
-        this.fetchPostData(post_id, page_type);
+        this.requestPostData(post_id, page_type);
         NProgress.inc();
       },
       mounted: function () {
-        this.fetchCategoryData(post_id);
-        this.fetchTagData(post_id);
+        this.requestCategoryData(post_id);
+        this.requestTagData(post_id);
         this.viewAttachedInfo();
       },
       watch: {
@@ -62,55 +57,55 @@ module.exports = {
         }
       },
       methods: {
-        fetchAPI: function(url) {
-          return fetch(url, {
-            method: 'GET'
-          }).then(function(response) {
-            return response.json();
-          });
+        requestXHR: function(url, callback) {
+          var xhr = new XMLHttpRequest();
+          xhr.onreadystatechange = function(){
+            if (this.readyState === 4 && this.status === 200) {
+              callback(this.response);
+            }
+          };
+          xhr.responseType = 'json';
+          xhr.open('GET', url, true);
+          xhr.send();
         },
-        fetchPostData: function (post_id, page_type) {
+        requestPostData: function (post_id, page_type) {
           var self = this;
-          self.fetchAPI(`/wp-json/wp/v2/${page_type}/${post_id}`)
-          .then(function(json) {
+          self.requestXHR(`/wp-json/wp/v2/${page_type}/${post_id}`, function(json) {
             self.setDatetime(json);
             self.loaded = true;
           });
         },
-        fetchAttachedData: function (post_id, page_type) {
+        requestAttachedData: function (post_id, page_type) {
           if (page_type !== 'posts') {
             return;
           }
 
           var self = this;
-          self.fetchAPI(`/wp-json/kiku/v1/post/${post_id}`)
-          .then(function(json) {
+          self.requestXHR(`/wp-json/kiku/v1/post/${post_id}`, function(json) {
             self.amazon_product = json.amazon_product;
             self.relateds = json.related;
             self.pagers = json.pager;
           });
         },
-        fetchCategoryData: function (post_id) {
+        requestCategoryData: function (post_id) {
           if (page_type !== 'posts') {
             return;
           }
 
           var self = this;
-          self.fetchAPI(`/wp-json/wp/v2/categories?post=${post_id}`)
-          .then(function(json) {
+          self.requestXHR(`/wp-json/wp/v2/categories?post=${post_id}`, function(json) {
             if (json.length !== 0) {
               self.categories = json;
             }
           });
         },
-        fetchTagData: function (post_id) {
+        requestTagData: function (post_id) {
           if (page_type !== 'posts') {
             return;
           }
 
           var self = this;
-          self.fetchAPI(`/wp-json/wp/v2/tags?post=${post_id}`)
-          .then(function(json) {
+          self.requestXHR(`/wp-json/wp/v2/tags?post=${post_id}`, function(json) {
             if (json.length !== 0) {
               self.tags = json;
             }
@@ -127,7 +122,7 @@ module.exports = {
             var viewportHeight = window.innerHeight;
             var targetTop = document.getElementById('article-attached-info').getBoundingClientRect().top;
             if (0 < targetTop && targetTop <= viewportHeight) {
-              self.fetchAttachedData(post_id, page_type);
+              self.requestAttachedData(post_id, page_type);
               window.removeEventListener('scroll', scrollIn, false);
             }
           };

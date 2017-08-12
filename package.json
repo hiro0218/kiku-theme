@@ -77,10 +77,8 @@
     "normalize.css": "^7.0.0",
     "nprogress": "^0.2.0",
     "prismjs": "^1.6.0",
-    "promise-polyfill": "^6.0.2",
     "s-ago": "^1.1.0",
     "vue": "^2.4.2",
-    "whatwg-fetch": "^2.0.3",
     "zooming": "^1.2.4"
   }
 }
