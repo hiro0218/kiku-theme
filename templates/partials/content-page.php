@@ -1,4 +1,4 @@
-<article class="entry" data-page-id="<?= get_the_ID(); ?>">
+<article class="entry">
   <template v-if="loaded">
     <header>
       <h1 class="entry-title"><?php echo esc_html(get_the_title()); ?></h1>

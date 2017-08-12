@@ -1,26 +1,6 @@
 import Zooming from 'zooming';
 
 module.exports = {
-  getSingularType() {
-    var type = null;
-    var classNames = document.body.className.toLowerCase().replace(/-/g, '_').split(/\s+/);
-
-    classNames.forEach((className) => {
-      switch (className) {
-        case 'single':
-        type = 'posts';
-        break;
-        case 'page':
-        type = 'pages';
-        break;
-      }
-      if (!type) {
-        return false;
-      }
-    });
-
-    return type;
-  },
   setThumbnailImage() {
     var tmbContainer = document.getElementsByClassName('entry-image');
     var length = tmbContainer.length;

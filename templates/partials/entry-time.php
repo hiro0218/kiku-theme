@@ -1,5 +1,5 @@
-<ul class="entry-time" v-cloak>
-  <li class="date-published" v-if="date.publish">
+<ul class="entry-time" v-cloak v-if="date.publish">
+  <li class="date-published">
     <span class="icon-update"></span><time itemprop="datePublished" v-bind:datetime="date.publish">{{date.publish | formatDate}}</time>
   </li>
   <li class="date-modified" v-if="date.modified">

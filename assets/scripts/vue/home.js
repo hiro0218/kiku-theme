@@ -8,7 +8,7 @@ import common from '../module/common';
 module.exports = {
   view(api_url) {
     var app = new Vue({
-      el: '.main-container',
+      el: '#app',
       data: {
         loaded: false,
         headers: {

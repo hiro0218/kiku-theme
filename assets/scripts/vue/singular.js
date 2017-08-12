@@ -1,4 +1,4 @@
-/* global Prism */
+/* global Prism WP */
 import Promise from 'promise-polyfill';
 if (!window.Promise) {
   window.Promise = Promise;
@@ -13,14 +13,14 @@ import common from '../module/common';
 module.exports = {
   init() {
     var article = document.getElementsByTagName('article')[0];
-    var post_id = article.dataset.pageId;
-    var page_type = common.getSingularType();
-    if (!post_id) {
+    var post_id = WP.page_id;
+    var page_type = WP.page_type;
+    if (!post_id || !page_type) {
       return;
     }
 
     var app = new Vue({
-      el: '.main-container',
+      el: '#app',
       data: {
         loaded: false,
         date: {
@@ -43,14 +43,12 @@ module.exports = {
       },
       mounted: function () {
         this.fetchCategoryData(post_id);
-        NProgress.inc();
         this.fetchTagData(post_id);
-        NProgress.inc();
-        this.fetchAttachedData(post_id, page_type);
-        NProgress.inc();
+        this.viewAttachedInfo();
       },
       watch: {
         loaded: function (data) {
+          NProgress.done();
           // After displaying DOM
           this.$nextTick(function() {
             var entry = this.$el.getElementsByClassName('entry-content')[0];
@@ -61,7 +59,6 @@ module.exports = {
               Prism.highlightAll();
             }
           });
-          NProgress.done();
         }
       },
       methods: {
@@ -94,6 +91,10 @@ module.exports = {
           });
         },
         fetchCategoryData: function (post_id) {
+          if (page_type !== 'posts') {
+            return;
+          }
+
           var self = this;
           self.fetchAPI(`/wp-json/wp/v2/categories?post=${post_id}`)
           .then(function(json) {
@@ -103,6 +104,10 @@ module.exports = {
           });
         },
         fetchTagData: function (post_id) {
+          if (page_type !== 'posts') {
+            return;
+          }
+
           var self = this;
           self.fetchAPI(`/wp-json/wp/v2/tags?post=${post_id}`)
           .then(function(json) {
@@ -115,7 +120,19 @@ module.exports = {
           this.date.publish = json.date;
           this.date.modified = (json.date !== json.modified) ? json.modified : null;
           this.date.timeAgo = ago(new Date(json.modified));
-        }
+        },
+        viewAttachedInfo: function () {
+          var self = this;
+          var scrollIn = function (event) {
+            var viewportHeight = window.innerHeight;
+            var targetTop = document.getElementById('article-attached-info').getBoundingClientRect().top;
+            if (0 < targetTop && targetTop <= viewportHeight) {
+              self.fetchAttachedData(post_id, page_type);
+              window.removeEventListener('scroll', scrollIn, false);
+            }
+          };
+          window.addEventListener('scroll', scrollIn, false);
+        },
       },
       filters: {
         formatDate: function(date) {

@@ -1,4 +1,4 @@
-<div class="amazon-product" v-cloak v-bind:style="{ 'background-image': 'url('+ amazon_product.LargeImage +')' }" v-if="amazon_product">
+<div class="amazon-product" v-cloak v-if="amazon_product" v-bind:style="{ 'background-image': 'url('+ amazon_product.LargeImage +')' }">
   <a v-bind:href="amazon_product.DetailPageURL" target="_blank">
     <div class="product-image">
       <img v-bind:src="amazon_product.LargeImage" data-zoom-disabled="true">

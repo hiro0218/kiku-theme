@@ -2,7 +2,7 @@
 global $Schema;
 $Schema->make_blog_posting();
 ?>
-<article class="entry" data-page-id="<?= get_the_ID(); ?>">
+<article class="entry">
   <template v-if="loaded">
     <header>
       <h1 class="entry-title"><?php echo esc_html(get_the_title()); ?></h1>
@@ -26,7 +26,7 @@ $Schema->make_blog_posting();
   </template>
 </article>
 
-<template v-if="loaded">
-<?php get_template_part('partials/entry-related'); ?>
-<?php get_template_part('partials/entry-pager'); ?>
-</template>
+<aside id="article-attached-info">
+  <?php get_template_part('partials/entry-related'); ?>
+  <?php get_template_part('partials/entry-pager'); ?>
+</aside>
