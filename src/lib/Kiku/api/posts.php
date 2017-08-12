@@ -1,45 +1,34 @@
 <?php
 add_action('rest_api_init', function() {
-    // related posts
-    register_rest_field('post', 'related', [
-        'get_callback' => function($object, $field_name, $request, $type) {
-            if (!is_postId_route($request, $type)) {
+    register_rest_route('kiku/v1', '/post/(?P<id>\d+)', [
+        'methods' => 'GET',
+        'callback' => function($data) {
+            $post_id = $data['id'];
+            if (empty($post_id)) {
                 return null;
             }
-            global $Entry;
-            return $Entry->get_similar_posts(RELATED_POST_NUM, $object['id']);
-        },
-        'update_callback' => null,
-        'schema' => null,
-    ]);
 
-    // next/prev posts
-    register_rest_field('post', 'pager', [
-        'get_callback' => function($object, $field_name, $request, $type) {
-            if (!is_postId_route($request, $type)) {
-                return null;
-            }
-            global $Entry;
-            return $Entry->pager($object['id']);
-        },
-        'update_callback' => null,
-        'schema' => null,
-    ]);
+            global $Entry, $post;
+            $array = [];
 
-    // amazon product data
-    register_rest_field('post', 'content', [
-        'get_callback' => function($object, $field_name, $request, $type) {
-            if (!is_postId_route($request, $type)) {
-                return $object['content'];
-            }
-            global $post;
-            $post = get_post($object['id']);
+            // related posts
+            $related = $Entry->get_similar_posts(RELATED_POST_NUM, $post_id);
+            // pager
+            $pager = $Entry->pager($post_id);
+
+            // amazon product data
+            $post = get_post($post_id);
             $product_data = json_decode(get_post_meta($post->ID, CF_AMAZON_PRODUCT_TAG, true));
-            $object['content']['amazon_product'] = $product_data;
-            return $object['content'];
+
+            // set
+            $array = [
+                'related' => $related,
+                'pager' => $pager,
+                'amazon_product' => $product_data,
+            ];
+
+            return $array;
         },
-        'update_callback' => null,
-        'schema' => null,
     ]);
 
     // post thumbnail
@@ -95,19 +84,4 @@ function get_archive_date() {
     }
 
     return $archive;
-}
-
-function is_postId_route($request, $type) {
-    if ($type !== 'post') {
-        return false;
-    }
-
-    $route = preg_split('/\//', $request->get_route());
-    $post_id = (int)end($route);
-
-    if ($post_id === 0) {
-        return false;
-    }
-
-    return true;
 }

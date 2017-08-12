@@ -41,9 +41,12 @@ module.exports = {
         this.fetchPostData(post_id, page_type);
         NProgress.inc();
       },
-      mounted: function() {
+      mounted: function () {
         this.fetchCategoryData(post_id);
+        NProgress.inc();
         this.fetchTagData(post_id);
+        NProgress.inc();
+        this.fetchAttachedData(post_id, page_type);
         NProgress.inc();
       },
       watch: {
@@ -74,10 +77,20 @@ module.exports = {
           self.fetchAPI(`/wp-json/wp/v2/${page_type}/${post_id}`)
           .then(function(json) {
             self.setDatetime(json);
-            self.amazon_product = json.content.amazon_product;
+            self.loaded = true;
+          });
+        },
+        fetchAttachedData: function (post_id, page_type) {
+          if (page_type !== 'posts') {
+            return;
+          }
+
+          var self = this;
+          self.fetchAPI(`/wp-json/kiku/v1/post/${post_id}`)
+          .then(function(json) {
+            self.amazon_product = json.amazon_product;
             self.relateds = json.related;
             self.pagers = json.pager;
-            self.loaded = true;
           });
         },
         fetchCategoryData: function (post_id) {
