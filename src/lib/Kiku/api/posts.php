@@ -60,9 +60,16 @@ add_filter('rest_prepare_post', function ( $response, $post, $request ) {
 
 // Global javaScript variables
 add_action('wp_head', function () {
+    $paged = get_query_var('paged');
+    $page_type = get_post_type();
+    if ($page_type) {
+        $page_type .= 's';
+    }
     $vars = [
         'per_page' => (int)get_option('posts_per_page'),
-        'paged' => (int)(get_query_var('paged')) ? get_query_var('paged') : 1,
+        'paged' => (int)($paged) ? $paged : 1,
+        'page_type' => $page_type,
+        'page_id' => get_the_ID(),
         'archive' => get_archive_date(),
         'category' => get_query_var('cat'),  // cat id
         'categories_exclude' => get_option('kiku_exclude_category_frontpage') ? get_option('kiku_exclude_category_frontpage') : 0,
