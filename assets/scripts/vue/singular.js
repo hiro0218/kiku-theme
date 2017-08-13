@@ -38,22 +38,21 @@ module.exports = {
         NProgress.inc();
       },
       mounted: function () {
-        this.requestCategoryData(post_id);
-        this.requestTagData(post_id);
+        NProgress.done();
       },
       watch: {
         loaded: function (data) {
           var self = this;
-          NProgress.done();
           // After displaying DOM
           this.$nextTick(function() {
             var entry = this.$el.getElementsByClassName('entry-content')[0];
-            if (entry) {
-              common.addExternalLink(entry);
-              common.zoomImage(entry);
-              mokuji.init(entry);
-              Prism.highlightAll();
+            if (!entry) {
+              return;
             }
+            common.addExternalLink(entry);
+            common.zoomImage(entry);
+            mokuji.init(entry);
+            Prism.highlightAll();
             self.viewAttachedInfo();
           });
         }
@@ -74,6 +73,13 @@ module.exports = {
           var self = this;
           self.requestXHR(`/wp-json/wp/v2/${page_type}/${post_id}`, function(json) {
             self.setDatetime(json);
+            if (json.hasOwnProperty('categories') && json.categories.length !== 0) {
+              self.categories = json.categories;
+            }
+            if (json.hasOwnProperty('tags') && json.tags.length !== 0) {
+              self.tags = json.tags;
+            }
+            self.amazon_product = json.amazon_product;
             self.loaded = true;
           });
         },
@@ -84,33 +90,8 @@ module.exports = {
 
           var self = this;
           self.requestXHR(`/wp-json/kiku/v1/post/${post_id}`, function(json) {
-            self.amazon_product = json.amazon_product;
             self.relateds = json.related;
             self.pagers = json.pager;
-          });
-        },
-        requestCategoryData: function (post_id) {
-          if (page_type !== 'posts') {
-            return;
-          }
-
-          var self = this;
-          self.requestXHR(`/wp-json/wp/v2/categories?post=${post_id}`, function(json) {
-            if (json.length !== 0) {
-              self.categories = json;
-            }
-          });
-        },
-        requestTagData: function (post_id) {
-          if (page_type !== 'posts') {
-            return;
-          }
-
-          var self = this;
-          self.requestXHR(`/wp-json/wp/v2/tags?post=${post_id}`, function(json) {
-            if (json.length !== 0) {
-              self.tags = json;
-            }
           });
         },
         setDatetime: function (json) {

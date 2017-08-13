@@ -16,19 +16,51 @@ add_action('rest_api_init', function() {
             // pager
             $pager = $Entry->pager($post_id);
 
-            // amazon product data
-            $post = get_post($post_id);
-            $product_data = json_decode(get_post_meta($post->ID, CF_AMAZON_PRODUCT_TAG, true));
-
             // set
             $array = [
                 'related' => $related,
                 'pager' => $pager,
-                'amazon_product' => $product_data,
             ];
 
             return $array;
         },
+    ]);
+
+    // amazon product data
+    register_rest_field('post', 'amazon_product', [
+        'get_callback' => function($object, $field_name, $request, $type) {
+            if (!is_postId_route($request, $type)) {
+                return $object['content'];
+            }
+            global $post;
+            $post = get_post($object['id']);
+            $product_data = json_decode(get_post_meta($post->ID, CF_AMAZON_PRODUCT_TAG, true));
+            return $product_data;
+        },
+        'update_callback' => null,
+        'schema' => null,
+    ]);
+
+    // post category
+    register_rest_field('post', 'categories', [
+        'get_callback' => function($object, $field_name, $request, $type) {
+            global $Entry;
+            $object['categories'] = $Entry->get_category();
+            return $object['categories'];
+        },
+        'update_callback' => null,
+        'schema' => null,
+    ]);
+
+    // post tags
+    register_rest_field('post', 'tags', [
+        'get_callback' => function($object, $field_name, $request, $type) {
+            global $Entry;
+            $object['tags'] = $Entry->get_tag();
+            return $object['tags'];
+        },
+        'update_callback' => null,
+        'schema' => null,
     ]);
 
     // post thumbnail
@@ -44,7 +76,7 @@ add_action('rest_api_init', function() {
 });
 
 // To decimate API information.
-add_filter('rest_prepare_post', function ( $response, $post, $request ) {
+function unset_api_data( $response, $post, $request ) {
     unset($response->data['date_gmt']);
     unset($response->data['modified_gmt']);
     unset($response->data['guid']);
@@ -59,8 +91,11 @@ add_filter('rest_prepare_post', function ( $response, $post, $request ) {
     unset($response->data['sticky']);
     unset($response->data['template']);
     unset($response->data['format']);
+
     return $response;
-}, 10, 3 );
+}
+add_filter('rest_prepare_post', 'unset_api_data', 10, 3 );
+add_filter('rest_prepare_page', 'unset_api_data', 10, 3 );
 
 // Global javaScript variables
 add_action('wp_head', function () {
@@ -110,4 +145,16 @@ function get_archive_date() {
     }
 
     return $archive;
+}
+
+function is_postId_route($request, $type) {
+    if ($type !== 'post') {
+        return false;
+    }
+    $route = preg_split('/\//', $request->get_route());
+    $post_id = (int)end($route);
+    if ($post_id === 0) {
+        return false;
+    }
+    return true;
 }

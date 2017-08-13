@@ -102,10 +102,6 @@ class Entry {
 
     // 設定されたカテゴリの一覧を取得する
     public function get_category(): array {
-        if ( !is_single() ) {
-            return [];
-        }
-
         $categories = get_the_category();
         $arr = [];
         $i = 0;
@@ -123,10 +119,6 @@ class Entry {
 
     // 設定されたタグの一覧を取得する
     public function get_tag(): array {
-        if ( !is_single() ) {
-            return [];
-        }
-
         $tags = get_the_tags();
         if ( empty($tags) ) {
             return [];
