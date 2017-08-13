@@ -51,7 +51,6 @@
   margin-bottom: 1rem;
 
   ul {
-    display: flex;
     padding-left: 0;
     font-size: $font-size-xs;
     line-height: 2rem;
@@ -59,6 +58,7 @@
   }
 
   li {
+    display: inline-block;
     margin: 0 .5rem .5rem 0;
     &:last-child {
       margin-right: 0;
