@@ -8,12 +8,14 @@ import common from '../module/common';
 
 module.exports = {
   init() {
-    var article = document.getElementsByTagName('article')[0];
     var post_id = WP.page_id;
     var page_type = WP.page_type;
     if (!post_id || !page_type) {
       return;
     }
+
+    var entry = document.getElementsByClassName('entry-content')[0];
+    this.setScript(entry);
 
     var app = new Vue({
       el: '#app',
@@ -42,19 +44,7 @@ module.exports = {
       },
       watch: {
         loaded: function (data) {
-          var self = this;
-          // After displaying DOM
-          this.$nextTick(function() {
-            var entry = this.$el.getElementsByClassName('entry-content')[0];
-            if (!entry) {
-              return;
-            }
-            common.addExternalLink(entry);
-            common.zoomImage(entry);
-            mokuji.init(entry);
-            Prism.highlightAll();
-            self.viewAttachedInfo();
-          });
+          this.viewAttachedInfo();
         }
       },
       methods: {
@@ -122,5 +112,11 @@ module.exports = {
         }
       }
     });
+  },
+  setScript (element) {
+    common.addExternalLink(element);
+    common.zoomImage(element);
+    mokuji.init(element);
+    Prism.highlightAll();
   },
 };
