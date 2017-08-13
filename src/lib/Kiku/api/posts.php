@@ -45,6 +45,10 @@ add_action('rest_api_init', function() {
 
 // To decimate API information.
 add_filter('rest_prepare_post', function ( $response, $post, $request ) {
+    unset($response->data['date_gmt']);
+    unset($response->data['modified_gmt']);
+    unset($response->data['guid']);
+    unset($response->data['type']);
     unset($response->data['author']);
     unset($response->data['slug']);
     unset($response->data['content']);
