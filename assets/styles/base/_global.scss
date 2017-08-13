@@ -64,6 +64,14 @@ a {
 // Figures
 figure {
   margin: 0 0 1rem;
+  text-align: center;
+  img {
+    margin-bottom: 0;
+  }
+}
+figcaption {
+  color: $grey-400;
+  font-size: $font-size-xs;
 }
 
 // Images
