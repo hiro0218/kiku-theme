@@ -2,6 +2,7 @@
 import Vue from 'vue';
 import NProgress from 'nprogress/nprogress.js';
 import ago from 's-ago';
+import InView from 'inview';
 import mokuji from '../module/mokuji';
 import common from '../module/common';
 
@@ -39,10 +40,10 @@ module.exports = {
       mounted: function () {
         this.requestCategoryData(post_id);
         this.requestTagData(post_id);
-        this.viewAttachedInfo();
       },
       watch: {
         loaded: function (data) {
+          var self = this;
           NProgress.done();
           // After displaying DOM
           this.$nextTick(function() {
@@ -53,6 +54,7 @@ module.exports = {
               mokuji.init(entry);
               Prism.highlightAll();
             }
+            self.viewAttachedInfo();
           });
         }
       },
@@ -118,15 +120,13 @@ module.exports = {
         },
         viewAttachedInfo: function () {
           var self = this;
-          var scrollIn = function (event) {
-            var viewportHeight = window.innerHeight;
-            var targetTop = document.getElementById('article-attached-info').getBoundingClientRect().top;
-            if (0 < targetTop && targetTop <= viewportHeight) {
+          var target = document.getElementById('article-attached-info');
+          var inview = InView(target, function(isInView, data) {
+            if (isInView) {
               self.requestAttachedData(post_id, page_type);
-              window.removeEventListener('scroll', scrollIn, false);
+              this.destroy();
             }
-          };
-          window.addEventListener('scroll', scrollIn, false);
+          });
         },
       },
       filters: {
