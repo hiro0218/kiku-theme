@@ -33,14 +33,6 @@ function head_cleanup() {
     remove_action( 'wp_head','wp_oembed_add_discovery_links' );
     remove_action( 'wp_head','wp_oembed_add_host_js' );
 
-    // REST API
-    // remove Request Header: REST API endpoint
-    remove_action( 'template_redirect', 'rest_output_link_header', 11 );
-    // stop REST API Request
-    add_filter( 'rest_enabled', '__return_false' );
-    // stop JSONP
-    add_filter( 'rest_jsonp_enabled', '__return_false' );
-
     // Jetpack
     remove_action( 'wp_head', 'jetpack_og_tags' );
     add_filter( 'jetpack_implode_frontend_css', '__return_false' );
