@@ -67,7 +67,7 @@ add_action('rest_api_init', function() {
     register_rest_field('post', 'thumbnail', [
         'get_callback' => function($object, $field_name, $request, $type) {
             global $Image;
-            $url = $Image->get_entry_image(true, $object['id']);
+            $url = $Image->get_entry_image(false, $object['id']);
             return empty($url) ? null : $url;
         },
         'update_callback' => null,

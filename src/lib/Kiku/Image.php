@@ -142,14 +142,17 @@ class Image {
     }
 
     public function get_asin_image($post_id) {
+        $url = '';
         $product_data = get_post_meta($post_id, CF_AMAZON_PRODUCT_TAG, true);
         $data = json_decode($product_data, true);
 
-        if (!is_array($data)) {
-            return "";
+        // migration
+        if (is_array($data["LargeImage"])) {
+            $url = $data["LargeImage"]['URL'];
+        } else if (is_string($data["LargeImage"])) {
+            $url = $data["LargeImage"];
         }
 
-        $url = $data["LargeImage"];
         if (empty($url)) {
             return "";
         }
