@@ -142,7 +142,10 @@ module.exports = {
       filters: {
         zeroPadding: function(number) {
           return ("0" + number).slice(-2);
-        }
+        },
+        escapeBrackets: function(text) {
+          return text.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        },
       },
     });
   },

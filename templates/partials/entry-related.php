@@ -3,8 +3,8 @@
   <div class="entry-related">
     <div class="related-container" v-for="(related,index) in relateds">
       <a v-bind:href="related.uri">
-        <div class="related-title">{{ related.title }}</div>
-        <div class="related-description">{{ related.description }}</div>
+        <div class="related-title" v-html="$options.filters.escapeBrackets(related.title)"></div>
+        <div class="related-description" v-html="$options.filters.escapeBrackets(related.description)"></div>
       </a>
     </div>
   </div>

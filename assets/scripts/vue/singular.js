@@ -113,7 +113,10 @@ module.exports = {
             date = new Date(date);
           }
           return date.toISOString().split('T')[0].replace(/-/g , '/');
-        }
+        },
+        escapeBrackets: function(text) {
+          return text.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        },
       }
     });
   },

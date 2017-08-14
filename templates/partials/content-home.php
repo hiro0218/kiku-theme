@@ -12,9 +12,9 @@
         </div>
         <div class="entry-body">
           <header>
-            <h2 class="entry-title">{{post.title}}</h2>
+            <h2 class="entry-title" v-html="$options.filters.escapeBrackets(post.title)"></h2>
           </header>
-          <div class="entry-summary">{{post.excerpt}}</div>
+          <div class="entry-summary" v-html="$options.filters.escapeBrackets(post.excerpt)"></div>
           <footer>
             <div class="entry-meta">
               <ul class="entry-time">
