@@ -14,9 +14,6 @@ module.exports = {
       return;
     }
 
-    var entry = document.getElementsByClassName('entry-content')[0];
-    this.setScript(entry);
-
     var app = new Vue({
       el: '#app',
       data: {
@@ -47,6 +44,8 @@ module.exports = {
           var self = this;
           // After displaying DOM
           this.$nextTick(function() {
+            var entry = this.$el.getElementsByClassName('entry-content')[0];
+            self.setScript(entry);
             self.viewAttachedInfo();
           });
         }
@@ -103,6 +102,12 @@ module.exports = {
             }
           });
         },
+        setScript (element) {
+          common.addExternalLink(element);
+          common.zoomImage(element);
+          mokuji.init(element);
+          Prism.highlightAll();
+        },
       },
       filters: {
         formatDate: function(date) {
@@ -119,11 +124,5 @@ module.exports = {
         },
       }
     });
-  },
-  setScript (element) {
-    common.addExternalLink(element);
-    common.zoomImage(element);
-    mokuji.init(element);
-    Prism.highlightAll();
   },
 };
