@@ -4,7 +4,7 @@
   </article>
 </template>
 
-<article class="entry" v-show="loaded">
+<article class="entry" v-cloak v-show="loaded">
   <header>
     <h1 class="entry-title"><?php echo esc_html(get_the_title()); ?></h1>
     <div class="entry-meta">

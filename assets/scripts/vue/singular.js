@@ -44,7 +44,11 @@ module.exports = {
       },
       watch: {
         loaded: function (data) {
-          this.viewAttachedInfo();
+          var self = this;
+          // After displaying DOM
+          this.$nextTick(function() {
+            self.viewAttachedInfo();
+          });
         }
       },
       methods: {
