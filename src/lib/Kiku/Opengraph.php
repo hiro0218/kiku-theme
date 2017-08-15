@@ -99,7 +99,7 @@ class Opengraph {
 
         $this->og_twtr_tag['twitter:site']    = $id;
         $this->og_twtr_tag['twitter:creator'] = $id;
-        $this->og_twtr_tag['twitter:card']    = summary;
+        $this->og_twtr_tag['twitter:card']    = 'summary';
         $this->og_twtr_tag['twitter:image']   = $this->og_tag['og:image'];
     }
 
