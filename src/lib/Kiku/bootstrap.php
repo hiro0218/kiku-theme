@@ -23,7 +23,6 @@ require KIKU_LIB_PATH. 'Share.php';
 require KIKU_LIB_PATH. 'structured-data/Schema.php';
 $Entry = new Entry();
 $Image = new Image();
-$Ogp = new \Opengraph();
 $Schema = new \Schema();
 
 // module

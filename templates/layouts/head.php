@@ -1,4 +1,4 @@
-<?php global $Ogp; ?>
+<?php $Ogp = new \Opengraph(); ?>
 <head prefix="<?= $Ogp->output_prefix(); ?>">
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
