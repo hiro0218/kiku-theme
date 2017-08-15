@@ -88,7 +88,7 @@ class Mokuji_Admin {
     }
 
     private function is_rest_api() {
-        $rest_route = $GLOBALS['wp']->query_vars['rest_route'];
+        $rest_route = isset($GLOBALS['wp']->query_vars['rest_route']) ? $GLOBALS['wp']->query_vars['rest_route'] : '';
 
         if (!$rest_route) {
             return false;
