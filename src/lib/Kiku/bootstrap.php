@@ -19,6 +19,7 @@ require KIKU_LIB_PATH. 'DB.php';
 require KIKU_LIB_PATH. 'Amazon.php';
 require KIKU_LIB_PATH. 'Opengraph.php';
 require KIKU_LIB_PATH. 'Share.php';
+require KIKU_LIB_PATH. 'RestApi.php';
 require KIKU_LIB_PATH. 'structured-data/Schema.php';
 $Entry = new Entry();
 $Image = new Image();
@@ -31,9 +32,6 @@ require KIKU_LIB_PATH. 'modules/post.php';
 require KIKU_LIB_PATH. 'modules/seo.php';
 require KIKU_LIB_PATH. 'modules/search.php';
 require KIKU_LIB_PATH. 'modules/widget.php';
-
-// api
-require KIKU_LIB_PATH. 'api/posts.php';
 
 // plugin
 require KIKU_LIB_PATH . 'plugins/mokuji/Mokuji.php';
