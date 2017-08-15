@@ -1,8 +1,6 @@
 <?php
 namespace Kiku;
 
-use AvpLab\PhpHtmlBuilder;
-
 class Amazon {
     public static function get_amazon_product($post_id) {
         global $Aapapi;

@@ -1,7 +1,5 @@
 <?php
 
-use AvpLab\PhpHtmlBuilder;
-
 class Share {
     public $display = [
         'twitter' => false,
