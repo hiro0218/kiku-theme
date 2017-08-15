@@ -1,7 +1,10 @@
 <?php
 namespace Kiku;
 
-date_default_timezone_set(get_option('timezone_string'));
+$timezone_string = get_option('timezone_string');
+if ($timezone_string) {
+    date_default_timezone_set($timezone_string);
+}
 
 define('KIKU_LIB_PATH', realpath(__DIR__) .DIRECTORY_SEPARATOR);
 
