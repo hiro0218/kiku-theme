@@ -33,9 +33,6 @@ require KIKU_LIB_PATH. 'modules/seo.php';
 require KIKU_LIB_PATH. 'modules/search.php';
 require KIKU_LIB_PATH. 'modules/widget.php';
 
-// component
-require KIKU_LIB_PATH. 'components/alert.php';
-
 // api
 require KIKU_LIB_PATH. 'api/posts.php';
 

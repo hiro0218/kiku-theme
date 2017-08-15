@@ -1,1 +1,3 @@
-<?php Kiku\Components\the_alert('alert-danger', __('Page not found')); ?>
+<div class='alert alert-danger'>
+  <?php echo __('Page not found'); ?>
+</div>
