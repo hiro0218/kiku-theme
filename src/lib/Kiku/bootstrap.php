@@ -17,7 +17,6 @@ require KIKU_LIB_PATH. 'Entry.php';
 require KIKU_LIB_PATH. 'Image.php';
 require KIKU_LIB_PATH. 'DB.php';
 require KIKU_LIB_PATH. 'Amazon.php';
-require KIKU_LIB_PATH. 'papapi.php';
 require KIKU_LIB_PATH. 'Opengraph.php';
 require KIKU_LIB_PATH. 'Share.php';
 require KIKU_LIB_PATH. 'structured-data/Schema.php';
@@ -43,12 +42,3 @@ require KIKU_LIB_PATH. 'plugins/setting/kiku-setting.php';
 
 require KIKU_LIB_PATH. '../Sage/Soil/nice-search.php';
 require KIKU_LIB_PATH. '../Sage/Soil/nav-walker.php';
-
-$Aapapi = null;
-if (is_admin()) {
-    $access_key = get_option('kiku_amazon_api_key');
-    $secret_key = get_option('kiku_amazon_secret_key');
-    $associate_id = get_option('kiku_amazon_associate_tag');
-
-    $Aapapi = new \Aapapi\Aapapi($access_key, $secret_key, $associate_id);
-}

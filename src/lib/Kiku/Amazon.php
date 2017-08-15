@@ -1,9 +1,10 @@
 <?php
 namespace Kiku;
+require KIKU_LIB_PATH. 'Aapapi.php';
 
 class Amazon {
     public static function get_amazon_product($post_id) {
-        global $Aapapi;
+        $Aapapi = new \Aapapi\Aapapi();
 
         $asin = get_post_meta($post_id, CF_ASIN, true);
 

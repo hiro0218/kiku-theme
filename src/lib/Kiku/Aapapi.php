@@ -15,8 +15,12 @@ class Aapapi {
     protected $client = null;
     protected $request = null;
 
-    public function __construct($accessKeyId, $secretKey, $associateId) {
-        if ( empty($accessKeyId) || empty($secretKey) || empty($associateId) ) {
+    public function __construct() {
+        $access_key = get_option('kiku_amazon_api_key');
+        $secret_key = get_option('kiku_amazon_secret_key');
+        $associate_id = get_option('kiku_amazon_associate_tag');
+
+        if ( empty($access_key) || empty($secret_key) || empty($associate_id) ) {
             return;
         }
 
@@ -24,9 +28,9 @@ class Aapapi {
         $this->request = new GuzzleRequest($this->client);
         $this->config = new GenericConfiguration();
         $this->config->setCountry($this->get_country())
-                     ->setAccessKey($accessKeyId)
-                     ->setSecretKey($secretKey)
-                     ->setAssociateTag($associateId)
+                     ->setAccessKey($access_key)
+                     ->setSecretKey($secret_key)
+                     ->setAssociateTag($associate_id)
                      ->setRequest($this->request);
     }
 
