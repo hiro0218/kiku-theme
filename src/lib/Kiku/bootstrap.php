@@ -29,7 +29,6 @@ $Schema = new \Schema();
 require KIKU_LIB_PATH. 'modules/admin.php';
 require KIKU_LIB_PATH. 'modules/clean.php';
 require KIKU_LIB_PATH. 'modules/post.php';
-require KIKU_LIB_PATH. 'modules/disable.php';
 require KIKU_LIB_PATH. 'modules/seo.php';
 require KIKU_LIB_PATH. 'modules/search.php';
 require KIKU_LIB_PATH. 'modules/widget.php';
