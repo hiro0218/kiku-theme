@@ -15,7 +15,6 @@ function basic_tags() {
     if ( !empty($author_page) ) {
         echo '<link itemprop="author" href="'. $author_page .'" />'. PHP_EOL;
     }
-    // echo '<link rel="alternate" hreflang="'. get_locale() .'" href="'. BLOG_URL .'" />'. PHP_EOL;
 
     // page
     if ( is_singular() ) {
@@ -51,35 +50,12 @@ function have_next_page() {
 }
 
 // DNS Prefetch
-function dns_prefetch_tags() {
-    echo PHP_EOL;
-    echo '<meta http-equiv="x-dns-prefetch-control" content="on">'. PHP_EOL;
-    $generate_dns = [
-        "cdnjs.cloudflare.com",
-        "stats.wp.com",
-        "www.google-analytics.com",
-        "ecx.images-amazon.com",
-        "stats.g.doubleclick.net",
-        "ajax.googleapis.com",
-        "fonts.googleapis.com",
-        "pixel.wp.com"
-    ];
-    $tag_template = '<link rel="dns-prefetch" href="//%s">' . PHP_EOL;
-
-    foreach ( $generate_dns as $domain ) {
-        echo sprintf( $tag_template, $domain );
-    }
-}
-// Until WordPress 4.6 Release
-if ( !function_exists('wp_resource_hints') ) {
-    add_action( 'wp_head',  __NAMESPACE__ . '\\dns_prefetch_tags', 15 );
-}
-
 function add_resource_hints( $hints, $relation_type ){
     if ( $relation_type == 'dns-prefetch' ){
-        $hints[] = "//www.google-analytics.com";
-        $hints[] = "//images-amazon.com";
-        $hints[] = "//images-na.ssl-images-amazon.com";
+        $hints[] = "//googletagmanager.com";
+        $hints[] = "//google-analytics.com";
+        $hints[] = "//googlesyndication.com";
+        $hints[] = "//ssl-images-amazon.com";
     }
     return $hints;
 }
