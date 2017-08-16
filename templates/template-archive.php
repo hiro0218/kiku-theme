@@ -23,12 +23,12 @@ $archives = $DB->get_archive_list(); ?>
     }
     ?>
     <?php foreach($store as $year => $value): ?>
-    <h2 class="archive-year"><?= $year ?></h2>
+    <h2 class="archive-year"><?php echo $year ?></h2>
     <ul>
       <?php foreach($value as $entry): ?>
       <li>
-        <time datetime="<?= date(DATE_W3C, $entry['date']) ?>"><?= date('M d', $entry['date']) ?></time>
-        <a href="<?= get_permalink($entry['id']) ?>"><?= esc_html($entry['title']) ?></a>
+        <time datetime="<?php echo date(DATE_W3C, $entry['date']) ?>"><?php echo date('M d', $entry['date']) ?></time>
+        <a href="<?php echo get_permalink($entry['id']) ?>"><?php echo esc_html($entry['title']) ?></a>
       </li>
       <?php endforeach; ?>
     </ul>

@@ -3,7 +3,7 @@
 </template>
 
 <div class="entry-list" v-cloak v-show="loaded">
-  <h1 class="page-header"><?= App\title(); ?></h1>
+  <h1 class="page-header"><?php echo App\title(); ?></h1>
   <a v-bind:href="post.link" v-for="(post,index) in posts">
     <article class="entry-container">
       <div class="entry-image" v-bind:data-thumbnail-image="post.thumbnail">

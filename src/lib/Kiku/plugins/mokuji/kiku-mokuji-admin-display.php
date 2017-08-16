@@ -12,7 +12,7 @@
         }
         echo $message;
     ?>
-    <form method="post" action="<?= esc_html('?page=' . $_GET['page'] . '&update'); ?>">
+    <form method="post" action="<?php echo esc_html('?page=' . $_GET['page'] . '&update'); ?>">
         <?php wp_nonce_field(plugin_basename(__FILE__), 'mokuji-admin-options'); ?>
         <table class="form-table">
             <tbody>
@@ -20,10 +20,10 @@
                     <th><label for="position"><?php _e('Position', 'kiku'); ?></label></th>
                     <td>
                         <select name="position" id="position">
-                            <option value="<?= MKJ_POSITION_BEFORE_FIRST_HEADING; ?>"<?php if (MKJ_POSITION_BEFORE_FIRST_HEADING == $this->options['position']) echo ' selected="selected"'; ?>><?php _e('Before first heading (default)', 'kiku'); ?></option>
-                            <option value="<?= MKJ_POSITION_AFTER_FIRST_HEADING; ?>"<?php if (MKJ_POSITION_AFTER_FIRST_HEADING == $this->options['position']) echo ' selected="selected"'; ?>><?php _e('After first heading', 'kiku'); ?></option>
-                            <option value="<?= MKJ_POSITION_CONTENTS_TOP; ?>"<?php if (MKJ_POSITION_CONTENTS_TOP == $this->options['position']) echo ' selected="selected"'; ?>><?php _e('Top', 'kiku'); ?></option>
-                            <option value="<?= MKJ_POSITION_CONTENTS_BOTTOM; ?>"<?php if (MKJ_POSITION_CONTENTS_BOTTOM == $this->options['position']) echo ' selected="selected"'; ?>><?php _e('Bottom', 'kiku'); ?></option>
+                            <option value="<?php echo MKJ_POSITION_BEFORE_FIRST_HEADING; ?>"<?php if (MKJ_POSITION_BEFORE_FIRST_HEADING == $this->options['position']) echo ' selected="selected"'; ?>><?php _e('Before first heading (default)', 'kiku'); ?></option>
+                            <option value="<?php echo MKJ_POSITION_AFTER_FIRST_HEADING; ?>"<?php if (MKJ_POSITION_AFTER_FIRST_HEADING == $this->options['position']) echo ' selected="selected"'; ?>><?php _e('After first heading', 'kiku'); ?></option>
+                            <option value="<?php echo MKJ_POSITION_CONTENTS_TOP; ?>"<?php if (MKJ_POSITION_CONTENTS_TOP == $this->options['position']) echo ' selected="selected"'; ?>><?php _e('Top', 'kiku'); ?></option>
+                            <option value="<?php echo MKJ_POSITION_CONTENTS_BOTTOM; ?>"<?php if (MKJ_POSITION_CONTENTS_BOTTOM == $this->options['position']) echo ' selected="selected"'; ?>><?php _e('Bottom', 'kiku'); ?></option>
                         </select>
                     </td>
                 </tr>
@@ -46,7 +46,7 @@
                     <th><label for="show_heading_text"><?php _e('Heading text', 'kiku'); ?></label></th>
                     <td>
                         <div class="more_mokuji_options<?php if (!$this->options['show_heading_text']) echo ' disabled'; ?>">
-                            <input type="text" class="regular-text" value="<?= esc_html($this->options['heading_text'], ENT_COMPAT, 'UTF-8'); ?>" id="show_heading_text" name="heading_text" />
+                            <input type="text" class="regular-text" value="<?php echo esc_html($this->options['heading_text'], ENT_COMPAT, 'UTF-8'); ?>" id="show_heading_text" name="heading_text" />
                         </div>
                     </td>
                 </tr>

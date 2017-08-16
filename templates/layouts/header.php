@@ -1,7 +1,7 @@
 <header class="header-navigation">
   <div class="container">
     <div class="header-title">
-      <a href="<?= BLOG_URL; ?>"><?php bloginfo('name'); ?></a>
+      <a href="<?php echo BLOG_URL; ?>"><?php bloginfo('name'); ?></a>
     </div>
     <?php if (App\display_sidebar()) : ?>
     <div class="header-menu">

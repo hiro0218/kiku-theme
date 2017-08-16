@@ -10,7 +10,7 @@
       <?php endif; ?>
     </div>
     <div class="footer-copytight">
-      <span>&copy; <?php echo Kiku\Util::get_copyright_year(); ?> <a href="<?= BLOG_URL; ?>"><?= BLOG_NAME; ?></a>.</span>
+      <span>&copy; <?php echo Kiku\Util::get_copyright_year(); ?> <a href="<?php echo BLOG_URL; ?>"><?php echo BLOG_NAME; ?></a>.</span>
     </div>
   </div>
 </footer>
