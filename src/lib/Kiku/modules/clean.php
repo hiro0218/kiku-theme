@@ -118,27 +118,6 @@ function filter_xmlrpc_method($methods) {
 }
 add_filter('xmlrpc_methods', 'filter_xmlrpc_method', 10, 1);
 
-// Remove pingback header
-function filter_headers($headers) {
-    if (isset($headers['X-Pingback'])) {
-        unset($headers['X-Pingback']);
-    }
-    return $headers;
-}
-add_filter('wp_headers', 'filter_headers', 10, 1);
-
-// Disable trackback rewrite rule
-function filter_rewrites($rules) {
-    foreach ($rules as $rule => $rewrite) {
-        if (preg_match('/trackback\/\?\$$/i', $rule)) {
-            unset($rules[$rule]);
-        }
-    }
-    return $rules;
-}
-add_filter('rewrite_rules_array', 'filter_rewrites');
-
-
 // Disable bloginfo('pingback_url')
 function disable_pingback_url($output, $show) {
     if ($show === 'pingback_url') {
@@ -166,12 +145,3 @@ function disable_self_ping($links) {
     }
 }
 add_action('pre_ping', 'disable_self_ping');
-
-// Disable Redirect
-function disable_completion_redirect($redirect_url) {
-    if (is_404()) {
-        return false;
-    }
-    return $redirect_url;
-}
-add_filter( 'redirect_canonical', 'disable_completion_redirect' );
