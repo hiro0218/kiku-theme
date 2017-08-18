@@ -1,4 +1,4 @@
-import singular from '../vue/singular';
+import singular from '../view/singular';
 
 export default {
   init() {

@@ -1,5 +1,5 @@
 /* global WP */
-import home from '../vue/home';
+import home from '../view/home';
 
 export default {
   init() {

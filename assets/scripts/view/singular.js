@@ -1,7 +1,6 @@
 /* global Prism WP */
 import Vue from 'vue';
 import NProgress from 'nprogress/nprogress.js';
-import ago from 's-ago';
 import InView from 'inview';
 import mokuji from '../module/mokuji';
 import common from '../module/common';
@@ -90,7 +89,6 @@ module.exports = {
         setDatetime: function (json) {
           this.date.publish = json.date;
           this.date.modified = (json.date !== json.modified) ? json.modified : null;
-          this.date.timeAgo = ago(new Date(json.modified));
         },
         viewAttachedInfo: function () {
           var self = this;
