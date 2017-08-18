@@ -190,7 +190,7 @@ class Util {
     }
 
     public static function is_dataURI($str): bool {
-      return (boolean)(substr($str, 0, 5) === 'data:');
+        return (boolean)(substr($str, 0, 5) === 'data:');
     }
 
 }

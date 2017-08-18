@@ -1,7 +1,7 @@
 <footer class="footer footer-navigation">
   <div class="container">
     <div class="footer-menu">
-      <?php if (has_nav_menu('primary_navigation')): ?>
+      <?php if (has_nav_menu('primary_navigation')) : ?>
         <nav><?php wp_nav_menu([
           'container' => '',
           'theme_location' => 'primary_navigation',

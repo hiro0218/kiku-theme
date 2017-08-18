@@ -35,14 +35,14 @@
                         <?php
                             $pages = get_pages();
                             $kiku_page = get_option('kiku_author_page');
-                            foreach($pages as $page) {
-                                $link = get_page_link($page->ID);
-                                $selected = ($kiku_page == $link) ? 'selected' : '';
-                                $option = '<option value="'. $link .'" '. $selected .'>';
-                                $option .= $page->post_title;
-                                $option .= '</option>';
-                                echo $option;
-                            }
+                        foreach ($pages as $page) {
+                            $link = get_page_link($page->ID);
+                            $selected = ($kiku_page == $link) ? 'selected' : '';
+                            $option = '<option value="'. $link .'" '. $selected .'>';
+                            $option .= $page->post_title;
+                            $option .= '</option>';
+                            echo $option;
+                        }
                         ?>
                         </select>
                     </td>
@@ -78,18 +78,18 @@
                     </td>
                 <tr>
                     <td>
-                        <?php foreach (get_post_types() as $post_type): ?>
+                        <?php foreach (get_post_types() as $post_type) : ?>
                         <?php
-                            if (in_array($post_type, ['post', 'page'])) {
-                                echo '<label for="kiku_insert_data_bottom_of_more_tag_post_types_' . $post_type . '"> ';
-                                echo '<input type="checkbox" value="' . $post_type . '" id="kiku_insert_data_bottom_of_more_tag_post_types_' . $post_type . '" name="kiku_insert_data_bottom_of_more_tag_post_types[]"';
-                                if ( !empty(get_option('kiku_insert_data_bottom_of_more_tag_post_types')) ) {
-                                    if ( in_array($post_type, get_option('kiku_insert_data_bottom_of_more_tag_post_types')) ) {
-                                        echo ' checked="checked"';
-                                    }
+                        if (in_array($post_type, ['post', 'page'])) {
+                            echo '<label for="kiku_insert_data_bottom_of_more_tag_post_types_' . $post_type . '"> ';
+                            echo '<input type="checkbox" value="' . $post_type . '" id="kiku_insert_data_bottom_of_more_tag_post_types_' . $post_type . '" name="kiku_insert_data_bottom_of_more_tag_post_types[]"';
+                            if ( !empty(get_option('kiku_insert_data_bottom_of_more_tag_post_types')) ) {
+                                if ( in_array($post_type, get_option('kiku_insert_data_bottom_of_more_tag_post_types')) ) {
+                                    echo ' checked="checked"';
                                 }
-                                echo ' />' . $post_type . '</label>';
                             }
+                            echo ' />' . $post_type . '</label>';
+                        }
                         ?>
                         <?php endforeach; ?>
                         <label>
@@ -105,18 +105,18 @@
                 </tr>
                 <tr>
                     <td>
-                        <?php foreach (get_post_types() as $post_type): ?>
+                        <?php foreach (get_post_types() as $post_type) : ?>
                         <?php
-                            if (in_array($post_type, ['post', 'page'])) {
-                                echo '<label for="kiku_insert_data_bottom_of_content_post_types_' . $post_type . '"> ';
-                                echo '<input type="checkbox" value="' . $post_type . '" id="kiku_insert_data_bottom_of_content_post_types_' . $post_type . '" name="kiku_insert_data_bottom_of_content_post_types[]"';
-                                if ( !empty(get_option('kiku_insert_data_bottom_of_content_post_types')) ) {
-                                    if ( in_array($post_type, get_option('kiku_insert_data_bottom_of_content_post_types')) ) {
-                                        echo ' checked="checked"';
-                                    }
+                        if (in_array($post_type, ['post', 'page'])) {
+                            echo '<label for="kiku_insert_data_bottom_of_content_post_types_' . $post_type . '"> ';
+                            echo '<input type="checkbox" value="' . $post_type . '" id="kiku_insert_data_bottom_of_content_post_types_' . $post_type . '" name="kiku_insert_data_bottom_of_content_post_types[]"';
+                            if ( !empty(get_option('kiku_insert_data_bottom_of_content_post_types')) ) {
+                                if ( in_array($post_type, get_option('kiku_insert_data_bottom_of_content_post_types')) ) {
+                                    echo ' checked="checked"';
                                 }
-                                echo ' />' . $post_type . '</label>';
                             }
+                            echo ' />' . $post_type . '</label>';
+                        }
                         ?>
                         <?php endforeach; ?>
                         <label>

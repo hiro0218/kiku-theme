@@ -69,14 +69,14 @@ class Aapapi {
 
         switch ($lang) {
             case 'en_GB':
-            $country = 'co.uk';
-            break;
+                $country = 'co.uk';
+                break;
             case 'ja':
-            $country = 'co.jp';
-            break;
+                $country = 'co.jp';
+                break;
             default:  // en_US
-            $country = 'com';
-            break;
+                $country = 'com';
+                break;
         }
 
         return $country;

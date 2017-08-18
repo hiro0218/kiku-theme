@@ -39,7 +39,7 @@ class Mokuji_Admin {
     }
 
     public function save_admin_options() {
-        if ( !current_user_can('manage_options') ){
+        if ( !current_user_can('manage_options') ) {
             return false;
         }
 

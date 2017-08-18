@@ -28,15 +28,15 @@ class Entry {
 
     // 関連する記事の一覧を取得する
     public function get_similar_posts($post_count = 5, $post_id = null): array {
-        global $post;
         $arr = [];
         $term_ids = [];
+
         if (empty($post_id)) {
             $post_id = get_queried_object_id();
         }
         $categories = get_the_category($post_id);
 
-        if( empty($categories) ) {
+        if ( empty($categories) ) {
             return [];
         }
 
@@ -106,7 +106,7 @@ class Entry {
         $arr = [];
         $i = 0;
 
-        foreach( $categories as $category ) {
+        foreach ( $categories as $category ) {
             $arr[$i] = [
                 "link"   => get_category_link( $category->cat_ID ),
                 "name" => esc_html( $category->cat_name ),
@@ -126,7 +126,7 @@ class Entry {
 
         $arr = [];
         $i = 0;
-        foreach( $tags as $tag ) {
+        foreach ( $tags as $tag ) {
             $arr[$i] = [
                 "link"  => get_tag_link($tag->term_id),
                 "name" => $tag->name,

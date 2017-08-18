@@ -85,8 +85,8 @@ class Kiku_Setting_Admin {
         $pattern = '/(<[a-z0-9]+.*?>)?(<span id="more-[0-9]+"><\/span>)(<\/[a-z0-9]+>)?/i';
         preg_match($pattern, $content, $matches);
 
-        if (!empty($matches[0])){
-            if (strpos($matches[0], '</p>') !== false){
+        if (!empty($matches[0])) {
+            if (strpos($matches[0], '</p>') !== false) {
                 return preg_replace($pattern, '</p>'. $data, $content);
             }
             return preg_replace($pattern, '</p>'. $data .'<p>', $content);
@@ -118,7 +118,7 @@ class Kiku_Setting_Admin {
             return $result;
         }
 
-        foreach($selected_post_types as $post_type) {
+        foreach ($selected_post_types as $post_type) {
             if ( $post_type === get_post_type() ) {
                 $result = true;
                 break;

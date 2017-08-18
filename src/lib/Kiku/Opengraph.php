@@ -23,10 +23,10 @@ class Opengraph {
     }
 
     public function output_og_tag($template, $og_tag) {
-        foreach( $og_tag as $tag_property => $tag_content ) {
+        foreach ( $og_tag as $tag_property => $tag_content ) {
             $tag_content = array_unique( (array)$tag_content );
 
-            foreach( $tag_content as $tag_content_single ) {
+            foreach ( $tag_content as $tag_content_single ) {
                 if (empty( $tag_content_single )) {
                     continue;
                 }

@@ -2,14 +2,14 @@
     <h2><?php _e('Mokuji', 'kiku'); ?></h2>
     <?php
         $message = '';
-        if (isset($_GET['update'])) {
-            $result = $this->save_admin_options();
-            if ($result === true) {
-                $message = '<div id="message" class="updated fade"><p>' . __('Options saved.', 'kiku') . '</p></div>';
-            } else if ($result === false) {
-                $message = '<div id="message" class="error fade"><p>' . __('Save failed.', 'kiku') . '</p></div>';
-            }
+    if (isset($_GET['update'])) {
+        $result = $this->save_admin_options();
+        if ($result === true) {
+            $message = '<div id="message" class="updated fade"><p>' . __('Options saved.', 'kiku') . '</p></div>';
+        } else if ($result === false) {
+            $message = '<div id="message" class="error fade"><p>' . __('Save failed.', 'kiku') . '</p></div>';
         }
+    }
         echo $message;
     ?>
     <form method="post" action="<?php echo esc_html('?page=' . $_GET['page'] . '&update'); ?>">
@@ -30,15 +30,15 @@
                 <tr>
                     <th><?php _e('Auto insert for the following content types', 'kiku'); ?></th>
                     <td>
-                    <?php foreach (get_post_types() as $post_type): ?>
+                    <?php foreach (get_post_types() as $post_type) : ?>
                     <?php
-                        if (in_array($post_type, ['post', 'page'])) {
-                            echo '<input type="checkbox" value="' . $post_type . '" id="auto_insert_post_types_' . $post_type . '" name="auto_insert_post_types[]"';
-                            if (in_array($post_type, $this->options['auto_insert_post_types'])) {
-                                echo ' checked="checked"';
-                            }
-                            echo ' /><label for="auto_insert_post_types_' . $post_type . '"> ' . $post_type . '</label><br>';
+                    if (in_array($post_type, ['post', 'page'])) {
+                        echo '<input type="checkbox" value="' . $post_type . '" id="auto_insert_post_types_' . $post_type . '" name="auto_insert_post_types[]"';
+                        if (in_array($post_type, $this->options['auto_insert_post_types'])) {
+                            echo ' checked="checked"';
                         }
+                        echo ' /><label for="auto_insert_post_types_' . $post_type . '"> ' . $post_type . '</label><br>';
+                    }
                     ?>
                     <?php endforeach; ?>
                 </tr>

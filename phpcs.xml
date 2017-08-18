@@ -14,18 +14,10 @@
   <!-- Show sniff codes in all reports -->
   <arg value="s"/>
 
-  <!-- Use PSR-2 as a base -->
-  <rule ref="PSR2"/>
-
   <!-- Exclusions below are for templates/ folder -->
-  
+
   <!-- Allow php files without any PHP in them -->
   <rule ref="Internal.NoCodeFound">
-    <exclude-pattern>templates</exclude-pattern>
-  </rule>
-
-  <!-- Allow braces on same line for named functions -->
-  <rule ref="Squiz.Functions.MultiLineFunctionDeclaration.BraceOnSameLine">
     <exclude-pattern>templates</exclude-pattern>
   </rule>
 
@@ -53,7 +45,7 @@
   <rule ref="PSR2.Namespaces.UseDeclaration.SpaceAfterLastUse">
     <exclude-pattern>templates</exclude-pattern>
   </rule>
-  
+
   <!-- Allow long lines -->
   <rule ref="Generic.Files.LineLength.TooLong">
     <exclude-pattern>templates</exclude-pattern>
@@ -62,7 +54,7 @@
   <!-- Ignore indentation rules -->
   <rule ref="Generic.WhiteSpace.ScopeIndent">
     <exclude-pattern>templates</exclude-pattern>
-  </rule>  
+  </rule>
 
   <!-- Allow PHP closing tags -->
   <rule ref="PSR2.Files.ClosingTag.NotAllowed">

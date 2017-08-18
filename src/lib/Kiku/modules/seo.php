@@ -51,7 +51,7 @@ function have_next_page() {
 
 // DNS Prefetch
 function add_resource_hints( $hints, $relation_type ){
-    if ( $relation_type == 'dns-prefetch' ){
+    if ( $relation_type == 'dns-prefetch' ) {
         $hints[] = "//googletagmanager.com";
         $hints[] = "//google-analytics.com";
         $hints[] = "//googlesyndication.com";

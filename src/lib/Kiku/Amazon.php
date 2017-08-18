@@ -66,26 +66,26 @@ class Amazon {
         $domain = '';
 
         switch (get_locale()) {
-          case 'ja':
-          $domain = 'amazon.co.jp';
-          break;
-          case 'zh_CN':
-          $domain = 'amazon.cn';
-          break;
-          case 'de_DE':
-          $domain = 'amazon.de';
-          break;
-          case 'fr_FR':
-          $domain = 'amazon.fr';
-          break;
-          case 'it_IT':
-          $domain = 'amazon.it';
-          break;
-          case 'en_GB':
-          $domain = 'amazon.co.uk';
-          break;
-          default:
-          $domain = 'amazon.com';
+            case 'ja':
+                $domain = 'amazon.co.jp';
+                break;
+            case 'zh_CN':
+                $domain = 'amazon.cn';
+                break;
+            case 'de_DE':
+                $domain = 'amazon.de';
+                break;
+            case 'fr_FR':
+                $domain = 'amazon.fr';
+                break;
+            case 'it_IT':
+                $domain = 'amazon.it';
+                break;
+            case 'en_GB':
+                $domain = 'amazon.co.uk';
+                break;
+            default:
+                $domain = 'amazon.com';
         }
 
         return $domain;

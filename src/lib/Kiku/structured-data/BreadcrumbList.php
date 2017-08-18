@@ -22,7 +22,7 @@ class BreadcrumbList {
 
             // category
             $categories = array_reverse($categories);
-            foreach($categories as $category) {
+            foreach ($categories as $category) {
                 $item_list[] = [
                     "@type"    => "ListItem",
                     "position" => $position,

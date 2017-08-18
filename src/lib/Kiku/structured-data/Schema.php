@@ -44,12 +44,12 @@ class Schema {
     }
 
     public function make_search_action() {
-      require_once(realpath(__DIR__) .DIRECTORY_SEPARATOR .'SearchAction.php');
-      $SearchAction = new SearchAction();
-      $array = $SearchAction->render();
-      if ($array) {
-          echo $this->make_script_tag($this->array_to_json($array));
-      }
+        require_once(realpath(__DIR__) .DIRECTORY_SEPARATOR .'SearchAction.php');
+        $SearchAction = new SearchAction();
+        $array = $SearchAction->render();
+        if ($array) {
+            echo $this->make_script_tag($this->array_to_json($array));
+        }
     }
 
 }

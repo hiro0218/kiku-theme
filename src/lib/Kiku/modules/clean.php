@@ -138,8 +138,8 @@ add_action('xmlrpc_call', 'disable_xmlrpc');
 // Disable self-ping
 function disable_self_ping($links) {
     $home = get_option('home');
-    foreach ( $links as $l => $link ){
-        if ( 0 === strpos( $link, $home ) ){
+    foreach ( $links as $l => $link ) {
+        if ( 0 === strpos( $link, $home ) ) {
             unset($links[$l]);
         }
     }
