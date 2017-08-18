@@ -1,3 +1,4 @@
+<?php while (have_posts()) : the_post(); ?>
 <template v-if="loaded === false">
   <article class="entry">
     <?php get_template_part('partials/placeholder-single'); ?>
@@ -19,3 +20,4 @@
     <?php get_template_part('partials/entry/breadcrumb'); ?>
   </footer>
 </article>
+<?php endwhile; ?>

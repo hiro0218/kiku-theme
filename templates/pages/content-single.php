@@ -8,6 +8,7 @@ $Schema->make_blog_posting();
   </article>
 </template>
 
+<?php while (have_posts()) : the_post(); ?>
 <article class="entry" v-cloak v-show="loaded">
   <header>
     <h1 class="entry-title"><?php echo esc_html(get_the_title()); ?></h1>
@@ -31,3 +32,4 @@ $Schema->make_blog_posting();
   <?php get_template_part('partials/entry-related'); ?>
   <?php get_template_part('partials/entry-pager'); ?>
 </aside>
+<?php endwhile; ?>
