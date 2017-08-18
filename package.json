@@ -23,6 +23,7 @@
     "clean": "rimraf dist",
     "lint:js": "eslint -c .eslintrc assets/scripts assets/build",
     "lint:sass": "sass-lint -c .sass-lint.yml -q -v",
+    "php7cc": "vendor/bin/php7cc src/ templates/",
     "test": "yarn run lint -s"
   },
   "engines": {
