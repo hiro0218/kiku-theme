@@ -2,7 +2,7 @@
 
 class BlogPosting {
     public function render() {
-        global $Image;
+        global $post, $Image;
 
         $args = [
             "@context" => "http://schema.org",
@@ -16,7 +16,7 @@ class BlogPosting {
             "dateModified"  => get_the_modified_time(DATE_ISO8601),
             "author" => [
                 "@type" => "Person",
-                "name"  => get_the_author()
+                "name"  => esc_html(get_the_author_meta('display_name', $post->post_author))
             ],
             "description" => \Kiku\Util::get_excerpt_content()
         ];

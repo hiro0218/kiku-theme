@@ -1,6 +1,3 @@
-<?php
-global $Schema;
-$Schema->make_breadcrumb_list(); ?>
 <nav class="breadcrumb">
   <ol>
     <li>

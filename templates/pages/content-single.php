@@ -1,7 +1,3 @@
-<?php
-global $Schema;
-$Schema->make_blog_posting();
-?>
 <template v-if="loaded === false">
   <article class="entry">
     <?php get_template_part('partials/placeholder-single'); ?>

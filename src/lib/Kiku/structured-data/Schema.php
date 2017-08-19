@@ -5,6 +5,8 @@
 class Schema {
     public function __construct() {
         add_action('wp_head', [$this, 'make_search_action'], 25);
+        add_action('wp_head', [$this, 'make_blog_posting'], 25);
+        add_action('wp_head', [$this, 'make_breadcrumb_list'], 25);
     }
 
     private function make_script_tag(string $json) {
