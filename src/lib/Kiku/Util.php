@@ -5,19 +5,17 @@ class Util {
 
     // コピーライト用の年号(開始-現在)を取得する
     public static function get_copyright_year(): string {
-        $DB = new \Kiku\DB();
-        $copyright_dates = $DB->get_frist_last_post_year();
+        $result = wp_cache_get('copyright_dates');
 
-        $output = '';
-        if ($copyright_dates) {
-            $copyright = $copyright_dates[0]->firstdate;
-            if ( $copyright_dates[0]->firstdate != $copyright_dates[0]->lastdate ) {
-                $copyright .= '-' . $copyright_dates[0]->lastdate;
-            }
-            $output = $copyright;
+        if ($result === false) {
+            global $Entry;
+            $latest_date = $Entry->get_latest_post_date();
+            $frist_date = $Entry->get_first_post_date();
+            $result = date("Y", strtotime($frist_date)) .' - '. date("Y", strtotime($latest_date));
+            wp_cache_set('copyright_dates', $result, '', 2592000);
         }
 
-        return $output;
+        return $result;
     }
 
 

@@ -15,18 +15,4 @@ class DB {
 
         return $archives;
     }
-
-    public function get_frist_last_post_year() {
-        global $wpdb;
-
-        $sql = "SELECT YEAR(min(post_date_gmt)) AS firstdate,
-                YEAR(max(post_date_gmt)) AS lastdate
-                FROM $wpdb->posts
-                WHERE
-                 post_type = 'post' AND
-                 post_status = 'publish'";
-        $copyright_dates = $wpdb->get_results($sql);
-
-        return $copyright_dates;
-    }
 }

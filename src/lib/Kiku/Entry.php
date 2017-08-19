@@ -165,4 +165,25 @@ class Entry {
 
         return $pager;
     }
+
+    public function get_latest_post_date() {
+      global $post;
+
+      $date = '';
+      $loop = get_posts('numberposts=1&post_status=publish&post_type=post');
+      $date = $loop[0]->post_date;
+
+      return $date;
+    }
+
+    public function get_first_post_date() {
+      global $post;
+
+      $date = '';
+      $loop = get_posts('numberposts=1&order=ASC&post_status=publish&post_type=post');
+      $date = $loop[0]->post_date;
+
+      return $date;
+    }
+
 }
