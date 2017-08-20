@@ -14,14 +14,12 @@ function head_cleanup() {
     remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
     remove_action('wp_head', 'wp_generator');
     remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
-    remove_action('wp_head', '_wp_render_title_tag', 1);
     remove_action('wp_head', 'feed_links', 2);
     remove_action('wp_head', 'locale_stylesheet');
     remove_action('wp_head', 'noindex', 1);
     remove_action('wp_head', 'wp_print_head_scripts', 9);
     remove_action('wp_head', 'wp_no_robots');
     remove_action('wp_head', 'wp_post_preview_js', 1);
-    remove_action('wp_head', '_custom_logo_header_styles');
     add_filter('use_default_gallery_style', '__return_false');
 
     // emoji
