@@ -1,6 +1,9 @@
-// bulma variable
+// override bulma variable
 // --------------------
-$widescreen: 1000px;  // disable widescreen
+// Responsiveness
+$desktop: 960px;
+$widescreen: 1152px;
+$fullhd: $widescreen;
 
 // import
 // --------------------
@@ -20,11 +23,6 @@ $widescreen: 1000px;  // disable widescreen
   @include desktop {
     width: $desktop - (2 * $base-size);
     max-width: $desktop - (2 * $base-size);
-    &.is-fluid {
-      width: auto;
-      max-width: none;
-      margin: 0 $base-size;
-    }
   }
   @include widescreen {
     width: $widescreen - (2 * $base-size);
