@@ -22,6 +22,7 @@ require KIKU_LIB_PATH. 'SEO.php';
 require KIKU_LIB_PATH. 'Share.php';
 require KIKU_LIB_PATH. 'RestApi.php';
 require KIKU_LIB_PATH. 'structured-data/Schema.php';
+require KIKU_LIB_PATH. 'Widget.php';
 $Entry = new Entry();
 $Image = new Image();
 
@@ -29,7 +30,6 @@ $Image = new Image();
 require KIKU_LIB_PATH. 'modules/admin.php';
 require KIKU_LIB_PATH. 'modules/clean.php';
 require KIKU_LIB_PATH. 'modules/post.php';
-require KIKU_LIB_PATH. 'modules/widget.php';
 
 // plugin
 require KIKU_LIB_PATH . 'plugins/mokuji/Mokuji.php';
