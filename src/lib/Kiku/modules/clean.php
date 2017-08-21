@@ -124,15 +124,6 @@ function filter_xmlrpc_method($methods) {
 }
 add_filter('xmlrpc_methods', 'filter_xmlrpc_method', 10, 1);
 
-// Disable bloginfo('pingback_url')
-function disable_pingback_url($output, $show) {
-    if ($show === 'pingback_url') {
-        $output = '';
-    }
-    return $output;
-}
-add_filter('bloginfo_url', 'disable_pingback_url', 10, 2);
-
 // Disable XMLRPC call
 function disable_xmlrpc($action) {
     if ($action === 'pingback.ping') {
