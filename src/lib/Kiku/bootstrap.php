@@ -18,6 +18,7 @@ require KIKU_LIB_PATH. 'Image.php';
 require KIKU_LIB_PATH. 'DB.php';
 require KIKU_LIB_PATH. 'Amazon.php';
 require KIKU_LIB_PATH. 'Opengraph.php';
+require KIKU_LIB_PATH. 'SEO.php';
 require KIKU_LIB_PATH. 'Share.php';
 require KIKU_LIB_PATH. 'RestApi.php';
 require KIKU_LIB_PATH. 'structured-data/Schema.php';
@@ -29,7 +30,6 @@ $Schema = new \Schema();
 require KIKU_LIB_PATH. 'modules/admin.php';
 require KIKU_LIB_PATH. 'modules/clean.php';
 require KIKU_LIB_PATH. 'modules/post.php';
-require KIKU_LIB_PATH. 'modules/seo.php';
 require KIKU_LIB_PATH. 'modules/widget.php';
 
 // plugin
