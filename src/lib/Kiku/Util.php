@@ -3,6 +3,19 @@ namespace Kiku;
 
 class Util {
 
+    public static function output_prefix() {
+        $ogp_prefix = '';
+        $opg_template = "og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# %s: http://ogp.me/ns/%s#";
+
+        if (is_singular()) {
+          $ogp_prefix = sprintf($opg_template, 'article', 'article');
+        } else {
+          $ogp_prefix = sprintf($opg_template, 'website', 'website');
+        }
+
+        return $ogp_prefix;
+    }
+
     // コピーライト用の年号(開始-現在)を取得する
     public static function get_copyright_year(): string {
         $result = wp_cache_get('copyright_dates');

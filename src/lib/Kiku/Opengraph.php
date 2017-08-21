@@ -1,6 +1,6 @@
 <?php
 
-class Opengraph {
+class OpenGraph {
     private $og_tag = [];
     private $og_twtr_tag = [];
     private $template_meta_prop = '<meta property="%s" content="%s">'. PHP_EOL;
@@ -8,18 +8,6 @@ class Opengraph {
 
     public function __construct() {
         add_action('wp_head', [$this, 'set_og_tags'], 20);
-    }
-
-    public function output_prefix() {
-        $prefix = "";
-
-        if (is_singular()) {
-            $prefix = "og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#";
-        } else {
-            $prefix = "og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#";
-        }
-
-        return $prefix;
     }
 
     public function output_og_tag($template, $og_tag) {
@@ -121,3 +109,5 @@ class Opengraph {
     }
 
 }
+
+$OpenGraph = new OpenGraph();
