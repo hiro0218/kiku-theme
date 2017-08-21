@@ -25,3 +25,5 @@ class Mokuji {
         add_filter('the_content', [$this->mokuji_admin, 'the_content'], 200);
     }
 }
+
+$Mokuji = new Mokuji();

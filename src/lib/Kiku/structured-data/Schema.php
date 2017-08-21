@@ -55,3 +55,5 @@ class Schema {
     }
 
 }
+
+$Schema = new Schema();

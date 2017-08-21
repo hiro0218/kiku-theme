@@ -24,7 +24,6 @@ require KIKU_LIB_PATH. 'RestApi.php';
 require KIKU_LIB_PATH. 'structured-data/Schema.php';
 $Entry = new Entry();
 $Image = new Image();
-$Schema = new \Schema();
 
 // module
 require KIKU_LIB_PATH. 'modules/admin.php';
@@ -34,7 +33,6 @@ require KIKU_LIB_PATH. 'modules/widget.php';
 
 // plugin
 require KIKU_LIB_PATH . 'plugins/mokuji/Mokuji.php';
-$Mokuji = new Mokuji();
 require KIKU_LIB_PATH. 'plugins/setting/kiku-setting.php';
 
 require KIKU_LIB_PATH. '../Sage/Soil/nice-search.php';
