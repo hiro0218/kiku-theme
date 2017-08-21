@@ -82,7 +82,9 @@ module.exports = {
 
           var self = this;
           self.requestXHR(`/wp-json/kiku/v1/post/${post_id}`, function(json) {
-            self.relateds = json.related;
+            if (json.hasOwnProperty('related') && json.related.length !== 0) {
+              self.relateds = json.related;
+            }
             self.pagers = json.pager;
           });
         },
