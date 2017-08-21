@@ -17,6 +17,7 @@
     <section class="entry-content">
       <?php the_content(); ?>
     </section>
+    <?php get_template_part('partials/entry-paginated'); ?>
     <?php get_template_part('partials/amazon-product'); ?>
     <footer>
       <?php get_template_part('partials/entry-breadcrumb'); ?>

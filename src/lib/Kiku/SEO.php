@@ -43,26 +43,27 @@ class SEO {
         }
 
         $pages = count(explode('<!--nextpage-->', $post->post_content));
-        if ($pages === 0) {
+        if ($pages <= 1) {
             return $tags;
         }
 
+        $permalink = rtrim(get_the_permalink(), '/') .'/';
         if ($page === $pages) {
             if ($page === 2) {
-                $tag .= sprintf($tag_prev, get_the_permalink());
+                $tag .= sprintf($tag_prev, $permalink);
             } else {
-                $tag .= sprintf($tag_prev, get_the_permalink() . ($page - 1) );
+                $tag .= sprintf($tag_prev, $permalink . ($page - 1) );
             }
         } else {
             if ($page === 0) {
-                $tag .= sprintf($tag_next. PHP_EOL, get_the_permalink() . ($page + 2) );
+                $tag .= sprintf($tag_next, $permalink . ($page + 2) );
             } else {
                 if ($page === 2) {
-                    $tag .= sprintf($tag_prev, get_the_permalink());
+                    $tag .= sprintf($tag_prev, $permalink);
                 } else {
-                    $tag .= sprintf($tag_prev, get_the_permalink() . ($page - 1) );
+                    $tag .= sprintf($tag_prev, $permalink . ($page - 1) );
                 }
-                $tag .= sprintf($tag_next, get_the_permalink() . ($page + 1) );
+                $tag .= sprintf($tag_next, $permalink . ($page + 1) );
             }
         }
 
