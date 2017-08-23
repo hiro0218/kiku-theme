@@ -1,6 +1,8 @@
 .breadcrumb {
   margin-bottom: 1rem;
   line-height: 1.5rem;
+  white-space: nowrap;
+  overflow: scroll;
 
   a {
     color: inherit;

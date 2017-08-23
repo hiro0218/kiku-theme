@@ -1,5 +1,6 @@
 .entry-meta {
   color: $grey-400;
+  font-size: 0;
 
   a {
     color: inherit;
@@ -44,7 +45,10 @@
 // .entry-time {}
 
 // category
-// .entry-category {}
+.entry-category {
+  white-space: nowrap;
+  overflow: scroll;
+}
 
 // tag
 .entry-tag {

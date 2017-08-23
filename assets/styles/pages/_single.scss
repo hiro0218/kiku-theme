@@ -1,16 +1,6 @@
 .entry {
   margin-bottom: 1rem;
 
-  > header {
-    margin-bottom: 1rem;
-  }
-
-  > footer {
-    *:last-child {
-      margin-bottom: 0;
-    }
-  }
-
   .entry-title {
     margin: 0 0 .5rem;
     font-size: $font-size-h2;
@@ -19,6 +9,10 @@
     word-wrap: break-word;
   }
 
+  .entry-meta {
+    height: 4rem;
+    margin-bottom: 1rem;
+  }
 }
 
 .entry-content {
