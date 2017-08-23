@@ -117,6 +117,21 @@ class Entry {
         return $arr;
     }
 
+    public function get_parent_category(): array {
+        $categories = get_the_category();
+        $arr = [];
+
+        if (!empty($categories)) {
+            $category = $categories[0];
+            $arr[] = [
+                "link" => get_category_link($category->cat_ID),
+                "name" => esc_html($category->cat_name),
+            ];
+        }
+
+        return $arr;
+    }
+
     // 設定されたタグの一覧を取得する
     public function get_tag(): array {
         $tags = get_the_tags();
