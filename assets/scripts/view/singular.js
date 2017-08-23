@@ -7,6 +7,9 @@ import common from '../module/common';
 
 module.exports = {
   init() {
+    var entry = document.querySelector('.entry-content');
+    this.setScript(entry);
+
     var post_id = WP.page_id;
     var page_type = WP.page_type;
     if (!post_id || !page_type) {
@@ -43,8 +46,6 @@ module.exports = {
           var self = this;
           // After displaying DOM
           this.$nextTick(function() {
-            var entry = this.$el.getElementsByClassName('entry-content')[0];
-            self.setScript(entry);
             self.viewAttachedInfo();
           });
         }
@@ -90,23 +91,23 @@ module.exports = {
         },
         setDatetime: function (json) {
           this.date.publish = json.date;
-          this.date.modified = (json.date !== json.modified) ? json.modified : null;
+          this.date.modified = (this.isSameDay(json.date, json.modified)) ? null : json.modified;
+        },
+        isSameDay: function (publish, modified) {
+          return new Date(publish).toDateString() == new Date(modified).toDateString();
         },
         viewAttachedInfo: function () {
           var self = this;
           var target = document.getElementById('article-attached-info');
+          if (!target) {
+            return;
+          }
           var inview = InView(target, function(isInView, data) {
             if (isInView) {
               self.requestAttachedData(post_id, page_type);
               this.destroy();
             }
           });
-        },
-        setScript (element) {
-          common.addExternalLink(element);
-          common.zoomImage(element);
-          mokuji.init(element);
-          Prism.highlightAll();
         },
       },
       filters: {
@@ -124,5 +125,11 @@ module.exports = {
         },
       }
     });
+  },
+  setScript (element) {
+    common.addExternalLink(element);
+    common.zoomImage(element);
+    mokuji.init(element);
+    Prism.highlightAll();
   },
 };
