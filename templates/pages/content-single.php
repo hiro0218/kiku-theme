@@ -1,12 +1,6 @@
-<div class="container">
-  <template v-if="loaded === false">
-    <article class="entry">
-      <?php get_template_part('partials/placeholder-single'); ?>
-    </article>
-  </template>
-
 <?php while (have_posts()) : the_post(); ?>
-  <article class="entry" v-cloak v-show="loaded">
+<div class="container">
+  <article class="entry">
     <header>
       <h1 class="entry-title"><?php echo esc_html(get_the_title()); ?></h1>
       <div class="entry-meta">
@@ -27,5 +21,5 @@
   </article>
 
   <?php get_template_part('partials/entry-attached'); ?>
-<?php endwhile; ?>
 </div>
+<?php endwhile; ?>

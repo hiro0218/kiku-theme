@@ -1,11 +1,5 @@
 <?php while (have_posts()) : the_post(); ?>
 <div class="container">
-  <template v-if="loaded === false">
-    <article class="entry">
-      <?php get_template_part('partials/placeholder-single'); ?>
-    </article>
-  </template>
-
   <article class="entry" v-cloak v-show="loaded">
     <header>
       <h1 class="entry-title"><?php echo esc_html(get_the_title()); ?></h1>
