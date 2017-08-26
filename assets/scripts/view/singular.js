@@ -8,7 +8,8 @@ import common from '../module/common';
 module.exports = {
   init() {
     var entry = document.querySelector('.entry-content');
-    this.setScript(entry);
+    mokuji.init(entry);
+    Prism.highlightAll();
 
     var post_id = WP.page_id;
     var page_type = WP.page_type;
@@ -46,6 +47,9 @@ module.exports = {
           var self = this;
           // After displaying DOM
           this.$nextTick(function() {
+            var element = this.$el.querySelector('.entry-content');
+            common.addExternalLink(element);
+            common.zoomImage(element);
             self.viewAttachedInfo();
           });
         }
@@ -82,11 +86,13 @@ module.exports = {
           }
 
           var self = this;
+          NProgress.start();
           self.requestXHR(`/wp-json/kiku/v1/post/${post_id}`, function(json) {
             if (json.hasOwnProperty('related') && json.related.length !== 0) {
               self.relateds = json.related;
             }
             self.pagers = json.pager;
+            NProgress.done();
           });
         },
         setDatetime: function (json) {
@@ -125,11 +131,5 @@ module.exports = {
         },
       }
     });
-  },
-  setScript (element) {
-    common.addExternalLink(element);
-    common.zoomImage(element);
-    mokuji.init(element);
-    Prism.highlightAll();
   },
 };

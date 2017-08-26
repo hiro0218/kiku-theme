@@ -19,7 +19,6 @@
       <?php get_template_part('partials/entry-share'); ?>
     </footer>
   </article>
-
-  <?php get_template_part('partials/entry-attached'); ?>
 </div>
+<?php get_template_part('partials/entry-attached'); ?>
 <?php endwhile; ?>

@@ -1,20 +1,18 @@
 .pager {
+  height: 6rem;
+  padding: 0 1rem;
+  background: $grey-200;
+}
+
+.pager-container {
   display: flex;
-  margin-bottom: 1rem;
-  font-size: $font-size-sm;
 
   a {
     display: flex;
     flex: none;
     flex-direction: column;
     width: 50%;
-    padding: .5rem;
-    border-radius: .125rem;
-    color: $grey-500;
-
-    &:hover {
-      background: $grey-100;
-    }
+    padding: 1rem 0;
 
     &:only-child {
       flex-grow: 1;
@@ -43,13 +41,16 @@
 
   .pager-icon {
     color: $grey-800;
+    font-size: $font-size-sm;
   }
 
   .pager-label {
-    text-transform: uppercase;
+    color: $grey-400;
+    text-transform: capitalize;
   }
 
   .pager-title {
+    color: $grey-600;
     @include ellipsis(100%);
   }
 

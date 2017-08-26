@@ -69,7 +69,6 @@ module.exports = {
     }
   },
   zoomImage(element) {
-    var zoom = new Zooming();
     var entryImg = element.getElementsByTagName('img');
     var length = entryImg.length;
 
@@ -78,12 +77,14 @@ module.exports = {
       return;
     }
 
+    var zoom = new Zooming({
+      scaleBase: .8
+    });
+
     for (var i = 0; i < length; i += 1) {
-      // parentNode is <a> Tag
-      if (entryImg[i].getAttribute('data-zoom-disabled') === 'true' || entryImg[i].parentNode.nodeName.toUpperCase() === 'A') {
+      if (entryImg[i].getAttribute('data-zoom-disabled') === 'true') {
         continue;
       }
-      // set cursor zoom-in
       entryImg[i].style.cursor = 'zoom-in';
       zoom.listen(entryImg[i]);
     }
