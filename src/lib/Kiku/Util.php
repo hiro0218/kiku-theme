@@ -83,47 +83,6 @@ class Util {
         return $url;
     }
 
-
-    /**
-     *  日付関連
-     */
-
-    // 更新されているか
-    public static function is_modified_post(): bool {
-        return (get_the_time('Ymd') < get_the_modified_time('Ymd'));
-    }
-
-    // 更新時間差
-    public static function get_posted_time_ago($timestamp): string {
-        if ($timestamp === null) {
-            return '';
-        }
-
-        $current_time = CURRENT_TIMESTAMP ?: time();
-        $difference = ($current_time - $timestamp);
-        $periods = ['second', 'minute', 'hour', 'day', 'week', 'month', 'year', 'decade'];
-        $lengths = [60, 60, 24, 7, 4.35, 12, 10];
-
-        for ($j = 0; isset($lengths[$j]) and $difference >= $lengths[$j] and ( empty($unit) or $unit != $periods[$j]); $j++) {
-            $difference /= $lengths[$j];
-        }
-
-        $difference = round($difference);
-
-        // 1でなければ複数形にする
-        if ($difference != 1) {
-            $periods[$j] = $periods[$j] . 's';
-        }
-
-        // 0以下のとき
-        if ($difference <= 0) {
-            return "";
-        }
-
-        return $difference . ' ' . $periods[$j] . ' ago';
-    }
-
-
     /**
      * URL
      */
@@ -136,9 +95,9 @@ class Util {
     public static function relative_to_absolute_url($url): string {
         if ( self::is_relative_url( $url ) ) {
             return self::base_url( $url );
-        } else {
-            return $url;
         }
+
+        return $url;
     }
 
     public static function is_absolute_url($url): bool {
@@ -150,12 +109,12 @@ class Util {
     }
 
     public static function is_relative_url($url): bool {
-        return ( !(self::is_absolute_url($url) || self::is_root_relative_url($url)) );
+        return !(self::is_absolute_url($url) || self::is_root_relative_url($url));
     }
 
     // ベースURLを設定(絶対URL)
     public static function base_url( $path = null ): string {
-        $parts = parse_url( get_option('home') );
+        $parts = parse_url(BLOG_URL);
         $base_url = trailingslashit($parts['scheme'] . '://' . $parts['host']. $parts['path']);
 
         if ( !is_null($path) ) {
