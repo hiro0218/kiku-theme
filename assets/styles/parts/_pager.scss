@@ -1,11 +1,11 @@
 .pager {
   height: 6rem;
-  padding: 0 1rem;
   background: $grey-200;
 }
 
 .pager-container {
   display: flex;
+  padding: 0 1rem;
 
   a {
     display: flex;
