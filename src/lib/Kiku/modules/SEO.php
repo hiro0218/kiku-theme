@@ -39,12 +39,12 @@ class SEO {
         $tag_next = '<link rel="next" href="%s">'. PHP_EOL;
 
         if (!is_singular()) {
-            return $tags;
+            return $tag;
         }
 
         $pages = count(explode('<!--nextpage-->', $post->post_content));
         if ($pages <= 1) {
-            return $tags;
+            return $tag;
         }
 
         $permalink = rtrim(get_the_permalink(), '/') .'/';
