@@ -29,7 +29,7 @@ $Image = new Image();
 // module
 require KIKU_LIB_PATH. 'modules/admin.php';
 require KIKU_LIB_PATH. 'modules/clean.php';
-require KIKU_LIB_PATH. 'modules/post.php';
+require KIKU_LIB_PATH. 'modules/Posts.php';
 
 // plugin
 require KIKU_LIB_PATH . 'plugins/mokuji/Mokuji.php';

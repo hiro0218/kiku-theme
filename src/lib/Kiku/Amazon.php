@@ -1,8 +1,8 @@
 <?php
-namespace Kiku;
 require KIKU_LIB_PATH. 'Aapapi.php';
 
 class Amazon {
+
     public static function get_amazon_product($post_id) {
         $Aapapi = new \Aapapi\Aapapi();
 
@@ -102,3 +102,8 @@ class Amazon {
         }
     }
 }
+
+$Amazon = new Amazon();
+
+add_action('save_post', [$Amazon, 'save_amazon_product_tag'], 11, 2);
+add_action('deleted_post_meta', [$Amazon, 'deleted_asin_meta'], 10, 4);
