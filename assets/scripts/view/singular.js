@@ -7,14 +7,15 @@ import common from '../module/common';
 
 module.exports = {
   init() {
-    var entry = document.querySelector('.entry-content');
-    mokuji.init(entry);
-    Prism.highlightAll();
-
     var post_id = WP.page_id;
     var page_type = WP.page_type;
     if (!post_id || !page_type) {
       return;
+    }
+    if (page_type === 'posts') {
+      var entry = document.querySelector('.entry-content');
+      mokuji.init(entry);
+      Prism.highlightAll();
     }
 
     var app = new Vue({
