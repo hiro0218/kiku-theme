@@ -31,7 +31,7 @@
     </a>
   </div>
 
-  <section v-cloak v-show="loaded">
+  <section>
     <?php echo get_option('kiku_insert_data_top_of_pagination'); ?>
     <?php get_template_part('partials/pagination', 'home'); ?>
   </section>
