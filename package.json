@@ -74,7 +74,7 @@
     "babel-polyfill": "^6.26.0",
     "bulma": "^0.5.1",
     "headroom.js": "^0.9.4",
-    "inview": "^0.0.8",
+    "inview": "^0.0.9",
     "mokuji.js": "^1.3.4",
     "normalize.css": "^7.0.0",
     "nprogress": "^0.2.0",
