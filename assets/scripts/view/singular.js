@@ -60,11 +60,18 @@ module.exports = {
           var xhr = new XMLHttpRequest();
           xhr.onreadystatechange = function(){
             if (this.readyState === 4 && this.status === 200) {
-              callback(this.response);
+              var response = this.response;
+
+              // for IE11
+              if (navigator.userAgent.indexOf('Trident') !== -1) {
+                response = JSON.parse(response);
+              }
+
+              callback(response);
             }
           };
-          xhr.responseType = 'json';
           xhr.open('GET', url, true);
+          xhr.responseType = 'json';
           xhr.send();
         },
         requestPostData: function (post_id, page_type) {

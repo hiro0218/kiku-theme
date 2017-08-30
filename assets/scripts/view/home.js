@@ -105,11 +105,18 @@ module.exports = {
             if (this.readyState === 4 && this.status === 200) {
               self.headers.total = Number(this.getResponseHeader('X-WP-Total'));
               self.headers.totalpages = Number(this.getResponseHeader('X-WP-TotalPages'));
-              callback(this.response);
+              var response = this.response;
+
+              // for IE11
+              if (navigator.userAgent.indexOf('Trident') !== -1) {
+                response = JSON.parse(response);
+              }
+
+              callback(response);
             }
           };
-          xhr.responseType = 'json';
           xhr.open('GET', url, true);
+          xhr.responseType = 'json';
           xhr.send();
         },
         requestPostData: function () {
