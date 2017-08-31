@@ -107,8 +107,7 @@ module.exports = {
               self.headers.totalpages = Number(this.getResponseHeader('X-WP-TotalPages'));
               var response = this.response;
 
-              // for IE11
-              if (navigator.userAgent.indexOf('Trident') !== -1) {
+              if (typeof(response) === 'string') {
                 response = JSON.parse(response);
               }
 

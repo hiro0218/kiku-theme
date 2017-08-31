@@ -62,8 +62,7 @@ module.exports = {
             if (this.readyState === 4 && this.status === 200) {
               var response = this.response;
 
-              // for IE11
-              if (navigator.userAgent.indexOf('Trident') !== -1) {
+              if (typeof(response) === 'string') {
                 response = JSON.parse(response);
               }
 
