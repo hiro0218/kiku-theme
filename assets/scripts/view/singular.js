@@ -1,7 +1,7 @@
 /* global Prism WP */
 import Vue from 'vue';
 import NProgress from 'nprogress/nprogress.js';
-import InView from 'inview';
+import inView from 'in-view';
 import mokuji from '../module/mokuji';
 import common from '../module/common';
 
@@ -111,15 +111,8 @@ module.exports = {
         },
         viewAttachedInfo: function () {
           var self = this;
-          var target = document.getElementById('article-attached-info');
-          if (!target) {
-            return;
-          }
-          var inview = InView(target, function(isInView, data) {
-            if (isInView) {
-              self.requestAttachedData(post_id, page_type);
-              this.destroy();
-            }
+          inView('#article-attached-info').once('enter', function() {
+            self.requestAttachedData(post_id, page_type);
           });
         },
       },
