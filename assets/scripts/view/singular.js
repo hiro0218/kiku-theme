@@ -12,11 +12,10 @@ module.exports = {
     if (!post_id || !page_type) {
       return;
     }
-    if (page_type === 'posts') {
-      var entry = document.querySelector('.entry-content');
-      mokuji.init(entry);
-      Prism.highlightAll();
-    }
+    var entry = document.querySelector('.entry-content');
+    common.addExternalLink(entry);
+    mokuji.init(entry);
+    Prism.highlightAll();
 
     var app = new Vue({
       el: '#app',
@@ -49,7 +48,6 @@ module.exports = {
           // After displaying DOM
           this.$nextTick(function() {
             var element = this.$el.querySelector('.entry-content');
-            common.addExternalLink(element);
             common.zoomImage(element);
             self.viewAttachedInfo();
           });
