@@ -21,11 +21,15 @@ class BlogPosting {
             "description" => \Kiku\Util::get_excerpt_content()
         ];
 
-        $image_src = $Image->get_entry_image(false);
+        $image_src = '';
+        if (is_singular()) {
+            $image_src = $Image->get_entry_image(false);
+        }
+
         if (!empty($image_src)) {
-            $size = $Image->get_image_size($image_src);
-            $width = 0;
-            $height = 0;
+            $size = null; // TODO: $Image->get_image_size($image_src);
+            $width = 696;
+            $height = 696;
 
             if (!empty($size)) {
                 $width  = $size['width'];
