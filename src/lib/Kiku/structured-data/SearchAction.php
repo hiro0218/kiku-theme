@@ -2,10 +2,6 @@
 
 class SearchAction {
     public function render() {
-        if (!is_home() && !is_front_page()) {
-            return;
-        }
-
         $args = [
             "@context" => "http://schema.org",
             "@type"    => "WebSite",

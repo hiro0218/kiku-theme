@@ -46,6 +46,10 @@ class Schema {
     }
 
     public function make_search_action() {
+        if (!is_home() && !is_front_page()) {
+            return;
+        }
+
         require_once(realpath(__DIR__) .DIRECTORY_SEPARATOR .'SearchAction.php');
         $SearchAction = new SearchAction();
         $array = $SearchAction->render();
