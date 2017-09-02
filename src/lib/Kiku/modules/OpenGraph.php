@@ -105,7 +105,7 @@ class OpenGraph {
             return get_site_icon_url();
         }
 
-        return \Kiku\Util::add_scheme_relative_url($image_url);
+        return $image_url;
     }
 
 }

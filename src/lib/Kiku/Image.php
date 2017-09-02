@@ -28,23 +28,18 @@ class Image {
         }
 
         // has thumbnail
-        $image_src = $this->get_post_thumbnail_image();
+        $image_src = $this->get_post_thumbnail_image($post_id);
         if (!empty($image_src)) {
             return $image_src;
         }
 
         // has img tag
-        $image_src = $this->get_post_image_from_tag($datauri);
+        $image_src = $this->get_post_image_from_tag($datauri, $post_id);
 
         return $image_src;
     }
 
     public function get_post_thumbnail_image($size = null): string {
-        global $post;
-        if (empty($post_id)) {
-            $post_id = get_queried_object_id();
-        }
-
         $url = "";
         $attachment_image_src = null;
 
@@ -54,7 +49,7 @@ class Image {
 
         $thumbnail_id = get_post_thumbnail_id();
 
-        if ($size == null) {
+        if ($size === null) {
             // wp_get_attachment_image_src -> thumbnail, medium, large, full
             // try large size
             $attachment_image_src = wp_get_attachment_image_src($thumbnail_id, 'large');
@@ -80,51 +75,47 @@ class Image {
         return $this->is_correct_image($url) ? $url : "";
     }
 
-    public function get_post_image_from_tag($datauri = true): string {
-        global $post;
-        if (empty($post_id)) {
-            $post_id = get_queried_object_id();
-        }
-
+    public function get_post_image_from_tag($datauri = true, $post_id): string {
         $src = "";
         $content = "";
 
         // get from Amazon Product Tag
-        $content = get_post_meta($post->ID, CF_AMAZON_PRODUCT_TAG, true);
+        $content = get_post_meta($post_id, CF_AMAZON_PRODUCT_TAG, true);
 
-        if ( empty($content) ) {
+        // get from post content
+        if (empty($content)) {
+            $post = get_post($post_id);
             $content = $post->post_content;
         }
 
         // maybe URL or Path, sortcode?
-        if ( preg_match('/<img.*?src=(["\'])(.+?)\1.*?>/i', $content, $match) ) {
+        if (preg_match('/<img.*?src=(["\'])(.+?)\1.*?>/i', $content, $match)) {
             $src = $match[2];
         }
 
         // bye
-        if ( empty($src) ) {
+        if (empty($src)) {
             return "";
         }
 
         // image file?
-        if ( Util::is_image($src) ) {
+        if (Util::is_image($src)) {
             return Util::relative_to_absolute_url($src);
         }
 
-        // shortcode?
-        if ( Util::is_shortcode($src) ) {
+        // is theme shortcode
+        if (Util::is_shortcode($src)) {
             $src = do_shortcode($src);
 
-            if ( Util::is_url($src) && Util::is_image($src) ) {
+            if (Util::is_url($src)) {
                 return Util::relative_to_absolute_url($src);
             }
             // denied DataURI
-            if ( !$datauri ) {
-                return "";
-            }
-            // not Data URI
-            if ( !Util::is_dataURI($src) ) {
-                return "";
+            if ($datauri) {
+                // not Data URI
+                if (!Util::is_dataURI($src)) {
+                    return "";
+                }
             }
         }
 
