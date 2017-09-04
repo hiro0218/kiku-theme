@@ -15,12 +15,20 @@ module.exports = {
           totalpages: 0,
         },
         pagination: {
-          active: 0,
-          first: 0,
-          prev: 0,
-          next: 0,
-          last: 0,
-          pages: [],
+          label: {
+            first: 0,
+            prev: 0,
+            next: 0,
+            last: 0,
+            active: 0,
+          },
+          pages: {},
+          links: {
+            first: '',
+            prev: '',
+            next: '',
+            last: '',
+          },
         },
         posts: [],
       },
@@ -50,6 +58,7 @@ module.exports = {
           var ceil  = Math.ceil(range / 2);
           var min = 0;
           var max = 0;
+          var param = this.getPaginationParam();
 
           if (totalpages > range) {
             if (paged <= range) {
@@ -70,18 +79,22 @@ module.exports = {
           var prev = paged - 1;
           var first = 1;
           if (first && (1 != paged)) {
-            this.pagination.first = first;
+            this.pagination.label.first = first;
+            this.pagination.links.first = `${param}/page/${first}/`;
           }
           if (prev && (1 != paged)) {
             this.pagination.prev = prev;
+            this.pagination.links.prev = `${param}/page/${prev}/`;
           }
 
           if (min && max) {
             for (var i = min; i <= max; i++) {
               if (paged == i) {
-                this.pagination.active = i;
+                this.pagination.label.active = i;
               }
-              this.pagination.pages.push(i);
+              this.pagination.pages[i] = {
+                links: `${param}/page/${i}/`,
+              };
             }
           }
 
@@ -89,15 +102,28 @@ module.exports = {
             var next = paged + 1;
             var last = totalpages;
             if (next) {
-              this.pagination.next = next;
+              this.pagination.label.next = next;
+              this.pagination.links.next = `${param}/page/${next}/`;
             }
             if (last) {
-              this.pagination.last = last;
+              this.pagination.label.last = last;
+              this.pagination.links.last = `${param}/page/${last}/`;
             }
           }
         },
       },
       methods: {
+        getPaginationParam: function () {
+          if (WP.category_name) {
+            return `/category/${WP.category_name}`;
+          } else if (WP.tag_name) {
+            return `/tag/${WP.tag_name}`;
+          } else if (WP.search) {
+            return `/search/${WP.search}`;
+          } else {
+            return '';
+          }
+        },
         requestXHR: function(url, callback) {
           var self = this;
           var xhr = new XMLHttpRequest();

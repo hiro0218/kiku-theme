@@ -33,8 +33,10 @@ class REST_API {
             'page_id' => $this->get_page_id(),
             'categories_exclude' => $this->get_categories_exclude(),
             'category' => $this->get_category_id(),
+            'category_name' => $this->get_category_name(),
             'search' => $this->get_search_query(),
             'tag' => $this->get_tag_id(),
+            'tag_name' => $this->get_tag_name(),
         ];
         $vars = json_encode($vars, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT);
 
@@ -93,6 +95,13 @@ class REST_API {
         return get_query_var('cat');
     }
 
+    private function get_category_name() {
+        if (!is_category()) {
+            return null;
+        }
+        return get_query_var('category_name');
+    }
+
     private function get_search_query() {
         if (!is_search()) {
             return null;
@@ -105,6 +114,13 @@ class REST_API {
             return null;
         }
         return get_query_var('tag_id');
+    }
+
+    private function get_tag_name() {
+        if (!is_tag()) {
+            return null;
+        }
+        return get_query_var('tag');
     }
 
     public function rest_api_init() {
