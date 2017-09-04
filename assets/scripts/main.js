@@ -2,7 +2,6 @@ import Router from './util/router';
 
 import common from './routes/Common';
 import home from './routes/Home';
-import date from './routes/Date';
 import category from './routes/Category';
 import search from './routes/Search';
 import tag from './routes/Tag';
@@ -17,7 +16,6 @@ const routes = new Router({
   common,
   // Home page
   home,
-  date,
   category,
   search,
   tag,

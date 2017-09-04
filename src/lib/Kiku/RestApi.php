@@ -31,7 +31,6 @@ class REST_API {
             'paged' => $this->get_paged(),
             'page_type' => $this->get_post_type(),
             'page_id' => $this->get_page_id(),
-            'archive' => $this->get_archive_date(),
             'categories_exclude' => $this->get_categories_exclude(),
             'category' => $this->get_category_id(),
             'search' => $this->get_search_query(),
@@ -77,34 +76,6 @@ class REST_API {
             return null;
         }
         return get_the_ID();
-    }
-
-    private function get_archive_date() {
-        if (!is_date()) {
-            return null;
-        }
-        $archive = [];
-        $year = get_query_var('year');
-        $month = get_query_var('monthnum');
-        $day = get_query_var('day');
-
-        if (empty($month) && empty($day)) {
-            // yearly: Returns 1/1 to 12/31 of the current year
-            $archive = [
-                'after'  => date('Y-m-d\TH:i:s', mktime(0, 0, 0, 1, 1, $year)),
-                'before' => date('Y-m-d\TH:i:s', mktime(23, 59, 59, 12, 31, $year)),
-            ];
-        } else {
-            // monthly: Return frist day / last day of the current month
-            // daily: Return 0: 00 ~ 23: 59 of the day
-            $date = $year . (($month) ? '-' . $month : '') . (($day) ? '-' . $day : '');
-            $archive = [
-                'after'  => date('Y-m-d\TH:i:s', strtotime('first day of 00:00:00'. $date)),
-                'before' => date('Y-m-d\TH:i:s', strtotime('last day of 23:59:59'. $date)),
-            ];
-        }
-
-        return $archive;
     }
 
     private function get_categories_exclude() {

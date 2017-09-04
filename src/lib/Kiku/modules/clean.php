@@ -95,6 +95,13 @@ function remove_description_from_title_tag($title) {
 }
 add_filter( 'document_title_parts', __NAMESPACE__ . '\\remove_description_from_title_tag', 10, 1 );
 
+function disabled_archives() {
+    if (is_date() || is_author()) {
+        global $wp_query;
+        $wp_query->set_404();
+    }
+}
+add_action('template_redirect', __NAMESPACE__ . '\\disabled_archives');
 
 //
 // admin
