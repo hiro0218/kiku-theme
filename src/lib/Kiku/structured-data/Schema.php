@@ -19,6 +19,10 @@ class Schema {
     }
 
     public function make_article() {
+        if (!is_singular()) {
+            return;
+        }
+
         require_once(realpath(__DIR__) .DIRECTORY_SEPARATOR .'Article.php');
         $Article = new Article();
         $array = $Article->render();
@@ -28,6 +32,10 @@ class Schema {
     }
 
     public function make_blog_posting() {
+        if (!is_singular()) {
+            return;
+        }
+
         require_once(realpath(__DIR__) .DIRECTORY_SEPARATOR .'BlogPosting.php');
         $BlogPosting = new BlogPosting();
         $array = $BlogPosting->render();
@@ -37,6 +45,10 @@ class Schema {
     }
 
     public function make_breadcrumb_list() {
+        if (!is_singular()) {
+            return;
+        }
+
         require_once(realpath(__DIR__) .DIRECTORY_SEPARATOR .'BreadcrumbList.php');
         $BreadcrumbList = new BreadcrumbList();
         $array = $BreadcrumbList->render();

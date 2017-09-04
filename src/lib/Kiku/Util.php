@@ -38,30 +38,35 @@ class Util {
 
     // 記事内容の抜粋
     public static function get_excerpt_content(): string {
-        global $post;
         $content = "";
+        $post_id = get_queried_object_id();
 
-        if ( has_excerpt( $post->ID ) ) {
+        if (has_excerpt($post_id)) {
             // This post has excerpt
             $content = get_the_excerpt();
         } else {
             // This post has no excerpt
+            $post = get_post($post_id);
             $content = $post->post_content;
         }
 
-        // タグを省いて取得
-        $content = self::remove_tags( $content );
-
         // 何も取得できない
-        if ( empty($content) ) {
+        if (empty($content)) {
             return NOTHING_CONTENT;
         }
+
+        // タグを省いて取得
+        $content = self::remove_tags($content);
 
         // 整形
         return mb_substr($content, 0, EXCERPT_LENGTH) . EXCERPT_HELLIP;
     }
 
     private static function remove_tags(string $str): string {
+        if (empty($str)) {
+            return '';
+        }
+
         $str = wp_strip_all_tags($str);
         $str = strip_shortcodes($str);
         $str = self::remove_white_space($str, "");
