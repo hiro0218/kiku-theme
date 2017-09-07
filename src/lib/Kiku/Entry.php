@@ -103,15 +103,33 @@ class Entry {
     // 設定されたカテゴリの一覧を取得する
     public function get_category(): array {
         $categories = get_the_category();
+        $category_bottom = [];
         $arr = [];
-        $i = 0;
 
-        foreach ( $categories as $category ) {
-            $arr[$i] = [
-                "link"   => get_category_link( $category->cat_ID ),
-                "name" => esc_html( $category->cat_name ),
+        if (!empty($categories)) {
+          $parent_ids = [];
+
+          foreach ($categories as $category) {
+            if ($category->parent !== 0) {
+              $parent_ids[] = $category->parent;
+            }
+          }
+          foreach ($categories as $category) {
+            if (!in_array($category->term_id, $parent_ids)) {
+              $category_bottom[] = $category->term_id;
+            }
+          }
+        }
+
+        if (!empty($category_bottom)) {
+          $ancestors = array_reverse(get_ancestors($category_bottom[0], 'category'));
+          $ancestors[] = $category_bottom[0];
+          foreach ($ancestors as $ancestor) {
+            $arr[] = [
+                "link" => get_category_link($ancestor),
+                "name" => get_cat_name($ancestor)
             ];
-            $i++;
+          }
         }
 
         return $arr;
