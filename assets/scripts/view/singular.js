@@ -14,6 +14,7 @@ module.exports = {
     }
     var entry = document.querySelector('.entry-content');
     common.addExternalLink(entry);
+    common.setTableContainer(entry);
     mokuji.init(entry);
     Prism.highlightAll();
 

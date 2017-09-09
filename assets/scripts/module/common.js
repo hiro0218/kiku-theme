@@ -89,6 +89,23 @@ module.exports = {
       zoom.listen(entryImg[i]);
     }
   },
+  setTableContainer(entry) {
+    var tables = entry.querySelectorAll('table');
+    var length = tables.length;
+
+    if (length === 0) {
+      return;
+    }
+
+    var div = document.createElement('div');
+    div.classList.add('table-container');
+
+    for (var i = 0; i < length; i += 1) {
+      var wrapper = div.cloneNode(false);
+      tables[i].before(wrapper);
+      wrapper.append(tables[i]);
+    }
+  },
   /**
    * delay()(function(){console.log("hello1");}, 5000);
    */
