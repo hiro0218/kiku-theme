@@ -22,7 +22,7 @@ $Image = new Image();
 
 // module
 require KIKU_LIB_PATH. 'modules/admin.php';
-require KIKU_LIB_PATH. 'modules/clean.php';
+require KIKU_LIB_PATH. 'modules/Clean.php';
 require KIKU_LIB_PATH. 'modules/DB.php';
 require KIKU_LIB_PATH. 'modules/OpenGraph.php';
 require KIKU_LIB_PATH. 'modules/Posts.php';
