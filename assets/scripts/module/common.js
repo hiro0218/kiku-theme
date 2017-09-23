@@ -82,7 +82,8 @@ module.exports = {
     });
 
     for (var i = 0; i < length; i += 1) {
-      if (entryImg[i].getAttribute('data-zoom-disabled') === 'true') {
+      // parentNode is <a> Tag
+      if (entryImg[i].getAttribute('data-zoom-disabled') === 'true' || entryImg[i].parentNode.nodeName === 'A') {
         continue;
       }
       entryImg[i].style.cursor = 'zoom-in';
