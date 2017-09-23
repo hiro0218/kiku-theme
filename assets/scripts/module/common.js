@@ -106,16 +106,6 @@ module.exports = {
       wrapper.append(tables[i]);
     }
   },
-  /**
-   * delay()(function(){console.log("hello1");}, 5000);
-   */
-  delay() {
-    var timer = 0;
-    return function (callback, delay) {
-      clearTimeout(timer);
-      timer = setTimeout(callback, delay);
-    };
-  },
   getStyleSheetValue(element, property) {
     if (!element || !property) {
       return null;
