@@ -8,7 +8,7 @@ class Clean {
         add_filter('user_trailingslashit', [$this, 'add_trailing_slash'], 10, 2);
         add_filter('the_content',  [$this, 'remove_ptags_from_images']);
         add_filter('document_title_parts', [$this, 'remove_description_from_title_tag'], 10, 1);
-        add_action('template_redirect', [$this, 'disabled_archives']);
+        add_action('template_redirect', [$this, 'disabled_pages']);
 
         add_action('admin_init', [$this, 'remove_dashboard_widgets']);
         // Remove "thank you for creating with Wordpress"
@@ -104,8 +104,8 @@ class Clean {
         return $title;
     }
 
-    public function disabled_archives() {
-        if (is_date() || is_author()) {
+    public function disabled_pages() {
+        if (is_date() || is_attachment() || is_author()) {
             global $wp_query;
             $wp_query->set_404();
         }
