@@ -4,6 +4,7 @@ require KIKU_LIB_PATH. 'plugins/amazon/Aapapi.php';
 class Amazon {
 
     public static function get_amazon_product($post_id) {
+        $product_data = null;
         $Aapapi = new \Aapapi\Aapapi();
 
         $asin = get_post_meta($post_id, CF_ASIN, true);
@@ -12,7 +13,11 @@ class Amazon {
             return null;
         }
 
-        $product_data = $Aapapi->lookupASIN(strtoupper($asin));
+        try {
+            $product_data = $Aapapi->lookupASIN(strtoupper($asin));
+        } catch (Exception $e) {
+            return null;
+        }
 
         return $product_data;
     }
