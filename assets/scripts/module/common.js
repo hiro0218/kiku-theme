@@ -21,9 +21,6 @@ module.exports = {
         return function () {
           // set background image
           element.style.backgroundImage = 'url(' + url + ')';
-          // remove no image icon
-          var icon = element.getElementsByClassName('icon')[0];
-          element.removeChild(icon);
         };
       }
 

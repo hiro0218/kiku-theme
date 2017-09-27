@@ -64,19 +64,12 @@ $entry-thumbnail-size: 5rem;  // 80px;
   @include size($entry-thumbnail-size);
   border: 1px solid $grey-200;
   overflow: hidden;
-
-  .icon-image {
-    color: $grey-400;
-    font-size: 2rem;
-    @include size(2rem);
-  }
 }
 
 .image-sheet {
   max-height: $entry-thumbnail-size;
   background: $grey-50 50% no-repeat;
+  background-image: url('../images/no-image.png');
   background-size: cover;
-  line-height: $entry-thumbnail-size;
-  text-align: center;
   @include size($entry-thumbnail-size);
 }

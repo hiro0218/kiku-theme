@@ -10,7 +10,6 @@
         <div class="entry-image" v-bind:data-thumbnail-image="post.thumbnail">
           <div class="image-container">
             <div class="image-sheet">
-              <span class="icon icon-image"></span>
             </div>
           </div>
         </div>
