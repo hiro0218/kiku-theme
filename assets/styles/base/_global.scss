@@ -86,11 +86,12 @@ table {
   width: 100%;
   max-width: 100%;
   border: $table-border-width solid $table-border-color;
-  background: $white;
+  background: #fff;
   border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
   padding: 1rem;
   border: $table-border-width solid $table-border-color;
   border-top: $table-border-width solid $table-border-color;
@@ -100,17 +101,21 @@ th, td {
 thead {
   th {
     border-bottom: ($table-border-width * 2) solid $table-border-color;
-    background: $table-background-color;
+    background: $table-head-bg-color;
     vertical-align: bottom;
   }
-  th, td {
+  th,
+  td {
     border-bottom-width: (2 * $table-border-width);
   }
 }
 
 tbody {
-  tr:hover {
-    background: $table-hover-color;
+  tr {
+    transition: background .3s $animation-curve-fast-out-slow-in;
+    &:hover {
+      background: $table-hover-color;
+    }
   }
   & + & {
     border-top: ($table-border-width * 2) solid $table-border-color;
