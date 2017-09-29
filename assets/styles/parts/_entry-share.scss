@@ -1,33 +1,47 @@
-// $twitter-color:     #55acee;
-// $facebook-color:    #3b5998;
-// $hatena-color:      #2c6ebd;
-// $line-color:        #00c300;
+$twitter-color: #55acee;
+$facebook-color: #3b5998;
+$hatena-color: #00a4de;
+$line-color: #00B900;
 
 .entry-share {
   display: flex;
-  justify-content: center;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   text-align: center;
 
   a {
-    color: $grey-800;
-    font-size: 2rem;
-
+    color: $white;
+    font-size: 1.5rem;
+    line-height: 1;
     &:hover {
-      color: inherit;
+      opacity: .8;
     }
-
     & + a {
-      margin-left: 1rem;
+      margin-left: .5rem;
     }
   }
 }
 
 .btn-twitter,
 .btn-facebook,
-.btn-hatena,
+.btn-line,
+.btn-hatena {
+  flex: auto;
+  padding: .5rem .7rem;
+  border-radius: .125rem;
+}
+
+.btn-twitter {
+  background: $twitter-color;
+}
+
+.btn-facebook {
+  background: $facebook-color;
+}
+
+.btn-hatena {
+  background: $hatena-color;
+}
+
 .btn-line {
-  &:active {
-    transform: scale(.95);
-  }
+  background: $line-color;
 }
