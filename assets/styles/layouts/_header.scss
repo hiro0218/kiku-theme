@@ -9,12 +9,14 @@
   height: $header-nav-height;
   background: #fff;
   box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .25);
+  overflow: hidden;
   z-index: 10;
 
   > .container {
     display: flex;
     align-items: stretch;
     width: 100%;
+    height: 100%;
   }
 }
 
@@ -23,15 +25,14 @@
   display: flex;
   flex: 1;
   align-items: stretch;
+  line-height: $header-nav-height;
 }
 
 .header-title {
   justify-content: flex-start;
-  max-width: 100%;
   color: $grey-900;
   font-size: 1rem;
   white-space: nowrap;
-  overflow: auto;
   a {
     color: inherit;
   }
@@ -39,5 +40,5 @@
 
 .header-menu {
   justify-content: flex-end;
-  margin: auto;
+  font-size: 1.5rem;
 }
