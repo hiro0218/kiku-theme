@@ -87,7 +87,12 @@ module.exports = {
       zoom.listen(entryImg[i]);
     }
   },
+  wrap(element, wrapper) {
+    element.parentNode.insertBefore(wrapper, element);
+    wrapper.appendChild(element);
+  },
   setTableContainer(entry) {
+    var self = this;
     var tables = entry.querySelectorAll('table');
     var length = tables.length;
 
@@ -100,8 +105,7 @@ module.exports = {
 
     for (var i = 0; i < length; i += 1) {
       var wrapper = div.cloneNode(false);
-      tables[i].before(wrapper);
-      wrapper.append(tables[i]);
+      self.wrap(tables[i], wrapper);
     }
   },
   getStyleSheetValue(element, property) {
