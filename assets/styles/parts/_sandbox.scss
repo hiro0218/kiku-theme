@@ -2,6 +2,7 @@
   position: relative;
   padding: 2rem;
   border: .15rem solid $grey-100; // same: pre bgColor
+  background: #fff;
 
   // proximity
   & + pre {
