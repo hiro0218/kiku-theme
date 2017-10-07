@@ -9,7 +9,6 @@ const CopyGlobsPlugin = require('copy-globs-webpack-plugin');
 const config = require('./config');
 
 const assetsFilenames = (config.enabled.cacheBusting) ? config.cacheBusting : '[name]';
-const sourceMapQueryStr = (config.enabled.sourceMaps) ? '+sourceMap' : '-sourceMap';
 
 let webpackConfig = {
   context: config.paths.assets,
@@ -19,6 +18,20 @@ let webpackConfig = {
     path: config.paths.dist,
     publicPath: config.publicPath,
     filename: `scripts/${assetsFilenames}.js`,
+  },
+  stats: {
+    hash: false,
+    version: false,
+    timings: false,
+    children: false,
+    errors: false,
+    errorDetails: false,
+    warnings: false,
+    chunks: false,
+    modules: false,
+    reasons: false,
+    source: false,
+    publicPath: false,
   },
   module: {
     rules: [
@@ -31,65 +44,52 @@ let webpackConfig = {
       {
         test: /\.js$/,
         exclude: [/(node_modules|bower_components)(?![/|\\](bootstrap|foundation-sites))/],
-        loader: 'buble',
-        options: { objectAssign: 'Object.assign' },
+        use: [
+          { loader: 'cache-loader' },
+          { loader: 'thread-loader' },
+          { loader: 'buble', options: { objectAssign: 'Object.assign' } },
+        ],
       },
       {
-        test: /\.css$/,
-        include: config.paths.assets,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style',
-          use: [
-            `css?${sourceMapQueryStr}`,
-            {
-              loader: 'postcss-loader',
-              options: {
-                sourceMap: sourceMapQueryStr,
-                config: {
-                  ctx: {},
-                  path: './assets/build/postcss.config.js',
-                },
-              },
-            },
-          ],
-        }),
-      },
-      {
-        test: /\.scss$/,
+        test: /\.(sass|scss|css)$/,
         include: config.paths.assets,
         loader: ExtractTextPlugin.extract({
           fallback: 'style',
           use: [
-            `css?${sourceMapQueryStr}`,
-            {
-              loader: 'postcss-loader',
+            { loader: 'cache-loader' },
+            { loader: 'thread-loader' },
+            { loader: 'css', options: { sourceMap: config.enabled.sourceMaps } },
+            { loader: 'postcss-loader',
               options: {
-                sourceMap: sourceMapQueryStr,
+                sourceMap: config.enabled.sourceMaps,
                 config: {
-                  ctx: {},
-                  path: './assets/build/postcss.config.js',
+                  ctx: config,
+                  path: __dirname,
                 },
               },
             },
-            `resolve-url?${sourceMapQueryStr}`,
-            `sass?${sourceMapQueryStr}`,
+            { loader: 'resolve-url', options: { sourceMap: config.enabled.sourceMaps } },
+            { loader: 'sass', options: { sourceMap: config.enabled.sourceMaps } },
           ],
         }),
       },
       {
-        test: /\.(ttf|eot|woff2?|png|jpe?g|gif|svg)$/,
+        test: /\.(ttf|eot|woff2?|png|jpe?g|gif|svg|ico)$/,
         include: config.paths.assets,
-        loader: 'file',
+        loader: 'url',
         options: {
+          limit: 4096,
           name: `[path]${assetsFilenames}.[ext]`,
         },
       },
       {
-        test: /\.(ttf|eot|woff2?|png|jpe?g|gif|svg)$/,
-        include: /node_modules/,
-        loader: 'file',
+        test: /\.(ttf|eot|woff2?|png|jpe?g|gif|svg|ico)$/,
+        include: /node_modules|bower_components/,
+        loader: 'url',
         options: {
-          name: `vendor/${assetsFilenames}.[ext]`,
+          limit: 4096,
+          outputPath: 'vendor/',
+          name: `${config.cacheBusting}.[ext]`,
         },
       },
     ],

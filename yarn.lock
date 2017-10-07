@@ -230,7 +230,7 @@ async-throttle@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/async-throttle/-/async-throttle-1.1.0.tgz#229e7f3fa7a2a797e86f360e6309a08224d4fa7a"
 
-async@^2.1.2, async@^2.1.5, async@^2.4.1:
+async@^2.1.2, async@^2.1.5, async@^2.3.0, async@^2.4.1:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/async/-/async-2.5.0.tgz#843190fd6b7357a0b9e1c956edddd5ec8462b54d"
   dependencies:
@@ -1017,6 +1017,14 @@ builtin-status-codes@^3.0.0:
 bulma@^0.5.3:
   version "0.5.3"
   resolved "https://registry.yarnpkg.com/bulma/-/bulma-0.5.3.tgz#be93afb6246192505c30df3f9c1c29a97d319a13"
+
+cache-loader@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/cache-loader/-/cache-loader-1.0.3.tgz#7717963ec082db068b17a1412deaaa72d21c4e30"
+  dependencies:
+    async "^2.3.0"
+    loader-utils "^1.1.0"
+    mkdirp "^0.5.1"
 
 caller-path@^0.1.0:
   version "0.1.0"
@@ -5998,6 +6006,14 @@ tempfile@^2.0.0:
 text-table@^0.2.0, text-table@~0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
+
+thread-loader@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/thread-loader/-/thread-loader-1.1.1.tgz#a351bd9d12978f42b82aab74f76e896eed0a2ba6"
+  dependencies:
+    async "^2.3.0"
+    loader-runner "^2.3.0"
+    loader-utils "^1.1.0"
 
 through2-filter@^2.0.0:
   version "2.0.0"

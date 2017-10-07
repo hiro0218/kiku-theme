@@ -6,7 +6,7 @@ node_modules
 npm-debug.log
 yarn-error.log
 /vendor
-
+/.cache-loader
 *.DS_Store
 ._*
 Thumbs.db
