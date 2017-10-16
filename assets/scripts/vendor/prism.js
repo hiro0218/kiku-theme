@@ -30,6 +30,4 @@ import 'prismjs/plugins/remove-initial-line-feed/prism-remove-initial-line-feed'
 // config
 if (window.Prism) {
   document.removeEventListener('DOMContentLoaded', Prism.highlightAll);
-} else {
-  window.Prism = { manual: true };
 }
