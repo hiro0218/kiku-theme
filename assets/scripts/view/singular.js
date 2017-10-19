@@ -118,7 +118,7 @@ module.exports = {
         },
         viewAttachedInfo: function () {
           var self = this;
-          inView('#article-attached-info').once('enter', function() {
+          inView('.attached-info').once('enter', function() {
             self.requestAttachedData(post_id, page_type);
           });
         },
