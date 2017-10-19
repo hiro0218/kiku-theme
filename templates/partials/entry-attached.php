@@ -1,4 +1,7 @@
 <aside id="article-attached-info">
-  <?php get_template_part('partials/entry-related'); ?>
+  <section class="related">
+    <entry-related :relateds="relateds"></entry-related>
+  </section>
+
   <?php get_template_part('partials/entry-pager'); ?>
 </aside>

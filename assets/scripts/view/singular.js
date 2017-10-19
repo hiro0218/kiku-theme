@@ -5,6 +5,9 @@ import inView from 'in-view';
 import mokuji from '../module/mokuji';
 import common from '../module/common';
 
+// vue components
+import entryRelated from '../../../components/entry-related.vue';
+
 module.exports = {
   init() {
     var post_id = WP.page_id;
@@ -20,6 +23,9 @@ module.exports = {
 
     var app = new Vue({
       el: '#app',
+      components: {
+        entryRelated,
+      },
       data: {
         loaded: false,
         date: {
