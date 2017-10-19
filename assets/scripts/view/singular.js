@@ -7,6 +7,7 @@ import common from '../module/common';
 
 // vue components
 import entryRelated from '../../../components/entry-related.vue';
+import entryPager from '../../../components/entry-pager.vue';
 
 module.exports = {
   init() {
@@ -25,6 +26,7 @@ module.exports = {
       el: '#app',
       components: {
         entryRelated,
+        entryPager,
       },
       data: {
         loaded: false,

@@ -3,5 +3,7 @@
     <entry-related :relateds="relateds"></entry-related>
   </section>
 
-  <?php get_template_part('partials/entry-pager'); ?>
+  <div class="pager">
+    <entry-pager :pagers="pagers"></entry-pager>
+  </div>
 </aside>
