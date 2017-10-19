@@ -4,10 +4,16 @@ import NProgress from 'nprogress/nprogress.js';
 import ago from 's-ago';
 import common from '../module/common';
 
+// vue components
+import entryList from '../../../components/entry-list.vue';
+
 module.exports = {
   view(api_url) {
     var app = new Vue({
       el: '#app',
+      components: {
+        entryList,
+      },
       data: {
         loaded: false,
         headers: {
@@ -30,7 +36,7 @@ module.exports = {
             last: '',
           },
         },
-        posts: [],
+        lists: [],
       },
       beforeCreate: function () {
         NProgress.start();
@@ -163,9 +169,9 @@ module.exports = {
               post.link = json.link;
               post.thumbnail = json.thumbnail;
               post.date.timeAgo = ago(new Date(json.modified));
-              self.posts.push(post);
+              self.lists.push(post);
             }
-            if (self.posts) {
+            if (self.lists) {
               self.loaded = true;
             }
           });
