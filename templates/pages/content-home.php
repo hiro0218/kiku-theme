@@ -8,8 +8,9 @@
     <entry-list :lists="lists"></entry-list>
   </div>
 
-  <section>
+  <div>
     <?php echo get_option('kiku_insert_data_top_of_pagination'); ?>
-    <?php get_template_part('partials/pagination', 'home'); ?>
-  </section>
+  </div>
+
+  <pagination :pagination="pagination"></pagination>
 </div>

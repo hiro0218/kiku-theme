@@ -6,6 +6,7 @@ import common from '../module/common';
 
 // vue components
 import entryList from '../../../components/entry-list.vue';
+import pagination from '../../../components/pagination.vue';
 
 module.exports = {
   view(api_url) {
@@ -13,6 +14,7 @@ module.exports = {
       el: '#app',
       components: {
         entryList,
+        pagination,
       },
       data: {
         loaded: false,
@@ -178,9 +180,6 @@ module.exports = {
         },
       },
       filters: {
-        zeroPadding: function(number) {
-          return ("0" + number).slice(-2);
-        },
         escapeBrackets: function(text) {
           return text.replace(/</g, '&lt;').replace(/>/g, '&gt;');
         },
