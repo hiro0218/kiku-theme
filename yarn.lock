@@ -2589,7 +2589,13 @@ glogg@^1.0.0:
   dependencies:
     sparkles "^1.0.0"
 
-gonzales-pe@^4.0.3, gonzales-pe@^4.1.1:
+gonzales-pe-sl@^4.2.3:
+  version "4.2.3"
+  resolved "https://registry.yarnpkg.com/gonzales-pe-sl/-/gonzales-pe-sl-4.2.3.tgz#6a868bc380645f141feeb042c6f97fcc71b59fe6"
+  dependencies:
+    minimist "1.1.x"
+
+gonzales-pe@^4.0.3:
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/gonzales-pe/-/gonzales-pe-4.2.2.tgz#f50a8c17842f13a9007909b7cb32188266e4d74c"
   dependencies:
@@ -4993,9 +4999,9 @@ prettier@^1.7.0:
   version "1.7.4"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.7.4.tgz#5e8624ae9363c80f95ec644584ecdf55d74f93fa"
 
-prismjs@^1.8.1:
-  version "1.8.1"
-  resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.8.1.tgz#bd0cdc32e9a561c1c8c3c9733765a7f1ec3b54ee"
+prismjs@^1.8.3:
+  version "1.8.3"
+  resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.8.3.tgz#4a3d140be5f2614a8987ca2330733a40d8ad207b"
   optionalDependencies:
     clipboard "^1.5.5"
 
@@ -5477,9 +5483,9 @@ sass-graph@^2.1.1:
     scss-tokenizer "^0.2.3"
     yargs "^7.0.0"
 
-sass-lint@^1.12.0:
-  version "1.12.0"
-  resolved "https://registry.yarnpkg.com/sass-lint/-/sass-lint-1.12.0.tgz#299ec57cd158fb4afbe22cb322799cc630a3e33b"
+sass-lint@^1.12.1:
+  version "1.12.1"
+  resolved "https://registry.yarnpkg.com/sass-lint/-/sass-lint-1.12.1.tgz#630f69c216aa206b8232fb2aa907bdf3336b6d83"
   dependencies:
     commander "^2.8.1"
     eslint "^2.7.0"
@@ -5487,7 +5493,7 @@ sass-lint@^1.12.0:
     fs-extra "^3.0.1"
     glob "^7.0.0"
     globule "^1.0.0"
-    gonzales-pe "^4.1.1"
+    gonzales-pe-sl "^4.2.3"
     js-yaml "^3.5.4"
     known-css-properties "^0.3.0"
     lodash.capitalize "^4.1.0"
@@ -6473,9 +6479,9 @@ webpack@*:
     webpack-sources "^1.0.1"
     yargs "^8.0.2"
 
-webpack@^3.7.1:
-  version "3.7.1"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-3.7.1.tgz#6046b5c415ff7df7a0dc54c5b6b86098e8b952da"
+webpack@^3.8.1:
+  version "3.8.1"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-3.8.1.tgz#b16968a81100abe61608b0153c9159ef8bb2bd83"
   dependencies:
     acorn "^5.0.0"
     acorn-dynamic-import "^2.0.0"
