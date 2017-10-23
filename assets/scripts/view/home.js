@@ -44,10 +44,12 @@ module.exports = {
         requestXHR: function(url, callback) {
           var self = this;
           var xhr = new XMLHttpRequest();
-          xhr.onreadystatechange = function(){
+          xhr.onreadystatechange = function() {
             if (this.readyState === 4 && this.status === 200) {
-              self.headers.total = Number(this.getResponseHeader('X-WP-Total'));
-              self.headers.totalpages = Number(this.getResponseHeader('X-WP-TotalPages'));
+              self.headers = {
+                total: Number(this.getResponseHeader('X-WP-Total')),
+                totalpages: Number(this.getResponseHeader('X-WP-TotalPages')),
+              };
               var response = this.response;
 
               if (typeof(response) === 'string') {
@@ -63,24 +65,18 @@ module.exports = {
         },
         requestPostData: function () {
           var self = this;
-          self.requestXHR(api_url, function(jsons) {
-            for (var key in jsons) {
-              var json = jsons[key];
-              var post = {
-                title: null,
-                link: null,
-                excerpt: null,
-                thumbnail: null,
+          self.requestXHR(api_url, function(response) {
+            for (var key in response) {
+              var json = response[key];
+              self.lists.push({
+                title: json.title.rendered,
+                link: json.link,
+                excerpt: json.excerpt.rendered,
+                thumbnail: json.thumbnail,
                 date: {
-                  timeAgo: null,
+                  timeAgo: ago(new Date(json.modified)),
                 },
-              };
-              post.title = json.title.rendered;
-              post.excerpt = json.excerpt.rendered;
-              post.link = json.link;
-              post.thumbnail = json.thumbnail;
-              post.date.timeAgo = ago(new Date(json.modified));
-              self.lists.push(post);
+              });
             }
             if (self.lists) {
               self.loaded = true;
