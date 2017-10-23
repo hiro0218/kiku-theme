@@ -88,11 +88,6 @@ module.exports = {
           });
         },
       },
-      filters: {
-        escapeBrackets: function(text) {
-          return text.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-        },
-      },
     });
   },
 };
