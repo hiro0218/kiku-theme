@@ -23,30 +23,24 @@ module.exports = {
     xhr.send();
   },
   setThumbnailImage() {
-    var tmbContainer = document.getElementsByClassName('entry-image');
-    var length = tmbContainer.length;
+    var container = document.getElementsByClassName('entry-image');
+    var length = container.length;
     if (length === 0) {
       return;
     }
 
     for (var i = 0; i < length; i += 1) {
-      var container = tmbContainer[i];
-      var imageUrl = container.dataset.thumbnailImage;
+      var imageUrl = container[i].dataset.thumbnailImage;
       if (!imageUrl) {
         continue;
       }
 
-      var sheet = container.getElementsByClassName('image-sheet')[0];
-
-      function _loadImage(element, url) {
-        return function () {
-          // set background image
-          element.style.backgroundImage = 'url(' + url + ')';
-        };
-      }
-
+      var sheet = container[i].getElementsByClassName('image-sheet')[0];
       var img = new Image();
-      img.onload = _loadImage(sheet, imageUrl);
+      img.onload = (function (element, url) {
+        // set background image
+        element.style.backgroundImage = 'url(' + url + ')';
+      })(sheet, imageUrl);
       img.src = imageUrl;
     }
   },
