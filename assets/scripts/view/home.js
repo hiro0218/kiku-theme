@@ -18,10 +18,7 @@ module.exports = {
       },
       data: {
         loaded: false,
-        headers: {
-          total: 0,
-          totalpages: 0,
-        },
+        headers: {},
         lists: [],
       },
       beforeCreate: function () {
@@ -42,21 +39,20 @@ module.exports = {
       },
       methods: {
         requestXHR: function(url, callback) {
-          var self = this;
           var xhr = new XMLHttpRequest();
           xhr.onreadystatechange = function() {
             if (this.readyState === 4 && this.status === 200) {
-              self.headers = {
+              var response = this.response;
+              var header = {
                 total: Number(this.getResponseHeader('X-WP-Total')),
                 totalpages: Number(this.getResponseHeader('X-WP-TotalPages')),
               };
-              var response = this.response;
 
-              if (typeof(response) === 'string') {
+              if (typeof response === 'string') {
                 response = JSON.parse(response);
               }
 
-              callback(response);
+              callback(response, header);
             }
           };
           xhr.open('GET', url, true);
@@ -65,7 +61,8 @@ module.exports = {
         },
         requestPostData: function () {
           var self = this;
-          self.requestXHR(api_url, function(response) {
+          self.requestXHR(api_url, function(response, header) {
+            self.setHeader(header);
             for (var key in response) {
               var json = response[key];
               self.lists.push({
@@ -82,6 +79,9 @@ module.exports = {
               self.loaded = true;
             }
           });
+        },
+        setHeader: function (header) {
+          this.headers = header;
         },
       },
     });
