@@ -38,30 +38,9 @@ module.exports = {
         },
       },
       methods: {
-        requestXHR: function(url, callback) {
-          var xhr = new XMLHttpRequest();
-          xhr.onreadystatechange = function() {
-            if (this.readyState === 4 && this.status === 200) {
-              var response = this.response;
-              var header = {
-                total: Number(this.getResponseHeader('X-WP-Total')),
-                totalpages: Number(this.getResponseHeader('X-WP-TotalPages')),
-              };
-
-              if (typeof response === 'string') {
-                response = JSON.parse(response);
-              }
-
-              callback(response, header);
-            }
-          };
-          xhr.open('GET', url, true);
-          xhr.responseType = 'json';
-          xhr.send();
-        },
         requestPostData: function () {
           var self = this;
-          self.requestXHR(api_url, function(response, header) {
+          common.fetch(api_url, function(response, header) {
             self.setHeader(header);
             for (var key in response) {
               var json = response[key];

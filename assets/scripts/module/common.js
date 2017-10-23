@@ -1,6 +1,27 @@
 import Zooming from 'zooming';
 
 module.exports = {
+  fetch (url, callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+      if (this.readyState === 4 && this.status === 200) {
+        var response = this.response;
+        var header = {
+          total: Number(this.getResponseHeader('X-WP-Total')),
+          totalpages: Number(this.getResponseHeader('X-WP-TotalPages')),
+        };
+
+        if (typeof response === 'string') {
+          response = JSON.parse(response);
+        }
+
+        callback(response, header);
+      }
+    };
+    xhr.open('GET', url, true);
+    xhr.responseType = 'json';
+    xhr.send();
+  },
   setThumbnailImage() {
     var tmbContainer = document.getElementsByClassName('entry-image');
     var length = tmbContainer.length;

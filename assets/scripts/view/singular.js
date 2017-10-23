@@ -63,26 +63,9 @@ module.exports = {
         }
       },
       methods: {
-        requestXHR: function(url, callback) {
-          var xhr = new XMLHttpRequest();
-          xhr.onreadystatechange = function(){
-            if (this.readyState === 4 && this.status === 200) {
-              var response = this.response;
-
-              if (typeof(response) === 'string') {
-                response = JSON.parse(response);
-              }
-
-              callback(response);
-            }
-          };
-          xhr.open('GET', url, true);
-          xhr.responseType = 'json';
-          xhr.send();
-        },
         requestPostData: function (post_id, page_type) {
           var self = this;
-          self.requestXHR(`/wp-json/wp/v2/${page_type}/${post_id}`, function(json) {
+          common.fetch(`/wp-json/wp/v2/${page_type}/${post_id}`, function(json) {
             self.setDatetime(json);
             if (json.hasOwnProperty('categories') && json.categories.length !== 0) {
               self.categories = json.categories;
@@ -101,7 +84,7 @@ module.exports = {
 
           var self = this;
           NProgress.start();
-          self.requestXHR(`/wp-json/kiku/v1/post/${post_id}`, function(json) {
+          common.fetch(`/wp-json/kiku/v1/post/${post_id}`, function(json) {
             if (json.hasOwnProperty('related') && json.related.length !== 0) {
               self.relateds = json.related;
             }
