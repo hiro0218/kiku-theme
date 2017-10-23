@@ -12,5 +12,5 @@
     <?php echo get_option('kiku_insert_data_top_of_pagination'); ?>
   </div>
 
-  <pagination :pagination="pagination"></pagination>
+  <pagination :totalpages="headers.totalpages"></pagination>
 </div>

@@ -22,22 +22,6 @@ module.exports = {
           total: 0,
           totalpages: 0,
         },
-        pagination: {
-          label: {
-            first: 0,
-            prev: 0,
-            next: 0,
-            last: 0,
-            active: 0,
-          },
-          pages: {},
-          links: {
-            first: '',
-            prev: '',
-            next: '',
-            last: '',
-          },
-        },
         lists: [],
       },
       beforeCreate: function () {
@@ -55,83 +39,8 @@ module.exports = {
           });
           NProgress.done();
         },
-        'headers.totalpages': function () {
-          if (this.headers.totalpages <= 1) {
-            return;
-          }
-
-          var range = 3;
-          var paged = WP.paged;
-          var totalpages = this.headers.totalpages;
-          var ceil  = Math.ceil(range / 2);
-          var min = 0;
-          var max = 0;
-          var param = this.getPaginationParam();
-
-          if (totalpages > range) {
-            if (paged <= range) {
-              min = 1;
-              max = range + 1;
-            } else if (paged >= (totalpages - ceil)) {
-              min = totalpages - range;
-              max = totalpages;
-            } else if (paged >= range && paged < (totalpages - ceil)) {
-              min = paged - ceil;
-              max = paged + ceil;
-            }
-          } else {
-            min = 1;
-            max = totalpages;
-          }
-
-          var prev = paged - 1;
-          var first = 1;
-          if (first && (1 != paged)) {
-            this.pagination.label.first = first;
-            this.pagination.links.first = `${param}/page/${first}/`;
-          }
-          if (prev && (1 != paged)) {
-            this.pagination.prev = prev;
-            this.pagination.links.prev = `${param}/page/${prev}/`;
-          }
-
-          if (min && max) {
-            for (var i = min; i <= max; i++) {
-              if (paged == i) {
-                this.pagination.label.active = i;
-              }
-              this.pagination.pages[i] = {
-                links: `${param}/page/${i}/`,
-              };
-            }
-          }
-
-          if (totalpages != paged) {
-            var next = paged + 1;
-            var last = totalpages;
-            if (next) {
-              this.pagination.label.next = next;
-              this.pagination.links.next = `${param}/page/${next}/`;
-            }
-            if (last) {
-              this.pagination.label.last = last;
-              this.pagination.links.last = `${param}/page/${last}/`;
-            }
-          }
-        },
       },
       methods: {
-        getPaginationParam: function () {
-          if (WP.category_name) {
-            return `/category/${WP.category_name}`;
-          } else if (WP.tag_name) {
-            return `/tag/${WP.tag_name}`;
-          } else if (WP.search) {
-            return `/search/${WP.search}`;
-          } else {
-            return '';
-          }
-        },
         requestXHR: function(url, callback) {
           var self = this;
           var xhr = new XMLHttpRequest();
