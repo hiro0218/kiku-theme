@@ -18,7 +18,13 @@
 <script>
   export default {
     name: 'entry-pager',
-    props: ['pagers'],
+    props: {
+      pagers: {
+        type: Object,
+        default: {},
+        required: true,
+      }
+    },
     methods: {},
     mounted: function () {},
   }

@@ -15,7 +15,13 @@
 <script>
   export default {
     name: 'entry-related',
-    props: ['relateds'],
+    props: {
+      relateds: {
+        type: Array,
+        default: [],
+        required: true,
+      }
+    },
     methods: {},
     mounted: function () {},
   }

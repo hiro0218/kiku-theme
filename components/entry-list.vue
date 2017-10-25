@@ -29,7 +29,13 @@
 <script>
   export default {
     name: 'entry-list',
-    props: ['lists'],
+    props: {
+      lists: {
+        type: Array,
+        default: [],
+        required: true,
+      }
+    },
     methods: {},
     mounted: function () {},
     filters: {
