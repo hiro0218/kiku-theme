@@ -26,6 +26,9 @@ import 'prismjs/components/prism-swift';
 import 'prismjs/plugins/command-line/prism-command-line';
 import 'prismjs/plugins/line-numbers/prism-line-numbers';
 import 'prismjs/plugins/remove-initial-line-feed/prism-remove-initial-line-feed';
+// prism-toolbar
+import 'prismjs/plugins/toolbar/prism-toolbar'
+import 'prismjs/plugins/show-language/prism-show-language';
 
 // config
 if (window.Prism) {
