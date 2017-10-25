@@ -56,9 +56,13 @@
         },
       }
     },
-    props: [
-      'totalpages',
-    ],
+    props: {
+      totalpages: {
+        type: Number,
+        default: 0,
+        required: true,
+      }
+    },
     mounted: function () {},
     watch: {
       totalpages: function () {
