@@ -12,6 +12,7 @@ import 'prismjs/components/prism-csharp';
 import 'prismjs/components/prism-cpp';
 import 'prismjs/components/prism-css-extras';
 import 'prismjs/components/prism-java';
+import 'prismjs/components/prism-json';
 import 'prismjs/components/prism-less';
 import 'prismjs/components/prism-markdown';
 import 'prismjs/components/prism-objectivec';
