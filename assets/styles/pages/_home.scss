@@ -60,16 +60,18 @@ $entry-thumbnail-size: 5rem;  // 80px;
 }
 
 // image
-.image-container {
-  @include size($entry-thumbnail-size);
-  border: 1px solid $grey-200;
-  overflow: hidden;
-}
+.entry-image {
+  .image-container {
+    @include size($entry-thumbnail-size);
+    border: 1px solid $grey-200;
+    overflow: hidden;
+  }
 
-.image-sheet {
-  max-height: $entry-thumbnail-size;
-  background: $grey-50 50% no-repeat;
-  background-image: url('../images/no-image.png');
-  background-size: cover;
-  @include size($entry-thumbnail-size);
+  .image-sheet {
+    max-height: $entry-thumbnail-size;
+    background: $grey-50 50% no-repeat;
+    background-image: url('../images/no-image.png');
+    background-size: cover;
+    @include size($entry-thumbnail-size);
+  }
 }

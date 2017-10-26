@@ -4,6 +4,9 @@
     <div class="entry-related">
       <div class="related-section" v-for="(related,index) in relateds">
         <a v-bind:href="related.uri">
+          <div class="related-image">
+            <div class="image-sheet" v-bind:style="related.image ? 'background-image: url('+ related.image  +')' : ''"></div>
+          </div>
           <div class="related-title" v-html="$parent.$options.filters.escapeBrackets(related.title)"></div>
           <div class="related-description" v-html="$parent.$options.filters.escapeBrackets(related.description)"></div>
         </a>

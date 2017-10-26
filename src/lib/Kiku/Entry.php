@@ -28,6 +28,7 @@ class Entry {
 
     // 関連する記事の一覧を取得する
     public function get_similar_posts($post_count = 5, $post_id = null): array {
+        global $Image;
         $arr = [];
         $term_ids = [];
 
@@ -41,11 +42,9 @@ class Entry {
         }
 
         foreach ( $categories as $category ) {
-            if ( $category->parent == 0 ) {
-                $term_ids[] = $category->term_id;
-            } else {
+            $term_ids[] = $category->term_id;
+            if ( $category->parent !== 0 ) {
                 $term_ids[] = $category->parent;
-                $term_ids[] = $category->term_id;
             }
         }
 
@@ -67,19 +66,19 @@ class Entry {
         ]);
 
         if ( $the_query->have_posts() ) {
-            $i = 0;
             while ( $the_query->have_posts() ) {
                 $the_query->the_post();
+                // $thumbnail = get_the_ID();
                 $title = $this->get_clean_title();
                 if ( empty($title) ) {
                     continue;
                 }
-                $arr[$i] = [
+                $arr[] = [
                     "uri"   => get_the_permalink(),
                     "title" => $title,
                     "description" => \Kiku\Util::get_excerpt_content(),
+                    "image" => $Image->get_entry_image(false, get_the_ID()),
                 ];
-                $i++;
             }
             wp_reset_postdata();
         }

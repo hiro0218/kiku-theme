@@ -1,5 +1,4 @@
 .related {
-  height: 15.5rem;
   margin-bottom: 1rem;
 }
 
@@ -13,8 +12,7 @@
 
   a {
     display: block;
-    width: 20rem;
-    height: calc(20rem / 1.618);
+    width: 15rem;
     padding: .5rem 0;
     overflow: hidden;
   }
@@ -46,12 +44,24 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  word-wrap: normal;
 }
 
 .related-description {
   color: $grey-500;
   font-size: $font-size-xs;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   overflow: hidden;
-  word-break: break-all;
+}
+
+.related-image {
+  margin-bottom: .5rem;
+  .image-sheet {
+    height: 10rem;
+    border: 1px solid $grey-200;
+    background: $grey-50 50% no-repeat;
+    background-image: url('../images/no-image.png');
+    background-size: cover;
+    overflow: hidden;
+  }
 }
