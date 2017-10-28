@@ -22,7 +22,7 @@
       pagers: {
         type: Object,
         default: {},
-        required: true,
+        required: false,
       }
     },
     methods: {},

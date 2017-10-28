@@ -22,7 +22,7 @@
       relateds: {
         type: Array,
         default: [],
-        required: true,
+        required: false,
       }
     },
     methods: {},
