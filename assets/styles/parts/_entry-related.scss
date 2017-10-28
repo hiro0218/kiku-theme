@@ -41,17 +41,13 @@
   margin-bottom: .5rem;
   transition: color .3s $animation-curve-fast-out-slow-in;
   color: $grey-800;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
+  @include text-overflow;
 }
 
 .related-description {
   color: $grey-500;
   font-size: $font-size-xs;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
+  @include text-overflow;
 }
 
 .related-image {

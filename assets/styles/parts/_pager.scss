@@ -53,7 +53,7 @@
 
   .pager-title {
     color: $grey-600;
-    @include ellipsis(100%);
+    @include text-overflow;
   }
 
 }
