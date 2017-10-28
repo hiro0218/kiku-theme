@@ -1,5 +1,6 @@
 /* global Prism WP */
 import Vue from 'vue';
+import axios from 'axios';
 import NProgress from 'nprogress/nprogress.js';
 import inView from 'in-view';
 import mokuji from '../module/mokuji';
@@ -67,17 +68,25 @@ module.exports = {
       methods: {
         requestPostData: function (post_id, page_type) {
           var self = this;
-          common.fetch(`/wp-json/wp/v2/${page_type}/${post_id}`, function(json) {
-            self.setDatetime(json);
-            if (json.hasOwnProperty('categories') && json.categories.length !== 0) {
-              self.categories = json.categories;
-            }
-            if (json.hasOwnProperty('tags') && json.tags.length !== 0) {
-              self.tags = json.tags;
-            }
-            self.amazon_product = json.amazon_product;
-            self.loaded = true;
-          });
+
+          axios.get(`/wp-json/wp/v2/${page_type}/${post_id}`)
+            .then(function(response) {
+              let json = response.data;
+
+              self.setDatetime(json);
+              if (json.hasOwnProperty('categories') && json.categories.length !== 0) {
+                self.categories = json.categories;
+              }
+              if (json.hasOwnProperty('tags') && json.tags.length !== 0) {
+                self.tags = json.tags;
+              }
+              self.amazon_product = json.amazon_product;
+
+              return true;
+            })
+            .then(function(result) {
+              self.loaded = true;
+            });
         },
         requestAttachedData: function (post_id, page_type) {
           if (page_type !== 'posts') {
@@ -86,13 +95,21 @@ module.exports = {
 
           var self = this;
           NProgress.start();
-          common.fetch(`/wp-json/kiku/v1/post/${post_id}`, function(json) {
-            if (json.hasOwnProperty('related') && json.related.length !== 0) {
-              self.relateds = json.related;
-            }
-            self.pagers = json.pager;
-            NProgress.done();
-          });
+
+          axios.get(`/wp-json/kiku/v1/post/${post_id}`)
+            .then(function(response) {
+              let json = response.data;
+
+              if (json.hasOwnProperty('related') && json.related.length !== 0) {
+                self.relateds = json.related;
+              }
+              self.pagers = json.pager;
+
+              return true;
+            })
+            .then(function(result) {
+              NProgress.done();
+            });
         },
         setDatetime: function (json) {
           this.date.publish = json.date;

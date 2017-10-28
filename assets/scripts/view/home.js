@@ -1,5 +1,6 @@
 /* global WP */
 import Vue from 'vue';
+import axios from 'axios';
 import NProgress from 'nprogress/nprogress.js';
 import ago from 's-ago';
 import common from '../module/common';
@@ -40,27 +41,36 @@ module.exports = {
       methods: {
         requestPostData: function () {
           var self = this;
-          common.fetch(api_url, function(response, header) {
-            self.setHeader(header);
-            for (var key in response) {
-              var json = response[key];
-              self.lists.push({
-                title: json.title.rendered,
-                link: json.link,
-                excerpt: json.excerpt.rendered,
-                thumbnail: json.thumbnail,
-                date: {
-                  timeAgo: ago(new Date(json.modified)),
-                },
-              });
-            }
-            if (self.lists) {
-              self.loaded = true;
-            }
-          });
+
+          axios.get(api_url)
+            .then(function(response) {
+              self.setHeader(response.headers);
+              for (var key in response.data) {
+                var json = response.data[key];
+                self.lists.push({
+                  title: json.title.rendered,
+                  link: json.link,
+                  excerpt: json.excerpt.rendered,
+                  thumbnail: json.thumbnail,
+                  date: {
+                    timeAgo: ago(new Date(json.modified)),
+                  },
+                });
+              }
+
+              return true;
+            })
+            .then(function(result) {
+              if (self.lists) {
+                self.loaded = true;
+              }
+            });
         },
-        setHeader: function (header) {
-          this.headers = header;
+        setHeader: function (headers) {
+          this.headers = {
+            total: Number(headers['x-wp-total']),
+            totalpages: Number(headers['x-wp-totalpages']),
+          };
         },
       },
     });

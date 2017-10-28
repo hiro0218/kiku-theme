@@ -1,3 +1,8 @@
+var es6Promise = require('es6-promise');
+if (!window.Promise) {
+  es6Promise.polyfill();
+}
+
 import Router from './util/router';
 
 import common from './routes/Common';
