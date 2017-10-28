@@ -12,7 +12,7 @@
       <?php the_content(); ?>
     </section>
     <?php get_template_part('partials/entry-paginated'); ?>
-    <?php get_template_part('partials/amazon-product'); ?>
+    <amazon-product :amazon_product="amazon_product"></amazon-product>
     <footer>
       <?php get_template_part('partials/entry-breadcrumb'); ?>
       <?php get_template_part('partials/entry-tag'); ?>

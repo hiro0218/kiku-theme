@@ -6,6 +6,7 @@ import mokuji from '../module/mokuji';
 import common from '../module/common';
 
 // vue components
+import amazonProduct from '../../../components/amazon-product.vue';
 import entryRelated from '../../../components/entry-related.vue';
 import entryPager from '../../../components/entry-pager.vue';
 
@@ -25,6 +26,7 @@ module.exports = {
     var app = new Vue({
       el: '#app',
       components: {
+        amazonProduct,
         entryRelated,
         entryPager,
       },
