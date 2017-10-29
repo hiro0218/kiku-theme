@@ -28,26 +28,39 @@ $entry-thumbnail-size: 5rem;  // 80px;
       }
     }
 
-    &-image {
-      flex-basis: $entry-thumbnail-size;
-      margin-right: 1rem;
-    }
-
+    &-image,
     &-body {
+      display: flex;
       flex-basis: 0;
-      flex-direction: column;
       flex-grow: 1;
       flex-shrink: 1;
     }
 
-    &-title {
+    &-image {
+      flex: none;
+      width: $entry-thumbnail-size;
+      margin-right: 1rem;
+    }
+
+    &-body {
+      flex-direction: column;
+      justify-content: space-between;
+      min-width: 0; // for flex and text-overflow
+    }
+
+
+    &-title,
+    &-summary {
       margin: 0 0 .5rem 0;
+      @include text-overflow;
+    }
+
+    &-title {
       transition: color .3s $animation-curve-fast-out-slow-in;
       font-size: $font-size-h4;
     }
 
     &-summary {
-      margin-bottom: .5rem;
       color: $grey-600;
       font-size: $font-size-sm;
       word-break: break-all;
