@@ -1,4 +1,4 @@
-import common from '../module/common';
+import common from 'scripts/module/common';
 const Headroom = require('headroom.js/dist/headroom.js');
 
 module.exports = {

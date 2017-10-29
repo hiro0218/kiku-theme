@@ -1,4 +1,4 @@
-import singular from '../view/singular';
+import singular from 'scripts/view/singular';
 
 export default {
   init() {

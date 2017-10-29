@@ -1,5 +1,5 @@
 /* global WP */
-import home from '../view/home';
+import home from 'scripts/view/home';
 
 export default {
   init() {

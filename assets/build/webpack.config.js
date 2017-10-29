@@ -1,5 +1,6 @@
 'use strict'; // eslint-disable-line
 
+const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const CleanPlugin = require('clean-webpack-plugin');
@@ -106,6 +107,8 @@ let webpackConfig = {
   resolve: {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
+      'scripts': path.resolve(__dirname, '../scripts/'),
+      'components': path.resolve(__dirname, '../../components/'),
     },
     modules: [
       config.paths.assets,
