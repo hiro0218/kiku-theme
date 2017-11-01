@@ -3,13 +3,13 @@ import Vue from 'vue';
 import axios from 'axios';
 import NProgress from 'nprogress/nprogress.js';
 import ago from 's-ago';
-import common from 'scripts/module/common';
+import common from '@scripts/module/common';
 
 // vue components
-import entryList from 'components/entry-list.vue';
-import pagination from 'components/pagination.vue';
+import entryList from '@components/entry-list.vue';
+import pagination from '@components/pagination.vue';
 
-module.exports = {
+export default {
   view(api_url) {
     var app = new Vue({
       el: '#app',

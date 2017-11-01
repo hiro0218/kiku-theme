@@ -1,6 +1,6 @@
 import Zooming from 'zooming';
 
-module.exports = {
+export default {
   setThumbnailImage() {
     var container = document.getElementsByClassName('entry-image');
     var length = container.length;

@@ -3,15 +3,15 @@ import Vue from 'vue';
 import axios from 'axios';
 import NProgress from 'nprogress/nprogress.js';
 import inView from 'in-view';
-import mokuji from 'scripts/module/mokuji';
-import common from 'scripts/module/common';
+import mokuji from '@scripts/module/mokuji';
+import common from '@scripts/module/common';
 
 // vue components
-import amazonProduct from 'components/amazon-product.vue';
-import entryRelated from 'components/entry-related.vue';
-import entryPager from 'components/entry-pager.vue';
+import amazonProduct from '@components/amazon-product.vue';
+import entryRelated from '@components/entry-related.vue';
+import entryPager from '@components/entry-pager.vue';
 
-module.exports = {
+export default {
   init() {
     var post_id = WP.page_id;
     var page_type = WP.page_type;
