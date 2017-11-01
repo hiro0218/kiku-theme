@@ -71,7 +71,7 @@
     "webpack": "^3.8.1",
     "webpack-assets-manifest": "^1.0.0",
     "webpack-merge": "^4.1.0",
-    "yargs": "^9.0.1"
+    "yargs": "^10.0.3"
   },
   "dependencies": {
     "axios": "^0.17.0",
