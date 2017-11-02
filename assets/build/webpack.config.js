@@ -39,10 +39,10 @@ let webpackConfig = {
     rules: [
       {
         enforce: 'pre',
-        test: /\.js?$/,
         exclude: /node_modules/,
+        test: /\.js$/,
         include: config.paths.assets,
-        loader: 'eslint',
+        use: 'eslint',
       },
       {
         enforce: 'pre',
@@ -62,13 +62,14 @@ let webpackConfig = {
       {
         test: /\.css$/,
         include: config.paths.assets,
-        loader: ExtractTextPlugin.extract({
+        use: ExtractTextPlugin.extract({
           fallback: 'style',
           use: [
             { loader: 'cache' },
             { loader: 'thread' },
             { loader: 'css', options: { sourceMap: config.enabled.sourceMaps } },
-            { loader: 'postcss', options: {
+            {
+              loader: 'postcss', options: {
                 config: { path: __dirname, ctx: config },
                 sourceMap: config.enabled.sourceMaps,
               },
@@ -79,18 +80,19 @@ let webpackConfig = {
       {
         test: /\.(sass|scss)$/,
         include: config.paths.assets,
-        loader: ExtractTextPlugin.extract({
+        use: ExtractTextPlugin.extract({
           fallback: 'style',
           use: [
             { loader: 'cache' },
             { loader: 'thread' },
             { loader: 'css', options: { sourceMap: config.enabled.sourceMaps } },
-            { loader: 'resolve-url', options: { sourceMap: config.enabled.sourceMaps } },
-            { loader: 'postcss', options: {
+            {
+              loader: 'postcss', options: {
                 config: { path: __dirname, ctx: config },
                 sourceMap: config.enabled.sourceMaps,
               },
             },
+            { loader: 'resolve-url', options: { sourceMap: config.enabled.sourceMaps } },
             { loader: 'sass', options: { sourceMap: config.enabled.sourceMaps } },
           ],
         }),
