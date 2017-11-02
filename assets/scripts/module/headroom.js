@@ -1,7 +1,7 @@
-import common from 'scripts/module/common';
-const Headroom = require('headroom.js/dist/headroom.js');
+import common from '@scripts/module/common';
+const HeadroomJs = require('headroom.js/dist/headroom.js');
 
-module.exports = {
+const headroom = {
   init() {
     var headerNav = document.getElementsByClassName('header-navigation')[0];
     if (headerNav) {
@@ -9,7 +9,7 @@ module.exports = {
       var headroomOffset = common.getStyleSheetValue(mainContainer, 'padding-top') || 0;
       headroomOffset = parseInt(headroomOffset, 10);
 
-      var headroom = new Headroom(headerNav, {
+      var headroom = new HeadroomJs(headerNav, {
         offset: headroomOffset
       });
 
@@ -17,3 +17,5 @@ module.exports = {
     }
   }
 };
+
+export default headroom;

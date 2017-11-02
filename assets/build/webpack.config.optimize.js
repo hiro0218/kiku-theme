@@ -1,7 +1,6 @@
 'use strict'; // eslint-disable-line
 
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const ImageminPlugin = require('imagemin-webpack-plugin').default;
+const { default: ImageminPlugin } = require('imagemin-webpack-plugin');
 const imageminMozjpeg = require('imagemin-mozjpeg');
 
 const config = require('./config');

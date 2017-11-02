@@ -5,8 +5,9 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const CleanPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
 const CopyGlobsPlugin = require('copy-globs-webpack-plugin');
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+
 const config = require('./config');
 
 const assetsFilenames = (config.enabled.cacheBusting) ? config.cacheBusting : '[name]';
@@ -38,35 +39,57 @@ let webpackConfig = {
     rules: [
       {
         enforce: 'pre',
-        test: /\.js?$/,
+        exclude: /node_modules/,
+        test: /\.js$/,
         include: config.paths.assets,
-        loader: 'babel',
+        use: 'eslint',
+      },
+      {
+        enforce: 'pre',
+        test: /\.(js|s?[ca]ss)$/,
+        include: config.paths.assets,
+        loader: 'import-glob',
       },
       {
         test: /\.js$/,
-        exclude: [/(node_modules|bower_components)(?![/|\\](bootstrap|foundation-sites))/],
+        exclude: /node_modules/,
         use: [
-          { loader: 'cache-loader' },
-          { loader: 'thread-loader' },
+          { loader: 'cache' },
+          { loader: 'thread' },
           { loader: 'buble', options: { objectAssign: 'Object.assign' } },
         ],
       },
       {
-        test: /\.(sass|scss|css)$/,
+        test: /\.css$/,
         include: config.paths.assets,
-        loader: ExtractTextPlugin.extract({
+        use: ExtractTextPlugin.extract({
           fallback: 'style',
           use: [
-            { loader: 'cache-loader' },
-            { loader: 'thread-loader' },
+            { loader: 'cache' },
+            { loader: 'thread' },
             { loader: 'css', options: { sourceMap: config.enabled.sourceMaps } },
-            { loader: 'postcss-loader',
-              options: {
+            {
+              loader: 'postcss', options: {
+                config: { path: __dirname, ctx: config },
                 sourceMap: config.enabled.sourceMaps,
-                config: {
-                  ctx: config,
-                  path: __dirname,
-                },
+              },
+            },
+          ],
+        }),
+      },
+      {
+        test: /\.(sass|scss)$/,
+        include: config.paths.assets,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style',
+          use: [
+            { loader: 'cache' },
+            { loader: 'thread' },
+            { loader: 'css', options: { sourceMap: config.enabled.sourceMaps } },
+            {
+              loader: 'postcss', options: {
+                config: { path: __dirname, ctx: config },
+                sourceMap: config.enabled.sourceMaps,
               },
             },
             { loader: 'resolve-url', options: { sourceMap: config.enabled.sourceMaps } },
@@ -76,10 +99,10 @@ let webpackConfig = {
       },
       {
         test: /\.vue$/,
-        loader: 'vue-loader',
+        loader: 'vue',
         options: {
           loaders: {
-            js: 'buble-loader',
+            js: 'buble',
           },
         },
       },
@@ -107,8 +130,8 @@ let webpackConfig = {
   resolve: {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      'scripts': path.resolve(__dirname, '../scripts/'),
-      'components': path.resolve(__dirname, '../../components/'),
+      '@scripts': path.resolve(__dirname, '../scripts/'),
+      '@components': path.resolve(__dirname, '../../components/'),
     },
     modules: [
       config.paths.assets,
@@ -141,11 +164,19 @@ let webpackConfig = {
       stats: { colors: true },
     }),
     new webpack.LoaderOptionsPlugin({
+      test: /\.s?css$/,
+      options: {
+        output: { path: config.paths.dist },
+        context: config.paths.assets,
+      },
+    }),
+    new webpack.LoaderOptionsPlugin({
       test: /\.js$/,
       options: {
         eslint: { failOnWarning: false, failOnError: true },
       },
     }),
+    new FriendlyErrorsWebpackPlugin(),
   ],
 };
 
