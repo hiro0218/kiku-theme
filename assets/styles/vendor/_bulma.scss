@@ -21,16 +21,16 @@ $fullhd: $widescreen;
   position: relative;
   margin: 0 auto;
   @include desktop {
-    width: $desktop - (2 * $base-size);
-    max-width: $desktop - (2 * $base-size);
+    width: $desktop - (2 * $font-size-base);
+    max-width: $desktop - (2 * $font-size-base);
   }
   @include widescreen {
-    width: $widescreen - (2 * $base-size);
-    max-width: $widescreen - (2 * $base-size);
+    width: $widescreen - (2 * $font-size-base);
+    max-width: $widescreen - (2 * $font-size-base);
   }
   @include fullhd {
-    width: $fullhd - (2 * $base-size);
-    max-width: $fullhd - (2 * $base-size);
+    width: $fullhd - (2 * $font-size-base);
+    max-width: $fullhd - (2 * $font-size-base);
   }
 }
 
