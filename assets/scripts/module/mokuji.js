@@ -1,6 +1,6 @@
 const Mokuji = require('mokuji.js');
 
-module.exports = {
+export default {
   init(entry) {
     var mokujiContent = entry.getElementsByClassName('mokuji-content')[0];
     if (mokujiContent) {

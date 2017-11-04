@@ -1,7 +1,7 @@
 import common from '@scripts/module/common';
 const HeadroomJs = require('headroom.js/dist/headroom.js');
 
-const headroom = {
+export default {
   init() {
     var headerNav = document.getElementsByClassName('header-navigation')[0];
     if (headerNav) {
@@ -17,5 +17,3 @@ const headroom = {
     }
   }
 };
-
-export default headroom;

@@ -1,5 +1,5 @@
 
-module.exports = {
+export default {
   init() {
     var trigger = document.getElementsByClassName('drawer-checkbox')[0];
     if (!trigger) {
