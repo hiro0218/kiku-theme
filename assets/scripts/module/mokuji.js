@@ -1,4 +1,4 @@
-const Mokuji = require('mokuji.js');
+import * as Mokuji from 'mokuji.js';
 
 export default {
   init(entry) {

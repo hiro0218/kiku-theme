@@ -1,5 +1,5 @@
+import * as HeadroomJs from 'headroom.js/dist/headroom.js';
 import common from '@scripts/module/common';
-const HeadroomJs = require('headroom.js/dist/headroom.js');
 
 export default {
   init() {
