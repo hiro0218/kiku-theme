@@ -127,8 +127,12 @@ tbody {
 }
 
 .table-container {
+  width: 100%;
   white-space: nowrap;
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
 // define list
