@@ -1,6 +1,10 @@
 .entry {
   margin-bottom: 1rem;
 
+  .entry-header {
+    margin-bottom: 2rem;
+  }
+
   .entry-title {
     margin: 0 0 .5rem;
     font-size: $font-size-h2;
@@ -11,7 +15,7 @@
 
   .entry-meta {
     height: 4rem;
-    margin-bottom: 1rem;
+    text-align: left;
   }
 }
 
