@@ -22,10 +22,12 @@ class Util {
 
         if ($result === false) {
             global $Entry;
-            $latest_date = $Entry->get_latest_post_date();
-            $frist_date = $Entry->get_first_post_date();
-            $result = date("Y", strtotime($frist_date)) .' - '. date("Y", strtotime($latest_date));
-            wp_cache_set('copyright_dates', $result, '', 2592000);
+            $latest_date = $Entry->get_post_date('numberposts=1&post_status=publish&post_type=post');
+            $frist_date = $Entry->get_post_date('numberposts=1&order=ASC&post_status=publish&post_type=post');
+            if ($latest_date && $frist_date) {
+                $result = date("Y", strtotime($frist_date)) .' - '. date("Y", strtotime($latest_date));
+                wp_cache_set('copyright_dates', $result, '', 2592000);
+            }
         }
 
         return $result;
