@@ -15,11 +15,18 @@
   ol {
     margin-bottom: 0;
     padding-left: 0;
+    list-style: none;
     list-style-position: inside;
+    counter-reset: number;
+
+    li::before {
+      content: counters(number, '-') '. ';
+      counter-increment: number;
+    }
+
     ol {
       margin-bottom: .5rem;
       padding-left: 1rem;
-      list-style-type: decimal;
     }
   }
 }
