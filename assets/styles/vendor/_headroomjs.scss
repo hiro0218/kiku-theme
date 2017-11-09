@@ -1,5 +1,5 @@
 .headroom {
-  transition: transform .2s $animation-curve-fast-out-slow-in;
+  transition: transform .5s $animation-curve-fast-out-slow-in;
   will-change: transform;
 }
 
