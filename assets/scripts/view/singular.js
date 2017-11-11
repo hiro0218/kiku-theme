@@ -90,10 +90,6 @@ export default {
             });
         },
         requestAttachedData: function (post_id, page_type) {
-          if (page_type !== 'posts') {
-            return;
-          }
-
           var self = this;
           NProgress.start();
 
@@ -122,9 +118,11 @@ export default {
         },
         viewAttachedInfo: function () {
           var self = this;
-          inView('.attached-info').once('enter', function() {
-            self.requestAttachedData(post_id, page_type);
-          });
+          if (page_type === 'posts') {
+            inView('.attached-info').once('enter', function() {
+              self.requestAttachedData(post_id, page_type);
+            });
+          }
         },
       },
       filters: {
