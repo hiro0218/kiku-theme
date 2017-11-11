@@ -69,7 +69,8 @@ export default {
         requestPostData: function (post_id, page_type) {
           var self = this;
 
-          axios.get(`/wp-json/wp/v2/${page_type}/${post_id}`)
+          axios.defaults.baseURL = `/wp-json/wp/v2/${page_type}/${post_id}`;
+          axios.get()
             .then(function(response) {
               let json = response.data;
 
@@ -96,7 +97,8 @@ export default {
           var self = this;
           NProgress.start();
 
-          axios.get(`/wp-json/kiku/v1/post/${post_id}`)
+          axios.defaults.baseURL = `/wp-json/kiku/v1/post/${post_id}`;
+          axios.get()
             .then(function(response) {
               let json = response.data;
 

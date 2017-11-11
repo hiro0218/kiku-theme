@@ -81,7 +81,7 @@ class REST_API {
     }
 
     private function get_categories_exclude() {
-        if (is_singular()) {
+        if (!is_front_page()) {
             return null;
         }
         $exclude_category = (int)get_option('kiku_exclude_category_frontpage');

@@ -10,7 +10,7 @@ import entryList from '@components/entry-list.vue';
 import pagination from '@components/pagination.vue';
 
 export default {
-  view(api_url) {
+  view() {
     var app = new Vue({
       el: '#app',
       components: {
@@ -41,8 +41,20 @@ export default {
       methods: {
         requestPostData: function () {
           var self = this;
+          var client = axios.create({
+            baseURL: '/wp-json/wp/v2/posts',
+            params: {
+              per_page: WP.per_page,
+              page: WP.paged,
+              orderby: 'modified',
+              search: WP.search,
+              tags: WP.tag,
+              categories: WP.category,
+              categories_exclude: WP.categories_exclude,
+            },
+          });
 
-          axios.get(api_url)
+          client.get()
             .then(function(response) {
               self.setHeader(response.headers);
               for (var key in response.data) {
