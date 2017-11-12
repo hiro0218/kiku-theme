@@ -5,7 +5,7 @@ export default {
     var mokujiContent = entry.getElementsByClassName('mokuji-content')[0];
     if (mokujiContent) {
       var mokuji = new Mokuji.init(entry, {
-        anchorType: 'wikipedia',
+        anchorType: true,
         anchorLink: true,
         anchorLinkSymbol: '#',
         anchorLinkBefore: false,
