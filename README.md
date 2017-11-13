@@ -12,6 +12,7 @@ A Simple WordPress Theme. (for myself)
  * Search Engine Optimization (SEO)
     * OGP, Twitter Cards
  * Table of Contents
+    * use [Mokuji.js](https://github.com/hiro0218/mokuji.js)
  * Syntax Highlighter
     * use [Prism.js](http://prismjs.com/)
  * Share Button
