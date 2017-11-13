@@ -24,19 +24,20 @@ export default {
     }
   },
   addExternalLink(entry) {
-    var self = this;
-    var icon = document.createElement('i');
-    icon.classList.add('icon-open_in_new');
-
-    [].forEach.call(entry.getElementsByTagName('a'), function (element) {
-      self.setExternalLinkIcon(element, icon);
-    });
-  },
-  setExternalLinkIcon(element, icon) {
-    if (typeof element.origin === 'undefined') {
+    var aTags = entry.getElementsByTagName('a');
+    var length = aTags.length;
+    if (length === 0) {
       return;
     }
 
+    var icon = document.createElement('i');
+    icon.classList.add('icon-open_in_new');
+
+    for (var i = 0; i < length; i++) {
+      this.setExternalLinkIcon(aTags[i], icon.cloneNode(false));
+    }
+  },
+  setExternalLinkIcon(element, icon) {
     var href = element.getAttribute('href');
     // exclude javascript and anchor
     if ((href.substring(0, 10).toLowerCase() === 'javascript') || (href.substring(0, 1) === '#')) {
@@ -51,6 +52,7 @@ export default {
     // set target and rel
     element.setAttribute('target', '_blank');
     element.setAttribute('rel', 'nofollow');
+    element.setAttribute('rel', 'noopener');
 
     // set icon when childNode is text
     if (element.hasChildNodes()) {
