@@ -12,8 +12,8 @@ $fullhd: $widescreen;//1344px;
 // Font
 // -------------------------
 
-$font-family-base:        -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", YuGoMedium, Meiryo, sans-serif, Emoji !default;
-$font-family-monospace:   Consolas, "Liberation Mono", Menlo, Courier, monospace, Emoji !default;
+$font-family-base:        -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", YuGoMedium, Meiryo, Emoji, sans-serif !default;
+$font-family-monospace:   Consolas, "Liberation Mono", Menlo, Courier, Emoji, monospace !default;
 $font-weight-base:        normal;
 
 $font-size-base:          16px;
@@ -28,7 +28,7 @@ $font-size-h2:            1.5rem;
 $font-size-h3:            1.17rem;
 $font-size-h4:            1rem;
 $font-size-h5:            .83rem;
-$font-size-h6:            .67rem;
+$font-size-h6:            $font-size-h5;//.67rem;
 
 
 $table-border-width: 1px;
