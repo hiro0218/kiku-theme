@@ -69,7 +69,7 @@ a {
 
 // Figures
 figure {
-  margin: 0 0 1rem;
+  margin: 0 0 2rem;
   text-align: center;
   img {
     margin-bottom: 0;
@@ -82,13 +82,16 @@ figcaption {
 
 // Images
 img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: auto auto 2rem;
   vertical-align: middle;
 }
 
-
 // Tables
 table {
-  margin: 0 auto;
+  margin: 0 auto 2rem;
   border: $table-border-width solid $table-border-color;
   background: #fff;
   border-collapse: collapse;
@@ -136,6 +139,10 @@ tbody {
 }
 
 // define list
+dl {
+  margin-bottom: 2rem;
+}
+
 dt {
   font-weight: bold;
 }

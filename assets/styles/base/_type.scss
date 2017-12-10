@@ -1,28 +1,19 @@
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: normal;
-}
-
 h1 {
-  margin-top: 2rem;
+  margin-top: $font-size-h1;
   margin-bottom: 1.5rem;
   color: $font-color-h1;
   font-size: $font-size-h1;
 }
 
 h2 {
-  margin-top: 2rem;
+  margin-top: $font-size-h2;
   margin-bottom: 1rem;
   color: $font-color-h2;
   font-size: $font-size-h2;
 }
 
 h3 {
-  margin-top: 2rem;
+  margin-top: $font-size-h3;
   margin-bottom: .5rem;
   color: $font-color-h3;
   font-size: $font-size-h3;
@@ -50,10 +41,37 @@ h6 {
   font-size: $font-size-h6;
 }
 
+p {
+  margin-bottom: 2rem;
+  > code {
+   margin: 0;
+   padding: .2rem 0;
+   border-radius: .15rem;
+   background: $blue-50;
+   color: $blue-400;
+   font-size: $font-size-sm;
+   line-height: 2;
+
+   &::before,
+   &::after {
+     letter-spacing: -.2rem;
+     content: "\00a0";
+   }
+ }
+}
+
 pre {
+  margin-bottom: 2rem;
+  padding: 2rem;
+  border-radius: ($spacer * .15);
+  background: $grey-100;
   overflow: auto;
   overflow-wrap: break-word;
   word-wrap: break-word;
+
+  &.line-numbers {
+    padding-left: 4rem;
+  }
 }
 
 pre,
@@ -64,12 +82,34 @@ code {
 
 blockquote {
   width: 100%;
+  margin-bottom: 2rem;
+  margin-left: .8rem;
+  padding: 1.6rem;
+  border-left: 4px solid $grey-200;
+  color: $grey-500;
+
+  p {
+    &:first-child {
+      margin-top: 0;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  small,
+  footer {
+    display: block;
+    margin-top: 1.8rem !important;
+    font-size: $font-size-sm;
+    text-align: right;
+  }
 }
 
 ul,
 ol {
   margin-top: 0;
-  margin-bottom: 0;
+  margin-bottom: 2rem;
   padding-left: 2rem;
 }
 
