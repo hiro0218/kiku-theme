@@ -1,7 +1,23 @@
 // YuGothic font
 @font-face {
   font-family: "YuGoMedium";
+  font-weight: 300;
+  src: local("YuGothic-Regular"),
+       local("Yu Gothic");
+}
+
+@font-face {
+  font-family: "YuGoMedium";
   font-weight: 400;
+  src: local("YuGothic-Medium"),
+       local("Yu Gothic Medium"),
+       local("YuGothic-Regular");
+}
+
+
+@font-face {
+  font-family: "YuGoMedium";
+  font-weight: 500;
   src: local("YuGothic-Medium"),
        local("Yu Gothic Medium"),
        local("YuGothic-Regular");
@@ -10,6 +26,20 @@
 @font-face {
   font-family: "YuGoMedium";
   font-weight: 600;
+  src: local("YuGothic-Bold"),
+       local("Yu Gothic");
+}
+
+@font-face {
+  font-family: "YuGoMedium";
+  font-weight: 700;
+  src: local("YuGothic-Bold"),
+       local("Yu Gothic");
+}
+
+@font-face {
+  font-family: "YuGoMedium";
+  font-weight: 800;
   src: local("YuGothic-Bold"),
        local("Yu Gothic");
 }
