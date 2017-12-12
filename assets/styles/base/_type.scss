@@ -51,22 +51,22 @@ p {
   line-height: 1.8;
   text-align: justify;
   word-break: break-all;
+}
 
-  > code {
-   margin: 0;
-   padding: .2rem 0;
-   border-radius: .15rem;
-   background: $blue-50;
-   color: $blue-400;
-   font-size: $font-size-sm;
-   line-height: 2;
+:not(pre) > code {
+  margin: 0;
+  padding: .2rem 0;
+  border-radius: .15rem;
+  background: $blue-50;
+  color: $blue-400;
+  font-size: $font-size-sm;
+  line-height: 2;
 
-   &::before,
-   &::after {
-     letter-spacing: -.2rem;
-     content: "\00a0";
-   }
- }
+  &::before,
+  &::after {
+    letter-spacing: -.2rem;
+    content: "\00a0";
+  }
 }
 
 pre {
