@@ -1,8 +1,10 @@
 $entry-thumbnail-size: 5rem;  // 80px;
 
 .page-header {
-  margin: 0 0 1rem 0;
-  font-size: $font-size-lg;
+  margin: 0 0 .5rem;
+  font-size: $font-size-h3;
+  line-height: 3rem;
+  word-wrap: break-word;
 }
 
 .entry-list {
@@ -47,7 +49,6 @@ $entry-thumbnail-size: 5rem;  // 80px;
       justify-content: space-between;
       min-width: 0; // for flex and text-overflow
     }
-
 
     &-title,
     &-summary {
