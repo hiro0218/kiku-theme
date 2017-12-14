@@ -44,7 +44,7 @@
     "css-mqpacker": "^6.0.1",
     "cssnano": "^3.10.0",
     "es6-promise": "^4.1.1",
-    "eslint": "^4.13.0",
+    "eslint": "^4.13.1",
     "eslint-loader": "^1.9.0",
     "eslint-plugin-import": "^2.8.0",
     "extract-text-webpack-plugin": "^3.0.2",
@@ -57,7 +57,7 @@
     "postcss-cssnext": "^3.0.2",
     "postcss-loader": "^2.0.9",
     "postcss-safe-parser": "^3.0.1",
-    "resolve-url-loader": "^2.2.0",
+    "resolve-url-loader": "^2.2.1",
     "rimraf": "^2.6.2",
     "sass-lint": "^1.12.1",
     "sass-loader": "^6.0.6",
@@ -65,7 +65,7 @@
     "thread-loader": "^1.1.2",
     "url-loader": "^0.6.2",
     "vue-loader": "^13.5.0",
-    "vue-template-compiler": "^2.5.9",
+    "vue-template-compiler": "^2.5.10",
     "webpack": "^3.10.0",
     "webpack-assets-manifest": "^1.0.0",
     "webpack-merge": "^4.1.1",
@@ -80,7 +80,7 @@
     "nprogress": "^0.2.0",
     "prismjs": "^1.9.0",
     "s-ago": "^1.1.0",
-    "vue": "^2.5.9",
+    "vue": "^2.5.10",
     "zooming": "^1.2.6"
   }
 }
