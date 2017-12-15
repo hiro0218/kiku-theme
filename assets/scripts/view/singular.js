@@ -2,7 +2,6 @@
 import Vue from 'vue';
 import axios from 'axios';
 import NProgress from 'nprogress/nprogress.js';
-import inView from 'in-view';
 import mokuji from '@scripts/module/mokuji';
 import common from '@scripts/module/common';
 
@@ -119,9 +118,18 @@ export default {
         viewAttachedInfo: function () {
           var self = this;
           if (page_type === 'posts') {
-            inView('.attached-info').once('enter', function() {
-              self.requestAttachedData(post_id, page_type);
+            var clientHeight = document.documentElement.clientHeight;
+            var observer = new IntersectionObserver(function(changes) {
+              changes.forEach(function(change) {
+                var rect = change.target.getBoundingClientRect();
+                if (0 < rect.top && rect.top < clientHeight) {
+                  self.requestAttachedData(post_id, page_type);
+                  observer.unobserve(change.target);
+                }
+              });
             });
+            var target = document.querySelector('.attached-info');
+            observer.observe(target);
           }
         },
       },
