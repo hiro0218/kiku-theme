@@ -88,7 +88,7 @@ export default {
               self.loaded = true;
             });
         },
-        requestAttachedData: function (post_id, page_type) {
+        requestAttachedData: function (post_id) {
           var self = this;
           NProgress.start();
 
@@ -116,21 +116,23 @@ export default {
           return new Date(publish).toDateString() == new Date(modified).toDateString();
         },
         viewAttachedInfo: function () {
-          var self = this;
-          if (page_type === 'posts') {
-            var clientHeight = document.documentElement.clientHeight;
-            var observer = new IntersectionObserver(function(changes) {
-              changes.forEach(function(change) {
-                var rect = change.target.getBoundingClientRect();
-                if (0 < rect.top && rect.top < clientHeight) {
-                  self.requestAttachedData(post_id, page_type);
-                  observer.unobserve(change.target);
-                }
-              });
-            });
-            var target = document.querySelector('.attached-info');
-            observer.observe(target);
+          if (page_type !== 'posts') {
+            return;
           }
+          var self = this;
+          var clientHeight = document.documentElement.clientHeight;
+          var observer = new IntersectionObserver(function(changes) {
+            changes.forEach(function(change) {
+              var rect = change.target.getBoundingClientRect();
+              var isShow = (0 < rect.top && rect.top < clientHeight) || (0 < rect.bottom && rect.bottom < clientHeight) || (0 > rect.top && rect.bottom > clientHeight);
+              if (isShow) {
+                self.requestAttachedData(post_id);
+                observer.unobserve(change.target);
+              }
+            });
+          });
+          var target = document.querySelector('.attached-info');
+          observer.observe(target);
         },
       },
       filters: {
