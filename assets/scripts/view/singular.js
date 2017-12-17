@@ -74,10 +74,10 @@ export default {
               let json = response.data;
 
               self.setDatetime(json);
-              if (json.hasOwnProperty('categories') && json.categories.length !== 0) {
+              if (json.categories.length !== 0) {
                 self.categories = json.categories;
               }
-              if (json.hasOwnProperty('tags') && json.tags.length !== 0) {
+              if (json.tags.length !== 0) {
                 self.tags = json.tags;
               }
               self.amazon_product = json.amazon_product;
@@ -97,10 +97,19 @@ export default {
             .then(function(response) {
               let json = response.data;
 
-              if (json.hasOwnProperty('related') && json.related.length !== 0) {
+              if (json.related.length !== 0) {
                 self.relateds = json.related;
+              } else {
+                var related = target.querySelector('.related');
+                related.classList.add('element-hide');
               }
-              self.pagers = json.pager;
+
+              if (json.pager.length !== 0) {
+                self.pagers = json.pager;
+              } else {
+                var pager = target.querySelector('.pager');
+                pager.classList.add('element-hide');
+              }
 
               return true;
             })
