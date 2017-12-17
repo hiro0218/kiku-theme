@@ -47,7 +47,7 @@ export default {
         NProgress.start();
       },
       created: function () {
-        this.requestPostData(post_id, page_type);
+        this.requestPostData();
         NProgress.inc();
       },
       mounted: function () {
@@ -65,7 +65,7 @@ export default {
         }
       },
       methods: {
-        requestPostData: function (post_id, page_type) {
+        requestPostData: function () {
           var self = this;
 
           axios.defaults.baseURL = `/wp-json/wp/v2/${page_type}/${post_id}`;
@@ -88,7 +88,7 @@ export default {
               self.loaded = true;
             });
         },
-        requestAttachedData: function (post_id) {
+        requestAttachedData: function (target) {
           var self = this;
           NProgress.start();
 
@@ -126,7 +126,7 @@ export default {
               var rect = change.target.getBoundingClientRect();
               var isShow = (0 < rect.top && rect.top < clientHeight) || (0 < rect.bottom && rect.bottom < clientHeight) || (0 > rect.top && rect.bottom > clientHeight);
               if (isShow) {
-                self.requestAttachedData(post_id);
+                self.requestAttachedData(change.target);
                 observer.unobserve(change.target);
               }
             });
