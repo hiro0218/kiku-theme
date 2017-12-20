@@ -2,7 +2,7 @@
   <div class="related-container container" v-cloak v-if="relateds">
     <h2 class="related-heading">Related Posts</h2>
     <div class="entry-related">
-      <div class="related-section" v-for="(related,index) in relateds">
+      <div class="related-section" v-for="(related,index) in relateds" v-bind:key="index">
         <a v-bind:href="related.uri">
           <div class="related-image">
             <div class="image-sheet" v-bind:style="related.image ? 'background-image: url('+ related.image  +')' : ''"></div>

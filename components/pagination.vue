@@ -10,12 +10,12 @@
         </li>
         <template v-for="(pages, index) in pagination.pages">
           <template v-if="pagination.label.active == index">
-            <li class="pagination-active">
+            <li class="pagination-active" v-bind:key="index">
               <span>{{pagination.label.active | zeroPadding}}</span>
             </li>
           </template>
           <template v-else>
-            <li>
+            <li v-bind:key="index">
               <a v-bind:href="pages.links">{{index | zeroPadding}}</a>
             </li>
           </template>

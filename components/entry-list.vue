@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a v-bind:href="post.link" v-for="(post,index) in lists">
+    <a v-bind:href="post.link" v-for="(post,index) in lists" v-bind:key="index">
       <article class="entry-container">
         <div class="entry-image" v-bind:data-thumbnail-image="post.thumbnail">
           <div class="image-container">
