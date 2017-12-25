@@ -7,6 +7,7 @@ const CleanPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyGlobsPlugin = require('copy-globs-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const config = require('./config');
 
@@ -190,6 +191,11 @@ if (config.env.production) {
   webpackConfig.plugins.push(new webpack.NoEmitOnErrorsPlugin());
   webpackConfig.plugins.push(new webpack.optimize.ModuleConcatenationPlugin());
   webpackConfig.plugins.push(new webpack.optimize.AggressiveMergingPlugin());
+  webpackConfig.plugins.push(new BundleAnalyzerPlugin({
+    analyzerMode: 'static',
+    reportFilename: path.resolve(__dirname, '../../report/bundle-analyzer.html'),
+    openAnalyzer: false,
+  }));
 }
 
 if (config.enabled.cacheBusting) {
