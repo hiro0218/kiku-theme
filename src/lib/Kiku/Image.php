@@ -13,9 +13,7 @@ class Image {
         }
 
         // denied post
-        if ( post_password_required() ) {
-            return "";
-        }
+        if (post_password_required($post_id)) return "";
 
         // has thumbnail custom field
         $image_src = $this->get_meta_thumbnail_image($post_id);
