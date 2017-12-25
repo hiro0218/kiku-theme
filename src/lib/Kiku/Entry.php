@@ -77,7 +77,7 @@ class Entry {
                     "uri"   => get_the_permalink(),
                     "title" => $title,
                     "description" => \Kiku\Util::get_excerpt_content(),
-                    "image" => $Image->get_entry_image(false, get_the_ID()),
+                    "image" => $Image->get_entry_image(get_the_ID(), false),
                 ];
             }
             wp_reset_postdata();

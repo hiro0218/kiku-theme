@@ -3,7 +3,7 @@ namespace Kiku;
 
 class Image {
 
-    public function get_entry_image(bool $datauri = true, int $post_id = null, $image_size = 'medium'): string {
+    public function get_entry_image(int $post_id = null, bool $datauri = true, $image_size = 'medium'): string {
         $image_src = "";
 
         // post_idをチェック

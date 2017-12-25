@@ -23,7 +23,7 @@ class BlogPosting {
 
         $image_src = '';
         if (is_singular()) {
-            $image_src = $Image->get_entry_image(false, $post->ID, 'large');
+            $image_src = $Image->get_entry_image($post->ID, false, 'large');
         }
 
         if (!empty($image_src)) {

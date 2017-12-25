@@ -99,7 +99,7 @@ class OpenGraph {
 
     private function get_singular_image() {
         global $post, $Image;
-        $image_url = $Image->get_entry_image(false, $post->ID, 'large');
+        $image_url = $Image->get_entry_image($post->ID, false, 'large');
 
         if (!$image_url) {
             return get_site_icon_url();

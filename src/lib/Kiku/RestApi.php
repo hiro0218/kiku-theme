@@ -191,7 +191,7 @@ class REST_API {
         register_rest_field('post', 'thumbnail', [
             'get_callback' => function($object, $field_name, $request, $type) {
                 global $Image;
-                $url = $Image->get_entry_image(false, $object['id'], 'thumbnail');
+                $url = $Image->get_entry_image($object['id'], false, 'thumbnail');
                 return empty($url) ? null : $url;
             },
             'update_callback' => null,
