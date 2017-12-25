@@ -29,9 +29,7 @@ class Image {
 
         // has ASIN custom field
         $image_src = $this->get_asin_image($post_id);
-        if (!empty($image_src)) {
-            return $image_src;
-        }
+        if (!empty($image_src)) return $image_src;
 
         // has img tag
         $image_src = $this->get_post_image_from_tag($datauri, $post_id);
@@ -104,7 +102,10 @@ class Image {
 
     public function get_asin_image($post_id) {
         $url = '';
+
         $product_data = get_post_meta($post_id, CF_AMAZON_PRODUCT_TAG, true);
+        if (empty($product_data)) return "";
+
         $data = json_decode($product_data, true);
 
         // migration
@@ -112,10 +113,6 @@ class Image {
             $url = $data["LargeImage"]['URL'];
         } else if (is_string($data["LargeImage"])) {
             $url = $data["LargeImage"];
-        }
-
-        if (empty($url)) {
-            return "";
         }
 
         if ( $this->is_correct_image($url) ) {
