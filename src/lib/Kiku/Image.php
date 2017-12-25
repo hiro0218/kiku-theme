@@ -23,14 +23,14 @@ class Image {
             return $image_src;
         }
 
-        // has ASIN custom field
-        $image_src = $this->get_asin_image($post_id);
+        // has thumbnail
+        $image_src = $this->get_post_thumbnail_image($post_id);
         if (!empty($image_src)) {
             return $image_src;
         }
 
-        // has thumbnail
-        $image_src = $this->get_post_thumbnail_image($post_id);
+        // has ASIN custom field
+        $image_src = $this->get_asin_image($post_id);
         if (!empty($image_src)) {
             return $image_src;
         }
