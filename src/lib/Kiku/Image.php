@@ -6,8 +6,10 @@ class Image {
     public function get_entry_image(bool $datauri = true, int $post_id = null): string {
         $image_src = "";
 
+        // post_idをチェック
+        $post_id = $this->get_post_id($post_id);
         if (empty($post_id)) {
-            $post_id = get_queried_object_id();
+            return "";
         }
 
         // denied post
@@ -164,4 +166,12 @@ class Image {
 
         return null;
     }
+
+    private function get_post_id($post_id) {
+        if (empty($post_id)) {
+            $post_id = get_queried_object_id();
+        }
+        return $post_id;
+    }
+
 }
