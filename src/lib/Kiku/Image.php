@@ -3,7 +3,7 @@ namespace Kiku;
 
 class Image {
 
-    public function get_entry_image(bool $datauri = true, int $post_id = null): string {
+    public function get_entry_image(bool $datauri = true, int $post_id = null, $image_size = 'medium'): string {
         $image_src = "";
 
         // post_idをチェック
@@ -24,7 +24,7 @@ class Image {
         }
 
         // has thumbnail
-        $image_src = $this->get_post_thumbnail_image($post_id);
+        $image_src = $this->get_post_thumbnail_image($post_id, $image_size);
         if (!empty($image_src)) {
             return $image_src;
         }
@@ -41,38 +41,8 @@ class Image {
         return $image_src;
     }
 
-    public function get_post_thumbnail_image($size = null): string {
-        $url = "";
-        $attachment_image_src = null;
-
-        if ( !has_post_thumbnail() ) {
-            return "";
-        }
-
-        $thumbnail_id = get_post_thumbnail_id();
-
-        if ($size === null) {
-            // wp_get_attachment_image_src -> thumbnail, medium, large, full
-            // try large size
-            $attachment_image_src = wp_get_attachment_image_src($thumbnail_id, 'large');
-
-            // try full
-            if ( empty($attachment_image_src) ) {
-                $attachment_image_src = wp_get_attachment_image_src($thumbnail_id, 'full');
-            }
-
-            // retry medium
-            if ( empty($attachment_image_src) ) {
-                $attachment_image_src = wp_get_attachment_image_src($thumbnail_id, 'medium');
-            }
-
-        } else {
-            $attachment_image_src = wp_get_attachment_image_src($thumbnail_id, $size);
-        }
-
-        if ($attachment_image_src) {
-            $url = (string)$attachment_image_src[0];
-        }
+    public function get_post_thumbnail_image($post_id, $image_size = 'medium'): string {
+        $url = get_the_post_thumbnail_url($post_id, $image_size);
 
         return $this->is_correct_image($url) ? $url : "";
     }
