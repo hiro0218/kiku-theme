@@ -36,7 +36,7 @@
 
   export default {
     name: 'pagination',
-    data () {
+    data() {
       return {
         pagination: {
           label: {
@@ -54,23 +54,23 @@
             last: '',
           },
         },
-      }
+      };
     },
     props: {
       totalpages: {
         type: Number,
         default: 0,
         required: true,
-      }
+      },
     },
-    mounted: function () {},
+    mounted: function() {},
     watch: {
-      totalpages: function () {
+      totalpages: function() {
         this.setPaginationData();
       },
     },
     methods: {
-      setPaginationData: function () {
+      setPaginationData: function() {
         var totalpages = this.totalpages;
 
         if (totalpages <= 1) {
@@ -79,7 +79,7 @@
 
         var range = 3;
         var paged = WP.paged;
-        var ceil  = Math.ceil(range / 2);
+        var ceil = Math.ceil(range / 2);
         var min = 0;
         var max = 0;
         var param = this.getPaginationParam();
@@ -88,10 +88,10 @@
           if (paged <= range) {
             min = 1;
             max = range + 1;
-          } else if (paged >= (totalpages - ceil)) {
+          } else if (paged >= totalpages - ceil) {
             min = totalpages - range;
             max = totalpages;
-          } else if (paged >= range && paged < (totalpages - ceil)) {
+          } else if (paged >= range && paged < totalpages - ceil) {
             min = paged - ceil;
             max = paged + ceil;
           }
@@ -102,11 +102,11 @@
 
         var prev = paged - 1;
         var first = 1;
-        if (first && (1 != paged)) {
+        if (first && 1 != paged) {
           this.pagination.label.first = first;
           this.pagination.links.first = `${param}/page/${first}/`;
         }
-        if (prev && (1 != paged)) {
+        if (prev && 1 != paged) {
           this.pagination.prev = prev;
           this.pagination.links.prev = `${param}/page/${prev}/`;
         }
@@ -135,7 +135,7 @@
           }
         }
       },
-      getPaginationParam: function () {
+      getPaginationParam: function() {
         if (WP.category_name) {
           return `/category/${WP.category_name}`;
         } else if (WP.tag_name) {
@@ -152,5 +152,5 @@
         return ('0' + number).slice(-2);
       },
     },
-  }
+  };
 </script>

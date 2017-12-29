@@ -23,9 +23,9 @@
         type: Array,
         default: [],
         required: false,
-      }
+      },
     },
     methods: {},
-    mounted: function () {},
-  }
+    mounted: function() {},
+  };
 </script>

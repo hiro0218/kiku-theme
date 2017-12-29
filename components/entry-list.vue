@@ -34,14 +34,14 @@
         type: Array,
         default: [],
         required: true,
-      }
+      },
     },
     methods: {},
-    mounted: function () {},
+    mounted: function() {},
     filters: {
       escapeBrackets: function(text) {
         return text.replace(/</g, '&lt;').replace(/>/g, '&gt;');
       },
     },
-  }
+  };
 </script>

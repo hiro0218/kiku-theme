@@ -21,9 +21,9 @@
         type: Object,
         default: null,
         required: false,
-      }
+      },
     },
     methods: {},
-    mounted: function () {},
-  }
+    mounted: function() {},
+  };
 </script>
