@@ -4,8 +4,14 @@
   "parserOptions": {
     "sourceType": "module"
   },
-  "extends": ["eslint:recommended", "prettier"],
-  "plugins": ["prettier"],
+  "extends": [
+    "eslint:recommended",
+    "prettier"
+  ],
+  "plugins": [
+    "html",
+    "prettier"
+  ],
   "env": {
     "es6": true,
     "browser": true
