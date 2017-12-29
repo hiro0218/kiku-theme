@@ -1,6 +1,3 @@
-/* global Prism WP */
-import Vue from 'vue';
-import axios from 'axios';
 import NProgress from 'nprogress/nprogress.js';
 import mokuji from '@scripts/module/mokuji';
 import common from '@scripts/module/common';

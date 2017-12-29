@@ -1,4 +1,3 @@
-/* global Prism */
 import 'prismjs/prism';
 
 // components

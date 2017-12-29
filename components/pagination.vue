@@ -32,8 +32,6 @@
 </template>
 
 <script>
-  /* global WP */
-
   export default {
     name: 'pagination',
     data() {

@@ -1,6 +1,3 @@
-/* global WP */
-import Vue from 'vue';
-import axios from 'axios';
 import NProgress from 'nprogress/nprogress.js';
 import ago from 's-ago';
 import common from '@scripts/module/common';

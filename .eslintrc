@@ -20,7 +20,11 @@
     "module": true,
     "__dirname": true,
     "require": true,
-    "process": true
+    "process": true,
+    "WP": true,
+    "axios": true,
+    "Vue": true,
+    "Prism": true
   },
   "rules": {
     "prettier/prettier": ["error", {

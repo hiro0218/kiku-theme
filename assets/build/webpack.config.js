@@ -144,6 +144,10 @@ let webpackConfig = {
     moduleExtensions: ['-loader'],
   },
   plugins: [
+    new webpack.ProvidePlugin({
+      axios: 'axios',
+      Vue: ['vue/dist/vue.esm.js', 'default']
+    }),
     new CleanPlugin([config.paths.dist], {
       root: config.paths.root,
       verbose: false,
