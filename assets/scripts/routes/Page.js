@@ -4,5 +4,5 @@ export default {
   init() {
     singular.init();
   },
-  finalize() {}
+  finalize() {},
 };

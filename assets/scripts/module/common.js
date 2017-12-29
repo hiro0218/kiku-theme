@@ -16,7 +16,7 @@ export default {
 
       var sheet = container[i].getElementsByClassName('image-sheet')[0];
       var img = new Image();
-      img.onload = (function (element, url) {
+      img.onload = (function(element, url) {
         // set background image
         element.style.backgroundImage = 'url(' + url + ')';
       })(sheet, imageUrl);
@@ -40,7 +40,10 @@ export default {
   setExternalLinkIcon(element, icon) {
     var href = element.getAttribute('href');
     // exclude javascript and anchor
-    if ((href.substring(0, 10).toLowerCase() === 'javascript') || (href.substring(0, 1) === '#')) {
+    if (
+      href.substring(0, 10).toLowerCase() === 'javascript' ||
+      href.substring(0, 1) === '#'
+    ) {
       return;
     }
 
@@ -71,12 +74,15 @@ export default {
     }
 
     var zoom = new Zooming({
-      scaleBase: .8
+      scaleBase: 0.8,
     });
 
     for (var i = 0; i < length; i += 1) {
       // parentNode is <a> Tag
-      if (entryImg[i].getAttribute('data-zoom-disabled') === 'true' || entryImg[i].parentNode.nodeName === 'A') {
+      if (
+        entryImg[i].getAttribute('data-zoom-disabled') === 'true' ||
+        entryImg[i].parentNode.nodeName === 'A'
+      ) {
         continue;
       }
       entryImg[i].style.cursor = 'zoom-in';
@@ -113,5 +119,5 @@ export default {
     var value = style.getPropertyValue(property);
 
     return value;
-  }
+  },
 };

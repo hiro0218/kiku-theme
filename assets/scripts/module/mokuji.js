@@ -10,9 +10,9 @@ export default {
         anchorLinkSymbol: '#',
         anchorLinkBefore: false,
         anchorLinkClassName: 'anchor',
-        smoothScroll: true
+        smoothScroll: true,
       });
       mokujiContent.appendChild(mokuji);
     }
-  }
+  },
 };

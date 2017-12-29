@@ -22,15 +22,15 @@ export default {
         headers: {},
         lists: [],
       },
-      beforeCreate: function () {
+      beforeCreate: function() {
         NProgress.start();
       },
-      created: function () {
+      created: function() {
         this.requestPostData();
         NProgress.inc();
       },
       watch: {
-        loaded: function (data) {
+        loaded: function(data) {
           // After displaying DOM
           this.$nextTick(function() {
             common.setThumbnailImage();
@@ -39,7 +39,7 @@ export default {
         },
       },
       methods: {
-        requestPostData: function () {
+        requestPostData: function() {
           var self = this;
           var client = axios.create({
             baseURL: '/wp-json/wp/v2/posts',
@@ -54,7 +54,8 @@ export default {
             },
           });
 
-          client.get()
+          client
+            .get()
             .then(function(response) {
               self.setHeader(response.headers);
               for (var key in response.data) {
@@ -78,7 +79,7 @@ export default {
               }
             });
         },
-        setHeader: function (headers) {
+        setHeader: function(headers) {
           this.headers = {
             total: Number(headers['x-wp-total']),
             totalpages: Number(headers['x-wp-totalpages']),

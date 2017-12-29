@@ -43,18 +43,18 @@ export default {
         relateds: null,
         pagers: null,
       },
-      beforeCreate: function () {
+      beforeCreate: function() {
         NProgress.start();
       },
-      created: function () {
+      created: function() {
         this.requestPostData();
         NProgress.inc();
       },
-      mounted: function () {
+      mounted: function() {
         NProgress.done();
       },
       watch: {
-        loaded: function (data) {
+        loaded: function(data) {
           var self = this;
           // After displaying DOM
           this.$nextTick(function() {
@@ -62,14 +62,15 @@ export default {
             common.zoomImage(element);
             self.viewAttachedInfo();
           });
-        }
+        },
       },
       methods: {
-        requestPostData: function () {
+        requestPostData: function() {
           var self = this;
 
           axios.defaults.baseURL = `/wp-json/wp/v2/${page_type}/${post_id}`;
-          axios.get()
+          axios
+            .get()
             .then(function(response) {
               let json = response.data;
 
@@ -88,12 +89,13 @@ export default {
               self.loaded = true;
             });
         },
-        requestAttachedData: function (target) {
+        requestAttachedData: function(target) {
           var self = this;
           NProgress.start();
 
           axios.defaults.baseURL = `/wp-json/kiku/v1/post/${post_id}`;
-          axios.get()
+          axios
+            .get()
             .then(function(response) {
               let json = response.data;
 
@@ -117,14 +119,19 @@ export default {
               NProgress.done();
             });
         },
-        setDatetime: function (json) {
+        setDatetime: function(json) {
           this.date.publish = json.date;
-          this.date.modified = (this.isSameDay(json.date, json.modified)) ? null : json.modified;
+          this.date.modified = this.isSameDay(json.date, json.modified)
+            ? null
+            : json.modified;
         },
-        isSameDay: function (publish, modified) {
-          return new Date(publish).toDateString() == new Date(modified).toDateString();
+        isSameDay: function(publish, modified) {
+          return (
+            new Date(publish).toDateString() ==
+            new Date(modified).toDateString()
+          );
         },
-        viewAttachedInfo: function () {
+        viewAttachedInfo: function() {
           if (page_type !== 'posts') {
             return;
           }
@@ -133,7 +140,10 @@ export default {
           var observer = new IntersectionObserver(function(changes) {
             changes.forEach(function(change) {
               var rect = change.target.getBoundingClientRect();
-              var isShow = (0 < rect.top && rect.top < clientHeight) || (0 < rect.bottom && rect.bottom < clientHeight) || (0 > rect.top && rect.bottom > clientHeight);
+              var isShow =
+                (0 < rect.top && rect.top < clientHeight) ||
+                (0 < rect.bottom && rect.bottom < clientHeight) ||
+                (0 > rect.top && rect.bottom > clientHeight);
               if (isShow) {
                 self.requestAttachedData(change.target);
                 observer.unobserve(change.target);
@@ -152,12 +162,15 @@ export default {
           if (typeof date === 'string') {
             date = new Date(date);
           }
-          return date.toISOString().split('T')[0].replace(/-/g , '/');
+          return date
+            .toISOString()
+            .split('T')[0]
+            .replace(/-/g, '/');
         },
         escapeBrackets: function(text) {
           return text.replace(/</g, '&lt;').replace(/>/g, '&gt;');
         },
-      }
+      },
     });
   },
 };

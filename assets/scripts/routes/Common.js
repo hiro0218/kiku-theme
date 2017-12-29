@@ -9,5 +9,5 @@ export default {
 
     // drawer
     drawer.init();
-  }
+  },
 };

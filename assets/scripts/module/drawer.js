@@ -1,4 +1,3 @@
-
 export default {
   init() {
     var trigger = document.getElementsByClassName('drawer-checkbox')[0];
@@ -7,7 +6,7 @@ export default {
     }
 
     var self = this;
-    trigger.addEventListener('change', function (e) {
+    trigger.addEventListener('change', function(e) {
       if (trigger.checked) {
         self.focusSearchInput();
       }
@@ -20,5 +19,5 @@ export default {
       return;
     }
     search.focus();
-  }
+  },
 };

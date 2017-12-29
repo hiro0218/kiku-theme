@@ -14,7 +14,6 @@ import tag from './routes/Tag';
 import single from './routes/Single';
 import page from './routes/Page';
 
-
 // Use this variable to set up the common and page specific functions. If you
 // rename this variable, you will also need to rename the namespace below.
 const routes = new Router({
