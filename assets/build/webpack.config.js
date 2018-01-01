@@ -112,7 +112,7 @@ let webpackConfig = {
         include: config.paths.assets,
         loader: 'url',
         options: {
-          limit: 4096,
+          limit: 1024,
           name: `[path]${assetsFilenames}.[ext]`,
         },
       },
@@ -121,7 +121,7 @@ let webpackConfig = {
         include: /node_modules|bower_components/,
         loader: 'url',
         options: {
-          limit: 4096,
+          limit: 1024,
           outputPath: 'vendor/',
           name: `${config.cacheBusting}.[ext]`,
         },
