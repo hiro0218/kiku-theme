@@ -5,13 +5,13 @@
 }
 
 ::selection {
-  background: $grey-300;
-  color: $grey-900;
+  background: $grey-300 !important;
+  color: $grey-900 !important;
 }
 
 ::-moz-selection {
-  background: $grey-300;
-  color: $grey-900;
+  background: $grey-300 !important;
+  color: $grey-900 !important;
 }
 
 // Body reset
