@@ -197,7 +197,7 @@ if (config.env.production) {
   webpackConfig.plugins.push(new webpack.optimize.AggressiveMergingPlugin());
   webpackConfig.plugins.push(new BundleAnalyzerPlugin({
     analyzerMode: 'static',
-    reportFilename: path.resolve(__dirname, '../../report/bundle-analyzer.html'),
+    reportFilename: path.resolve(__dirname, '../../.report/bundle-analyzer.html'),
     openAnalyzer: false,
   }));
 }
