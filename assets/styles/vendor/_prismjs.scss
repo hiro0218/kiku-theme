@@ -4,7 +4,10 @@
 @import "prism-show-language";
 
 pre[class*="language-"] {
-  @extend pre;
+  padding: 2rem;
+  &.line-numbers {
+    padding-left: 4rem;
+  }
 }
 code[class*="language-"] {
   background: none;
