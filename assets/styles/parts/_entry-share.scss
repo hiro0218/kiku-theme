@@ -1,48 +1,47 @@
-$twitter-color:     #55acee;
-$facebook-color:    #3b5998;
-$hatena-color:      #2c6ebd;
-$line-color:        #00c300;
-$share-base-color:  $grey-300;
+$twitter-color: #55acee;
+$facebook-color: #3b5998;
+$hatena-color: #00a4de;
+$line-color: #00B900;
 
 .entry-share {
   display: flex;
-  justify-content: center;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   text-align: center;
 
   a {
-    margin: 0 .5rem;
-
-    &:not(:last-child) {
-      margin-right: .5rem;
+    color: $white;
+    font-size: 1.5rem;
+    line-height: 1;
+    &:hover {
+      opacity: .8;
+    }
+    & + a {
+      margin-left: .5rem;
     }
   }
 }
 
 .btn-twitter,
 .btn-facebook,
-.btn-hatena,
-.btn-line {
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  background-size: 80% 80%;
-  @include hide-text;
-  @include size(40px);
-
-  &:active {
-    transform: scale(.95);
-  }
+.btn-line,
+.btn-hatena {
+  flex: auto;
+  padding: .5rem .7rem;
+  border-radius: .125rem;
 }
 
 .btn-twitter {
-  background-image: url("../images/svg/twitter.svg");
+  background: $twitter-color;
 }
+
 .btn-facebook {
-  background-image: url("../images/svg/facebook.svg");
+  background: $facebook-color;
 }
+
 .btn-hatena {
-  background-image: url("../images/svg/hatena-bookmark.svg");
+  background: $hatena-color;
 }
+
 .btn-line {
-  background-image: url("../images/svg/line.svg");
+  background: $line-color;
 }

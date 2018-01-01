@@ -71,34 +71,34 @@ class Kiku_Setting_Admin {
     }
 
     public function add_insert_data_bottom_of_more_tag($content) {
-        if ( !is_singular() || !$this->is_insert_post_type( get_option('kiku_insert_data_bottom_of_more_tag_post_types') ) ) {
+        if (!$this->is_insert_post_type(get_option('kiku_insert_data_bottom_of_more_tag_post_types'))) {
             return $content;
         }
 
         $data = get_option('kiku_insert_data_bottom_of_more_tag');
+        $option = get_option('kiku_insert_data_bottom_of_more_tag_option') ? true : false;
 
-        if ( empty($data) ) {
+        if (empty($data)) {
             return $content;
         }
 
         $pattern = '/(<[a-z0-9]+.*?>)?(<span id="more-[0-9]+"><\/span>)(<\/[a-z0-9]+>)?/i';
         preg_match($pattern, $content, $matches);
 
-        if ( !empty($matches[0]) ){
-            if (strpos($matches[0], '</p>') !== false){
-                $content = preg_replace($pattern, '</p>'. $data, $content);
-            } else {
-                $content = preg_replace($pattern, '</p>'. $data .'<p>', $content);
+        if (!empty($matches[0])) {
+            if (strpos($matches[0], '</p>') !== false) {
+                return preg_replace($pattern, '</p>'. $data, $content);
             }
-        } else if ( get_option('kiku_insert_data_bottom_of_more_tag_option') ) {
-            $content = $data. $content;
+            return preg_replace($pattern, '</p>'. $data .'<p>', $content);
+        } else if ($option) {
+            return $data. $content;
         }
 
         return $content;
     }
 
     public function add_insert_data_bottom_of_content($content) {
-        if ( !is_singular() || !$this->is_insert_post_type( get_option('kiku_insert_data_bottom_of_content_post_types') ) ) {
+        if (!$this->is_insert_post_type( get_option('kiku_insert_data_bottom_of_content_post_types'))) {
             return $content;
         }
 
@@ -118,7 +118,7 @@ class Kiku_Setting_Admin {
             return $result;
         }
 
-        foreach($selected_post_types as $post_type) {
+        foreach ($selected_post_types as $post_type) {
             if ( $post_type === get_post_type() ) {
                 $result = true;
                 break;

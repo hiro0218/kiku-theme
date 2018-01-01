@@ -1,6 +1,6 @@
 .line-numbers {
   position: relative;
-  padding-left: 3.8em;
+  padding-left: 3.8rem;
   counter-reset: linenumber;
   > code {
     position: relative;
@@ -10,12 +10,10 @@
 .line-numbers-rows {
   position: absolute;
   pointer-events: none;
-  top: 0;
-  font-size: 100%;
-  left: -3.8em;
-  width: 3em; // works for line-numbers below 1000 lines
+  top: -.25rem;
+  left: -3.8rem;
+  width: 3rem; // works for line-numbers below 1000 lines
   letter-spacing: -1px;
-  border-right: 1px solid #999;
   user-select: none;
 }
 
@@ -27,7 +25,7 @@
     content: counter(linenumber);
     color: #999;
     display: block;
-    padding-right: .8em;
+    padding-right: .8rem;
     text-align: right;
   }
 }

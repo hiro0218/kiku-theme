@@ -27,10 +27,9 @@ function add_html_update_level_custombox() {
     if (empty($update_level)) {
         $normal_checked = ' checked="checked"';
     } else {
-        if ( $update_level == "" || $update_level == "high" ){
+        if ( $update_level == "" || $update_level == "high" ) {
             $normal_checked = ' checked="checked"';
-        }
-        else if ( $update_level == "low" ) {
+        } else if ( $update_level == "low" ) {
             $modify_checked = ' checked="checked"';
         }
     }
@@ -194,11 +193,11 @@ function verify_cusutom_data() {
 }
 
 function insert_custom_data_in_singular() {
-    if( !is_singular() ) {
+    if ( !is_singular() ) {
         return;
     }
 
-    while( have_posts() ){
+    while ( have_posts() ) {
         the_post();
 
         $object = get_post_meta(get_the_ID(), '_custom_css', true);

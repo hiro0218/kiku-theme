@@ -1,62 +1,43 @@
-// Global Prefixer
-$prefix-for-webkit:    true;
-$prefix-for-mozilla:   true;
-$prefix-for-microsoft: false;
-$prefix-for-opera:     false;
-$prefix-for-spec:      true;
+//
+// Responsiveness
+// -------------------------
 
-// Modular scale
-$base-size:            16px;
-$modular-scale-base:   1rem;
-$modular-scale-ratio:  $augmented-fourth;
-//
-// $golden:           1.618;
-// $minor-second:     1.067;
-// $major-second:     1.125;
-// $minor-third:      1.2;
-// $major-third:      1.25;
-// $perfect-fourth:   1.333;
-// $augmented-fourth: 1.414;
-// $perfect-fifth:    1.5;
-// $minor-sixth:      1.6;
-// $major-sixth:      1.667;
-// $minor-seventh:    1.778;
-// $major-seventh:    1.875;
-// $octave:           2;
-// $major-tenth:      2.5;
-// $major-eleventh:   2.667;
-// $major-twelfth:    3;
-// $double-octave:    4;
-//
+$tablet: 769px;
+$desktop: 960px;
+$widescreen: 1152px;
+$fullhd: $widescreen;//1344px;
 
 
 //
 // Font
 // -------------------------
-$font-family-base:        -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", YuGoMedium, Meiryo, sans-serif, Emoji !default;
-$font-family-monospace:   Consolas, "Liberation Mono", Menlo, Courier, monospace, Emoji !default;
+
+$font-family-base:        -apple-system-subset, BlinkMacSystemFont, "Yu Gothic", YuGothic, "Hiragino Kaku Gothic ProN", Meiryo, Emoji, sans-serif !default;
+$font-family-monospace:   Consolas, "Liberation Mono", Menlo, Courier, Emoji, monospace !default;
 $font-weight-base:        normal;
 
-$font-size-base:          $base-size;
-$font-size-lg:            106.25%;
-$font-size-sm:            93.75%;
-$font-size-xs:            87.5%;
+$font-size-base:          16px;
+$font-size-lg:            1.0625rem;
+$font-size-sm:            .9375rem;
+$font-size-xs:            .875rem;
 
 $line-height-base:        2rem;
 
-$font-size-h1:            modular-scale(2);
-$font-size-h2:            modular-scale(1, 1.2rem);
-$font-size-h3:            modular-scale(1, 1.1rem);
-$font-size-h4:            modular-scale(1);
-$font-size-h5:            modular-scale(0);
-$font-size-h6:            modular-scale(0);
+$font-size-h1:            2rem;
+$font-size-h2:            1.5rem;
+$font-size-h3:            1.17rem;
+$font-size-h4:            1rem;
+$font-size-h5:            .83rem;
+$font-size-h6:            $font-size-h5;//.67rem;
 
 
 $table-border-width: 1px;
 
+
 //
 // Layout
 // -------------------------
+
 $spacer:               1rem;
 
 $screen-xs:            480px;  // Extra small screen / phone
@@ -65,6 +46,7 @@ $screen-md:            992px;  // Medium screen / desktop
 $screen-lg:            1200px;
 
 $container-max-width:  1140px;
+
 
 //
 // Colors
@@ -75,9 +57,9 @@ $link-hover-color:      $blue-A400;
 $link-visit-color:      $light-blue-A100;
 $link-border-color:     $blue-100;
 
-$table-background-color: $grey-100;
+$table-head-bg-color:    $grey-100;
 $table-border-color:     $grey-200;
-$table-hover-color:      $grey-50;
+$table-hover-color:      lighten($blue-50, 5%);
 
 $font-color-h1:         $grey-900;
 $font-color-h2:         $grey-800;

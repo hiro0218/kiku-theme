@@ -1,14 +1,16 @@
 # Include your project-specific ignores in this file
 # Read about how to use .gitignore: https://help.github.com/articles/ignoring-files
 /dist
+/.report
 bower_components
 node_modules
 npm-debug.log
 yarn-error.log
 /vendor
-
+/.cache-loader
 *.DS_Store
 ._*
 Thumbs.db
 
 .idea/
+.vscode/

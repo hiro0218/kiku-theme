@@ -1,24 +1,23 @@
-
-module.exports = {
+export default {
   init() {
     var trigger = document.getElementsByClassName('drawer-checkbox')[0];
-    if (trigger) {
-      var self = this;
-      var className = 'open-drawer';
-      trigger.addEventListener('change', function (e) {
-        if (trigger.checked) {
-          document.body.classList.add(className);
-          self.focusSearchInput();
-        } else {
-          document.body.classList.remove(className);
-        }
-      });
+    if (!trigger) {
+      return;
     }
+
+    var self = this;
+    trigger.addEventListener('change', function(e) {
+      if (trigger.checked) {
+        self.focusSearchInput();
+      }
+      document.body.classList.toggle('open-drawer');
+    });
   },
   focusSearchInput() {
     var search = document.getElementById('widget_searchform');
-    if (search) {
-      search.focus();
+    if (!search) {
+      return;
     }
-  }
+    search.focus();
+  },
 };

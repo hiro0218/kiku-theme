@@ -3,21 +3,34 @@ namespace Kiku;
 
 class Util {
 
-    // コピーライト用の年号(開始-現在)を取得する
-    public static function get_copyright_year(): string {
-        $DB = new \Kiku\DB();
-        $copyright_dates = $DB->get_frist_last_post_year();
+    public static function output_prefix() {
+        $ogp_prefix = '';
+        $opg_template = "og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# %s: http://ogp.me/ns/%s#";
 
-        $output = '';
-        if ($copyright_dates) {
-            $copyright = $copyright_dates[0]->firstdate;
-            if ( $copyright_dates[0]->firstdate != $copyright_dates[0]->lastdate ) {
-                $copyright .= '-' . $copyright_dates[0]->lastdate;
-            }
-            $output = $copyright;
+        if (is_singular()) {
+          $ogp_prefix = sprintf($opg_template, 'article', 'article');
+        } else {
+          $ogp_prefix = sprintf($opg_template, 'website', 'website');
         }
 
-        return $output;
+        return $ogp_prefix;
+    }
+
+    // コピーライト用の年号(開始-現在)を取得する
+    public static function get_copyright_year(): string {
+        $result = wp_cache_get('copyright_dates');
+
+        if ($result === false) {
+            global $Entry;
+            $latest_date = $Entry->get_post_date('numberposts=1&post_status=publish&post_type=post');
+            $frist_date = $Entry->get_post_date('numberposts=1&order=ASC&post_status=publish&post_type=post');
+            if ($latest_date && $frist_date) {
+                $result = date("Y", strtotime($frist_date)) .' - '. date("Y", strtotime($latest_date));
+                wp_cache_set('copyright_dates', $result, '', 2592000);
+            }
+        }
+
+        return $result;
     }
 
 
@@ -27,30 +40,35 @@ class Util {
 
     // 記事内容の抜粋
     public static function get_excerpt_content(): string {
-        global $post;
         $content = "";
+        $post_id = get_queried_object_id();
 
-        if ( has_excerpt( $post->ID ) ) {
+        if (has_excerpt($post_id)) {
             // This post has excerpt
             $content = get_the_excerpt();
         } else {
             // This post has no excerpt
+            $post = get_post($post_id);
             $content = $post->post_content;
         }
 
-        // タグを省いて取得
-        $content = self::remove_tags( $content );
-
         // 何も取得できない
-        if ( empty($content) ) {
+        if (empty($content)) {
             return NOTHING_CONTENT;
         }
+
+        // タグを省いて取得
+        $content = self::remove_tags($content);
 
         // 整形
         return mb_substr($content, 0, EXCERPT_LENGTH) . EXCERPT_HELLIP;
     }
 
     private static function remove_tags(string $str): string {
+        if (empty($str)) {
+            return '';
+        }
+
         $str = wp_strip_all_tags($str);
         $str = strip_shortcodes($str);
         $str = self::remove_white_space($str, "");
@@ -72,47 +90,6 @@ class Util {
         return $url;
     }
 
-
-    /**
-     *  日付関連
-     */
-
-    // 更新されているか
-    public static function is_modified_post(): bool {
-        return (get_the_time('Ymd') < get_the_modified_time('Ymd'));
-    }
-
-    // 更新時間差
-    public static function get_posted_time_ago($timestamp): string {
-        if ($timestamp === null) {
-            return '';
-        }
-
-        $current_time = CURRENT_TIMESTAMP ?: time();
-        $difference = ($current_time - $timestamp);
-        $periods = ['second', 'minute', 'hour', 'day', 'week', 'month', 'year', 'decade'];
-        $lengths = [60, 60, 24, 7, 4.35, 12, 10];
-
-        for ($j = 0; isset($lengths[$j]) and $difference >= $lengths[$j] and ( empty($unit) or $unit != $periods[$j]); $j++) {
-            $difference /= $lengths[$j];
-        }
-
-        $difference = round($difference);
-
-        // 1でなければ複数形にする
-        if ($difference != 1) {
-            $periods[$j] = $periods[$j] . 's';
-        }
-
-        // 0以下のとき
-        if ($difference <= 0) {
-            return "";
-        }
-
-        return $difference . ' ' . $periods[$j] . ' ago';
-    }
-
-
     /**
      * URL
      */
@@ -125,9 +102,9 @@ class Util {
     public static function relative_to_absolute_url($url): string {
         if ( self::is_relative_url( $url ) ) {
             return self::base_url( $url );
-        } else {
-            return $url;
         }
+
+        return $url;
     }
 
     public static function is_absolute_url($url): bool {
@@ -139,12 +116,12 @@ class Util {
     }
 
     public static function is_relative_url($url): bool {
-        return ( !(self::is_absolute_url($url) || self::is_root_relative_url($url)) );
+        return !(self::is_absolute_url($url) || self::is_root_relative_url($url));
     }
 
     // ベースURLを設定(絶対URL)
     public static function base_url( $path = null ): string {
-        $parts = parse_url( get_option('home') );
+        $parts = parse_url(BLOG_URL);
         $base_url = trailingslashit($parts['scheme'] . '://' . $parts['host']. $parts['path']);
 
         if ( !is_null($path) ) {
@@ -190,7 +167,7 @@ class Util {
     }
 
     public static function is_dataURI($str): bool {
-      return (boolean)(substr($str, 0, 5) === 'data:');
+        return (boolean)(substr($str, 0, 5) === 'data:');
     }
 
 }

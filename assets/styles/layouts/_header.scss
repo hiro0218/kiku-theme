@@ -1,25 +1,44 @@
 .header-navigation {
+  display: flex;
   position: fixed;
   top: 0;
   right: 0;
   left: 0;
+  flex-wrap: wrap;
+  align-items: center;
   height: $header-nav-height;
-  background: $white;
-  box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .15);
+  background: #fff;
+  box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .25);
+  overflow: hidden;
+  z-index: 10;
+
+  > .container {
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.header-title,
+.header-menu {
+  display: flex;
+  flex: 1;
+  align-items: stretch;
+  line-height: $header-nav-height;
 }
 
 .header-title {
+  justify-content: flex-start;
   color: $grey-900;
-  font-size: 1.25rem;
+  font-size: 1rem;
+  white-space: nowrap;
   a {
     color: inherit;
   }
 }
 
-.nav-item {
-  padding: 0 1.5rem;
-
-  @include desktop {
-    padding: 0;
-  }
+.header-menu {
+  justify-content: flex-end;
+  font-size: 1.5rem;
 }

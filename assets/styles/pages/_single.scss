@@ -1,25 +1,21 @@
 .entry {
   margin-bottom: 1rem;
-  padding: 1rem $article-padding-side;
 
-  > header {
-    margin-bottom: 1rem;
-  }
-
-  > footer {
-    *:last-child {
-      margin-bottom: 0;
-    }
+  .entry-header {
+    margin-bottom: 2rem;
   }
 
   .entry-title {
     margin: 0 0 .5rem;
     font-size: $font-size-h2;
-    font-weight: normal;
-    line-height: 3rem;
+    line-height: ($font-size-h2 * 2);
     word-wrap: break-word;
   }
 
+  .entry-meta {
+    height: 4rem;
+    text-align: left;
+  }
 }
 
 .entry-content {
@@ -48,88 +44,15 @@
   }
 
   .anchor {
-    margin-left: -1rem;
     border: 0;
     color: $grey-400;
     font-family: $font-family-monospace;
-    font-size: 1.5rem;
-    font-weight: normal;
-    vertical-align: middle;
     visibility: hidden;
     user-select: none;
   }
 
-  > p,
-  > pre,
-  > blockquote,
-  > ul,
-  > ol,
-  > dl,
-  > table,
-  figure,
-  img,
-  > div {
-    margin-bottom: 2rem;
-  }
-
-  *:not(pre) > code {
-    margin: 0;
-    padding: .2rem 0;
-    border-radius: .15rem;
-    background: $blue-50;
-    color: $blue-400;
-    font-size: $font-size-sm;
-    line-height: 2;
-
-    &::before,
-    &::after {
-      letter-spacing: -.2rem;
-      content: "\00a0";
-    }
-  }
-
   li + li {
     margin-top: .25rem;
-  }
-
-  > blockquote {
-    margin-left: .8em;
-    padding: 1.6rem;
-    border-left: 4px solid $grey-200;
-    color: $grey-500;
-
-    p:first-child {
-      margin-top: 0;
-    }
-    p:last-child {
-      margin-bottom: 0;
-    }
-
-    small,
-    footer {
-      display: block;
-      margin-top: 1.8rem !important;
-      font-size: $font-size-sm;
-      text-align: right;
-    }
-  }
-
-  > pre {
-    padding: 2rem;
-    border-radius: ($spacer * .15);
-    background: $grey-100;
-
-    &.line-numbers {
-      padding-left: 4rem;
-    }
-  }
-
-  img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-    margin-right: auto;
-    margin-left: auto;
   }
 
   > hr {

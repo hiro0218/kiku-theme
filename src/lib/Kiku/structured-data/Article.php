@@ -21,7 +21,7 @@ class Article {
             "description" => \Kiku\Util::get_excerpt_content()
         ];
 
-        $image_src = $Image->get_entry_image(false);
+        $image_src = $Image->get_entry_image($post->ID, false, 'large');
         if (!empty($image_src)) {
             $size = $Image->get_image_size($image_src);
             $width = 0;

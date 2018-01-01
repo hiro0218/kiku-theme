@@ -1,0 +1,59 @@
+.pager {
+  height: 6rem;
+  background: $grey-200;
+}
+
+.pager-container {
+  display: flex;
+  padding: 0 1rem;
+
+  a {
+    display: flex;
+    flex: none;
+    flex-direction: column;
+    width: 50%;
+    padding: 1rem 0;
+
+    &:only-child {
+      flex-grow: 1;
+    }
+  }
+
+  .pager-prev {
+    padding-right: 1rem;
+    text-align: left;
+    .pager-icon {
+      margin-right: .5rem;
+    }
+    .pager-title {
+      margin-left: 1.5rem;
+    }
+  }
+
+  .pager-next {
+    padding-left: 1rem;
+    text-align: right;
+    .pager-icon {
+      margin-left: .5rem;
+    }
+    .pager-title {
+      margin-right: 1.5rem;
+    }
+  }
+
+  .pager-icon {
+    color: $grey-800;
+    font-size: $font-size-sm;
+  }
+
+  .pager-label {
+    color: $grey-400;
+    text-transform: capitalize;
+  }
+
+  .pager-title {
+    color: $grey-600;
+    @include text-overflow;
+  }
+
+}

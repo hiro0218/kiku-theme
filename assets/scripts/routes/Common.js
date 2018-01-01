@@ -1,19 +1,13 @@
-// import load from '../module/load';
-import fixedHeader from '../module/fixedHeader';
-import drawer from '../module/drawer';
+import headroom from '@scripts/module/headroom';
+import drawer from '@scripts/module/drawer';
 
 export default {
-  init() {
-    // JavaScript to be fired on all pages
-  },
+  init() {},
   finalize() {
-    // JavaScript to be fired on all pages, after page specific JS is fired
-    // load.checkLoaded();
-
     // header fixed
-    fixedHeader.init();
+    headroom.init();
 
     // drawer
     drawer.init();
-  }
+  },
 };

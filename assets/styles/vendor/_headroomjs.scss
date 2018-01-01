@@ -1,5 +1,5 @@
 .headroom {
-  transition: transform .2s $animation-curve-fast-out-slow-in;
+  transition: transform .5s $animation-curve-fast-out-slow-in;
   will-change: transform;
 }
 
@@ -7,7 +7,6 @@
   transform: translateY(0%);
   &:not(.headroom--top) {
     background: rgba(255, 255, 255, .8);
-    box-shadow: 0 2px 2px -1px rgba(0, 0, 0, .15);
   }
 }
 

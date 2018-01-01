@@ -1,14 +1,9 @@
-// Bourbon
-$output-bourbon-deprecation-warnings: false;
-@import "~bourbon/app/assets/stylesheets/bourbon";
-
 // config
 @import "config/colors";
 @import "config/variables";
+@import "config/mixins";
 
-// grid framework: bulma
-@import "vendor/bulma";
-
+@import "vendor/placeholder";
 @import "vendor/bootstrap-migration";
 
 // styles
@@ -19,7 +14,7 @@ $output-bourbon-deprecation-warnings: false;
 @import "base/global";
 @import "base/type";
 @import "base/grid";
-@import "base/helper";
+@import "base/utility";
 
 // pages
 @import "pages/home";
@@ -28,17 +23,16 @@ $output-bourbon-deprecation-warnings: false;
 
 // parts
 @import "parts/wp-classes";
-@import "parts/amazon";
+@import "parts/amazon-product";
+@import "parts/pager";
 @import "parts/pagination";
 @import "parts/breadcrumb";
-@import "parts/card";
 @import "parts/drawer";
 @import "parts/mokuji";
-// @import "parts/loader";
 @import "parts/sandbox";
 @import "parts/entry-meta";
 @import "parts/entry-share";
-@import "parts/entry-similar";
+@import "parts/entry-related";
 @import "parts/search";
 
 // layouts
@@ -49,7 +43,5 @@ $output-bourbon-deprecation-warnings: false;
 
 // vendor
 @import "vendor/prismjs";
-@import "vendor/prism-line-numbers";
-@import "vendor/prism-command-line";
-@import "vendor/image-zoom";
 @import "vendor/headroomjs";
+@import "vendor/ngprogress";

@@ -1,15 +1,17 @@
 'use strict'; // eslint-disable-line
 
+const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const CleanPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
 const CopyGlobsPlugin = require('copy-globs-webpack-plugin');
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+
 const config = require('./config');
 
 const assetsFilenames = (config.enabled.cacheBusting) ? config.cacheBusting : '[name]';
-const sourceMapQueryStr = (config.enabled.sourceMaps) ? '+sourceMap' : '-sourceMap';
 
 let webpackConfig = {
   context: config.paths.assets,
@@ -20,19 +22,43 @@ let webpackConfig = {
     publicPath: config.publicPath,
     filename: `scripts/${assetsFilenames}.js`,
   },
+  stats: {
+    hash: false,
+    version: false,
+    timings: false,
+    children: false,
+    errors: false,
+    errorDetails: false,
+    warnings: false,
+    chunks: false,
+    modules: false,
+    reasons: false,
+    source: false,
+    publicPath: false,
+  },
   module: {
     rules: [
       {
         enforce: 'pre',
-        test: /\.js?$/,
+        exclude: /node_modules/,
+        test: /\.js$/,
         include: config.paths.assets,
-        loader: 'babel',
+        use: 'eslint',
+      },
+      {
+        enforce: 'pre',
+        test: /\.(js|s?[ca]ss)$/,
+        include: config.paths.assets,
+        loader: 'import-glob',
       },
       {
         test: /\.js$/,
-        exclude: [/(node_modules|bower_components)(?![/|\\](bootstrap|foundation-sites))/],
-        loader: 'buble',
-        options: { objectAssign: 'Object.assign' },
+        exclude: /node_modules/,
+        use: [
+          { loader: 'cache' },
+          { loader: 'thread' },
+          { loader: 'buble', options: { objectAssign: 'Object.assign' } },
+        ],
       },
       {
         test: /\.css$/,
@@ -40,61 +66,74 @@ let webpackConfig = {
         use: ExtractTextPlugin.extract({
           fallback: 'style',
           use: [
-            `css?${sourceMapQueryStr}`,
+            { loader: 'cache' },
+            { loader: 'thread' },
+            { loader: 'css', options: { sourceMap: config.enabled.sourceMaps } },
             {
-              loader: 'postcss-loader',
-              options: {
-                sourceMap: sourceMapQueryStr,
-                config: {
-                  ctx: {},
-                  path: './assets/build/postcss.config.js',
-                },
+              loader: 'postcss', options: {
+                config: { path: __dirname, ctx: config },
+                sourceMap: config.enabled.sourceMaps,
               },
             },
           ],
         }),
       },
       {
-        test: /\.scss$/,
+        test: /\.(sass|scss)$/,
         include: config.paths.assets,
-        loader: ExtractTextPlugin.extract({
+        use: ExtractTextPlugin.extract({
           fallback: 'style',
           use: [
-            `css?${sourceMapQueryStr}`,
+            { loader: 'cache' },
+            { loader: 'thread' },
+            { loader: 'css', options: { sourceMap: config.enabled.sourceMaps } },
             {
-              loader: 'postcss-loader',
-              options: {
-                sourceMap: sourceMapQueryStr,
-                config: {
-                  ctx: {},
-                  path: './assets/build/postcss.config.js',
-                },
+              loader: 'postcss', options: {
+                config: { path: __dirname, ctx: config },
+                sourceMap: config.enabled.sourceMaps,
               },
             },
-            `resolve-url?${sourceMapQueryStr}`,
-            `sass?${sourceMapQueryStr}`,
+            { loader: 'resolve-url', options: { sourceMap: config.enabled.sourceMaps } },
+            { loader: 'sass', options: { sourceMap: config.enabled.sourceMaps } },
           ],
         }),
       },
       {
-        test: /\.(png|jpe?g|gif|svg|ico)$/,
-        include: config.paths.assets,
-        loader: 'file',
+        test: /\.vue$/,
+        loader: 'vue',
         options: {
+          loaders: {
+            js: 'buble',
+          },
+        },
+      },
+      {
+        test: /\.(ttf|eot|woff2?|png|jpe?g|gif|svg|ico)$/,
+        include: config.paths.assets,
+        loader: 'url',
+        options: {
+          limit: 1024,
           name: `[path]${assetsFilenames}.[ext]`,
         },
       },
       {
-        test: /\.(ttf|eot|woff2?|png|jpe?g|gif|svg)$/,
-        include: /node_modules/,
-        loader: 'file',
+        test: /\.(ttf|eot|woff2?|png|jpe?g|gif|svg|ico)$/,
+        include: /node_modules|bower_components/,
+        loader: 'url',
         options: {
-          name: `vendor/${assetsFilenames}.[ext]`,
+          limit: 1024,
+          outputPath: 'vendor/',
+          name: `${config.cacheBusting}.[ext]`,
         },
       },
     ],
   },
   resolve: {
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js',
+      '@scripts': path.resolve(__dirname, '../scripts/'),
+      '@components': path.resolve(__dirname, '../../components/'),
+    },
     modules: [
       config.paths.assets,
       'node_modules',
@@ -105,6 +144,10 @@ let webpackConfig = {
     moduleExtensions: ['-loader'],
   },
   plugins: [
+    new webpack.ProvidePlugin({
+      axios: 'axios',
+      Vue: ['vue/dist/vue.esm.js', 'default']
+    }),
     new CleanPlugin([config.paths.dist], {
       root: config.paths.root,
       verbose: false,
@@ -126,11 +169,19 @@ let webpackConfig = {
       stats: { colors: true },
     }),
     new webpack.LoaderOptionsPlugin({
+      test: /\.s?css$/,
+      options: {
+        output: { path: config.paths.dist },
+        context: config.paths.assets,
+      },
+    }),
+    new webpack.LoaderOptionsPlugin({
       test: /\.js$/,
       options: {
         eslint: { failOnWarning: false, failOnError: true },
       },
     }),
+    new FriendlyErrorsWebpackPlugin(),
   ],
 };
 
@@ -142,6 +193,13 @@ if (config.enabled.optimize) {
 
 if (config.env.production) {
   webpackConfig.plugins.push(new webpack.NoEmitOnErrorsPlugin());
+  webpackConfig.plugins.push(new webpack.optimize.ModuleConcatenationPlugin());
+  webpackConfig.plugins.push(new webpack.optimize.AggressiveMergingPlugin());
+  webpackConfig.plugins.push(new BundleAnalyzerPlugin({
+    analyzerMode: 'static',
+    reportFilename: path.resolve(__dirname, '../../.report/bundle-analyzer.html'),
+    openAnalyzer: false,
+  }));
 }
 
 if (config.enabled.cacheBusting) {

@@ -4,9 +4,14 @@
   box-sizing: border-box;
 }
 
-@include selection {
-  background: $grey-300;
-  color: $grey-900;
+::selection {
+  background: $grey-300 !important;
+  color: $grey-900 !important;
+}
+
+::-moz-selection {
+  background: $grey-300 !important;
+  color: $grey-900 !important;
 }
 
 // Body reset
@@ -17,6 +22,7 @@ html {
   font-feature-settings: "kern" 1, "lnum" 1, "pnum" 1;
   scroll-behavior: smooth;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -ms-overflow-style: -ms-autohiding-scrollbar;
 
   @media screen and (max-width: $screen-sm) {
     font-size: 93.75%;
@@ -29,11 +35,14 @@ html {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 100vh;
   margin: 0;
-  background: $grey-100;
-  color: $grey-700;
+  background: $white;
+  color: $grey-800;
   font-weight: $font-weight-base;
-
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -41,7 +50,7 @@ body {
 
 // Links
 a {
-  transition: color .3s ease, border .3s ease;
+  transition: color .3s ease, border .3s ease, background .3s $animation-curve-fast-out-slow-in, opacity .3s ease;
   color: $link-color;
   text-decoration: none;
 
@@ -56,26 +65,80 @@ a {
 
 // Figures
 figure {
-  margin: 0 0 1rem;
+  margin: 0 0 2rem;
+  text-align: center;
+  img {
+    margin-bottom: 0;
+  }
+}
+figcaption {
+  color: $grey-400;
+  font-size: $font-size-xs;
 }
 
 // Images
 img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: auto auto 2rem;
   vertical-align: middle;
 }
 
-
 // Tables
 table {
-  background: $white;
+  margin: 0 auto 2rem;
+  border: $table-border-width solid $table-border-color;
+  background: #fff;
   border-collapse: collapse;
 }
 
-th {
-  text-align: left;
+th,
+td {
+  padding: 1rem;
+  border: $table-border-width solid $table-border-color;
+  border-top: $table-border-width solid $table-border-color;
+  vertical-align: top;
+}
+
+thead {
+  th {
+    border-bottom: ($table-border-width * 2) solid $table-border-color;
+    background: $table-head-bg-color;
+    vertical-align: bottom;
+  }
+  th,
+  td {
+    border-bottom-width: (2 * $table-border-width);
+  }
+}
+
+tbody {
+  tr {
+    transition: background .3s $animation-curve-fast-out-slow-in;
+    &:hover {
+      background: $table-hover-color;
+    }
+  }
+  & + & {
+    border-top: ($table-border-width * 2) solid $table-border-color;
+  }
+}
+
+.table-container {
+  width: 100%;
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
 // define list
+dl {
+  margin-bottom: 2rem;
+}
+
 dt {
   font-weight: bold;
 }

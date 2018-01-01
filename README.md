@@ -8,11 +8,11 @@ A Simple WordPress Theme. (for myself)
 * WordPress Starter Theme
  * based on [Sage - WordPress Starter Theme](https://roots.io/sage/)
 * Simple Design (Material Design)
- * use [Google Material Design Icons](https://github.com/google/material-design-icons)
 * Ready
  * Search Engine Optimization (SEO)
     * OGP, Twitter Cards
  * Table of Contents
+    * use [Mokuji.js](https://github.com/hiro0218/mokuji.js)
  * Syntax Highlighter
     * use [Prism.js](http://prismjs.com/)
  * Share Button

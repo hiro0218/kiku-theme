@@ -1,6 +1,8 @@
 .breadcrumb {
   margin-bottom: 1rem;
   line-height: 1.5rem;
+  white-space: nowrap;
+  overflow: scroll;
 
   a {
     color: inherit;
@@ -10,37 +12,34 @@
   }
 
   ol {
+    margin-bottom: 0;
     padding: 0;
     color: $grey-400;
-    font-size: $font-size-sm;
+    font-size: 0;
     list-style: none;
   }
 
   li {
-    display: inline-block;
-
-    &:first-child::before {
-      @extend .material-icons;
-      content: 'home';
-    }
+    display: inline-flex;
+    font-size: $font-size-sm;
+    line-height: 1;
+    vertical-align: middle;
 
     & + li {
       margin-left: .25rem;
       &::before {
-        @extend .material-icons;
-        content: 'keyboard_arrow_right';
+        @extend .icon-keyboard_arrow_right;
       }
     }
   }
 
   .breadcrumb-active {
     color: $grey-600;
+  }
 
-    &::before {
-      @extend .material-icons;
-      width: 2rem;
-      content: 'keyboard_arrow_right' + 'location_on';
-    }
+  .icon-home,
+  .icon-location_on {
+    margin-right: .25rem;
   }
 
 }

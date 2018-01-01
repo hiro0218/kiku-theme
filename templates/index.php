@@ -1,7 +1,9 @@
-<?php if (!have_posts()) : ?>
-<div class="column  ">
-  <?php Kiku\Components\the_alert('alert-warning', __('No results found.'));  ?>
-</div>
-<?php else: ?>
-  <?php get_template_part('partials/content', 'home'); ?>
+<?php if (have_posts()) : ?>
+  <?php get_template_part('pages/content', 'home'); ?>
+<?php else : ?>
+  <div class="container">
+    <div class='alert alert-warning'>
+      <?php echo __('No results found.'); ?>
+    </div>
+  </div>
 <?php endif; ?>

@@ -1,24 +1,29 @@
-// pagination
-.pagination-container {
-  display: flex;
-  justify-content: center;
-  margin: ($spacer * 2) 0;
-}
-
 .pagination {
-  padding-left: 0;
+  margin-bottom: 1rem;
+  user-select: none;
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+  }
 
   li {
-    display: inline;
-    @media screen and (max-width: $screen-xs) {
-      &:not(.pagination-frist):not(.pagination-next):not(.pagination-previous):not(.pagination-last):not(.pagination-active) {
+    display: flex;
+
+    & + li {
+      margin-left: .5rem;
+    }
+
+    @include mobile {
+      &:not(.pagination-first):not(.pagination-next):not(.pagination-previous):not(.pagination-last):not(.pagination-active) {
         display: none;
       }
     }
   }
 
   a {
-    transition: background .3s $animation-curve-fast-out-slow-in;
     &:hover {
       background: $grey-300;
     }
@@ -26,96 +31,22 @@
 
   a,
   span {
-    margin: 0 ($spacer / 4);
-    padding: .75rem;
+    min-width: 3rem;
+    min-height: 3rem;
     border-radius: 2px;
     color: $grey-600;
-    font-size: $font-size-sm;
+    line-height: 3rem;
+    text-align: center;
+
     &:hover,
     &:focus {
       outline: 0;
     }
   }
-
-}
-
-.pagination-previous a {
-  margin-right: $spacer;
-}
-
-.pagination-next a {
-  margin-left: $spacer;
 }
 
 .pagination-active span {
   background: $grey-600;
   color: $white;
-  font-weight: bold;
   cursor: default;
-}
-
-
-// pager
-.pager {
-  margin-bottom: 1rem;
-
-  a {
-    transition: background .3s $animation-curve-fast-out-slow-in;
-    border-radius: ($spacer * .125);
-    color: $grey-600;
-
-    &:hover {
-      background: $grey-300;
-    }
-    &:only-child {
-      flex-grow: 1;
-    }
-  }
-
-  .pager-previous,
-  .pager-next {
-    &.column {
-      padding: .5rem;
-    }
-  }
-
-}
-
-.pager-previous {
-  text-align: left;
-  .pager-icon {
-    float: left;
-  }
-  .pager-title {
-    padding-left: 2rem;
-  }
-}
-.pager-next {
-  text-align: right;
-  .pager-icon {
-    float: right;
-  }
-  .pager-title {
-    padding-right: 2rem;
-  }
-}
-
-.pager-icon,
-.pager-title,
-.pager-instruct {
-  display: block;
-}
-.pager-icon {
-  width: 2rem;
-  color: $grey-800;
-  text-align: center;
-}
-.pager-instruct {
-  color: $grey-500;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-.pager-title {
-  @include ellipsis(100%);
-  font-size: $font-size-sm;
 }

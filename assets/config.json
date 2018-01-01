@@ -5,13 +5,14 @@
       "./styles/reset.scss",
       "./styles/main.scss"
     ],
-    "prism": [
+    "single": [
       "./scripts/vendor/prism.js"
     ]
   },
   "publicPath": "/wp-content/themes/kiku-theme",
   "cacheBusting": "[name]_[hash:8]",
   "browsers": [
-    "last 2 versions"
+    "ie >= 11",
+    "safari >= 10"
   ]
 }

@@ -1,66 +1,70 @@
 $entry-thumbnail-size: 5rem;  // 80px;
 
 .page-header {
-  margin: 0 0 1rem 0;
-  font-size: $font-size-lg;
-
-  @include mobile {
-    padding-left: 1rem;
-  }
+  margin: 0 0 .5rem;
+  font-size: $font-size-h3;
+  line-height: 3rem;
+  word-wrap: break-word;
 }
 
-.entry-home {
+.entry-list {
   overflow: hidden;
 
   a {
     display: block;
-    padding: .5rem 0;
+    padding: 1rem 0;
     color: inherit;
-    border-spacing: 1rem;  // for display:table
-  }
-
-  .entry-image,
-  .entry-body {
-    display: table-cell;
-    vertical-align: top;
+    & + a {
+      border-top: 1px solid $grey-200;
+    }
   }
 
   .entry {
     &-container {
-      cursor: pointer;
-      user-select: none;
-
-      & + .entry-container {
-        border-top: 1px solid $grey-200;
-      }
+      display: flex;
 
       &:hover {
         .entry-title {
           color: $blue-300;
         }
-        .image-sheet {
-          transform: scale(1.15);
-        }
       }
     }
 
+    &-image,
     &-body {
-      width: 100%;
-      height: $entry-thumbnail-size + 1rem;
+      display: flex;
+      flex-basis: 0;
+      flex-grow: 1;
+      flex-shrink: 1;
+    }
+
+    &-image {
+      flex: none;
+      width: $entry-thumbnail-size;
+      margin-right: 1rem;
+    }
+
+    &-body {
+      flex-direction: column;
+      justify-content: space-between;
+      min-width: 0; // for flex and text-overflow
+    }
+
+    &-title,
+    &-summary {
+      margin: 0 0 .5rem 0;
+      @include text-overflow;
     }
 
     &-title {
-      margin: 0 0 .5rem 0;
       transition: color .3s $animation-curve-fast-out-slow-in;
-      font-size: $font-size-h4;
-      line-height: 1.75rem;
+      font-size: $font-size-h3;
+      font-weight: normal;
     }
 
     &-summary {
-      margin-bottom: .5rem;
       color: $grey-600;
       font-size: $font-size-sm;
-      text-align: justify;
       word-break: break-all;
     }
   }
@@ -71,25 +75,19 @@ $entry-thumbnail-size: 5rem;  // 80px;
 }
 
 // image
-.image-container {
-  @include size($entry-thumbnail-size);
-  border-radius: .125rem;
-  box-shadow: 0 0 0 1px $grey-200;
-  overflow: hidden;
-
-  .material-icons {
-    color: $grey-400;
-    font-size: 2rem;
-    @include size(2rem);
+.entry-image {
+  .image-container {
+    width: $entry-thumbnail-size;
+    height: $entry-thumbnail-size;
+    border: 1px solid $grey-200;
+    overflow: hidden;
   }
-}
 
-.image-sheet {
-  max-height: $entry-thumbnail-size;
-  transition: transform .2s cubic-bezier(.08, .82, .17, 1);
-  background: $grey-50 50% no-repeat;
-  background-size: cover;
-  line-height: $entry-thumbnail-size;
-  text-align: center;
-  @include size($entry-thumbnail-size);
+  .image-sheet {
+    width: $entry-thumbnail-size;
+    height: $entry-thumbnail-size;
+    background: $grey-50 50% no-repeat;
+    background-image: url('../images/no-image.png');
+    background-size: cover;
+  }
 }
