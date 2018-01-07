@@ -35,20 +35,16 @@
     }
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    &:hover {
-      .anchor {
-        visibility: visible;
-      }
-    }
-  }
-
   .anchor {
+    position: absolute;
+    right: 100%;
     border: 0;
     color: $grey-400;
     font-family: $font-family-monospace;
-    visibility: hidden;
     user-select: none;
+    @include until($tablet) {
+      position: static;
+    }
   }
 
   li + li {
