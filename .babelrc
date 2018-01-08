@@ -1,6 +1,6 @@
 {
   "presets": [
-    ["preset-env", {
+    ["env", {
       "targets": {
         "browsers": [
           "ie 11",
@@ -8,5 +8,9 @@
         ]
       }
     }]
+  ],
+  "plugins": [
+    ["transform-es2015-for-of", { "loose": true }],
+    ["transform-object-assign", { "loose": true }]
   ]
 }

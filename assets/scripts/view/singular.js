@@ -1,3 +1,4 @@
+import api from '@scripts/api';
 import mokuji from '@scripts/module/mokuji';
 import common from '@scripts/module/common';
 
@@ -8,11 +9,6 @@ import entryPager from '@components/entry-pager.vue';
 
 export default {
   init() {
-    var post_id = WP.page_id;
-    var page_type = WP.page_type;
-    if (!post_id || !page_type) {
-      return;
-    }
     var entry = document.querySelector('.entry-content');
     common.addExternalLink(entry);
     common.setTableContainer(entry);
@@ -50,48 +46,41 @@ export default {
         NProgress.done();
       },
       watch: {
-        loaded: function(data) {
-          var self = this;
+        loaded: function() {
           // After displaying DOM
           this.$nextTick(function() {
             var element = this.$el.querySelector('.entry-content');
             common.zoomImage(element);
-            self.viewAttachedInfo();
+            this.viewAttachedInfo();
           });
         },
       },
       methods: {
         requestPostData: function() {
           var self = this;
+          var response = WP.page_type === 'posts' ? api.getPosts(WP.page_id) : api.getPages(WP.page_id);
 
-          axios.defaults.baseURL = `/wp-json/wp/v2/${page_type}/${post_id}`;
-          axios
-            .get()
+          response
             .then(function(response) {
               let json = response.data;
 
               self.setDatetime(json);
-              if (json.categories.length !== 0) {
-                self.categories = json.categories;
-              }
-              if (json.tags.length !== 0) {
-                self.tags = json.tags;
-              }
+              self.categories = json.categories;
+              self.tags = json.tags;
               self.amazon_product = json.amazon_product;
 
               return true;
             })
             .then(function(result) {
-              self.loaded = true;
+              self.loaded = result;
             });
         },
         requestAttachedData: function(target) {
-          var self = this;
           NProgress.start();
+          var self = this;
+          var response = api.getAttachData(`/wp-json/kiku/v1/post/${WP.page_id}`);
 
-          axios.defaults.baseURL = `/wp-json/kiku/v1/post/${post_id}`;
-          axios
-            .get()
+          response
             .then(function(response) {
               let json = response.data;
 
@@ -117,18 +106,13 @@ export default {
         },
         setDatetime: function(json) {
           this.date.publish = json.date;
-          this.date.modified = this.isSameDay(json.date, json.modified)
-            ? null
-            : json.modified;
+          this.date.modified = this.isSameDay(json.date, json.modified) ? null : json.modified;
         },
         isSameDay: function(publish, modified) {
-          return (
-            new Date(publish).toDateString() ==
-            new Date(modified).toDateString()
-          );
+          return new Date(publish).toDateString() === new Date(modified).toDateString();
         },
         viewAttachedInfo: function() {
-          if (page_type !== 'posts') {
+          if (WP.page_type !== 'posts') {
             return;
           }
           var self = this;

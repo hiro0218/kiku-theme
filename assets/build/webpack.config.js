@@ -57,7 +57,7 @@ let webpackConfig = {
         use: [
           { loader: 'cache' },
           { loader: 'thread' },
-          { loader: 'buble', options: { objectAssign: 'Object.assign' } },
+          { loader: 'babel' },
         ],
       },
       {
@@ -101,11 +101,6 @@ let webpackConfig = {
       {
         test: /\.vue$/,
         loader: 'vue',
-        options: {
-          loaders: {
-            js: 'buble',
-          },
-        },
       },
       {
         test: /\.(ttf|eot|woff2?|png|jpe?g|gif|svg|ico)$/,

@@ -31,13 +31,14 @@
     "node": ">= 7.4.0"
   },
   "devDependencies": {
+    "babel": "^6.23.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.1.2",
     "babel-loader": "^7.1.2",
+    "babel-plugin-transform-es2015-for-of": "^6.23.0",
+    "babel-plugin-transform-object-assign": "^6.22.0",
     "babel-preset-env": "^1.6.1",
     "babel-runtime": "^6.26.0",
-    "buble": "^0.18.0",
-    "buble-loader": "^0.4.1",
     "cache-loader": "^1.2.0",
     "clean-webpack-plugin": "^0.1.17",
     "copy-globs-webpack-plugin": "^0.2.0",

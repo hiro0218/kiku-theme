@@ -1,4 +1,6 @@
 import ago from 's-ago';
+
+import api from '@scripts/api';
 import common from '@scripts/module/common';
 
 // vue components
@@ -37,42 +39,19 @@ export default {
       methods: {
         requestPostData: function() {
           var self = this;
-          var client = axios.create({
-            baseURL: '/wp-json/wp/v2/posts',
-            params: {
-              per_page: WP.per_page,
-              page: WP.paged,
-              orderby: 'modified',
-              search: WP.search,
-              tags: WP.tag,
-              categories: WP.category,
-              categories_exclude: WP.categories_exclude,
-            },
-          });
 
-          client
-            .get()
+          api
+            .getPosts()
             .then(function(response) {
               self.setHeader(response.headers);
-              for (var key in response.data) {
-                var json = response.data[key];
-                self.lists.push({
-                  title: json.title.rendered,
-                  link: json.link,
-                  excerpt: json.excerpt.rendered,
-                  thumbnail: json.thumbnail,
-                  date: {
-                    timeAgo: ago(new Date(json.modified)),
-                  },
-                });
-              }
-
-              return true;
+              return response.data;
+            })
+            .then(function(data) {
+              self.setPosts(data);
+              return self.lists.length > 0;
             })
             .then(function(result) {
-              if (self.lists) {
-                self.loaded = true;
-              }
+              self.loaded = result;
             });
         },
         setHeader: function(headers) {
@@ -80,6 +59,19 @@ export default {
             total: Number(headers['x-wp-total']),
             totalpages: Number(headers['x-wp-totalpages']),
           };
+        },
+        setPosts: function(data) {
+          for (let json of data) {
+            this.lists.push({
+              title: json.title.rendered,
+              link: json.link,
+              excerpt: json.excerpt.rendered,
+              thumbnail: json.thumbnail,
+              date: {
+                timeAgo: ago(new Date(json.modified)),
+              },
+            });
+          }
         },
       },
     });
