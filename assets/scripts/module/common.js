@@ -40,10 +40,7 @@ export default {
   setExternalLinkIcon(element, icon) {
     var href = element.getAttribute('href');
     // exclude javascript and anchor
-    if (
-      href.substring(0, 10).toLowerCase() === 'javascript' ||
-      href.substring(0, 1) === '#'
-    ) {
+    if (href.substring(0, 10).toLowerCase() === 'javascript' || href.substring(0, 1) === '#') {
       return;
     }
 
@@ -79,10 +76,7 @@ export default {
 
     for (var i = 0; i < length; i += 1) {
       // parentNode is <a> Tag
-      if (
-        entryImg[i].getAttribute('data-zoom-disabled') === 'true' ||
-        entryImg[i].parentNode.nodeName === 'A'
-      ) {
+      if (entryImg[i].getAttribute('data-zoom-disabled') === 'true' || entryImg[i].parentNode.nodeName === 'A') {
         continue;
       }
       entryImg[i].style.cursor = 'zoom-in';
