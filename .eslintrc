@@ -25,6 +25,7 @@
     "axios": true,
     "Vue": true,
     "Headroom": true,
+    "NProgress": true,
     "Prism": true
   },
   "rules": {

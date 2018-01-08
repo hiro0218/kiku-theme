@@ -1,4 +1,3 @@
-import NProgress from 'nprogress/nprogress.js';
 import mokuji from '@scripts/module/mokuji';
 import common from '@scripts/module/common';
 
