@@ -42,7 +42,7 @@
     color: $grey-400;
     font-family: $font-family-monospace;
     user-select: none;
-    @include until($tablet) {
+    @include until($desktop) {
       position: static;
     }
   }
