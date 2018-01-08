@@ -146,7 +146,8 @@ let webpackConfig = {
   plugins: [
     new webpack.ProvidePlugin({
       axios: 'axios',
-      Vue: ['vue/dist/vue.esm.js', 'default']
+      Vue: ['vue/dist/vue.esm.js', 'default'],
+      Headroom: 'headroom.js/dist/headroom.min.js'
     }),
     new CleanPlugin([config.paths.dist], {
       root: config.paths.root,

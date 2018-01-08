@@ -24,6 +24,7 @@
     "WP": true,
     "axios": true,
     "Vue": true,
+    "Headroom": true,
     "Prism": true
   },
   "rules": {
