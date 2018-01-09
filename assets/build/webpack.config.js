@@ -142,7 +142,6 @@ let webpackConfig = {
     new webpack.ProvidePlugin({
       axios: 'axios',
       Vue: ['vue/dist/vue.esm.js', 'default'],
-      Headroom: 'headroom.js/dist/headroom.min.js',
       NProgress: 'nprogress/nprogress.js',
     }),
     new CleanPlugin([config.paths.dist], {
