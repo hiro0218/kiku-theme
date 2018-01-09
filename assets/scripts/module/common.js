@@ -1,4 +1,4 @@
-import Zooming from 'zooming';
+import mediumZoom from 'medium-zoom';
 
 export default {
   setThumbnailImage() {
@@ -61,26 +61,17 @@ export default {
       }
     }
   },
-  zoomImage(element) {
-    var entryImg = element.getElementsByTagName('img');
+  zoomImage(entry) {
+    var entryImg = entry.getElementsByTagName('img');
     var length = entryImg.length;
-
-    // entry has no img
-    if (length === 0) {
-      return;
-    }
-
-    var zoom = new Zooming({
-      scaleBase: 0.8,
-    });
 
     for (var i = 0; i < length; i += 1) {
       // parentNode is <a> Tag
       if (entryImg[i].getAttribute('data-zoom-disabled') === 'true' || entryImg[i].parentNode.nodeName === 'A') {
         continue;
       }
-      entryImg[i].style.cursor = 'zoom-in';
-      zoom.listen(entryImg[i]);
+
+      mediumZoom(entryImg[i]);
     }
   },
   wrap(element, wrapper) {
