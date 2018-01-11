@@ -38,20 +38,18 @@ export default {
       },
       methods: {
         requestPostData: function() {
-          var self = this;
-
           api
             .getPosts()
-            .then(function(response) {
-              self.setHeader(response.headers);
+            .then(response => {
+              this.setHeader(response.headers);
               return response.data;
             })
-            .then(function(data) {
-              self.setPosts(data);
-              return self.lists.length > 0;
+            .then(data => {
+              this.setPosts(data);
+              return this.lists.length > 0;
             })
-            .then(function(result) {
-              self.loaded = result;
+            .then(result => {
+              this.loaded = result;
             });
         },
         setHeader: function(headers) {

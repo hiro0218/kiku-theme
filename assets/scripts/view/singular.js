@@ -57,42 +57,40 @@ export default {
       },
       methods: {
         requestPostData: function() {
-          var self = this;
           var response = WP.page_type === 'posts' ? api.getPosts(WP.page_id) : api.getPages(WP.page_id);
 
           response
-            .then(function(response) {
+            .then(response => {
               let json = response.data;
 
-              self.setDatetime(json);
-              self.categories = json.categories;
-              self.tags = json.tags;
-              self.amazon_product = json.amazon_product;
+              this.setDatetime(json);
+              this.categories = json.categories;
+              this.tags = json.tags;
+              this.amazon_product = json.amazon_product;
 
               return true;
             })
-            .then(function(result) {
-              self.loaded = result;
+            .then(result => {
+              this.loaded = result;
             });
         },
         requestAttachedData: function(target) {
           NProgress.start();
-          var self = this;
           var response = api.getAttachData(`/wp-json/kiku/v1/post/${WP.page_id}`);
 
           response
-            .then(function(response) {
+            .then(response => {
               let json = response.data;
 
               if (json.related.length !== 0) {
-                self.relateds = json.related;
+                this.relateds = json.related;
               } else {
                 var related = target.querySelector('.related');
                 related.classList.add('element-hide');
               }
 
               if (json.pager.length !== 0) {
-                self.pagers = json.pager;
+                this.pagers = json.pager;
               } else {
                 var pager = target.querySelector('.pager');
                 pager.classList.add('element-hide');
@@ -100,7 +98,7 @@ export default {
 
               return true;
             })
-            .then(function(result) {
+            .then(result => {
               NProgress.done();
             });
         },
@@ -115,17 +113,17 @@ export default {
           if (WP.page_type !== 'posts') {
             return;
           }
-          var self = this;
+
           var clientHeight = document.documentElement.clientHeight;
-          var observer = new IntersectionObserver(function(changes) {
-            changes.forEach(function(change) {
+          var observer = new IntersectionObserver(changes => {
+            changes.forEach(change => {
               var rect = change.target.getBoundingClientRect();
               var isShow =
                 (0 < rect.top && rect.top < clientHeight) ||
                 (0 < rect.bottom && rect.bottom < clientHeight) ||
                 (0 > rect.top && rect.bottom > clientHeight);
               if (isShow) {
-                self.requestAttachedData(change.target);
+                this.requestAttachedData(change.target);
                 observer.unobserve(change.target);
               }
             });
