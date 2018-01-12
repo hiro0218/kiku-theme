@@ -145,9 +145,6 @@ export default {
             .split('T')[0]
             .replace(/-/g, '/');
         },
-        escapeBrackets: function(text) {
-          return text.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-        },
       },
     });
   },

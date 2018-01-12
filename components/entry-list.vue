@@ -38,10 +38,5 @@
     },
     methods: {},
     mounted: function() {},
-    filters: {
-      escapeBrackets: function(text) {
-        return text.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-      },
-    },
   };
 </script>

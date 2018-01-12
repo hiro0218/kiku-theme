@@ -145,10 +145,6 @@
         }
       },
     },
-    filters: {
-      zeroPadding: function(number) {
-        return ('0' + number).slice(-2);
-      },
-    },
+    filters: {},
   };
 </script>
