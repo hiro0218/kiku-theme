@@ -15,7 +15,7 @@ export default {
     mokuji.init(entry);
     Prism.highlightAll();
 
-    var app = new Vue({
+    new Vue({
       el: '#app',
       components: {
         amazonProduct,

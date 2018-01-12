@@ -9,7 +9,7 @@ import pagination from '@components/pagination.vue';
 
 export default {
   view() {
-    var app = new Vue({
+    new Vue({
       el: '#app',
       components: {
         entryList,
