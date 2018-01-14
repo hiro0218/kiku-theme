@@ -49,7 +49,7 @@ export default {
         loaded: function() {
           // After displaying DOM
           this.$nextTick(function() {
-            var element = this.$el.querySelector('.entry-content');
+            var element = document.querySelector('.entry-content');
             common.zoomImage(element);
             this.viewAttachedInfo();
           });

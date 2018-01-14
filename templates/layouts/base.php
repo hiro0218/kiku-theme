@@ -2,8 +2,11 @@
 <html <?php language_attributes(); ?>>
   <?php get_template_part('layouts/head'); ?>
   <body <?php body_class(); ?>>
-  <?php get_template_part('layouts/header');?>
-  <?php get_template_part('layouts/main');?>
-  <?php get_template_part('layouts/footer'); ?>
+  <div id="app">
+    <?php get_template_part('layouts/header');?>
+    <?php get_template_part('layouts/main');?>
+    <?php get_template_part('layouts/footer'); ?>
+  </div>
+  <?php wp_footer(); ?>
   </body>
 </html>

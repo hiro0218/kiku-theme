@@ -1,3 +1,3 @@
-<main id="app" class="main-container">
+<main class="main-container">
   <?php include App\template()->main(); ?>
 </main>
