@@ -1,3 +1,4 @@
+import './polyfill.js';
 import './app.js';
 
 import Router from './util/router';
