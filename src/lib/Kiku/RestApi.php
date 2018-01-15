@@ -4,6 +4,10 @@ class REST_API {
     public function __construct() {
     }
 
+    public function get_api_namespace() {
+        return 'kiku/v1';
+    }
+
     // To decimate API information.
     public function unset_api_data($response, $post, $request) {
         unset($response->data['date_gmt']);
@@ -124,8 +128,8 @@ class REST_API {
     }
 
     public function rest_api_init() {
-        register_rest_route('kiku/v1', '/post/(?P<id>\d+)', [
-            'methods' => 'GET',
+        register_rest_route($this->get_api_namespace(), '/post/(?P<id>\d+)', [
+            'methods' => WP_REST_Server::READABLE,
             'callback' => function($data) {
                 $post_id = $data['id'];
                 if (empty($post_id)) {
