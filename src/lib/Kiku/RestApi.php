@@ -55,6 +55,11 @@ class REST_API {
             },
         ]);
 
+        register_rest_route($this->get_api_namespace(), '/menus', [
+            'methods'  => WP_REST_Server::READABLE,
+            'callback' => array( $this, 'get_menus' ),
+        ]);
+
         // amazon product data
         register_rest_field('post', 'amazon_product', [
             'get_callback' => function($object, $field_name, $request, $type) {
@@ -102,6 +107,28 @@ class REST_API {
             'update_callback' => null,
             'schema' => null,
         ]);
+    }
+
+
+    public function get_menus() {
+        if (!has_nav_menu(PRIMARY_NAVIGATION_NAME)) {
+            return null;
+        }
+
+        $menu_ids = get_nav_menu_locations();
+        $menus = wp_get_nav_menu_items($menu_ids[PRIMARY_NAVIGATION_NAME]);
+        $array = [];
+
+        foreach ($menus as $menu) {
+            $menu_array = (array) $menu;
+            $array[] = [
+                'ID' => $menu_array['ID'],
+                'title' => $menu_array['title'],
+                'url' => $menu_array['url'],
+            ];
+        }
+
+        return $array;
     }
 
     private function is_postId_route($request, $type) {
