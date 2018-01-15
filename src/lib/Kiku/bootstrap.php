@@ -10,6 +10,7 @@ define('KIKU_LIB_PATH', realpath(__DIR__) .DIRECTORY_SEPARATOR);
 
 // constant
 require KIKU_LIB_PATH. 'config/constant.php';
+require KIKU_LIB_PATH. 'config/FrontVariables.php';
 
 // class
 require KIKU_LIB_PATH. 'Util.php';
