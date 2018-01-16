@@ -55,12 +55,19 @@ class REST_API {
             },
         ]);
 
-        register_rest_route($this->get_api_namespace(), '/menus', [
+        register_rest_route($this->get_api_namespace(), '/navigation', [
             'methods'  => WP_REST_Server::READABLE,
             'callback' => function($data) {
                 return [
-                    'copyright' => "© " . Kiku\Util::get_copyright_year(),
-                    'navigation' => $this->get_menus(),
+                    'site' => [
+                        'name' => BLOG_NAME,
+                        'url' => BLOG_URL,
+                        'copyright' => "© " . Kiku\Util::get_copyright_year(),
+                    ],
+                    'header' => [],
+                    'footer' => [
+                        'menu' => $this->get_menus(),
+                    ]
                 ];
             }
         ]);

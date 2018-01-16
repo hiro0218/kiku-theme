@@ -6,7 +6,6 @@ import common from '@scripts/module/common';
 import amazonProduct from '@components/amazon-product.vue';
 import entryRelated from '@components/entry-related.vue';
 import entryPager from '@components/entry-pager.vue';
-import kikuFooter from '@components/kiku-footer.vue';
 
 export default {
   init() {
@@ -22,7 +21,6 @@ export default {
         amazonProduct,
         entryRelated,
         entryPager,
-        kikuFooter,
       },
       data: {
         loaded: false,

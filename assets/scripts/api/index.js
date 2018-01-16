@@ -11,6 +11,10 @@ export default {
       categories_exclude: WP.categories_exclude,
     },
   },
+  getFooter() {
+    var client = axios.create({ baseURL: '/wp-json/kiku/v1/navigation' });
+    return client.get();
+  },
   getPosts(post_id) {
     var client = axios.create(this.settings);
     var id = post_id || '';

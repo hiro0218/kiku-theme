@@ -6,7 +6,6 @@ import common from '@scripts/module/common';
 // vue components
 import entryList from '@components/entry-list.vue';
 import pagination from '@components/pagination.vue';
-import kikuFooter from '@components/kiku-footer.vue';
 
 export default {
   view() {
@@ -15,7 +14,6 @@ export default {
       components: {
         entryList,
         pagination,
-        kikuFooter,
       },
       data: {
         loaded: false,

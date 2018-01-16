@@ -5,7 +5,7 @@
   <div id="app">
     <?php get_template_part('layouts/header');?>
     <?php get_template_part('layouts/main');?>
-    <kiku-footer/>
+    <kiku-footer :navi="navigation"></kiku-footer>
   </div>
   <?php wp_footer(); ?>
   </body>
