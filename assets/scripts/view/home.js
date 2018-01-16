@@ -41,7 +41,7 @@ export default {
           api
             .getPosts()
             .then(response => {
-              this.setHeader(response.headers);
+              this.setRequestHeader(response.headers);
               return response.data;
             })
             .then(data => {
@@ -52,7 +52,7 @@ export default {
               this.loaded = result;
             });
         },
-        setHeader: function(headers) {
+        setRequestHeader: function(headers) {
           this.headers = {
             total: Number(headers['x-wp-total']),
             totalpages: Number(headers['x-wp-totalpages']),
