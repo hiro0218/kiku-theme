@@ -30,10 +30,13 @@ export default {
       watch: {
         loaded: function(data) {
           // After displaying DOM
-          this.$nextTick(function() {
-            common.setThumbnailImage();
-          });
-          NProgress.done();
+          this.$nextTick()
+            .then(() => {
+              common.setThumbnailImage();
+            })
+            .then(() => {
+              NProgress.done();
+            });
         },
       },
       methods: {

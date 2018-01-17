@@ -48,7 +48,7 @@ export default {
       watch: {
         loaded: function() {
           // After displaying DOM
-          this.$nextTick(function() {
+          this.$nextTick().then(() => {
             var element = document.querySelector('.entry-content');
             common.zoomImage(element);
             this.viewAttachedInfo();
