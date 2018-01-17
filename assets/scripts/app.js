@@ -1,3 +1,5 @@
+import { once } from 'lodash';
+
 import api from '@scripts/api';
 
 // Vue components
@@ -19,11 +21,11 @@ Vue.mixin({
     this.$_fetchNavigation();
   },
   methods: {
-    $_fetchNavigation: function() {
+    $_fetchNavigation: once(function() {
       api.getNavigation().then(response => {
         this.navigation = response.data;
       });
-    },
+    }),
   },
   filters: {
     escapeBrackets: function(text) {
