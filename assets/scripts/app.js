@@ -1,11 +1,13 @@
 import api from '@scripts/api';
 
 // Vue components
+import kikuHeader from '@components/kiku-header.vue';
 import kikuFooter from '@components/kiku-footer.vue';
 
 // Vue global mixin
 Vue.mixin({
   components: {
+    kikuHeader,
     kikuFooter,
   },
   data() {
