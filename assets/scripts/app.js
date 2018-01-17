@@ -18,7 +18,7 @@ Vue.mixin({
   },
   methods: {
     $_fetchNavigation: function() {
-      api.getFooter().then(response => {
+      api.getNavigation().then(response => {
         this.navigation = response.data;
       });
     },
