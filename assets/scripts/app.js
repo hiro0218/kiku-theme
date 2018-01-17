@@ -1,6 +1,8 @@
-import { once } from 'lodash';
+import { mapState } from 'vuex';
+import { once, isEmpty } from 'lodash';
 
 import api from '@scripts/api';
+import store from '@scripts/store';
 
 // Vue components
 import kikuHeader from '@components/kiku-header.vue';
@@ -8,22 +10,22 @@ import kikuFooter from '@components/kiku-footer.vue';
 
 // Vue global mixin
 Vue.mixin({
+  store,
   components: {
     kikuHeader,
     kikuFooter,
   },
-  data() {
-    return {
-      navigation: {},
-    };
-  },
+  computed: mapState(['navigation']),
   beforeMount: function() {
     this.$_fetchNavigation();
   },
   methods: {
     $_fetchNavigation: once(function() {
+      if (!isEmpty(this.$store.getters.navigation)) {
+        return;
+      }
       api.getNavigation().then(response => {
-        this.navigation = response.data;
+        this.$store.commit('setNavigation', response.data);
       });
     }),
   },
