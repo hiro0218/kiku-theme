@@ -1,12 +1,12 @@
 <template>
   <div>
     <header class="header-navigation">
-      <div class="container">
-        <div class="header-title" v-if="navi.footer">
-          <a v-bind:href="navi.site.url">{{ navi.site.name }}</a>
+      <div class="container" v-if="navigation">
+        <div class="header-title">
+          <a v-bind:href="navigation.site.url">{{ navigation.site.name }}</a>
         </div>
         <div class="header-menu">
-          <input id="drawer-trigger" class="drawer-checkbox" type="checkbox">
+          <input type="checkbox" id="drawer-trigger" class="drawer-checkbox" @click="toggeleDrawer">
           <label for="drawer-trigger" class="drawer-trigger">
             <span class="icon-menu"></span>
           </label>
@@ -17,28 +17,16 @@
 </template>
 
 <script>
+  import headerScroll from 'header-scroll-up';
+
   export default {
     name: 'kiku-header',
-    props: {
-      navi: {
-        type: Object,
-        default: {},
-        required: true,
-      },
-    },
     methods: {
-      startDrawer() {
-        var trigger = this.$el.querySelector('#drawer-trigger');
-        if (!trigger) {
-          return;
+      toggeleDrawer(e) {
+        if (e.target.checked) {
+          this.focusSearchInput();
         }
-
-        trigger.addEventListener('change', (e) => {
-          if (trigger.checked) {
-            this.focusSearchInput();
-          }
-          document.body.classList.toggle('open-drawer');
-        });
+        document.body.classList.toggle('open-drawer');
       },
       focusSearchInput() {
         var search = document.querySelector('#widget_searchform');
@@ -48,7 +36,9 @@
       },
     },
     mounted: function() {
-      this.startDrawer();
+      headerScroll.setScrollableHeader('.header-navigation', {
+        topOffset: 100,
+      });
     },
   };
 </script>

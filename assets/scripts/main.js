@@ -2,7 +2,7 @@ import './polyfill.js';
 import './app.js';
 
 import Router from './util/router';
-import common from './routes/Common';
+// import common from './routes/Common';
 import home from './routes/Home';
 import category from './routes/Category';
 import search from './routes/Search';
@@ -14,7 +14,7 @@ import page from './routes/Page';
 // rename this variable, you will also need to rename the namespace below.
 const routes = new Router({
   // All pages
-  common,
+  // common,
   // Home page
   home,
   category,

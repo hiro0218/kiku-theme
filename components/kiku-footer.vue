@@ -1,16 +1,16 @@
 <template>
   <div>
     <footer class="footer footer-navigation">
-      <div class="container">
+      <div class="container" v-if="navigation">
         <nav class="footer-menu">
-          <ul v-if="navi.footer">
-            <li v-for="(menu, index) in navi.footer.menu" v-bind:key="index">
+          <ul>
+            <li v-for="(menu, index) in navigation.footer.menu" v-bind:key="index">
               <a v-bind:href="menu.url">{{ menu.title }}</a>
             </li>
           </ul>
         </nav>
-        <div class="footer-copytight" v-if="navi.site">
-          <span>{{ navi.site.copyright }} <a v-bind:href="navi.site.url">{{ navi.site.name }}</a></span>
+        <div class="footer-copytight" v-if="navigation.site">
+          <span>{{ navigation.site.copyright }} <a v-bind:href="navigation.site.url">{{ navigation.site.name }}</a></span>
         </div>
       </div>
     </footer>
@@ -20,13 +20,6 @@
 <script>
   export default {
     name: 'kiku-footer',
-    props: {
-      navi: {
-        type: Object,
-        default: {},
-        required: true,
-      },
-    },
     methods: {},
     mounted: function() {},
   };

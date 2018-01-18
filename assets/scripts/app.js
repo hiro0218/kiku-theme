@@ -1,5 +1,5 @@
 import { mapState } from 'vuex';
-import { once, isEmpty } from 'lodash';
+import { once } from 'lodash';
 
 import api from '@scripts/api';
 import store from '@scripts/store';
@@ -16,14 +16,16 @@ Vue.mixin({
     kikuFooter,
   },
   computed: mapState(['navigation']),
-  beforeMount: function() {
+  created: function() {
     this.$_fetchNavigation();
   },
   methods: {
     $_fetchNavigation: once(function() {
-      if (!isEmpty(this.$store.getters.navigation)) {
+      console.log(this.navigation);
+      if (this.navigation) {
         return;
       }
+
       api.getNavigation().then(response => {
         this.$store.commit('setNavigation', response.data);
       });

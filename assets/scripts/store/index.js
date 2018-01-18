@@ -5,7 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    navigation: {},
+    navigation: null,
   },
   mutations: {
     setNavigation(state, payload) {
