@@ -1,5 +1,11 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import VuexPersistence from 'vuex-persist';
+
+const vuexPersist = new VuexPersistence({
+  key: 'kiku',
+  storage: window.sessionStorage,
+});
 
 Vue.use(Vuex);
 
@@ -18,4 +24,5 @@ export default new Vuex.Store({
     },
   },
   actions: {},
+  plugins: [vuexPersist.plugin],
 });

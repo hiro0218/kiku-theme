@@ -4005,7 +4005,7 @@ lodash.memoize@^4.1.2:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/lodash.memoize/-/lodash.memoize-4.1.2.tgz#bcc6c49a42a2840ed997f323eada5ecd182e0bfe"
 
-lodash.merge@^4.0:
+lodash.merge@^4.0, lodash.merge@^4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.0.tgz#69884ba144ac33fe699737a6086deffadd0f89c5"
 
@@ -6841,6 +6841,12 @@ vue-template-es2015-compiler@^1.6.0:
 vue@^2.5.13:
   version "2.5.13"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.13.tgz#95bd31e20efcf7a7f39239c9aa6787ce8cf578e1"
+
+vuex-persist@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/vuex-persist/-/vuex-persist-1.1.0.tgz#25d76e723aae707cf127706dd51e70e93371147a"
+  dependencies:
+    lodash.merge "^4.6.0"
 
 vuex@^3.0.1:
   version "3.0.1"

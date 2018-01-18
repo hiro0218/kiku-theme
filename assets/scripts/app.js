@@ -21,7 +21,6 @@ Vue.mixin({
   },
   methods: {
     $_fetchNavigation: once(function() {
-      console.log(this.navigation);
       if (this.navigation) {
         return;
       }
