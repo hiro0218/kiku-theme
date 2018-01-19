@@ -21,12 +21,7 @@
   </article>
 </div>
 <aside class="attached-info">
-  <section class="related">
-    <entry-related :relateds="relateds"></entry-related>
-  </section>
-
-  <div class="pager">
-    <entry-pager :pagers="pagers"></entry-pager>
-  </div>
+  <entry-related :relateds="relateds"></entry-related>
+  <entry-pager :pagers="pagers"></entry-pager>
 </aside>
 <?php endwhile; ?>
