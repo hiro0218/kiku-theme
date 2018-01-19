@@ -2,7 +2,7 @@
   <div>
     <footer class="footer footer-navigation">
       <div class="container" v-if="navigation">
-        <nav class="footer-menu">
+        <nav class="footer-menu" v-if="navigation.footer.menu">
           <ul>
             <li v-for="(menu, index) in navigation.footer.menu" v-bind:key="index">
               <a v-bind:href="menu.url">{{ menu.title }}</a>
