@@ -1,7 +1,4 @@
-import ago from 's-ago';
-
 import api from '@scripts/api';
-import common from '@scripts/module/common';
 
 // vue components
 import entryList from '@components/entry-list.vue';
@@ -16,7 +13,6 @@ export default {
         pagination,
       },
       data: {
-        loaded: false,
         headers: {},
         lists: [],
       },
@@ -27,51 +23,31 @@ export default {
         this.requestPostData();
         NProgress.inc();
       },
-      watch: {
-        loaded: function(data) {
-          // After displaying DOM
-          this.$nextTick()
-            .then(() => {
-              common.setThumbnailImage();
-            })
-            .then(() => {
-              NProgress.done();
-            });
-        },
-      },
       methods: {
         requestPostData: function() {
           api
             .getPosts()
-            .then(response => {
-              this.setRequestHeader(response.headers);
-              return response.data;
-            })
-            .then(data => {
-              this.setPosts(data);
-              return this.lists.length > 0;
-            })
-            .then(result => {
-              this.loaded = result;
-            });
+            .then(response => this.setResponseHeaders(response))
+            .then(data => this.setPosts(data))
+            .then(() => NProgress.done());
         },
-        setRequestHeader: function(headers) {
-          this.headers = {
-            total: Number(headers['x-wp-total']),
-            totalpages: Number(headers['x-wp-totalpages']),
-          };
+        setResponseHeaders: function(response) {
+          this.headers.total = Number(response.headers['x-wp-total']);
+          this.headers.totalpages = Number(response.headers['x-wp-totalpages']);
+
+          return response.data;
         },
         setPosts: function(data) {
           for (let json of data) {
-            this.lists.push({
-              title: json.title.rendered,
-              link: json.link,
-              excerpt: json.excerpt.rendered,
-              thumbnail: json.thumbnail,
-              date: {
-                timeAgo: ago(new Date(json.modified)),
-              },
-            });
+            let list = {};
+
+            list.title = json.title.rendered;
+            list.link = json.link;
+            list.excerpt = json.excerpt.rendered;
+            list.thumbnail = json.thumbnail;
+            list.date = json.modified;
+
+            this.lists.push(list);
           }
         },
       },

@@ -9,10 +9,6 @@ import entryPager from '@components/entry-pager.vue';
 
 export default {
   init() {
-    var entry = document.querySelector('.entry-content');
-    common.addExternalLink(entry);
-    common.setTableContainer(entry);
-    mokuji.init(entry);
     Prism.highlightAll();
 
     new Vue({
@@ -47,9 +43,11 @@ export default {
       },
       watch: {
         loaded: function() {
-          // After displaying DOM
           this.$nextTick().then(() => {
-            var element = document.querySelector('.entry-content');
+            var element = this.$el.querySelector('.entry-content');
+            mokuji.init(element);
+            common.addExternalLink(element);
+            common.setTableContainer(element);
             common.zoomImage(element);
             this.viewAttachedInfo();
           });
@@ -59,20 +57,15 @@ export default {
         requestPostData: function() {
           var response = WP.page_type === 'posts' ? api.getPosts(WP.page_id) : api.getPages(WP.page_id);
 
-          response
-            .then(response => {
-              let json = response.data;
+          response.then(response => {
+            let json = response.data;
 
-              this.setDatetime(json);
-              this.categories = json.categories;
-              this.tags = json.tags;
-              this.amazon_product = json.amazon_product;
-
-              return true;
-            })
-            .then(result => {
-              this.loaded = result;
-            });
+            this.setDatetime(json);
+            this.categories = json.categories;
+            this.tags = json.tags;
+            this.amazon_product = json.amazon_product;
+            this.loaded = true;
+          });
         },
         requestAttachedData: function(target) {
           NProgress.start();

@@ -16,7 +16,7 @@
           <footer class="entry-footer">
             <div class="entry-meta">
               <ul class="entry-time">
-                <li><span class="icon-update"></span>{{post.date.timeAgo}}</li>
+                <li><span class="icon-update"></span>{{ post.date | timeago }}</li>
               </ul>
             </div>
           </footer>
@@ -27,6 +27,9 @@
 </template>
 
 <script>
+  import ago from 's-ago';
+  import common from '@scripts/module/common';
+
   export default {
     name: 'entry-list',
     props: {
@@ -36,7 +39,17 @@
         required: true,
       },
     },
-    methods: {},
-    mounted: function() {},
+    watch: {
+      lists: function () {
+        this.$nextTick(() => {
+          common.setThumbnailImage();
+        });
+      },
+    },
+    filters: {
+      timeago: function(date) {
+        return ago(new Date(date));
+      },
+    },
   };
 </script>

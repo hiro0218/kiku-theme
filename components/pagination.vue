@@ -61,7 +61,6 @@
         required: true,
       },
     },
-    mounted: function() {},
     watch: {
       totalpages: function() {
         this.setPaginationData();
@@ -145,6 +144,5 @@
         }
       },
     },
-    filters: {},
   };
 </script>

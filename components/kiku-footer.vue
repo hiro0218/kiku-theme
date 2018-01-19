@@ -20,7 +20,5 @@
 <script>
   export default {
     name: 'kiku-footer',
-    methods: {},
-    mounted: function() {},
   };
 </script>

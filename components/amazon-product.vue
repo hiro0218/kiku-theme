@@ -23,7 +23,5 @@
         required: false,
       },
     },
-    methods: {},
-    mounted: function() {},
   };
 </script>

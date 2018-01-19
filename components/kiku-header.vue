@@ -21,6 +21,11 @@
 
   export default {
     name: 'kiku-header',
+    data() {
+      return {
+        searchForm: null,
+      }
+    },
     methods: {
       toggeleDrawer(e) {
         if (e.target.checked) {
@@ -29,10 +34,8 @@
         document.body.classList.toggle('open-drawer');
       },
       focusSearchInput() {
-        var search = document.querySelector('#widget_searchform');
-        if (search) {
-          search.focus();
-        }
+        let input = this.searchForm || (this.searchForm = document.querySelector("#widget_searchform"));
+        input.focus();
       },
     },
     mounted: function() {
