@@ -9,6 +9,7 @@ import search from './routes/Search';
 import tag from './routes/Tag';
 import single from './routes/Single';
 import page from './routes/Page';
+import error404 from './routes/Error404';
 
 // Use this variable to set up the common and page specific functions. If you
 // rename this variable, you will also need to rename the namespace below.
@@ -23,6 +24,8 @@ const routes = new Router({
   // Singular
   single,
   page,
+  // 404
+  error404,
 });
 
 // Load Events
