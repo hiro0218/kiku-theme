@@ -4,6 +4,7 @@ import common from '@scripts/module/common';
 
 // vue components
 import amazonProduct from '@components/amazon-product.vue';
+import entryCategory from '@components/entry-category.vue';
 import entryRelated from '@components/entry-related.vue';
 import entryPager from '@components/entry-pager.vue';
 
@@ -15,6 +16,7 @@ export default {
       el: '#app',
       components: {
         amazonProduct,
+        entryCategory,
         entryRelated,
         entryPager,
       },
@@ -25,7 +27,7 @@ export default {
           modified: null,
           timeAgo: null,
         },
-        categories: null,
+        categories: [],
         amazon_product: null,
         tags: null,
         relateds: null,
