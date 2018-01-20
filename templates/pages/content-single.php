@@ -15,7 +15,7 @@
     <amazon-product :amazon_product="amazon_product"></amazon-product>
     <footer>
       <?php get_template_part('partials/entry-breadcrumb'); ?>
-      <?php get_template_part('partials/entry-tag'); ?>
+      <entry-tag :tags="tags"></entry-tag>
       <?php get_template_part('partials/entry-share'); ?>
     </footer>
   </article>
