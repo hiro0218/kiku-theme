@@ -29,6 +29,11 @@ class REST_API {
     }
 
     public function rest_api_init() {
+        $this->original_api();
+        $this->rewrite_api();
+    }
+
+    public function original_api() {
         register_rest_route($this->get_api_namespace(), '/post/(?P<id>\d+)', [
             'methods' => WP_REST_Server::READABLE,
             'callback' => function($data) {
@@ -71,7 +76,9 @@ class REST_API {
                 ];
             }
         ]);
+    }
 
+    public function rewrite_api() {
         // amazon product data
         register_rest_field('post', 'amazon_product', [
             'get_callback' => [$this, 'get_amazon_product'],
