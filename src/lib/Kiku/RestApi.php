@@ -74,53 +74,65 @@ class REST_API {
 
         // amazon product data
         register_rest_field('post', 'amazon_product', [
-            'get_callback' => function($object, $field_name, $request, $type) {
-                if (!$this->is_postId_route($request, $type)) {
-                    return null;
-                }
-                global $post;
-                $post = get_post($object['id']);
-                $product_data = json_decode(get_post_meta($post->ID, CF_AMAZON_PRODUCT_TAG, true));
-                return $product_data;
-            },
+            'get_callback' => [$this, 'get_amazon_product'],
             'update_callback' => null,
             'schema' => null,
         ]);
 
         // post category
         register_rest_field('post', 'categories', [
-            'get_callback' => function($object, $field_name, $request, $type) {
-                global $Entry;
-                $object['categories'] = $Entry->get_category();
-                return $object['categories'];
-            },
+            'get_callback' => [$this, 'get_post_categories'],
             'update_callback' => null,
             'schema' => null,
         ]);
 
         // post tags
         register_rest_field('post', 'tags', [
-            'get_callback' => function($object, $field_name, $request, $type) {
-                global $Entry;
-                $object['tags'] = $Entry->get_tag();
-                return $object['tags'];
-            },
+            'get_callback' => [$this, 'get_post_tags'],
             'update_callback' => null,
             'schema' => null,
         ]);
 
         // post thumbnail
         register_rest_field('post', 'thumbnail', [
-            'get_callback' => function($object, $field_name, $request, $type) {
-                global $Image;
-                $url = $Image->get_entry_image($object['id'], false, 'thumbnail');
-                return empty($url) ? null : $url;
-            },
+            'get_callback' => [$this, 'get_post_thumbnail'],
             'update_callback' => null,
             'schema' => null,
         ]);
     }
 
+    public function get_amazon_product($object, $field_name, $request, $type) {
+        if (!$this->is_postId_route($request, $type)) {
+            return null;
+        }
+
+        global $post;
+        $post = get_post($object['id']);
+        $product_data = json_decode(get_post_meta($post->ID, CF_AMAZON_PRODUCT_TAG, true));
+
+        return $product_data;
+    }
+
+    public function get_post_categories($object, $field_name, $request, $type) {
+        global $Entry;
+        $object['categories'] = $Entry->get_category();
+
+        return $object['categories'];
+    }
+
+    public function get_post_tags($object, $field_name, $request, $type) {
+        global $Entry;
+        $object['tags'] = $Entry->get_tag();
+
+        return $object['tags'];
+    }
+
+    public function get_post_thumbnail($object, $field_name, $request, $type) {
+        global $Image;
+        $url = $Image->get_entry_image($object['id'], false, 'thumbnail');
+
+        return empty($url) ? null : $url;
+    }
 
     public function get_menus() {
         if (!has_nav_menu(PRIMARY_NAVIGATION_NAME)) {
