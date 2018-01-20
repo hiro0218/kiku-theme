@@ -54,6 +54,7 @@ export default {
             common.setTableContainer(element);
             common.zoomImage(element);
             this.viewAttachedInfo();
+            NProgress.done();
           });
         },
       },

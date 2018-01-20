@@ -16,7 +16,6 @@ class REST_API {
         unset($response->data['type']);
         unset($response->data['author']);
         unset($response->data['slug']);
-        unset($response->data['content']);
         unset($response->data['status']);
         unset($response->data['featured_media']);
         unset($response->data['comment_status']);
