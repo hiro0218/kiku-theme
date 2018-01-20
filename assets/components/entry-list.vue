@@ -1,11 +1,17 @@
 <template>
-  <div>
-    <a v-bind:href="post.link" v-for="(post,index) in lists" v-bind:key="index">
+  <div class="entry-list">
+    <h1 class="page-header" v-html="$options.filters.escapeBrackets(page_title)"></h1>
+    <template v-if="total === 0">
+      <div class='alert alert-warning'>
+        No results found.
+      </div>
+    </template>
+
+    <a v-bind:href="post.link" v-for="(post,index) in posts" v-bind:key="index">
       <article class="entry-container">
         <div class="entry-image" v-bind:data-thumbnail-image="post.thumbnail">
           <div class="image-container">
-            <div class="image-sheet">
-            </div>
+            <div class="image-sheet"></div>
           </div>
         </div>
         <div class="entry-body">
@@ -23,6 +29,7 @@
         </div>
       </article>
     </a>
+
   </div>
 </template>
 
@@ -33,14 +40,24 @@
   export default {
     name: 'entry-list',
     props: {
-      lists: {
+      total: {
+        type: Number,
+        default: -1,
+        required: true,
+      },
+      page_title: {
+        type: String,
+        default: '',
+        required: true,
+      },
+      posts: {
         type: Array,
-        default: [],
+        default: {},
         required: true,
       },
     },
     watch: {
-      lists: function () {
+      posts: function () {
         this.$nextTick(() => {
           common.setThumbnailImage();
         });

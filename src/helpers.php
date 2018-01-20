@@ -38,27 +38,3 @@ function display_sidebar()
     isset($display) || $display = apply_filters('sage/display_sidebar', true);
     return $display;
 }
-
-/**
- * Page titles
- * @return string
- */
-function title()
-{
-    if (is_home()) {
-        if ($home = get_option('page_for_posts', true)) {
-            return get_the_title($home);
-        }
-        return __('Recent Posts');
-    }
-    if (is_archive()) {
-        return get_the_archive_title();
-    }
-    if (is_search()) {
-        return sprintf(__('Search results for &#8220;%s&#8221;'), get_search_query());
-    }
-    if (is_404()) {
-        return __('Page not found');
-    }
-    return get_the_title();
-}

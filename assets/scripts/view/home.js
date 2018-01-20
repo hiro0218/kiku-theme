@@ -14,7 +14,8 @@ export default {
       },
       data: {
         headers: {},
-        lists: [],
+        page_title: WP.page_title,
+        posts: [],
       },
       beforeCreate: function() {
         NProgress.start();
@@ -39,15 +40,15 @@ export default {
         },
         setPosts: function(data) {
           for (let json of data) {
-            let list = {};
+            let post = {};
 
-            list.title = json.title.rendered;
-            list.link = json.link;
-            list.excerpt = json.excerpt.rendered;
-            list.thumbnail = json.thumbnail;
-            list.date = json.modified;
+            post.title = json.title.rendered;
+            post.link = json.link;
+            post.excerpt = json.excerpt.rendered;
+            post.thumbnail = json.thumbnail;
+            post.date = json.modified;
 
-            this.lists.push(list);
+            this.posts.push(post);
           }
         },
       },
