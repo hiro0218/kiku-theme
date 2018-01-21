@@ -6,6 +6,7 @@ import common from '@scripts/module/common';
 import amazonProduct from '@components/amazon-product.vue';
 import entryCategory from '@components/entry-category.vue';
 import entryTag from '@components/entry-tag.vue';
+import entryTime from '@components/entry-time.vue';
 import entryRelated from '@components/entry-related.vue';
 import entryPager from '@components/entry-pager.vue';
 
@@ -19,15 +20,16 @@ export default {
         amazonProduct,
         entryCategory,
         entryTag,
+        entryTime,
         entryRelated,
         entryPager,
       },
       data: {
         loaded: false,
+        title: '',
         date: {
           publish: null,
           modified: null,
-          timeAgo: null,
         },
         categories: [],
         amazon_product: null,
@@ -66,9 +68,10 @@ export default {
             let json = response.data;
 
             this.setDatetime(json);
-            this.categories = json.categories;
-            this.tags = json.tags;
-            this.amazon_product = json.amazon_product;
+            this.title = json.title.rendered;
+            this.categories = json.categories || this.categories;
+            this.tags = json.tags || this.tags;
+            this.amazon_product = json.amazon_product || this.amazon_product;
             this.loaded = true;
           });
         },
@@ -128,20 +131,6 @@ export default {
           });
           var target = document.querySelector('.attached-info');
           observer.observe(target);
-        },
-      },
-      filters: {
-        formatDate: function(date) {
-          if (!date) {
-            return;
-          }
-          if (typeof date === 'string') {
-            date = new Date(date);
-          }
-          return date
-            .toISOString()
-            .split('T')[0]
-            .replace(/-/g, '/');
         },
       },
     });

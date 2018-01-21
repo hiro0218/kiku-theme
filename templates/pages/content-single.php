@@ -4,7 +4,7 @@
     <header class="entry-header">
       <h1 class="entry-title" v-html="$options.filters.escapeBrackets(title)"></h1>
       <div class="entry-meta">
-        <?php get_template_part('partials/entry-time'); ?>
+        <entry-time :date="date"></entry-time>
         <entry-category :categories="categories"></entry-category>
       </div>
     </header>
