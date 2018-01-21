@@ -45,7 +45,7 @@
                 <tr>
                     <th><label for="show_heading_text"><?php _e('Heading text', 'kiku'); ?></label></th>
                     <td>
-                        <div class="more_mokuji_options<?php if (!$this->options['show_heading_text']) echo ' disabled'; ?>">
+                        <div class="more_mokuji_options">
                             <input type="text" class="regular-text" value="<?php echo esc_html($this->options['heading_text'], ENT_COMPAT, 'UTF-8'); ?>" id="show_heading_text" name="heading_text" />
                         </div>
                     </td>
