@@ -4,6 +4,7 @@ import common from '@scripts/module/common';
 
 // vue components
 import amazonProduct from '@components/amazon-product.vue';
+import entryBreadcrumb from '@components/entry-breadcrumb.vue';
 import entryCategory from '@components/entry-category.vue';
 import entryTag from '@components/entry-tag.vue';
 import entryTime from '@components/entry-time.vue';
@@ -21,6 +22,7 @@ export default {
         entryCategory,
         entryTag,
         entryTime,
+        entryBreadcrumb,
         entryRelated,
         entryPager,
       },

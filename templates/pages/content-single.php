@@ -13,7 +13,7 @@
     </section>
     <amazon-product :amazon_product="amazon_product"></amazon-product>
     <footer>
-      <?php get_template_part('partials/entry-breadcrumb'); ?>
+      <entry-breadcrumb :title="title" :categories="categories"></entry-breadcrumb>
       <entry-tag :tags="tags"></entry-tag>
       <?php get_template_part('partials/entry-share'); ?>
     </footer>
