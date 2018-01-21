@@ -13,8 +13,6 @@ import entryPager from '@components/entry-pager.vue';
 
 export default {
   init() {
-    Prism.highlightAll();
-
     new Vue({
       el: '#app',
       components: {
@@ -29,6 +27,7 @@ export default {
       data: {
         loaded: false,
         title: '',
+        content: '',
         date: {
           publish: null,
           modified: null,
@@ -57,6 +56,7 @@ export default {
             common.addExternalLink(element);
             common.setTableContainer(element);
             common.zoomImage(element);
+            Prism.highlightAll();
             this.viewAttachedInfo();
             NProgress.done();
           });
@@ -71,6 +71,7 @@ export default {
 
             this.setDatetime(json);
             this.title = json.title.rendered;
+            this.content = json.content.rendered;
             this.categories = json.categories || this.categories;
             this.tags = json.tags || this.tags;
             this.amazon_product = json.amazon_product || this.amazon_product;

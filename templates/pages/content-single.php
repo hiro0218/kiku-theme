@@ -8,9 +8,7 @@
         <entry-category :categories="categories"></entry-category>
       </div>
     </header>
-    <section class="entry-content">
-      <?php the_content(); ?>
-    </section>
+    <section class="entry-content" v-html="content"></section>
     <amazon-product :amazon_product="amazon_product"></amazon-product>
     <footer>
       <entry-breadcrumb :title="title" :categories="categories"></entry-breadcrumb>
