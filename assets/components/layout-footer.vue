@@ -19,6 +19,6 @@
 
 <script>
   export default {
-    name: 'kiku-footer',
+    name: 'layout-footer',
   };
 </script>

@@ -20,7 +20,7 @@
   import headerScroll from 'header-scroll-up';
 
   export default {
-    name: 'kiku-header',
+    name: 'layout-header',
     data() {
       return {
         searchForm: null,

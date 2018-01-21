@@ -3,11 +3,11 @@
   <?php get_template_part('layouts/head'); ?>
   <body <?php body_class(); ?>>
   <div id="app">
-    <kiku-header></kiku-header>
+    <layout-header></layout-header>
     <main class="main-container">
       <?php include App\template()->main(); ?>
     </main>
-    <kiku-footer></kiku-footer>
+    <layout-footer></layout-footer>
   </div>
   <?php get_template_part('layouts/sidebar'); ?>
   <?php wp_footer(); ?>

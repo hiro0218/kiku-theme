@@ -5,15 +5,15 @@ import api from '@scripts/api';
 import store from '@scripts/store';
 
 // Vue components
-import kikuHeader from '@components/kiku-header.vue';
-import kikuFooter from '@components/kiku-footer.vue';
+import layoutHeader from '@components/layout-header.vue';
+import layoutFooter from '@components/layout-footer.vue';
 
 // Vue global mixin
 Vue.mixin({
   store,
   components: {
-    kikuHeader,
-    kikuFooter,
+    layoutHeader,
+    layoutFooter,
   },
   computed: mapState(['navigation']),
   created: function() {
