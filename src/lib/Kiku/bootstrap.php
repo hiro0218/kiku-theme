@@ -28,7 +28,6 @@ require KIKU_LIB_PATH. 'modules/DB.php';
 require KIKU_LIB_PATH. 'modules/OpenGraph.php';
 require KIKU_LIB_PATH. 'modules/Posts.php';
 require KIKU_LIB_PATH. 'modules/SEO.php';
-require KIKU_LIB_PATH. 'modules/Share.php';
 require KIKU_LIB_PATH. 'modules/Widget.php';
 
 // plugin

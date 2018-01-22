@@ -13,7 +13,7 @@
     <footer>
       <entry-breadcrumb :title="title" :categories="categories"></entry-breadcrumb>
       <entry-tag :tags="tags"></entry-tag>
-      <?php get_template_part('partials/entry-share'); ?>
+      <entry-share :title="title" :link="link"></entry-share>
     </footer>
   </article>
 </div>

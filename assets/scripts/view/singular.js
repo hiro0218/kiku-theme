@@ -8,6 +8,7 @@ import entryBreadcrumb from '@components/entry-breadcrumb.vue';
 import entryCategory from '@components/entry-category.vue';
 import entryTag from '@components/entry-tag.vue';
 import entryTime from '@components/entry-time.vue';
+import entryShare from '@components/entry-share.vue';
 import entryRelated from '@components/entry-related.vue';
 import entryPager from '@components/entry-pager.vue';
 
@@ -21,11 +22,13 @@ export default {
         entryTag,
         entryTime,
         entryBreadcrumb,
+        entryShare,
         entryRelated,
         entryPager,
       },
       data: {
         loaded: false,
+        link: '',
         title: '',
         content: '',
         date: {
@@ -70,6 +73,7 @@ export default {
             let json = response.data;
 
             this.setDatetime(json);
+            this.link = json.link;
             this.title = json.title.rendered;
             this.content = json.content.rendered;
             this.categories = json.categories || this.categories;

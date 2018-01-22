@@ -19,6 +19,7 @@ class FrontVariables {
             'tag' => $this->get_tag_id(),
             'tag_name' => $this->get_tag_name(),
             'is_logined' => is_user_logged_in(),
+            'is_shared' => $this->is_shared(),
         ];
         $vars = json_encode($vars, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT);
 
@@ -122,6 +123,19 @@ class FrontVariables {
             return null;
         }
         return get_query_var('tag');
+    }
+
+    private function is_shared() {
+        if (!is_singular()) {
+            return null;
+        }
+
+        return [
+            'twitter' => (boolean) get_option('kiku_share_btn_twitter'),
+            'facebook' => (boolean) get_option('kiku_share_btn_facebook'),
+            'hatena' => (boolean) get_option('kiku_share_btn_hatena'),
+            'line' => (boolean) get_option('kiku_share_btn_line'),
+        ];
     }
 }
 
