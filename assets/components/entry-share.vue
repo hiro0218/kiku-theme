@@ -1,5 +1,5 @@
 <template>
-  <section class="entry-share">
+  <section class="entry-share" v-if="title">
     <template v-if="is_display.twitter">
       <a href="javascript:void(0)" class="btn-twitter"
          title="Share on Twitter"

@@ -1,5 +1,5 @@
 <template>
-  <nav class="breadcrumb">
+  <nav class="breadcrumb" v-if="title">
     <ol>
       <li>
         <span class="icon-home"></span>
