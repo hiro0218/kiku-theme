@@ -1,4 +1,5 @@
 export default {
+  api: null,
   settings: {
     baseURL: '/wp-json/wp/v2',
     params: {
@@ -11,26 +12,32 @@ export default {
       categories_exclude: WP.categories_exclude,
     },
   },
+  getInstance() {
+    if (!this.api) {
+      this.api = axios.create(this.settings);
+    }
+
+    return this.api;
+  },
   getNavigation() {
-    var client = axios.create({ baseURL: '/wp-json/kiku/v1/navigation' });
-    return client.get();
+    var client = this.getInstance();
+    return client.get('/wp-json/kiku/v1/navigation', { baseURL: '/' });
   },
   getPosts(post_id) {
-    var client = axios.create(this.settings);
+    var client = this.getInstance();
     var id = post_id || '';
 
     return client.get(`/posts/${id}`);
   },
   getPages(post_id) {
-    var client = axios.create(this.settings);
+    var client = this.getInstance();
     var id = post_id || '';
 
     return client.get(`/pages/${id}`);
   },
-  getAttachData(baseURL) {
-    var option = Object.assign(this.settings, { baseURL });
-    var client = axios.create(option);
+  getAttachData(post_id) {
+    var client = this.getInstance();
 
-    return client.get();
+    return client.get(`/wp-json/kiku/v1/post/${post_id}`, { baseURL: '/' });
   },
 };

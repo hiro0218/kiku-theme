@@ -84,7 +84,7 @@ export default {
         },
         requestAttachedData: function(target) {
           NProgress.start();
-          var response = api.getAttachData(`/wp-json/kiku/v1/post/${WP.page_id}`);
+          var response = api.getAttachData(WP.page_id);
 
           response
             .then(response => {
