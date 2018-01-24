@@ -20,18 +20,24 @@ export default {
   settings: {
     baseURL: '/wp-json/wp/v2',
     params: {
-      per_page: WP.per_page,
-      page: WP.paged,
       orderby: 'modified',
-      search: WP.search,
-      tags: WP.tag,
-      categories: WP.category,
-      categories_exclude: WP.categories_exclude,
     },
     adapter: cache.adapter,
   },
+  preparedParams() {
+    this.settings.params = Object.assign(
+      this.settings.params,
+      WP.per_page && { per_page: WP.per_page },
+      WP.paged && { page: WP.paged },
+      WP.search && { search: WP.search },
+      WP.tag && { tags: WP.tag },
+      WP.category && { categories: WP.category },
+      WP.categories_exclude && { categories_exclude: WP.categories_exclude },
+    );
+  },
   getInstance() {
     if (!this.api) {
+      this.preparedParams();
       this.api = axios.create(this.settings);
     }
 
