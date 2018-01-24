@@ -27,7 +27,7 @@ export default {
       methods: {
         requestPostData: function() {
           api
-            .getPosts()
+            .getPostList()
             .then(response => this.setResponseHeaders(response))
             .then(data => this.setPosts(data))
             .then(() => NProgress.done());
