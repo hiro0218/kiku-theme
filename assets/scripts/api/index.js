@@ -15,7 +15,7 @@ export default {
         driver: [localforage.INDEXEDDB, localforage.LOCALSTORAGE],
         name: 'kiku-cache',
       }),
-      maxAge: 30 * 60 * 1000, // half an hour
+      maxAge: 15 * 60 * 1000, // 15 minutes
       key: request => {
         return request.url + JSON.stringify(request.params);
       },
