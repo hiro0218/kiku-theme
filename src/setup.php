@@ -11,11 +11,6 @@ add_action('wp_enqueue_scripts', function () {
     // style
     wp_enqueue_style('styles/main', asset_path('styles/main.css'), false, null);
 
-    // syntax highlighter
-    if (is_singular()) {
-        wp_enqueue_script('scripts/single', asset_path('scripts/single.js'), [], null, true);
-    }
-
     // script
     wp_enqueue_script('scripts/main', asset_path('scripts/main.js'), [], null, true);
 

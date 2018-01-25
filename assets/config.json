@@ -2,11 +2,9 @@
   "entry": {
     "main": [
       "./scripts/main.js",
+      "./scripts/vendor/prism.js",
       "./styles/reset.scss",
       "./styles/main.scss"
-    ],
-    "single": [
-      "./scripts/vendor/prism.js"
     ]
   },
   "publicPath": "/wp-content/themes/kiku-theme",
