@@ -1,20 +1,6 @@
 import localforage from 'localforage';
 import { setupCache } from 'axios-cache-adapter';
 
-const cache = setupCache({
-  store: localforage.createInstance({
-    driver: [localforage.INDEXEDDB, localforage.LOCALSTORAGE],
-    name: 'kiku-cache',
-  }),
-  maxAge: 30 * 60 * 1000, // half an hour
-  key: request => {
-    return request.url + JSON.stringify(request.params);
-  },
-  exclude: {
-    query: false,
-  },
-});
-
 export default {
   api: null,
   settings: {
@@ -22,7 +8,23 @@ export default {
     params: {
       orderby: 'modified',
     },
-    adapter: cache.adapter,
+  },
+  setupCacheAdapter() {
+    const cache = setupCache({
+      store: localforage.createInstance({
+        driver: [localforage.INDEXEDDB, localforage.LOCALSTORAGE],
+        name: 'kiku-cache',
+      }),
+      maxAge: 30 * 60 * 1000, // half an hour
+      key: request => {
+        return request.url + JSON.stringify(request.params);
+      },
+      exclude: {
+        query: false,
+      },
+    });
+
+    this.settings.adapter = cache.adapter;
   },
   preparedParams() {
     this.settings.params = Object.assign(
@@ -38,6 +40,7 @@ export default {
   getInstance() {
     if (!this.api) {
       this.preparedParams();
+      this.setupCacheAdapter();
       this.api = axios.create(this.settings);
     }
 
