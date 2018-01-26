@@ -10,7 +10,7 @@ const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const config = require('./config');
-const { jsLoaders, sassLoaders } = require('./loader.conf');
+const { jsLoaders, cssLoaders, sassLoaders } = require('./loader.conf');
 
 const assetsFilenames = (config.enabled.cacheBusting) ? config.cacheBusting : '[name]';
 
@@ -62,17 +62,7 @@ let webpackConfig = {
         include: config.paths.assets,
         use: ExtractTextPlugin.extract({
           fallback: 'style',
-          use: [
-            { loader: 'cache' },
-            { loader: 'thread' },
-            { loader: 'css', options: { sourceMap: config.enabled.sourceMaps } },
-            {
-              loader: 'postcss', options: {
-                config: { path: __dirname, ctx: config },
-                sourceMap: config.enabled.sourceMaps,
-              },
-            },
-          ],
+          use: cssLoaders,
         }),
       },
       {

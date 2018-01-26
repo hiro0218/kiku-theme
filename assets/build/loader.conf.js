@@ -6,6 +6,18 @@ const jsLoaders = [
   { loader: 'babel' },
 ];
 
+const cssLoaders = [
+  { loader: 'cache' },
+  { loader: 'thread' },
+  { loader: 'css', options: { sourceMap: config.enabled.sourceMaps } },
+  {
+    loader: 'postcss', options: {
+      config: { path: __dirname, ctx: config },
+      sourceMap: config.enabled.sourceMaps,
+    },
+  },
+];
+
 const sassLoaders = [
   { loader: 'cache' },
   { loader: 'css', options: { sourceMap: config.enabled.sourceMaps } },
@@ -21,5 +33,6 @@ const sassLoaders = [
 
 module.exports = {
   jsLoaders,
+  cssLoaders,
   sassLoaders,
 }
