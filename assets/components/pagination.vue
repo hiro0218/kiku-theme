@@ -146,3 +146,58 @@
     },
   };
 </script>
+
+<style lang="scss" scoped>
+.pagination {
+  margin-bottom: 1rem;
+  user-select: none;
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+  }
+
+  li {
+    display: flex;
+
+    & + li {
+      margin-left: .5rem;
+    }
+
+    @include mobile {
+      &:not(.pagination-first):not(.pagination-next):not(.pagination-previous):not(.pagination-last):not(.pagination-active) {
+        display: none;
+      }
+    }
+  }
+
+  a {
+    &:hover {
+      background: $grey-300;
+    }
+  }
+
+  a,
+  span {
+    min-width: 3rem;
+    min-height: 3rem;
+    border-radius: 2px;
+    color: $grey-600;
+    line-height: 3rem;
+    text-align: center;
+
+    &:hover,
+    &:focus {
+      outline: 0;
+    }
+  }
+}
+
+.pagination-active span {
+  background: $grey-600;
+  color: $white;
+  cursor: default;
+}
+</style>
