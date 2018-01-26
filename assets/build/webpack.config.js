@@ -77,20 +77,24 @@ let webpackConfig = {
         test: /\.vue$/,
         loader: 'vue',
         options: {
+          extractCSS: true,
           loaders: {
-            scss: [
-              'vue-style',
-              ...sassLoaders, {
-                loader: 'sass-resources',
-                options: {
-                  resources: [
-                    path.resolve(__dirname, '../styles/config/_colors.scss'),
-                    path.resolve(__dirname, '../styles/config/_variables.scss'),
-                    path.resolve(__dirname, '../styles/config/_mixins.scss'),
-                  ]
+            scss: ExtractTextPlugin.extract({
+              fallback: 'vue-style',
+              use: [
+                ...sassLoaders,
+                {
+                  loader: 'sass-resources',
+                  options: {
+                    resources: [
+                      path.resolve(__dirname, '../styles/config/_colors.scss'),
+                      path.resolve(__dirname, '../styles/config/_variables.scss'),
+                      path.resolve(__dirname, '../styles/config/_mixins.scss'),
+                    ]
+                  },
                 },
-              },
-            ],
+              ],
+            }),
           }
         },
       },
