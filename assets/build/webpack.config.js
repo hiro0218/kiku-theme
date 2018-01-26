@@ -10,7 +10,7 @@ const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const config = require('./config');
-const { sassLoaders } = require('./loader.conf');
+const { jsLoaders, sassLoaders } = require('./loader.conf');
 
 const assetsFilenames = (config.enabled.cacheBusting) ? config.cacheBusting : '[name]';
 
@@ -55,11 +55,7 @@ let webpackConfig = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: [
-          { loader: 'cache' },
-          { loader: 'thread' },
-          { loader: 'babel' },
-        ],
+        use: jsLoaders,
       },
       {
         test: /\.css$/,
