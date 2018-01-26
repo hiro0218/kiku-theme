@@ -10,6 +10,7 @@ const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const config = require('./config');
+const { sassLoaders } = require('./loader.conf');
 
 const assetsFilenames = (config.enabled.cacheBusting) ? config.cacheBusting : '[name]';
 
@@ -101,6 +102,23 @@ let webpackConfig = {
       {
         test: /\.vue$/,
         loader: 'vue',
+        options: {
+          loaders: {
+            scss: [
+              'vue-style',
+              ...sassLoaders, {
+                loader: 'sass-resources',
+                options: {
+                  resources: [
+                    path.resolve(__dirname, '../styles/config/_colors.scss'),
+                    path.resolve(__dirname, '../styles/config/_variables.scss'),
+                    path.resolve(__dirname, '../styles/config/_mixins.scss'),
+                  ]
+                },
+              },
+            ],
+          }
+        },
       },
       {
         test: /\.(ttf|eot|woff2?|png|jpe?g|gif|svg|ico)$/,
