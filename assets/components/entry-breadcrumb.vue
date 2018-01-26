@@ -33,3 +33,50 @@
     },
   };
 </script>
+
+<style lang="scss" scoped>
+.breadcrumb {
+  margin-bottom: 1rem;
+  line-height: 1.5rem;
+  white-space: nowrap;
+  overflow: scroll;
+  color: $grey-600;
+
+  a {
+    color: inherit;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  ol {
+    margin-bottom: 0;
+    padding: 0;
+    font-size: 0;
+    list-style: none;
+  }
+
+  li {
+    display: inline-flex;
+    font-size: $font-size-sm;
+    line-height: 1;
+    vertical-align: middle;
+
+    & + li {
+      margin-left: .25rem;
+      &::before {
+        // .icon-keyboard_arrow_right;
+        content: "\e907";
+        font-family: 'icon';
+        line-height: 1rem;
+      }
+    }
+  }
+
+  .icon-home,
+  .icon-location_on {
+    margin-right: .25rem;
+  }
+
+}
+</style>
