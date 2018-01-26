@@ -2,13 +2,11 @@ const config = require('./config');
 
 const jsLoaders = [
   { loader: 'cache' },
-  { loader: 'thread' },
   { loader: 'babel' },
 ];
 
 const cssLoaders = [
   { loader: 'cache' },
-  { loader: 'thread' },
   { loader: 'css', options: { sourceMap: config.enabled.sourceMaps } },
   {
     loader: 'postcss', options: {
