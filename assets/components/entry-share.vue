@@ -95,3 +95,53 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+$twitter-color: #55acee;
+$facebook-color: #3b5998;
+$hatena-color: #00a4de;
+$line-color: #00B900;
+
+.entry-share {
+  display: flex;
+  margin-bottom: 2rem;
+  text-align: center;
+
+  a {
+    color: $white;
+    font-size: 1.5rem;
+    line-height: 1;
+    &:hover {
+      opacity: .8;
+    }
+    & + a {
+      margin-left: .5rem;
+    }
+  }
+}
+
+.btn-twitter,
+.btn-facebook,
+.btn-line,
+.btn-hatena {
+  flex: auto;
+  padding: .5rem .7rem;
+  border-radius: .125rem;
+}
+
+.btn-twitter {
+  background: $twitter-color;
+}
+
+.btn-facebook {
+  background: $facebook-color;
+}
+
+.btn-hatena {
+  background: $hatena-color;
+}
+
+.btn-line {
+  background: $line-color;
+}
+</style>
