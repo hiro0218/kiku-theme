@@ -1,11 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import VuexPersistence from 'vuex-persist';
-
-const vuexPersist = new VuexPersistence({
-  key: 'kiku',
-  storage: window.sessionStorage,
-});
+import createPersistedState from 'vuex-persistedstate';
 
 Vue.use(Vuex);
 
@@ -24,5 +19,11 @@ export default new Vuex.Store({
     },
   },
   actions: {},
-  plugins: [vuexPersist.plugin],
+  plugins: [
+    createPersistedState({
+      key: 'kiku',
+      paths: ['navigation'],
+      storage: window.sessionStorage,
+    }),
+  ],
 });
