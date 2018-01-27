@@ -1,5 +1,5 @@
 import { mapState } from 'vuex';
-import { once } from 'lodash';
+import once from 'lodash-es/once';
 
 import api from '@scripts/api';
 import store from '@scripts/store';
