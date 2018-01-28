@@ -7,8 +7,6 @@ const CleanPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyGlobsPlugin = require('copy-globs-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const config = require('./config');
 const { jsLoaders, cssLoaders, sassLoaders } = require('./loader.conf');
@@ -186,6 +184,9 @@ if (config.enabled.optimize) {
 }
 
 if (config.env.production) {
+  const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+  const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+
   webpackConfig.plugins.push(new webpack.NoEmitOnErrorsPlugin());
   webpackConfig.plugins.push(new webpack.optimize.ModuleConcatenationPlugin());
   webpackConfig.plugins.push(new webpack.optimize.AggressiveMergingPlugin());
