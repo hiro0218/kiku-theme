@@ -6,6 +6,11 @@ import pagination from '@components/pagination.vue';
 
 export default {
   view() {
+    // component
+    Vue.component('home-content', {
+      template: '#home-content',
+    });
+
     new Vue({
       el: '#app',
       components: {

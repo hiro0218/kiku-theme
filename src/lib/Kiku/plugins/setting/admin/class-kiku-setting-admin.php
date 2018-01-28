@@ -28,7 +28,7 @@ class Kiku_Setting_Admin {
         register_setting( 'kiku-settings-group', 'kiku_insert_data_bottom_of_more_tag' );
         register_setting( 'kiku-settings-group', 'kiku_insert_data_bottom_of_more_tag_option' );
         register_setting( 'kiku-settings-group', 'kiku_insert_data_bottom_of_content' );
-        register_setting( 'kiku-settings-group', 'kiku_insert_data_top_of_pagination' );
+        register_setting( 'kiku-settings-group', 'kiku_insert_data_home' );
         register_setting( 'kiku-settings-group', 'kiku_exclude_category_frontpage', [$this, 'check_category_list']);
     }
 
@@ -63,10 +63,23 @@ class Kiku_Setting_Admin {
     }
 
     public function add_insert_data_head() {
-        $data = get_option('kiku_insert_data_head');
+        // insert_data_head
+        $head_data = get_option('kiku_insert_data_head');
 
-        if ( !empty($data) ) {
-            echo $data. PHP_EOL;
+        if (!empty($head_data)) {
+            echo $head_data. PHP_EOL;
+        }
+
+        // insert_data_top_of_pagination
+        $top_of_pagination_data = get_option('kiku_insert_data_home');
+
+        if (!empty($top_of_pagination_data)) {
+            echo <<< EOM
+<script type="text/x-template" id="home-content">
+{$top_of_pagination_data}
+</script>
+EOM;
+            echo PHP_EOL;
         }
     }
 

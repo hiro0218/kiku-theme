@@ -93,7 +93,10 @@
                         ?>
                         <?php endforeach; ?>
                         <label>
-                            <p><?php _e('Insert to the bottom of <code>&lt;!--more--&gt;</code>', 'kiku'); ?></p>
+                            <p>
+                                <?php _e('Insert to the bottom of <code>&lt;!--more--&gt;</code>', 'kiku'); ?><br>
+                                <code><?php _e('Element code', 'kiku'); ?></code>
+                            </p>
                             <textarea name="kiku_insert_data_bottom_of_more_tag" rows="4" wrap="off" class="large-text"><?php echo get_option('kiku_insert_data_bottom_of_more_tag'); ?></textarea>
                             <label>
                                 <input name="kiku_insert_data_bottom_of_more_tag_option" value="1" <?php echo ( get_option('kiku_insert_data_bottom_of_more_tag_option') ) ? 'checked="checked"' : ''; ?> type="checkbox">
@@ -120,7 +123,10 @@
                         ?>
                         <?php endforeach; ?>
                         <label>
-                            <p><?php _e('Insert to the bottom of content', 'kiku'); ?></p>
+                            <p>
+                                <?php _e('Insert to the bottom of content', 'kiku'); ?><br>
+                                <code><?php _e('Element code', 'kiku'); ?></code>
+                            </p>
                             <textarea name="kiku_insert_data_bottom_of_content" rows="4" wrap="off" class="large-text"><?php echo get_option('kiku_insert_data_bottom_of_content'); ?></textarea>
                         </label>
                     </td>
@@ -128,8 +134,11 @@
                 <tr>
                     <td>
                         <label>
-                            <p><?php _e('Insert to the top of pagination (home/archive)', 'kiku'); ?></p>
-                            <textarea name="kiku_insert_data_top_of_pagination" rows="4" wrap="off" class="large-text"><?php echo get_option('kiku_insert_data_top_of_pagination'); ?></textarea>
+                            <p>
+                                <?php _e('Insert to the top of pagination (home)', 'kiku'); ?><br>
+                                <code><?php _e('Element code', 'kiku'); ?></code>
+                            </p>
+                            <textarea name="kiku_insert_data_home" rows="4" wrap="off" class="large-text"><?php echo get_option('kiku_insert_data_home'); ?></textarea>
                         </label>
                     </td>
                 </tr>
