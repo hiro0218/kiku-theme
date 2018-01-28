@@ -38,8 +38,8 @@ export default {
         categories: [],
         amazon_product: null,
         tags: [],
-        relateds: null,
-        pagers: null,
+        relateds: [],
+        pagers: {},
       },
       beforeCreate: function() {
         NProgress.start();
@@ -89,20 +89,8 @@ export default {
           response
             .then(response => {
               let json = response.data;
-
-              if (json.related.length !== 0) {
-                this.relateds = json.related;
-              } else {
-                var related = target.querySelector('.related');
-                related.classList.add('element-hide');
-              }
-
-              if (json.pager.length !== 0) {
-                this.pagers = json.pager;
-              } else {
-                var pager = target.querySelector('.pager');
-                pager.classList.add('element-hide');
-              }
+              this.relateds = json.related || this.relateds;
+              this.pagers = json.pager || this.pagers;
 
               return true;
             })
@@ -122,6 +110,7 @@ export default {
             return;
           }
 
+          var target = this.$el.querySelector('.entry-footer');
           var clientHeight = document.documentElement.clientHeight;
           var observer = new IntersectionObserver(changes => {
             changes.forEach(change => {
@@ -136,7 +125,6 @@ export default {
               }
             });
           });
-          var target = document.querySelector('.attached-info');
           observer.observe(target);
         },
       },

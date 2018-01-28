@@ -1,6 +1,6 @@
 <template>
-  <div class="related">
-    <div class="related-container container" v-cloak v-if="relateds">
+  <div class="related" v-cloak v-if="relateds.length !== 0">
+    <div class="related-container container">
       <h2 class="related-heading">Related Posts</h2>
       <div class="entry-related">
         <div class="related-section" v-for="(related,index) in relateds" v-bind:key="index">
@@ -32,8 +32,7 @@
 
 <style lang="scss" scoped>
 .related {
-  height: 18rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 .related-container {

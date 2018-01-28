@@ -1,6 +1,6 @@
 <template>
-  <div class="pager">
-    <div class="pager-container container" v-cloak v-if="pagers">
+  <div class="pager" v-cloak>
+    <div class="pager-container">
       <a v-if="pagers.prev" v-bind:href="pagers.prev.url" v-bind:title="pagers.prev.title" class="pager-prev">
         <span class="pager-label">
           <span class="pager-icon icon-chevron_left"></span>previous
@@ -33,12 +33,11 @@
 <style lang="scss" scoped>
 .pager {
   height: 6rem;
-  background: $grey-200;
+  margin: 2rem 0;
 }
 
 .pager-container {
   display: flex;
-  padding: 0 1rem;
 
   a {
     display: flex;
