@@ -15,8 +15,12 @@
   }
 }
 
+// nav min-height from bulma = 3.5rem
+// for header's position:fixed
 .main-container {
+  flex: 1 0 auto;
   min-height: 100vh;
+  margin-top: $header-nav-height + 1rem;  // for header
 }
 
 .header-navigation,
