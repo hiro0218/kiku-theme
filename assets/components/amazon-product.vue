@@ -29,7 +29,6 @@
 <style lang="scss" scoped>
 .amazon-product {
   position: relative;
-  height: 14rem;
   margin: 1rem 0;
   padding: 1rem;
   background-repeat: no-repeat;
