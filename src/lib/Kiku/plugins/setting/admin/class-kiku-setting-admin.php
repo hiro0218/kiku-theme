@@ -76,7 +76,9 @@ class Kiku_Setting_Admin {
         if (!empty($top_of_pagination_data)) {
             echo <<< EOM
 <script type="text/x-template" id="home-content">
+<div>
 {$top_of_pagination_data}
+</div>
 </script>
 EOM;
             echo PHP_EOL;
