@@ -33,7 +33,7 @@
 
 <script>
   export default {
-    name: 'pagination',
+    name: 'entry-pagination',
     data() {
       return {
         pagination: {

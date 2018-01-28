@@ -3,5 +3,5 @@
   <div>
     <home-content></home-content>
   </div>
-  <pagination :totalpages="headers.totalpages"></pagination>
+  <entry-pagination :totalpages="headers.totalpages"></pagination>
 </div>

@@ -2,7 +2,7 @@ import api from '@scripts/api';
 
 // vue components
 import entryList from '@components/entry-list.vue';
-import pagination from '@components/pagination.vue';
+import entryPagination from '@components/entry-pagination.vue';
 
 export default {
   view() {
@@ -15,7 +15,7 @@ export default {
       el: '#app',
       components: {
         entryList,
-        pagination,
+        entryPagination,
       },
       data: {
         headers: {},
