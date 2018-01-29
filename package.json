@@ -21,9 +21,9 @@
     "build:profile": "webpack --progress --profile --json --config assets/build/webpack.config.js",
     "start": "webpack --hide-modules --watch --config assets/build/webpack.config.js",
     "clean": "rimraf dist",
-    "lint:js": "eslint --ext .js,.vue assets/scripts/* components/*",
+    "lint:js": "eslint --ext .js,.vue assets/scripts/* assets/components/*",
     "lint:sass": "sass-lint -c .sass-lint.yml -q -v",
-    "format:js": "eslint --fix --ext .js,.vue assets/scripts/* components/*",
+    "format:js": "eslint --fix --ext .js,.vue assets/scripts/* assets/components/*",
     "php7cc": "vendor/bin/php7cc src/ templates/",
     "test": "yarn run lint -s"
   },
