@@ -2,22 +2,16 @@ import api from '@scripts/api';
 
 // vue components
 import entryHome from '@components/entry-home.vue';
+Vue.component('home-content', {
+  template: '#home-content',
+});
 
 export default {
   view() {
-    // component
-    Vue.component('home-content', {
-      template: '#home-content',
-    });
-
     new Vue({
       el: '#app',
       components: {
         entryHome,
-      },
-      data: {
-        headers: {},
-        posts: [],
       },
       beforeCreate: function() {
         NProgress.start();
@@ -35,12 +29,17 @@ export default {
             .then(() => NProgress.done());
         },
         setResponseHeaders: function(response) {
-          this.headers.total = Number(response.headers['x-wp-total']);
-          this.headers.totalpages = Number(response.headers['x-wp-totalpages']);
+          let requestHeader = {
+            total: Number(response.headers['x-wp-total']),
+            totalpages: Number(response.headers['x-wp-totalpages']),
+          };
+          this.$store.commit('setReqestHeader', requestHeader);
 
           return response.data;
         },
         setPosts: function(data) {
+          let postLists = [];
+
           for (let json of data) {
             let post = {};
 
@@ -50,8 +49,10 @@ export default {
             post.thumbnail = json.thumbnail;
             post.date = json.modified;
 
-            this.posts.push(post);
+            postLists.push(post);
           }
+
+          this.$store.commit('setPostLists', postLists);
         },
       },
     });

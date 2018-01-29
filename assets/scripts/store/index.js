@@ -7,17 +7,29 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     navigation: null,
+    requestHeader: {
+      total: -1,
+      totalpages: -1,
+    },
+    pageTitle: WP.page_title,
+    postLists: [],
   },
   mutations: {
     setNavigation(state, payload) {
       state.navigation = payload;
     },
-  },
-  getters: {
-    navigation(state) {
-      return state.navigation;
+    setReqestHeader(state, payload) {
+      state.requestHeader = payload;
+    },
+    setPostLists(state, payload) {
+      state.postLists = payload;
     },
   },
+  // getters: {
+  //   navigation(state) {
+  //     return state.navigation;
+  //   },
+  // },
   actions: {},
   plugins: [
     createPersistedState({

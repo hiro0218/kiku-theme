@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-    <entry-list :total="total" :posts="posts"></entry-list>
+    <entry-list></entry-list>
     <home-content></home-content>
-    <entry-pagination :totalpages="totalpages"></entry-pagination>
+    <entry-pagination></entry-pagination>
   </div>
 </template>
 
@@ -15,23 +15,6 @@
     components: {
       entryList,
       entryPagination,
-    },
-    props: {
-      total: {
-        type: Number,
-        default: -1,
-        required: true,
-      },
-      posts: {
-        type: Array,
-        default: {},
-        required: true,
-      },
-      totalpages: {
-        type: Number,
-        default: 0,
-        required: true,
-      },
     },
   };
 </script>

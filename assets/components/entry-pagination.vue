@@ -32,8 +32,11 @@
 </template>
 
 <script>
+  import { mapState } from 'vuex';
+
   export default {
     name: 'entry-pagination',
+    computed: mapState(['requestHeader']),
     data() {
       return {
         pagination: {
@@ -54,21 +57,14 @@
         },
       };
     },
-    props: {
-      totalpages: {
-        type: Number,
-        default: 0,
-        required: true,
-      },
-    },
     watch: {
-      totalpages: function() {
+      'requestHeader.totalpages': function() {
         this.setPaginationData();
       },
     },
     methods: {
       setPaginationData: function() {
-        var totalpages = this.totalpages;
+        var totalpages = this.requestHeader.totalpages;
 
         if (totalpages <= 1) {
           return;

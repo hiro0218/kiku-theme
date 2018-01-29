@@ -1,13 +1,13 @@
 <template>
   <div class="entry-list">
-    <h1 class="page-header" v-html="$options.filters.escapeBrackets(page_title)"></h1>
-    <template v-if="total === 0">
+    <h1 class="page-header" v-html="$options.filters.escapeBrackets(pageTitle)"></h1>
+    <template v-if="requestHeader.total === 0">
       <div class='alert alert-warning'>
         No results found.
       </div>
     </template>
 
-    <a v-bind:href="post.link" v-for="(post,index) in posts" v-bind:key="index">
+    <a v-bind:href="post.link" v-for="(post,index) in postLists" v-bind:key="index">
       <article class="entry-container">
         <div class="entry-image" v-bind:data-thumbnail-image="post.thumbnail">
           <div class="image-container">
@@ -34,30 +34,15 @@
 </template>
 
 <script>
+  import { mapState } from 'vuex';
   import ago from 's-ago';
   import common from '@scripts/module/common';
 
   export default {
     name: 'entry-list',
-    props: {
-      total: {
-        type: Number,
-        default: -1,
-        required: true,
-      },
-      posts: {
-        type: Array,
-        default: {},
-        required: true,
-      },
-    },
-    data() {
-      return {
-        page_title: WP.page_title,
-      }
-    },
+    computed: mapState(['requestHeader', 'pageTitle', 'postLists']),
     watch: {
-      posts: function () {
+      postLists: function () {
         this.$nextTick(() => {
           common.setThumbnailImage();
         });
