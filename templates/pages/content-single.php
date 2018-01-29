@@ -10,13 +10,12 @@
     <section class="entry-content" v-html="content"></section>
     <amazon-product :amazon_product="amazon_product"></amazon-product>
     <footer class="entry-footer">
-      <entry-breadcrumb :title="title" :categories="categories"></entry-breadcrumb>
       <entry-tag :tags="tags"></entry-tag>
       <entry-share :title="title" :link="link"></entry-share>
       <entry-pager :pagers="pagers"></entry-pager>
     </footer>
   </article>
 </div>
-<aside>
-  <entry-related :relateds="relateds"></entry-related>
-</aside>
+
+<entry-related :relateds="relateds"></entry-related>
+<entry-breadcrumb :title="title" :categories="categories"></entry-breadcrumb>
