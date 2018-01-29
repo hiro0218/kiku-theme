@@ -1,8 +1,7 @@
 import api from '@scripts/api';
 
 // vue components
-import entryList from '@components/entry-list.vue';
-import entryPagination from '@components/entry-pagination.vue';
+import entryHome from '@components/entry-home.vue';
 
 export default {
   view() {
@@ -14,12 +13,10 @@ export default {
     new Vue({
       el: '#app',
       components: {
-        entryList,
-        entryPagination,
+        entryHome,
       },
       data: {
         headers: {},
-        page_title: WP.page_title,
         posts: [],
       },
       beforeCreate: function() {

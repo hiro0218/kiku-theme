@@ -45,16 +45,16 @@
         default: -1,
         required: true,
       },
-      page_title: {
-        type: String,
-        default: '',
-        required: true,
-      },
       posts: {
         type: Array,
         default: {},
         required: true,
       },
+    },
+    data() {
+      return {
+        page_title: WP.page_title,
+      }
     },
     watch: {
       posts: function () {

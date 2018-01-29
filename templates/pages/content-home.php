@@ -1,5 +1,1 @@
-<div class="container">
-  <entry-list :total="headers.total" :page_title="page_title" :posts="posts"></entry-list>
-  <home-content></home-content>
-  <entry-pagination :totalpages="headers.totalpages"></entry-pagination>
-</div>
+<entry-home :total="headers.total" :posts="posts" :totalpages="headers.totalpages"></entry-home>
