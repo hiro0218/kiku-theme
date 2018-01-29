@@ -1,5 +1,5 @@
 <template>
-  <div class="entry-tag" v-cloak v-if="tags">
+  <div class="entry-tag" v-cloak v-if="tags.length !== 0">
     <ul>
       <li v-for="(tag, index) in tags" v-bind:key="index">
         <a v-bind:href="tag.link" itemprop="keywords">{{ tag.name }}</a>
