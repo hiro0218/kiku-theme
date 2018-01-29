@@ -115,7 +115,7 @@ $line-color: #00B900;
       opacity: .8;
     }
     & + a {
-      margin-left: .5rem;
+      margin-left: 1rem;
     }
   }
 }

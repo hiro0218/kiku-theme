@@ -32,7 +32,6 @@
 
 <style lang="scss" scoped>
 .pager {
-  height: 6rem;
   margin: 2rem 0;
 }
 
@@ -80,6 +79,7 @@
 
   .pager-label {
     color: $grey-400;
+    font-weight: bold;
     text-transform: capitalize;
   }
 
