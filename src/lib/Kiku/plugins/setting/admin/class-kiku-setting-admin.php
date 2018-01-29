@@ -73,16 +73,14 @@ class Kiku_Setting_Admin {
         // insert_data_top_of_pagination
         $top_of_pagination_data = get_option('kiku_insert_data_home');
 
-        if (!empty($top_of_pagination_data)) {
-            echo <<< EOM
+        echo <<< EOM
 <script type="text/x-template" id="home-content">
 <div>
 {$top_of_pagination_data}
 </div>
 </script>
 EOM;
-            echo PHP_EOL;
-        }
+        echo PHP_EOL;
     }
 
     public function add_insert_data_bottom_of_more_tag($content) {
