@@ -49,6 +49,7 @@
     "vars-on-top": 0,
     "func-names": 0,
     "consistent-return": 0,
-    "global-require": 0
+    "global-require": 0,
+    "vue/max-attributes-per-line": 0
   }
 }
