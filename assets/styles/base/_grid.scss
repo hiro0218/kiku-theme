@@ -23,10 +23,8 @@
   margin-top: $header-nav-height + 1rem;  // for header
 }
 
-.header-navigation,
-.main-container,
-.footer-navigation {
-  > .container {
+.contents {
+  .container {
     padding: 0 1rem;
   }
 }

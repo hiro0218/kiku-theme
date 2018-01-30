@@ -1,20 +1,22 @@
 <template>
-  <div class="breadcrumb-container container" v-if="title">
-    <nav class="breadcrumb">
-      <ol>
-        <li>
-          <span class="icon-home"></span>
-          <a v-bind:href="navigation.site.url">{{ navigation.site.name }}</a>
-        </li>
-        <li v-for="(category,index) in categories" v-cloak v-bind:key="index">
-          <a v-bind:href="category.link">{{ category.name }}</a>
-        </li>
-        <li class="breadcrumb-active">
-          <span class="icon-location_on"></span>
-          <a href="" v-html="$options.filters.escapeBrackets(title)"></a>
-        </li>
-      </ol>
-    </nav>
+  <div class="breadcrumb-container" v-if="title">
+    <div class="container">
+      <nav class="breadcrumb">
+        <ol>
+          <li>
+            <span class="icon-home"></span>
+            <a v-bind:href="navigation.site.url">{{ navigation.site.name }}</a>
+          </li>
+          <li v-for="(category,index) in categories" v-cloak v-bind:key="index">
+            <a v-bind:href="category.link">{{ category.name }}</a>
+          </li>
+          <li class="breadcrumb-active">
+            <span class="icon-location_on"></span>
+            <a href="" v-html="$options.filters.escapeBrackets(title)"></a>
+          </li>
+        </ol>
+      </nav>
+    </div>
   </div>
 </template>
 
@@ -38,11 +40,11 @@
 
 <style lang="scss" scoped>
 .breadcrumb-container {
+  padding: 2rem 0;
   background: $grey-100;
 }
 
 .breadcrumb {
-  padding: 2rem 0;
   line-height: 1.5rem;
   white-space: nowrap;
   overflow: scroll;
