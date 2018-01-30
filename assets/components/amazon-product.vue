@@ -1,12 +1,12 @@
 <template>
   <div v-cloak v-if="amazon_product">
-    <div class="amazon-product" v-bind:style="{ 'background-image': 'url('+ amazon_product.LargeImage +')' }">
-      <a v-bind:href="amazon_product.DetailPageURL" target="_blank">
+    <div class="amazon-product" :style="{ 'background-image': 'url('+ amazon_product.LargeImage +')' }">
+      <a :href="amazon_product.DetailPageURL" target="_blank">
         <div class="product-image">
-          <img v-bind:src="amazon_product.LargeImage" data-zoom-disabled="true">
+          <img :src="amazon_product.LargeImage" data-zoom-disabled="true">
         </div>
         <div class="product-title">
-          <span class="amazon-title">{{amazon_product.Title}}</span>
+          <span class="amazon-title">{{ amazon_product.Title }}</span>
         </div>
       </a>
     </div>
@@ -14,16 +14,16 @@
 </template>
 
 <script>
-  export default {
-    name: 'amazon-product',
-    props: {
-      amazon_product: {
-        type: Object,
-        default: null,
-        required: false,
-      },
+export default {
+  name: 'AmazonProduct',
+  props: {
+    amazon_product: {
+      type: Object,
+      default: null,
+      required: false,
     },
-  };
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -45,7 +45,7 @@
     bottom: -6px;
     left: -6px;
     background: inherit;
-    content: "";
+    content: '';
     z-index: -1;
     filter: blur(6px);
   }
@@ -72,6 +72,6 @@
   display: block;
   color: $white;
   font-weight: bold;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, .4), -2px -2px 1px rgba(0, 0, 0, .08);
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4), -2px -2px 1px rgba(0, 0, 0, 0.08);
 }
 </style>

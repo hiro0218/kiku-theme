@@ -4,13 +4,13 @@
       <div class="container" v-if="navigation">
         <nav class="footer-menu" v-if="navigation.footer.menu">
           <ul>
-            <li v-for="(menu, index) in navigation.footer.menu" v-bind:key="index">
-              <a v-bind:href="menu.url">{{ menu.title }}</a>
+            <li v-for="(menu, index) in navigation.footer.menu" :key="index">
+              <a :href="menu.url">{{ menu.title }}</a>
             </li>
           </ul>
         </nav>
         <div class="footer-copytight" v-if="navigation.site">
-          <span>{{ navigation.site.copyright }} <a v-bind:href="navigation.site.url">{{ navigation.site.name }}</a></span>
+          <span>{{ navigation.site.copyright }} <a :href="navigation.site.url">{{ navigation.site.name }}</a></span>
         </div>
       </div>
     </footer>
@@ -18,9 +18,9 @@
 </template>
 
 <script>
-  export default {
-    name: 'layout-footer',
-  };
+export default {
+  name: 'LayoutFooter',
+};
 </script>
 
 <style lang="scss" scoped>
@@ -60,7 +60,7 @@
   }
 }
 
-.footer-menu ,
+.footer-menu,
 .footer-copytight {
   display: flex;
   flex: 1;

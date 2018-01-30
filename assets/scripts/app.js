@@ -15,21 +15,6 @@ Vue.mixin({
     layoutHeader,
     layoutFooter,
   },
-  computed: mapState(['navigation']),
-  created: function() {
-    this.$_fetchNavigation();
-  },
-  methods: {
-    $_fetchNavigation: once(function() {
-      if (this.navigation) {
-        return;
-      }
-
-      api.getNavigation().then(response => {
-        this.$store.commit('setNavigation', response.data);
-      });
-    }),
-  },
   filters: {
     escapeBrackets: function(text) {
       return text.replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -49,5 +34,20 @@ Vue.mixin({
         .split('T')[0]
         .replace(/-/g, '/');
     },
+  },
+  computed: mapState(['navigation']),
+  created: function() {
+    this.$_fetchNavigation();
+  },
+  methods: {
+    $_fetchNavigation: once(function() {
+      if (this.navigation) {
+        return;
+      }
+
+      api.getNavigation().then(response => {
+        this.$store.commit('setNavigation', response.data);
+      });
+    }),
   },
 });

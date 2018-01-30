@@ -3,13 +3,13 @@
     <div class="related-container container">
       <h2 class="related-heading">Related Posts</h2>
       <div class="entry-related">
-        <div class="related-section" v-for="(related,index) in relateds" v-bind:key="index">
-          <a v-bind:href="related.uri">
+        <div class="related-section" v-for="(related,index) in relateds" :key="index">
+          <a :href="related.uri">
             <div class="related-image">
-              <div class="image-sheet" v-bind:style="related.image ? 'background-image: url('+ related.image  +')' : ''"></div>
+              <div class="image-sheet" :style="related.image ? 'background-image: url('+ related.image +')' : ''"/>
             </div>
-            <div class="related-title" v-html="$options.filters.escapeBrackets(related.title)"></div>
-            <div class="related-description" v-html="$options.filters.escapeBrackets(related.description)"></div>
+            <div class="related-title" v-html="$options.filters.escapeBrackets(related.title)"/>
+            <div class="related-description" v-html="$options.filters.escapeBrackets(related.description)"/>
           </a>
         </div>
       </div>
@@ -18,16 +18,16 @@
 </template>
 
 <script>
-  export default {
-    name: 'entry-related',
-    props: {
-      relateds: {
-        type: Array,
-        default: [],
-        required: false,
-      },
+export default {
+  name: 'EntryRelated',
+  props: {
+    relateds: {
+      type: Array,
+      default: () => [],
+      required: false,
     },
-  };
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -48,7 +48,6 @@
     width: 15rem;
     overflow: hidden;
   }
-
 }
 
 .related-heading {
@@ -70,8 +69,8 @@
 .related-title {
   display: block;
   max-width: 100%;
-  margin-bottom: .5rem;
-  transition: color .3s $animation-curve-fast-out-slow-in;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s $animation-curve-fast-out-slow-in;
   color: $grey-800;
   @include text-overflow;
 }
@@ -83,7 +82,7 @@
 }
 
 .related-image {
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
   .image-sheet {
     height: 10rem;
     border: 1px solid $grey-200;

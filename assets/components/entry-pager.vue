@@ -1,33 +1,33 @@
 <template>
   <div class="pager" v-cloak>
     <div class="pager-container">
-      <a v-if="pagers.prev" v-bind:href="pagers.prev.url" v-bind:title="pagers.prev.title" class="pager-prev">
+      <a v-if="pagers.prev" :href="pagers.prev.url" :title="pagers.prev.title" class="pager-prev">
         <span class="pager-label">
-          <span class="pager-icon icon-chevron_left"></span>previous
+          <span class="pager-icon icon-chevron_left"/>previous
         </span>
-        <span class="pager-title">{{pagers.prev.title}}</span>
+        <span class="pager-title">{{ pagers.prev.title }}</span>
       </a>
-      <a v-if="pagers.next" v-bind:href="pagers.next.url" v-bind:title="pagers.next.title" class="pager-next">
+      <a v-if="pagers.next" :href="pagers.next.url" :title="pagers.next.title" class="pager-next">
         <span class="pager-label">
-          next<span class="pager-icon icon-chevron_right"></span>
+          next<span class="pager-icon icon-chevron_right"/>
         </span>
-        <span class="pager-title">{{pagers.next.title}}</span>
+        <span class="pager-title">{{ pagers.next.title }}</span>
       </a>
     </div>
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'entry-pager',
-    props: {
-      pagers: {
-        type: Object,
-        default: {},
-        required: false,
-      },
+export default {
+  name: 'EntryPager',
+  props: {
+    pagers: {
+      type: Object,
+      default: () => {},
+      required: false,
     },
-  };
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -54,7 +54,7 @@
     padding-right: 1rem;
     text-align: left;
     .pager-icon {
-      margin-right: .5rem;
+      margin-right: 0.5rem;
     }
     .pager-title {
       margin-left: 1.5rem;
@@ -65,7 +65,7 @@
     padding-left: 1rem;
     text-align: right;
     .pager-icon {
-      margin-left: .5rem;
+      margin-left: 0.5rem;
     }
     .pager-title {
       margin-right: 1.5rem;
@@ -87,6 +87,5 @@
     color: $grey-600;
     @include text-overflow;
   }
-
 }
 </style>

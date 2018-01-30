@@ -41,16 +41,6 @@ export default {
         relateds: [],
         pagers: {},
       },
-      beforeCreate: function() {
-        NProgress.start();
-      },
-      created: function() {
-        this.requestPostData();
-        NProgress.inc();
-      },
-      mounted: function() {
-        NProgress.done();
-      },
       watch: {
         loaded: function() {
           this.$nextTick().then(() => {
@@ -64,6 +54,16 @@ export default {
             NProgress.done();
           });
         },
+      },
+      beforeCreate: function() {
+        NProgress.start();
+      },
+      created: function() {
+        this.requestPostData();
+        NProgress.inc();
+      },
+      mounted: function() {
+        NProgress.done();
       },
       methods: {
         requestPostData: function() {

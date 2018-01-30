@@ -4,15 +4,15 @@
       <nav class="breadcrumb">
         <ol>
           <li>
-            <span class="icon-home"></span>
-            <a v-bind:href="navigation.site.url">{{ navigation.site.name }}</a>
+            <span class="icon-home"/>
+            <a :href="navigation.site.url">{{ navigation.site.name }}</a>
           </li>
-          <li v-for="(category,index) in categories" v-cloak v-bind:key="index">
-            <a v-bind:href="category.link">{{ category.name }}</a>
+          <li v-for="(category,index) in categories" v-cloak :key="index">
+            <a :href="category.link">{{ category.name }}</a>
           </li>
           <li class="breadcrumb-active">
-            <span class="icon-location_on"></span>
-            <a href="" v-html="$options.filters.escapeBrackets(title)"></a>
+            <span class="icon-location_on"/>
+            <a href="" v-html="$options.filters.escapeBrackets(title)"/>
           </li>
         </ol>
       </nav>
@@ -21,21 +21,21 @@
 </template>
 
 <script>
-  export default {
-    name: 'entry-breadcrumb',
-    props: {
-      title: {
-        type: String,
-        default: '',
-        required: true,
-      },
-      categories: {
-        type: Array,
-        default: [],
-        required: false,
-      },
+export default {
+  name: 'EntryBreadcrumb',
+  props: {
+    title: {
+      type: String,
+      default: '',
+      required: true,
     },
-  };
+    categories: {
+      type: Array,
+      default: () => [],
+      required: false,
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -71,10 +71,10 @@
     vertical-align: middle;
 
     & + li {
-      margin-left: .25rem;
+      margin-left: 0.25rem;
       &::before {
         // .icon-keyboard_arrow_right;
-        content: "\e907";
+        content: '\e907';
         font-family: 'icon';
         line-height: 1rem;
       }
@@ -83,8 +83,7 @@
 
   .icon-home,
   .icon-location_on {
-    margin-right: .25rem;
+    margin-right: 0.25rem;
   }
-
 }
 </style>

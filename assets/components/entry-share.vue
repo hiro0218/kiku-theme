@@ -5,7 +5,7 @@
          title="Share on Twitter"
          :data-url="twitter_url"
          data-width="620" data-height="310" @click="openWindows">
-        <span class="icon-twitter"></span>
+        <span class="icon-twitter"/>
       </a>
     </template>
     <template v-if="is_display.facebook">
@@ -13,7 +13,7 @@
          title="Share on Facebook"
          :data-url="facebook_url"
          data-width="560" data-height="550" @click="openWindows">
-        <span class="icon-facebook"></span>
+        <span class="icon-facebook"/>
       </a>
     </template>
     <template v-if="is_display.hatena">
@@ -22,7 +22,7 @@
          :data-url="hatena_url"
          :data-hatena-bookmark-title="title"
          data-hatena-bookmark-layout="simple">
-        <span class="icon-hatena"></span>
+        <span class="icon-hatena"/>
       </a>
     </template>
     <template v-if="is_display.line">
@@ -30,7 +30,7 @@
          title="Share on LINE"
          :data-url="line_url"
          data-width="560" data-height="550" @click="openWindows">
-        <span class="icon-line"></span>
+        <span class="icon-line"/>
       </a>
     </template>
   </section>
@@ -38,12 +38,7 @@
 
 <script>
 export default {
-  name: 'entry-share',
-  data() {
-    return {
-      is_display: WP.is_shared,
-    };
-  },
+  name: 'EntryShare',
   props: {
     title: {
       type: String,
@@ -56,17 +51,22 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      is_display: WP.is_shared,
+    };
+  },
   computed: {
-    twitter_url: function () {
+    twitter_url: function() {
       return `https://twitter.com/intent/tweet?url=${this.link}&text=${this.title}`;
     },
-    facebook_url: function () {
+    facebook_url: function() {
       return `https://www.facebook.com/sharer/sharer.php?u=${this.link}`;
     },
-    hatena_url: function () {
+    hatena_url: function() {
       return `http://b.hatena.ne.jp/entry/${this.link}`;
     },
-    line_url: function () {
+    line_url: function() {
       return `https://lineit.line.me/share/ui?url=${this.link}`;
     },
   },
@@ -92,7 +92,7 @@ export default {
       window.open(data.url, '', features);
       return false;
     },
-  }
+  },
 };
 </script>
 
@@ -100,7 +100,7 @@ export default {
 $twitter-color: #55acee;
 $facebook-color: #3b5998;
 $hatena-color: #00a4de;
-$line-color: #00B900;
+$line-color: #00b900;
 
 .entry-share {
   display: flex;
@@ -112,7 +112,7 @@ $line-color: #00B900;
     font-size: 1.5rem;
     line-height: 1;
     &:hover {
-      opacity: .8;
+      opacity: 0.8;
     }
     & + a {
       margin-left: 1rem;
@@ -125,8 +125,8 @@ $line-color: #00B900;
 .btn-line,
 .btn-hatena {
   flex: auto;
-  padding: .5rem .7rem;
-  border-radius: .125rem;
+  padding: 0.5rem 0.7rem;
+  border-radius: 0.125rem;
 }
 
 .btn-twitter {
