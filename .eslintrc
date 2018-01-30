@@ -1,15 +1,16 @@
 {
   "root": true,
-  "parser": "babel-eslint",
   "parserOptions": {
+    "parser": "babel-eslint",
     "sourceType": "module"
   },
   "extends": [
     "eslint:recommended",
+    "plugin:vue/recommended",
     "prettier"
   ],
   "plugins": [
-    "html",
+    "vue",
     "prettier"
   ],
   "env": {
