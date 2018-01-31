@@ -8,8 +8,18 @@ class REST_API {
         return 'kiku/v1';
     }
 
+    public function disable_api_endpoint($endpoints) {
+        unset($endpoints['/wp/v2/users']);
+        unset($endpoints['/wp/v2/users/(?P<id>[\d]+)']);
+        unset($endpoints['/wp/v2/comments']);
+        unset($endpoints['/wp/v2/comments/(?P<id>[\d]+)']);
+        unset($endpoints['/wp/v2/settings']);
+
+        return $endpoints;
+    }
+
     // To decimate API information.
-    public function unset_api_data($response, $post, $request) {
+    public function disable_api_data($response, $post, $request) {
         unset($response->data['date_gmt']);
         unset($response->data['modified_gmt']);
         unset($response->data['guid']);
@@ -174,6 +184,8 @@ class REST_API {
 }
 
 $REST_API = new REST_API();
-add_filter('rest_prepare_post', [$REST_API, 'unset_api_data'], 10, 3);
-add_filter('rest_prepare_page', [$REST_API, 'unset_api_data'], 10, 3);
+
+add_filter('rest_endpoints', [$REST_API, 'disable_api_endpoint'], 10, 3);
+add_filter('rest_prepare_post', [$REST_API, 'disable_api_data'], 10, 3);
+add_filter('rest_prepare_page', [$REST_API, 'disable_api_data'], 10, 3);
 add_action('rest_api_init', [$REST_API, 'rest_api_init']);
