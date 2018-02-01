@@ -52,6 +52,14 @@ export default {
       params: '',
     });
   },
+  getAttachData(post_id) {
+    var client = this.getInstance();
+
+    return client.get(`/wp-json/kiku/v1/post/${post_id}`, {
+      baseURL: '/',
+      params: '',
+    });
+  },
   getPostList() {
     var client = this.getInstance();
 
@@ -68,13 +76,5 @@ export default {
     var client = this.getInstance();
 
     return client.get(`/pages/${post_id}`);
-  },
-  getAttachData(post_id) {
-    var client = this.getInstance();
-
-    return client.get(`/wp-json/kiku/v1/post/${post_id}`, {
-      baseURL: '/',
-      params: '',
-    });
   },
 };
