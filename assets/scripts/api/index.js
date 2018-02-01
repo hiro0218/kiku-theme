@@ -5,9 +5,7 @@ export default {
   api: null,
   settings: {
     baseURL: '/wp-json/wp/v2',
-    params: {
-      orderby: 'modified',
-    },
+    params: {},
   },
   setupCacheAdapter() {
     const cache = setupCache({
@@ -49,12 +47,17 @@ export default {
   getNavigation() {
     var client = this.getInstance();
 
-    return client.get('/wp-json/kiku/v1/navigation', { baseURL: '/' });
+    return client.get('/wp-json/kiku/v1/navigation', {
+      baseURL: '/',
+      params: '',
+    });
   },
   getPostList() {
     var client = this.getInstance();
 
-    return client.get('/posts/?list');
+    return client.get('/posts/?list', {
+      params: Object.assign(this.settings.params, { orderby: 'modified' }),
+    });
   },
   getPosts(post_id) {
     var client = this.getInstance();
@@ -69,6 +72,9 @@ export default {
   getAttachData(post_id) {
     var client = this.getInstance();
 
-    return client.get(`/wp-json/kiku/v1/post/${post_id}`, { baseURL: '/' });
+    return client.get(`/wp-json/kiku/v1/post/${post_id}`, {
+      baseURL: '/',
+      params: '',
+    });
   },
 };
