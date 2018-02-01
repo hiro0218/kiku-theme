@@ -6,10 +6,6 @@ class REST_API {
 
     // public function __construct() {}
 
-    public function get_api_namespace() {
-        return 'kiku/v1';
-    }
-
     public function pre_dispatch($result, $server, $request) {
         // cache-control ヘッダーをセット
         $headers['Cache-Control'] = 'public, max-age=' . HOUR_IN_SECONDS;
@@ -51,7 +47,7 @@ class REST_API {
     }
 
     public function original_api() {
-        register_rest_route($this->get_api_namespace(), '/post/(?P<id>\d+)', [
+        register_rest_route(self::API_NAMESPACE, '/post/(?P<id>\d+)', [
             'methods' => WP_REST_Server::READABLE,
             'callback' => function($data) {
                 $request_url = $_SERVER['REQUEST_URI'];
@@ -85,7 +81,7 @@ class REST_API {
             },
         ]);
 
-        register_rest_route($this->get_api_namespace(), '/navigation', [
+        register_rest_route(self::API_NAMESPACE, '/navigation', [
             'methods'  => WP_REST_Server::READABLE,
             'callback' => function($data) {
                 $request_url = $_SERVER['REQUEST_URI'];
