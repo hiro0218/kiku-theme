@@ -1,8 +1,10 @@
 <?php
 
 class REST_API {
-    public function __construct() {
-    }
+    const API_NAMESPACE = "kiku/v1";
+    const CACHE_PREFIX = "kiku_cache_";
+
+    // public function __construct() {}
 
     public function get_api_namespace() {
         return 'kiku/v1';
@@ -52,43 +54,64 @@ class REST_API {
         register_rest_route($this->get_api_namespace(), '/post/(?P<id>\d+)', [
             'methods' => WP_REST_Server::READABLE,
             'callback' => function($data) {
-                $post_id = $data['id'];
-                if (empty($post_id)) {
-                    return null;
+                $request_url = $_SERVER['REQUEST_URI'];
+
+                // transient で一時的にキャッシュしたデータをロード
+                $key = self::CACHE_PREFIX . md5($request_url);
+                $result = get_transient($key);
+
+                if ($result === false) {
+                    global $Entry, $post;
+
+                    $post_id = $data['id'];
+                    $array = [];
+
+                    // related posts
+                    $related = $Entry->get_similar_posts(RELATED_POST_NUM, $post_id);
+                    // pager
+                    $pager = $Entry->pager($post_id);
+
+                    // set
+                    $array = [
+                        'related' => $related,
+                        'pager' => $pager,
+                    ];
+
+                    set_transient($key, $array, HOUR_IN_SECONDS);
+                    return $array;
                 }
 
-                global $Entry, $post;
-                $array = [];
-
-                // related posts
-                $related = $Entry->get_similar_posts(RELATED_POST_NUM, $post_id);
-                // pager
-                $pager = $Entry->pager($post_id);
-
-                // set
-                $array = [
-                    'related' => $related,
-                    'pager' => $pager,
-                ];
-
-                return $array;
+                return $result;
             },
         ]);
 
         register_rest_route($this->get_api_namespace(), '/navigation', [
             'methods'  => WP_REST_Server::READABLE,
             'callback' => function($data) {
-                return [
-                    'site' => [
-                        'name' => BLOG_NAME,
-                        'url' => BLOG_URL,
-                        'copyright' => "© " . Kiku\Util::get_copyright_year(),
-                    ],
-                    'header' => [],
-                    'footer' => [
-                        'menu' => $this->get_menus(),
-                    ]
-                ];
+                $request_url = $_SERVER['REQUEST_URI'];
+
+                // transient で一時的にキャッシュしたデータをロード
+                $key = self::CACHE_PREFIX . md5($request_url);
+                $result = get_transient($key);
+
+                if ($result === false) {
+                    $array = [
+                        'site' => [
+                            'name' => BLOG_NAME,
+                            'url' => BLOG_URL,
+                            'copyright' => "© " . Kiku\Util::get_copyright_year(),
+                        ],
+                        // 'header' => [],
+                        'footer' => [
+                            'menu' => $this->get_menus(),
+                        ]
+                    ];
+
+                    set_transient($key, $array, HOUR_IN_SECONDS);
+                    return $array;
+                }
+
+                return $result;
             }
         ]);
     }
