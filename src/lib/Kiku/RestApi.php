@@ -8,6 +8,12 @@ class REST_API {
         return 'kiku/v1';
     }
 
+    public function pre_dispatch($result, $server, $request) {
+        // cache-control ヘッダーをセット
+        $headers['Cache-Control'] = 'public, max-age=' . HOUR_IN_SECONDS;
+        $server->send_headers($headers);
+    }
+
     public function disable_api_endpoint($endpoints) {
         unset($endpoints['/wp/v2/users']);
         unset($endpoints['/wp/v2/users/(?P<id>[\d]+)']);
@@ -189,3 +195,4 @@ add_filter('rest_endpoints', [$REST_API, 'disable_api_endpoint'], 10, 3);
 add_filter('rest_prepare_post', [$REST_API, 'disable_api_data'], 10, 3);
 add_filter('rest_prepare_page', [$REST_API, 'disable_api_data'], 10, 3);
 add_action('rest_api_init', [$REST_API, 'rest_api_init']);
+add_filter('rest_pre_dispatch', [$REST_API, 'pre_dispatch'], 0, 3);
