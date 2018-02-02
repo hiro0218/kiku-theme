@@ -51,19 +51,11 @@ export default {
             common.zoomImage(element);
             Prism.highlightAll();
             this.viewAttachedInfo();
-            NProgress.done();
           });
         },
       },
-      beforeCreate: function() {
-        NProgress.start();
-      },
       created: function() {
         this.requestPostData();
-        NProgress.inc();
-      },
-      mounted: function() {
-        NProgress.done();
       },
       methods: {
         requestPostData: function() {
@@ -83,20 +75,15 @@ export default {
           });
         },
         requestAttachedData: function(target) {
-          NProgress.start();
           var response = api.getAttachData(WP.page_id);
 
-          response
-            .then(response => {
-              let json = response.data;
-              this.relateds = json.related || this.relateds;
-              this.pagers = json.pager || this.pagers;
+          response.then(response => {
+            let json = response.data;
+            this.relateds = json.related || this.relateds;
+            this.pagers = json.pager || this.pagers;
 
-              return true;
-            })
-            .then(result => {
-              NProgress.done();
-            });
+            return true;
+          });
         },
         setDatetime: function(json) {
           this.date.publish = json.date;

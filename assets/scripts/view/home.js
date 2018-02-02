@@ -13,20 +13,15 @@ export default {
       components: {
         entryHome,
       },
-      beforeCreate: function() {
-        NProgress.start();
-      },
       created: function() {
         this.requestPostData();
-        NProgress.inc();
       },
       methods: {
         requestPostData: function() {
           api
             .getPostList()
             .then(response => this.setResponseHeaders(response))
-            .then(data => this.setPosts(data))
-            .then(() => NProgress.done());
+            .then(data => this.setPosts(data));
         },
         setResponseHeaders: function(response) {
           let requestHeader = {
