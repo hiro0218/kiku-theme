@@ -1,14 +1,4 @@
 //
-// Responsiveness
-// -------------------------
-
-$tablet: 769px;
-$desktop: 960px;
-$widescreen: 1152px;
-$fullhd: $widescreen;//1344px;
-
-
-//
 // Font
 // -------------------------
 
@@ -38,14 +28,20 @@ $table-border-width: 1px;
 // Layout
 // -------------------------
 
-$spacer:               1rem;
+// Responsiveness
+$tablet:                   769px;
+$desktop:                  960px;
+$widescreen:               1152px;
+$fullhd:                   $widescreen;//1344px;
 
-$screen-xs:            480px;  // Extra small screen / phone
-$screen-sm:            768px;  // Small screen / tablet
-$screen-md:            992px;  // Medium screen / desktop
-$screen-lg:            1200px;
+// radius
+$radius-base:              .2rem;
+$radius-sm:                .125rem;
+$radius-lg:                .25rem;
 
-$container-max-width:  1140px;
+// component layout
+$header-nav-height:        4rem;
+$article-padding-side:     1.5rem;
 
 
 //
@@ -71,10 +67,3 @@ $font-color-h6:         $grey-400;
 
 // animation
 $animation-curve-fast-out-slow-in: cubic-bezier(.4, 0, .2, 1);
-
-//
-// Layout
-// -------------------------
-
-$header-nav-height:        4rem;
-$article-padding-side:     1.5rem;

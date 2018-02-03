@@ -126,7 +126,7 @@ $line-color: #00b900;
 .btn-hatena {
   flex: auto;
   padding: 0.5rem 0.7rem;
-  border-radius: 0.125rem;
+  border-radius: $radius-sm;
 }
 
 .btn-twitter {

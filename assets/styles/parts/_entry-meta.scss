@@ -72,7 +72,7 @@
 
   a {
     padding: .5rem .7rem;
-    border-radius: .125rem;
+    border-radius: $radius-sm;
     background: $grey-100;
     color: $grey-700;
     &:hover {

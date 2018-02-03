@@ -11,12 +11,12 @@
 .aligncenter {
   display: block;
   height: auto;
-  margin: ($spacer / 2) auto;
+  margin: .5rem auto;
 }
 .alignleft,
 .alignright {
   height: auto;
-  margin-bottom: ($spacer / 2);
+  margin-bottom: .5rem;
 }
 
 // Captions

@@ -2,9 +2,9 @@
 
 // alert
 .alert {
-  padding: $spacer;
+  padding: 1rem;
   border: 1px solid transparent;
-  border-radius: 2px;
+  border-radius: $radius-base;
 }
 
 .alert-success {

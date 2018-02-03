@@ -25,12 +25,12 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -ms-overflow-style: -ms-autohiding-scrollbar;
 
-  @media screen and (max-width: $screen-sm) {
-    font-size: 93.75%;
+  @include until($tablet) {
+    font-size: $font-size-sm;
   }
 
-  @media screen and (min-width: $screen-lg) {
-    font-size: 106.25%;
+  @include from($widescreen) {
+    font-size: $font-size-lg;
   }
 
 }

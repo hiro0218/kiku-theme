@@ -179,7 +179,7 @@ export default {
   span {
     min-width: 3rem;
     min-height: 3rem;
-    border-radius: 2px;
+    border-radius: $radius-base;
     color: $grey-600;
     line-height: 3rem;
     text-align: center;
