@@ -55,3 +55,97 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+$entry-thumbnail-size: 5rem;  // 80px;
+
+.page-header {
+  margin: 0 0 .5rem;
+  font-size: $font-size-h3;
+  line-height: 3rem;
+  word-wrap: break-word;
+}
+
+.entry-list {
+  overflow: hidden;
+
+  a {
+    display: block;
+    padding: 1rem 0;
+    color: inherit;
+    & + a {
+      border-top: 1px solid $grey-200;
+    }
+  }
+
+  .entry-container {
+    display: flex;
+
+    &:hover {
+      .entry-title {
+        color: $blue-300;
+      }
+    }
+  }
+
+  .entry-image,
+  .entry-body {
+    display: flex;
+    flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+
+  .entry-image {
+    flex: none;
+    width: $entry-thumbnail-size;
+    margin-right: 1rem;
+  }
+
+  .entry-body {
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 0; // for flex and text-overflow
+  }
+
+  .entry-title,
+  .entry-summary {
+    margin: 0 0 .5rem 0;
+    @include text-overflow;
+  }
+
+  .entry-title {
+    transition: color .3s $animation-curve-fast-out-slow-in;
+    font-size: $font-size-h3;
+    font-weight: normal;
+  }
+
+  .entry-summary {
+    color: $grey-600;
+    font-size: $font-size-sm;
+    word-break: break-all;
+  }
+
+  .entry-meta {
+    text-align: right;
+  }
+}
+
+// image
+.entry-image {
+  .image-container {
+    width: $entry-thumbnail-size;
+    height: $entry-thumbnail-size;
+    border: 1px solid $grey-200;
+    overflow: hidden;
+  }
+
+  .image-sheet {
+    width: $entry-thumbnail-size;
+    height: $entry-thumbnail-size;
+    background: $grey-50 50% no-repeat;
+    background-image: url('../images/no-image-128x128.png');
+    background-size: cover;
+  }
+}
+</style>
