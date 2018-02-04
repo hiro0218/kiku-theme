@@ -1,29 +1,37 @@
 .container {
   position: relative;
   margin: 0 auto;
-  @include desktop {
-    width: $desktop - (2 * $font-size-base);
-    max-width: $desktop - (2 * $font-size-base);
+
+  @include from($tablet) {
+    max-width: calc(#{$tablet} + (2 * 1.5rem));
   }
-  @include widescreen {
-    width: $widescreen - (2 * $font-size-base);
-    max-width: $widescreen - (2 * $font-size-base);
+
+  @include from($desktop) {
+    max-width: calc(#{$desktop} + (2 * 1.5rem));
   }
-  @include fullhd {
-    width: $fullhd - (2 * $font-size-base);
-    max-width: $fullhd - (2 * $font-size-base);
+
+  @include from($widescreen) {
+    max-width: calc(#{$widescreen} + (2 * 1.5rem));
   }
+
+  // @include fullhd {
+  //   max-width: calc(#{$fullhd} + (2 * 1.5rem));
+  // }
 }
 
 // nav min-height from bulma = 3.5rem
 // for header's position:fixed
 .main-container {
   flex: 1 0 auto;
-  min-height: 100vh;
+  min-height: calc(100vh - #{$header-nav-height});
   margin-top: $header-nav-height + 1rem;  // for header
 }
 
 .contents {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
   .container {
     padding: 0 1rem;
   }
