@@ -45,47 +45,54 @@ export default {
     width: 50%;
     padding: 1rem 0;
 
+    &:hover {
+      .pager-title {
+        color: $blue-300;
+      }
+    }
+
     &:only-child {
       flex-grow: 1;
     }
   }
+}
 
-  .pager-prev {
-    padding-right: 1rem;
-    text-align: left;
-    .pager-icon {
-      margin-right: 0.5rem;
-    }
-    .pager-title {
-      margin-left: 1.5rem;
-    }
-  }
+.pager-icon {
+  color: $grey-800;
+  font-size: $font-size-sm;
+}
 
-  .pager-next {
-    padding-left: 1rem;
-    text-align: right;
-    .pager-icon {
-      margin-left: 0.5rem;
-    }
-    .pager-title {
-      margin-right: 1.5rem;
-    }
-  }
+.pager-label {
+  color: $grey-400;
+  font-weight: bold;
+  text-transform: capitalize;
+}
 
+.pager-title {
+  color: $grey-600;
+  transition: color 0.3s $animation-curve-fast-out-slow-in;
+  @include text-overflow;
+}
+
+.pager-prev {
+  padding-right: 1rem;
+  text-align: left;
   .pager-icon {
-    color: $grey-800;
-    font-size: $font-size-sm;
+    margin-right: 0.5rem;
   }
-
-  .pager-label {
-    color: $grey-400;
-    font-weight: bold;
-    text-transform: capitalize;
-  }
-
   .pager-title {
-    color: $grey-600;
-    @include text-overflow;
+    margin-left: 1.5rem;
+  }
+}
+
+.pager-next {
+  padding-left: 1rem;
+  text-align: right;
+  .pager-icon {
+    margin-left: 0.5rem;
+  }
+  .pager-title {
+    margin-right: 1.5rem;
   }
 }
 </style>
