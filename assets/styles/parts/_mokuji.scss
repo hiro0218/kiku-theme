@@ -30,4 +30,8 @@
       padding-left: 1rem;
     }
   }
+
+  > ol > li > a {
+    font-weight: bold;
+  }
 }
