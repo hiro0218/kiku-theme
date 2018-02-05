@@ -100,7 +100,8 @@ class REST_API {
                         // 'header' => [],
                         'footer' => [
                             'menu' => $this->get_menus(),
-                        ]
+                        ],
+                '       widget' => $this->get_widget(),
                     ];
 
                     set_transient($key, $array, HOUR_IN_SECONDS);
@@ -110,6 +111,19 @@ class REST_API {
                 return $result;
             }
         ]);
+    }
+
+    public function get_widget() {
+        $widget = null;
+
+        if (is_active_sidebar('sidebar-primary')) {
+            ob_start();
+            dynamic_sidebar('sidebar-primary');
+            $widget = ob_get_contents();
+            ob_end_clean();
+        }
+
+        return $widget;
     }
 
     public function rewrite_api() {
