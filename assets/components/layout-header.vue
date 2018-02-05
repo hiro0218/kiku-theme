@@ -6,10 +6,13 @@
           <a :href="navigation.site.url">{{ navigation.site.name }}</a>
         </div>
         <div class="header-menu">
-          <input type="checkbox" id="drawer-trigger" class="drawer-checkbox" @click="toggeleDrawer">
-          <label for="drawer-trigger" class="drawer-trigger">
-            <span class="icon-menu"/>
-          </label>
+          <searchBox />
+          <div class="drawer-container">
+            <input type="checkbox" id="drawer-trigger" class="drawer-checkbox" @click="toggeleDrawer">
+            <label for="drawer-trigger" class="drawer-trigger">
+              <span class="icon-menu"/>
+            </label>
+          </div>
         </div>
       </div>
     </header>
@@ -17,14 +20,13 @@
 </template>
 
 <script>
+import searchBox from '@components/form/search-box.vue';
 import headerScroll from 'header-scroll-up';
 
 export default {
   name: 'LayoutHeader',
-  data() {
-    return {
-      searchForm: null,
-    };
+  components: {
+    searchBox,
   },
   mounted: function() {
     headerScroll.setScrollableHeader('.header-navigation', {
@@ -33,14 +35,7 @@ export default {
   },
   methods: {
     toggeleDrawer(e) {
-      if (e.target.checked) {
-        this.focusSearchInput();
-      }
       document.body.classList.toggle('open-drawer');
-    },
-    focusSearchInput() {
-      let input = this.searchForm || (this.searchForm = document.querySelector('#widget_searchform'));
-      input.focus();
     },
   },
 };
