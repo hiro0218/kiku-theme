@@ -117,9 +117,9 @@ class REST_API {
     public function get_widget() {
         $widget = null;
 
-        if (is_active_sidebar('sidebar-primary')) {
+        if (is_active_sidebar(PRIMARY_SIDEBAR_NAME)) {
             ob_start();
-            dynamic_sidebar('sidebar-primary');
+            dynamic_sidebar(PRIMARY_SIDEBAR_NAME);
             $widget = ob_get_contents();
             ob_end_clean();
         }

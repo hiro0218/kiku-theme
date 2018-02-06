@@ -68,7 +68,7 @@ add_action('widgets_init', function () {
     ];
     register_sidebar([
         'name'          => __('Primary', 'kiku'),
-        'id'            => 'sidebar-primary'
+        'id'            => PRIMARY_SIDEBAR_NAME
     ] + $config);
 
 });

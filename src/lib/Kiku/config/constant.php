@@ -9,6 +9,7 @@ const CF_THUMBNAIL = "thumbnail";
 const CF_ASIN = "ASIN";
 const CF_AMAZON_PRODUCT_TAG = "_amazon_product_tag";
 const PRIMARY_NAVIGATION_NAME = "primary_navigation";
+const PRIMARY_SIDEBAR_NAME = "sidebar-primary";
 
 define('BLOG_NAME', get_option('blogname'));
 define('BLOG_URL', esc_url(home_url('/')));
