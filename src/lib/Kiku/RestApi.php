@@ -101,7 +101,7 @@ class REST_API {
                         'footer' => [
                             'menu' => $this->get_menus(),
                         ],
-                '       widget' => $this->get_widget(),
+                        'widget' => $this->get_widget(),
                     ];
 
                     set_transient($key, $array, HOUR_IN_SECONDS);
