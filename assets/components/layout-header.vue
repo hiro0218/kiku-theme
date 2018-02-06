@@ -6,7 +6,7 @@
           <a :href="navigation.site.url">{{ navigation.site.name }}</a>
         </div>
         <div class="header-menu">
-          <searchBox />
+          <search-box />
           <div class="drawer-container">
             <input type="checkbox" id="drawer-trigger" class="drawer-checkbox" @click="toggeleDrawer">
             <label for="drawer-trigger" class="drawer-trigger">

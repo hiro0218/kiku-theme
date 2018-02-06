@@ -8,7 +8,7 @@
       <?php include App\template()->main(); ?>
     </main>
     <layout-footer></layout-footer>
-    <?php get_template_part('layouts/sidebar'); ?>
+    <layout-sidebar/>
   </div>
   <?php wp_footer(); ?>
   </body>

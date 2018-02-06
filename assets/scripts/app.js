@@ -7,6 +7,7 @@ import store from '@scripts/store';
 // Vue components
 import layoutHeader from '@components/layout-header.vue';
 import layoutFooter from '@components/layout-footer.vue';
+import layoutSidebar from '@components/layout-sidebar.vue';
 
 // Vue global mixin
 Vue.mixin({
@@ -14,6 +15,7 @@ Vue.mixin({
   components: {
     layoutHeader,
     layoutFooter,
+    layoutSidebar,
   },
   filters: {
     escapeBrackets: function(text) {
