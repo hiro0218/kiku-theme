@@ -7,12 +7,7 @@
         </div>
         <div class="header-menu">
           <search-box />
-          <div class="drawer-container">
-            <input type="checkbox" id="drawer-trigger" class="drawer-checkbox" @click="toggeleDrawer">
-            <label for="drawer-trigger" class="drawer-trigger">
-              <span class="icon-menu"/>
-            </label>
-          </div>
+          <menu-button />
         </div>
       </div>
     </header>
@@ -21,22 +16,19 @@
 
 <script>
 import searchBox from '@components/form/search-box.vue';
+import menuButton from '@components/form/menu-button.vue';
 import headerScroll from 'header-scroll-up';
 
 export default {
   name: 'LayoutHeader',
   components: {
     searchBox,
+    menuButton,
   },
   mounted: function() {
     headerScroll.setScrollableHeader('.header-navigation', {
       topOffset: 100,
     });
-  },
-  methods: {
-    toggeleDrawer() {
-      this.$store.commit('toggleSidebar');
-    },
   },
 };
 </script>
