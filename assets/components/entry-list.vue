@@ -57,10 +57,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$entry-thumbnail-size: 5rem;  // 80px;
+$entry-thumbnail-size: 5rem; // 80px;
 
 .page-header {
-  margin: 0 0 .5rem;
+  margin: 0 0 0.5rem;
   font-size: $font-size-h3;
   line-height: 3rem;
   word-wrap: break-word;
@@ -110,12 +110,12 @@ $entry-thumbnail-size: 5rem;  // 80px;
 
   .entry-title,
   .entry-summary {
-    margin: 0 0 .5rem 0;
+    margin: 0 0 0.5rem 0;
     @include text-overflow;
   }
 
   .entry-title {
-    transition: color .3s $animation-curve-fast-out-slow-in;
+    transition: color 0.3s $animation-curve-fast-out-slow-in;
     font-size: $font-size-h3;
     font-weight: normal;
   }
