@@ -3,12 +3,13 @@
 class REST_API {
     const API_NAMESPACE = "kiku/v1";
     const CACHE_PREFIX = "kiku_cache_";
+    const CACHE_EXPIRATION = MINUTE_IN_SECONDS * 15;
 
     // public function __construct() {}
 
     public function pre_dispatch($result, $server, $request) {
         // cache-control ヘッダーをセット
-        $headers['Cache-Control'] = 'public, max-age=' . HOUR_IN_SECONDS;
+        $headers['Cache-Control'] = 'public, max-age=' . self::CACHE_EXPIRATION;
         $server->send_headers($headers);
     }
 
@@ -73,7 +74,7 @@ class REST_API {
                         'pager' => $pager,
                     ];
 
-                    set_transient($key, $array, HOUR_IN_SECONDS);
+                    set_transient($key, $array, self::CACHE_EXPIRATION);
                     return $array;
                 }
 
@@ -104,7 +105,7 @@ class REST_API {
                         'widget' => $this->get_widget(),
                     ];
 
-                    set_transient($key, $array, HOUR_IN_SECONDS);
+                    set_transient($key, $array, self::CACHE_EXPIRATION);
                     return $array;
                 }
 
