@@ -34,8 +34,8 @@ export default {
     });
   },
   methods: {
-    toggeleDrawer(e) {
-      document.body.classList.toggle('open-drawer');
+    toggeleDrawer() {
+      this.$store.commit('toggleSidebar');
     },
   },
 };

@@ -2,14 +2,14 @@
 <html <?php language_attributes(); ?>>
   <?php get_template_part('layouts/head'); ?>
   <body <?php body_class(); ?>>
-  <div id="app" class="contents">
+  <div id="app" class="contents" v-bind:class="{ 'open-drawer': isOpenSidebar }">
     <layout-header></layout-header>
     <main class="main-container">
       <?php include App\template()->main(); ?>
     </main>
     <layout-footer></layout-footer>
+    <?php get_template_part('layouts/sidebar'); ?>
   </div>
-  <?php get_template_part('layouts/sidebar'); ?>
   <?php wp_footer(); ?>
   </body>
 </html>

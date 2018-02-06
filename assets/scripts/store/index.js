@@ -7,6 +7,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     navigation: null,
+    isOpenSidebar: false,
     requestHeader: {
       total: -1,
       totalpages: -1,
@@ -17,6 +18,9 @@ export default new Vuex.Store({
   mutations: {
     setNavigation(state, payload) {
       state.navigation = payload;
+    },
+    toggleSidebar(state) {
+      state.isOpenSidebar = !state.isOpenSidebar;
     },
     setReqestHeader(state, payload) {
       state.requestHeader = payload;

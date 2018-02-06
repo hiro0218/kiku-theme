@@ -35,7 +35,7 @@ Vue.mixin({
         .replace(/-/g, '/');
     },
   },
-  computed: mapState(['navigation']),
+  computed: mapState(['navigation', 'isOpenSidebar']),
   created: function() {
     this.$_fetchNavigation();
   },
