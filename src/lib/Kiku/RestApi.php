@@ -7,6 +7,13 @@ class REST_API {
 
     // public function __construct() {}
 
+    public function delete_all_transients($new_status, $old_status, $post) {
+        if ($old_status !== $new_status) {
+            global $wpdb;
+            $wpdb->query("DELETE FROM `wp_options` WHERE (`option_name` LIKE '_transient_". self::CACHE_PREFIX ."_%') OR (`option_name` LIKE '_transient_timeout_". self::CACHE_PREFIX ."_%')");
+        }
+    }
+
     public function pre_dispatch($result, $server, $request) {
         // cache-control ヘッダーをセット
         $headers['Cache-Control'] = 'public, max-age=' . self::CACHE_EXPIRATION;
@@ -228,5 +235,6 @@ $REST_API = new REST_API();
 add_filter('rest_endpoints', [$REST_API, 'disable_api_endpoint'], 10, 3);
 add_filter('rest_prepare_post', [$REST_API, 'disable_api_data'], 10, 3);
 add_filter('rest_prepare_page', [$REST_API, 'disable_api_data'], 10, 3);
-add_action('rest_api_init', [$REST_API, 'rest_api_init']);
 add_filter('rest_pre_dispatch', [$REST_API, 'pre_dispatch'], 0, 3);
+add_action('rest_api_init', [$REST_API, 'rest_api_init']);
+add_action('transition_post_status', [$REST_API, 'delete_all_transients'], 10, 3);
