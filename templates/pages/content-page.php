@@ -11,4 +11,4 @@
   </article>
 </div>
 
-<entry-breadcrumb :title="title" :categories="post.categories"></entry-breadcrumb>
+<entry-breadcrumb :title="post.title" :categories="post.categories"></entry-breadcrumb>

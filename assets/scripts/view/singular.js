@@ -1,3 +1,5 @@
+import { mapState } from 'vuex';
+import { MODEL_POST } from '@scripts/models';
 import api from '@scripts/api';
 import mokuji from '@scripts/module/mokuji';
 import common from '@scripts/module/common';
@@ -28,21 +30,10 @@ export default {
       },
       data: {
         isPost: WP.page_type === 'posts',
-        post: {
-          link: '',
-          title: '',
-          content: '',
-          date: {
-            publish: null,
-            modified: null,
-          },
-          categories: [],
-          amazon_product: null,
-          tags: [],
-        },
         relateds: [],
         pagers: {},
       },
+      computed: mapState(['post']),
       created: function() {
         this.requestPostData();
       },
@@ -53,14 +44,18 @@ export default {
           response
             .then(response => {
               let json = response.data;
+              let post = MODEL_POST;
 
-              this.setDatetime(json);
-              this.post.link = json.link;
-              this.post.title = json.title.rendered;
-              this.post.content = json.content.rendered;
-              this.post.categories = json.categories || this.categories;
-              this.post.tags = json.tags || this.tags;
-              this.post.amazon_product = json.amazon_product || this.amazon_product;
+              post.link = json.link;
+              post.title = json.title.rendered;
+              post.date.publish = json.date;
+              post.date.modified = this.isSameDay(json.date, json.modified) ? null : json.modified;
+              post.content = json.content.rendered;
+              post.categories = json.categories || post.categories;
+              post.tags = json.tags || post.tags;
+              post.amazon_product = json.amazon_product || post.amazon_product;
+
+              this.$store.commit('setPost', post);
             })
             .then(() => {
               this.$nextTick().then(() => {
@@ -84,10 +79,6 @@ export default {
 
             return true;
           });
-        },
-        setDatetime: function(json) {
-          this.post.date.publish = json.date;
-          this.post.date.modified = this.isSameDay(json.date, json.modified) ? null : json.modified;
         },
         isSameDay: function(publish, modified) {
           return new Date(publish).toDateString() === new Date(modified).toDateString();

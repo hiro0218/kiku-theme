@@ -4,6 +4,8 @@ import createPersistedState from 'vuex-persistedstate';
 
 Vue.use(Vuex);
 
+import { MODEL_POST } from '@scripts/models';
+
 export default new Vuex.Store({
   state: {
     navigation: null,
@@ -14,6 +16,7 @@ export default new Vuex.Store({
     },
     pageTitle: WP.page_title,
     postLists: [],
+    post: MODEL_POST,
   },
   mutations: {
     setNavigation(state, payload) {
@@ -27,6 +30,9 @@ export default new Vuex.Store({
     },
     setPostLists(state, payload) {
       state.postLists = payload;
+    },
+    setPost(state, payload) {
+      state.post = payload;
     },
   },
   // getters: {
