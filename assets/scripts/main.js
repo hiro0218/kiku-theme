@@ -4,11 +4,7 @@ import './app.js';
 import Router from './util/router';
 // import common from './routes/Common';
 import home from './routes/Home';
-import category from './routes/Category';
-import search from './routes/Search';
-import tag from './routes/Tag';
 import single from './routes/Single';
-import page from './routes/Page';
 import error404 from './routes/Error404';
 
 // Use this variable to set up the common and page specific functions. If you
@@ -18,12 +14,12 @@ const routes = new Router({
   // common,
   // Home page
   home,
-  category,
-  search,
-  tag,
+  category: home,
+  search: home,
+  tag: home,
   // Singular
   single,
-  page,
+  page: single,
   // 404
   error404,
 });
