@@ -26,6 +26,10 @@ html {
   -ms-overflow-style: -ms-autohiding-scrollbar;
 
   @include until($tablet) {
+  &.nprogress-busy {
+    cursor: progress;
+  }
+
     font-size: $font-size-sm;
   }
 
