@@ -1,14 +1,14 @@
 <div class="container">
   <article class="entry">
     <header class="entry-header">
-      <h1 class="entry-title" v-html="$options.filters.escapeBrackets(title)"></h1>
+      <h1 class="entry-title" v-html="$options.filters.escapeBrackets(post.title)"></h1>
       <div class="entry-meta">
-        <entry-time :date="date"></entry-time>
-        <entry-category :categories="categories"></entry-category>
+        <entry-time :date="post.date"></entry-time>
+        <entry-category :categories="post.categories"></entry-category>
       </div>
     </header>
-    <section class="entry-content" v-html="content"></section>
+    <section class="entry-content" v-html="post.content"></section>
   </article>
 </div>
 
-<entry-breadcrumb :title="title" :categories="categories"></entry-breadcrumb>
+<entry-breadcrumb :title="title" :categories="post.categories"></entry-breadcrumb>

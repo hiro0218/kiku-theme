@@ -28,16 +28,19 @@ export default {
       },
       data: {
         loaded: false,
-        link: '',
-        title: '',
-        content: '',
-        date: {
-          publish: null,
-          modified: null,
+        isPost: WP.page_type === 'posts',
+        post: {
+          link: '',
+          title: '',
+          content: '',
+          date: {
+            publish: null,
+            modified: null,
+          },
+          categories: [],
+          amazon_product: null,
+          tags: [],
         },
-        categories: [],
-        amazon_product: null,
-        tags: [],
         relateds: [],
         pagers: {},
       },
@@ -65,12 +68,12 @@ export default {
             let json = response.data;
 
             this.setDatetime(json);
-            this.link = json.link;
-            this.title = json.title.rendered;
-            this.content = json.content.rendered;
-            this.categories = json.categories || this.categories;
-            this.tags = json.tags || this.tags;
-            this.amazon_product = json.amazon_product || this.amazon_product;
+            this.post.link = json.link;
+            this.post.title = json.title.rendered;
+            this.post.content = json.content.rendered;
+            this.post.categories = json.categories || this.categories;
+            this.post.tags = json.tags || this.tags;
+            this.post.amazon_product = json.amazon_product || this.amazon_product;
             this.loaded = true;
           });
         },
@@ -86,14 +89,14 @@ export default {
           });
         },
         setDatetime: function(json) {
-          this.date.publish = json.date;
-          this.date.modified = this.isSameDay(json.date, json.modified) ? null : json.modified;
+          this.post.date.publish = json.date;
+          this.post.date.modified = this.isSameDay(json.date, json.modified) ? null : json.modified;
         },
         isSameDay: function(publish, modified) {
           return new Date(publish).toDateString() === new Date(modified).toDateString();
         },
         viewAttachedInfo: function() {
-          if (WP.page_type !== 'posts') {
+          if (!this.isPost) {
             return;
           }
 
