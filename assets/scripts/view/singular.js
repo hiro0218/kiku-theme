@@ -27,7 +27,6 @@ export default {
         entryPager,
       },
       data: {
-        loaded: false,
         isPost: WP.page_type === 'posts',
         post: {
           link: '',
@@ -44,19 +43,6 @@ export default {
         relateds: [],
         pagers: {},
       },
-      watch: {
-        loaded: function() {
-          this.$nextTick().then(() => {
-            var element = this.$el.querySelector('.entry-content');
-            mokuji.init(element);
-            common.addExternalLink(element);
-            common.setTableContainer(element);
-            common.zoomImage(element);
-            Prism.highlightAll();
-            this.viewAttachedInfo();
-          });
-        },
-      },
       created: function() {
         this.requestPostData();
       },
@@ -64,18 +50,29 @@ export default {
         requestPostData: function() {
           var response = WP.page_type === 'posts' ? api.getPosts(WP.page_id) : api.getPages(WP.page_id);
 
-          response.then(response => {
-            let json = response.data;
+          response
+            .then(response => {
+              let json = response.data;
 
-            this.setDatetime(json);
-            this.post.link = json.link;
-            this.post.title = json.title.rendered;
-            this.post.content = json.content.rendered;
-            this.post.categories = json.categories || this.categories;
-            this.post.tags = json.tags || this.tags;
-            this.post.amazon_product = json.amazon_product || this.amazon_product;
-            this.loaded = true;
-          });
+              this.setDatetime(json);
+              this.post.link = json.link;
+              this.post.title = json.title.rendered;
+              this.post.content = json.content.rendered;
+              this.post.categories = json.categories || this.categories;
+              this.post.tags = json.tags || this.tags;
+              this.post.amazon_product = json.amazon_product || this.amazon_product;
+            })
+            .then(() => {
+              this.$nextTick().then(() => {
+                var element = this.$el.querySelector('.entry-content');
+                mokuji.init(element);
+                common.addExternalLink(element);
+                common.setTableContainer(element);
+                common.zoomImage(element);
+                Prism.highlightAll();
+                this.viewAttachedInfo();
+              });
+            });
         },
         requestAttachedData: function(target) {
           var response = api.getAttachData(WP.page_id);
