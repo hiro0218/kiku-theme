@@ -5,28 +5,19 @@ import mokuji from '@scripts/module/mokuji';
 import common from '@scripts/module/common';
 
 // vue components
-import amazonProduct from '@components/amazon-product.vue';
-import entryBreadcrumb from '@components/entry-breadcrumb.vue';
-import entryCategory from '@components/entry-category.vue';
-import entryTag from '@components/entry-tag.vue';
-import entryTime from '@components/entry-time.vue';
-import entryShare from '@components/entry-share.vue';
-import entryRelated from '@components/entry-related.vue';
-import entryPager from '@components/entry-pager.vue';
+import entrySingular from '@components/entry-singular.vue';
 
 export default {
   init() {
     new Vue({
       el: '#app',
       components: {
-        amazonProduct,
-        entryCategory,
-        entryTag,
-        entryTime,
-        entryBreadcrumb,
-        entryShare,
-        entryRelated,
-        entryPager,
+        entrySingular,
+      },
+      data() {
+        return {
+          page_type: WP.page_type,
+        };
       },
       computed: mapState(['post']),
       created: function() {
