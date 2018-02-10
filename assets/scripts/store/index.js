@@ -34,6 +34,10 @@ export default new Vuex.Store({
     setPost(state, payload) {
       state.post = payload;
     },
+    setPostAttach(state, { relateds, pagers }) {
+      state.post.attach.relateds = relateds;
+      state.post.attach.pagers = pagers;
+    },
   },
   // getters: {
   //   navigation(state) {

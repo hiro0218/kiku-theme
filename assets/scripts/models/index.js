@@ -9,4 +9,8 @@ export const MODEL_POST = {
   categories: [],
   amazon_product: null,
   tags: [],
+  attach: {
+    relateds: [],
+    pagers: {},
+  },
 };

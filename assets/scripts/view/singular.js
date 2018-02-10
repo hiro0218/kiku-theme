@@ -28,11 +28,6 @@ export default {
         entryRelated,
         entryPager,
       },
-      data: {
-        isPost: WP.page_type === 'posts',
-        relateds: [],
-        pagers: {},
-      },
       computed: mapState(['post']),
       created: function() {
         this.requestPostData();
@@ -74,17 +69,18 @@ export default {
 
           response.then(response => {
             let json = response.data;
-            this.relateds = json.related || this.relateds;
-            this.pagers = json.pager || this.pagers;
 
-            return true;
+            this.$store.commit('setPostAttach', {
+              relateds: json.related || MODEL_POST.attach.relateds,
+              pagers: json.pager || MODEL_POST.attach.pagers,
+            });
           });
         },
         isSameDay: function(publish, modified) {
           return new Date(publish).toDateString() === new Date(modified).toDateString();
         },
         viewAttachedInfo: function() {
-          if (!this.isPost) {
+          if (WP.page_type !== 'posts') {
             return;
           }
 

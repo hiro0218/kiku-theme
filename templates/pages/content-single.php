@@ -12,10 +12,10 @@
     <footer class="entry-footer">
       <entry-tag :tags="post.tags"></entry-tag>
       <entry-share :title="post.title" :link="post.link"></entry-share>
-      <entry-pager :pagers="pagers"></entry-pager>
+      <entry-pager :pagers="post.attach.pagers"></entry-pager>
     </footer>
   </article>
 </div>
 
-<entry-related :relateds="relateds"></entry-related>
+<entry-related :relateds="post.attach.relateds"></entry-related>
 <entry-breadcrumb :title="post.title" :categories="post.categories"></entry-breadcrumb>
