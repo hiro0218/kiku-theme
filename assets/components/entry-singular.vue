@@ -10,7 +10,7 @@
           </div>
         </header>
         <section class="entry-content" v-html="post.content"/>
-        <advertise :content="advertise.ads2.content" :script="advertise.ads2.script" />
+        <advertise :idName="'ads2'" :content="advertise.ads2.content" :script="advertise.ads2.script" />
         <template v-if="page_type === 'post'">
           <amazon-product :amazon_product="post.amazon_product"/>
           <footer class="entry-footer">
