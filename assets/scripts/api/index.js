@@ -78,7 +78,7 @@ export default {
   getAds() {
     var client = this.getInstance();
 
-    return client.get('/wp-json/kiku/v1/ads/', {
+    return client.get('/wp-json/kiku/v1/advertise/', {
       baseURL: '/',
       params: '',
     });

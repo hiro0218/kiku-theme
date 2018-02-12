@@ -120,7 +120,7 @@ class REST_API {
             }
         ]);
 
-        register_rest_route(self::API_NAMESPACE, '/ads', [
+        register_rest_route(self::API_NAMESPACE, '/advertise', [
             'methods'  => WP_REST_Server::READABLE,
             'callback' => function($data) {
                 return [
