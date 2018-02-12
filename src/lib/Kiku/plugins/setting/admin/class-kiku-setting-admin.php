@@ -84,7 +84,7 @@ class Kiku_Setting_Admin {
             return $content;
         }
 
-        $data = get_option('kiku_insert_data_bottom_of_more_tag');
+        $data = get_option('kiku_ads1_content');
         $option = get_option('kiku_ads1_more_tag_option') ? true : false;
 
         if (empty($data)) {
