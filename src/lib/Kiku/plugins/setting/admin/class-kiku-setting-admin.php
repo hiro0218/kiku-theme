@@ -106,20 +106,6 @@ class Kiku_Setting_Admin {
         return $content;
     }
 
-    public function add_insert_data_bottom_of_content($content) {
-        if (!$this->is_insert_post_type(get_option('kiku_ads2_post_types'))) {
-            return $content;
-        }
-
-        $data = get_option('kiku_insert_data_bottom_of_content');
-
-        if ( !empty($data) ) {
-            $content .= $data;
-        }
-
-        return $content;
-    }
-
     private function is_insert_post_type($selected_post_types) {
         $result = false;
 

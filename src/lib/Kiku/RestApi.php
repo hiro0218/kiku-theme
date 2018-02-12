@@ -125,10 +125,12 @@ class REST_API {
             'callback' => function($data) {
                 return [
                     'ads1' => [
+                        'display' => implode(",", get_option('kiku_ads1_post_types')),
                         'content' => get_option('kiku_ads1_content'),
                         'script' => get_option('kiku_ads1_script'),
                     ],
                     'ads2' => [
+                        'display' => implode(",", get_option('kiku_ads2_post_types')),
                         'content' => get_option('kiku_ads2_content'),
                         'script' => get_option('kiku_ads2_script'),
                     ],

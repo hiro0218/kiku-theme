@@ -66,13 +66,8 @@ class FrontVariables {
         if (!is_singular()) {
             return null;
         }
-        $page_type = get_post_type();
 
-        if ($page_type) {
-            $page_type .= 's';
-        }
-
-        return $page_type;
+        return get_post_type();
     }
 
     private function get_page_id() {

@@ -10,7 +10,8 @@
           </div>
         </header>
         <section class="entry-content" v-html="post.content"/>
-        <template v-if="page_type === 'posts'">
+        <advertise :content="advertise.ads2.content" :script="advertise.ads2.script" />
+        <template v-if="page_type === 'post'">
           <amazon-product :amazon_product="post.amazon_product"/>
           <footer class="entry-footer">
             <entry-tag :tags="post.tags"/>
@@ -21,7 +22,7 @@
       </article>
     </div>
 
-    <template v-if="page_type === 'posts'">
+    <template v-if="page_type === 'post'">
       <entry-related :relateds="post.attach.relateds"/>
     </template>
     <entry-breadcrumb :title="post.title" :categories="post.categories"/>
@@ -29,6 +30,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 import amazonProduct from '@components/amazon-product.vue';
 import entryBreadcrumb from '@components/entry-breadcrumb.vue';
 import entryCategory from '@components/entry-category.vue';
@@ -37,6 +40,7 @@ import entryRelated from '@components/entry-related.vue';
 import entryShare from '@components/entry-share.vue';
 import entryTag from '@components/entry-tag.vue';
 import entryTime from '@components/entry-time.vue';
+import advertise from '@components/advertise.vue';
 
 export default {
   name: 'EntrySingular',
@@ -49,6 +53,7 @@ export default {
     entryShare,
     entryTag,
     entryTime,
+    advertise,
   },
   props: {
     post: {
@@ -60,5 +65,6 @@ export default {
       required: true,
     },
   },
+  computed: mapState(['advertise']),
 };
 </script>
