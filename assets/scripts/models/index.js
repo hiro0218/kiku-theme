@@ -14,3 +14,18 @@ export const MODEL_POST = {
     pagers: {},
   },
 };
+
+export const MODEL_ADS = {
+  ads1: {
+    content: '',
+    script: '',
+  },
+  ads2: {
+    content: '',
+    script: '',
+  },
+  ads3: {
+    content: '',
+    script: '',
+  },
+};

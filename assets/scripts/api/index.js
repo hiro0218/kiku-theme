@@ -75,6 +75,14 @@ export default {
       params: '',
     });
   },
+  getAds() {
+    var client = this.getInstance();
+
+    return client.get('/wp-json/kiku/v1/ads/', {
+      baseURL: '/',
+      params: '',
+    });
+  },
   getPostList() {
     var client = this.getInstance();
 

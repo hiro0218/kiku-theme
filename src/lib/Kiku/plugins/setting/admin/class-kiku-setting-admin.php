@@ -23,12 +23,20 @@ class Kiku_Setting_Admin {
         register_setting( 'kiku-settings-group', 'kiku_share_btn_hatena' );
         register_setting( 'kiku-settings-group', 'kiku_share_btn_line' );
         register_setting( 'kiku-settings-group', 'kiku_insert_data_head' );
-        register_setting( 'kiku-settings-group', 'kiku_insert_data_bottom_of_more_tag_post_types' );
-        register_setting( 'kiku-settings-group', 'kiku_insert_data_bottom_of_content_post_types' );
-        register_setting( 'kiku-settings-group', 'kiku_insert_data_bottom_of_more_tag' );
-        register_setting( 'kiku-settings-group', 'kiku_insert_data_bottom_of_more_tag_option' );
-        register_setting( 'kiku-settings-group', 'kiku_insert_data_bottom_of_content' );
-        register_setting( 'kiku-settings-group', 'kiku_insert_data_home' );
+
+        // ads1
+        register_setting( 'kiku-settings-group', 'kiku_ads1_content' );
+        register_setting( 'kiku-settings-group', 'kiku_ads1_script' );
+        register_setting( 'kiku-settings-group', 'kiku_ads1_more_tag_option' );
+        register_setting( 'kiku-settings-group', 'kiku_ads1_post_types' );
+        // ads2
+        register_setting( 'kiku-settings-group', 'kiku_ads2_content' );
+        register_setting( 'kiku-settings-group', 'kiku_ads2_script' );
+        register_setting( 'kiku-settings-group', 'kiku_ads2_post_types' );
+        // ads3
+        register_setting( 'kiku-settings-group', 'kiku_ads3_content' );
+        register_setting( 'kiku-settings-group', 'kiku_ads3_script' );
+
         register_setting( 'kiku-settings-group', 'kiku_exclude_category_frontpage', [$this, 'check_category_list']);
     }
 
@@ -69,27 +77,15 @@ class Kiku_Setting_Admin {
         if (!empty($head_data)) {
             echo $head_data. PHP_EOL;
         }
-
-        // insert_data_top_of_pagination
-        $top_of_pagination_data = get_option('kiku_insert_data_home');
-
-        echo <<< EOM
-<script type="text/x-template" id="home-content">
-<div>
-{$top_of_pagination_data}
-</div>
-</script>
-EOM;
-        echo PHP_EOL;
     }
 
     public function add_insert_data_bottom_of_more_tag($content) {
-        if (!$this->is_insert_post_type(get_option('kiku_insert_data_bottom_of_more_tag_post_types'))) {
+        if (!$this->is_insert_post_type(get_option('kiku_ads1_post_types'))) {
             return $content;
         }
 
         $data = get_option('kiku_insert_data_bottom_of_more_tag');
-        $option = get_option('kiku_insert_data_bottom_of_more_tag_option') ? true : false;
+        $option = get_option('kiku_ads1_more_tag_option') ? true : false;
 
         if (empty($data)) {
             return $content;
@@ -111,7 +107,7 @@ EOM;
     }
 
     public function add_insert_data_bottom_of_content($content) {
-        if (!$this->is_insert_post_type( get_option('kiku_insert_data_bottom_of_content_post_types'))) {
+        if (!$this->is_insert_post_type(get_option('kiku_ads2_post_types'))) {
             return $content;
         }
 

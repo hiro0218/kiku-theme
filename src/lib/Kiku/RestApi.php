@@ -119,6 +119,26 @@ class REST_API {
                 return $result;
             }
         ]);
+
+        register_rest_route(self::API_NAMESPACE, '/ads', [
+            'methods'  => WP_REST_Server::READABLE,
+            'callback' => function($data) {
+                return [
+                    'ads1' => [
+                        'content' => get_option('kiku_ads1_content'),
+                        'script' => get_option('kiku_ads1_script'),
+                    ],
+                    'ads2' => [
+                        'content' => get_option('kiku_ads2_content'),
+                        'script' => get_option('kiku_ads2_script'),
+                    ],
+                    'ads3' => [
+                        'content' => get_option('kiku_ads3_content'),
+                        'script' => get_option('kiku_ads3_script'),
+                    ],
+                ];
+            }
+        ]);
     }
 
     public function get_widget() {

@@ -2,9 +2,6 @@ import api from '@scripts/api';
 
 // vue components
 import entryHome from '@components/entry-home.vue';
-Vue.component('home-content', {
-  template: '#home-content',
-});
 
 export default {
   view() {
@@ -15,6 +12,7 @@ export default {
       },
       created: function() {
         this.requestPostData();
+        this.requestAds();
       },
       methods: {
         requestPostData: function() {
@@ -22,6 +20,9 @@ export default {
             .getPostList()
             .then(response => this.setResponseHeaders(response))
             .then(data => this.setPosts(data));
+        },
+        requestAds: function() {
+          api.getAds().then(response => this.setAds(response));
         },
         setResponseHeaders: function(response) {
           let requestHeader = {
@@ -31,6 +32,14 @@ export default {
           this.$store.commit('setReqestHeader', requestHeader);
 
           return response.data;
+        },
+        setAds: function(response) {
+          const ads3 = {
+            content: response.data.ads3.content,
+            script: response.data.ads3.script,
+          };
+
+          this.$store.commit('setAdvertise', { ads3 });
         },
         setPosts: function(data) {
           let postLists = [];

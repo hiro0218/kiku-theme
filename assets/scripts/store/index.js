@@ -4,7 +4,7 @@ import createPersistedState from 'vuex-persistedstate';
 
 Vue.use(Vuex);
 
-import { MODEL_POST } from '@scripts/models';
+import { MODEL_POST, MODEL_ADS } from '@scripts/models';
 
 export default new Vuex.Store({
   state: {
@@ -17,6 +17,7 @@ export default new Vuex.Store({
     pageTitle: WP.page_title,
     postLists: [],
     post: MODEL_POST,
+    advertise: MODEL_ADS,
   },
   mutations: {
     setNavigation(state, payload) {
@@ -37,6 +38,9 @@ export default new Vuex.Store({
     setPostAttach(state, { relateds, pagers }) {
       state.post.attach.relateds = relateds;
       state.post.attach.pagers = pagers;
+    },
+    setAdvertise(state, { ads1, ads2, ads3 }) {
+      state.advertise = Object.assign(MODEL_ADS, ads1 && { ads1 }, ads2 && { ads2 }, ads3 && { ads3 });
     },
   },
   // getters: {
