@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="navigation">
     <label for="drawer-trigger" class="drawer-overlay"/>
     <aside class="sidebar drawer" data-comes-from="left" v-html="navigation.widget"/>
   </div>
