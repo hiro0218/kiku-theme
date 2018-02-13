@@ -24,8 +24,12 @@ export default {
       required: true,
     },
   },
-  mounted() {
-    eval(this.script);
+  watch: {
+    content: function() {
+      this.$nextTick().then(() => {
+        eval(this.script);
+      });
+    },
   },
 };
 </script>
