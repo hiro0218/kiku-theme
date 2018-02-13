@@ -3,6 +3,7 @@ import once from 'lodash-es/once';
 
 import api from '@scripts/api';
 import store from '@scripts/store';
+import router from '@scripts/router';
 
 // Vue components
 import layoutHeader from '@components/layout-header.vue';
@@ -12,6 +13,7 @@ import layoutSidebar from '@components/layout-sidebar.vue';
 // Vue global mixin
 Vue.mixin({
   store,
+  router,
   components: {
     layoutHeader,
     layoutFooter,
