@@ -1,5 +1,5 @@
 <template>
-  <div class="ads-container" :id="idName">
+  <div class="ads-container" :id="idName" v-if="content">
     <div v-html="content"/>
   </div>
 </template>
