@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <entry-list/>
-    <advertise :idName="'ads3'" :content="advertise.ads3.content" :script="advertise.ads3.script" />
+    <advertise :id-name="'ads3'" :content="advertise.ads3.content" :script="advertise.ads3.script" />
     <entry-pagination/>
   </div>
 </template>
