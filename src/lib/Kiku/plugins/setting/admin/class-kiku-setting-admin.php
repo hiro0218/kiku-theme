@@ -85,22 +85,22 @@ class Kiku_Setting_Admin {
         }
 
         $data = get_option('kiku_ads1_content');
-        $option = get_option('kiku_ads1_more_tag_option') ? true : false;
-
         if (empty($data)) {
             return $content;
         }
 
+        $option = get_option('kiku_ads1_more_tag_option') ? true : false;
+        $wrapper = '<div id="ads1"></div>';
         $pattern = '/(<[a-z0-9]+.*?>)?(<span id="more-[0-9]+"><\/span>)(<\/[a-z0-9]+>)?/i';
         preg_match($pattern, $content, $matches);
 
         if (!empty($matches[0])) {
             if (strpos($matches[0], '</p>') !== false) {
-                return preg_replace($pattern, '</p>'. $data, $content);
+                return preg_replace($pattern, '</p>'. $wrapper, $content);
             }
-            return preg_replace($pattern, '</p>'. $data .'<p>', $content);
+            return preg_replace($pattern, '</p>'. $wrapper .'<p>', $content);
         } else if ($option) {
-            return $data. $content;
+            return $wrapper. $content;
         }
 
         return $content;

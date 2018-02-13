@@ -19,10 +19,10 @@ export default {
           page_type: WP.page_type,
         };
       },
-      computed: mapState(['post']),
+      computed: mapState(['post', 'advertise']),
       created: function() {
-        this.requestPostData();
         this.requestAds();
+        this.requestPostData();
       },
       methods: {
         requestPostData: function() {
@@ -53,6 +53,10 @@ export default {
                 common.zoomImage(element);
                 Prism.highlightAll();
                 this.viewAttachedInfo();
+                const ads = element.querySelector('#ads1');
+                if (ads) {
+                  this.insertArticleAds(ads);
+                }
               });
             });
         },
@@ -90,6 +94,10 @@ export default {
           }
 
           this.$store.commit('setAdvertise', { ads1, ads2 });
+        },
+        insertArticleAds: function(ads) {
+          ads.innerHTML = this.advertise.ads1.content;
+          eval(this.advertise.ads1.script);
         },
         isSameDay: function(publish, modified) {
           return new Date(publish).toDateString() === new Date(modified).toDateString();
