@@ -1,6 +1,6 @@
 <template>
-  <div class="breadcrumb-container" v-if="navigation">
-    <div class="container">
+  <div class="breadcrumb-container" v-if="title">
+    <div class="container" v-if="navigation">
       <nav class="breadcrumb">
         <ol>
           <li>
