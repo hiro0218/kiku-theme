@@ -64,9 +64,8 @@ export default {
       page_type: WP.page_type,
     };
   },
-  computed: mapState(['navigation', 'post', 'advertise']),
+  computed: mapState(['post', 'advertise']),
   created: function() {
-    this.requestAds();
     this.requestPostData();
   },
   methods: {
@@ -105,9 +104,6 @@ export default {
           });
         });
     },
-    requestAds: function() {
-      api.getAds().then(response => this.setAds(response));
-    },
     requestAttachedData: function(target) {
       var response = api.getAttachData(WP.page_id);
 
@@ -119,26 +115,6 @@ export default {
           pagers: json.pager || MODEL_POST.attach.pagers,
         });
       });
-    },
-    setAds: function(response) {
-      let data = response.data;
-      let ads1 = {};
-      if (data.ads1.display.split(',').includes(WP.page_type)) {
-        ads1 = {
-          content: data.ads1.content,
-          script: data.ads1.script,
-        };
-      }
-
-      let ads2 = {};
-      if (data.ads2.display.split(',').includes(WP.page_type)) {
-        ads2 = {
-          content: data.ads2.content,
-          script: data.ads2.script,
-        };
-      }
-
-      this.$store.commit('setAdvertise', { ads1, ads2 });
     },
     insertArticleAds: function(ads) {
       ads.innerHTML = this.advertise.ads1.content;

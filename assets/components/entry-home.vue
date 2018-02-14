@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <entry-list/>
-    <advertise :id-name="'ads3'" :content="advertise.ads3.content" :script="advertise.ads3.script" />
+    <advertise :id-name="'ads3'" :content="ads.content" :script="ads.script" />
     <entry-pagination/>
   </div>
 </template>
@@ -20,10 +20,22 @@ export default {
     advertise,
     entryPagination,
   },
-  computed: mapState(['advertise']),
+  data() {
+    return {
+      ads: {
+        content: '',
+        script: '',
+      },
+    };
+  },
+  computed: mapState(['requestHeader', 'postLists', 'advertise']),
+  watch: {
+    postLists: function() {
+      this.ads = this.advertise.ads3;
+    },
+  },
   created: function() {
     this.requestPostData();
-    this.requestAds();
   },
   methods: {
     requestPostData: function() {
@@ -31,9 +43,6 @@ export default {
         .getPostList()
         .then(response => this.setResponseHeaders(response))
         .then(data => this.setPosts(data));
-    },
-    requestAds: function() {
-      api.getAds().then(response => this.setAds(response));
     },
     setResponseHeaders: function(response) {
       let requestHeader = {
@@ -43,14 +52,6 @@ export default {
       this.$store.commit('setReqestHeader', requestHeader);
 
       return response.data;
-    },
-    setAds: function(response) {
-      const ads3 = {
-        content: response.data.ads3.content,
-        script: response.data.ads3.script,
-      };
-
-      this.$store.commit('setAdvertise', { ads3 });
     },
     setPosts: function(data) {
       let postLists = [];
