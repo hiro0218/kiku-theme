@@ -6,8 +6,11 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: 'LayoutSidebar',
+  computed: mapState(['navigation', 'isOpenSidebar']),
 };
 </script>
 

@@ -37,4 +37,3 @@ require KIKU_LIB_PATH. 'plugins/setting/kiku-setting.php';
 
 // vendor
 require KIKU_LIB_PATH. '../Sage/Soil/nice-search.php';
-require KIKU_LIB_PATH. '../Sage/Soil/nav-walker.php';

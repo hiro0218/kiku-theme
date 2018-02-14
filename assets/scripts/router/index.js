@@ -1,5 +1,8 @@
 import VueRouter from 'vue-router';
 
+import entryHome from '@components/entry-home.vue';
+import entrySingular from '@components/entry-singular.vue';
+
 Vue.use(VueRouter);
 
 export default new VueRouter({
@@ -8,33 +11,33 @@ export default new VueRouter({
   routes: [
     {
       path: '/',
-      name: 'Home',
-      component: { template: '<div>Home</div>' },
-    },
-    {
-      path: '/page/:page_number',
-      name: 'paged',
-      component: { template: '<div>page</div>' },
+      name: 'home',
+      component: entryHome,
     },
     {
       path: '/tag/:tag_id',
       name: 'tag',
-      component: { template: '<div>tag</div>' },
+      component: entryHome,
     },
     {
       path: '/search/:search_query',
       name: 'search',
-      component: { template: '<div>search</div>' },
+      component: entryHome,
     },
     {
       path: '/category/:category_id',
       name: 'category',
-      component: { template: '<div>category</div>' },
+      component: entryHome,
     },
     {
-      path: '*',
+      path: '*/page/:page_number',
+      name: 'paged',
+      component: entryHome,
+    },
+    {
+      path: '/*',
       name: 'post',
-      component: { template: '<div>post</div>' },
+      component: entrySingular,
     },
   ],
 });

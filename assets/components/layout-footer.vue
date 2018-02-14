@@ -18,8 +18,11 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: 'LayoutFooter',
+  computed: mapState(['navigation']),
 };
 </script>
 

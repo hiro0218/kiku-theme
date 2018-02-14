@@ -1,7 +1,7 @@
 {
   "entry": {
     "main": [
-      "./scripts/main.js",
+      "./scripts/app.js",
       "./scripts/vendor/prism.js",
       "./styles/reset.scss",
       "./styles/main.scss"

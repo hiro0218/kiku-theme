@@ -4,18 +4,6 @@ namespace App;
 
 use Roots\Sage\Asset;
 use Roots\Sage\Assets\JsonManifest;
-use Roots\Sage\Template;
-
-function template($layout = 'base')
-{
-    return Template::$instances[$layout];
-}
-
-function template_part($template, array $context = [], $layout = 'base')
-{
-    extract($context);
-    include template($layout)->partial($template);
-}
 
 /**
  * @param $filename

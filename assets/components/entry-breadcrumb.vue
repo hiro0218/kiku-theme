@@ -1,5 +1,5 @@
 <template>
-  <div class="breadcrumb-container" v-if="title">
+  <div class="breadcrumb-container" v-if="navigation">
     <div class="container">
       <nav class="breadcrumb">
         <ol>
@@ -21,6 +21,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: 'EntryBreadcrumb',
   props: {
@@ -35,6 +37,7 @@ export default {
       required: false,
     },
   },
+  computed: mapState(['navigation']),
 };
 </script>
 
