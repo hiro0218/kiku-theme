@@ -11,7 +11,7 @@
         </header>
         <section class="entry-content" v-html="post.content"/>
         <advertise :id-name="'ads2'" :content="advertise.ads2.content" :script="advertise.ads2.script" />
-        <template v-if="page_type === 'post'">
+        <template v-if="$route.meta.type === 'post'">
           <amazon-product :amazon_product="post.amazon_product"/>
           <footer class="entry-footer">
             <entry-tag :tags="post.tags"/>
@@ -22,7 +22,7 @@
       </article>
     </div>
 
-    <template v-if="page_type === 'post'">
+    <template v-if="$route.meta.type === 'post'">
       <entry-related :relateds="post.attach.relateds"/>
     </template>
     <entry-breadcrumb :title="post.title" :categories="post.categories"/>
@@ -59,18 +59,13 @@ export default {
     entryTime,
     advertise,
   },
-  data() {
-    return {
-      page_type: WP.page_type,
-    };
-  },
   computed: mapState(['post', 'advertise']),
   created: function() {
     this.requestPostData();
   },
   methods: {
     requestPostData: function() {
-      var response = WP.page_type === 'post' ? api.getPosts(WP.page_id) : api.getPages(WP.page_id);
+      var response = this.$route.meta.type === 'post' ? api.getPosts(WP.page_id) : api.getPages(WP.page_id);
 
       response
         .then(response => {
@@ -124,7 +119,7 @@ export default {
       return new Date(publish).toDateString() === new Date(modified).toDateString();
     },
     viewAttachedInfo: function() {
-      if (WP.page_type !== 'post') {
+      if (this.$route.meta.type !== 'post') {
         return;
       }
 
