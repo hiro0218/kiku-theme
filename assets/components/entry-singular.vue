@@ -11,7 +11,7 @@
         </header>
         <section class="entry-content" v-html="post.content"/>
         <advertise :id-name="'ads2'" :content="advertise.ads2.content" :script="advertise.ads2.script" />
-        <template v-if="page_type === 'post'">
+        <template v-if="$route.meta.type === 'post'">
           <amazon-product :amazon_product="post.amazon_product"/>
           <footer class="entry-footer">
             <entry-tag :tags="post.tags"/>
@@ -22,7 +22,7 @@
       </article>
     </div>
 
-    <template v-if="page_type === 'post'">
+    <template v-if="$route.meta.type === 'post'">
       <entry-related :relateds="post.attach.relateds"/>
     </template>
     <entry-breadcrumb :title="post.title" :categories="post.categories"/>
@@ -31,6 +31,10 @@
 
 <script>
 import { mapState } from 'vuex';
+import { MODEL_POST } from '@scripts/models';
+import api from '@scripts/api';
+import mokuji from '@scripts/module/mokuji';
+import common from '@scripts/module/common';
 
 import amazonProduct from '@components/amazon-product.vue';
 import entryBreadcrumb from '@components/entry-breadcrumb.vue';
@@ -55,16 +59,87 @@ export default {
     entryTime,
     advertise,
   },
-  props: {
-    post: {
-      type: Object,
-      required: true,
+  computed: mapState(['post', 'advertise']),
+  created: function() {
+    this.requestPostData();
+  },
+  methods: {
+    requestPostData: function() {
+      var response = this.$route.meta.type === 'post' ? api.getPosts(WP.page_id) : api.getPages(WP.page_id);
+
+      response
+        .then(response => {
+          let json = response.data;
+          let post = MODEL_POST;
+
+          post.link = json.link;
+          post.title = json.title.rendered;
+          post.date.publish = json.date;
+          post.date.modified = this.isSameDay(json.date, json.modified) ? null : json.modified;
+          post.content = json.content.rendered;
+          post.categories = json.categories || post.categories;
+          post.tags = json.tags || post.tags;
+          post.amazon_product = json.amazon_product || post.amazon_product;
+
+          this.$store.commit('setPost', post);
+        })
+        .then(() => {
+          this.$nextTick().then(() => {
+            var element = this.$el.querySelector('.entry-content');
+            mokuji.init(element);
+            common.addExternalLink(element);
+            common.setTableContainer(element);
+            common.zoomImage(element);
+            Prism.highlightAll();
+            this.viewAttachedInfo();
+            const ads = element.querySelector('#ads1');
+            if (ads) {
+              this.insertArticleAds(ads);
+            }
+          });
+        });
     },
-    page_type: {
-      type: String,
-      required: true,
+    requestAttachedData: function(target) {
+      var response = api.getAttachData(WP.page_id);
+
+      response.then(response => {
+        let json = response.data;
+
+        this.$store.commit('setPostAttach', {
+          relateds: json.related || MODEL_POST.attach.relateds,
+          pagers: json.pager || MODEL_POST.attach.pagers,
+        });
+      });
+    },
+    insertArticleAds: function(ads) {
+      ads.innerHTML = this.advertise.ads1.content;
+      eval(this.advertise.ads1.script);
+    },
+    isSameDay: function(publish, modified) {
+      return new Date(publish).toDateString() === new Date(modified).toDateString();
+    },
+    viewAttachedInfo: function() {
+      if (this.$route.meta.type !== 'post') {
+        return;
+      }
+
+      var target = this.$el.querySelector('.entry-footer');
+      var clientHeight = document.documentElement.clientHeight;
+      var observer = new IntersectionObserver(changes => {
+        changes.forEach(change => {
+          var rect = change.target.getBoundingClientRect();
+          var isShow =
+            (0 < rect.top && rect.top < clientHeight) ||
+            (0 < rect.bottom && rect.bottom < clientHeight) ||
+            (0 > rect.top && rect.bottom > clientHeight);
+          if (isShow) {
+            this.requestAttachedData(change.target);
+            observer.unobserve(change.target);
+          }
+        });
+      });
+      observer.observe(target);
     },
   },
-  computed: mapState(['advertise']),
 };
 </script>

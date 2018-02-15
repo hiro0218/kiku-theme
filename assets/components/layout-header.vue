@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import searchBox from '@components/form/search-box.vue';
 import menuButton from '@components/form/menu-button.vue';
 import headerScroll from 'header-scroll-up';
@@ -25,6 +26,7 @@ export default {
     searchBox,
     menuButton,
   },
+  computed: mapState(['navigation']),
   mounted: function() {
     headerScroll.setScrollableHeader('.header-navigation', {
       topOffset: 100,

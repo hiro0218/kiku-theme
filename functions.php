@@ -48,7 +48,6 @@ add_action('customize_render_section', function ($section) {
 $sage_includes = [
     'src/helpers.php',
     'src/setup.php',
-    'src/filters.php',
 
     'src/lib/Kiku/bootstrap.php',  // Kiku
 ];
