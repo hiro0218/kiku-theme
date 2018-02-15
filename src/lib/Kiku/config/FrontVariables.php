@@ -20,6 +20,7 @@ class FrontVariables {
             'tag_name' => $this->get_tag_name(),
             'is_logined' => is_user_logged_in(),
             'is_shared' => $this->is_shared(),
+            'routes' => $this->create_routes($base_path),
         ];
         $vars = json_encode($vars, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT);
 
@@ -131,6 +132,33 @@ class FrontVariables {
             'hatena' => (boolean) get_option('kiku_share_btn_hatena'),
             'line' => (boolean) get_option('kiku_share_btn_line'),
         ];
+    }
+
+    private function create_routes() {
+        $routes = [];
+        $query = new WP_Query([
+            'post_type'      =>  ['post', 'page'],
+            'post_status'    => 'publish',
+            'posts_per_page' => -1,
+        ]);
+
+        if ($query->have_posts()) {
+            while ($query->have_posts()) {
+                $query->the_post();
+                $post_id = get_the_ID();
+                $post_type = get_post_type();
+                $routes[] = [
+                    'id'       => $post_id,
+                    'type'     => $post_type,
+                    'path'     => '/' . basename(get_permalink()),
+                    'title'    => get_the_title(),
+                    'template' => $post_type === 'page' ? get_page_template_slug($post_id) : '',
+                ];
+            }
+        }
+        wp_reset_postdata();
+
+        return $routes;
     }
 }
 
