@@ -20,7 +20,7 @@ class FrontVariables {
             'tag_name' => $this->get_tag_name(),
             'is_logined' => is_user_logged_in(),
             'is_shared' => $this->is_shared(),
-            'routes' => $this->create_routes($base_path),
+            'routes' => $this->create_routes(),
         ];
         $vars = json_encode($vars, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT);
 
