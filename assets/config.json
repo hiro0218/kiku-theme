@@ -1,10 +1,16 @@
 {
   "entry": {
+    "polyfill": [
+      "./scripts/polyfill.js"
+    ],
     "main": [
       "./scripts/app.js",
-      "./scripts/vendor/prism.js",
+      "./scripts/prism.js",
       "./styles/reset.scss",
       "./styles/main.scss"
+    ],
+    "prism": [
+      "./scripts/prism.js"
     ]
   },
   "publicPath": "/wp-content/themes/kiku-theme",

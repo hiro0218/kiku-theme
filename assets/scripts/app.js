@@ -1,5 +1,3 @@
-import './polyfill.js';
-
 import store from '@scripts/store';
 import router from '@scripts/router';
 import App from './App.vue';
