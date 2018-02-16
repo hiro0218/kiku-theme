@@ -24,7 +24,6 @@ export default {
       },
       exclude: {
         query: false,
-        paths: ['/wp-json/kiku/v1/navigation'],
       },
     });
 
