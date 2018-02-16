@@ -5,9 +5,14 @@ export default {
   api: null,
   settings: {
     baseURL: '/wp-json/wp/v2',
+    headers: { 'X-WP-Nonce': WP.nonce },
     params: {},
   },
   setupCacheAdapter() {
+    if (WP.is_preview) {
+      return;
+    }
+
     const cache = setupCache({
       store: localforage.createInstance({
         driver: [localforage.INDEXEDDB, localforage.LOCALSTORAGE],
@@ -92,12 +97,30 @@ export default {
   },
   getPosts(post_id) {
     var client = this.getInstance();
+    let path = `/posts/${post_id}`;
+    if (WP.is_preview) {
+      path += '/revisions';
+    }
 
-    return client.get(`/posts/${post_id}`);
+    return client.get(path).then(res => {
+      if (WP.is_preview) {
+        res.data = res.data[0];
+      }
+      return res;
+    });
   },
   getPages(post_id) {
     var client = this.getInstance();
+    let path = `/pages/${post_id}`;
+    if (WP.is_preview) {
+      path += '/revisions';
+    }
 
-    return client.get(`/pages/${post_id}`);
+    return client.get(path).then(res => {
+      if (WP.is_preview) {
+        res.data = res.data[0];
+      }
+      return res;
+    });
   },
 };
