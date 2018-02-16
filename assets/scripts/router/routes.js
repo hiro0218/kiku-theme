@@ -18,24 +18,30 @@ for (let key in WP.routes) {
 
 routes.push(
   {
-    path: '',
+    path: '/',
     name: 'home',
     component: entryHome,
   },
   {
-    path: 'tag/:tag_id',
+    path: '/tag/:tag_id',
     name: 'tag',
     component: entryHome,
   },
   {
-    path: 'search/:search_query',
+    path: '/search/:search_query',
     name: 'search',
     component: entryHome,
   },
   {
-    path: 'category/:category_id',
+    path: '/category/:category_id',
     name: 'category',
     component: entryHome,
+    children: [
+      {
+        path: '*',
+        component: entryHome,
+      },
+    ],
   },
   {
     path: '*/page/:page_number',
