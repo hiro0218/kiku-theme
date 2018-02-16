@@ -65,7 +65,8 @@ export default {
   },
   methods: {
     requestPostData: function() {
-      var response = this.$route.meta.type === 'post' ? api.getPosts(WP.page_id) : api.getPages(WP.page_id);
+      var response =
+        this.$route.meta.type === 'post' ? api.getPosts(this.$route.meta.id) : api.getPages(this.$route.meta.id);
 
       response
         .then(response => {
@@ -100,7 +101,7 @@ export default {
         });
     },
     requestAttachedData: function(target) {
-      var response = api.getAttachData(WP.page_id);
+      var response = api.getAttachData(this.$route.meta.id);
 
       response.then(response => {
         let json = response.data;

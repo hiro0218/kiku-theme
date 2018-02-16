@@ -10,6 +10,7 @@ for (let key in WP.routes) {
     path: route.path,
     component: entrySingular,
     meta: {
+      id: route.id,
       type: route.type,
     },
   });

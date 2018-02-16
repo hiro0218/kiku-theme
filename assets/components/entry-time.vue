@@ -25,7 +25,7 @@ export default {
   data() {
     return {
       is_logined: WP.is_logined,
-      edit_link: `/wp-admin/post.php?post=${WP.page_id}&action=edit`,
+      edit_link: `/wp-admin/post.php?post=${this.$route.meta.id}&action=edit`,
     };
   },
 };

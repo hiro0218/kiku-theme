@@ -10,8 +10,6 @@ class FrontVariables {
             'page_title' => $this->get_page_title(),
             'per_page' => $this->get_per_page(),
             'paged' => $this->get_paged(),
-            'page_type' => $this->get_post_type(),
-            'page_id' => $this->get_page_id(),
             'categories_exclude' => $this->get_categories_exclude(),
             'category' => $this->get_category_id(),
             'category_name' => $this->get_category_name(),
@@ -63,21 +61,6 @@ class FrontVariables {
         }
         $paged = (int)get_query_var('paged');
         return $paged ? $paged : 1;
-    }
-
-    private function get_post_type() {
-        if (!is_singular()) {
-            return null;
-        }
-
-        return get_post_type();
-    }
-
-    private function get_page_id() {
-        if (!is_singular()) {
-            return null;
-        }
-        return get_the_ID();
     }
 
     private function get_categories_exclude() {
