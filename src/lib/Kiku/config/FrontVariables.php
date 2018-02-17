@@ -9,7 +9,6 @@ class FrontVariables {
         $vars = [
             'page_title' => $this->get_page_title(),
             'per_page' => $this->get_per_page(),
-            'paged' => $this->get_paged(),
             'categories_exclude' => $this->get_categories_exclude(),
             'category' => $this->get_category_id(),
             'category_name' => $this->get_category_name(),
@@ -53,14 +52,6 @@ class FrontVariables {
             return null;
         }
         return (int)get_option('posts_per_page');
-    }
-
-    private function get_paged() {
-        if (is_singular()) {
-            return null;
-        }
-        $paged = (int)get_query_var('paged');
-        return $paged ? $paged : 1;
     }
 
     private function get_categories_exclude() {

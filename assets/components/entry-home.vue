@@ -40,7 +40,7 @@ export default {
   methods: {
     requestPostData: function() {
       api
-        .getPostList()
+        .getPostList(this.$route.params)
         .then(response => this.setResponseHeaders(response))
         .then(data => this.setPosts(data));
     },

@@ -44,9 +44,8 @@ export default {
   },
   preparedParams() {
     this.settings.params = Object.assign(
-      this.settings.params,
+      {},
       WP.per_page && { per_page: WP.per_page },
-      WP.paged && { page: WP.paged },
       WP.search && { search: WP.search },
       WP.tag && { tags: WP.tag },
       WP.category && { categories: WP.category },
@@ -87,11 +86,15 @@ export default {
       params: '',
     });
   },
-  getPostList() {
+  getPostList(params) {
     var client = this.getInstance();
 
     return client.get('/posts/?list', {
-      params: Object.assign(this.settings.params, { orderby: 'modified' }),
+      params: Object.assign(
+        this.settings.params,
+        { orderby: 'modified' },
+        params.page_number && { page: params.page_number },
+      ),
     });
   },
   getPosts(post_id) {

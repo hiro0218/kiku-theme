@@ -71,7 +71,7 @@ export default {
       }
 
       var range = 3;
-      var paged = WP.paged;
+      var paged = this.$route.params.page_number || 1;
       var ceil = Math.ceil(range / 2);
       var min = 0;
       var max = 0;
