@@ -17,10 +17,12 @@ export const MODEL_POST = {
 
 export const MODEL_ADS = {
   ads1: {
+    display: [],
     content: '',
     script: '',
   },
   ads2: {
+    display: [],
     content: '',
     script: '',
   },

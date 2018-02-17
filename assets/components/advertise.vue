@@ -1,5 +1,5 @@
 <template>
-  <div class="ads-container" :id="idName" v-if="content">
+  <div class="ads-container" :id="idName" v-if="display">
     <div v-html="content"/>
   </div>
 </template>
@@ -11,6 +11,11 @@ export default {
     idName: {
       type: String,
       default: '',
+      required: false,
+    },
+    display: {
+      type: Boolean,
+      default: true,
       required: false,
     },
     content: {
@@ -27,7 +32,9 @@ export default {
   watch: {
     content: function() {
       this.$nextTick().then(() => {
-        eval(this.script);
+        if (this.content) {
+          eval(this.script);
+        }
       });
     },
   },

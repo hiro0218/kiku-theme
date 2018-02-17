@@ -10,7 +10,7 @@
           </div>
         </header>
         <section class="entry-content" v-html="post.content"/>
-        <advertise :id-name="'ads2'" :content="advertise.ads2.content" :script="advertise.ads2.script" />
+        <advertise :id-name="'ads2'" :display="advertise.ads2.display.includes($route.meta.type)" :content="advertise.ads2.content" :script="advertise.ads2.script" />
         <template v-if="$route.meta.type === 'post'">
           <amazon-product :amazon_product="post.amazon_product"/>
           <footer class="entry-footer">
@@ -93,10 +93,7 @@ export default {
             common.zoomImage(element);
             Prism.highlightAll();
             this.viewAttachedInfo();
-            const ads = element.querySelector('#ads1');
-            if (ads) {
-              this.insertArticleAds(ads);
-            }
+            this.insertArticleAds(element.querySelector('#ads1'));
           });
         });
     },
@@ -112,9 +109,11 @@ export default {
         });
       });
     },
-    insertArticleAds: function(ads) {
-      ads.innerHTML = this.advertise.ads1.content;
-      eval(this.advertise.ads1.script);
+    insertArticleAds: function(elementAds) {
+      if (elementAds && this.advertise.ads1.display.includes(this.$route.meta.type)) {
+        elementAds.innerHTML = this.advertise.ads1.content;
+        eval(this.advertise.ads1.script);
+      }
     },
     isSameDay: function(publish, modified) {
       return new Date(publish).toDateString() === new Date(modified).toDateString();

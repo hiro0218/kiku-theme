@@ -41,29 +41,23 @@ export default {
       api.getAds().then(response => {
         let page_type = this.$route.meta.type;
         let data = response.data;
-        let ads1 = {};
-        if (data.ads1.display.split(',').includes(page_type)) {
-          ads1 = {
-            content: data.ads1.content,
-            script: data.ads1.script,
-          };
-        }
 
-        let ads2 = {};
-        if (data.ads2.display.split(',').includes(page_type)) {
-          ads2 = {
-            content: data.ads2.content,
-            script: data.ads2.script,
-          };
-        }
+        let ads1 = {
+          display: data.ads1.display,
+          content: data.ads1.content,
+          script: data.ads1.script,
+        };
 
-        let ads3 = {};
-        if (!page_type) {
-          ads3 = {
-            content: data.ads3.content,
-            script: data.ads3.script,
-          };
-        }
+        let ads2 = {
+          display: data.ads2.display,
+          content: data.ads2.content,
+          script: data.ads2.script,
+        };
+
+        let ads3 = {
+          content: data.ads3.content,
+          script: data.ads3.script,
+        };
 
         this.$store.commit('setAdvertise', { ads1, ads2, ads3 });
       });
