@@ -21,16 +21,37 @@ routes.push(
     path: '/',
     name: 'home',
     component: entryHome,
+    children: [
+      {
+        path: 'page/:page_number',
+        name: 'paged',
+        component: entryHome,
+      },
+    ],
   },
   {
     path: '/tag/:tag_id',
     name: 'tag',
     component: entryHome,
+    children: [
+      {
+        path: 'page/:page_number',
+        name: 'tag_paged',
+        component: entryHome,
+      },
+    ],
   },
   {
     path: '/search/:search_query',
     name: 'search',
     component: entryHome,
+    children: [
+      {
+        path: 'page/:page_number',
+        name: 'search_paged',
+        component: entryHome,
+      },
+    ],
   },
   {
     path: '/category/:category_id',
@@ -38,14 +59,14 @@ routes.push(
     component: entryHome,
     children: [
       {
-        path: '*',
+        path: 'page/:page_number',
+        name: 'category_paged',
         component: entryHome,
       },
     ],
   },
   {
-    path: '*/page/:page_number',
-    name: 'paged',
+    path: '*',
     component: entryHome,
   },
 );
