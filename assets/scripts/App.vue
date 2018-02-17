@@ -39,7 +39,6 @@ export default {
     },
     fetchAds: function() {
       api.getAds().then(response => {
-        let page_type = this.$route.meta.type;
         let data = response.data;
 
         let ads1 = {
