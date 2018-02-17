@@ -41,6 +41,7 @@ export default {
   outline: none;
   background: transparent;
   box-shadow: none;
+  cursor: pointer;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -51,6 +52,7 @@ export default {
     width: 12rem;
     line-height: 2rem;
     border-bottom: 1px solid $grey-400;
+    cursor: text;
   }
 }
 </style>
