@@ -30,7 +30,7 @@ routes.push(
     ],
   },
   {
-    path: '/tag/:tag_id',
+    path: '/tag/:tag_name',
     name: 'tag',
     component: entryHome,
     children: [
@@ -54,7 +54,7 @@ routes.push(
     ],
   },
   {
-    path: '/category/:category_id',
+    path: '/category/:category_name',
     name: 'category',
     component: entryHome,
     children: [
