@@ -2,7 +2,6 @@
 
 class REST_API {
     const API_NAMESPACE = "kiku/v1";
-    const CACHE_PREFIX = "kiku_cache_";
     const CACHE_EXPIRATION = MINUTE_IN_SECONDS * 15;
 
     // public function __construct() {}
@@ -10,7 +9,7 @@ class REST_API {
     public function delete_all_transients($new_status, $old_status, $post) {
         if ($old_status !== $new_status) {
             global $wpdb;
-            $wpdb->query("DELETE FROM `wp_options` WHERE (`option_name` LIKE '_transient_". self::CACHE_PREFIX ."_%') OR (`option_name` LIKE '_transient_timeout_". self::CACHE_PREFIX ."_%')");
+            $wpdb->query("DELETE FROM `wp_options` WHERE (`option_name` LIKE '_transient_". CACHE_PREFIX ."_%') OR (`option_name` LIKE '_transient_timeout_". CACHE_PREFIX ."_%')");
         }
     }
 
@@ -61,7 +60,7 @@ class REST_API {
                 $request_url = $_SERVER['REQUEST_URI'];
 
                 // transient で一時的にキャッシュしたデータをロード
-                $key = self::CACHE_PREFIX . md5($request_url);
+                $key = CACHE_PREFIX . md5($request_url);
                 $result = get_transient($key);
 
                 if ($result === false) {
@@ -95,7 +94,7 @@ class REST_API {
                 $request_url = $_SERVER['REQUEST_URI'];
 
                 // transient で一時的にキャッシュしたデータをロード
-                $key = self::CACHE_PREFIX . md5($request_url);
+                $key = CACHE_PREFIX . md5($request_url);
                 $result = get_transient($key);
 
                 if ($result === false) {

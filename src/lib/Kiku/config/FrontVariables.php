@@ -113,10 +113,18 @@ class FrontVariables {
     private function create_routes() {
         $routes = [];
 
-        $posts = $this->get_post_routes();
-        $terms = $this->get_term_routes();
+        // transient で一時的にキャッシュしたデータをロード
+        $key = CACHE_PREFIX . "routes";
+        $routes = get_transient($key);
 
-        $routes = array_merge($posts, $terms);
+        if ($routes === false) {
+            $posts = $this->get_post_routes();
+            $terms = $this->get_term_routes();
+
+            $routes = array_merge($posts, $terms);
+
+            set_transient($key, $routes, MINUTE_IN_SECONDS * 15);
+        }
 
         return $routes;
     }
