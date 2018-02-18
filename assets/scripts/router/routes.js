@@ -5,15 +5,38 @@ let routes = [];
 
 for (let key in WP.routes) {
   let route = WP.routes[key];
-  routes.push({
-    name: route.id,
+  let temp = {};
+
+  temp = {
+    name: `${route.type}_${route.id}`,
     path: route.path,
-    component: entrySingular,
     meta: {
       id: route.id,
       type: route.type,
     },
-  });
+  };
+
+  if (route.type === 'post' || route.type === 'page') {
+    temp.component = entrySingular;
+  } else {
+    temp.component = entryHome;
+  }
+
+  if (route.type === 'category') {
+    temp.children = [
+      {
+        path: 'page/:page_number',
+        name: `${route.type}_${route.id}_paged`,
+        meta: {
+          id: route.id,
+          type: route.type,
+        },
+        component: entryHome,
+      },
+    ];
+  }
+
+  routes.push(temp);
 }
 
 routes.push(
@@ -30,18 +53,6 @@ routes.push(
     ],
   },
   {
-    path: '/tag/:tag_name',
-    name: 'tag',
-    component: entryHome,
-    children: [
-      {
-        path: 'page/:page_number',
-        name: 'tag_paged',
-        component: entryHome,
-      },
-    ],
-  },
-  {
     path: '/search/:search_query',
     name: 'search',
     component: entryHome,
@@ -49,18 +60,6 @@ routes.push(
       {
         path: 'page/:page_number',
         name: 'search_paged',
-        component: entryHome,
-      },
-    ],
-  },
-  {
-    path: '/category/:category_name',
-    name: 'category',
-    component: entryHome,
-    children: [
-      {
-        path: 'page/:page_number',
-        name: 'category_paged',
         component: entryHome,
       },
     ],

@@ -112,6 +112,17 @@ class FrontVariables {
 
     private function create_routes() {
         $routes = [];
+
+        $posts = $this->get_post_routes();
+        $terms = $this->get_term_routes();
+
+        $routes = array_merge($posts, $terms);
+
+        return $routes;
+    }
+
+    private function get_post_routes() {
+        $routes = [];
         $query = new WP_Query([
             'post_type'      =>  ['post', 'page'],
             'post_status'    => 'publish',
@@ -133,6 +144,28 @@ class FrontVariables {
             }
         }
         wp_reset_postdata();
+
+        return $routes;
+    }
+
+    private function get_term_routes() {
+        $routes = [];
+        $query = new WP_Term_Query([
+            'taxonomy' => ['category', 'post_tag']
+        ]);
+
+        foreach($query->get_terms() as $term) {
+            $taxonomy = $term->taxonomy;
+            $name = $term->name;
+            $path = $taxonomy === 'category' ? '/category/' . $term->slug : '/tag/' . $term->slug;
+            $routes[] = [
+                'id'       => $term->term_id,
+                'type'     => $taxonomy,
+                'path'     => $path,
+                'title'    => $name,
+                'template' => '',
+            ];
+        }
 
         return $routes;
     }
