@@ -71,7 +71,7 @@ export default {
       }
 
       var range = 3;
-      var paged = this.$route.params.page_number || 1;
+      var paged = this.$route.params.page_number === undefined ? 1 : parseInt(this.$route.params.page_number, 10);
       var ceil = Math.ceil(range / 2);
       var min = 0;
       var max = 0;
