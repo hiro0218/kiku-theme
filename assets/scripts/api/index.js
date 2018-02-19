@@ -47,8 +47,6 @@ export default {
       {},
       WP.per_page && { per_page: WP.per_page },
       WP.search && { search: WP.search },
-      WP.tag && { tags: WP.tag },
-      WP.category && { categories: WP.category },
       WP.categories_exclude && { categories_exclude: WP.categories_exclude },
     );
   },
@@ -86,13 +84,15 @@ export default {
       params: '',
     });
   },
-  getPostList(params) {
+  getPostList({ meta, params }) {
     var client = this.getInstance();
 
     return client.get('/posts/?list', {
       params: Object.assign(
         this.settings.params,
         { orderby: 'modified' },
+        meta.type === 'post_tag' && meta.id && { tags: meta.id },
+        meta.type === 'category' && meta.id && { categories: meta.id },
         params.page_number && { page: params.page_number },
       ),
     });

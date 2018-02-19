@@ -10,10 +10,8 @@ class FrontVariables {
             'page_title' => $this->get_page_title(),
             'per_page' => $this->get_per_page(),
             'categories_exclude' => $this->get_categories_exclude(),
-            'category' => $this->get_category_id(),
             'category_name' => $this->get_category_name(),
             'search' => $this->get_search_query(),
-            'tag' => $this->get_tag_id(),
             'tag_name' => $this->get_tag_name(),
             'is_preview' => is_preview(),
             'is_logined' => is_user_logged_in(),
@@ -62,13 +60,6 @@ class FrontVariables {
         return $exclude_category ? $exclude_category : 0;
     }
 
-    private function get_category_id() {
-        if (!is_category()) {
-            return null;
-        }
-        return get_query_var('cat');
-    }
-
     private function get_category_name() {
         if (!is_category()) {
             return null;
@@ -81,13 +72,6 @@ class FrontVariables {
             return null;
         }
         return get_query_var('s');
-    }
-
-    private function get_tag_id() {
-        if (!is_tag()) {
-            return null;
-        }
-        return get_query_var('tag_id');
     }
 
     private function get_tag_name() {
