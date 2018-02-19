@@ -19,10 +19,8 @@ for (let key in WP.routes) {
   if (route.type === 'post' || route.type === 'page') {
     temp.component = entrySingular;
   } else {
+    // category, post_tag, etc
     temp.component = entryHome;
-  }
-
-  if (route.type === 'category') {
     temp.children = [
       {
         path: 'page/:page_number',
