@@ -1,32 +1,15 @@
 <template>
   <div>
-    <nav class="pagination">
-      <ul>
-        <li class="pagination-first" v-if="pagination.label.first">
-          <a :href="pagination.links.first"><span class="icon-first_page"/></a>
-        </li>
-        <li class="pagination-previous" v-if="pagination.label.prev">
-          <a :href="pagination.links.prev"><span class="icon-chevron_left"/></a>
-        </li>
-        <template v-for="(pages, index) in pagination.pages">
-          <template v-if="pagination.label.active == index">
-            <li class="pagination-active" :key="index">
-              <span>{{ pagination.label.active | zeroPadding }}</span>
-            </li>
-          </template>
-          <template v-else>
-            <li :key="index">
-              <a :href="pages.links">{{ index | zeroPadding }}</a>
-            </li>
-          </template>
-        </template>
-        <li class="pagination-next" v-if="pagination.label.next">
-          <a :href="pagination.links.next"><span class="icon-chevron_right"/></a>
-        </li>
-        <li class="pagination-last" v-if="pagination.label.last">
-          <a :href="pagination.links.last"><span class="icon-last_page"/></a>
-        </li>
-      </ul>
+    <nav class="pagination" v-if="requestHeader.total > 0">
+      <uib-pagination
+        v-model="pagination"
+        :total-items="requestHeader.total"
+        :items-per-page="per_page"
+        :boundary-links="true"
+        :rotate="true"
+        next-text="Next"
+        previous-text="Prev"
+        @change="changePage"/>
     </nav>
   </div>
 </template>
@@ -39,30 +22,18 @@ export default {
   data() {
     return {
       pagination: {
-        label: {
-          first: 0,
-          prev: 0,
-          next: 0,
-          last: 0,
-          active: 0,
-        },
-        pages: {},
-        links: {
-          first: '',
-          prev: '',
-          next: '',
-          last: '',
-        },
+        currentPage: parseInt(this.$route.params.page_number || 1, 10),
       },
+      per_page: WP.per_page,
     };
   },
   computed: mapState(['requestHeader']),
-  watch: {
-    'requestHeader.totalpages': function() {
-      this.setPaginationData();
-    },
-  },
   methods: {
+    changePage: function() {
+      this.$router.push({
+        params: { page_number: this.pagination.currentPage },
+      });
+    },
     setPaginationData: function() {
       var totalpages = this.requestHeader.totalpages;
 
@@ -144,7 +115,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.pagination {
+.pagination /deep/ {
   margin-bottom: 1rem;
   user-select: none;
 
@@ -157,15 +128,8 @@ export default {
 
   li {
     display: flex;
-
     & + li {
       margin-left: 0.5rem;
-    }
-
-    @include mobile {
-      &:not(.pagination-first):not(.pagination-next):not(.pagination-previous):not(.pagination-last):not(.pagination-active) {
-        display: none;
-      }
     }
   }
 
@@ -175,25 +139,23 @@ export default {
     }
   }
 
-  a,
-  span {
+  a {
     min-width: 3rem;
     min-height: 3rem;
     border-radius: $radius-base;
     color: $grey-600;
     line-height: 3rem;
     text-align: center;
-
     &:hover,
     &:focus {
       outline: 0;
     }
   }
-}
 
-.pagination-active span {
-  background: $grey-600;
-  color: $white;
-  cursor: default;
+  .active a {
+    background: $grey-600;
+    color: $white;
+    cursor: default;
+  }
 }
 </style>

@@ -30,6 +30,7 @@ export default {
   },
   computed: mapState(['requestHeader', 'postLists', 'advertise']),
   watch: {
+    '$route.params.page_number': 'requestPostData',
     postLists: function() {
       this.ads = this.advertise.ads3;
     },
