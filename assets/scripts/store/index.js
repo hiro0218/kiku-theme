@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
+import api from '@scripts/api';
 import { MODEL_POST, MODEL_ADS } from '@scripts/models';
 
 export default new Vuex.Store({
@@ -47,5 +48,35 @@ export default new Vuex.Store({
   //     return state.navigation;
   //   },
   // },
-  actions: {},
+  actions: {
+    requestPostList({ commit }, route) {
+      return api
+        .getPostList({ meta: route.meta, params: route.params })
+        .then(response => {
+          commit('setReqestHeader', {
+            total: Number(response.headers['x-wp-total']),
+            totalpages: Number(response.headers['x-wp-totalpages']),
+          });
+
+          return response.data;
+        })
+        .then(data => {
+          let postLists = [];
+
+          for (let json of data) {
+            let post = {};
+
+            post.title = json.title.rendered;
+            post.link = json.link;
+            post.excerpt = json.excerpt.rendered;
+            post.thumbnail = json.thumbnail;
+            post.date = json.modified;
+
+            postLists.push(post);
+          }
+
+          commit('setPostLists', postLists);
+        });
+    },
+  },
 });
