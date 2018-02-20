@@ -49,6 +49,35 @@ export default new Vuex.Store({
   //   },
   // },
   actions: {
+    requestNavigation({ commit }) {
+      api.getNavigation().then(response => {
+        commit('setNavigation', response.data);
+      });
+    },
+    requestAdvertise({ commit }) {
+      api.getAds().then(response => {
+        let data = response.data;
+
+        let ads1 = {
+          display: data.ads1.display,
+          content: data.ads1.content,
+          script: data.ads1.script,
+        };
+
+        let ads2 = {
+          display: data.ads2.display,
+          content: data.ads2.content,
+          script: data.ads2.script,
+        };
+
+        let ads3 = {
+          content: data.ads3.content,
+          script: data.ads3.script,
+        };
+
+        commit('setAdvertise', { ads1, ads2, ads3 });
+      });
+    },
     requestPostList({ commit }, route) {
       return api
         .getPostList({ meta: route.meta, params: route.params })
