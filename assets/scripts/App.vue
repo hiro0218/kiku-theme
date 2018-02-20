@@ -11,7 +11,6 @@
 
 <script>
 import { mapState } from 'vuex';
-import api from '@scripts/api';
 import layoutHeader from '@components/layout-header.vue';
 import layoutFooter from '@components/layout-footer.vue';
 import layoutSidebar from '@components/layout-sidebar.vue';
@@ -22,49 +21,14 @@ export default {
     layoutFooter,
     layoutSidebar,
   },
-  computed: mapState(['navigation', 'isOpenSidebar']),
+  computed: mapState(['isOpenSidebar']),
   created: function() {
-    this.fetchNavigation();
-    this.fetchAds();
-  },
-  methods: {
-    fetchNavigation: function() {
-      if (this.navigation) {
-        return;
-      }
-
-      api.getNavigation().then(response => {
-        this.$store.commit('setNavigation', response.data);
-      });
-    },
-    fetchAds: function() {
-      api.getAds().then(response => {
-        let data = response.data;
-
-        let ads1 = {
-          display: data.ads1.display,
-          content: data.ads1.content,
-          script: data.ads1.script,
-        };
-
-        let ads2 = {
-          display: data.ads2.display,
-          content: data.ads2.content,
-          script: data.ads2.script,
-        };
-
-        let ads3 = {
-          content: data.ads3.content,
-          script: data.ads3.script,
-        };
-
-        this.$store.commit('setAdvertise', { ads1, ads2, ads3 });
-      });
-    },
+    this.$store.dispatch('requestNavigation');
+    this.$store.dispatch('requestAdvertise');
   },
 };
 </script>
 
-<style lang="scss">
+<style>
 
 </style>

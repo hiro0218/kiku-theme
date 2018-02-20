@@ -4,6 +4,7 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 
 import { MODEL_POST, MODEL_ADS } from '@scripts/models';
+import action from './action.js';
 
 export default new Vuex.Store({
   state: {
@@ -47,5 +48,5 @@ export default new Vuex.Store({
   //     return state.navigation;
   //   },
   // },
-  actions: {},
+  actions: action,
 });
