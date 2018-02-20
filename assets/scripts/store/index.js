@@ -78,5 +78,33 @@ export default new Vuex.Store({
           commit('setPostLists', postLists);
         });
     },
+    requestSinglePost({ commit }, route) {
+      const response = route.meta.type === 'post' ? api.getPosts(route.meta.id) : api.getPages(route.meta.id);
+
+      return response.then(response => {
+        let json = response.data;
+        let post = MODEL_POST;
+
+        post.link = json.link;
+        post.title = json.title.rendered;
+        post.date.publish = json.date;
+        post.date.modified =
+          new Date(json.date).toDateString() === new Date(json.modified).toDateString() ? null : json.modified;
+        post.content = json.content.rendered;
+        post.categories = json.categories || post.categories;
+        post.tags = json.tags || post.tags;
+        post.amazon_product = json.amazon_product || post.amazon_product;
+
+        commit('setPost', post);
+      });
+    },
+    requestPostAttach({ commit }, route) {
+      return api.getAttachData(route.meta.id).then(response => {
+        commit('setPostAttach', {
+          relateds: response.data.related || MODEL_POST.attach.relateds,
+          pagers: response.data.pager || MODEL_POST.attach.pagers,
+        });
+      });
+    },
   },
 });
