@@ -7,6 +7,7 @@
         :items-per-page="per_page"
         :boundary-links="true"
         :rotate="true"
+        :max-size="4"
         next-text="Next"
         previous-text="Prev"
         @change="changePage"/>
