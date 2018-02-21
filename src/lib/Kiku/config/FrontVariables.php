@@ -129,6 +129,7 @@ class FrontVariables {
                 $routes[] = [
                     'id'       => $post_id,
                     'type'     => $post_type,
+                    'slug'     => get_post_field('post_name', $post_id),
                     'path'     => '/' . basename(get_permalink()),
                     'title'    => get_the_title(),
                     'template' => $post_type === 'page' ? get_page_template_slug($post_id) : '',
@@ -155,6 +156,7 @@ class FrontVariables {
                 'type'     => $taxonomy,
                 'path'     => $path,
                 'title'    => $name,
+                'slug'     => $term->slug,
                 'template' => '',
             ];
         }

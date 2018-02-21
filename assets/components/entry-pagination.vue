@@ -1,32 +1,18 @@
 <template>
   <div>
-    <nav class="pagination">
-      <ul>
-        <li class="pagination-first" v-if="pagination.label.first">
-          <a :href="pagination.links.first"><span class="icon-first_page"/></a>
-        </li>
-        <li class="pagination-previous" v-if="pagination.label.prev">
-          <a :href="pagination.links.prev"><span class="icon-chevron_left"/></a>
-        </li>
-        <template v-for="(pages, index) in pagination.pages">
-          <template v-if="pagination.label.active == index">
-            <li class="pagination-active" :key="index">
-              <span>{{ pagination.label.active | zeroPadding }}</span>
-            </li>
-          </template>
-          <template v-else>
-            <li :key="index">
-              <a :href="pages.links">{{ index | zeroPadding }}</a>
-            </li>
-          </template>
-        </template>
-        <li class="pagination-next" v-if="pagination.label.next">
-          <a :href="pagination.links.next"><span class="icon-chevron_right"/></a>
-        </li>
-        <li class="pagination-last" v-if="pagination.label.last">
-          <a :href="pagination.links.last"><span class="icon-last_page"/></a>
-        </li>
-      </ul>
+    <nav class="pagination" v-if="requestHeader.total > 0">
+      <uib-pagination
+        v-model="pagination"
+        :total-items="requestHeader.total"
+        :items-per-page="per_page"
+        :boundary-links="true"
+        :rotate="true"
+        :max-size="4"
+        first-text=""
+        next-text=""
+        previous-text=""
+        last-text=""
+        @change="changePage"/>
     </nav>
   </div>
 </template>
@@ -39,112 +25,42 @@ export default {
   data() {
     return {
       pagination: {
-        label: {
-          first: 0,
-          prev: 0,
-          next: 0,
-          last: 0,
-          active: 0,
-        },
-        pages: {},
-        links: {
-          first: '',
-          prev: '',
-          next: '',
-          last: '',
-        },
+        currentPage: parseInt(this.$route.params.page_number || 1, 10),
       },
+      per_page: WP.per_page,
     };
   },
   computed: mapState(['requestHeader']),
-  watch: {
-    'requestHeader.totalpages': function() {
-      this.setPaginationData();
-    },
-  },
   methods: {
-    setPaginationData: function() {
-      var totalpages = this.requestHeader.totalpages;
+    changePage: function() {
+      const basePath = this.getBasePath();
+      const page_number = this.pagination.currentPage || 1;
+      const path = `${basePath}/page/${page_number}/`;
 
-      if (totalpages <= 1) {
-        return;
-      }
-
-      var range = 3;
-      var paged = this.$route.params.page_number === undefined ? 1 : parseInt(this.$route.params.page_number, 10);
-      var ceil = Math.ceil(range / 2);
-      var min = 0;
-      var max = 0;
-      var param = this.getPaginationParam();
-
-      if (totalpages > range) {
-        if (paged <= range) {
-          min = 1;
-          max = range + 1;
-        } else if (paged >= totalpages - ceil) {
-          min = totalpages - range;
-          max = totalpages;
-        } else if (paged >= range && paged < totalpages - ceil) {
-          min = paged - ceil;
-          max = paged + ceil;
-        }
-      } else {
-        min = 1;
-        max = totalpages;
-      }
-
-      var prev = paged - 1;
-      var first = 1;
-      if (first && 1 != paged) {
-        this.pagination.label.first = first;
-        this.pagination.links.first = `${param}/page/${first}/`;
-      }
-      if (prev && 1 != paged) {
-        this.pagination.prev = prev;
-        this.pagination.links.prev = `${param}/page/${prev}/`;
-      }
-
-      if (min && max) {
-        for (var i = min; i <= max; i++) {
-          if (paged == i) {
-            this.pagination.label.active = i;
-          }
-          this.pagination.pages[i] = {
-            links: `${param}/page/${i}/`,
-          };
-        }
-      }
-
-      if (totalpages != paged) {
-        var next = paged + 1;
-        var last = totalpages;
-        if (next) {
-          this.pagination.label.next = next;
-          this.pagination.links.next = `${param}/page/${next}/`;
-        }
-        if (last) {
-          this.pagination.label.last = last;
-          this.pagination.links.last = `${param}/page/${last}/`;
-        }
-      }
+      this.$router.push({
+        path: path,
+        params: { page_number: page_number },
+      });
     },
-    getPaginationParam: function() {
-      if (WP.category_name) {
-        return `/category/${WP.category_name}`;
-      } else if (WP.tag_name) {
-        return `/tag/${WP.tag_name}`;
-      } else if (WP.search) {
-        return `/search/${WP.search}`;
-      } else {
-        return '';
+    getBasePath: function() {
+      let type = this.$route.meta.type;
+      let slug = this.$route.meta.slug;
+
+      if (type) {
+        if (type === 'post_tag') {
+          type = 'tag';
+        }
+        return `/${type}/${slug}`;
       }
+
+      return '';
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.pagination {
+.pagination /deep/ {
   margin-bottom: 1rem;
   user-select: none;
 
@@ -157,43 +73,69 @@ export default {
 
   li {
     display: flex;
-
     & + li {
       margin-left: 0.5rem;
-    }
-
-    @include mobile {
-      &:not(.pagination-first):not(.pagination-next):not(.pagination-previous):not(.pagination-last):not(.pagination-active) {
-        display: none;
-      }
     }
   }
 
   a {
-    &:hover {
-      background: $grey-300;
-    }
-  }
-
-  a,
-  span {
     min-width: 3rem;
     min-height: 3rem;
     border-radius: $radius-base;
     color: $grey-600;
     line-height: 3rem;
     text-align: center;
-
-    &:hover,
-    &:focus {
+    &:hover {
       outline: 0;
+      background: $grey-300;
     }
   }
-}
 
-.pagination-active span {
-  background: $grey-600;
-  color: $white;
-  cursor: default;
+  .active a {
+    background: $grey-600;
+    color: $white;
+    cursor: default;
+  }
+
+  .disabled a {
+    cursor: not-allowed;
+
+    @include mobile {
+      display: none;
+    }
+
+    &:hover {
+      background: none;
+    }
+  }
+
+  .pagination-first a {
+    &::before {
+      content: "\e903";
+      font-family: 'icon';
+    }
+  }
+
+  .pagination-prev a {
+    &::before {
+      content: "\e900";
+      font-family: 'icon';
+    }
+  }
+
+  .pagination-next a {
+    &::before {
+      content: "\e901";
+      font-family: 'icon';
+    }
+  }
+
+  .pagination-last a {
+    &::before {
+      content: "\e908";
+      font-family: 'icon';
+    }
+  }
+
 }
 </style>
