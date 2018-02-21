@@ -8,8 +8,10 @@
         :boundary-links="true"
         :rotate="true"
         :max-size="4"
-        next-text="Next"
-        previous-text="Prev"
+        first-text=""
+        next-text=""
+        previous-text=""
+        last-text=""
         @change="changePage"/>
     </nav>
   </div>
@@ -77,21 +79,15 @@ export default {
   }
 
   a {
-    &:hover {
-      background: $grey-300;
-    }
-  }
-
-  a {
     min-width: 3rem;
     min-height: 3rem;
     border-radius: $radius-base;
     color: $grey-600;
     line-height: 3rem;
     text-align: center;
-    &:hover,
-    &:focus {
+    &:hover {
       outline: 0;
+      background: $grey-300;
     }
   }
 
@@ -100,5 +96,46 @@ export default {
     color: $white;
     cursor: default;
   }
+
+  .disabled a {
+    cursor: not-allowed;
+
+    @include mobile {
+      display: none;
+    }
+
+    &:hover {
+      background: none;
+    }
+  }
+
+  .pagination-first a {
+    &::before {
+      content: "\e903";
+      font-family: 'icon';
+    }
+  }
+
+  .pagination-prev a {
+    &::before {
+      content: "\e900";
+      font-family: 'icon';
+    }
+  }
+
+  .pagination-next a {
+    &::before {
+      content: "\e901";
+      font-family: 'icon';
+    }
+  }
+
+  .pagination-last a {
+    &::before {
+      content: "\e908";
+      font-family: 'icon';
+    }
+  }
+
 }
 </style>
