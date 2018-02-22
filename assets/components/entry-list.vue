@@ -9,9 +9,9 @@
 
     <a :href="post.link" v-for="(post,index) in postLists" :key="index">
       <article class="entry-container">
-        <div class="entry-image" :data-thumbnail-image="post.thumbnail">
+        <div class="entry-image">
           <div class="image-container">
-            <div class="image-sheet"/>
+            <div class="image-sheet" :data-thumbnail-image="post.thumbnail"/>
           </div>
         </div>
         <div class="entry-body">
@@ -36,7 +36,6 @@
 <script>
 import { mapState } from 'vuex';
 import ago from 's-ago';
-import common from '@scripts/module/common';
 
 export default {
   name: 'EntryList',
@@ -49,8 +48,31 @@ export default {
   watch: {
     postLists: function() {
       this.$nextTick(() => {
-        common.setThumbnailImage();
+        this.setThumbnailImage();
       });
+    },
+  },
+  methods: {
+    setThumbnailImage: function() {
+      const imageSheet = document.querySelectorAll('.image-sheet');
+      const length = imageSheet.length;
+
+      for (let i = 0; i < length; i++) {
+        let sheet = imageSheet[i];
+        let imageUrl = sheet.dataset.thumbnailImage;
+        sheet.style.backgroundImage = null;
+
+        if (!imageUrl) {
+          continue;
+        }
+
+        let img = new Image();
+        img.onload = (function(element, url) {
+          element.style.backgroundImage = `url(${url})`;
+        })(sheet, imageUrl);
+        img.src = imageUrl;
+        img = null;
+      }
     },
   },
 };
