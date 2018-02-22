@@ -90,16 +90,11 @@ export default {
         return;
       }
 
-      var target = this.$el.querySelector('.entry-footer');
-      var clientHeight = document.documentElement.clientHeight;
-      var observer = new IntersectionObserver(changes => {
+      const target = this.$el.querySelector('.entry-footer');
+      const observer = new IntersectionObserver(changes => {
         changes.forEach(change => {
-          var rect = change.target.getBoundingClientRect();
-          var isShow =
-            (0 < rect.top && rect.top < clientHeight) ||
-            (0 < rect.bottom && rect.bottom < clientHeight) ||
-            (0 > rect.top && rect.bottom > clientHeight);
-          if (isShow) {
+          let intersectionRect = change.intersectionRect;
+          if (intersectionRect.height * intersectionRect.width > 0) {
             this.requestAttachedData(change.target);
             observer.unobserve(change.target);
           }
