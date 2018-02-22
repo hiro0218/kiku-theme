@@ -1,28 +1,6 @@
 import mediumZoom from 'medium-zoom';
 
 export default {
-  setThumbnailImage() {
-    var container = document.getElementsByClassName('entry-image');
-    var length = container.length;
-    if (length === 0) {
-      return;
-    }
-
-    for (var i = 0; i < length; i += 1) {
-      var imageUrl = container[i].dataset.thumbnailImage;
-      if (!imageUrl) {
-        continue;
-      }
-
-      var sheet = container[i].getElementsByClassName('image-sheet')[0];
-      var img = new Image();
-      img.onload = (function(element, url) {
-        // set background image
-        element.style.backgroundImage = 'url(' + url + ')';
-      })(sheet, imageUrl);
-      img.src = imageUrl;
-    }
-  },
   addExternalLink(entry) {
     var aTags = entry.getElementsByTagName('a');
     var length = aTags.length;
