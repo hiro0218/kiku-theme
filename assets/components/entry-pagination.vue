@@ -111,31 +111,30 @@ export default {
 
   .pagination-first a {
     &::before {
-      content: "\e903";
+      content: '\e903';
       font-family: 'icon';
     }
   }
 
   .pagination-prev a {
     &::before {
-      content: "\e900";
+      content: '\e900';
       font-family: 'icon';
     }
   }
 
   .pagination-next a {
     &::before {
-      content: "\e901";
+      content: '\e901';
       font-family: 'icon';
     }
   }
 
   .pagination-last a {
     &::before {
-      content: "\e908";
+      content: '\e908';
       font-family: 'icon';
     }
   }
-
 }
 </style>
