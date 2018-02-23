@@ -20,7 +20,11 @@ export default {
       }),
       maxAge: 15 * 60 * 1000, // 15 minutes
       key: request => {
-        return request.url + JSON.stringify(request.params);
+        let stringParams = '';
+        if (Object.keys(request.params).length) {
+          stringParams = request.params ? JSON.stringify(request.params) : '';
+        }
+        return request.url + stringParams;
       },
       exclude: {
         query: false,
@@ -79,7 +83,7 @@ export default {
   getAds() {
     var client = this.getInstance();
 
-    return client.get('/wp-json/kiku/v1/advertise/', {
+    return client.get('/wp-json/kiku/v1/advertise', {
       baseURL: '/',
       params: '',
     });
