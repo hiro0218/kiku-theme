@@ -1,7 +1,7 @@
 <template>
   <form method="get" action="/">
     <div class="search-container">
-      <input type="search" id="search-box" class="search-input" name="s" :value="query" placeholder="Search..." required ><!--
+      <input type="search" id="search-box" class="search-input" name="s" :value="$route.params.search_query" placeholder="Search..." required ><!--
    --><label class="icon" for="search-box"><span class="icon-search"/></label>
     </div>
   </form>
@@ -10,11 +10,6 @@
 <script>
 export default {
   name: 'SearchBox',
-  data() {
-    return {
-      query: WP.search,
-    };
-  },
 };
 </script>
 

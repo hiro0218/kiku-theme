@@ -50,7 +50,6 @@ export default {
     this.settings.params = Object.assign(
       {},
       WP.per_page && { per_page: WP.per_page },
-      WP.search && { search: WP.search },
       WP.categories_exclude && { categories_exclude: WP.categories_exclude },
     );
   },
@@ -97,6 +96,7 @@ export default {
         { orderby: 'modified' },
         meta.type === 'post_tag' && meta.id && { tags: meta.id },
         meta.type === 'category' && meta.id && { categories: meta.id },
+        meta.type === 'search' && { search: params.search_query },
         params.page_number && { page: params.page_number },
       ),
     });
