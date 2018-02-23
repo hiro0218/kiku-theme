@@ -56,11 +56,17 @@ routes.push(
     path: '/search/:search_query',
     name: 'search',
     component: entryHome,
+    meta: {
+      type: 'search',
+    },
     children: [
       {
         path: 'page/:page_number',
         name: 'search_paged',
         component: entryHome,
+        meta: {
+          type: 'search',
+        },
       },
     ],
   },

@@ -44,7 +44,7 @@ export default {
     },
     getBasePath: function() {
       let type = this.$route.meta.type;
-      let slug = this.$route.meta.slug;
+      let slug = this.$route.meta.slug || this.$route.params.search_query;
 
       if (type) {
         if (type === 'post_tag') {
