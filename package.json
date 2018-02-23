@@ -24,6 +24,7 @@
     "lint:js": "eslint --ext .js,.vue assets/scripts/* assets/components/*",
     "lint:sass": "sass-lint -c .sass-lint.yml -q -v",
     "format:js": "eslint --fix --ext .js,.vue assets/scripts/* assets/components/*",
+    "format:php": "vendor/bin/phpcbf",
     "php7cc": "vendor/bin/php7cc src/ templates/",
     "test": "yarn run lint -s"
   },
