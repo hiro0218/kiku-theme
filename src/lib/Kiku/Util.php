@@ -8,9 +8,9 @@ class Util {
         $opg_template = "og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# %s: http://ogp.me/ns/%s#";
 
         if (is_singular()) {
-          $ogp_prefix = sprintf($opg_template, 'article', 'article');
+            $ogp_prefix = sprintf($opg_template, 'article', 'article');
         } else {
-          $ogp_prefix = sprintf($opg_template, 'website', 'website');
+            $ogp_prefix = sprintf($opg_template, 'website', 'website');
         }
 
         return $ogp_prefix;

@@ -147,7 +147,7 @@ class FrontVariables {
             'taxonomy' => ['category', 'post_tag']
         ]);
 
-        foreach($query->get_terms() as $term) {
+        foreach ($query->get_terms() as $term) {
             $taxonomy = $term->taxonomy;
             $name = $term->name;
             $path = $taxonomy === 'category' ? '/category/' . $term->slug : '/tag/' . $term->slug;

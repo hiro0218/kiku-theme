@@ -106,29 +106,29 @@ class Entry {
         $arr = [];
 
         if (!empty($categories)) {
-          $parent_ids = [];
+            $parent_ids = [];
 
-          foreach ($categories as $category) {
-            if ($category->parent !== 0) {
-              $parent_ids[] = $category->parent;
+            foreach ($categories as $category) {
+                if ($category->parent !== 0) {
+                    $parent_ids[] = $category->parent;
+                }
             }
-          }
-          foreach ($categories as $category) {
-            if (!in_array($category->term_id, $parent_ids)) {
-              $category_bottom[] = $category->term_id;
+            foreach ($categories as $category) {
+                if (!in_array($category->term_id, $parent_ids)) {
+                    $category_bottom[] = $category->term_id;
+                }
             }
-          }
         }
 
         if (!empty($category_bottom)) {
-          $ancestors = array_reverse(get_ancestors($category_bottom[0], 'category'));
-          $ancestors[] = $category_bottom[0];
-          foreach ($ancestors as $ancestor) {
-            $arr[] = [
+            $ancestors = array_reverse(get_ancestors($category_bottom[0], 'category'));
+            $ancestors[] = $category_bottom[0];
+            foreach ($ancestors as $ancestor) {
+                $arr[] = [
                 "link" => get_category_link($ancestor),
                 "name" => get_cat_name($ancestor)
-            ];
-          }
+                ];
+            }
         }
 
         return $arr;
@@ -199,14 +199,14 @@ class Entry {
     }
 
     public function get_post_date($query) {
-      global $post;
+        global $post;
 
-      $date = '';
-      $loop = get_posts($query);
-      if (!empty($loop)) {
-          $date = $loop[0]->post_date;
-      }
+        $date = '';
+        $loop = get_posts($query);
+        if (!empty($loop)) {
+            $date = $loop[0]->post_date;
+        }
 
-      return $date;
+        return $date;
     }
 }

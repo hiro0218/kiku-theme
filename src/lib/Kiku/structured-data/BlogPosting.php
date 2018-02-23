@@ -45,26 +45,26 @@ class BlogPosting {
                     ]
                 ];
                 $args = array_merge($args, $images_args);
-            }
+        }
 
             $site_icon = esc_url(get_site_icon_url(512));
-            if (!empty($site_icon)) {
-                $publisher_args = [
-                    "publisher" => [
-                        "@type" => "Organization",
-                        "name"  => BLOG_NAME,
-                        "logo"  => [
-                            "@type"  => "ImageObject",
-                            "url"    => $site_icon,
-                            "width"  => "512",
-                            "height" => "512"
-                            ]
-                            ]
-                        ];
+        if (!empty($site_icon)) {
+            $publisher_args = [
+            "publisher" => [
+                "@type" => "Organization",
+                "name"  => BLOG_NAME,
+                "logo"  => [
+                    "@type"  => "ImageObject",
+                    "url"    => $site_icon,
+                    "width"  => "512",
+                    "height" => "512"
+                    ]
+                    ]
+                ];
 
-                        $args = array_merge($args, $publisher_args);
-                    }
+                $args = array_merge($args, $publisher_args);
+        }
 
                     return $args;
-                }
-            }
+    }
+}
