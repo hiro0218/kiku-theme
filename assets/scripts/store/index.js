@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import cloneDeep from 'clone-deep';
 
 Vue.use(Vuex);
 
@@ -16,8 +17,8 @@ export default new Vuex.Store({
     },
     pageTitle: WP.page_title,
     postLists: [],
-    post: MODEL_POST,
-    advertise: MODEL_ADS,
+    post: cloneDeep(MODEL_POST),
+    advertise: cloneDeep(MODEL_ADS),
   },
   mutations: {
     setNavigation(state, payload) {
@@ -36,8 +37,8 @@ export default new Vuex.Store({
       state.post = payload;
     },
     setPostAttach(state, { relateds, pagers }) {
-      state.post.attach.relateds = relateds;
-      state.post.attach.pagers = pagers;
+      state.post.attach.relateds = relateds || cloneDeep(MODEL_POST.attach.relateds);
+      state.post.attach.pagers = pagers || cloneDeep(MODEL_POST.attach.pagers);
     },
     setAdvertise(state, { ads1, ads2, ads3 }) {
       state.advertise = Object.assign(MODEL_ADS, ads1 && { ads1 }, ads2 && { ads2 }, ads3 && { ads3 });

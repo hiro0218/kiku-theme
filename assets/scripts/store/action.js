@@ -1,3 +1,4 @@
+import cloneDeep from 'clone-deep';
 import api from '@scripts/api';
 import { MODEL_POST } from '@scripts/models';
 
@@ -65,7 +66,7 @@ const action = {
 
     return response.then(response => {
       let json = response.data;
-      let post = MODEL_POST;
+      let post = cloneDeep(MODEL_POST);
 
       post.link = json.link;
       post.title = json.title.rendered;
@@ -81,10 +82,11 @@ const action = {
     });
   },
   requestPostAttach({ commit }, route) {
+    const POST = cloneDeep(MODEL_POST);
     return api.getAttachData(route.meta.id).then(response => {
       commit('setPostAttach', {
-        relateds: response.data.related || MODEL_POST.attach.relateds,
-        pagers: response.data.pager || MODEL_POST.attach.pagers,
+        relateds: response.data.related || POST.attach.relateds,
+        pagers: response.data.pager || POST.attach.pagers,
       });
     });
   },
