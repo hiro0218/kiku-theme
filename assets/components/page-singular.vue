@@ -58,26 +58,29 @@ export default {
     advertise,
   },
   computed: mapState(['post', 'advertise']),
+  watch: {
+    $route: function() {
+      this.$store.dispatch('requestSinglePost', this.$route).then(() => this.updateAppearance());
+    },
+  },
   created: function() {
     this.requestPostData();
   },
   methods: {
     requestPostData: function() {
       this.$store.dispatch('requestSinglePost', this.$route).then(() => {
-        this.$nextTick().then(() => {
-          var element = this.$el.querySelector('.entry-content');
-          mokuji.init(element);
-          common.addExternalLink(element);
-          common.setTableContainer(element);
-          common.zoomImage(element);
-          Prism.highlightAll();
-          this.viewAttachedInfo();
-          this.insertArticleAds(element.querySelector('#ads1'));
-        });
+        this.$nextTick().then(() => this.updateAppearance());
       });
     },
-    requestAttachedData: function(target) {
-      this.$store.dispatch('requestPostAttach', this.$route);
+    updateAppearance: function() {
+      const element = this.$el.querySelector('.entry-content');
+      mokuji.init(element);
+      common.addExternalLink(element);
+      common.setTableContainer(element);
+      common.zoomImage(element);
+      Prism.highlightAll();
+      this.viewAttachedInfo();
+      this.insertArticleAds(element.querySelector('#ads1'));
     },
     insertArticleAds: function(elementAds) {
       if (elementAds && this.advertise.ads1.display.includes(this.$route.meta.type)) {
@@ -95,7 +98,7 @@ export default {
         changes.forEach(change => {
           let intersectionRect = change.intersectionRect;
           if (intersectionRect.height * intersectionRect.width > 0) {
-            this.requestAttachedData(change.target);
+            this.$store.dispatch('requestPostAttach', this.$route);
             observer.unobserve(change.target);
           }
         });
