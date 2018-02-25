@@ -45,7 +45,7 @@ import entryTime from '@components/entry-time.vue';
 import advertise from '@components/advertise.vue';
 
 export default {
-  name: 'EntrySingular',
+  name: 'PageSingular',
   components: {
     amazonProduct,
     entryBreadcrumb,

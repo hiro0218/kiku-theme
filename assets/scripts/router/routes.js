@@ -1,5 +1,5 @@
-import entryHome from '@components/entry-home.vue';
-import entrySingular from '@components/entry-singular.vue';
+import pageHome from '@components/page-home.vue';
+import pageSingular from '@components/page-singular.vue';
 
 let routes = [];
 
@@ -18,10 +18,10 @@ for (let key in WP.routes) {
   };
 
   if (route.type === 'post' || route.type === 'page') {
-    temp.component = entrySingular;
+    temp.component = pageSingular;
   } else {
     // category, post_tag, etc
-    temp.component = entryHome;
+    temp.component = pageHome;
     temp.children = [
       {
         path: 'page/:page_number',
@@ -31,7 +31,7 @@ for (let key in WP.routes) {
           type: route.type,
           slug: route.slug,
         },
-        component: entryHome,
+        component: pageHome,
       },
     ];
   }
@@ -43,19 +43,19 @@ routes.push(
   {
     path: '/',
     name: 'home',
-    component: entryHome,
+    component: pageHome,
     children: [
       {
         path: 'page/:page_number',
         name: 'paged',
-        component: entryHome,
+        component: pageHome,
       },
     ],
   },
   {
     path: '/search/:search_query',
     name: 'search',
-    component: entryHome,
+    component: pageHome,
     meta: {
       type: 'search',
     },
@@ -63,7 +63,7 @@ routes.push(
       {
         path: 'page/:page_number',
         name: 'search_paged',
-        component: entryHome,
+        component: pageHome,
         meta: {
           type: 'search',
         },
@@ -72,7 +72,7 @@ routes.push(
   },
   {
     path: '*',
-    component: entryHome,
+    component: pageHome,
   },
 );
 

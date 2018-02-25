@@ -13,7 +13,7 @@ import advertise from '@components/advertise.vue';
 import entryPagination from '@components/entry-pagination.vue';
 
 export default {
-  name: 'EntryHome',
+  name: 'PageHome',
   components: {
     entryList,
     advertise,
