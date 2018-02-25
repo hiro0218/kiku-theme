@@ -7,6 +7,7 @@ const CleanPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyGlobsPlugin = require('copy-globs-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 
 const config = require('./config');
 const { jsLoaders, cssLoaders, sassLoaders } = require('./loader.conf');
@@ -174,6 +175,7 @@ let webpackConfig = {
       },
     }),
     new FriendlyErrorsWebpackPlugin(),
+    new HardSourceWebpackPlugin(),
   ],
 };
 
