@@ -74,7 +74,7 @@ class Entry {
                     continue;
                 }
                 $arr[] = [
-                    "uri"   => get_the_permalink(),
+                    "uri"   => '/' . basename(get_permalink()),
                     "title" => $title,
                     "description" => \Kiku\Util::get_excerpt_content(),
                     "image" => $Image->get_entry_image(get_the_ID(), false),
@@ -181,7 +181,7 @@ class Entry {
         if (!empty($prev_post)) {
             $pager['prev'] = [
                 'id' => $prev_post->ID,
-                'url' => get_permalink($prev_post->ID),
+                'url' => '/' . basename(get_permalink($prev_post->ID)),
                 'title' => $prev_post->post_title,
             ];
         }
@@ -190,7 +190,7 @@ class Entry {
         if (!empty($next_post)) {
             $pager['next'] = [
                 'id' => $next_post->ID,
-                'url' => get_permalink($next_post->ID),
+                'url' => '/' . basename(get_permalink($next_post->ID)),
                 'title' => $next_post->post_title,
             ];
         }
