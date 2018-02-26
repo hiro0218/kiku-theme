@@ -7,6 +7,12 @@ export default new VueRouter({
   mode: 'history',
   routes: routes,
   scrollBehavior(to, from, savedPosition) {
+    if (to.hash) {
+      return {
+        selector: to.hash,
+      };
+    }
+
     if (savedPosition) {
       return savedPosition;
     } else {
