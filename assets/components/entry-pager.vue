@@ -1,18 +1,18 @@
 <template>
   <div class="pager" v-cloak>
     <div class="pager-container">
-      <a v-if="pagers.prev" :href="pagers.prev.url" :title="pagers.prev.title" class="pager-prev">
+      <router-link v-if="pagers.prev" :to="pagers.prev.url" :title="pagers.prev.title" class="pager-prev">
         <span class="pager-label">
           <span class="pager-icon icon-chevron_left"/>previous
         </span>
         <span class="pager-title">{{ pagers.prev.title }}</span>
-      </a>
-      <a v-if="pagers.next" :href="pagers.next.url" :title="pagers.next.title" class="pager-next">
+      </router-link>
+      <router-link v-if="pagers.next" :to="pagers.next.url" :title="pagers.next.title" class="pager-next">
         <span class="pager-label">
           next<span class="pager-icon icon-chevron_right"/>
         </span>
         <span class="pager-title">{{ pagers.next.title }}</span>
-      </a>
+      </router-link>
     </div>
   </div>
 </template>

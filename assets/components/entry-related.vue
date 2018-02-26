@@ -4,13 +4,13 @@
       <h2 class="related-heading">Related Posts</h2>
       <div class="entry-related">
         <div class="related-section" v-for="(related,index) in relateds" :key="index">
-          <a :href="related.uri">
+          <router-link :to="related.uri">
             <div class="related-image">
               <div class="image-sheet" :style="related.image ? 'background-image: url('+ related.image +')' : ''"/>
             </div>
             <div class="related-title" v-html="$options.filters.escapeBrackets(related.title)"/>
             <div class="related-description" v-html="$options.filters.escapeBrackets(related.description)"/>
-          </a>
+          </router-link>
         </div>
       </div>
     </div>
