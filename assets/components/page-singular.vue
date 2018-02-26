@@ -59,7 +59,7 @@ export default {
   },
   computed: mapState(['post', 'advertise']),
   watch: {
-    $route: function() {
+    '$route.path': function() {
       this.$store.dispatch('requestSinglePost', this.$route).then(() => this.updateAppearance());
     },
   },
