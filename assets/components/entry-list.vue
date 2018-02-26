@@ -7,7 +7,7 @@
       </div>
     </template>
 
-    <a :href="post.link" v-for="(post,index) in postLists" :key="index">
+    <router-link :to="post.link" v-for="(post,index) in postLists" :key="index">
       <article class="entry-container">
         <div class="entry-image">
           <div class="image-container">
@@ -28,7 +28,7 @@
           </footer>
         </div>
       </article>
-    </a>
+    </router-link>
 
   </div>
 </template>
