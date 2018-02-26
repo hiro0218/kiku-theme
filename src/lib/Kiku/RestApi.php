@@ -29,8 +29,11 @@ class REST_API {
         return $endpoints;
     }
 
-    // To decimate API information.
-    public function disable_api_data($response, $post, $request) {
+    public function adjusted_api_data($response, $post, $request) {
+        // permalink to basename
+        $response->data['link'] = '/' . basename($response->data['link']);
+
+        // To decimate API information.
         unset($response->data['date_gmt']);
         unset($response->data['modified_gmt']);
         unset($response->data['guid']);
@@ -254,8 +257,8 @@ class REST_API {
 $REST_API = new REST_API();
 
 add_filter('rest_endpoints', [$REST_API, 'disable_api_endpoint'], 10, 3);
-add_filter('rest_prepare_post', [$REST_API, 'disable_api_data'], 10, 3);
-add_filter('rest_prepare_page', [$REST_API, 'disable_api_data'], 10, 3);
+add_filter('rest_prepare_post', [$REST_API, 'adjusted_api_data'], 10, 3);
+add_filter('rest_prepare_page', [$REST_API, 'adjusted_api_data'], 10, 3);
 add_filter('rest_pre_dispatch', [$REST_API, 'pre_dispatch'], 0, 3);
 add_action('rest_api_init', [$REST_API, 'rest_api_init']);
 add_action('transition_post_status', [$REST_API, 'delete_all_transients'], 10, 3);
