@@ -58,10 +58,6 @@ class FrontVariables {
     }
 
     private function is_shared() {
-        if (!is_singular()) {
-            return null;
-        }
-
         return [
             'twitter' => (boolean) get_option('kiku_share_btn_twitter'),
             'facebook' => (boolean) get_option('kiku_share_btn_facebook'),
