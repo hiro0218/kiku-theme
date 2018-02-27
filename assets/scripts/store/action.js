@@ -1,8 +1,18 @@
 import cloneDeep from 'clone-deep';
 import api from '@scripts/api';
+import { wait } from '@scripts/utils';
 import { MODEL_POST } from '@scripts/models';
 
 const action = {
+  loading({ commit }, flag) {
+    if (flag) {
+      commit('changeLoading', flag);
+      return;
+    }
+    wait().then(() => {
+      commit('changeLoading', flag);
+    });
+  },
   requestNavigation({ commit }) {
     api.getNavigation().then(response => {
       commit('setNavigation', response.data);
@@ -32,7 +42,9 @@ const action = {
       commit('setAdvertise', { ads1, ads2, ads3 });
     });
   },
-  requestPostList({ commit }, route) {
+  requestPostList({ commit, dispatch }, route) {
+    dispatch('loading', true);
+
     return api
       .getPostList({ meta: route.meta, params: route.params })
       .then(response => {
@@ -59,9 +71,12 @@ const action = {
         }
 
         commit('setPostLists', postLists);
+        dispatch('loading', false);
       });
   },
-  requestSinglePost({ commit }, route) {
+  requestSinglePost({ commit, dispatch }, route) {
+    dispatch('loading', true);
+
     const response = route.meta.type === 'post' ? api.getPosts(route.meta.id) : api.getPages(route.meta.id);
 
     return response.then(response => {
@@ -79,6 +94,7 @@ const action = {
       post.amazon_product = json.amazon_product || post.amazon_product;
 
       commit('setPost', post);
+      dispatch('loading', false);
     });
   },
   requestPostAttach({ commit }, route) {

@@ -1,5 +1,5 @@
 <template>
-  <div class="contents" :class="{ 'open-drawer': isOpenSidebar }">
+  <div :class="{ 'isLoading' : isLoading, 'open-drawer': isOpenSidebar }" class="contents">
     <layout-header/>
     <main class="main-container">
       <router-view/>
@@ -21,7 +21,7 @@ export default {
     layoutFooter,
     layoutSidebar,
   },
-  computed: mapState(['isOpenSidebar']),
+  computed: mapState(['isLoading', 'isOpenSidebar']),
   created: function() {
     this.$store.dispatch('requestNavigation');
     this.$store.dispatch('requestAdvertise');
