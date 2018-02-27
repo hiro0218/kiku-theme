@@ -3,7 +3,7 @@ import routes from './routes.js';
 
 Vue.use(VueRouter);
 
-export default new VueRouter({
+const router = new VueRouter({
   mode: 'history',
   routes: routes,
   scrollBehavior(to, from, savedPosition) {
@@ -20,3 +20,5 @@ export default new VueRouter({
     }
   },
 });
+
+export default router;
