@@ -5,7 +5,6 @@
     ],
     "main": [
       "./scripts/app.js",
-      "./scripts/prism.js",
       "./styles/reset.scss",
       "./styles/main.scss"
     ],
