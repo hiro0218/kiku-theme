@@ -25,7 +25,6 @@
     "WP": true,
     "axios": true,
     "Vue": true,
-    "NProgress": true,
     "Prism": true
   },
   "rules": {

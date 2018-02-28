@@ -139,7 +139,6 @@ let webpackConfig = {
     new webpack.ProvidePlugin({
       axios: 'axios',
       Vue: ['vue/dist/vue.esm.js', 'default'],
-      NProgress: 'nprogress/nprogress.js',
     }),
     new CleanPlugin([config.paths.dist], {
       root: config.paths.root,
