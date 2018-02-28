@@ -11,6 +11,7 @@ export default new Vuex.Store({
   state: {
     navigation: null,
     isOpenSidebar: false,
+    isLoading: true,
     requestHeader: {
       total: -1,
       totalpages: -1,
@@ -21,6 +22,9 @@ export default new Vuex.Store({
     advertise: cloneDeep(MODEL_ADS),
   },
   mutations: {
+    changeLoading(state, payload) {
+      state.isLoading = payload;
+    },
     setNavigation(state, payload) {
       state.navigation = payload;
     },

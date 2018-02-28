@@ -33,19 +33,6 @@ export default {
 
     this.settings.adapter = cache.adapter;
   },
-  setupProgress() {
-    // setupUpdateProgress
-    axios.defaults.onDownloadProgress = e => {
-      const percentage = Math.floor(e.loaded * 1.0) / e.total;
-      NProgress.set(percentage);
-    };
-
-    // setupStopProgress
-    axios.interceptors.response.use(response => {
-      NProgress.done(true);
-      return response;
-    });
-  },
   preparedParams() {
     this.settings.params = Object.assign(
       {},
@@ -55,7 +42,6 @@ export default {
   },
   getInstance() {
     if (!this.api) {
-      this.setupProgress();
       this.preparedParams();
       this.setupCacheAdapter();
       this.api = axios.create(this.settings);

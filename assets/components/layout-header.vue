@@ -29,7 +29,7 @@ export default {
   computed: mapState(['navigation']),
   mounted: function() {
     headerScroll.setScrollableHeader('.header-navigation', {
-      topOffset: 100,
+      topOffset: 0,
     });
   },
 };

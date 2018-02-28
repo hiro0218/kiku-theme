@@ -1,11 +1,12 @@
 <template>
-  <div class="contents" :class="{ 'open-drawer': isOpenSidebar }">
+  <div :class="{ 'open-drawer': isOpenSidebar }" class="contents">
     <layout-header/>
     <main class="main-container">
       <router-view/>
     </main>
     <layout-footer/>
     <layout-sidebar/>
+    <loading v-if="isLoading"/>
   </div>
 </template>
 
@@ -14,14 +15,16 @@ import { mapState } from 'vuex';
 import layoutHeader from '@components/layout-header.vue';
 import layoutFooter from '@components/layout-footer.vue';
 import layoutSidebar from '@components/layout-sidebar.vue';
+import loading from '@components/loading.vue';
 
 export default {
   components: {
     layoutHeader,
     layoutFooter,
     layoutSidebar,
+    loading,
   },
-  computed: mapState(['isOpenSidebar']),
+  computed: mapState(['isLoading', 'isOpenSidebar']),
   created: function() {
     this.$store.dispatch('requestNavigation');
     this.$store.dispatch('requestAdvertise');
