@@ -1,4 +1,4 @@
-import cloneDeep from 'clone-deep';
+import { cloneDeep } from 'lodash-es';
 import api from '@scripts/api';
 import { wait } from '@scripts/utils';
 import { MODEL_POST } from '@scripts/models';

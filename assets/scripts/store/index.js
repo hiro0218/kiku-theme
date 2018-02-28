@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import cloneDeep from 'clone-deep';
+import { cloneDeep } from 'lodash-es';
 
 Vue.use(Vuex);
 
