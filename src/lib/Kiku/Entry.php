@@ -160,7 +160,7 @@ class Entry {
         $i = 0;
         foreach ( $tags as $tag ) {
             $arr[$i] = [
-                "link"  => get_tag_link($tag->term_id),
+                "link" => \Kiku\Util::base_path(get_tag_link($tag->term_id)),
                 "name" => $tag->name,
             ];
             $i++;

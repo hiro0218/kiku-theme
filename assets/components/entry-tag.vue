@@ -1,8 +1,8 @@
 <template>
-  <div class="entry-tag" v-cloak v-if="tags.length !== 0">
+  <div v-cloak v-if="tags.length !== 0" class="entry-tag">
     <ul>
       <li v-for="(tag, index) in tags" :key="index">
-        <a :href="tag.link" itemprop="keywords">{{ tag.name }}</a>
+        <router-link :to="tag.link" itemprop="keywords">{{ tag.name }}</router-link>
       </li>
     </ul>
   </div>
