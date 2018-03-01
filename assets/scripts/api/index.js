@@ -1,5 +1,6 @@
 import localforage from 'localforage';
 import { setupCache } from 'axios-cache-adapter';
+import { cloneDeep } from 'lodash-es';
 
 export default {
   api: null,
@@ -75,10 +76,11 @@ export default {
   },
   getPostList({ meta, params }) {
     var client = this.getInstance();
+    const defaultParams = cloneDeep(this.settings.params);
 
     return client.get('/posts/?list', {
       params: Object.assign(
-        this.settings.params,
+        defaultParams,
         { orderby: 'modified' },
         meta.type === 'post_tag' && meta.id && { tags: meta.id },
         meta.type === 'category' && meta.id && { categories: meta.id },
