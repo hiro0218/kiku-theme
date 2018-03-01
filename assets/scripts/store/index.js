@@ -16,7 +16,6 @@ export default new Vuex.Store({
       total: -1,
       totalpages: -1,
     },
-    pageTitle: WP.page_title,
     postLists: [],
     post: cloneDeep(MODEL_POST),
     advertise: cloneDeep(MODEL_ADS),

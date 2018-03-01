@@ -7,7 +7,6 @@ class FrontVariables {
     // Global javaScript variables
     public function output_variables() {
         $vars = [
-            'page_title' => $this->get_page_title(),
             'per_page' => $this->get_per_page(),
             'categories_exclude' => $this->get_categories_exclude(),
             'is_preview' => is_preview(),
@@ -21,25 +20,6 @@ class FrontVariables {
         echo '<script>';
         echo 'var WP = '. $vars;
         echo '</script>'. PHP_EOL;
-    }
-
-    private function get_page_title() {
-        if (is_home()) {
-            if ($home = get_option('page_for_posts', true)) {
-                return get_the_title($home);
-            }
-            return __('Recent Posts');
-        }
-        if (is_archive()) {
-            return get_the_archive_title();
-        }
-        if (is_search()) {
-            return sprintf(__('Search results for &#8220;%s&#8221;'), get_search_query());
-        }
-        if (is_404()) {
-            return __('Page not found');
-        }
-        return get_the_title();
     }
 
     private function get_per_page() {

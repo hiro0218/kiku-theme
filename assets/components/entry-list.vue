@@ -44,7 +44,30 @@ export default {
       return ago(new Date(date));
     },
   },
-  computed: mapState(['requestHeader', 'pageTitle', 'postLists']),
+  computed: {
+    ...mapState({
+      requestHeader: 'requestHeader',
+      postLists: 'postLists',
+    }),
+    pageTitle() {
+      let type = this.$route.meta.type;
+      let slug = this.$route.meta.slug || this.$route.params.search_query;
+
+      // archive
+      if (type === 'category') {
+        return `Category: ${decodeURI(slug)}`;
+      }
+      if (type === 'post_tag') {
+        return `Tag: ${decodeURI(slug)}`;
+      }
+      // search
+      if (type === 'search') {
+        return `Search results: &#8220${decodeURI(slug)}&#8221`;
+      }
+
+      return 'Recent Posts';
+    },
+  },
   watch: {
     postLists: function() {
       this.$nextTick(() => {
