@@ -131,7 +131,9 @@ class Util {
         return $base_url;
     }
 
-
+    public static function base_path($path) {
+        return '/'. str_replace(BLOG_URL, '', $path);
+    }
 
 
     /**
