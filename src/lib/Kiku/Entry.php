@@ -125,8 +125,8 @@ class Entry {
             $ancestors[] = $category_bottom[0];
             foreach ($ancestors as $ancestor) {
                 $arr[] = [
-                "link" => get_category_link($ancestor),
-                "name" => get_cat_name($ancestor)
+                    "link" => \Kiku\Util::base_path(get_category_link($ancestor)),
+                    "name" => get_cat_name($ancestor)
                 ];
             }
         }
@@ -141,7 +141,7 @@ class Entry {
         if (!empty($categories)) {
             $category = $categories[0];
             $arr[] = [
-                "link" => get_category_link($category->cat_ID),
+                "link" => \Kiku\Util::base_path(get_category_link($category->cat_ID)),
                 "name" => esc_html($category->cat_name),
             ];
         }
