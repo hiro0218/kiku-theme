@@ -13,6 +13,7 @@ for (let key in WP.routes) {
     meta: {
       id: route.id,
       type: route.type,
+      title: route.title,
       slug: route.slug,
     },
   };
@@ -29,6 +30,7 @@ for (let key in WP.routes) {
         meta: {
           id: route.id,
           type: route.type,
+          title: route.title,
           slug: route.slug,
         },
         component: pageHome,

@@ -51,18 +51,18 @@ export default {
     }),
     pageTitle() {
       let type = this.$route.meta.type;
-      let slug = this.$route.meta.slug || this.$route.params.search_query;
+      let title = this.$route.meta.title || this.$route.params.search_query;
 
       // archive
       if (type === 'category') {
-        return `Category: ${decodeURI(slug)}`;
+        return `Category: ${title}`;
       }
       if (type === 'post_tag') {
-        return `Tag: ${decodeURI(slug)}`;
+        return `Tag: ${title}`;
       }
       // search
       if (type === 'search') {
-        return `Search results: &#8220${decodeURI(slug)}&#8221`;
+        return `Search results: &#8220${title}&#8221`;
       }
 
       return 'Recent Posts';
