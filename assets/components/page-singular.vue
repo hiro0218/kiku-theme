@@ -15,7 +15,7 @@
           <amazon-product :amazon_product="post.amazon_product"/>
           <footer class="entry-footer">
             <entry-tag :tags="post.tags"/>
-            <entry-share :title="post.title" :link="post.link"/>
+            <entry-share :title="post.title"/>
             <entry-pager :pagers="post.attach.pagers"/>
           </footer>
         </template>

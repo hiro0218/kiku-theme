@@ -3,7 +3,7 @@
     <template v-if="is_display.twitter">
       <a href="javascript:void(0)" class="btn-twitter"
          title="Share on Twitter"
-         :data-url="twitter_url"
+         :data-url="twitter_url()"
          data-width="620" data-height="310" @click="openWindows">
         <span class="icon-twitter"/>
       </a>
@@ -11,7 +11,7 @@
     <template v-if="is_display.facebook">
       <a href="javascript:void(0)" class="btn-facebook"
          title="Share on Facebook"
-         :data-url="facebook_url"
+         :data-url="facebook_url()"
          data-width="560" data-height="550" @click="openWindows">
         <span class="icon-facebook"/>
       </a>
@@ -19,7 +19,7 @@
     <template v-if="is_display.hatena">
       <a :href="hatena_url" class="hatena-bookmark-button btn-hatena"
          title="Share on LINE"
-         :data-url="hatena_url"
+         :data-url="hatena_url()"
          :data-hatena-bookmark-title="title"
          data-hatena-bookmark-layout="simple">
         <span class="icon-hatena"/>
@@ -28,7 +28,7 @@
     <template v-if="is_display.line">
       <a href="javascript:void(0)" class="btn-line"
          title="Share on LINE"
-         :data-url="line_url"
+         :data-url="line_url()"
          data-width="560" data-height="550" @click="openWindows">
         <span class="icon-line"/>
       </a>
@@ -45,29 +45,16 @@ export default {
       default: '',
       required: true,
     },
-    link: {
-      type: String,
-      default: '',
-      required: true,
-    },
   },
   data() {
     return {
       is_display: WP.is_shared,
+      link: location.href,
     };
   },
-  computed: {
-    twitter_url: function() {
-      return `https://twitter.com/intent/tweet?url=${this.link}&text=${this.title}`;
-    },
-    facebook_url: function() {
-      return `https://www.facebook.com/sharer/sharer.php?u=${this.link}`;
-    },
-    hatena_url: function() {
-      return `http://b.hatena.ne.jp/entry/${this.link}`;
-    },
-    line_url: function() {
-      return `https://lineit.line.me/share/ui?url=${this.link}`;
+  watch: {
+    '$route.path': function() {
+      this.link = location.href;
     },
   },
   mounted() {
@@ -80,6 +67,18 @@ export default {
     });
   },
   methods: {
+    twitter_url: function() {
+      return `https://twitter.com/intent/tweet?url=${this.link}&text=${this.title}`;
+    },
+    facebook_url: function() {
+      return `https://www.facebook.com/sharer/sharer.php?u=${this.link}`;
+    },
+    hatena_url: function() {
+      return `http://b.hatena.ne.jp/entry/${this.link}`;
+    },
+    line_url: function() {
+      return `https://lineit.line.me/share/ui?url=${this.link}`;
+    },
     openWindows(e) {
       const target = e.target;
       const data = target.dataset;
