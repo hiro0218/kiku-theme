@@ -23,16 +23,10 @@ class FrontVariables {
     }
 
     private function get_per_page() {
-        if (is_singular()) {
-            return null;
-        }
         return (int)get_option('posts_per_page');
     }
 
     private function get_categories_exclude() {
-        if (!is_front_page()) {
-            return null;
-        }
         $exclude_category = (int)get_option('kiku_exclude_category_frontpage');
         return $exclude_category ? $exclude_category : 0;
     }
