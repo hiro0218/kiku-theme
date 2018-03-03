@@ -24,7 +24,21 @@ export default {
     layoutSidebar,
     loading,
   },
-  computed: mapState(['isLoading', 'isOpenSidebar']),
+  computed: mapState(['isLoading', 'isOpenSidebar', 'navigation']),
+  watch: {
+    '$route': function (to, from) {
+      if (!window.ga) {
+        return;
+      }
+      if (to.path !== from.path) {
+        let title = to.meta.title || this.navigation.site.name;
+        // Google Analytics
+        window.ga('set', 'title', title);
+        window.ga('set', 'page', to.path);
+        window.ga('send', 'pageview');
+      }
+    }
+  },
   created: function() {
     this.$store.dispatch('requestNavigation');
     this.$store.dispatch('requestAdvertise');
