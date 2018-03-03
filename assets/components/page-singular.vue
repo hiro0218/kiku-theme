@@ -25,7 +25,6 @@
     <template v-if="$route.meta.type === 'post'">
       <entry-related :relateds="post.attach.relateds"/>
     </template>
-    <entry-breadcrumb :title="post.title" :categories="post.categories"/>
   </div>
 </template>
 
@@ -35,7 +34,6 @@ import mokuji from '@scripts/module/mokuji';
 import common from '@scripts/module/common';
 
 import amazonProduct from '@components/amazon-product.vue';
-import entryBreadcrumb from '@components/entry-breadcrumb.vue';
 import entryCategory from '@components/entry-category.vue';
 import entryPager from '@components/entry-pager.vue';
 import entryRelated from '@components/entry-related.vue';
@@ -48,7 +46,6 @@ export default {
   name: 'PageSingular',
   components: {
     amazonProduct,
-    entryBreadcrumb,
     entryCategory,
     entryPager,
     entryRelated,
