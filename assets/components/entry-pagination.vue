@@ -25,12 +25,17 @@ export default {
   data() {
     return {
       pagination: {
-        currentPage: parseInt(this.$route.params.page_number || 1, 10),
+        currentPage: 1,
       },
       per_page: WP.per_page,
     };
   },
   computed: mapState(['requestHeader']),
+  watch: {
+    '$route.path': function() {
+      this.pagination.currentPage = parseInt(this.$route.params.page_number || 1, 10);
+    }
+  },
   methods: {
     changePage: function() {
       const basePath = this.getBasePath();

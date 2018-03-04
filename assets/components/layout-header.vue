@@ -3,7 +3,7 @@
     <header class="header-navigation">
       <div class="container" v-if="navigation">
         <div class="header-title">
-          <a :href="navigation.site.url">{{ navigation.site.name }}</a>
+          <router-link :to="navigation.site.base_path">{{ navigation.site.name }}</router-link>
         </div>
         <div class="header-menu">
           <search-box />
