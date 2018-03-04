@@ -4,7 +4,7 @@ import { cloneDeep } from 'lodash-es';
 
 Vue.use(Vuex);
 
-import { MODEL_POST, MODEL_ADS } from '@scripts/models';
+import { MODEL_POST, MODEL_POST_LIST, MODEL_REQUEST_HEADER, MODEL_ADS } from '@scripts/models';
 import action from './action.js';
 
 export default new Vuex.Store({
@@ -12,11 +12,8 @@ export default new Vuex.Store({
     navigation: null,
     isOpenSidebar: false,
     isLoading: true,
-    requestHeader: {
-      total: -1,
-      totalpages: -1,
-    },
-    postLists: [],
+    requestHeader: cloneDeep(MODEL_REQUEST_HEADER),
+    postLists: cloneDeep(MODEL_POST_LIST),
     post: cloneDeep(MODEL_POST),
     advertise: cloneDeep(MODEL_ADS),
   },

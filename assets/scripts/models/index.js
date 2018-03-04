@@ -15,6 +15,13 @@ export const MODEL_POST = {
   },
 };
 
+export const MODEL_POST_LIST = [];
+
+export const MODEL_REQUEST_HEADER = {
+  total: -1,
+  totalpages: -1,
+};
+
 export const MODEL_ADS = {
   ads1: {
     display: [],
