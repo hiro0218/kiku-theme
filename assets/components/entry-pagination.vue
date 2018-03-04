@@ -38,13 +38,18 @@ export default {
   },
   methods: {
     changePage: function() {
-      const basePath = this.getBasePath();
-      const page_number = this.pagination.currentPage || 1;
-      const path = `${basePath}/page/${page_number}/`;
+      let basePath = this.getBasePath();
+      let pageNumber = this.pagination.currentPage || 1;
+      let pagePath = `page/${pageNumber}`;
+      let path = `${basePath}/`;
+
+      if (pagePath !== 'page/1') {
+        path = `${basePath}/${pagePath}/`;
+      }
 
       this.$router.push({
         path: path,
-        params: { page_number: page_number },
+        params: { page_number: pageNumber },
       });
     },
     getBasePath: function() {
