@@ -26,7 +26,24 @@ export default {
   },
   computed: mapState(['isLoading', 'isOpenSidebar', 'navigation']),
   watch: {
-    '$route': function (to, from) {
+    $route: function(to, from) {
+      this.restPostData(to, from);
+      this.sendPageview(to, from);
+    },
+  },
+  created: function() {
+    this.$store.dispatch('requestNavigation');
+    this.$store.dispatch('requestAdvertise');
+  },
+  methods: {
+    restPostData: function(to, from) {
+      if (to.meta.type === 'post' || to.meta.type === 'page') {
+        this.$store.dispatch('resetPost');
+      } else {
+        this.$store.dispatch('resetPostList');
+      }
+    },
+    sendPageview: function(to, from) {
       if (!window.ga) {
         return;
       }
@@ -37,15 +54,10 @@ export default {
         window.ga('set', 'page', to.path);
         window.ga('send', 'pageview');
       }
-    }
-  },
-  created: function() {
-    this.$store.dispatch('requestNavigation');
-    this.$store.dispatch('requestAdvertise');
+    },
   },
 };
 </script>
 
 <style>
-
 </style>
