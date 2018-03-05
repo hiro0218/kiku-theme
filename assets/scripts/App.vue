@@ -27,6 +27,11 @@ export default {
   computed: mapState(['isLoading', 'isOpenSidebar', 'navigation']),
   watch: {
     $route: function(to, from) {
+      // 同一ページ内の変更時は処理を行わない
+      if (to.path === from.path) {
+        return;
+      }
+
       this.restPostData(to, from);
       this.sendPageview(to, from);
     },
