@@ -30,7 +30,11 @@ export default {
     },
   },
   watch: {
-    content: function() {
+    '$route.path': 'runScript',
+    content: 'runScript',
+  },
+  methods: {
+    runScript :function() {
       this.$nextTick().then(() => {
         if (this.content) {
           eval(this.script);

@@ -1,8 +1,8 @@
 <template>
   <div class="container">
     <entry-list/>
-    <advertise :id-name="'ads3'" :content="ads.content" :script="ads.script" />
-    <entry-pagination/>
+    <advertise :id-name="ads.id" :content="ads.content" :script="ads.script" />
+    <entry-pagination v-show="postLists.length !== 0"/>
   </div>
 </template>
 
@@ -22,6 +22,7 @@ export default {
   data() {
     return {
       ads: {
+        id: 'ads3',
         content: '',
         script: '',
       },
@@ -31,7 +32,13 @@ export default {
   watch: {
     '$route.path': 'requestPostData',
     postLists: function() {
-      this.ads = this.advertise.ads3;
+      if (this.postLists.length === 0) {
+        this.ads.content = '';
+        return;
+      }
+
+      this.ads.content = this.advertise.ads3.content;
+      this.ads.script = this.advertise.ads3.script;
     },
   },
   created: function() {
