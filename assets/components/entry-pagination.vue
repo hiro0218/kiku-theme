@@ -25,7 +25,7 @@ export default {
   data() {
     return {
       pagination: {
-        currentPage: 1,
+        currentPage: parseInt(this.$route.params.page_number || 1, 10),
       },
       per_page: WP.per_page,
     };
@@ -34,7 +34,7 @@ export default {
   watch: {
     '$route.path': function() {
       this.pagination.currentPage = parseInt(this.$route.params.page_number || 1, 10);
-    }
+    },
   },
   methods: {
     changePage: function() {
