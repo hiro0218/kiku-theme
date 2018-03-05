@@ -1,7 +1,7 @@
 import { cloneDeep } from 'lodash-es';
 import api from '@scripts/api';
 import { wait } from '@scripts/utils';
-import { MODEL_POST } from '@scripts/models';
+import { MODEL_POST, MODEL_POST_LIST } from '@scripts/models';
 
 const action = {
   loading({ commit }, flag) {
@@ -105,6 +105,12 @@ const action = {
         pagers: response.data.pager || POST.attach.pagers,
       });
     });
+  },
+  resetPost({ commit }) {
+    commit('setPost', cloneDeep(MODEL_POST));
+  },
+  resetPostList({ commit }) {
+    commit('setPostLists', cloneDeep(MODEL_POST_LIST));
   },
 };
 
