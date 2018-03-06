@@ -12,6 +12,7 @@
     }]
   ],
   "plugins": [
+    ["lodash"],
     ["transform-es2015-for-of", { "loose": true }],
     ["transform-object-assign", { "loose": true }],
     ["transform-object-rest-spread", { "loose": true }]
