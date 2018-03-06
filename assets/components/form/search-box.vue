@@ -1,6 +1,8 @@
 <template>
   <div class="search-container">
-    <input id="search-box" v-model="search_value" class="search-input" type="search" name="s" placeholder="Search..." required @keyup.enter="checkKeypress" @keydown.enter="search"><!--
+    <input id="search-box" v-model="searchValue" class="search-input" type="search" placeholder="Search..."
+           @keyup.enter="setKeypress"
+           @keydown.enter="submitSearch"><!--
   --><label class="icon" for="search-box"><span class="icon-search"/></label>
   </div>
 </template>
@@ -10,26 +12,33 @@ export default {
   name: 'SearchBox',
   data() {
     return {
-      search_value: this.$route.params.search_query,
-      ENTER_KEY: 13,
-      keypressed: false,
+      searchValue: this.$route.params.search_query,
+      isKeypressed: true,
     };
   },
+  watch: {
+    '$route.params.search_query': function(search_query) {
+      this.searchValue = search_query || '';
+    },
+  },
   methods: {
-    checkKeypress: function(event) {
-      if (event.keyCode !== this.ENTER_KEY) {
+    // keyup
+    setKeypress: function() {
+      this.isKeypressed = true;
+    },
+    // keydown
+    submitSearch: function() {
+      if (!this.searchValue) {
         return;
       }
-      this.keypressed = true;
-    },
-    search: function(event) {
-      if (event.keyCode === this.ENTER_KEY && this.keypressed) {
+
+      if (this.isKeypressed) {
+        this.isKeypressed = false;
         this.$router.push({
-          path: `/search/${this.search_value}`,
-          params: { search_query: this.search_value },
+          path: `/search/${this.searchValue}`,
+          params: { search_query: this.searchValue },
         });
       }
-      this.keypressed = false;
     },
   },
 };
