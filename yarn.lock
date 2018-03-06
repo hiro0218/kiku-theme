@@ -3277,9 +3277,9 @@ har-validator@~5.0.3:
     ajv "^5.1.0"
     har-schema "^2.0.0"
 
-hard-source-webpack-plugin@^0.6.1:
-  version "0.6.1"
-  resolved "https://registry.yarnpkg.com/hard-source-webpack-plugin/-/hard-source-webpack-plugin-0.6.1.tgz#f6173b39bd8a9c2d42310843d38dd77121620ab1"
+hard-source-webpack-plugin@^0.6.4:
+  version "0.6.4"
+  resolved "https://registry.yarnpkg.com/hard-source-webpack-plugin/-/hard-source-webpack-plugin-0.6.4.tgz#d80575d42c53e6af6dadc92271577a61cda20b12"
   dependencies:
     lodash "^4.15.0"
     mkdirp "^0.5.1"
