@@ -1,15 +1,15 @@
 <template>
   <div>
     <footer class="footer footer-navigation">
-      <div class="container" v-if="navigation">
-        <nav class="footer-menu" v-if="navigation.footer.menu">
+      <div v-if="navigation" class="container">
+        <nav v-if="navigation.footer.menu" class="footer-menu">
           <ul>
             <li v-for="(menu, index) in navigation.footer.menu" :key="index">
               <a :href="menu.url">{{ menu.title }}</a>
             </li>
           </ul>
         </nav>
-        <div class="footer-copytight" v-if="navigation.site">
+        <div v-if="navigation.site" class="footer-copytight">
           <span>{{ navigation.site.copyright }} <a :href="navigation.site.url">{{ navigation.site.name }}</a></span>
         </div>
       </div>

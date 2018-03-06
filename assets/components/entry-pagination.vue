@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav class="pagination" v-if="requestHeader.total > 0">
+    <nav v-if="requestHeader.total > 0" class="pagination">
       <uib-pagination
         v-model="pagination"
         :total-items="requestHeader.total"

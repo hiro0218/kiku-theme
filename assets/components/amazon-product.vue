@@ -1,6 +1,6 @@
 <template>
   <div v-cloak v-if="amazon_product">
-    <div class="amazon-product" :style="{ 'background-image': 'url('+ amazon_product.LargeImage +')' }">
+    <div :style="{ 'background-image': 'url('+ amazon_product.LargeImage +')' }" class="amazon-product">
       <a :href="amazon_product.DetailPageURL" target="_blank">
         <div class="product-image">
           <img :src="amazon_product.LargeImage" data-zoom-disabled="true">

@@ -7,11 +7,11 @@
       </div>
     </template>
 
-    <router-link :to="post.link" v-for="(post,index) in postLists" :key="index">
+    <router-link v-for="(post,index) in postLists" :to="post.link" :key="index">
       <article class="entry-container">
         <div class="entry-image">
           <div class="image-container">
-            <div class="image-sheet" :data-thumbnail-image="post.thumbnail"/>
+            <div :data-thumbnail-image="post.thumbnail" class="image-sheet"/>
           </div>
         </div>
         <div class="entry-body">

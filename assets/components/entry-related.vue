@@ -1,12 +1,12 @@
 <template>
-  <div class="related" v-cloak v-if="relateds.length !== 0">
+  <div v-cloak v-if="relateds.length !== 0" class="related">
     <div class="related-container container">
       <h2 class="related-heading">Related Posts</h2>
       <div class="entry-related">
-        <div class="related-section" v-for="(related,index) in relateds" :key="index">
+        <div v-for="(related,index) in relateds" :key="index" class="related-section">
           <router-link :to="related.uri">
             <div class="related-image">
-              <div class="image-sheet" :style="related.image ? 'background-image: url('+ related.image +')' : ''"/>
+              <div :style="related.image ? 'background-image: url('+ related.image +')' : ''" class="image-sheet"/>
             </div>
             <div class="related-title" v-html="$options.filters.escapeBrackets(related.title)"/>
             <div class="related-description" v-html="$options.filters.escapeBrackets(related.description)"/>

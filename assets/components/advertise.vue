@@ -1,5 +1,5 @@
 <template>
-  <div class="ads-container" :id="idName" v-if="display">
+  <div v-if="display" :id="idName" class="ads-container">
     <div v-html="content"/>
   </div>
 </template>
@@ -34,7 +34,7 @@ export default {
     content: 'runScript',
   },
   methods: {
-    runScript :function() {
+    runScript: function() {
       this.$nextTick().then(() => {
         if (this.content) {
           eval(this.script);

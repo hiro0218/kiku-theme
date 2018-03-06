@@ -1,10 +1,10 @@
 <template>
-  <ul class="entry-time" v-cloak v-if="date.publish">
+  <ul v-cloak v-if="date.publish" class="entry-time">
     <li class="date-published">
-      <span class="icon-update"/><time itemprop="datePublished" :datetime="date.publish">{{ date.publish | formatDate }}</time>
+      <span class="icon-update"/><time :datetime="date.publish" itemprop="datePublished">{{ date.publish | formatDate }}</time>
     </li>
-    <li class="date-modified" v-if="date.modified">
-      <time itemprop="dateModified" :datetime="date.modified">{{ date.modified | formatDate }}</time>
+    <li v-if="date.modified" class="date-modified">
+      <time :datetime="date.modified" itemprop="dateModified">{{ date.modified | formatDate }}</time>
     </li>
     <li v-if="is_logined">
       <a :href="edit_link"><span class="icon-edit"/></a>

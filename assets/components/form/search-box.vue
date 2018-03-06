@@ -1,7 +1,7 @@
 <template>
   <form method="get" action="/">
     <div class="search-container">
-      <input type="search" id="search-box" class="search-input" name="s" :value="$route.params.search_query" placeholder="Search..." required ><!--
+      <input id="search-box" :value="$route.params.search_query" class="search-input" type="search" name="s" placeholder="Search..." required ><!--
    --><label class="icon" for="search-box"><span class="icon-search"/></label>
     </div>
   </form>

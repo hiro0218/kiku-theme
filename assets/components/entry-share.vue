@@ -1,34 +1,38 @@
 <template>
-  <section class="entry-share" v-if="title">
+  <section v-if="title" class="entry-share">
     <template v-if="is_display.twitter">
-      <a href="javascript:void(0)" class="btn-twitter"
+      <a :data-url="twitter_url()"
+         href="javascript:void(0)"
+         class="btn-twitter"
          title="Share on Twitter"
-         :data-url="twitter_url()"
          data-width="620" data-height="310" @click="openWindows">
         <span class="icon-twitter"/>
       </a>
     </template>
     <template v-if="is_display.facebook">
-      <a href="javascript:void(0)" class="btn-facebook"
+      <a :data-url="facebook_url()"
+         href="javascript:void(0)"
+         class="btn-facebook"
          title="Share on Facebook"
-         :data-url="facebook_url()"
          data-width="560" data-height="550" @click="openWindows">
         <span class="icon-facebook"/>
       </a>
     </template>
     <template v-if="is_display.hatena">
-      <a :href="hatena_url" class="hatena-bookmark-button btn-hatena"
-         title="Share on LINE"
+      <a :href="hatena_url"
          :data-url="hatena_url()"
          :data-hatena-bookmark-title="title"
+         class="hatena-bookmark-button btn-hatena"
+         title="Share on LINE"
          data-hatena-bookmark-layout="simple">
         <span class="icon-hatena"/>
       </a>
     </template>
     <template v-if="is_display.line">
-      <a href="javascript:void(0)" class="btn-line"
+      <a :data-url="line_url()"
+         href="javascript:void(0)"
+         class="btn-line"
          title="Share on LINE"
-         :data-url="line_url()"
          data-width="560" data-height="550" @click="openWindows">
         <span class="icon-line"/>
       </a>

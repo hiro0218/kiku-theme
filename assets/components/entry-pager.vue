@@ -1,5 +1,5 @@
 <template>
-  <div class="pager" v-cloak>
+  <div v-cloak class="pager">
     <div class="pager-container">
       <router-link v-if="pagers.prev" :to="pagers.prev.url" :title="pagers.prev.title" class="pager-prev">
         <span class="pager-label">

@@ -1,6 +1,6 @@
 <template>
   <div class="drawer-container">
-    <input type="checkbox" id="drawer-trigger" class="drawer-checkbox" @click="toggeleDrawer">
+    <input id="drawer-trigger" class="drawer-checkbox" type="checkbox" @click="toggeleDrawer">
     <label for="drawer-trigger" class="drawer-trigger">
       <span class="icon-menu"/>
     </label>
