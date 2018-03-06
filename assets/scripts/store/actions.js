@@ -3,7 +3,7 @@ import api from '@scripts/api';
 import { wait } from '@scripts/utils';
 import { MODEL_POST, MODEL_POST_LIST } from '@scripts/models';
 
-const action = {
+export default {
   loading({ commit }, flag) {
     if (flag) {
       commit('changeLoading', flag);
@@ -113,5 +113,3 @@ const action = {
     commit('setPostLists', cloneDeep(MODEL_POST_LIST));
   },
 };
-
-export default action;
