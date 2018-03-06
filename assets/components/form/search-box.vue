@@ -1,15 +1,37 @@
 <template>
-  <form method="get" action="/">
-    <div class="search-container">
-      <input id="search-box" :value="$route.params.search_query" class="search-input" type="search" name="s" placeholder="Search..." required ><!--
-   --><label class="icon" for="search-box"><span class="icon-search"/></label>
-    </div>
-  </form>
+  <div class="search-container">
+    <input id="search-box" v-model="search_value" class="search-input" type="search" name="s" placeholder="Search..." required @keyup.enter="checkKeypress" @keydown.enter="search"><!--
+  --><label class="icon" for="search-box"><span class="icon-search"/></label>
+  </div>
 </template>
 
 <script>
 export default {
   name: 'SearchBox',
+  data() {
+    return {
+      search_value: this.$route.params.search_query,
+      ENTER_KEY: 13,
+      keypressed: false,
+    };
+  },
+  methods: {
+    checkKeypress: function(event) {
+      if (event.keyCode !== this.ENTER_KEY) {
+        return;
+      }
+      this.keypressed = true;
+    },
+    search: function(event) {
+      if (event.keyCode === this.ENTER_KEY && this.keypressed) {
+        this.$router.push({
+          path: `/search/${this.search_value}`,
+          params: { search_query: this.search_value },
+        });
+      }
+      this.keypressed = false;
+    },
+  },
 };
 </script>
 
