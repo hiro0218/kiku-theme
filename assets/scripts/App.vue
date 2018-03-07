@@ -12,9 +12,9 @@
 
 <script>
 import { mapState } from 'vuex';
-import layoutHeader from '@components/layout-header.vue';
-import layoutFooter from '@components/layout-footer.vue';
-import layoutSidebar from '@components/layout-sidebar.vue';
+import layoutHeader from '@/layouts/header.vue';
+import layoutFooter from '@/layouts/footer.vue';
+import layoutSidebar from '@/layouts/sidebar.vue';
 import loading from '@components/loading.vue';
 
 export default {

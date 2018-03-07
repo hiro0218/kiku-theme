@@ -9,7 +9,7 @@
 import { mapState } from 'vuex';
 
 export default {
-  name: 'LayoutSidebar',
+  name: 'Sidebar',
   computed: mapState(['navigation', 'isOpenSidebar']),
 };
 </script>

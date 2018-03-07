@@ -21,7 +21,7 @@
 import { mapState } from 'vuex';
 
 export default {
-  name: 'LayoutFooter',
+  name: 'Footer',
   computed: mapState(['navigation']),
 };
 </script>

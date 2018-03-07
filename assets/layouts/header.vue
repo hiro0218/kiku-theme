@@ -16,12 +16,12 @@
 
 <script>
 import { mapState } from 'vuex';
-import searchBox from '@components/form/search-box.vue';
-import menuButton from '@components/form/menu-button.vue';
+import searchBox from '@components/search-box.vue';
+import menuButton from '@components/menu-button.vue';
 import headerScroll from 'header-scroll-up';
 
 export default {
-  name: 'LayoutHeader',
+  name: 'Header',
   components: {
     searchBox,
     menuButton,

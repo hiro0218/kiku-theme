@@ -1,5 +1,5 @@
-import pageHome from '@components/page-home.vue';
-import pageSingular from '@components/page-singular.vue';
+import pageHome from '@/pages/home.vue';
+import pageSingular from '@/pages/singular.vue';
 
 let routes = [];
 

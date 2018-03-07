@@ -123,6 +123,7 @@ let webpackConfig = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
+      '@': path.resolve(__dirname, '../'),
       '@scripts': path.resolve(__dirname, '../scripts'),
       '@components': path.resolve(__dirname, '../components'),
     },

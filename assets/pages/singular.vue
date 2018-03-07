@@ -43,7 +43,7 @@ import entryTime from '@components/entry-time.vue';
 import advertise from '@components/advertise.vue';
 
 export default {
-  name: 'PageSingular',
+  name: 'Singular',
   components: {
     amazonProduct,
     entryCategory,
