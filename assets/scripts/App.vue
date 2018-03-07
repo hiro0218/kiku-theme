@@ -44,7 +44,7 @@ export default {
     restPostData: function(to, from) {
       if (to.meta.type === 'post' || to.meta.type === 'page') {
         this.$store.dispatch('resetPost');
-      } else {
+      } else if (to.meta.type === 'category' || to.meta.type === 'post_tag' || to.meta.type === 'search') {
         this.$store.dispatch('resetPostList');
       }
     },

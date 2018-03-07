@@ -1,5 +1,6 @@
 import pageHome from '@/pages/home.vue';
 import pageSingular from '@/pages/singular.vue';
+import pageNotFound from '@/pages/notFound.vue';
 
 let routes = [];
 
@@ -74,7 +75,8 @@ routes.push(
   },
   {
     path: '*',
-    component: pageHome,
+    name: 'notFound',
+    component: pageNotFound,
   },
 );
 
