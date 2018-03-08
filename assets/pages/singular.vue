@@ -1,21 +1,18 @@
 <template>
-  <div>
-    <div class="container">
-      <article class="entry">
-        <entry-header :post="post"/>
-        <entry-content :content="post.content"/>
-        <advertise :id-name="'ads2'" :display="advertise.ads2.display.includes($route.meta.type)" :content="advertise.ads2.content" :script="advertise.ads2.script" />
-        <template v-if="$route.meta.type === 'post'">
-          <amazon-product :amazon_product="post.amazon_product"/>
-          <footer class="entry-footer">
-            <entry-tag :tags="post.tags"/>
-            <entry-share :title="post.title"/>
-            <entry-pager :pagers="post.attach.pagers"/>
-          </footer>
-        </template>
-      </article>
-    </div>
-
+  <div class="container">
+    <article class="entry">
+      <entry-header :post="post"/>
+      <entry-content :content="post.content"/>
+      <advertise :id-name="'ads2'" :display="advertise.ads2.display.includes($route.meta.type)" :content="advertise.ads2.content" :script="advertise.ads2.script" />
+      <template v-if="$route.meta.type === 'post'">
+        <amazon-product :amazon_product="post.amazon_product"/>
+        <footer class="entry-footer">
+          <entry-tag :tags="post.tags"/>
+          <entry-share :title="post.title"/>
+          <entry-pager :pagers="post.attach.pagers"/>
+        </footer>
+      </template>
+    </article>
     <template v-if="$route.meta.type === 'post'">
       <entry-related :relateds="post.attach.relateds"/>
     </template>

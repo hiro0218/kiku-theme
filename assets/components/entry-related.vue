@@ -1,17 +1,15 @@
 <template>
   <div v-cloak v-if="relateds.length !== 0" class="related">
-    <div class="related-container container">
-      <h2 class="related-heading">Related Posts</h2>
-      <div class="entry-related">
-        <div v-for="(related,index) in relateds" :key="index" class="related-section">
-          <router-link :to="related.uri">
-            <div class="related-image">
-              <div :style="related.image ? 'background-image: url('+ related.image +')' : ''" class="image-sheet"/>
-            </div>
-            <div class="related-title" v-html="$options.filters.escapeBrackets(related.title)"/>
-            <div class="related-description" v-html="$options.filters.escapeBrackets(related.description)"/>
-          </router-link>
-        </div>
+    <h2 class="related-heading">Related Posts</h2>
+    <div class="entry-related">
+      <div v-for="(related,index) in relateds" :key="index" class="related-section">
+        <router-link :to="related.uri">
+          <div class="related-image">
+            <div :style="related.image ? 'background-image: url('+ related.image +')' : ''" class="image-sheet"/>
+          </div>
+          <div class="related-title" v-html="$options.filters.escapeBrackets(related.title)"/>
+          <div class="related-description" v-html="$options.filters.escapeBrackets(related.description)"/>
+        </router-link>
       </div>
     </div>
   </div>
@@ -33,10 +31,6 @@ export default {
 <style lang="scss" scoped>
 .related {
   margin-bottom: 2rem;
-}
-
-.related-container {
-  padding: 0 1rem;
 }
 
 .entry-related {
