@@ -108,3 +108,24 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+.entry {
+  margin-bottom: 1rem;
+
+  .entry-header {
+    margin-bottom: 2rem;
+  }
+
+  .entry-title {
+    margin: 0 0 0.5rem;
+    font-size: $font-size-h2;
+    line-height: ($font-size-h2 * 2);
+    word-wrap: break-word;
+  }
+
+  .entry-meta {
+    text-align: left;
+  }
+}
+</style>
