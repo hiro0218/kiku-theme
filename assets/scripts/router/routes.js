@@ -74,6 +74,14 @@ routes.push(
     ],
   },
   {
+    path: '/preview',
+    name: 'preview',
+    component: pageSingular,
+    meta: {
+      type: 'preview',
+    },
+  },
+  {
     path: '*',
     name: 'notFound',
     component: pageNotFound,

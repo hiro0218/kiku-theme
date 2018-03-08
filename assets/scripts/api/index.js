@@ -10,10 +10,6 @@ export default {
     params: {},
   },
   setupCacheAdapter() {
-    if (WP.is_preview) {
-      return;
-    }
-
     const cache = setupCache({
       store: localforage.createInstance({
         driver: [localforage.INDEXEDDB, localforage.LOCALSTORAGE],
@@ -29,21 +25,14 @@ export default {
       },
       exclude: {
         query: false,
+        paths: [/.+revisions/],
       },
     });
 
     this.settings.adapter = cache.adapter;
   },
-  preparedParams() {
-    this.settings.params = Object.assign(
-      {},
-      WP.per_page && { per_page: WP.per_page },
-      WP.categories_exclude && { categories_exclude: WP.categories_exclude },
-    );
-  },
   getInstance() {
     if (!this.api) {
-      this.preparedParams();
       this.setupCacheAdapter();
       this.api = axios.create(this.settings);
     }
@@ -82,6 +71,8 @@ export default {
       params: Object.assign(
         defaultParams,
         { orderby: 'modified' },
+        WP.per_page && { per_page: WP.per_page },
+        WP.categories_exclude && { categories_exclude: WP.categories_exclude },
         meta.type === 'post_tag' && meta.id && { tags: meta.id },
         meta.type === 'category' && meta.id && { categories: meta.id },
         meta.type === 'search' && { search: params.search_query },
@@ -89,29 +80,29 @@ export default {
       ),
     });
   },
-  getPosts(post_id) {
+  getPosts(post_id, preview) {
     var client = this.getInstance();
     let path = `/posts/${post_id}`;
-    if (WP.is_preview) {
+    if (preview) {
       path += '/revisions';
     }
 
     return client.get(path).then(res => {
-      if (WP.is_preview) {
+      if (preview) {
         res.data = res.data[0];
       }
       return res;
     });
   },
-  getPages(post_id) {
+  getPages(post_id, preview) {
     var client = this.getInstance();
     let path = `/pages/${post_id}`;
-    if (WP.is_preview) {
+    if (preview) {
       path += '/revisions';
     }
 
     return client.get(path).then(res => {
-      if (WP.is_preview) {
+      if (preview) {
         res.data = res.data[0];
       }
       return res;
