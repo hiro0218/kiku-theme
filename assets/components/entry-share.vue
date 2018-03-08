@@ -63,11 +63,14 @@ export default {
   },
   mounted() {
     this.$nextTick().then(() => {
-      var script = document.createElement('script');
-      script.async = true;
-      script.defer = true;
-      script.src = 'https://cdn-ak.b.st-hatena.com/js/bookmark_button.js';
-      document.body.appendChild(script);
+      if (!document.getElementById('bookmark_button')) {
+        var script = document.createElement('script');
+        script.id = 'bookmark_button';
+        script.async = true;
+        script.defer = true;
+        script.src = 'https://cdn-ak.b.st-hatena.com/js/bookmark_button.js';
+        document.body.appendChild(script);
+      }
     });
   },
   methods: {
