@@ -34,16 +34,8 @@ export default {
 
     this.settings.adapter = cache.adapter;
   },
-  preparedParams() {
-    this.settings.params = Object.assign(
-      {},
-      WP.per_page && { per_page: WP.per_page },
-      WP.categories_exclude && { categories_exclude: WP.categories_exclude },
-    );
-  },
   getInstance() {
     if (!this.api) {
-      this.preparedParams();
       this.setupCacheAdapter();
       this.api = axios.create(this.settings);
     }
@@ -82,6 +74,8 @@ export default {
       params: Object.assign(
         defaultParams,
         { orderby: 'modified' },
+        WP.per_page && { per_page: WP.per_page },
+        WP.categories_exclude && { categories_exclude: WP.categories_exclude },
         meta.type === 'post_tag' && meta.id && { tags: meta.id },
         meta.type === 'category' && meta.id && { categories: meta.id },
         meta.type === 'search' && { search: params.search_query },
