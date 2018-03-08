@@ -6,8 +6,8 @@
     <li v-if="date.modified" class="date-modified">
       <time :datetime="date.modified" itemprop="dateModified">{{ date.modified | formatDate }}</time>
     </li>
-    <li v-if="is_logined">
-      <a :href="edit_link"><span class="icon-edit"/></a>
+    <li v-if="edit.is_display">
+      <a :href="edit.link"><span class="icon-edit"/></a>
     </li>
   </ul>
 </template>
@@ -24,8 +24,10 @@ export default {
   },
   data() {
     return {
-      is_logined: WP.is_logined,
-      edit_link: `/wp-admin/post.php?post=${this.$route.meta.id}&action=edit`,
+      edit: {
+        is_display: WP.is_logined && this.$route.meta.type !== 'preview',
+        link: `/wp-admin/post.php?post=${this.$route.meta.id}&action=edit`,
+      }
     };
   },
 };
