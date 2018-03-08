@@ -2,13 +2,7 @@
   <div>
     <div class="container">
       <article class="entry">
-        <header class="entry-header">
-          <h1 class="entry-title" v-html="$options.filters.escapeBrackets(post.title)"/>
-          <div class="entry-meta">
-            <entry-time :date="post.date"/>
-            <entry-category :categories="post.categories"/>
-          </div>
-        </header>
+        <entry-header :post="post"/>
         <entry-content :content="post.content"/>
         <advertise :id-name="'ads2'" :display="advertise.ads2.display.includes($route.meta.type)" :content="advertise.ads2.content" :script="advertise.ads2.script" />
         <template v-if="$route.meta.type === 'post'">
@@ -34,27 +28,25 @@ import mokuji from '@scripts/module/mokuji';
 import common from '@scripts/module/common';
 
 import amazonProduct from '@components/amazon-product.vue';
-import entryCategory from '@components/entry-category.vue';
 import entryPager from '@components/entry-pager.vue';
 import entryRelated from '@components/entry-related.vue';
 import entryShare from '@components/entry-share.vue';
 import entryTag from '@components/entry-tag.vue';
-import entryTime from '@components/entry-time.vue';
 import advertise from '@components/advertise.vue';
 
+import entryHeader from '@components/entry/header.vue';
 import entryContent from '@components/entry/content.vue';
 
 export default {
   name: 'Singular',
   components: {
     amazonProduct,
-    entryCategory,
     entryPager,
     entryRelated,
     entryShare,
     entryTag,
-    entryTime,
     advertise,
+    entryHeader,
     entryContent,
   },
   computed: mapState(['post', 'advertise']),
@@ -112,20 +104,5 @@ export default {
 <style lang="scss">
 .entry {
   margin-bottom: 1rem;
-
-  .entry-header {
-    margin-bottom: 2rem;
-  }
-
-  .entry-title {
-    margin: 0 0 0.5rem;
-    font-size: $font-size-h2;
-    line-height: ($font-size-h2 * 2);
-    word-wrap: break-word;
-  }
-
-  .entry-meta {
-    text-align: left;
-  }
 }
 </style>
