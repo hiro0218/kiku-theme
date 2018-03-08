@@ -77,7 +77,18 @@ export default {
   requestSinglePost({ commit, dispatch }, route) {
     dispatch('loading', true);
 
-    const response = route.meta.type === 'post' ? api.getPosts(route.meta.id) : api.getPages(route.meta.id);
+    const response = (function() {
+      let is_posts = (function() {
+        if (route.meta.type === 'preview') {
+          return route.query.p ? true : false;
+        }
+        return route.meta.type === 'post';
+      })();
+      let post_id = route.meta.id || route.query.p || route.query.page_id;
+      let preview = route.query.preview;
+
+      return is_posts ? api.getPosts(post_id, preview) : api.getPages(post_id, preview);
+    })();
 
     return response.then(response => {
       let json = response.data;

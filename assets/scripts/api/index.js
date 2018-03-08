@@ -80,29 +80,29 @@ export default {
       ),
     });
   },
-  getPosts(post_id) {
+  getPosts(post_id, preview) {
     var client = this.getInstance();
     let path = `/posts/${post_id}`;
-    if (WP.is_preview) {
+    if (preview) {
       path += '/revisions';
     }
 
     return client.get(path).then(res => {
-      if (WP.is_preview) {
+      if (preview) {
         res.data = res.data[0];
       }
       return res;
     });
   },
-  getPages(post_id) {
+  getPages(post_id, preview) {
     var client = this.getInstance();
     let path = `/pages/${post_id}`;
-    if (WP.is_preview) {
+    if (preview) {
       path += '/revisions';
     }
 
     return client.get(path).then(res => {
-      if (WP.is_preview) {
+      if (preview) {
         res.data = res.data[0];
       }
       return res;

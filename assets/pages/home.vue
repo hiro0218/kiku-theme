@@ -49,5 +49,16 @@ export default {
       this.$store.dispatch('requestPostList', this.$route);
     },
   },
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      const query = vm.$route.query;
+
+      if (Object.keys(query).length > 0) {
+        if (query.preview) {
+          vm.$router.replace({ path: '/preview', query });
+        }
+      }
+    });
+  },
 };
 </script>
