@@ -10,10 +10,6 @@ export default {
     params: {},
   },
   setupCacheAdapter() {
-    if (WP.is_preview) {
-      return;
-    }
-
     const cache = setupCache({
       store: localforage.createInstance({
         driver: [localforage.INDEXEDDB, localforage.LOCALSTORAGE],
@@ -29,6 +25,7 @@ export default {
       },
       exclude: {
         query: false,
+        paths: [/.+revisions/],
       },
     });
 
