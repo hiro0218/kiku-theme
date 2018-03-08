@@ -49,7 +49,7 @@ add_action('after_setup_theme', function () {
      * Enable HTML5 markup support
      * @link https://developer.wordpress.org/reference/functions/add_theme_support/#html5
      */
-    add_theme_support('html5', ['caption', 'gallery', 'search-form']);
+    add_theme_support('html5', ['caption', 'gallery']);
 
     /**
      * Use main stylesheet for visual editor

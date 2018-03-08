@@ -34,6 +34,3 @@ require KIKU_LIB_PATH. 'modules/Widget.php';
 require KIKU_LIB_PATH. 'plugins/amazon/Amazon.php';
 require KIKU_LIB_PATH. 'plugins/mokuji/Mokuji.php';
 require KIKU_LIB_PATH. 'plugins/setting/kiku-setting.php';
-
-// vendor
-require KIKU_LIB_PATH. '../Sage/Soil/nice-search.php';
