@@ -9,7 +9,7 @@
             <entry-category :categories="post.categories"/>
           </div>
         </header>
-        <section class="entry-content" v-html="post.content"/>
+        <entry-content :content="post.content"/>
         <advertise :id-name="'ads2'" :display="advertise.ads2.display.includes($route.meta.type)" :content="advertise.ads2.content" :script="advertise.ads2.script" />
         <template v-if="$route.meta.type === 'post'">
           <amazon-product :amazon_product="post.amazon_product"/>
@@ -42,6 +42,8 @@ import entryTag from '@components/entry-tag.vue';
 import entryTime from '@components/entry-time.vue';
 import advertise from '@components/advertise.vue';
 
+import entryContent from '@components/entry/content.vue';
+
 export default {
   name: 'Singular',
   components: {
@@ -53,6 +55,7 @@ export default {
     entryTag,
     entryTime,
     advertise,
+    entryContent,
   },
   computed: mapState(['post', 'advertise']),
   watch: {
