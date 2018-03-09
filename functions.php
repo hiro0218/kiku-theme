@@ -37,25 +37,7 @@ add_action('customize_render_section', function ($section) {
     }
 }, 10, 2);
 
-/**
- * Sage includes
- *
- * The $sage_includes array determines the code library included in your theme.
- * Add or remove files to the array as needed. Supports child theme overrides.
- *
- * Please note that missing files will produce a fatal error.
- */
-$sage_includes = [
-    'src/helpers.php',
-    'src/setup.php',
-
-    'src/lib/Kiku/bootstrap.php',  // Kiku
-];
-
-foreach ($sage_includes as $file) {
-    if (!$filepath = locate_template($file)) {
-        trigger_error(sprintf(__('Error locating %s for inclusion', 'kiku'), $file), E_USER_ERROR);
-    }
-    require_once $filepath;
-}
-unset($file, $filepath);
+// src includes
+require_once 'src/helpers.php';
+require_once 'src/setup.php';
+require_once 'src/Kiku/bootstrap.php';

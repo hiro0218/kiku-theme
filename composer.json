@@ -19,7 +19,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Roots\\Sage\\": "src/lib/Sage/"
+      "Roots\\Sage\\": "src/Sage/"
     }
   },
   "require": {
