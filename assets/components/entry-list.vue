@@ -44,29 +44,18 @@ export default {
       return ago(new Date(date));
     },
   },
+  props: {
+    pageTitle: {
+      type: String,
+      default: '',
+      require: true,
+    },
+  },
   computed: {
     ...mapState({
       requestHeader: 'requestHeader',
       postLists: 'postLists',
     }),
-    pageTitle() {
-      let type = this.$route.meta.type;
-      let title = this.$route.meta.title || this.$route.params.search_query;
-
-      // archive
-      if (type === 'category') {
-        return `Category: ${title}`;
-      }
-      if (type === 'post_tag') {
-        return `Tag: ${title}`;
-      }
-      // search
-      if (type === 'search') {
-        return `Search results: &#8220${title}&#8221`;
-      }
-
-      return 'Recent Posts';
-    },
   },
   watch: {
     postLists: function() {

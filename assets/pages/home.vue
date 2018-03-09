@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <entry-list/>
+    <entry-list :page-title="pageTitle"/>
     <advertise :id-name="ads.id" :content="ads.content" :script="ads.script" />
     <entry-pagination v-show="postLists.length !== 0"/>
   </div>
@@ -28,7 +28,27 @@ export default {
       },
     };
   },
-  computed: mapState(['requestHeader', 'postLists', 'advertise']),
+  computed: {
+    ...mapState(['requestHeader', 'postLists', 'advertise']),
+    pageTitle() {
+      let type = this.$route.meta.type;
+      let title = this.$route.meta.title || this.$route.params.search_query;
+
+      // archive
+      if (type === 'category') {
+        return `Category: ${title}`;
+      }
+      if (type === 'post_tag') {
+        return `Tag: ${title}`;
+      }
+      // search
+      if (type === 'search') {
+        return `Search results: '${title}'`;
+      }
+
+      return 'Recent Posts';
+    },
+  },
   watch: {
     '$route.path': 'requestPostData',
     postLists: function() {
