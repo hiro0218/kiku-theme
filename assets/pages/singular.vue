@@ -3,19 +3,13 @@
     <article class="entry">
       <entry-header :post="post"/>
       <entry-content :content="post.content"/>
-      <advertise :id-name="'ads2'" :display="advertise.ads2.display.includes($route.meta.type)" :content="advertise.ads2.content" :script="advertise.ads2.script" />
-      <template v-if="$route.meta.type === 'post'">
-        <amazon-product :amazon_product="post.amazon_product"/>
-        <footer class="entry-footer">
-          <entry-tag :tags="post.tags"/>
-          <entry-share :title="post.title"/>
-          <entry-pager :pagers="post.attach.pagers"/>
-        </footer>
-      </template>
+      <advertise :id-name="'ads2'"
+                 :display="advertise.ads2.display.includes($route.meta.type)"
+                 :content="advertise.ads2.content"
+                 :script="advertise.ads2.script" />
+      <amazon-product :amazon_product="post.amazon_product"/>
+      <entry-footer :post="post"/>
     </article>
-    <template v-if="$route.meta.type === 'post'">
-      <entry-related :relateds="post.attach.relateds"/>
-    </template>
   </div>
 </template>
 
@@ -25,26 +19,20 @@ import mokuji from '@scripts/module/mokuji';
 import common from '@scripts/module/common';
 
 import amazonProduct from '@components/amazon-product.vue';
-import entryPager from '@components/entry-pager.vue';
-import entryRelated from '@components/entry-related.vue';
-import entryShare from '@components/entry-share.vue';
-import entryTag from '@components/entry-tag.vue';
 import advertise from '@components/advertise.vue';
 
 import entryHeader from '@components/entry/header.vue';
 import entryContent from '@components/entry/content.vue';
+import entryFooter from '@components/entry/footer.vue';
 
 export default {
   name: 'Singular',
   components: {
     amazonProduct,
-    entryPager,
-    entryRelated,
-    entryShare,
-    entryTag,
     advertise,
     entryHeader,
     entryContent,
+    entryFooter,
   },
   computed: mapState(['post', 'advertise']),
   watch: {
