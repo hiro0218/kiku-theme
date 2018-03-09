@@ -7841,6 +7841,10 @@ y18n@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/y18n/-/y18n-4.0.0.tgz#95ef94f85ecc81d007c264e190a120f0a3c8566b"
 
+yakuhanjp@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/yakuhanjp/-/yakuhanjp-3.0.0.tgz#37b892d904e24ccc85e1c07f7d67f49b4957b819"
+
 yallist@^2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/yallist/-/yallist-2.1.2.tgz#1c11f9218f076089a47dd512f93c6699a6a81d52"

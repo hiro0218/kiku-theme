@@ -17,6 +17,21 @@
        local('Noto Sans Symbols');
 }
 
+// YakuHanJPs
+@font-face {
+  font-family: YakuHanJP;
+  font-weight: normal;
+  src: url("~yakuhanjp/dist/fonts/YakuHanJP/YakuHanJP-DemiLight.woff2") format("woff2"),
+       url("~yakuhanjp/dist/fonts/YakuHanJP/YakuHanJP-DemiLight.woff") format("woff");
+}
+
+@font-face {
+  font-family: YakuHanJP;
+  font-weight: bold;
+  src: url("~yakuhanjp/dist/fonts/YakuHanJP/YakuHanJP-Bold.woff2") format("woff2"),
+       url("~yakuhanjp/dist/fonts/YakuHanJP/YakuHanJP-Bold.woff") format("woff");
+}
+
 // icon font
 @font-face {
   font-family: 'icon';
