@@ -55,21 +55,7 @@ export default {
 
         return response.data;
       })
-      .then(data => {
-        let postLists = [];
-
-        for (let json of data) {
-          let post = {};
-
-          post.title = json.title.rendered;
-          post.link = json.link;
-          post.excerpt = json.excerpt.rendered;
-          post.thumbnail = json.thumbnail;
-          post.date = json.modified;
-
-          postLists.push(post);
-        }
-
+      .then(postLists => {
         commit('setPostLists', postLists);
         dispatch('loading', false);
       });
@@ -91,30 +77,8 @@ export default {
     })();
 
     return response.then(response => {
-      let json = response.data;
-      let post = cloneDeep(MODEL_POST);
-
-      post.link = json.link;
-      post.title = json.title.rendered;
-      post.date.publish = json.date;
-      post.date.modified =
-        new Date(json.date).toDateString() === new Date(json.modified).toDateString() ? null : json.modified;
-      post.content = json.content.rendered;
-      post.categories = json.categories || post.categories;
-      post.tags = json.tags || post.tags;
-      post.amazon_product = json.amazon_product || post.amazon_product;
-
-      commit('setPost', post);
+      commit('setPost', response.data);
       dispatch('loading', false);
-    });
-  },
-  requestPostAttach({ commit }, route) {
-    const POST = cloneDeep(MODEL_POST);
-    return api.getAttachData(route.meta.id).then(response => {
-      commit('setPostAttach', {
-        relateds: response.data.related || POST.attach.relateds,
-        pagers: response.data.pager || POST.attach.pagers,
-      });
     });
   },
   resetPost({ commit }) {

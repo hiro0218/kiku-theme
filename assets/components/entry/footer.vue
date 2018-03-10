@@ -1,9 +1,9 @@
 <template>
   <footer v-if="$route.meta.type === 'post'" class="entry-footer">
     <entry-tag :tags="post.tags"/>
-    <entry-share :title="post.title"/>
-    <entry-pager :pagers="post.attach.pagers"/>
-    <entry-related :relateds="post.attach.relateds"/>
+    <entry-share :title="post.title.rendered"/>
+    <entry-pager :pager="post.attach.pager"/>
+    <entry-related :related="post.attach.related"/>
   </footer>
 </template>
 

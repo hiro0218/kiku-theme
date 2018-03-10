@@ -47,14 +47,6 @@ export default {
       params: '',
     });
   },
-  getAttachData(post_id) {
-    var client = this.getInstance();
-
-    return client.get(`/wp-json/kiku/v1/post/${post_id}`, {
-      baseURL: '/',
-      params: '',
-    });
-  },
   getAds() {
     var client = this.getInstance();
 

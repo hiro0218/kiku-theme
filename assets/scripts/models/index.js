@@ -1,17 +1,19 @@
 export const MODEL_POST = {
   link: '',
-  title: '',
-  content: '',
-  date: {
-    publish: null,
-    modified: null,
+  title: {
+    rendered: '',
   },
+  content: {
+    rendered: '',
+  },
+  date: '',
+  modified: '',
   categories: [],
   amazon_product: null,
   tags: [],
   attach: {
-    relateds: [],
-    pagers: {},
+    related: [],
+    pager: {},
   },
 };
 

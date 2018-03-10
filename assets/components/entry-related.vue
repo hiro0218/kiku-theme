@@ -1,14 +1,14 @@
 <template>
-  <div v-cloak v-if="relateds.length !== 0" class="related">
+  <div v-cloak v-if="related.length !== 0" class="related">
     <h2 class="related-heading">Related Posts</h2>
     <div class="entry-related">
-      <div v-for="(related,index) in relateds" :key="index" class="related-section">
-        <router-link :to="related.uri">
+      <div v-for="(entry,index) in related" :key="index" class="related-section">
+        <router-link :to="entry.uri">
           <div class="related-image">
-            <div :style="related.image ? 'background-image: url('+ related.image +')' : ''" class="image-sheet"/>
+            <div :style="entry.image ? 'background-image: url('+ entry.image +')' : ''" class="image-sheet"/>
           </div>
-          <div class="related-title" v-html="$options.filters.escapeBrackets(related.title)"/>
-          <div class="related-description" v-html="$options.filters.escapeBrackets(related.description)"/>
+          <div class="related-title" v-html="$options.filters.escapeBrackets(entry.title)"/>
+          <div class="related-description" v-html="$options.filters.escapeBrackets(entry.description)"/>
         </router-link>
       </div>
     </div>
@@ -19,7 +19,7 @@
 export default {
   name: 'EntryRelated',
   props: {
-    relateds: {
+    related: {
       type: Array,
       default: () => [],
       required: false,

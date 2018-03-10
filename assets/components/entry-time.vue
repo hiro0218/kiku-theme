@@ -1,10 +1,10 @@
 <template>
-  <ul v-cloak v-if="date.publish" class="entry-time">
+  <ul v-cloak v-if="date" class="entry-time">
     <li class="date-published">
-      <span class="icon-update"/><time :datetime="date.publish" itemprop="datePublished">{{ date.publish | formatDate }}</time>
+      <span class="icon-update"/><time :datetime="date" itemprop="datePublished">{{ date | formatDate }}</time>
     </li>
-    <li v-if="date.modified" class="date-modified">
-      <time :datetime="date.modified" itemprop="dateModified">{{ date.modified | formatDate }}</time>
+    <li v-if="modified" class="date-modified">
+      <time :datetime="modified" itemprop="dateModified">{{ modified | formatDate }}</time>
     </li>
     <li v-if="edit.is_display">
       <a :href="edit.link"><span class="icon-edit"/></a>
@@ -29,8 +29,13 @@ export default {
   },
   props: {
     date: {
-      type: Object,
-      default: () => {},
+      type: String,
+      default: '',
+      required: true,
+    },
+    modified: {
+      type: String,
+      default: '',
       required: false,
     },
   },

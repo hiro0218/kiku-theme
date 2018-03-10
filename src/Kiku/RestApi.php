@@ -57,40 +57,6 @@ class REST_API {
     }
 
     public function original_api() {
-        register_rest_route(self::API_NAMESPACE, '/post/(?P<id>\d+)', [
-            'methods' => WP_REST_Server::READABLE,
-            'callback' => function($data) {
-                $request_url = $_SERVER['REQUEST_URI'];
-
-                // transient で一時的にキャッシュしたデータをロード
-                $key = CACHE_PREFIX . md5($request_url);
-                $result = get_transient($key);
-
-                if ($result === false) {
-                    global $Entry, $post;
-
-                    $post_id = $data['id'];
-                    $array = [];
-
-                    // related posts
-                    $related = $Entry->get_similar_posts(RELATED_POST_NUM, $post_id);
-                    // pager
-                    $pager = $Entry->pager($post_id);
-
-                    // set
-                    $array = [
-                        'related' => $related,
-                        'pager' => $pager,
-                    ];
-
-                    set_transient($key, $array, self::CACHE_EXPIRATION);
-                    return $array;
-                }
-
-                return $result;
-            },
-        ]);
-
         register_rest_route(self::API_NAMESPACE, '/navigation', [
             'methods'  => WP_REST_Server::READABLE,
             'callback' => function($data) {
@@ -187,6 +153,13 @@ class REST_API {
             'update_callback' => null,
             'schema' => null,
         ]);
+
+        // post attach
+        register_rest_field('post', 'attach', [
+            'get_callback' => [$this, 'get_post_attach'],
+            'update_callback' => null,
+            'schema' => null,
+        ]);
     }
 
     public function get_amazon_product($object, $field_name, $request, $type) {
@@ -220,6 +193,37 @@ class REST_API {
         $url = $Image->get_entry_image($object['id'], false, 'thumbnail');
 
         return empty($url) ? null : $url;
+    }
+
+    public function get_post_attach($object, $field_name, $request, $type) {
+        $request_url = $_SERVER['REQUEST_URI'];
+
+        // transient で一時的にキャッシュしたデータをロード
+        $key = CACHE_PREFIX . md5($request_url);
+        $result = get_transient($key);
+
+        if ($result === false) {
+            global $Entry, $post;
+
+            $post_id = $object['id'];
+            $array = [];
+
+            // related posts
+            $related = $Entry->get_similar_posts(RELATED_POST_NUM, $post_id);
+            // pager
+            $pager = $Entry->pager($post_id);
+
+            // set
+            $array = [
+                'related' => $related,
+                'pager' => $pager,
+            ];
+
+            set_transient($key, $array, self::CACHE_EXPIRATION);
+            return $array;
+        }
+
+        return $result;
     }
 
     public function get_menus() {

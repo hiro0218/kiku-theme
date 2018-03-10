@@ -2,7 +2,7 @@
   <div class="container">
     <article class="entry">
       <entry-header :post="post"/>
-      <entry-content :content="post.content"/>
+      <entry-content :content="post.content.rendered"/>
       <advertise :id-name="'ads2'"
                  :display="advertise.ads2.display.includes($route.meta.type)"
                  :content="advertise.ads2.content"
@@ -39,7 +39,7 @@ export default {
     '$route.path': function() {
       this.$store.dispatch('requestSinglePost', this.$route).then(() => this.updateAppearance());
     },
-    'post.title': function(title) {
+    'post.title.rendered': function(title) {
       if (title) {
         this.$store.commit('setPageTitle', title);
       }
@@ -61,7 +61,6 @@ export default {
       common.setTableContainer(element);
       common.zoomImage(element);
       Prism.highlightAll();
-      this.viewAttachedInfo();
       this.insertArticleAds(element.querySelector('#ads1'));
     },
     insertArticleAds: function(elementAds) {
@@ -69,23 +68,6 @@ export default {
         elementAds.innerHTML = this.advertise.ads1.content;
         eval(this.advertise.ads1.script);
       }
-    },
-    viewAttachedInfo: function() {
-      if (this.$route.meta.type !== 'post') {
-        return;
-      }
-
-      const target = this.$el.querySelector('.entry-footer');
-      const observer = new IntersectionObserver(changes => {
-        changes.forEach(change => {
-          let intersectionRect = change.intersectionRect;
-          if (intersectionRect.height * intersectionRect.width > 0) {
-            this.$store.dispatch('requestPostAttach', this.$route);
-            observer.unobserve(change.target);
-          }
-        });
-      });
-      observer.observe(target);
     },
   },
 };

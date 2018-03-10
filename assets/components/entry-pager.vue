@@ -1,17 +1,17 @@
 <template>
-  <div v-cloak class="pager">
+  <div v-if="pager" class="pager">
     <div class="pager-container">
-      <router-link v-if="pagers.prev" :to="pagers.prev.url" :title="pagers.prev.title" class="pager-prev">
+      <router-link v-if="pager.prev" :to="pager.prev.url" :title="pager.prev.title" class="pager-prev">
         <span class="pager-label">
           <span class="pager-icon icon-chevron_left"/>previous
         </span>
-        <span class="pager-title">{{ pagers.prev.title }}</span>
+        <span class="pager-title">{{ pager.prev.title }}</span>
       </router-link>
-      <router-link v-if="pagers.next" :to="pagers.next.url" :title="pagers.next.title" class="pager-next">
+      <router-link v-if="pager.next" :to="pager.next.url" :title="pager.next.title" class="pager-next">
         <span class="pager-label">
           next<span class="pager-icon icon-chevron_right"/>
         </span>
-        <span class="pager-title">{{ pagers.next.title }}</span>
+        <span class="pager-title">{{ pager.next.title }}</span>
       </router-link>
     </div>
   </div>
@@ -21,10 +21,10 @@
 export default {
   name: 'EntryPager',
   props: {
-    pagers: {
+    pager: {
       type: Object,
       default: () => {},
-      required: false,
+      required: true,
     },
   },
 };

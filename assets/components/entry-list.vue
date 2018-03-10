@@ -16,9 +16,9 @@
         </div>
         <div class="entry-body">
           <header class="entry-header">
-            <h2 class="entry-title" v-html="$options.filters.escapeBrackets(post.title)"/>
+            <h2 class="entry-title" v-html="$options.filters.escapeBrackets(post.title.rendered)"/>
           </header>
-          <div class="entry-summary" v-html="$options.filters.escapeBrackets(post.excerpt)"/>
+          <div class="entry-summary" v-html="$options.filters.escapeBrackets(post.excerpt.rendered)"/>
           <footer class="entry-footer">
             <div class="entry-meta">
               <ul class="entry-time">
