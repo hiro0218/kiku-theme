@@ -39,6 +39,11 @@ export default {
     '$route.path': function() {
       this.$store.dispatch('requestSinglePost', this.$route).then(() => this.updateAppearance());
     },
+    'post.title': function(title) {
+      if (title) {
+        this.$store.commit('setPageTitle', title);
+      }
+    },
   },
   created: function() {
     this.requestPostData();

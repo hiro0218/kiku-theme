@@ -26,28 +26,11 @@ export default {
         content: '',
         script: '',
       },
+      pageTitle: '',
     };
   },
   computed: {
     ...mapState(['requestHeader', 'postLists', 'advertise']),
-    pageTitle() {
-      let type = this.$route.meta.type;
-      let title = this.$route.meta.title || this.$route.params.search_query;
-
-      // archive
-      if (type === 'category') {
-        return `Category: ${title}`;
-      }
-      if (type === 'post_tag') {
-        return `Tag: ${title}`;
-      }
-      // search
-      if (type === 'search') {
-        return `Search results: '${title}'`;
-      }
-
-      return 'Recent Posts';
-    },
   },
   watch: {
     '$route.path': 'requestPostData',
@@ -60,13 +43,32 @@ export default {
       this.ads.content = this.advertise.ads3.content;
       this.ads.script = this.advertise.ads3.script;
     },
+    pageTitle: function(title) {
+      this.$store.commit('setPageTitle', title);
+    },
   },
   created: function() {
     this.requestPostData();
   },
   methods: {
     requestPostData: function() {
+      this.setPageTitle();
       this.$store.dispatch('requestPostList', this.$route);
+    },
+    setPageTitle: function() {
+      let type = this.$route.meta.type;
+      let title = this.$route.meta.title || this.$route.params.search_query;
+
+      // archive
+      if (type === 'category') {
+        this.pageTitle = `Category: ${title}`;
+      } else if (type === 'post_tag') {
+        this.pageTitle = `Tag: ${title}`;
+      } else if (type === 'search') {
+        this.pageTitle = `Search results: '${title}'`;
+      } else {
+        this.pageTitle = 'Recent Posts';
+      }
     },
   },
   beforeRouteEnter(to, from, next) {

@@ -16,6 +16,7 @@ import layoutHeader from '@/layouts/header.vue';
 import layoutFooter from '@/layouts/footer.vue';
 import layoutSidebar from '@/layouts/sidebar.vue';
 import loading from '@components/loading.vue';
+import { htmlentities } from '@scripts/utils';
 
 export default {
   components: {
@@ -24,7 +25,7 @@ export default {
     layoutSidebar,
     loading,
   },
-  computed: mapState(['isLoading', 'isOpenSidebar', 'navigation']),
+  computed: mapState(['isLoading', 'isOpenSidebar', 'navigation', 'pageTitle']),
   watch: {
     $route: function(to, from) {
       // 同一ページ内の変更時は処理を行わない
@@ -35,12 +36,25 @@ export default {
       this.restPostData(to, from);
       this.sendPageview(to, from);
     },
+    pageTitle: 'setTitle',
   },
   created: function() {
     this.$store.dispatch('requestNavigation');
     this.$store.dispatch('requestAdvertise');
   },
   methods: {
+    setTitle: function(afterTitle, beforeTitle) {
+      if (!this.navigation || afterTitle === beforeTitle) {
+        return;
+      }
+
+      if (this.$route.path === '/' || !afterTitle) {
+        document.title = this.navigation.site.name;
+      } else {
+        let pageTitle = htmlentities.decode(afterTitle);
+        document.title = `${pageTitle} - ${this.navigation.site.name}`;
+      }
+    },
     restPostData: function(to, from) {
       if (to.meta.type === 'post' || to.meta.type === 'page') {
         this.$store.dispatch('resetPost');

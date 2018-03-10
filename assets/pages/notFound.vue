@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1 class="title">Page Not Found</h1>
+    <h1 class="title">{{ pageTitle }}</h1>
     <p class="description">The page you were looking for could not be found.</p>
   </div>
 </template>
@@ -8,6 +8,12 @@
 <script>
 export default {
   name: 'NotFound',
+  computed: {
+    pageTitle: () => 'Page Not Found',
+  },
+  mounted() {
+    this.$store.commit('setPageTitle', this.pageTitle);
+  },
 };
 </script>
 

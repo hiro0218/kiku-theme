@@ -5,6 +5,9 @@ export default {
   changeLoading(state, payload) {
     state.isLoading = payload;
   },
+  setPageTitle(state, title) {
+    state.pageTitle = title;
+  },
   setNavigation(state, payload) {
     state.navigation = payload;
   },
