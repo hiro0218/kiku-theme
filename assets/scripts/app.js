@@ -11,21 +11,6 @@ Vue.mixin({
     escapeBrackets: function(text) {
       return text.replace(/</g, '&lt;').replace(/>/g, '&gt;');
     },
-    zeroPadding: function(number) {
-      return ('0' + number).slice(-2);
-    },
-    formatDate: function(date) {
-      if (!date) {
-        return;
-      }
-      if (typeof date === 'string') {
-        date = new Date(date);
-      }
-      return date
-        .toISOString()
-        .split('T')[0]
-        .replace(/-/g, '/');
-    },
   },
 });
 

@@ -15,6 +15,18 @@
 <script>
 export default {
   name: 'EntryTime',
+  filters: {
+    formatDate: function(date) {
+      if (typeof date === 'string') {
+        date = new Date(date);
+      }
+
+      return date
+        .toISOString()
+        .split('T')[0]
+        .replace(/-/g, '/');
+    },
+  },
   props: {
     date: {
       type: Object,
@@ -27,7 +39,7 @@ export default {
       edit: {
         is_display: WP.is_logined && this.$route.meta.type !== 'preview',
         link: `/wp-admin/post.php?post=${this.$route.meta.id}&action=edit`,
-      }
+      },
     };
   },
 };
