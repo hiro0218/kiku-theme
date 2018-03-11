@@ -22,3 +22,7 @@ export const htmlentities = {
     });
   },
 };
+
+export const escapeBrackets = text => {
+  return text.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+};
