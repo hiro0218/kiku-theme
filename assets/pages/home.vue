@@ -37,6 +37,7 @@ export default {
     postLists: function() {
       if (this.postLists.length === 0) {
         this.ads.content = '';
+        this.ads.script = '';
         return;
       }
 

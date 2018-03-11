@@ -3,10 +3,10 @@
     <article class="entry">
       <entry-header :post="post"/>
       <entry-content :content="post.content.rendered"/>
-      <advertise :id-name="'ads2'"
+      <advertise :id-name="ads.id"
                  :display="advertise.ads2.display.includes($route.meta.type)"
-                 :content="advertise.ads2.content"
-                 :script="advertise.ads2.script" />
+                 :content="ads.content"
+                 :script="ads.script" />
       <amazon-product :amazon_product="post.amazon_product"/>
       <entry-footer :post="post"/>
     </article>
@@ -34,15 +34,30 @@ export default {
     entryContent,
     entryFooter,
   },
+  data() {
+    return {
+      ads: {
+        id: 'ads2',
+        content: '',
+        script: '',
+      },
+    };
+  },
   computed: mapState(['post', 'advertise']),
   watch: {
     '$route.path': function() {
       this.$store.dispatch('requestSinglePost', this.$route).then(() => this.updateAppearance());
     },
     'post.title.rendered': function(title) {
-      if (title) {
-        this.$store.commit('setPageTitle', title);
+      if (!title) {
+        this.ads.content = '';
+        this.ads.script = '';
+        return;
       }
+
+      this.ads.content = this.advertise.ads2.content;
+      this.ads.script = this.advertise.ads2.script;
+      this.$store.commit('setPageTitle', title);
     },
   },
   created: function() {
