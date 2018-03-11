@@ -3,7 +3,7 @@
     <li class="date-published">
       <span class="icon-update"/><time :datetime="date" itemprop="datePublished">{{ date | formatDate }}</time>
     </li>
-    <li v-if="modified" class="date-modified">
+    <li v-if="!isSameDay()" class="date-modified">
       <time :datetime="modified" itemprop="dateModified">{{ modified | formatDate }}</time>
     </li>
     <li v-if="edit.is_display">
@@ -46,6 +46,11 @@ export default {
         link: `/wp-admin/post.php?post=${this.$route.meta.id}&action=edit`,
       },
     };
+  },
+  methods: {
+    isSameDay: function() {
+      return new Date(this.date).toDateString() === new Date(this.modified).toDateString();
+    },
   },
 };
 </script>
