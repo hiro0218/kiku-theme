@@ -21,7 +21,7 @@
 import { mapState } from 'vuex';
 
 export default {
-  name: 'EntryPagination',
+  name: 'Pagination',
   data() {
     return {
       pagination: {

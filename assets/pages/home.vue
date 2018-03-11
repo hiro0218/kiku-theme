@@ -2,7 +2,7 @@
   <div class="container">
     <entry-list :page-title="pageTitle"/>
     <advertise :id-name="ads.id" :content="ads.content" :script="ads.script" />
-    <entry-pagination v-show="postLists.length !== 0"/>
+    <pagination v-show="postLists.length !== 0"/>
   </div>
 </template>
 
@@ -10,14 +10,14 @@
 import { mapState } from 'vuex';
 import entryList from '@components/entry-list.vue';
 import advertise from '@components/advertise.vue';
-import entryPagination from '@components/entry-pagination.vue';
+import pagination from '@components/pagination.vue';
 
 export default {
   name: 'Home',
   components: {
     entryList,
     advertise,
-    entryPagination,
+    pagination,
   },
   data() {
     return {
