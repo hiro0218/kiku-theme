@@ -85,6 +85,6 @@ export default {
     commit('setPost', cloneDeep(MODEL_POST));
   },
   resetPostList({ commit }) {
-    commit('setPostLists', cloneDeep(MODEL_POST_LIST));
+    commit('setPostLists', MODEL_POST_LIST);
   },
 };

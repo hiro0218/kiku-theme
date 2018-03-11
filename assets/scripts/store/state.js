@@ -7,7 +7,7 @@ export default {
   isOpenSidebar: false,
   isLoading: false,
   requestHeader: cloneDeep(MODEL_REQUEST_HEADER),
-  postLists: cloneDeep(MODEL_POST_LIST),
+  postLists: MODEL_POST_LIST,
   post: cloneDeep(MODEL_POST),
   advertise: cloneDeep(MODEL_ADS),
 };
