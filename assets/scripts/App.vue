@@ -6,7 +6,7 @@
     </main>
     <layout-footer/>
     <layout-sidebar/>
-    <loading v-if="isLoading"/>
+    <loading/>
   </div>
 </template>
 
@@ -25,7 +25,7 @@ export default {
     layoutSidebar,
     loading,
   },
-  computed: mapState(['isLoading', 'isOpenSidebar', 'navigation', 'pageTitle']),
+  computed: mapState(['isOpenSidebar', 'navigation', 'pageTitle']),
   watch: {
     $route: function(to, from) {
       // 同一ページ内の変更時は処理を行わない

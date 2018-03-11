@@ -1,12 +1,15 @@
 <template>
-  <div class="loading-container">
+  <div v-show="isLoading" class="loading-container">
     <img class="loading" src="../images/loading-spin.svg" width="64" height="64">
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: 'Loading',
+  computed: mapState(['isLoading']),
 };
 </script>
 

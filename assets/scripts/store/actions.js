@@ -9,7 +9,7 @@ export default {
       commit('changeLoading', flag);
       return;
     }
-    wait().then(() => {
+    wait(100).then(() => {
       commit('changeLoading', flag);
     });
   },
