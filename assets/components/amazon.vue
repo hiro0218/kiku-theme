@@ -1,12 +1,12 @@
 <template>
-  <div v-cloak v-if="amazon_product">
-    <div :style="{ 'background-image': 'url('+ amazon_product.LargeImage +')' }" class="amazon-product">
-      <a :href="amazon_product.DetailPageURL" target="_blank">
+  <div v-cloak v-if="product">
+    <div :style="{ 'background-image': 'url('+ product.LargeImage +')' }" class="amazon-product">
+      <a :href="product.DetailPageURL" target="_blank">
         <div class="product-image">
-          <img :src="amazon_product.LargeImage" data-zoom-disabled="true">
+          <img :src="product.LargeImage" data-zoom-disabled="true">
         </div>
         <div class="product-title">
-          <span class="amazon-title">{{ amazon_product.Title }}</span>
+          <span class="amazon-title">{{ product.Title }}</span>
         </div>
       </a>
     </div>
@@ -15,9 +15,9 @@
 
 <script>
 export default {
-  name: 'AmazonProduct',
+  name: 'Amazon',
   props: {
-    amazon_product: {
+    product: {
       type: Object,
       default: null,
       required: false,

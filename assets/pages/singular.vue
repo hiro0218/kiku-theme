@@ -7,7 +7,7 @@
                  :display="advertise.ads2.display.includes($route.meta.type)"
                  :content="ads.content"
                  :script="ads.script" />
-      <amazon-product :amazon_product="post.amazon_product"/>
+      <amazon :product="post.amazon_product"/>
       <entry-footer :post="post"/>
     </article>
   </div>
@@ -18,7 +18,7 @@ import { mapState } from 'vuex';
 import mokuji from '@scripts/module/mokuji';
 import common from '@scripts/module/common';
 
-import amazonProduct from '@components/amazon-product.vue';
+import amazon from '@components/amazon.vue';
 import advertise from '@components/advertise.vue';
 
 import entryHeader from '@components/entry/header.vue';
@@ -28,7 +28,7 @@ import entryFooter from '@components/entry/footer.vue';
 export default {
   name: 'Singular',
   components: {
-    amazonProduct,
+    amazon,
     advertise,
     entryHeader,
     entryContent,
