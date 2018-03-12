@@ -33,7 +33,7 @@ export default {
         return;
       }
 
-      this.restPostData(to, from);
+      this.resetPostData(to, from);
       this.sendPageview(to, from);
     },
     pageTitle: 'setTitle',
@@ -55,7 +55,7 @@ export default {
         document.title = `${pageTitle} - ${this.navigation.site.name}`;
       }
     },
-    restPostData: function(to, from) {
+    resetPostData: function(to, from) {
       if (to.meta.type === 'post' || to.meta.type === 'page') {
         this.$store.dispatch('resetPost');
       } else if (to.meta.type === 'category' || to.meta.type === 'post_tag' || to.meta.type === 'search') {
