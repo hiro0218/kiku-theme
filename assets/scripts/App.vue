@@ -33,7 +33,8 @@ export default {
         return;
       }
 
-      this.resetPostData(to, from);
+      this.$store.dispatch('resetPost');
+      this.$store.dispatch('resetPostList');
       this.sendPageview(to, from);
     },
     pageTitle: 'setTitle',
@@ -53,13 +54,6 @@ export default {
       } else {
         let pageTitle = htmlentities.decode(afterTitle);
         document.title = `${pageTitle} - ${this.navigation.site.name}`;
-      }
-    },
-    resetPostData: function(to, from) {
-      if (to.meta.type === 'post' || to.meta.type === 'page') {
-        this.$store.dispatch('resetPost');
-      } else if (to.meta.type === 'category' || to.meta.type === 'post_tag' || to.meta.type === 'search') {
-        this.$store.dispatch('resetPostList');
       }
     },
     sendPageview: function(to, from) {
