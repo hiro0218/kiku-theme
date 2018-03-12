@@ -235,7 +235,7 @@ class REST_API {
         $menus = wp_get_nav_menu_items($menu_ids[PRIMARY_NAVIGATION_NAME]);
         $array = [];
 
-        foreach ($menus as $menu) {
+        foreach ((array)$menus as $menu) {
             $menu_array = (array) $menu;
             $array[] = [
                 'ID' => $menu_array['ID'],
