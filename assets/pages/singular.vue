@@ -2,7 +2,7 @@
   <div>
     <article class="entry">
       <entry-header :post="post"/>
-      <entry-content :content="post.content.rendered"/>
+      <entry-content :post="post"/>
       <advertise :id-name="ads.id"
                  :display="advertise.ads2.display.includes($route.meta.type)"
                  :content="ads.content"

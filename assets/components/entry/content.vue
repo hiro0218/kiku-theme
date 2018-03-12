@@ -1,14 +1,15 @@
 <template>
-  <section class="entry-content" v-html="content"/>
+  <section class="entry-content" v-html="post.content.rendered"/>
 </template>
 
 <script>
 export default {
   name: 'EntryContent',
   props: {
-    content: {
-      type: String,
-      default: '',
+    post: {
+      type: Object,
+      default: () => {},
+      require: true,
     },
   },
 };
