@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div>
     <entry-list :page-title="pageTitle"/>
     <advertise :id-name="ads.id" :content="ads.content" :script="ads.script" />
     <pagination v-show="postLists.length !== 0"/>

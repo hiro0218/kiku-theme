@@ -2,7 +2,7 @@
   <div :class="{ 'open-drawer': isOpenSidebar }" class="contents">
     <layout-header/>
     <main class="main-container">
-      <router-view/>
+      <router-view class="container"/>
     </main>
     <layout-footer/>
     <layout-sidebar/>

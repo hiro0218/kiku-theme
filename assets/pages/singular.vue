@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div>
     <article class="entry">
       <entry-header :post="post"/>
       <entry-content :content="post.content.rendered"/>
