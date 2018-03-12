@@ -217,6 +217,10 @@ class REST_API {
             $array = [
                 'related' => $related,
                 'pager' => $pager,
+                'custom' => [
+                    'script' => get_post_meta($post_id, '_custom_js', true),
+                    'style'  => get_post_meta($post_id, '_custom_css', true),
+                ],
             ];
 
             set_transient($key, $array, self::CACHE_EXPIRATION);
