@@ -14,6 +14,10 @@ export const MODEL_POST = {
   attach: {
     related: [],
     pager: {},
+    custom: {
+      style: '',
+      script: '',
+    },
   },
 };
 
