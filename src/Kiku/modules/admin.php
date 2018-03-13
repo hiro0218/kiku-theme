@@ -153,27 +153,6 @@ function verify_cusutom_data() {
     return true;
 }
 
-function insert_custom_data_in_singular() {
-    if ( !is_singular() ) {
-        return;
-    }
-
-    while ( have_posts() ) {
-        the_post();
-
-        $object = get_post_meta(get_the_ID(), '_custom_css', true);
-        if ( !empty($object) ) {
-            echo '<style>'. $object .'</style>'. PHP_EOL;
-        }
-
-        $object = get_post_meta(get_the_ID(), '_custom_js', true);
-        if ( !empty($object) ) {
-            echo '<script>'. $object .'</script>'. PHP_EOL;
-        }
-    }
-    rewind_posts();
-}
-
 add_action('admin_menu', function() {
     add_meta_box('custom_css', __('custom CSS', 'kiku'), __NAMESPACE__ . '\\add_customCss_metabox', 'post', 'normal', 'low');
     add_meta_box('custom_css', __('custom CSS', 'kiku'), __NAMESPACE__ . '\\add_customCss_metabox', 'page', 'normal', 'low');
@@ -181,4 +160,3 @@ add_action('admin_menu', function() {
     add_meta_box('custom_js',  __('custom JavaScript', 'kiku'), __NAMESPACE__ . '\\add_customJs_metabox', 'page', 'normal', 'low');
 });
 add_action('save_post', __NAMESPACE__ . '\\save_cusutom_data');
-add_action('wp_footer', __NAMESPACE__ . '\\insert_custom_data_in_singular', 100);
