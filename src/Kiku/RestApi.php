@@ -110,6 +110,38 @@ class REST_API {
                 ];
             }
         ]);
+
+        register_rest_route(self::API_NAMESPACE, '/archive', [
+            'methods'  => WP_REST_Server::READABLE,
+            'callback' => function($data) {
+                // transient で一時的にキャッシュしたデータをロード
+                $key = CACHE_PREFIX . md5('archive');
+                $result = get_transient($key);
+
+                if ($result === false) {
+                    $DB = new \Kiku\DB();
+                    $list = $DB->get_archive_list();
+                    $archives = [];
+
+                    foreach ($list as $entry) {
+                        $archives[$entry['post_year']][] = [
+                            'id'    => $entry['ID'],
+                            'date'  => $entry['post_date'],
+                            'title' => $entry['post_title'],
+                            'link'  => \Kiku\Util::base_path(get_permalink($entry['ID'])),
+                        ];
+                    }
+
+                    unset($DB, $list);
+                    set_transient($key, $archives, self::CACHE_EXPIRATION);
+
+                    return $archives;
+                }
+
+                return $result;
+            }
+        ]);
+
     }
 
     public function get_widget() {
