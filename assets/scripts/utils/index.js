@@ -26,3 +26,11 @@ export const htmlentities = {
 export const escapeBrackets = text => {
   return text.replace(/</g, '&lt;').replace(/>/g, '&gt;');
 };
+
+export const dateToISOString = date => {
+  if (typeof date === 'string') {
+    date = new Date(date);
+  }
+
+  return date.toISOString();
+};

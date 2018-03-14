@@ -1,10 +1,10 @@
 <template>
   <ul v-cloak v-if="date" class="entry-time">
     <li class="date-published">
-      <span class="icon-update"/><time :datetime="date" itemprop="datePublished">{{ date | formatDate }}</time>
+      <span class="icon-update"/><time :datetime="date | dateToISOString" itemprop="datePublished">{{ date | formatDate }}</time>
     </li>
     <li v-if="!isSameDay()" class="date-modified">
-      <time :datetime="modified" itemprop="dateModified">{{ modified | formatDate }}</time>
+      <time :datetime="modified | dateToISOString" itemprop="dateModified">{{ modified | formatDate }}</time>
     </li>
     <li v-if="edit.is_display">
       <a :href="edit.link"><span class="icon-edit"/></a>
