@@ -55,6 +55,14 @@ export default {
       params: '',
     });
   },
+  getArchive() {
+    var client = this.getInstance();
+
+    return client.get('/wp-json/kiku/v1/archive', {
+      baseURL: '/',
+      params: '',
+    });
+  },
   getPostList({ meta, params }) {
     var client = this.getInstance();
     const defaultParams = cloneDeep(this.settings.params);

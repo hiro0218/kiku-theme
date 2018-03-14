@@ -1,6 +1,7 @@
 import pageHome from '@/pages/home.vue';
 import pageSingular from '@/pages/singular.vue';
 import pageNotFound from '@/pages/notFound.vue';
+import pageArchive from '@/pages/archive.vue';
 
 let routes = [];
 
@@ -72,6 +73,11 @@ routes.push(
         },
       },
     ],
+  },
+  {
+    path: '/archive',
+    name: 'archive',
+    component: pageArchive,
   },
   {
     path: '/preview',
