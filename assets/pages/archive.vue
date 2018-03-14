@@ -2,7 +2,7 @@
   <div>
     <article class="entry">
       <header>
-        <h1 class="entry-title">Archive</h1>
+        <h1 class="entry-title">{{ pageTitle }}</h1>
       </header>
       <section v-for="(entries, year) in list" :key="year" class="entry-content">
         <h2 class="archive-year">{{ year }}</h2>
@@ -43,11 +43,15 @@ export default {
       list: null,
     };
   },
+  computed: {
+    pageTitle: () => 'Archive',
+  },
   mounted() {
     this.$store.dispatch('loading', true);
 
     api.getArchive().then(response => {
       this.list = response.data;
+      this.$store.commit('setPageTitle', this.pageTitle);
       this.$store.dispatch('loading', false);
     });
   },
