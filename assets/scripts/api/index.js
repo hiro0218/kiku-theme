@@ -47,7 +47,7 @@ export default {
       params: '',
     });
   },
-  getAds() {
+  getAdvertise() {
     var client = this.getInstance();
 
     return client.get('/wp-json/kiku/v1/advertise', {

@@ -19,7 +19,7 @@ export default {
     });
   },
   requestAdvertise({ commit }) {
-    api.getAds().then(response => {
+    api.getAdvertise().then(response => {
       let data = response.data;
 
       let ads1 = {
