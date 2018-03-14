@@ -18,6 +18,10 @@
 </template>
 
 <script>
+/**
+ * Create a page named "archive".
+ *  permalink: 'https://example.com/archive/'
+ */
 import api from '@scripts/api';
 
 export default {

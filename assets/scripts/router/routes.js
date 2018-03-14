@@ -21,7 +21,12 @@ for (let key in WP.routes) {
   };
 
   if (route.type === 'post' || route.type === 'page') {
-    temp.component = pageSingular;
+    if (route.path === '/archive') {
+      temp.name = 'archive';
+      temp.component = pageArchive;
+    } else {
+      temp.component = pageSingular;
+    }
   } else {
     // category, post_tag, etc
     temp.component = pageHome;
@@ -73,11 +78,6 @@ routes.push(
         },
       },
     ],
-  },
-  {
-    path: '/archive',
-    name: 'archive',
-    component: pageArchive,
   },
   {
     path: '/preview',
