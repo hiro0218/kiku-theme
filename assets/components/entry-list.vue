@@ -1,6 +1,5 @@
 <template>
   <div class="entry-list">
-    <h1 class="page-header" v-html="$options.filters.escapeBrackets(pageTitle)"/>
     <template v-if="requestHeader.total === 0">
       <div class="alert alert-warning">
         No results found.
@@ -44,13 +43,6 @@ export default {
       return ago(new Date(date));
     },
   },
-  props: {
-    pageTitle: {
-      type: String,
-      default: '',
-      require: true,
-    },
-  },
   computed: {
     ...mapState({
       requestHeader: 'requestHeader',
@@ -92,13 +84,6 @@ export default {
 
 <style lang="scss" scoped>
 $entry-thumbnail-size: 5rem; // 80px;
-
-.page-header {
-  margin: 0 0 0.5rem;
-  font-size: $font-size-h3;
-  line-height: 3rem;
-  word-wrap: break-word;
-}
 
 .entry-list {
   overflow: hidden;

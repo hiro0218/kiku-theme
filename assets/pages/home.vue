@@ -1,6 +1,7 @@
 <template>
   <div>
-    <entry-list :page-title="pageTitle"/>
+    <h1 class="page-header" v-html="$options.filters.escapeBrackets(pageTitle)"/>
+    <entry-list/>
     <advertise :id-name="ads.id" :content="ads.content" :script="ads.script" />
     <pagination v-show="postLists.length !== 0"/>
   </div>
@@ -85,3 +86,12 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.page-header {
+  margin: 0 0 0.5rem;
+  font-size: $font-size-h3;
+  line-height: 3rem;
+  word-wrap: break-word;
+}
+</style>
