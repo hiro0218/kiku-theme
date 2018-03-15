@@ -10,6 +10,9 @@ export default {
   setNavigation(state, payload) {
     state.navigation = payload;
   },
+  setThemes(state, payload) {
+    state.themes = payload;
+  },
   toggleSidebar(state) {
     state.isOpenSidebar = !state.isOpenSidebar;
   },

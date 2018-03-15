@@ -1,7 +1,7 @@
 <template>
-  <div v-if="navigation">
+  <div>
     <label for="drawer-trigger" class="drawer-overlay"/>
-    <aside class="sidebar drawer" data-comes-from="left" v-html="navigation.widget"/>
+    <aside class="sidebar drawer" data-comes-from="left" v-html="themes.widget"/>
   </div>
 </template>
 
@@ -10,7 +10,16 @@ import { mapState } from 'vuex';
 
 export default {
   name: 'Sidebar',
-  computed: mapState(['navigation', 'isOpenSidebar']),
+  computed: mapState(['themes', 'isOpenSidebar']),
+  mounted() {
+    // サイドバーが始めて開いた場合のみ、データを取得する
+    let unwatch = this.$watch('isOpenSidebar', function(isOpen) {
+      if (isOpen) {
+        this.$store.dispatch('requestThemes');
+        unwatch();
+      }
+    });
+  },
 };
 </script>
 

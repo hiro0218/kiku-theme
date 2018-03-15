@@ -1,3 +1,17 @@
+export const MODEL_NAVIGATION = {
+  site: {
+    base_path: '',
+    copyright: '',
+    name: '',
+    url: '',
+  },
+  footer: [],
+};
+
+export const MODEL_THEMES = {
+  widget: '',
+};
+
 export const MODEL_POST = {
   link: '',
   title: {

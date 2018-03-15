@@ -18,6 +18,11 @@ export default {
       commit('setNavigation', response.data);
     });
   },
+  requestThemes({ commit }) {
+    api.getThemes().then(response => {
+      commit('setThemes', response.data);
+    });
+  },
   requestAdvertise({ commit }) {
     api.getAdvertise().then(response => {
       let data = response.data;

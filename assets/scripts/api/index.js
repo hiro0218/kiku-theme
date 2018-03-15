@@ -47,6 +47,14 @@ export default {
       params: '',
     });
   },
+  getThemes() {
+    var client = this.getInstance();
+
+    return client.get('/wp-json/kiku/v1/themes', {
+      baseURL: '/',
+      params: '',
+    });
+  },
   getAdvertise() {
     var client = this.getInstance();
 
