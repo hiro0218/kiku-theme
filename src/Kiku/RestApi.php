@@ -114,8 +114,10 @@ class REST_API {
         register_rest_route(self::API_NAMESPACE, '/archive', [
             'methods'  => WP_REST_Server::READABLE,
             'callback' => function($data) {
+                $request_url = $_SERVER['REQUEST_URI'];
+
                 // transient で一時的にキャッシュしたデータをロード
-                $key = CACHE_PREFIX . md5('archive');
+                $key = CACHE_PREFIX . md5($request_url);
                 $result = get_transient($key);
 
                 if ($result === false) {
