@@ -10,7 +10,6 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('styles/main', asset_path('styles/main.css'), false, null);
 
     // script
-    wp_enqueue_script('scripts/polyfill', asset_path('scripts/polyfill.js'), [], null, true);
     wp_enqueue_script('scripts/main', asset_path('scripts/main.js'), [], null, true);
     wp_enqueue_script('scripts/prism', asset_path('scripts/prism.js'), [], null, true);
 

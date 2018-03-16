@@ -1,9 +1,7 @@
 {
   "entry": {
-    "polyfill": [
-      "./scripts/polyfill.js"
-    ],
     "main": [
+      "./scripts/polyfill.js",
       "./scripts/app.js",
       "./styles/reset.scss",
       "./styles/main.scss"
