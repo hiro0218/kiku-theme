@@ -1,14 +1,20 @@
 <template>
   <div v-show="isLoading" class="loading-container">
-    <img class="loading" src="../images/loading-spin.svg" width="64" height="64">
+    <div class="loading" v-html="svgLoading"/>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex';
+import svgLoading from '@/images/loading-spin.svg'
 
 export default {
   name: 'Loading',
+  data() {
+    return {
+      svgLoading,
+    };
+  },
   computed: mapState(['isLoading']),
 };
 </script>
@@ -30,5 +36,7 @@ export default {
   left: 50%;
   margin: 0;
   z-index: 20;
+  width: 64px;
+  height: 64px;
 }
 </style>

@@ -99,7 +99,11 @@ let webpackConfig = {
         },
       },
       {
-        test: /\.(ttf|eot|woff2?|png|jpe?g|gif|svg|ico)$/,
+        test: /\.svg$/,
+        loader: 'svg-inline-loader',
+      },
+      {
+        test: /\.(ttf|eot|woff2?|png|jpe?g|gif|ico)$/,
         include: config.paths.assets,
         loader: 'url',
         options: {
@@ -108,7 +112,7 @@ let webpackConfig = {
         },
       },
       {
-        test: /\.(ttf|eot|woff2?|png|jpe?g|gif|svg|ico)$/,
+        test: /\.(ttf|eot|woff2?|png|jpe?g|gif|ico)$/,
         include: /node_modules|bower_components/,
         loader: 'url',
         options: {
