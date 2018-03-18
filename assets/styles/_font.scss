@@ -32,6 +32,25 @@
        url("~yakuhanjp/dist/fonts/YakuHanJP/YakuHanJP-Bold.woff") format("woff");
 }
 
+// Noto Sans Japanese
+@font-face {
+  font-family: "Noto Sans Japanese";
+  font-weight: normal;
+  src: local("Noto Sans CJK JP DemiLight"),
+       local("NotoSansCJKjp-DemiLight"),
+       url("../fonts/NotoSansCJKjp-DemiLight.woff2") format("woff2"),
+       url("../fonts/NotoSansCJKjp-DemiLight.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Noto Sans Japanese";
+  font-weight: bold;
+  src: local("Noto Sans CJK JP Bold"),
+       local("NotoSansCJKjp-Bold"),
+       url("../fonts/NotoSansCJKjp-Bold.woff2") format("woff2"),
+       url("../fonts/NotoSansCJKjp-Bold.woff") format("woff");
+}
+
 // icon font
 @font-face {
   font-family: 'icon';
