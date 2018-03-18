@@ -1,46 +1,47 @@
 <template>
   <section v-if="title" class="entry-share">
     <template v-if="is_display.twitter">
-      <a :data-url="twitter_url()"
+      <a v-html="icon.twitter"
          href="javascript:void(0)"
          class="btn-twitter"
          title="Share on Twitter"
-         data-width="620" data-height="310" @click="openWindows">
-        <span class="icon-twitter"/>
+         @click.stop="openWindow(twitter_url(), 620, 310)">
       </a>
     </template>
     <template v-if="is_display.facebook">
-      <a :data-url="facebook_url()"
+      <a v-html="icon.facebook"
          href="javascript:void(0)"
          class="btn-facebook"
          title="Share on Facebook"
-         data-width="560" data-height="550" @click="openWindows">
-        <span class="icon-facebook"/>
+         @click.stop="openWindow(facebook_url(), 560, 550)">
       </a>
     </template>
     <template v-if="is_display.hatena">
-      <a :href="hatena_url"
-         :data-url="hatena_url()"
+      <a v-html="icon.hatena"
+         :href="hatena_url()"
          :data-hatena-bookmark-title="title"
          class="hatena-bookmark-button btn-hatena"
          title="Share on LINE"
          data-hatena-bookmark-layout="simple">
-        <span class="icon-hatena"/>
       </a>
     </template>
     <template v-if="is_display.line">
-      <a :data-url="line_url()"
+      <a v-html="icon.line"
          href="javascript:void(0)"
          class="btn-line"
          title="Share on LINE"
-         data-width="560" data-height="550" @click="openWindows">
-        <span class="icon-line"/>
+         @click.stop="openWindow(line_url(), 560, 550)">
       </a>
     </template>
   </section>
 </template>
 
 <script>
+import iconTwitter from '@/images/icon/twitter.svg'
+import iconFacebook from '@/images/icon/facebook.svg'
+import iconHatena from '@/images/icon/hatenabookmark.svg'
+import iconLine from '@/images/icon/line.svg'
+
 export default {
   name: 'EntryShare',
   props: {
@@ -54,6 +55,12 @@ export default {
     return {
       is_display: WP.is_shared,
       link: location.href,
+      icon: {
+        twitter: iconTwitter,
+        facebook: iconFacebook,
+        hatena: iconHatena,
+        line: iconLine,
+      },
     };
   },
   watch: {
@@ -86,16 +93,14 @@ export default {
     line_url: function() {
       return `https://lineit.line.me/share/ui?url=${this.link}`;
     },
-    openWindows(e) {
-      const target = e.target;
-      const data = target.dataset;
-      const w = data.width || 480;
-      const h = data.height || 450;
+    openWindow(url, width, height) {
+      const w = width || 480;
+      const h = height || 450;
       const x = window.screen.width / 2 - w / 2;
       const y = window.screen.height / 2 - h / 2;
       const features = `width=${w},height=${h},top=${y},left=${x},menubar=0,toolbar=0,directories=0,toolbar=0,status=0,resizable=0`;
 
-      window.open(data.url, '', features);
+      window.open(url, '', features);
       return false;
     },
   },
@@ -108,46 +113,38 @@ $facebook-color: #3b5998;
 $hatena-color: #00a4de;
 $line-color: #00b900;
 
-.entry-share {
-  display: flex;
-  margin-bottom: 2rem;
-  text-align: center;
+.entry-share /deep/ {
+  margin: 2rem 0;
 
   a {
-    color: $white;
-    font-size: 1.5rem;
-    line-height: 1;
-    &:hover {
-      opacity: 0.8;
-    }
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+
     & + a {
-      margin-left: 1rem;
+      margin-left: 1.5rem;
     }
   }
-}
 
-.btn-twitter,
-.btn-facebook,
-.btn-line,
-.btn-hatena {
-  flex: auto;
-  padding: 0.5rem 0.7rem;
-  border-radius: $radius-sm;
-}
+  svg path {
+    fill: $grey-400;
+    transition: fill 0.4s ease;
+  }
 
-.btn-twitter {
-  background: $twitter-color;
-}
+  .btn-twitter:hover svg path {
+    fill: $twitter-color;
+  }
 
-.btn-facebook {
-  background: $facebook-color;
-}
+  .btn-facebook:hover svg path {
+    fill: $facebook-color;
+  }
 
-.btn-hatena {
-  background: $hatena-color;
-}
+  .btn-hatena:hover svg path {
+    fill: $hatena-color;
+  }
 
-.btn-line {
-  background: $line-color;
+  .btn-line:hover svg path {
+    fill: $line-color;
+  }
 }
 </style>
