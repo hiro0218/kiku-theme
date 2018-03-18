@@ -6,9 +6,8 @@
   background: #fff;
 
   // proximity
-  & + pre {
+  & + .code-toolbar {
     margin-top: -(2rem + .15rem) !important;  // parent margin-bottom - sandbox border-width
-    padding: 2rem;
   }
 
 }
