@@ -55,7 +55,6 @@
 .icon-location_on,
 .icon-menu,
 .icon-open_in_new,
-.icon-search,
 .icon-update {
   width: 1rem;
   height: 1rem;
@@ -133,11 +132,6 @@
 .icon-open_in_new {
   &::before {
     content: "\e90b";
-  }
-}
-.icon-search {
-  &::before {
-    content: "\e90c";
   }
 }
 .icon-update {
