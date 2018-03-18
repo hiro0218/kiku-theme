@@ -21,7 +21,7 @@
           <footer class="entry-footer">
             <div class="entry-meta">
               <ul class="entry-time">
-                <li><span class="icon-update"/>{{ post.date | timeago }}</li>
+                <li><span class="icon" v-html="iconUpdate"/>{{ post.date | timeago }}</li>
               </ul>
             </div>
           </footer>
@@ -35,6 +35,7 @@
 <script>
 import { mapState } from 'vuex';
 import ago from 's-ago';
+import iconUpdate from '@/images/icon/update.svg'
 
 export default {
   name: 'EntryList',
@@ -42,6 +43,11 @@ export default {
     timeago: function(date) {
       return ago(new Date(date));
     },
+  },
+  data() {
+    return {
+      iconUpdate,
+    };
   },
   computed: {
     ...mapState({
@@ -165,6 +171,19 @@ $entry-thumbnail-size: 5rem; // 80px;
     background: $grey-50 50% no-repeat;
     background-image: url('../images/no-image-128x128.png');
     background-size: cover;
+  }
+}
+
+.icon /deep/ {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1rem;
+  height: 1rem;
+  margin-right: .25rem;
+
+  svg {
+    display: block;
+    fill: $grey-400;
   }
 }
 </style>

@@ -1,18 +1,20 @@
 <template>
   <ul v-cloak v-if="date" class="entry-time">
     <li class="date-published">
-      <span class="icon-update"/><time :datetime="date | dateToISOString" itemprop="datePublished">{{ date | formatDate }}</time>
+      <span class="icon" v-html="iconUpdate"/><time :datetime="date | dateToISOString" itemprop="datePublished">{{ date | formatDate }}</time>
     </li>
     <li v-if="!isSameDay()" class="date-modified">
       <time :datetime="modified | dateToISOString" itemprop="dateModified">{{ modified | formatDate }}</time>
     </li>
     <li v-if="edit.is_display">
-      <a :href="edit.link"><span class="icon-edit"/></a>
+      <a :href="edit.link">Edit</a>
     </li>
   </ul>
 </template>
 
 <script>
+import iconUpdate from '@/images/icon/update.svg'
+
 export default {
   name: 'EntryTime',
   filters: {
@@ -41,6 +43,7 @@ export default {
   },
   data() {
     return {
+      iconUpdate,
       edit: {
         is_display: WP.is_logined && this.$route.meta.type !== 'preview',
         link: `/wp-admin/post.php?post=${this.$route.meta.id}&action=edit`,
@@ -54,3 +57,18 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.icon /deep/ {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1rem;
+  height: 1rem;
+  margin-right: .25rem;
+
+  svg {
+    display: block;
+    fill: $grey-400;
+  }
+}
+</style>
