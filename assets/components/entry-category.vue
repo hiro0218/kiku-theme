@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import iconFolder from '@/images/icon/folder.svg'
+import iconFolder from '@/images/icon/folder.svg';
 
 export default {
   name: 'EntryCategory',
@@ -34,7 +34,7 @@ export default {
   vertical-align: middle;
   width: 1rem;
   height: 1rem;
-  margin-right: .25rem;
+  margin-right: 0.25rem;
 
   svg {
     display: block;

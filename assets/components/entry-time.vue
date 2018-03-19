@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import iconUpdate from '@/images/icon/update.svg'
+import iconUpdate from '@/images/icon/update.svg';
 
 export default {
   name: 'EntryTime',
@@ -64,7 +64,7 @@ export default {
   vertical-align: middle;
   width: 1rem;
   height: 1rem;
-  margin-right: .25rem;
+  margin-right: 0.25rem;
 
   svg {
     display: block;

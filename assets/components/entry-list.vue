@@ -35,7 +35,7 @@
 <script>
 import { mapState } from 'vuex';
 import ago from 's-ago';
-import iconUpdate from '@/images/icon/update.svg'
+import iconUpdate from '@/images/icon/update.svg';
 
 export default {
   name: 'EntryList',
@@ -179,7 +179,7 @@ $entry-thumbnail-size: 5rem; // 80px;
   vertical-align: middle;
   width: 1rem;
   height: 1rem;
-  margin-right: .25rem;
+  margin-right: 0.25rem;
 
   svg {
     display: block;

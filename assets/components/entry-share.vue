@@ -1,46 +1,42 @@
 <template>
   <section v-if="title" class="entry-share">
     <template v-if="is_display.twitter">
-      <a v-html="icon.twitter"
-         href="javascript:void(0)"
+      <a href="javascript:void(0)"
          class="btn-twitter"
          title="Share on Twitter"
-         @click.stop="openWindow(twitter_url(), 620, 310)">
-      </a>
+         @click.stop="openWindow(twitter_url(), 620, 310)"
+         v-html="icon.twitter"/>
     </template>
     <template v-if="is_display.facebook">
-      <a v-html="icon.facebook"
-         href="javascript:void(0)"
+      <a href="javascript:void(0)"
          class="btn-facebook"
          title="Share on Facebook"
-         @click.stop="openWindow(facebook_url(), 560, 550)">
-      </a>
+         @click.stop="openWindow(facebook_url(), 560, 550)"
+         v-html="icon.facebook"/>
     </template>
     <template v-if="is_display.hatena">
-      <a v-html="icon.hatena"
-         :href="hatena_url()"
+      <a :href="hatena_url()"
          :data-hatena-bookmark-title="title"
          class="hatena-bookmark-button btn-hatena"
          title="Share on LINE"
-         data-hatena-bookmark-layout="simple">
-      </a>
+         data-hatena-bookmark-layout="simple"
+         v-html="icon.hatena"/>
     </template>
     <template v-if="is_display.line">
-      <a v-html="icon.line"
-         href="javascript:void(0)"
+      <a href="javascript:void(0)"
          class="btn-line"
          title="Share on LINE"
-         @click.stop="openWindow(line_url(), 560, 550)">
-      </a>
+         @click.stop="openWindow(line_url(), 560, 550)"
+         v-html="icon.line"/>
     </template>
   </section>
 </template>
 
 <script>
-import iconTwitter from '@/images/icon/twitter.svg'
-import iconFacebook from '@/images/icon/facebook.svg'
-import iconHatena from '@/images/icon/hatenabookmark.svg'
-import iconLine from '@/images/icon/line.svg'
+import iconTwitter from '@/images/icon/twitter.svg';
+import iconFacebook from '@/images/icon/facebook.svg';
+import iconHatena from '@/images/icon/hatenabookmark.svg';
+import iconLine from '@/images/icon/line.svg';
 
 export default {
   name: 'EntryShare',
