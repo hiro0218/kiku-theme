@@ -6,7 +6,7 @@
 
 <script>
 import { mapState } from 'vuex';
-import svgLoading from '@/images/loading-spin.svg';
+import svgLoading from '@/images/loading-spin.svg?inline';
 
 export default {
   name: 'Loading',

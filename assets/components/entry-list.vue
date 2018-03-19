@@ -35,7 +35,7 @@
 <script>
 import { mapState } from 'vuex';
 import ago from 's-ago';
-import iconUpdate from '@/images/icon/update.svg';
+import iconUpdate from '@/images/icon/update.svg?inline';
 
 export default {
   name: 'EntryList',

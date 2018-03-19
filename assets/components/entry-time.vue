@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import iconUpdate from '@/images/icon/update.svg';
+import iconUpdate from '@/images/icon/update.svg?inline';
 
 export default {
   name: 'EntryTime',

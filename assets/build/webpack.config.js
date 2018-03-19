@@ -100,7 +100,15 @@ let webpackConfig = {
       },
       {
         test: /\.svg$/,
-        loader: 'svg-inline-loader',
+        oneOf: [
+          {
+            use: 'svg-inline-loader',
+            resourceQuery: /inline/,
+          },
+          {
+            use: 'file-loader',
+          },
+        ],
       },
       {
         test: /\.(ttf|eot|woff2?|png|jpe?g|gif|ico)$/,
