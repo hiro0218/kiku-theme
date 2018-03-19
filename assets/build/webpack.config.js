@@ -106,7 +106,12 @@ let webpackConfig = {
             resourceQuery: /inline/,
           },
           {
-            use: 'file-loader',
+            loader: 'file-loader',
+            // loader: 'url',
+            options: {
+              limit: 1024,
+              name: `[path]${assetsFilenames}.[ext]`,
+            },
           },
         ],
       },
