@@ -45,7 +45,7 @@ export default {
   },
   methods: {
     setTitle: function(afterTitle, beforeTitle) {
-      if (!this.navigation || afterTitle === beforeTitle) {
+      if (!this.navigation.site.name || afterTitle === beforeTitle) {
         return;
       }
 
