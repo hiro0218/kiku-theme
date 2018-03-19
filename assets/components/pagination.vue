@@ -79,25 +79,36 @@ export default {
     flex-wrap: wrap;
     justify-content: center;
     padding: 0;
+    list-style: none;
   }
 
   li {
-    display: flex;
+    display: inline-block;
+    list-style: none;
+
     & + li {
       margin-left: 0.5rem;
     }
   }
 
   a {
+    position: relative;
+    display: block;
+    padding: 0.5rem 0.75rem;
     min-width: 3rem;
     min-height: 3rem;
     border-radius: $radius-base;
     color: $grey-600;
-    line-height: 3rem;
     text-align: center;
+
     &:hover {
       outline: 0;
       background: $grey-300;
+    }
+
+    &::before {
+      position: relative;
+      top: .25rem;
     }
   }
 
@@ -108,6 +119,7 @@ export default {
   }
 
   .disabled a {
+    opacity: 0.5;
     cursor: not-allowed;
 
     @include mobile {
@@ -119,32 +131,29 @@ export default {
     }
   }
 
-  .pagination-first a {
-    &::before {
-      content: '\e903';
-      font-family: 'icon';
-    }
+.pagination-first a {
+  &::before {
+    content: url('../images/icon/first_page.svg');
   }
+}
 
-  .pagination-prev a {
-    &::before {
-      content: '\e900';
-      font-family: 'icon';
-    }
+.pagination-prev a {
+  &::before {
+    content: url('../images/icon/chevron_left.svg');
   }
+}
 
-  .pagination-next a {
-    &::before {
-      content: '\e901';
-      font-family: 'icon';
-    }
+.pagination-next a {
+  &::before {
+    content: url('../images/icon/chevron_right.svg');
   }
+}
 
-  .pagination-last a {
-    &::before {
-      content: '\e908';
-      font-family: 'icon';
-    }
+.pagination-last a {
+  &::before {
+    content: url('../images/icon/last_page.svg');
   }
+}
+
 }
 </style>
