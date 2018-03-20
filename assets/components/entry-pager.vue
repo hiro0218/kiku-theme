@@ -2,16 +2,12 @@
   <div v-if="pager" class="pager">
     <div class="pager-container">
       <router-link v-if="pager.prev" :to="pager.prev.url" :title="pager.prev.title" class="pager-prev">
-        <span class="pager-label">
-          <span class="pager-icon icon-chevron_left"/>previous
-        </span>
-        <span class="pager-title">{{ pager.prev.title }}</span>
+        <span class="pager-label">previous</span>
+        <div class="pager-title">{{ pager.prev.title }}</div>
       </router-link>
       <router-link v-if="pager.next" :to="pager.next.url" :title="pager.next.title" class="pager-next">
-        <span class="pager-label">
-          next<span class="pager-icon icon-chevron_right"/>
-        </span>
-        <span class="pager-title">{{ pager.next.title }}</span>
+        <span class="pager-label">next</span>
+        <div class="pager-title">{{ pager.next.title }}</div>
       </router-link>
     </div>
   </div>
@@ -39,6 +35,7 @@ export default {
   display: flex;
 
   a {
+    position: relative;
     display: flex;
     flex: none;
     flex-direction: column;
@@ -57,12 +54,8 @@ export default {
   }
 }
 
-.pager-icon {
-  color: $grey-800;
-  font-size: $font-size-sm;
-}
-
 .pager-label {
+  margin-bottom: 0.25rem;
   color: $grey-400;
   font-weight: bold;
   text-transform: capitalize;
@@ -77,22 +70,26 @@ export default {
 .pager-prev {
   padding-right: 1rem;
   text-align: left;
-  .pager-icon {
-    margin-right: 0.5rem;
-  }
-  .pager-title {
-    margin-left: 1.5rem;
+  &::before {
+    position: absolute;
+    right: 100%;
+    top: 25%;
+    margin: 1rem 0.75rem;
+    line-height: 1rem;
+    content: url('../images/icon/arrow_back.svg');
   }
 }
 
 .pager-next {
   padding-left: 1rem;
   text-align: right;
-  .pager-icon {
-    margin-left: 0.5rem;
-  }
-  .pager-title {
-    margin-right: 1.5rem;
+  &::after {
+    position: absolute;
+    left: 100%;
+    top: 25%;
+    margin: 1rem 0.75rem;
+    line-height: 1rem;
+    content: url('../images/icon/arrow_forward.svg');
   }
 }
 </style>

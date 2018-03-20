@@ -66,14 +66,7 @@
        url('../fonts/icon.svg#icon') format('svg');
 }
 
-.icon-chevron_left,
-.icon-chevron_right,
-.icon-first_page,
-.icon-home,
-.icon-image,
 .icon-keyboard_arrow_right,
-.icon-last_page,
-.icon-location_on,
 .icon-open_in_new {
   width: 1rem;
   height: 1rem;
@@ -93,44 +86,9 @@
   font-feature-settings: 'liga';
 }
 
-.icon-chevron_left {
-  &::before {
-    content: "\e900";
-  }
-}
-.icon-chevron_right {
-  &::before {
-    content: "\e901";
-  }
-}
-.icon-first_page {
-  &::before {
-    content: "\e903";
-  }
-}
-.icon-home {
-  &::before {
-    content: "\e905";
-  }
-}
-.icon-image {
-  &::before {
-    content: "\e906";
-  }
-}
 .icon-keyboard_arrow_right {
   &::before {
     content: "\e907";
-  }
-}
-.icon-last_page {
-  &::before {
-    content: "\e908";
-  }
-}
-.icon-location_on {
-  &::before {
-    content: "\e909";
   }
 }
 .icon-open_in_new {
