@@ -23,7 +23,12 @@
     vertical-align: middle;
 
     & + li::before {
-      @extend .icon-keyboard_arrow_right;
+      content: "";
+      display: inline-block;
+      background: url('../images/icon/arrow_right.svg') no-repeat;
+      background-size: 1rem;
+      width: 1rem;
+      height: 1rem;
       margin: 0 .125rem;
     }
 

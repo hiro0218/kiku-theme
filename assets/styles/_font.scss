@@ -54,39 +54,3 @@
        url("../fonts/NotoSansCJKjp-Bold.woff2?ver=1.4.0") format("woff2"),
        url("../fonts/NotoSansCJKjp-Bold.woff?ver=1.4.0") format("woff");
 }
-
-// icon font
-@font-face {
-  font-family: 'icon';
-  font-style: normal;
-  font-weight: normal;
-  font-display: swap;
-  src: url('../fonts/icon.ttf') format('truetype'),
-       url('../fonts/icon.woff') format('woff'),
-       url('../fonts/icon.svg#icon') format('svg');
-}
-
-.icon-keyboard_arrow_right {
-  width: 1rem;
-  height: 1rem;
-  color: inherit;
-  font-family: 'icon';
-  font-size: inherit;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: normal;
-  line-height: 1rem;
-  text-align: center;
-  text-rendering: optimizeLegibility;
-  text-transform: none;
-  vertical-align: middle;
-  -webkit-font-smoothing: inherit;
-  -moz-osx-font-smoothing: inherit;
-  font-feature-settings: 'liga';
-}
-
-.icon-keyboard_arrow_right {
-  &::before {
-    content: "\e907";
-  }
-}
