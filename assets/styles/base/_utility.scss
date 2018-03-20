@@ -17,3 +17,16 @@
 .element-invisible {
   visibility: hidden !important;
 }
+
+// icon
+.icon-open_in_new {
+  &::before {
+    content: "";
+    display: inline-block;
+    background: url('../images/icon/open_in_new.svg') no-repeat;
+    background-size: 1rem;
+    width: 1rem;
+    height: 1rem;
+    vertical-align: top;
+  }
+}
