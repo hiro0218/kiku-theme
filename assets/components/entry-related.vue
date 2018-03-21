@@ -30,7 +30,12 @@ export default {
 
 <style lang="scss" scoped>
 .related {
-  margin-bottom: 2rem;
+  margin: 2rem 0;
+}
+
+.related-heading {
+  text-align: center;
+  font-weight: normal;
 }
 
 .entry-related {
@@ -42,11 +47,6 @@ export default {
     width: 15rem;
     overflow: hidden;
   }
-}
-
-.related-heading {
-  margin-top: 0;
-  font-size: $font-size-h3;
 }
 
 .related-section {

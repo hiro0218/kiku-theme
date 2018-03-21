@@ -31,16 +31,11 @@ export default {
 <style lang="scss" scoped>
 .entry-header {
   margin-bottom: 2rem;
+  text-align: center;
 }
 
 .entry-title {
-  margin: 0 0 0.5rem;
-  font-size: $font-size-h2;
-  line-height: ($font-size-h2 * 2);
+  font-weight: normal;
   word-wrap: break-word;
-}
-
-.entry-meta {
-  text-align: left;
 }
 </style>

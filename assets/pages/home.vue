@@ -89,9 +89,8 @@ export default {
 
 <style lang="scss" scoped>
 .page-header {
-  margin: 0 0 0.5rem;
-  font-size: $font-size-h3;
-  line-height: 3rem;
+  font-weight: normal;
+  text-align: center;
   word-wrap: break-word;
 }
 </style>

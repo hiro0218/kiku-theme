@@ -71,7 +71,7 @@ export default {
 
 <style lang="scss" scoped>
 .pagination /deep/ {
-  margin-bottom: 1rem;
+  margin: 3rem 0;
   user-select: none;
 
   ul {

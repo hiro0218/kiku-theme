@@ -3,15 +3,15 @@
   margin: 0 auto;
 
   @include from($tablet) {
-    max-width: calc(#{$tablet} + (2 * 1.5rem));
+    max-width: calc(#{$tablet} - (2 * 1.5rem));
   }
 
   @include from($desktop) {
-    max-width: calc(#{$desktop} + (2 * 1.5rem));
+    max-width: calc(#{$desktop} - (2 * 1.5rem));
   }
 
   @include from($widescreen) {
-    max-width: calc(#{$widescreen} + (2 * 1.5rem));
+    max-width: calc(#{$widescreen} - (2 * 1.5rem));
   }
 
   // @include fullhd {
@@ -24,7 +24,7 @@
 .main-container {
   flex: 1 0 auto;
   min-height: calc(100vh - #{$header-nav-height});
-  margin-top: $header-nav-height + 1rem;  // for header
+  margin-top: $header-nav-height;  // for header
 }
 
 .contents {

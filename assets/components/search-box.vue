@@ -49,8 +49,7 @@ export default {
 
 <style lang="scss" scoped>
 .search-container {
-  margin-right: 0.5rem;
-  white-space: nowrap;
+  margin-right: 0.75rem;
 }
 
 .icon /deep/ {

@@ -96,8 +96,8 @@ $entry-thumbnail-size: 5rem; // 80px;
 
   a {
     display: block;
-    padding: 1rem 0;
     color: inherit;
+    padding: 1.75rem 0;
     & + a {
       border-top: 1px solid $grey-200;
     }
@@ -136,6 +136,7 @@ $entry-thumbnail-size: 5rem; // 80px;
   .entry-title,
   .entry-summary {
     margin: 0 0 0.5rem 0;
+    line-height: 2rem;
     @include text-overflow;
   }
 

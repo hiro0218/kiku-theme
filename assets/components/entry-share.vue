@@ -111,6 +111,7 @@ $line-color: #00b900;
 
 .entry-share /deep/ {
   margin: 2rem 0;
+  line-height: 1rem;
 
   a {
     display: inline-block;
