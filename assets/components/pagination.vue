@@ -108,7 +108,7 @@ export default {
 
     &::before {
       position: relative;
-      top: .25rem;
+      top: 0.25rem;
     }
   }
 
@@ -131,29 +131,28 @@ export default {
     }
   }
 
-.pagination-first a {
-  &::before {
-    content: url('../images/icon/first_page.svg');
+  .pagination-first a {
+    &::before {
+      content: url('../images/icon/first_page.svg');
+    }
   }
-}
 
-.pagination-prev a {
-  &::before {
-    content: url('../images/icon/chevron_left.svg');
+  .pagination-prev a {
+    &::before {
+      content: url('../images/icon/chevron_left.svg');
+    }
   }
-}
 
-.pagination-next a {
-  &::before {
-    content: url('../images/icon/chevron_right.svg');
+  .pagination-next a {
+    &::before {
+      content: url('../images/icon/chevron_right.svg');
+    }
   }
-}
 
-.pagination-last a {
-  &::before {
-    content: url('../images/icon/last_page.svg');
+  .pagination-last a {
+    &::before {
+      content: url('../images/icon/last_page.svg');
+    }
   }
-}
-
 }
 </style>
