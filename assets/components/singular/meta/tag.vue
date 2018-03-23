@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: 'EntryTag',
+  name: 'Tag',
   props: {
     tags: {
       type: Array,

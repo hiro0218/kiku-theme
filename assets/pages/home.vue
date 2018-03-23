@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1 class="page-header" v-html="$options.filters.escapeBrackets(pageTitle)"/>
-    <entry-list/>
+    <list/>
     <advertise :id-name="ads.id" :content="ads.content" :script="ads.script" />
     <pagination v-show="postLists.length !== 0"/>
   </div>
@@ -9,14 +9,14 @@
 
 <script>
 import { mapState } from 'vuex';
-import entryList from '@components/entry-list.vue';
+import list from '@components/home/list.vue';
 import advertise from '@components/advertise.vue';
-import pagination from '@components/pagination.vue';
+import pagination from '@components/home/pagination.vue';
 
 export default {
   name: 'Home',
   components: {
-    entryList,
+    list,
     advertise,
     pagination,
   },

@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import entryTime from '@components/entry-time.vue';
-import entryCategory from '@components/entry-category.vue';
+import entryTime from '@components/singular/meta/time.vue';
+import entryCategory from '@components/singular/meta/category.vue';
 
 export default {
   name: 'EntryHeader',

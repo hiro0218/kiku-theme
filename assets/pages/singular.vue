@@ -18,12 +18,12 @@ import { mapState } from 'vuex';
 import mokuji from '@scripts/module/mokuji';
 import common from '@scripts/module/common';
 
-import amazon from '@components/amazon.vue';
+import amazon from '@components/singular/amazon.vue';
 import advertise from '@components/advertise.vue';
 
-import entryHeader from '@components/entry/header.vue';
-import entryContent from '@components/entry/content.vue';
-import entryFooter from '@components/entry/footer.vue';
+import entryHeader from '@components/singular/header.vue';
+import entryContent from '@components/singular/content.vue';
+import entryFooter from '@components/singular/footer.vue';
 
 export default {
   name: 'Singular',

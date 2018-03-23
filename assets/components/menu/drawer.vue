@@ -9,7 +9,7 @@
 import iconMenu from '@/images/icon/menu.svg?inline';
 
 export default {
-  name: 'MenuButton',
+  name: 'Drawer',
   data() {
     return {
       iconMenu,

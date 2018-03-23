@@ -11,7 +11,7 @@
 import iconSearch from '@/images/icon/search.svg?inline';
 
 export default {
-  name: 'SearchBox',
+  name: 'Search',
   data() {
     return {
       searchValue: this.$route.params.search_query,

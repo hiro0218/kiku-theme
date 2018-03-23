@@ -16,7 +16,7 @@
 import iconUpdate from '@/images/icon/update.svg?inline';
 
 export default {
-  name: 'EntryTime',
+  name: 'Time',
   filters: {
     formatDate: function(date) {
       if (typeof date === 'string') {

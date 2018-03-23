@@ -39,7 +39,7 @@ import iconHatena from '@/images/icon/hatenabookmark.svg?inline';
 import iconLine from '@/images/icon/line.svg?inline';
 
 export default {
-  name: 'EntryShare',
+  name: 'Share',
   props: {
     title: {
       type: String,

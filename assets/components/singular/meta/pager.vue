@@ -26,7 +26,7 @@ import iconArrowBack from '@/images/icon/arrow_back.svg?inline';
 import iconArrowForward from '@/images/icon/arrow_forward.svg?inline';
 
 export default {
-  name: 'EntryPager',
+  name: 'Pager',
   props: {
     pager: {
       type: Object,

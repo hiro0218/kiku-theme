@@ -12,7 +12,7 @@
 import iconFolder from '@/images/icon/folder.svg?inline';
 
 export default {
-  name: 'EntryCategory',
+  name: 'Category',
   props: {
     categories: {
       type: Array,

@@ -17,7 +17,7 @@
 
 <script>
 export default {
-  name: 'EntryRelated',
+  name: 'Related',
   props: {
     related: {
       type: Array,

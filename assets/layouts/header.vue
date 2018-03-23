@@ -6,8 +6,8 @@
           <router-link :to="navigation.site.base_path">{{ navigation.site.name }}</router-link>
         </div>
         <div class="header-menu">
-          <search-box />
-          <menu-button />
+          <search />
+          <drawer />
         </div>
       </div>
     </header>
@@ -16,15 +16,15 @@
 
 <script>
 import { mapState } from 'vuex';
-import searchBox from '@components/search-box.vue';
-import menuButton from '@components/menu-button.vue';
+import search from '@components/menu/search.vue';
+import drawer from '@components/menu/drawer.vue';
 import headerScroll from 'header-scroll-up';
 
 export default {
   name: 'Header',
   components: {
-    searchBox,
-    menuButton,
+    search,
+    drawer,
   },
   computed: mapState(['navigation']),
   mounted: function() {
