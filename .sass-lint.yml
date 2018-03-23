@@ -1,12 +1,12 @@
 options:
   merge-default-rules: false
 
-scss_files: "assets/styles/**/*.s+(a|c)ss"
+scss_files: "src/assets/styles/**/*.s+(a|c)ss"
 exclude: "node_modules/**/*"
 
 # File Options
 files:
-  include: "assets/styles/**/*.s+(a|c)ss"
+  include: "src/assets/styles/**/*.s+(a|c)ss"
   ignore:
     - "node_modules/**/*"
 

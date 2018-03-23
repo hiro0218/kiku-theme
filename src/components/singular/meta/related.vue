@@ -81,7 +81,7 @@ export default {
     height: 10rem;
     border: 1px solid $grey-200;
     background: $grey-50 50% no-repeat;
-    background-image: url('../images/no-image.png');
+    background-image: url('~@images/no-image.png');
     background-size: cover;
     overflow: hidden;
   }

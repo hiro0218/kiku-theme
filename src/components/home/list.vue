@@ -35,7 +35,7 @@
 <script>
 import { mapState } from 'vuex';
 import ago from 's-ago';
-import iconUpdate from '@/images/icon/update.svg?inline';
+import iconUpdate from '@images/icon/update.svg?inline';
 
 export default {
   name: 'EntryList',
@@ -170,7 +170,7 @@ $entry-thumbnail-size: 5rem; // 80px;
     width: $entry-thumbnail-size;
     height: $entry-thumbnail-size;
     background: $grey-50 50% no-repeat;
-    background-image: url('../images/no-image-128x128.png');
+    background-image: url('~@images/no-image-128x128.png');
     background-size: cover;
   }
 }

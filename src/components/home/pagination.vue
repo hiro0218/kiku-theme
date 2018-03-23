@@ -133,25 +133,25 @@ export default {
 
   .pagination-first a {
     &::before {
-      content: url('../images/icon/first_page.svg');
+      content: url('~@images/icon/first_page.svg');
     }
   }
 
   .pagination-prev a {
     &::before {
-      content: url('../images/icon/chevron_left.svg');
+      content: url('~@images/icon/chevron_left.svg');
     }
   }
 
   .pagination-next a {
     &::before {
-      content: url('../images/icon/chevron_right.svg');
+      content: url('~@images/icon/chevron_right.svg');
     }
   }
 
   .pagination-last a {
     &::before {
-      content: url('../images/icon/last_page.svg');
+      content: url('~@images/icon/last_page.svg');
     }
   }
 }

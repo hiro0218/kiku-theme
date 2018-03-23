@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import iconMenu from '@/images/icon/menu.svg?inline';
+import iconMenu from '@images/icon/menu.svg?inline';
 
 export default {
   name: 'Drawer',

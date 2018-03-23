@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import iconFolder from '@/images/icon/folder.svg?inline';
+import iconFolder from '@images/icon/folder.svg?inline';
 
 export default {
   name: 'Category',

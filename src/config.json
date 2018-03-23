@@ -3,8 +3,8 @@
     "main": [
       "./scripts/polyfill.js",
       "./scripts/app.js",
-      "./styles/reset.scss",
-      "./styles/main.scss"
+      "./assets/styles/reset.scss",
+      "./assets/styles/main.scss"
     ],
     "prism": [
       "./scripts/prism.js"

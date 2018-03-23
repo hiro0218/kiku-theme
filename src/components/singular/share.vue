@@ -33,10 +33,10 @@
 </template>
 
 <script>
-import iconTwitter from '@/images/icon/twitter.svg?inline';
-import iconFacebook from '@/images/icon/facebook.svg?inline';
-import iconHatena from '@/images/icon/hatenabookmark.svg?inline';
-import iconLine from '@/images/icon/line.svg?inline';
+import iconTwitter from '@images/icon/twitter.svg?inline';
+import iconFacebook from '@images/icon/facebook.svg?inline';
+import iconHatena from '@images/icon/hatenabookmark.svg?inline';
+import iconLine from '@images/icon/line.svg?inline';
 
 export default {
   name: 'Share',

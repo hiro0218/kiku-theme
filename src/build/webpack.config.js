@@ -15,7 +15,7 @@ const { jsLoaders, cssLoaders, sassLoaders } = require('./loader.conf');
 const assetsFilenames = (config.enabled.cacheBusting) ? config.cacheBusting : '[name]';
 
 let webpackConfig = {
-  context: config.paths.assets,
+  context: config.paths.src,
   entry: config.entry,
   devtool: (config.enabled.sourceMaps ? '#source-map' : undefined),
   output: {
@@ -43,13 +43,13 @@ let webpackConfig = {
         enforce: 'pre',
         exclude: /node_modules/,
         test: /\.js$/,
-        include: config.paths.assets,
+        include: config.paths.src,
         use: 'eslint',
       },
       {
         enforce: 'pre',
         test: /\.(js|s?[ca]ss)$/,
-        include: config.paths.assets,
+        include: config.paths.src,
         loader: 'import-glob',
       },
       {
@@ -59,7 +59,7 @@ let webpackConfig = {
       },
       {
         test: /\.css$/,
-        include: config.paths.assets,
+        include: config.paths.src,
         use: ExtractTextPlugin.extract({
           fallback: 'style',
           use: cssLoaders,
@@ -67,7 +67,7 @@ let webpackConfig = {
       },
       {
         test: /\.(sass|scss)$/,
-        include: config.paths.assets,
+        include: config.paths.src,
         use: ExtractTextPlugin.extract({
           fallback: 'style',
           use: sassLoaders,
@@ -87,9 +87,9 @@ let webpackConfig = {
                   loader: 'sass-resources',
                   options: {
                     resources: [
-                      path.resolve(__dirname, '../styles/config/_colors.scss'),
-                      path.resolve(__dirname, '../styles/config/_variables.scss'),
-                      path.resolve(__dirname, '../styles/config/_mixins.scss'),
+                      path.resolve(__dirname, '../assets/styles/config/_colors.scss'),
+                      path.resolve(__dirname, '../assets/styles/config/_variables.scss'),
+                      path.resolve(__dirname, '../assets/styles/config/_mixins.scss'),
                     ]
                   },
                 },
@@ -107,7 +107,6 @@ let webpackConfig = {
           },
           {
             loader: 'file-loader',
-            // loader: 'url',
             options: {
               limit: 1024,
               name: `[path]${assetsFilenames}.[ext]`,
@@ -117,7 +116,7 @@ let webpackConfig = {
       },
       {
         test: /\.(ttf|eot|woff2?|png|jpe?g|gif|ico)$/,
-        include: config.paths.assets,
+        include: config.paths.src,
         loader: 'url',
         options: {
           limit: 1024,
@@ -141,11 +140,12 @@ let webpackConfig = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': path.resolve(__dirname, '../'),
+      '@images': path.resolve(__dirname, '../assets/images'),
       '@scripts': path.resolve(__dirname, '../scripts'),
       '@components': path.resolve(__dirname, '../components'),
     },
     modules: [
-      config.paths.assets,
+      config.paths.src,
       'node_modules',
     ],
     enforceExtension: false,
@@ -182,7 +182,7 @@ let webpackConfig = {
       test: /\.s?css$/,
       options: {
         output: { path: config.paths.dist },
-        context: config.paths.assets,
+        context: config.paths.src,
       },
     }),
     new webpack.LoaderOptionsPlugin({
@@ -192,7 +192,9 @@ let webpackConfig = {
       },
     }),
     new FriendlyErrorsWebpackPlugin(),
-    new HardSourceWebpackPlugin(),
+    new HardSourceWebpackPlugin({
+      cacheDirectory: '../node_modules/.cache/hard-source/[confighash]',
+    }),
   ],
 };
 

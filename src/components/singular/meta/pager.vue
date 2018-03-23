@@ -22,8 +22,8 @@
 </template>
 
 <script>
-import iconArrowBack from '@/images/icon/arrow_back.svg?inline';
-import iconArrowForward from '@/images/icon/arrow_forward.svg?inline';
+import iconArrowBack from '@images/icon/arrow_back.svg?inline';
+import iconArrowForward from '@images/icon/arrow_forward.svg?inline';
 
 export default {
   name: 'Pager',

@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import iconSearch from '@/images/icon/search.svg?inline';
+import iconSearch from '@images/icon/search.svg?inline';
 
 export default {
   name: 'Search',

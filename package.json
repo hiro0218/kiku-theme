@@ -16,16 +16,16 @@
     "theme"
   ],
   "scripts": {
-    "build": "webpack --progress --config assets/build/webpack.config.js",
-    "build:production": "webpack --progress -p --config assets/build/webpack.config.js",
-    "build:profile": "webpack --progress --profile --json --config assets/build/webpack.config.js",
-    "start": "webpack --hide-modules --watch --config assets/build/webpack.config.js",
+    "build": "webpack --progress --config src/build/webpack.config.js",
+    "build:production": "webpack --progress -p --config src/build/webpack.config.js",
+    "build:profile": "webpack --progress --profile --json --config src/build/webpack.config.js",
+    "start": "webpack --hide-modules --watch --config src/build/webpack.config.js",
     "clean": "rimraf dist",
-    "lint:js": "eslint --ext .js,.vue assets/scripts/* assets/components/*",
+    "lint:js": "eslint --ext .js,.vue src/scripts/* src/components/*",
     "lint:sass": "sass-lint -c .sass-lint.yml -q -v",
-    "format:js": "eslint --fix --ext .js,.vue assets/scripts/* assets/components/*",
+    "format:js": "eslint --fix --ext .js,.vue src/scripts/* src/components/*",
     "format:php": "vendor/bin/phpcbf",
-    "php7cc": "vendor/bin/php7cc src/ templates/",
+    "php7cc": "vendor/bin/php7cc lib/",
     "test": "yarn run lint -s"
   },
   "engines": {
