@@ -187,13 +187,6 @@ class REST_API {
             'schema' => null,
         ]);
 
-        // post category
-        register_rest_field('post', 'categories', [
-            'get_callback' => [$this, 'get_post_categories'],
-            'update_callback' => null,
-            'schema' => null,
-        ]);
-
         // post tags
         register_rest_field('post', 'tags', [
             'get_callback' => [$this, 'get_post_tags'],
@@ -226,13 +219,6 @@ class REST_API {
         $product_data = json_decode(get_post_meta($post->ID, CF_AMAZON_PRODUCT_TAG, true));
 
         return $product_data;
-    }
-
-    public function get_post_categories($object, $field_name, $request, $type) {
-        global $Entry;
-        $object['categories'] = $Entry->get_category();
-
-        return $object['categories'];
     }
 
     public function get_post_tags($object, $field_name, $request, $type) {

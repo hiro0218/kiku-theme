@@ -22,7 +22,6 @@ export const MODEL_POST = {
   },
   date: '',
   modified: '',
-  categories: [],
   amazon_product: null,
   tags: [],
   attach: {
@@ -32,6 +31,9 @@ export const MODEL_POST = {
       style: '',
       script: '',
     },
+  },
+  _embedded: {
+    'wp:term': [[], []],
   },
 };
 

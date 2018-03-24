@@ -34,3 +34,7 @@ export const dateToISOString = date => {
 
   return date.toISOString();
 };
+
+export const formatBaseLink = url => {
+  return url.replace(location.origin, '');
+};

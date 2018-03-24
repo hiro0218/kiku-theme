@@ -95,7 +95,7 @@ export default {
       path += '/revisions';
     }
 
-    return client.get(path).then(res => {
+    return client.get(path + '?_embed').then(res => {
       if (preview) {
         res.data = res.data[0];
       }

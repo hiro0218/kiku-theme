@@ -2,7 +2,7 @@
   <div v-cloak v-if="categories">
     <ul class="entry-category">
       <li v-for="(category, index) in categories" :key="index">
-        <span v-if="index == 0" class="icon" v-html="iconFolder"/><router-link :to="category.link">{{ category.name }}</router-link>
+        <span v-if="index == 0" class="icon" v-html="iconFolder"/><router-link :to="category.link | formatBaseLink">{{ category.name }}</router-link>
       </li>
     </ul>
   </div>
