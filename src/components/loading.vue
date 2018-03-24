@@ -31,12 +31,15 @@ export default {
 }
 
 .loading {
+  $size: 64px;
   position: fixed;
   top: 50%;
   left: 50%;
   margin: 0;
   z-index: 20;
-  width: 64px;
-  height: 64px;
+  width: $size;
+  height: $size;
+  margin-top: ($size / 2) * -1;
+  margin-left: ($size / 2) * -1;
 }
 </style>
