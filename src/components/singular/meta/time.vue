@@ -71,4 +71,20 @@ export default {
     fill: $grey-400;
   }
 }
+
+li {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 0;
+
+  & + li::before {
+    content: '';
+    display: inline-block;
+    background: url('~@images/icon/arrow_right.svg') no-repeat;
+    background-size: 1rem;
+    width: 1rem;
+    height: 1rem;
+    margin: 0 .125rem;
+  }
+}
 </style>

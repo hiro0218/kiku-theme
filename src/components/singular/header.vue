@@ -38,4 +38,15 @@ export default {
   font-weight: normal;
   word-wrap: break-word;
 }
+
+.entry-meta {
+  color: $grey-400;
+  font-size: $font-size-sm;
+
+  ul {
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+  }
+}
 </style>

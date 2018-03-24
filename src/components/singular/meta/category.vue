@@ -1,11 +1,9 @@
 <template>
-  <div v-cloak v-if="categories">
-    <ul class="entry-category">
-      <li v-for="(category, index) in categories" :key="index">
-        <span v-if="index == 0" class="icon" v-html="iconFolder"/><router-link :to="category.link | formatBaseLink">{{ category.name }}</router-link>
-      </li>
-    </ul>
-  </div>
+  <ul v-cloak v-if="categories" class="entry-category">
+    <li v-for="(category, index) in categories" :key="index">
+      <span v-if="index == 0" class="icon" v-html="iconFolder"/><router-link :to="category.link | formatBaseLink">{{ category.name }}</router-link>
+    </li>
+  </ul>
 </template>
 
 <script>
@@ -39,6 +37,35 @@ export default {
   svg {
     display: block;
     fill: $grey-400;
+  }
+}
+
+.entry-category {
+  white-space: nowrap;
+  overflow: scroll;
+}
+
+a {
+  color: inherit;
+  &:hover {
+    color: inherit;
+    text-decoration: underline;
+  }
+}
+
+li {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 0;
+
+  & + li::before {
+    content: '';
+    display: inline-block;
+    background: url('~@images/icon/arrow_right.svg') no-repeat;
+    background-size: 1rem;
+    width: 1rem;
+    height: 1rem;
+    margin: 0 .125rem;
   }
 }
 </style>

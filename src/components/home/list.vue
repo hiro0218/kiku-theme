@@ -20,7 +20,7 @@
           <div class="entry-summary" v-html="$options.filters.escapeBrackets(post.excerpt.rendered)"/>
           <footer class="entry-footer">
             <div class="entry-meta">
-              <ul class="entry-time">
+              <ul>
                 <li><span class="icon" v-html="iconUpdate"/>{{ post.date | timeago }}</li>
               </ul>
             </div>
@@ -153,7 +153,13 @@ $entry-thumbnail-size: 5rem; // 80px;
   }
 
   .entry-meta {
+    color: $grey-400;
     text-align: right;
+    ul {
+      margin-bottom: 0;
+      padding-left: 0;
+      list-style: none;
+    }
   }
 }
 
