@@ -58,11 +58,11 @@ export default {
 .pager-container {
   display: flex;
   margin: 2rem 0;
+  padding: 1rem 0;
 
   a {
     display: flex;
     width: 50%;
-    padding: 1rem 0;
 
     &:hover {
       .title {
