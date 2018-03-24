@@ -1,20 +1,18 @@
 <template>
-  <div>
-    <footer class="footer footer-navigation">
-      <div v-if="navigation" class="container">
-        <nav v-if="navigation.footer.menu" class="footer-menu">
-          <ul>
-            <li v-for="(menu, index) in navigation.footer.menu" :key="index">
-              <a :href="menu.url">{{ menu.title }}</a>
-            </li>
-          </ul>
-        </nav>
-        <div v-if="navigation.site" class="footer-copytight">
-          <span>{{ navigation.site.copyright }} <a :href="navigation.site.url">{{ navigation.site.name }}</a></span>
-        </div>
+  <footer class="footer footer-navigation">
+    <div v-if="navigation" class="container">
+      <nav v-if="navigation.footer.menu" class="footer-menu">
+        <ul>
+          <li v-for="(menu, index) in navigation.footer.menu" :key="index">
+            <a :href="menu.url">{{ menu.title }}</a>
+          </li>
+        </ul>
+      </nav>
+      <div v-if="navigation.site" class="footer-copytight">
+        <span>{{ navigation.site.copyright }} <a :href="navigation.site.url">{{ navigation.site.name }}</a></span>
       </div>
-    </footer>
-  </div>
+    </div>
+  </footer>
 </template>
 
 <script>
