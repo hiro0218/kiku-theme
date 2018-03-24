@@ -23,7 +23,6 @@ export const MODEL_POST = {
   date: '',
   modified: '',
   amazon_product: null,
-  tags: [],
   attach: {
     related: [],
     pager: {},

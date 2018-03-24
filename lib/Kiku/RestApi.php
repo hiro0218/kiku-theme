@@ -187,13 +187,6 @@ class REST_API {
             'schema' => null,
         ]);
 
-        // post tags
-        register_rest_field('post', 'tags', [
-            'get_callback' => [$this, 'get_post_tags'],
-            'update_callback' => null,
-            'schema' => null,
-        ]);
-
         // post thumbnail
         register_rest_field('post', 'thumbnail', [
             'get_callback' => [$this, 'get_post_thumbnail'],
@@ -219,13 +212,6 @@ class REST_API {
         $product_data = json_decode(get_post_meta($post->ID, CF_AMAZON_PRODUCT_TAG, true));
 
         return $product_data;
-    }
-
-    public function get_post_tags($object, $field_name, $request, $type) {
-        global $Entry;
-        $object['tags'] = $Entry->get_tag();
-
-        return $object['tags'];
     }
 
     public function get_post_thumbnail($object, $field_name, $request, $type) {

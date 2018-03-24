@@ -1,6 +1,6 @@
 <template>
   <footer v-if="$route.meta.type === 'post'" class="entry-footer">
-    <tag :tags="post.tags"/>
+    <tag :tags="post._embedded['wp:term'][1]"/>
     <share :title="post.title.rendered"/>
     <pager :pager="post.attach.pager"/>
     <related :related="post.attach.related"/>
