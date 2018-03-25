@@ -35,7 +35,6 @@ export default {
 
 .related-heading {
   text-align: center;
-  font-weight: normal;
 }
 
 .entry-related {

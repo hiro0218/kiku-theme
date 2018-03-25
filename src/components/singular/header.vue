@@ -35,7 +35,6 @@ export default {
 }
 
 .entry-title {
-  font-weight: normal;
   word-wrap: break-word;
 }
 

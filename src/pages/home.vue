@@ -89,7 +89,6 @@ export default {
 
 <style lang="scss" scoped>
 .page-header {
-  font-weight: normal;
   text-align: center;
   word-wrap: break-word;
 }
