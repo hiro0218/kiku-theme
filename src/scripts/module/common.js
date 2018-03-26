@@ -8,7 +8,7 @@ export default {
       return;
     }
 
-    var icon = document.createElement('i');
+    var icon = document.createElement('span');
     icon.classList.add('icon-open_in_new');
 
     for (var i = 0; i < length; i++) {
