@@ -103,7 +103,7 @@ export default {
 
     &:hover {
       outline: 0;
-      background: $grey-300;
+      background: $grey-200;
     }
 
     &::before {
