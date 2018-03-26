@@ -40,15 +40,14 @@ export default {
     color: $grey-600;
     font-size: $font-size-sm;
     &:hover {
-      background: $blue-50;
+      color: inherit;
+      background: $grey-200;
     }
   }
 }
 
 .widget-title {
-  margin-bottom: 0.5rem;
-  padding: 0 0 0 0.75rem;
-  font-size: $font-size-h4;
+  padding-left: 0.75rem;
 }
 
 .widget_categories {
@@ -99,7 +98,7 @@ export default {
   top: 0;
   bottom: 0;
   right: 0;
-  width: 256px;
+  width: calc(100vw / 1.618);
   height: 100%;
   max-height: 100%;
   transform: translate3d(100%, 0, 0);
