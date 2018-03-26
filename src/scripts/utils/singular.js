@@ -67,7 +67,6 @@ export default {
   setupSyntaxHighligh(entry) {
     const pre = entry.getElementsByTagName('pre');
     if (pre.length > 0) {
-      console.log('highlightAll');
       Prism.highlightAll();
     }
   },
