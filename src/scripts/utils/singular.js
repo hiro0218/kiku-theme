@@ -1,7 +1,15 @@
 import mediumZoom from 'medium-zoom';
+import * as Mokuji from 'mokuji.js';
 
 export default {
-  addExternalLink(entry) {
+  init(target) {
+    this.addExternalLinkIcon(target);
+    this.setTableContainer(target);
+    this.setupSyntaxHighligh(target);
+    this.setupZoomImage(target);
+    this.setupMokuji(target);
+  },
+  addExternalLinkIcon(entry) {
     var aTags = entry.getElementsByTagName('a');
     var length = aTags.length;
     if (length === 0) {
@@ -39,25 +47,7 @@ export default {
       }
     }
   },
-  zoomImage(entry) {
-    var entryImg = entry.getElementsByTagName('img');
-    var length = entryImg.length;
-
-    for (var i = 0; i < length; i += 1) {
-      // parentNode is <a> Tag
-      if (entryImg[i].getAttribute('data-zoom-disabled') === 'true' || entryImg[i].parentNode.nodeName === 'A') {
-        continue;
-      }
-
-      mediumZoom(entryImg[i]);
-    }
-  },
-  wrap(element, wrapper) {
-    element.parentNode.insertBefore(wrapper, element);
-    wrapper.appendChild(element);
-  },
   setTableContainer(entry) {
-    var self = this;
     var tables = entry.querySelectorAll('table');
     var length = tables.length;
 
@@ -70,17 +60,41 @@ export default {
 
     for (var i = 0; i < length; i += 1) {
       var wrapper = div.cloneNode(false);
-      self.wrap(tables[i], wrapper);
+      tables[i].parentNode.insertBefore(wrapper, tables[i]);
+      wrapper.appendChild(tables[i]);
     }
   },
-  getStyleSheetValue(element, property) {
-    if (!element || !property) {
-      return null;
+  setupSyntaxHighligh(entry) {
+    const pre = entry.getElementsByTagName('pre');
+    if (pre.length > 0) {
+      console.log('highlightAll');
+      Prism.highlightAll();
     }
+  },
+  setupZoomImage(entry) {
+    var entryImg = entry.getElementsByTagName('img');
+    var length = entryImg.length;
 
-    var style = window.getComputedStyle(element);
-    var value = style.getPropertyValue(property);
+    for (var i = 0; i < length; i += 1) {
+      // parentNode is <a> Tag
+      if (entryImg[i].getAttribute('data-zoom-disabled') === 'true' || entryImg[i].parentNode.nodeName === 'A') {
+        continue;
+      }
 
-    return value;
+      mediumZoom(entryImg[i]);
+    }
+  },
+  setupMokuji(entry) {
+    var mokujiContent = entry.getElementsByClassName('mokuji-content')[0];
+    if (mokujiContent) {
+      var mokuji = new Mokuji.init(entry, {
+        anchorType: true,
+        anchorLink: true,
+        anchorLinkSymbol: '#',
+        anchorLinkBefore: false,
+        anchorLinkClassName: 'anchor',
+      });
+      mokujiContent.appendChild(mokuji);
+    }
   },
 };

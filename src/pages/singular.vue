@@ -15,8 +15,7 @@
 
 <script>
 import { mapState } from 'vuex';
-import mokuji from '@scripts/module/mokuji';
-import common from '@scripts/module/common';
+import updateSingularAppearance from '@scripts/utils/singular';
 
 import amazon from '@components/singular/amazon.vue';
 import advertise from '@components/advertise.vue';
@@ -71,11 +70,7 @@ export default {
     },
     updateAppearance: function() {
       const element = this.$el.querySelector('.entry-content');
-      mokuji.init(element);
-      common.addExternalLink(element);
-      common.setTableContainer(element);
-      common.zoomImage(element);
-      Prism.highlightAll();
+      updateSingularAppearance.init(element);
       this.insertArticleAds(element.querySelector('#ads1'));
     },
     insertArticleAds: function(elementAds) {
