@@ -72,6 +72,14 @@ export default {
   }
 }
 
+a {
+  color: inherit;
+  &:hover {
+    color: inherit;
+    text-decoration: underline;
+  }
+}
+
 li {
   display: inline-flex;
   align-items: center;
