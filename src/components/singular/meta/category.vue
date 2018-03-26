@@ -65,7 +65,7 @@ li {
     background-size: 1rem;
     width: 1rem;
     height: 1rem;
-    margin: 0 .125rem;
+    margin: 0 0.125rem;
   }
 }
 </style>
