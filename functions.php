@@ -38,6 +38,5 @@ add_action('customize_render_section', function ($section) {
 }, 10, 2);
 
 // src includes
-require_once 'lib/helpers.php';
 require_once 'lib/setup.php';
 require_once 'lib/Kiku/bootstrap.php';
