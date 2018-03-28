@@ -72,14 +72,20 @@ class FrontVariables {
                 $query->the_post();
                 $post_id = get_the_ID();
                 $post_type = get_post_type();
-                $routes[] = [
+
+                $routes[$post_id] = [
                     'id'       => $post_id,
                     'type'     => $post_type,
                     'slug'     => get_post_field('post_name', $post_id),
                     'path'     => '/' . basename(get_permalink()),
                     'title'    => get_the_title(),
-                    'template' => $post_type === 'page' ? get_page_template_slug($post_id) : '',
                 ];
+                if ($post_type === 'page') {
+                    $template_slug = get_page_template_slug($post_id);
+                    if ($template_slug) {
+                        $routes[$post_id]['template'] = $template_slug;
+                    }
+                }
             }
         }
         wp_reset_postdata();
@@ -100,7 +106,6 @@ class FrontVariables {
                 'path'     => \Kiku\Util::base_path(get_term_link($term)),
                 'title'    => $term->name,
                 'slug'     => $term->slug,
-                'template' => '',
             ];
         }
 
