@@ -28,7 +28,7 @@ A Simple WordPress Theme. (for myself)
 
 ## Requirements
 Installation notes:
-* [PHP](http://php.net/manual/en/install.php) >= 7.0.x
+* [PHP](http://php.net/manual/en/install.php) >= 7.1.x
 * [Composer](https://getcomposer.org/download/)
 * [Node.js](http://nodejs.org/) >= 7.x
 * [WordPress](https://wordpress.org/) >= 4.7.x (latest)

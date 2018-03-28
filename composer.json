@@ -11,9 +11,7 @@
       "homepage": "https://github.com/hiro0218"
     }
   ],
-  "keywords": [
-    "wordpress"
-  ],
+  "keywords": ["wordpress"],
   "support": {
     "issues": "https://github.com/hiro0218/kiku-theme/issues"
   },
@@ -23,7 +21,7 @@
     }
   },
   "require": {
-    "php": ">=7.0.0",
+    "php": ">=7.1",
     "composer/installers": "~1.0",
     "exeu/apai-io": "^2.0"
   },
