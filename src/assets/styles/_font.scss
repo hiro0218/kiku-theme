@@ -29,7 +29,6 @@
 @font-face {
   font-family: YakuHanJP;
   font-weight: bold;
-  font-display: optional;
   src: url("~yakuhanjp/dist/fonts/YakuHanJP/YakuHanJP-Bold.woff2?ver=1.4.0") format("woff2"),
        url("~yakuhanjp/dist/fonts/YakuHanJP/YakuHanJP-Bold.woff?ver=1.4.0") format("woff");
 }
@@ -38,7 +37,6 @@
 @font-face {
   font-family: "Noto Sans Japanese";
   font-weight: normal;
-  font-display: optional;
   src: local("Noto Sans CJK JP DemiLight"),
        local("NotoSansCJKjp-DemiLight"),
        url("../fonts/NotoSansCJKjp-DemiLight.woff2?ver=1.4.0") format("woff2"),
@@ -48,7 +46,6 @@
 @font-face {
   font-family: "Noto Sans Japanese";
   font-weight: bold;
-  font-display: optional;
   src: local("Noto Sans CJK JP Bold"),
        local("NotoSansCJKjp-Bold"),
        url("../fonts/NotoSansCJKjp-Bold.woff2?ver=1.4.0") format("woff2"),
