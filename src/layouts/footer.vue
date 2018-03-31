@@ -4,7 +4,7 @@
       <nav v-if="navigation.footer.menu" class="footer-menu">
         <ul>
           <li v-for="(menu, index) in navigation.footer.menu" :key="index">
-            <a :href="menu.url">{{ menu.title }}</a>
+            <router-link :to="menu.url | formatBaseLink">{{ menu.title }}</router-link>
           </li>
         </ul>
       </nav>
