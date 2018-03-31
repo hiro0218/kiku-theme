@@ -71,7 +71,6 @@ class REST_API {
                         'site' => [
                             'name' => BLOG_NAME,
                             'url' => BLOG_URL,
-                            'base_path' => parse_url(BLOG_URL)['path'],
                             'copyright' => "© " . Kiku\Util::get_copyright_year(),
                         ],
                         'footer' => [
