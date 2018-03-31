@@ -90,7 +90,7 @@ li {
     content: '';
     display: inline-block;
     background: url('~@images/icon/arrow_right.svg') no-repeat;
-    background-size: 1rem;
+    background-size: contain;
     width: 1rem;
     height: 1rem;
     margin: 0 0.125rem;
