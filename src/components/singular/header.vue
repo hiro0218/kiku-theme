@@ -40,7 +40,6 @@ export default {
 
 .entry-meta {
   color: $grey-400;
-  font-size: $font-size-sm;
 
   ul {
     margin-bottom: 0;
