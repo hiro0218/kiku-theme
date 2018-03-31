@@ -26,8 +26,10 @@ export default {
         return;
       }
       this.$nextTick().then(() => {
-        this.setCustomStyle();
-        this.setCustomScript();
+        if (this.post.hasOwnProperty('attach')) {
+          this.setCustomStyle();
+          this.setCustomScript();
+        }
       });
     },
   },
