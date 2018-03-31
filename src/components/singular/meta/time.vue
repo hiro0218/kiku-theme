@@ -2,11 +2,11 @@
   <ul v-cloak v-if="date" class="entry-time">
     <li class="date-published">
       <span class="icon" v-html="iconUpdate"/><time :datetime="date | dateToISOString" itemprop="datePublished">{{ date | formatDate }}</time>
-    </li>
-    <li v-if="!isSameDay()" class="date-modified">
+    </li><!--
+ --><li v-if="!isSameDay()" class="date-modified">
       <time :datetime="modified | dateToISOString" itemprop="dateModified">{{ modified | formatDate }}</time>
-    </li>
-    <li v-if="edit.is_display">
+    </li><!--
+ --><li v-if="edit.is_display">
       <a :href="edit.link">Edit</a>
     </li>
   </ul>
@@ -72,19 +72,20 @@ export default {
   }
 }
 
-a {
-  color: inherit;
-  &:hover,
-  &:focus {
-    color: inherit;
-    text-decoration: underline;
-  }
-}
-
 li {
   display: inline-flex;
   align-items: center;
   margin-bottom: 0;
+
+  a {
+    color: inherit;
+
+    &:hover,
+    &:focus {
+      color: inherit;
+      text-decoration: underline;
+    }
+  }
 
   & + li::before {
     content: '';
