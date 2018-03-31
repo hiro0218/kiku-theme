@@ -74,7 +74,8 @@ export default {
 
 a {
   color: inherit;
-  &:hover {
+  &:hover,
+  &:focus {
     color: inherit;
     text-decoration: underline;
   }
