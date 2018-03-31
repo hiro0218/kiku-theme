@@ -3,7 +3,7 @@
     <h1 class="entry-title" v-html="$options.filters.escapeBrackets(post.title.rendered)"/>
     <div class="entry-meta">
       <entry-time :date="post.date" :modified="post.modified"/>
-      <entry-category :categories="post._embedded['wp:term'][0]"/>
+      <entry-category v-if="$route.meta.type === 'post'" :categories="post._embedded['wp:term'][0]"/>
     </div>
   </header>
 </template>
