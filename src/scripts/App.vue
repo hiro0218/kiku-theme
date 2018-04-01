@@ -61,11 +61,11 @@ export default {
         return;
       }
       if (to.path !== from.path) {
-        let title = to.meta.title || this.navigation.site.name;
         // Google Analytics
-        window.ga('set', 'title', title);
-        window.ga('set', 'page', to.path);
-        window.ga('send', 'pageview');
+        window.ga('send', {
+          hitType: 'pageview',
+          location: to.path,
+        });
       }
     },
   },
