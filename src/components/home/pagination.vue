@@ -131,27 +131,41 @@ export default {
     }
   }
 
+  .pagination-first a,
+  .pagination-prev a,
+  .pagination-next a,
+  .pagination-last a {
+    &::before {
+      display: inline-block;
+      content: '';
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+
   .pagination-first a {
     &::before {
-      content: url('~@images/icon/first_page.svg');
+      background-image: url('~@images/icon/first_page.svg');
     }
   }
 
   .pagination-prev a {
     &::before {
-      content: url('~@images/icon/chevron_left.svg');
+      background-image: url('~@images/icon/chevron_left.svg');
     }
   }
 
   .pagination-next a {
     &::before {
-      content: url('~@images/icon/chevron_right.svg');
+      background-image: url('~@images/icon/chevron_right.svg');
     }
   }
 
   .pagination-last a {
     &::before {
-      content: url('~@images/icon/last_page.svg');
+      background-image: url('~@images/icon/last_page.svg');
     }
   }
 }
