@@ -36,6 +36,10 @@ export const dateToISOString = date => {
 };
 
 export const formatBaseLink = url => {
+  if (!url) {
+    return '';
+  }
+
   // remove scheme
   url = url.replace(/^(https?):\/\//, '');
   // remove host
