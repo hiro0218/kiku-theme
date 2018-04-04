@@ -22,12 +22,13 @@ function asset_path($filename)
 add_action('wp_enqueue_scripts', function () {
     // style
     wp_enqueue_style('styles/main', asset_path('styles/main.css'), false, null);
-
-    // script
-    wp_enqueue_script('scripts/main', asset_path('scripts/main.js'), [], null, true);
-    wp_enqueue_script('scripts/prism', asset_path('scripts/prism.js'), [], null, true);
-
 }, 100);
+
+add_action('wp_footer', function () {
+    // script
+    echo '<script src="'. asset_path('scripts/prism.js') .'" async></script>' . PHP_EOL;
+    echo '<script src="'. asset_path('scripts/main.js') .'" async></script>' . PHP_EOL;
+}, 10, 100);
 
 /**
  * Theme setup
