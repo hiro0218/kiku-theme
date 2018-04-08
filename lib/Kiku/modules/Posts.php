@@ -50,10 +50,6 @@ class Posts {
     // Bug? (Wordpress 4.3)
     // DataURI form CustomField is destroyed.
     public function repair_destroyed_datauri($content) {
-        if (!is_singular()) {
-            return $content;
-        }
-
         $content = $this->replace_relative_to_absolute_img_src($content);
 
         return str_replace(' src="image/', ' src="data:image/', $content);
