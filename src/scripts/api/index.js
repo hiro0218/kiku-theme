@@ -93,9 +93,11 @@ export default {
     let path = `/posts/${post_id}`;
     if (preview) {
       path += '/revisions';
+    } else {
+      path += '?_embed';
     }
 
-    return client.get(path + '?_embed').then(res => {
+    return client.get(path).then(res => {
       if (preview) {
         res.data = res.data[0];
       }
@@ -107,9 +109,11 @@ export default {
     let path = `/pages/${post_id}`;
     if (preview) {
       path += '/revisions';
+    } else {
+      path += '?_embed';
     }
 
-    return client.get(path + '?_embed').then(res => {
+    return client.get(path).then(res => {
       if (preview) {
         res.data = res.data[0];
       }
