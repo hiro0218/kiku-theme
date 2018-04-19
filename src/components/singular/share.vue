@@ -110,6 +110,7 @@ $hatena-color: #00a4de;
 $line-color: #00b900;
 
 .entry-share /deep/ {
+  display: flex;
   margin: 2rem 0;
   line-height: 1rem;
 
