@@ -102,7 +102,6 @@ export default {
     border: 0;
     color: $grey-600;
     font-size: $font-size-h2;
-    line-height: 1;
     text-align: center;
 
     &::before {
