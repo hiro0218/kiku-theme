@@ -2,7 +2,7 @@ import store from '@scripts/store';
 import router from '@scripts/router';
 import App from './App.vue';
 import pagination from 'vuejs-uib-pagination';
-import { escapeBrackets, dateToISOString, formatBaseLink } from '@scripts/utils';
+import { escapeBrackets, dateToISOString, formatBaseLink, formatDate } from '@scripts/utils';
 
 Vue.use(pagination);
 
@@ -12,6 +12,7 @@ Vue.mixin({
     escapeBrackets,
     dateToISOString,
     formatBaseLink,
+    formatDate,
   },
 });
 

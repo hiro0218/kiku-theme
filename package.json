@@ -106,7 +106,6 @@
     "normalize.css": "^8.0.0",
     "prism-themes": "^1.0.1",
     "prismjs": "^1.13.0",
-    "s-ago": "^1.2.2",
     "vue": "^2.5.16",
     "vue-router": "^3.0.1",
     "vuejs-uib-pagination": "^1.0.5",

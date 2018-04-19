@@ -45,3 +45,14 @@ export const formatBaseLink = url => {
   // remove host
   return url.replace(location.host, '');
 };
+
+export const formatDate = date => {
+  if (typeof date === 'string') {
+    date = new Date(date);
+  }
+
+  return date
+    .toISOString()
+    .split('T')[0]
+    .replace(/-/g, '/');
+};

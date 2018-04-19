@@ -21,7 +21,7 @@
           <footer class="entry-footer">
             <div class="entry-meta">
               <ul>
-                <li><span class="icon" v-html="iconUpdate"/>{{ post.date | timeago }}</li>
+                <li><span class="icon" v-html="iconUpdate"/>{{ post.date | formatDate }}</li>
               </ul>
             </div>
           </footer>
@@ -34,16 +34,10 @@
 
 <script>
 import { mapState } from 'vuex';
-import ago from 's-ago';
 import iconUpdate from '@images/icon/update.svg?inline';
 
 export default {
   name: 'EntryList',
-  filters: {
-    timeago: function(date) {
-      return ago(new Date(date));
-    },
-  },
   data() {
     return {
       iconUpdate,

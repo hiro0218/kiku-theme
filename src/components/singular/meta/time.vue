@@ -17,18 +17,6 @@ import iconUpdate from '@images/icon/update.svg?inline';
 
 export default {
   name: 'Time',
-  filters: {
-    formatDate: function(date) {
-      if (typeof date === 'string') {
-        date = new Date(date);
-      }
-
-      return date
-        .toISOString()
-        .split('T')[0]
-        .replace(/-/g, '/');
-    },
-  },
   props: {
     date: {
       type: String,
