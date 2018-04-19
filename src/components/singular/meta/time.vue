@@ -2,11 +2,11 @@
   <ul v-cloak v-if="date" class="entry-time">
     <li class="date-published">
       <span class="icon" v-html="iconUpdate"/><time :datetime="date | dateToISOString" itemprop="datePublished">{{ date | formatDate }}</time>
-    </li><!--
- --><li v-if="!isSameDay()" class="date-modified">
+    </li>
+    <li v-if="!isSameDay()" class="date-modified">
       <time :datetime="modified | dateToISOString" itemprop="dateModified">{{ modified | formatDate }}</time>
-    </li><!--
- --><li v-if="edit.is_display">
+    </li>
+    <li v-if="edit.is_display">
       <a :href="edit.link">Edit</a>
     </li>
   </ul>
@@ -52,29 +52,34 @@ export default {
   margin-right: 0.25rem;
 }
 
+a {
+  color: inherit;
+
+  &:hover,
+  &:focus {
+    color: inherit;
+    text-decoration: underline;
+  }
+}
+
+ul {
+  display: flex;
+  justify-content: center;
+}
+
 li {
   display: inline-flex;
   align-items: center;
   margin-bottom: 0;
 
-  a {
-    color: inherit;
-
-    &:hover,
-    &:focus {
-      color: inherit;
-      text-decoration: underline;
-    }
-  }
-
   & + li::before {
     content: '';
     display: inline-block;
-    background: url('~@images/icon/arrow_right.svg') no-repeat;
-    background-size: contain;
     width: 1rem;
     height: 1rem;
     margin: 0 0.125rem;
+    background: url('~@images/icon/arrow_right.svg') no-repeat;
+    background-size: contain;
   }
 }
 </style>
