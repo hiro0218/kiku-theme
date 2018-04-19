@@ -45,14 +45,7 @@ export default {
 
 <style lang="scss" scoped>
 .icon /deep/ {
-  display: inline-block;
-  vertical-align: middle;
-  width: 1.5rem;
-
-  svg {
-    display: block;
-    fill: $grey-600;
-  }
+  @include svn-icon(1.5rem, $grey-600);
 }
 
 .pager-container {

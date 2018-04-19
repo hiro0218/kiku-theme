@@ -64,3 +64,15 @@
   white-space: nowrap;
   overflow: hidden;
 }
+
+@mixin svn-icon($size, $icon-color) {
+  display: inline-block;
+  width: $size;
+  height: $size;
+  vertical-align: middle;
+
+  svg {
+    display: block;
+    fill: $icon-color;
+  }
+}

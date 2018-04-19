@@ -53,17 +53,8 @@ export default {
 }
 
 .icon /deep/ {
-  display: inline-block;
-  vertical-align: middle;
-  text-align: center;
-  width: 1.5rem;
-  height: 1.5rem;
+  @include svn-icon(1.5rem, $grey-700);
   cursor: pointer;
-
-  svg {
-    display: block;
-    fill: $grey-700;
-  }
 }
 
 .search-input {

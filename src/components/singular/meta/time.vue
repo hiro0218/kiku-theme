@@ -48,16 +48,8 @@ export default {
 
 <style lang="scss" scoped>
 .icon /deep/ {
-  display: inline-block;
-  vertical-align: middle;
-  width: 1rem;
-  height: 1rem;
+  @include svn-icon(1rem, $grey-400);
   margin-right: 0.25rem;
-
-  svg {
-    display: block;
-    fill: $grey-400;
-  }
 }
 
 li {
