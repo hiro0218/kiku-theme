@@ -1,7 +1,7 @@
 <template>
-  <div v-if="display" :id="idName" class="ads-container">
+  <aside v-if="display" :id="idName" class="ads-container">
     <div v-html="content"/>
-  </div>
+  </aside>
 </template>
 
 <script>

@@ -90,7 +90,7 @@ class Kiku_Setting_Admin {
         }
 
         $option = get_option('kiku_ads1_more_tag_option') ? true : false;
-        $wrapper = '<div id="ads1" class="ads-container"></div>';
+        $wrapper = '<aside id="ads1" class="ads-container"></aside>';
         $pattern = '/(<[a-z0-9]+.*?>)?(<span id="more-[0-9]+"><\/span>)(<\/[a-z0-9]+>)?/i';
         preg_match($pattern, $content, $matches);
 
