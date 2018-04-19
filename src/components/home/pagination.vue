@@ -108,7 +108,7 @@ export default {
 
     &::before {
       position: relative;
-      top: 0.25rem;
+      top: 0.2rem;
     }
   }
 
