@@ -32,11 +32,6 @@ export default {
   margin-right: 0.25rem;
 }
 
-.entry-category {
-  white-space: nowrap;
-  overflow: scroll;
-}
-
 a {
   color: inherit;
   &:hover {
