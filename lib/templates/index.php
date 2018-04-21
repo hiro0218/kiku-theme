@@ -7,7 +7,7 @@
     <?php wp_head(); ?>
   </head>
   <body>
-    <div id="app"></div>
+    <main id="app"></main>
     <?php wp_footer(); ?>
   </body>
 </html>

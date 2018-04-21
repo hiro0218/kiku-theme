@@ -1,9 +1,9 @@
 <template>
   <div :class="{ 'open-drawer': isOpenSidebar }" class="contents">
     <layout-header/>
-    <main class="main-container">
+    <section class="main-container">
       <router-view class="container"/>
-    </main>
+    </section>
     <layout-footer/>
     <layout-sidebar/>
     <loading/>
