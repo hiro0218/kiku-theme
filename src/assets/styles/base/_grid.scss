@@ -1,17 +1,14 @@
 .container {
   position: relative;
+  max-width: calc(#{$tablet} - (2 * 1.5rem));
   margin: 0 auto;
   padding: 0 1rem;
 
-  @include from($tablet) {
-    max-width: calc(#{$tablet} - (2 * 1.5rem));
-  }
-
-  @include from($desktop) {
+  @include desktop-only {
     max-width: calc(#{$desktop} - (2 * 1.5rem));
   }
 
-  @include from($widescreen) {
+  @include widescreen {
     max-width: calc(#{$widescreen} - (2 * 1.5rem));
   }
 
