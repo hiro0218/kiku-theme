@@ -50,22 +50,29 @@ export default {
 
 .pager-container {
   display: flex;
+  flex-wrap: wrap;
   margin: 2rem 0;
   padding: 1rem 0;
+}
 
-  a {
-    display: flex;
-    width: 50%;
+.prev,
+.next {
+  display: flex;
+  width: 50%;
 
-    &:hover {
-      .title {
-        color: $blue-300;
-      }
+  @include mobile {
+    flex: none;
+    width: 100%;
+  }
+
+  &:hover {
+    .title {
+      color: $blue-300;
     }
+  }
 
-    &:only-child {
-      flex-grow: 1;
-    }
+  &:only-child {
+    flex-grow: 1;
   }
 }
 
