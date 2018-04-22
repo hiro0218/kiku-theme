@@ -1,6 +1,7 @@
 .container {
   position: relative;
   margin: 0 auto;
+  padding: 0 1rem;
 
   @include from($tablet) {
     max-width: calc(#{$tablet} - (2 * 1.5rem));
@@ -27,12 +28,3 @@
   margin-top: $header-nav-height;  // for header
 }
 
-.contents {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-
-  .container {
-    padding: 0 1rem;
-  }
-}

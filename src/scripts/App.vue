@@ -1,5 +1,5 @@
 <template>
-  <div :class="{ 'open-drawer': isOpenSidebar }" class="contents">
+  <main :class="{ 'open-drawer': isOpenSidebar }">
     <layout-header/>
     <section class="main-container">
       <router-view class="container"/>
@@ -7,7 +7,7 @@
     <layout-footer/>
     <layout-sidebar/>
     <loading/>
-  </div>
+  </main>
 </template>
 
 <script>
@@ -72,5 +72,10 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 </style>
