@@ -1,3 +1,14 @@
+// selection
+
+@mixin selection {
+	& ::selection {
+		@content;
+	}
+	& ::-moz-selection {
+		@content;
+	}
+}
+
 // Responsiveness
 
 @mixin from($device) {

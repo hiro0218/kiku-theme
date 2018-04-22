@@ -4,14 +4,9 @@
   box-sizing: border-box;
 }
 
-::selection {
-  background: $grey-300 !important;
-  color: $grey-900 !important;
-}
-
-::-moz-selection {
-  background: $grey-300 !important;
-  color: $grey-900 !important;
+@include selection {
+  background: $grey-300;
+  color: $grey-900;
 }
 
 // Body reset
