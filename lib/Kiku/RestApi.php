@@ -68,11 +68,6 @@ class REST_API {
 
                 if ($result === false) {
                     $array = [
-                        'site' => [
-                            'name' => BLOG_NAME,
-                            'url' => BLOG_URL,
-                            'copyright' => "© " . Kiku\Util::get_copyright_year(),
-                        ],
                         'footer' => [
                             'menu' => $this->get_menus(),
                         ],

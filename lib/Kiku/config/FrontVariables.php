@@ -7,6 +7,11 @@ class FrontVariables {
     // Global javaScript variables
     public function output_variables() {
         $vars = [
+            'site' => [
+                'name' => BLOG_NAME,
+                'url' => BLOG_URL,
+                'copyright' => Kiku\Util::get_copyright_year(),
+            ],
             'per_page' => $this->get_per_page(),
             'categories_exclude' => $this->get_categories_exclude(),
             'is_preview' => is_preview(),

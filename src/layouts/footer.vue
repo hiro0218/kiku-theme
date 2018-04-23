@@ -8,8 +8,8 @@
           </li>
         </ul>
       </nav>
-      <div v-if="navigation.site" class="footer-copytight">
-        <span>{{ navigation.site.copyright }} <a :href="navigation.site.url">{{ navigation.site.name }}</a></span>
+      <div class="footer-copytight">
+        <span>© {{ site.copyright }} <a :href="site.url">{{ site.name }}</a></span>
       </div>
     </div>
   </footer>
@@ -20,6 +20,11 @@ import { mapState } from 'vuex';
 
 export default {
   name: 'Footer',
+  data() {
+    return {
+      site: WP.site,
+    };
+  },
   computed: mapState(['navigation']),
 };
 </script>

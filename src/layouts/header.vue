@@ -1,8 +1,8 @@
 <template>
   <header class="header-navigation">
-    <div v-if="navigation" class="container">
+    <div class="container">
       <div class="header-title">
-        <router-link :to="navigation.site.url | formatBaseLink">{{ navigation.site.name }}</router-link>
+        <router-link :to="site.url | formatBaseLink">{{ site.name }}</router-link>
       </div>
       <div class="header-menu">
         <search />
@@ -13,7 +13,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
 import search from '@components/menu/search.vue';
 import drawer from '@components/menu/drawer.vue';
 import headerScroll from 'header-scroll-up';
@@ -24,7 +23,11 @@ export default {
     search,
     drawer,
   },
-  computed: mapState(['navigation']),
+  data() {
+    return {
+      site: WP.site,
+    };
+  },
   mounted: function() {
     headerScroll.setScrollableHeader('.header-navigation', {
       topOffset: 0,
