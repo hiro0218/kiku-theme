@@ -1,6 +1,5 @@
 @import "~prism-themes/themes/prism-duotone-light.css";
 @import "prism-line-numbers";
-@import "prism-command-line";
 @import "prism-show-language";
 
 pre[class*="language-"] {
@@ -21,7 +20,6 @@ pre[class*="language-"] {
   line-height: inherit;
 }
 
-.line-numbers-rows,
-.command-line-prompt {
+.line-numbers-rows {
   border-right: 1px solid #ece8de;
 }
