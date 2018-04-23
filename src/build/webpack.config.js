@@ -106,11 +106,25 @@ let webpackConfig = {
             resourceQuery: /inline/,
           },
           {
-            loader: 'file-loader',
-            options: {
-              limit: 1024,
-              name: `[path]${assetsFilenames}.[ext]`,
-            },
+            use: [
+              {
+                loader: 'file-loader',
+                options: {
+                  limit: 1024,
+                  name: `[path]${assetsFilenames}.[ext]`,
+                },
+              },
+              {
+                loader: 'svgo-loader',
+                options: {
+                  plugins: [
+                    {removeTitle: true},
+                    {convertColors: {shorthex: false}},
+                    {convertPathData: false}
+                  ]
+                }
+              },
+            ],
           },
         ],
       },
