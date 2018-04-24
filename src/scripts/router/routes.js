@@ -1,7 +1,7 @@
 import pageHome from '@/pages/home.vue';
 import pageSingular from '@/pages/singular.vue';
-import pageNotFound from '@/pages/notFound.vue';
-import pageArchive from '@/pages/archive.vue';
+const pageNotFound = () => import(/* webpackChunkName: "pages" */ '@/pages/notFound.vue');
+const pageArchive = () => import(/* webpackChunkName: "pages" */ '@/pages/archive.vue');
 
 let routes = [];
 
