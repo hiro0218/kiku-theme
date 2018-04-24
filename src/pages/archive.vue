@@ -4,15 +4,17 @@
       <header>
         <h1 class="entry-title">{{ pageTitle }}</h1>
       </header>
-      <section v-for="(entries, year) in list" :key="year" class="entry-content">
-        <h2 class="archive-year">{{ year }}</h2>
-        <ul>
-          <li v-for="entry in entries" :key="entry.id">
-            <time :datetime="entry.date | dateToISOString">{{ entry.date | formatDate }}</time>
-            <router-link :to="entry.link">{{ entry.title }}</router-link>
-          </li>
-        </ul>
-      </section>
+      <div class="archive-list">
+        <section v-for="(entries, year) in list" :key="year" class="entry-content">
+          <h2 class="archive-year">{{ year }}</h2>
+          <ul>
+            <li v-for="entry in entries" :key="entry.id">
+              <time :datetime="entry.date | dateToISOString">{{ entry.date | formatDate }}</time>
+              <router-link :to="entry.link">{{ entry.title }}</router-link>
+            </li>
+          </ul>
+        </section>
+      </div>
     </article>
   </div>
 </template>
@@ -66,13 +68,21 @@ ul {
 li {
   display: flex;
   padding: 0 1rem;
-  line-height: 2.5rem;
+  line-height: 2;
   list-style-type: none;
+  & + li {
+    margin-top: 0.5rem;
+  }
 }
 
 time {
   flex: 0 0 6rem;
   margin-right: 2rem;
   color: $grey-400;
+}
+
+.archive-list {
+  display: flex;
+  flex-direction: column-reverse;
 }
 </style>
