@@ -45,15 +45,15 @@ export default {
   },
   methods: {
     setTitle: function(afterTitle, beforeTitle) {
-      if (!this.navigation.site.name || afterTitle === beforeTitle) {
+      if (!WP.site.name || afterTitle === beforeTitle) {
         return;
       }
 
       if (this.$route.path === '/' || !afterTitle) {
-        document.title = this.navigation.site.name;
+        document.title = WP.site.name;
       } else {
         let pageTitle = htmlentities.decode(afterTitle);
-        document.title = `${pageTitle} - ${this.navigation.site.name}`;
+        document.title = `${pageTitle} - ${WP.site.name}`;
       }
     },
     sendPageview: function(to, from) {
