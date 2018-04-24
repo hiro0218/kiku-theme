@@ -17,12 +17,13 @@
 
 <script>
 import { mapState } from 'vuex';
+import { cloneDeep } from 'lodash-es';
 
 export default {
   name: 'Footer',
   data() {
     return {
-      site: WP.site,
+      site: cloneDeep(WP.site),
     };
   },
   computed: mapState(['navigation']),

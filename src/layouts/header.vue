@@ -16,6 +16,7 @@
 import search from '@components/menu/search.vue';
 import drawer from '@components/menu/drawer.vue';
 import headerScroll from 'header-scroll-up';
+import { cloneDeep } from 'lodash-es';
 
 export default {
   name: 'Header',
@@ -25,7 +26,7 @@ export default {
   },
   data() {
     return {
-      site: WP.site,
+      site: cloneDeep(WP.site),
     };
   },
   mounted: function() {
