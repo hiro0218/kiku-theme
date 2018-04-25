@@ -57,30 +57,6 @@ class REST_API {
     }
 
     public function original_api() {
-        register_rest_route(self::API_NAMESPACE, '/navigation', [
-            'methods'  => WP_REST_Server::READABLE,
-            'callback' => function($data) {
-                $request_url = $_SERVER['REQUEST_URI'];
-
-                // transient で一時的にキャッシュしたデータをロード
-                $key = CACHE_PREFIX . md5($request_url);
-                $result = get_transient($key);
-
-                if ($result === false) {
-                    $array = [
-                        'footer' => [
-                            'menu' => $this->get_menus(),
-                        ],
-                    ];
-
-                    set_transient($key, $array, self::CACHE_EXPIRATION);
-                    return $array;
-                }
-
-                return $result;
-            }
-        ]);
-
         register_rest_route(self::API_NAMESPACE, '/themes', [
             'methods'  => WP_REST_Server::READABLE,
             'callback' => function($data) {
@@ -248,27 +224,6 @@ class REST_API {
         }
 
         return $result;
-    }
-
-    public function get_menus() {
-        if (!has_nav_menu(PRIMARY_NAVIGATION_NAME)) {
-            return null;
-        }
-
-        $menu_ids = get_nav_menu_locations();
-        $menus = wp_get_nav_menu_items($menu_ids[PRIMARY_NAVIGATION_NAME]);
-        $array = [];
-
-        foreach ((array)$menus as $menu) {
-            $menu_array = (array) $menu;
-            $array[] = [
-                'ID' => $menu_array['ID'],
-                'title' => $menu_array['title'],
-                'url' => $menu_array['url'],
-            ];
-        }
-
-        return $array;
     }
 
     private function is_postId_route($request, $type) {

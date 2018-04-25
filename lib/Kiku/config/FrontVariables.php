@@ -11,6 +11,7 @@ class FrontVariables {
                 'name' => BLOG_NAME,
                 'url' => BLOG_URL,
                 'copyright' => Kiku\Util::get_copyright_year(),
+                'primary_navigation' => $this->get_primary_navigation(),
             ],
             'per_page' => $this->get_per_page(),
             'categories_exclude' => $this->get_categories_exclude(),
@@ -115,6 +116,36 @@ class FrontVariables {
         }
 
         return $routes;
+    }
+
+    public function get_primary_navigation() {
+        if (!has_nav_menu(PRIMARY_NAVIGATION_NAME)) {
+            return null;
+        }
+
+        // transient で一時的にキャッシュしたデータをロード
+        $key = CACHE_PREFIX . md5(PRIMARY_NAVIGATION_NAME);
+        $result = get_transient($key);
+
+        if ($result === false) {
+            $menu_ids = get_nav_menu_locations();
+            $menus = wp_get_nav_menu_items($menu_ids[PRIMARY_NAVIGATION_NAME]);
+            $array = [];
+
+            foreach ((array)$menus as $menu) {
+                $menu_array = (array) $menu;
+                $array[] = [
+                    'ID' => $menu_array['ID'],
+                    'title' => $menu_array['title'],
+                    'url' => $menu_array['url'],
+                ];
+            }
+
+            set_transient($key, $array, HOUR_IN_SECONDS);
+            return $array;
+        }
+
+        return $result;
     }
 }
 

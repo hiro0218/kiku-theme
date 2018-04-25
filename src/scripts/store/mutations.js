@@ -7,9 +7,6 @@ export default {
   setPageTitle(state, title) {
     state.pageTitle = title;
   },
-  setNavigation(state, payload) {
-    state.navigation = payload;
-  },
   setThemes(state, payload) {
     state.themes = payload;
   },

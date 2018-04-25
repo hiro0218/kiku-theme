@@ -39,14 +39,6 @@ export default {
 
     return this.api;
   },
-  getNavigation() {
-    var client = this.getInstance();
-
-    return client.get('/wp-json/kiku/v1/navigation', {
-      baseURL: '/',
-      params: '',
-    });
-  },
   getThemes() {
     var client = this.getInstance();
 

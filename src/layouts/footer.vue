@@ -1,9 +1,9 @@
 <template>
   <footer class="footer footer-navigation">
-    <div v-if="navigation" class="container">
-      <nav v-if="navigation.footer.menu" class="footer-menu">
+    <div class="container">
+      <nav v-if="site.primary_navigation" class="footer-menu">
         <ul>
-          <li v-for="(menu, index) in navigation.footer.menu" :key="index">
+          <li v-for="(menu, index) in site.primary_navigation" :key="index">
             <router-link :to="menu.url | formatBaseLink">{{ menu.title }}</router-link>
           </li>
         </ul>
@@ -16,7 +16,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
 import { cloneDeep } from 'lodash-es';
 
 export default {
@@ -26,7 +25,6 @@ export default {
       site: cloneDeep(WP.site),
     };
   },
-  computed: mapState(['navigation']),
 };
 </script>
 

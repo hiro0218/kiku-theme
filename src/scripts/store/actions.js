@@ -13,11 +13,6 @@ export default {
       commit('changeLoading', flag);
     });
   },
-  requestNavigation({ commit }) {
-    api.getNavigation().then(response => {
-      commit('setNavigation', response.data);
-    });
-  },
   requestThemes({ commit }) {
     api.getThemes().then(response => {
       commit('setThemes', response.data);

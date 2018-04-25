@@ -25,7 +25,7 @@ export default {
     layoutSidebar,
     loading,
   },
-  computed: mapState(['isOpenSidebar', 'navigation', 'pageTitle']),
+  computed: mapState(['isOpenSidebar', 'pageTitle']),
   watch: {
     $route: function(to, from) {
       // 同一ページ内の変更時は処理を行わない
@@ -40,7 +40,6 @@ export default {
     pageTitle: 'setTitle',
   },
   created: function() {
-    this.$store.dispatch('requestNavigation');
     this.$store.dispatch('requestAdvertise');
   },
   methods: {
