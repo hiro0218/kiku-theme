@@ -78,13 +78,10 @@ class Image {
             if (Util::is_url($src)) {
                 return Util::relative_to_absolute_url($src);
             }
-            // denied DataURI
-            if ($datauri) {
-                // not Data URI
-                if (!Util::is_dataURI($src)) {
-                    return "";
-                }
-            }
+        }
+
+        if (Util::is_dataURI($src) && !$datauri) {
+            return "";
         }
 
         return $src;
