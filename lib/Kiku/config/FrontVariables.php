@@ -80,11 +80,11 @@ class FrontVariables {
                 $post_type = get_post_type();
 
                 $routes[$post_id] = [
-                    'id'       => $post_id,
-                    'type'     => $post_type,
-                    'slug'     => get_post_field('post_name', $post_id),
-                    'path'     => '/' . basename(get_permalink()),
-                    'title'    => get_the_title(),
+                    'path' => '/' . basename(get_permalink()),
+                    'meta' => [
+                        'id'   => $post_id,
+                        'type' => $post_type,
+                    ],
                 ];
                 if ($post_type === 'page') {
                     $template_slug = get_page_template_slug($post_id);
@@ -107,11 +107,13 @@ class FrontVariables {
 
         foreach ($query->get_terms() as $term) {
             $routes[] = [
-                'id'       => $term->term_id,
-                'type'     => $term->taxonomy,
-                'path'     => \Kiku\Util::base_path(get_term_link($term)),
-                'title'    => $term->name,
-                'slug'     => $term->slug,
+                'path' => \Kiku\Util::base_path(get_term_link($term)),
+                'meta' => [
+                    'id'    => $term->term_id,
+                    'type'  => $term->taxonomy,
+                    'title' => $term->name,
+                    'slug'  => $term->slug,
+                ],
             ];
         }
 

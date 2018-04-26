@@ -7,20 +7,16 @@ let routes = [];
 
 for (let key in WP.routes) {
   let route = WP.routes[key];
+  let type = route.meta.type;
   let temp = {};
 
   temp = {
-    name: `${route.type}_${route.id}`,
+    name: `${type}_${route.meta.id}`,
     path: route.path,
-    meta: {
-      id: route.id,
-      type: route.type,
-      title: route.title,
-      slug: route.slug,
-    },
+    meta: route.meta,
   };
 
-  if (route.type === 'post' || route.type === 'page') {
+  if (type === 'post' || type === 'page') {
     if (route.path === '/archive') {
       temp.name = 'archive';
       temp.component = pageArchive;
@@ -33,13 +29,8 @@ for (let key in WP.routes) {
     temp.children = [
       {
         path: 'page/:page_number',
-        name: `${route.type}_${route.id}_paged`,
-        meta: {
-          id: route.id,
-          type: route.type,
-          title: route.title,
-          slug: route.slug,
-        },
+        name: `${type}_${route.meta.id}_paged`,
+        meta: route.meta,
         component: pageHome,
       },
     ];
