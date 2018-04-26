@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import { cloneDeep } from 'lodash-es';
 import iconTwitter from '@images/icon/twitter.svg?inline';
 import iconFacebook from '@images/icon/facebook.svg?inline';
 import iconHatena from '@images/icon/hatenabookmark.svg?inline';
@@ -49,7 +50,7 @@ export default {
   },
   data() {
     return {
-      is_display: WP.is_shared,
+      is_display: cloneDeep(WP.is_shared),
       link: location.href,
       icon: {
         twitter: iconTwitter,
