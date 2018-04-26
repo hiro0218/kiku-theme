@@ -186,7 +186,7 @@ class REST_API {
 
     public function get_post_thumbnail($object, $field_name, $request, $type) {
         global $Image;
-        $url = $Image->get_entry_image($object['id'], false, 'thumbnail');
+        $url = $Image->get_entry_image($object['id'], true, 'thumbnail');
 
         return empty($url) ? null : $url;
     }
