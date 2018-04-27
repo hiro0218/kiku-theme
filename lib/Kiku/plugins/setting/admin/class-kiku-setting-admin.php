@@ -90,17 +90,18 @@ class Kiku_Setting_Admin {
         }
 
         $option = get_option('kiku_ads1_more_tag_option') ? true : false;
-        $wrapper = '<aside id="ads1" class="ads-container"></aside>';
-        $pattern = '/(<[a-z0-9]+.*?>)?(<span id="more-[0-9]+"><\/span>)(<\/[a-z0-9]+>)?/i';
+        $adsContainer = '<aside id="ads1" class="ads-container"></aside>';
+        /* $pattern = '/(<[a-z0-9]+.*?>)?(<span id="more-[0-9]+"><\/span>)(<\/[a-z0-9]+>)?/i';*/
+        $pattern = '/<!--more-->/i';
         preg_match($pattern, $content, $matches);
 
         if (!empty($matches[0])) {
             if (strpos($matches[0], '</p>') !== false) {
-                return preg_replace($pattern, '</p>'. $wrapper, $content);
+                return preg_replace($pattern, '</p>'. $adsContainer, $content);
             }
-            return preg_replace($pattern, '</p>'. $wrapper .'<p>', $content);
+            return preg_replace($pattern, '</p>'. $adsContainer .'<p>', $content);
         } else if ($option) {
-            return $wrapper. $content;
+            return $adsContainer. $content;
         }
 
         return $content;
