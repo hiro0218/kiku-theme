@@ -1,6 +1,3 @@
-// Bootstrap migration
-
-// alert
 .alert {
   padding: 1rem;
   border: 1px solid transparent;
@@ -26,35 +23,4 @@
   border-color: $red-100;
   background: $red-50;
   color: $red-400;
-}
-
-
-// text
-.text-muted {
-  color: $grey-400;
-}
-.text-primary {
-  color: $light-blue-400;
-}
-.text-success {
-  color: $light-green-400;
-}
-.text-info {
-  color: $blue-400;
-}
-.text-warning {
-  color: $orange-400;
-}
-.text-danger {
-  color: $red-400;
-}
-
-.text-left {
-  text-align: left;
-}
-.text-right {
-  text-align: right;
-}
-.text-center {
-  text-align: center;
 }

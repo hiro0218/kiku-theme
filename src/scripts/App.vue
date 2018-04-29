@@ -1,5 +1,5 @@
 <template>
-  <main :class="{ 'open-drawer': isOpenSidebar }">
+  <main :class="{ 'open-drawer': isOpenSidebar }" class="main">
     <layout-header/>
     <section class="main-container">
       <router-view class="container"/>
@@ -72,9 +72,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-main {
+.main {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+
+// nav min-height from bulma = 3.5rem
+// for header's position:fixed
+.main-container {
+  flex: 1 0 auto;
+  min-height: calc(100vh - #{$header-nav-height});
+  margin-top: $header-nav-height; // for header
 }
 </style>

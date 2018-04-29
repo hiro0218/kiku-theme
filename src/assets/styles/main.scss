@@ -3,7 +3,8 @@
 @import "config/variables";
 @import "config/mixins";
 
-@import "vendor/bootstrap-migration";
+// reset
+@import '~normalize.css/normalize.css';
 
 // styles
 @import "animation";
@@ -16,9 +17,10 @@
 @import "base/utility";
 
 // parts
-@import "parts/wp-classes";
+@import "parts/alert";
 @import "parts/mokuji";
 @import "parts/sandbox";
+@import "parts/text";
 
 // vendor
 @import "vendor/prismjs";
