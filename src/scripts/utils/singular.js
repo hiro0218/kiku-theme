@@ -12,18 +12,12 @@ export default {
   addExternalLinkIcon(entry) {
     var aTags = entry.getElementsByTagName('a');
     var length = aTags.length;
-    if (length === 0) {
-      return;
-    }
-
-    var icon = document.createElement('span');
-    icon.classList.add('icon-open_in_new');
 
     for (var i = 0; i < length; i++) {
-      this.setExternalLinkIcon(aTags[i], icon.cloneNode(false));
+      this.setExternalLinkIcon(aTags[i]);
     }
   },
-  setExternalLinkIcon(element, icon) {
+  setExternalLinkIcon(element) {
     var href = element.getAttribute('href');
     // exclude javascript and anchor
     if (href.substring(0, 10).toLowerCase() === 'javascript' || href.substring(0, 1) === '#') {
@@ -43,7 +37,8 @@ export default {
     // set icon when childNode is text
     if (element.hasChildNodes()) {
       if (element.childNodes[0].nodeType === 3) {
-        element.appendChild(icon.cloneNode(true));
+        // add icon class
+        element.classList.add('icon-open_in_new');
       }
     }
   },
