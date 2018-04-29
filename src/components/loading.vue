@@ -1,5 +1,5 @@
 <template>
-  <div v-show="isLoading" class="loading-container">
+  <div :class="{ 'fadeOut': !isLoading }" class="loading-container">
     <div class="loading" v-html="svgLoading"/>
   </div>
 </template>
@@ -19,7 +19,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .loading-container {
   position: fixed;
   top: 0;

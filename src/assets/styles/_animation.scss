@@ -2,6 +2,10 @@
   animation: showIn .3s $animation-curve-fast-out-slow-in forwards;
 }
 
+.fadeOut {
+  animation: fadeOut .3s $animation-curve-fast-out-slow-in forwards;
+}
+
 @keyframes showIn {
   from {
     transform: scale(0);
@@ -17,7 +21,7 @@
     opacity: 1;
   }
   100% {
-    display: none;
     opacity: 0;
+    visibility: hidden;
   }
 }
