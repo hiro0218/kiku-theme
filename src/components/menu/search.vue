@@ -48,10 +48,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.search-container {
-  margin-right: 0.75rem;
-}
-
 .icon /deep/ {
   @include svn-icon(1.5rem, $grey-700);
   cursor: pointer;
@@ -60,12 +56,8 @@ export default {
 .search-input {
   width: 0;
   font-size: 1rem;
-  line-height: 0;
-  border: 0;
-  border-radius: 0;
+  border: 1px solid transparent;
   outline: none;
-  background: transparent;
-  box-shadow: none;
   cursor: pointer;
   -webkit-appearance: none;
   -moz-appearance: none;

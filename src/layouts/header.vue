@@ -1,12 +1,12 @@
 <template>
   <header class="header-navigation">
     <div class="container">
-      <div class="header-title">
+      <div class="title">
         <router-link :to="site.url | formatBaseLink">{{ site.name }}</router-link>
       </div>
-      <div class="header-menu">
-        <search />
-        <drawer />
+      <div class="menu">
+        <search class="menu-item" />
+        <drawer class="menu-item" />
       </div>
     </div>
   </header>
@@ -39,47 +39,43 @@ export default {
 
 <style lang="scss" scoped>
 .header-navigation {
-  display: flex;
   position: fixed;
   top: 0;
-  right: 0;
   left: 0;
-  flex-wrap: wrap;
-  align-items: center;
   height: $header-nav-height;
   background: #fff;
   box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.25);
-  overflow: hidden;
   z-index: 10;
 
   > .container {
     display: flex;
-    align-items: stretch;
     width: 100%;
     height: 100%;
   }
-}
 
-.header-title,
-.header-menu {
-  display: flex;
-  flex: 1;
-  align-items: stretch;
-  line-height: $header-nav-height;
-}
-
-.header-title {
-  justify-content: flex-start;
-  color: $grey-900;
-  font-size: 1rem;
-  white-space: nowrap;
-  a {
-    color: inherit;
+  .title,
+  .menu {
+    display: flex;
+    flex: 1;
+    align-items: center;
   }
-}
 
-.header-menu {
-  justify-content: flex-end;
-  font-size: 1.5rem;
+  .title {
+    justify-content: flex-start;
+    color: $grey-900;
+    font-size: 1rem;
+    white-space: nowrap;
+    a {
+      color: inherit;
+    }
+  }
+
+  .menu {
+    justify-content: flex-end;
+  }
+
+  .menu-item + .menu-item {
+    margin-left: 0.75rem;
+  }
 }
 </style>
