@@ -1,6 +1,5 @@
 import { cloneDeep } from 'lodash-es';
 import api from '@scripts/api';
-import { wait } from '@scripts/utils';
 import { MODEL_POST, MODEL_POST_LIST } from '@scripts/models';
 
 export default {
@@ -9,9 +8,7 @@ export default {
       commit('changeLoading', flag);
       return;
     }
-    wait(100).then(() => {
-      commit('changeLoading', flag);
-    });
+    commit('changeLoading', flag);
   },
   requestThemes({ commit }) {
     api.getThemes().then(response => {
