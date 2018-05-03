@@ -9,13 +9,8 @@ class SearchAction {
             "url"      => BLOG_URL,
             "potentialAction" => [
                 "@type"       => "SearchAction",
-                "target"      => BLOG_URL ."?s={s}",
-                "query-input" => [
-                    "@type" => "PropertyValueSpecification",
-                    "valueRequired" => true,
-                    "valueName" => "s",
-                    "valueMaxlength" => 100
-                ]
+                "target"      => BLOG_URL ."search/{query}",
+                "query-input" => "required name=query",
             ]
         ];
 
