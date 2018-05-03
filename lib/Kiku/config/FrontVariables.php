@@ -86,12 +86,6 @@ class FrontVariables {
                         'type' => $post_type,
                     ],
                 ];
-                if ($post_type === 'page') {
-                    $template_slug = get_page_template_slug($post_id);
-                    if ($template_slug) {
-                        $routes[$post_id]['template'] = $template_slug;
-                    }
-                }
             }
         }
         wp_reset_postdata();
@@ -112,7 +106,6 @@ class FrontVariables {
                     'id'    => $term->term_id,
                     'type'  => $term->taxonomy,
                     'title' => $term->name,
-                    'slug'  => $term->slug,
                 ],
             ];
         }

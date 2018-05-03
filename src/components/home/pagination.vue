@@ -53,17 +53,14 @@ export default {
       });
     },
     getBasePath: function() {
-      let type = this.$route.meta.type;
-      let slug = this.$route.meta.slug || this.$route.params.search_query;
-
-      if (type) {
-        if (type === 'post_tag') {
-          type = 'tag';
-        }
-        return `/${type}/${slug}`;
+      if (!this.$route.meta.type) {
+        return '';
       }
 
-      return '';
+      let pathArray = this.$route.path.split('/');
+      let basePath = [...pathArray[0], ...pathArray[1], ...pathArray[2]].join('/');
+
+      return basePath;
     },
   },
 };
