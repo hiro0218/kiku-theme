@@ -1,14 +1,12 @@
 <template>
   <ul v-cloak v-if="categories" class="entry-category">
     <li v-for="(category, index) in categories" :key="index">
-      <span v-if="index == 0" class="icon" v-html="iconFolder"/><router-link :to="category.link | formatBaseLink">{{ category.name }}</router-link>
+      <span v-if="index == 0" class="icon icon-folder"/><router-link :to="category.link | formatBaseLink">{{ category.name }}</router-link>
     </li>
   </ul>
 </template>
 
 <script>
-import iconFolder from '@images/icon/folder.svg?inline';
-
 export default {
   name: 'Category',
   props: {
@@ -18,18 +16,14 @@ export default {
       required: false,
     },
   },
-  data() {
-    return {
-      iconFolder,
-    };
-  },
 };
 </script>
 
 <style lang="scss" scoped>
-.icon /deep/ {
-  @include svn-icon(1rem, $grey-400);
+.icon-folder {
   margin-right: 0.25rem;
+  background-image: url('~@images/icon/folder.svg?fill=#{$grey-400} svg');
+  @include svg-icon(1rem);
 }
 
 a {

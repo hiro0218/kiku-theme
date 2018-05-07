@@ -2,42 +2,34 @@
   <section v-if="title" class="entry-share">
     <template v-if="is_display.twitter">
       <a href="javascript:void(0)"
-         class="btn-twitter"
+         class="icon icon-twitter"
          title="Share on Twitter"
-         @click.stop="openWindow(twitter_url(), 620, 310)"
-         v-html="icon.twitter"/>
+         @click.stop="openWindow(twitter_url(), 620, 310)"/>
     </template>
     <template v-if="is_display.facebook">
       <a href="javascript:void(0)"
-         class="btn-facebook"
+         class="icon icon-facebook"
          title="Share on Facebook"
-         @click.stop="openWindow(facebook_url(), 560, 550)"
-         v-html="icon.facebook"/>
+         @click.stop="openWindow(facebook_url(), 560, 550)"/>
     </template>
     <template v-if="is_display.hatena">
       <a :href="hatena_url()"
          :data-hatena-bookmark-title="title"
-         class="hatena-bookmark-button btn-hatena"
+         class="hatena-bookmark-button icon icon-hatena"
          title="Share on LINE"
-         data-hatena-bookmark-layout="simple"
-         v-html="icon.hatena"/>
+         data-hatena-bookmark-layout="simple"/>
     </template>
     <template v-if="is_display.line">
       <a href="javascript:void(0)"
-         class="btn-line"
+         class="icon icon-line"
          title="Share on LINE"
-         @click.stop="openWindow(line_url(), 560, 550)"
-         v-html="icon.line"/>
+         @click.stop="openWindow(line_url(), 560, 550)"/>
     </template>
   </section>
 </template>
 
 <script>
 import { cloneDeep } from 'lodash-es';
-import iconTwitter from '@images/icon/twitter.svg?inline';
-import iconFacebook from '@images/icon/facebook.svg?inline';
-import iconHatena from '@images/icon/hatenabookmark.svg?inline';
-import iconLine from '@images/icon/line.svg?inline';
 
 export default {
   name: 'Share',
@@ -52,12 +44,6 @@ export default {
     return {
       is_display: cloneDeep(WP.is_shared),
       link: location.href,
-      icon: {
-        twitter: iconTwitter,
-        facebook: iconFacebook,
-        hatena: iconHatena,
-        line: iconLine,
-      },
     };
   },
   watch: {
@@ -105,45 +91,37 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$twitter-color: #55acee;
-$facebook-color: #3b5998;
-$hatena-color: #00a4de;
-$line-color: #00b900;
-
-.entry-share /deep/ {
+.entry-share {
   display: flex;
   margin: 2rem 0;
-  line-height: 1rem;
+}
 
-  a {
-    display: inline-block;
-    width: 1.5rem;
-    height: 1.5rem;
+.icon {
+  margin-right: 1.5rem;
+  @include svg-icon(1.5rem);
 
-    & + a {
-      margin-left: 1.5rem;
-    }
+  &:hover {
+    opacity: 0.8;
   }
 
-  svg path {
-    fill: $grey-400;
-    transition: fill 0.4s ease;
+  &:last-child {
+    margin-right: 0;
   }
+}
 
-  .btn-twitter:hover svg path {
-    fill: $twitter-color;
-  }
+.icon-twitter {
+  background-image: url('~@images/icon/twitter.svg');
+}
 
-  .btn-facebook:hover svg path {
-    fill: $facebook-color;
-  }
+.icon-facebook {
+  background-image: url('~@images/icon/facebook.svg');
+}
 
-  .btn-hatena:hover svg path {
-    fill: $hatena-color;
-  }
+.icon-hatena {
+  background-image: url('~@images/icon/hatenabookmark.svg');
+}
 
-  .btn-line:hover svg path {
-    fill: $line-color;
-  }
+.icon-line {
+  background-image: url('~@images/icon/line.svg');
 }
 </style>

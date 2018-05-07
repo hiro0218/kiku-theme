@@ -99,32 +99,27 @@ let webpackConfig = {
         },
       },
       {
-        test: /\.svg$/,
-        oneOf: [
+        test: /\.svg(\?.*)?$/,
+        use: [
           {
-            use: 'svg-inline-loader',
-            resourceQuery: /inline/,
+            loader: 'file-loader',
+            options: {
+              limit: 1024,
+              name: `[path]${assetsFilenames}_[hash].[ext]`,
+            },
           },
           {
-            use: [
-              {
-                loader: 'file-loader',
-                options: {
-                  limit: 1024,
-                  name: `[path]${assetsFilenames}.[ext]`,
-                },
-              },
-              {
-                loader: 'svgo-loader',
-                options: {
-                  plugins: [
-                    {removeTitle: true},
-                    {convertColors: {shorthex: false}},
-                    {convertPathData: false}
-                  ]
-                }
-              },
-            ],
+            loader: 'svg-transform-loader',
+          },
+          {
+            loader: 'svgo-loader',
+            options: {
+              plugins: [
+                {removeTitle: true},
+                {convertColors: {shorthex: false}},
+                {convertPathData: false}
+              ]
+            }
           },
         ],
       },
