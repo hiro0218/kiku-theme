@@ -3,20 +3,17 @@
     <input id="search-box" v-model="searchValue" class="search-input" type="search" placeholder="Search..."
            @keyup.enter="setKeypress"
            @keydown.enter="submitSearch"><!--
-  --><label class="icon" for="search-box" v-html="iconSearch"/>
+  --><label class="icon-search" for="search-box"/>
   </div>
 </template>
 
 <script>
-import iconSearch from '@images/icon/search.svg?inline';
-
 export default {
   name: 'Search',
   data() {
     return {
       searchValue: this.$route.params.search_query,
       isKeypressed: true,
-      iconSearch,
     };
   },
   watch: {
@@ -48,9 +45,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.icon /deep/ {
-  @include svn-icon(1.5rem, $grey-700);
+.icon-search {
+  background-image: url('~@images/icon/search.svg?fill=#{$grey-700} svg');
+  @include svg-icon(1.5rem);
   cursor: pointer;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
 }
 
 .search-input {

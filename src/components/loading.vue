@@ -1,20 +1,14 @@
 <template>
   <div :class="{ 'fadeOut': !isLoading }" class="loading-container">
-    <div class="loading" v-html="svgLoading"/>
+    <div class="loading"/>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex';
-import svgLoading from '@images/loading-spin.svg?inline';
 
 export default {
   name: 'Loading',
-  data() {
-    return {
-      svgLoading,
-    };
-  },
   computed: mapState(['isLoading']),
 };
 </script>
@@ -41,5 +35,8 @@ export default {
   height: $size;
   margin-top: ($size / 2) * -1;
   margin-left: ($size / 2) * -1;
+  background-image: url('~@images/loading-spin.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 </style>

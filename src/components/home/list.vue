@@ -20,9 +20,7 @@
           <div class="entry-summary" v-html="$options.filters.escapeBrackets(post.excerpt.rendered)"/>
           <footer class="entry-footer">
             <div class="entry-meta">
-              <ul>
-                <li><span class="icon" v-html="iconUpdate"/>{{ post.date | formatDate }}</li>
-              </ul>
+              <span class="icon-update"/>{{ post.date | formatDate }}
             </div>
           </footer>
         </div>
@@ -34,15 +32,9 @@
 
 <script>
 import { mapState } from 'vuex';
-import iconUpdate from '@images/icon/update.svg?inline';
 
 export default {
   name: 'EntryList',
-  data() {
-    return {
-      iconUpdate,
-    };
-  },
   computed: {
     ...mapState({
       requestHeader: 'requestHeader',
@@ -149,11 +141,6 @@ $entry-thumbnail-size: 5rem; // 80px;
   .entry-meta {
     color: $grey-400;
     text-align: right;
-    ul {
-      margin-bottom: 0;
-      padding-left: 0;
-      list-style: none;
-    }
   }
 }
 
@@ -175,8 +162,9 @@ $entry-thumbnail-size: 5rem; // 80px;
   }
 }
 
-.icon /deep/ {
-  @include svn-icon(1rem, $grey-400);
+.icon-update {
   margin-right: 0.25rem;
+  background-image: url('~@images/icon/update.svg?fill=#{$grey-400} svg');
+  @include svg-icon(1rem);
 }
 </style>

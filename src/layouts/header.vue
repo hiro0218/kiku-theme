@@ -74,8 +74,12 @@ export default {
     justify-content: flex-end;
   }
 
-  .menu-item + .menu-item {
-    margin-left: 0.75rem;
+  .menu-item {
+    display: flex;
+    align-items: center;
+    & + .menu-item {
+      margin-left: 0.75rem;
+    }
   }
 }
 </style>

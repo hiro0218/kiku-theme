@@ -2,7 +2,7 @@
   <div v-if="pager" class="pager-container">
     <router-link v-if="pager.prev" :to="pager.prev.url" :title="pager.prev.title" class="prev">
       <div class="icon-container">
-        <div class="icon" v-html="iconArrowBack"/>
+        <div class="icon icon-arrow-back"/>
       </div>
       <div class="pager">
         <span class="label">previous</span>
@@ -15,16 +15,13 @@
         <div class="title">{{ pager.next.title }}</div>
       </div>
       <div class="icon-container">
-        <div class="icon" v-html="iconArrowForward"/>
+        <div class="icon icon-arrow-forward"/>
       </div>
     </router-link>
   </div>
 </template>
 
 <script>
-import iconArrowBack from '@images/icon/arrow_back.svg?inline';
-import iconArrowForward from '@images/icon/arrow_forward.svg?inline';
-
 export default {
   name: 'Pager',
   props: {
@@ -34,18 +31,20 @@ export default {
       required: true,
     },
   },
-  data() {
-    return {
-      iconArrowBack,
-      iconArrowForward,
-    };
-  },
 };
 </script>
 
 <style lang="scss" scoped>
-.icon /deep/ {
-  @include svn-icon(1.5rem, $grey-600);
+.icon {
+  @include svg-icon(1.5rem);
+}
+
+.icon-arrow-forward {
+  background-image: url('~@images/icon/arrow_forward.svg?fill=#{$grey-600} svg');
+}
+
+.icon-arrow-back {
+  background-image: url('~@images/icon/arrow_back.svg?fill=#{$grey-600} svg');
 }
 
 .pager-container {

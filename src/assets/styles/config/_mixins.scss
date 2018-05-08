@@ -76,14 +76,10 @@
   overflow: hidden;
 }
 
-@mixin svn-icon($size, $icon-color) {
+@mixin svg-icon($size) {
   display: inline-block;
   width: $size;
   height: $size;
-  vertical-align: middle;
-
-  svg {
-    display: block;
-    fill: $icon-color;
-  }
+  background-repeat: no-repeat;
+  background-size: cover;
 }

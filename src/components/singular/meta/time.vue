@@ -1,7 +1,7 @@
 <template>
   <ul v-cloak v-if="date" class="entry-time">
     <li class="date-published">
-      <span class="icon" v-html="iconUpdate"/><time :datetime="date | dateToISOString" itemprop="datePublished">{{ date | formatDate }}</time>
+      <span class="icon-update"/><time :datetime="date | dateToISOString" itemprop="datePublished">{{ date | formatDate }}</time>
     </li>
     <li v-if="!isSameDay()" class="date-modified">
       <time :datetime="modified | dateToISOString" itemprop="dateModified">{{ modified | formatDate }}</time>
@@ -13,8 +13,6 @@
 </template>
 
 <script>
-import iconUpdate from '@images/icon/update.svg?inline';
-
 export default {
   name: 'Time',
   props: {
@@ -31,7 +29,6 @@ export default {
   },
   data() {
     return {
-      iconUpdate,
       edit: {
         is_display: WP.is_logined && this.$route.meta.type !== 'preview',
         link: `/wp-admin/post.php?post=${this.$route.meta.id}&action=edit`,
@@ -47,9 +44,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.icon /deep/ {
-  @include svn-icon(1rem, $grey-400);
+.icon-update {
   margin-right: 0.25rem;
+  background-image: url('~@images/icon/update.svg?fill=#{$grey-400}');
+  @include svg-icon(1rem);
 }
 
 a {
