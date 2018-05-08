@@ -106,7 +106,7 @@ let webpackConfig = {
             loader: 'svg-sprite-loader',
             options: {
               extract: true,
-              spriteFilename: 'assets/images/sprite.svg',
+              spriteFilename: 'sprite.svg',
             },
           },
           'svg-transform-loader',
