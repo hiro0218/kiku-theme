@@ -8,6 +8,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyGlobsPlugin = require('copy-globs-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
+const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 
 const config = require('./config');
 const { jsLoaders, cssLoaders, sassLoaders } = require('./loader.conf');
@@ -102,15 +103,13 @@ let webpackConfig = {
         test: /\.svg(\?.*)?$/,
         use: [
           {
-            loader: 'file-loader',
+            loader: 'svg-sprite-loader',
             options: {
-              limit: 1024,
-              name: `[path]${assetsFilenames}_[hash].[ext]`,
+              extract: true,
+              spriteFilename: 'assets/images/sprite.svg',
             },
           },
-          {
-            loader: 'svg-transform-loader',
-          },
+          'svg-transform-loader',
           {
             loader: 'svgo-loader',
             options: {
@@ -163,6 +162,7 @@ let webpackConfig = {
     moduleExtensions: ['-loader'],
   },
   plugins: [
+    new SpriteLoaderPlugin(),
     new webpack.ProvidePlugin({
       axios: 'axios',
       Vue: ['vue/dist/vue.esm.js', 'default'],
