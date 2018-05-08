@@ -1,7 +1,7 @@
 <template>
   <div class="drawer-container">
     <input id="drawer-trigger" class="drawer-checkbox" type="checkbox" @click="toggeleDrawer">
-    <label for="drawer-trigger" class="drawer-trigger icon-menu" v-html="iconMenu"/>
+    <label for="drawer-trigger" class="drawer-trigger icon-menu"/>
   </div>
 </template>
 
