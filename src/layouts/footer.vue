@@ -20,10 +20,8 @@ import { cloneDeep } from 'lodash-es';
 
 export default {
   name: 'Footer',
-  data() {
-    return {
-      site: cloneDeep(WP.site),
-    };
+  computed: {
+    site: () => cloneDeep(WP.site),
   },
 };
 </script>

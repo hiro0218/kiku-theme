@@ -4,16 +4,16 @@
       <a href="javascript:void(0)"
          class="icon icon-twitter"
          title="Share on Twitter"
-         @click.stop="openWindow(twitter_url(), 620, 310)"/>
+         @click.stop="openWindow(twitter_url, 620, 310)"/>
     </template>
     <template v-if="is_display.facebook">
       <a href="javascript:void(0)"
          class="icon icon-facebook"
          title="Share on Facebook"
-         @click.stop="openWindow(facebook_url(), 560, 550)"/>
+         @click.stop="openWindow(facebook_url, 560, 550)"/>
     </template>
     <template v-if="is_display.hatena">
-      <a :href="hatena_url()"
+      <a :href="hatena_url"
          :data-hatena-bookmark-title="title"
          class="hatena-bookmark-button icon icon-hatena"
          title="Share on LINE"
@@ -23,7 +23,7 @@
       <a href="javascript:void(0)"
          class="icon icon-line"
          title="Share on LINE"
-         @click.stop="openWindow(line_url(), 560, 550)"/>
+         @click.stop="openWindow(line_url, 560, 550)"/>
     </template>
   </section>
 </template>
@@ -42,9 +42,23 @@ export default {
   },
   data() {
     return {
-      is_display: cloneDeep(WP.is_shared),
       link: location.href,
     };
+  },
+  computed: {
+    is_display: () => cloneDeep(WP.is_shared),
+    twitter_url: function() {
+      return `https://twitter.com/intent/tweet?url=${this.link}&text=${encodeURIComponent(this.title)}`;
+    },
+    facebook_url: function() {
+      return `https://www.facebook.com/sharer/sharer.php?u=${this.link}`;
+    },
+    hatena_url: function() {
+      return `http://b.hatena.ne.jp/entry/${this.link}`;
+    },
+    line_url: function() {
+      return `https://lineit.line.me/share/ui?url=${this.link}`;
+    },
   },
   watch: {
     '$route.path': function() {
@@ -64,18 +78,6 @@ export default {
     });
   },
   methods: {
-    twitter_url: function() {
-      return `https://twitter.com/intent/tweet?url=${this.link}&text=${this.title}`;
-    },
-    facebook_url: function() {
-      return `https://www.facebook.com/sharer/sharer.php?u=${this.link}`;
-    },
-    hatena_url: function() {
-      return `http://b.hatena.ne.jp/entry/${this.link}`;
-    },
-    line_url: function() {
-      return `https://lineit.line.me/share/ui?url=${this.link}`;
-    },
     openWindow(url, width, height) {
       const w = width || 480;
       const h = height || 450;
@@ -93,6 +95,7 @@ export default {
 <style lang="scss" scoped>
 .entry-share {
   display: flex;
+  justify-content: center;
   margin: 2rem 0;
 }
 

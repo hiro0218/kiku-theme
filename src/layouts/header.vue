@@ -24,10 +24,8 @@ export default {
     search,
     drawer,
   },
-  data() {
-    return {
-      site: cloneDeep(WP.site),
-    };
+  computed: {
+    site: () => cloneDeep(WP.site),
   },
   mounted: function() {
     headerScroll.setScrollableHeader('.header-navigation', {
