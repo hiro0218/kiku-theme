@@ -133,7 +133,7 @@ let webpackConfig = {
       },
       {
         test: /\.(ttf|eot|woff2?|png|jpe?g|gif|ico)$/,
-        include: /node_modules|bower_components/,
+        include: /node_modules/,
         loader: 'url',
         options: {
           limit: 1024,
