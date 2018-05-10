@@ -16,14 +16,16 @@ const cssnanoConfig = {
     uniqueSelectors: true,
 };
 
-module.exports = ({ file, options }) => {
-  return {
-    parser: options.enabled.optimize ? 'postcss-safe-parser' : undefined,
-    plugins: {
-      cssnano: options.enabled.optimize ? cssnanoConfig : false,
-      'postcss-cssnext': {
-        browsers: config.browsers,
-      },
+module.exports = ctx => ({
+  parser: require('postcss-safe-parser'),
+  plugins: {
+    cssnano: cssnanoConfig,
+    'postcss-flexbugs-fixes': require('postcss-flexbugs-fixes'),
+    'postcss-cssnext': {
+      browsers: config.browsers,
+      cascade: false,
     },
-  };
-};
+    'css-mqpacker': require('css-mqpacker'),
+    csswring: ctx.env === 'production',
+  },
+});
