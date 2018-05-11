@@ -58,7 +58,7 @@ export default {
       }
 
       let pathArray = this.$route.path.split('/');
-      let basePath = [...pathArray[0], ...pathArray[1], ...pathArray[2]].join('/');
+      let basePath = [pathArray[0], pathArray[1], pathArray[2]].join('/');
 
       return basePath;
     },
