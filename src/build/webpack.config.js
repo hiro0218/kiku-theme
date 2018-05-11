@@ -163,7 +163,9 @@ let webpackConfig = {
   },
   plugins: [
     new SpriteLoaderPlugin(),
-    new LodashModuleReplacementPlugin(),
+    new LodashModuleReplacementPlugin({
+      'caching': true,
+    }),
     new webpack.ProvidePlugin({
       axios: 'axios',
       Vue: ['vue/dist/vue.esm.js', 'default'],

@@ -15,6 +15,7 @@
     ]
   ],
   "plugins": [
+    ["lodash"],
     ["@babel/plugin-transform-for-of", {"loose": true}],
     ["@babel/plugin-transform-object-assign", {"loose": true }],
     ["@babel/plugin-proposal-object-rest-spread", {"loose": true}],
