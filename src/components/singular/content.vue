@@ -72,7 +72,7 @@ export default {
     color: $link-color;
 
     &:hover {
-      border-color: $link-color;
+      border-color: $link-hover-border-color;
     }
     &:focus {
       outline: thin dotted;
