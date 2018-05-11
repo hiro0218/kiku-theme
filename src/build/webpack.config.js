@@ -7,7 +7,6 @@ const CleanPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyGlobsPlugin = require('copy-globs-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
-const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
@@ -203,9 +202,6 @@ let webpackConfig = {
       },
     }),
     new FriendlyErrorsWebpackPlugin(),
-    new HardSourceWebpackPlugin({
-      cacheDirectory: '../node_modules/.cache/hard-source/[confighash]',
-    }),
   ],
 };
 
