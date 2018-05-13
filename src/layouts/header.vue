@@ -63,7 +63,10 @@ export default {
     color: $grey-900;
     font-size: 1rem;
     white-space: nowrap;
+
     a {
+      height: $header-nav-height;
+      line-height: $header-nav-height;
       color: inherit;
     }
   }
