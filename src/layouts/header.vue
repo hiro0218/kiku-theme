@@ -62,6 +62,7 @@ export default {
     justify-content: flex-start;
     color: $grey-900;
     font-size: 1rem;
+    letter-spacing: 0.125rem;
     white-space: nowrap;
 
     a {
