@@ -30,8 +30,8 @@ $table-border-width: 1px;
 // Responsiveness
 $tablet:                   769px;
 $desktop:                  960px;
-$widescreen:               1152px;
-$fullhd:                   $widescreen;//1344px;
+$widescreen:               $desktop; //1152px;
+$fullhd:                   $desktop; //1344px;
 
 // radius
 $radius-base:              .2rem;
