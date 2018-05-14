@@ -14,10 +14,9 @@
     </template>
     <template v-if="is_display.hatena">
       <a :href="hatena_url"
-         :data-hatena-bookmark-title="title"
-         class="hatena-bookmark-button icon icon-hatena"
-         title="Share on LINE"
-         data-hatena-bookmark-layout="simple"/>
+         target="_blank"
+         class="icon icon-hatena"
+         title="Share on Hatena Bookmark"/>
     </template>
     <template v-if="is_display.line">
       <a href="javascript:void(0)"
@@ -54,7 +53,7 @@ export default {
       return `https://www.facebook.com/sharer/sharer.php?u=${this.link}`;
     },
     hatena_url: function() {
-      return `http://b.hatena.ne.jp/entry/${this.link}`;
+      return `http://b.hatena.ne.jp/add?url=${this.link}`;
     },
     line_url: function() {
       return `https://lineit.line.me/share/ui?url=${this.link}`;
@@ -64,18 +63,6 @@ export default {
     '$route.path': function() {
       this.link = location.href;
     },
-  },
-  mounted() {
-    this.$nextTick().then(() => {
-      if (!document.getElementById('bookmark_button')) {
-        var script = document.createElement('script');
-        script.id = 'bookmark_button';
-        script.async = true;
-        script.defer = true;
-        script.src = 'https://cdn-ak.b.st-hatena.com/js/bookmark_button.js';
-        document.body.appendChild(script);
-      }
-    });
   },
   methods: {
     openWindow(url, width, height) {
