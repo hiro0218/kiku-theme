@@ -35,7 +35,6 @@ export default {
 
       this.$store.dispatch('resetPost');
       this.$store.dispatch('resetPostList');
-      this.sendPageview(to, from);
     },
     pageTitle: 'setTitle',
   },
@@ -53,18 +52,6 @@ export default {
       } else {
         let pageTitle = htmlentities.decode(afterTitle);
         document.title = `${pageTitle} - ${WP.site.name}`;
-      }
-    },
-    sendPageview: function(to, from) {
-      if (!window.ga) {
-        return;
-      }
-      if (to.path !== from.path) {
-        // Google Analytics
-        window.ga('send', {
-          hitType: 'pageview',
-          location: to.path,
-        });
       }
     },
   },
