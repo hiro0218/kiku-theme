@@ -102,7 +102,6 @@
   "dependencies": {
     "axios": "^0.18.0",
     "axios-cache-adapter": "^2.0.0",
-    "babel-upgrade": "0.0.19",
     "header-scroll-up": "^0.1.1",
     "localforage": "^1.7.1",
     "lodash-es": "^4.17.10",
