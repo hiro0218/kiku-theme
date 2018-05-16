@@ -10,7 +10,6 @@
     ]
   },
   "publicPath": "/wp-content/themes/kiku-theme",
-  "cacheBusting": "[name]_[hash:8]",
   "browsers": [
     "ie >= 11",
     "safari >= 10"

@@ -2,34 +2,6 @@
 
 namespace App;
 
-use Roots\Sage\Asset;
-use Roots\Sage\Assets\JsonManifest;
-
-/**
- * @param $filename
- * @return string
- */
-function asset_path($filename)
-{
-    static $manifest;
-    isset($manifest) || $manifest = new JsonManifest(get_stylesheet_directory() . '/' . Asset::$dist . '/assets.json');
-    return (string) new Asset($filename, $manifest);
-}
-
-/**
- * Theme assets
- */
-add_action('wp_enqueue_scripts', function () {
-    // style
-    wp_enqueue_style('styles/main', asset_path('styles/main.css'), false, null);
-}, 100);
-
-add_action('wp_footer', function () {
-    // script
-    echo '<script src="'. asset_path('scripts/prism.js') .'" async></script>' . PHP_EOL;
-    echo '<script src="'. asset_path('scripts/main.js') .'" async></script>' . PHP_EOL;
-}, 10, 100);
-
 /**
  * Theme setup
  */
@@ -62,12 +34,6 @@ add_action('after_setup_theme', function () {
      * @link https://developer.wordpress.org/reference/functions/add_theme_support/#html5
      */
     add_theme_support('html5', ['caption', 'gallery']);
-
-    /**
-     * Use main stylesheet for visual editor
-     * @see assets/styles/layouts/_tinymce.scss
-     */
-    add_editor_style(asset_path('styles/main.css'));
 });
 
 /**

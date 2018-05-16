@@ -1,3 +1,3 @@
 <?php
 
-include __DIR__ . '/lib/templates/index.php';
+require_once __DIR__ . '/dist/index.php';

@@ -1,3 +1,5 @@
+import '@/template/index.php';
+
 import store from '@scripts/store';
 import router from '@scripts/router';
 import App from './App.vue';

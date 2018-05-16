@@ -6,7 +6,7 @@
   <file>functions.php</file>
   <file>index.php</file>
   <file>lib</file>
-  <file>lib/templates</file>
+  <file>src/templates</file>
 
   <!-- Show colors in console -->
   <arg value="-colors"/>
@@ -18,46 +18,46 @@
 
   <!-- Allow php files without any PHP in them -->
   <rule ref="Internal.NoCodeFound">
-    <exclude-pattern>lib/templates</exclude-pattern>
+    <exclude-pattern>src/templates</exclude-pattern>
   </rule>
 
   <!-- Allow closing braces to be on the same line -->
   <rule ref="Squiz.WhiteSpace.ScopeClosingBrace">
-    <exclude-pattern>lib/templates</exclude-pattern>
+    <exclude-pattern>src/templates</exclude-pattern>
   </rule>
 
   <!-- Disable newline after opening brace -->
   <rule ref="Squiz.ControlStructures.ControlSignature.NewlineAfterOpenBrace">
-    <exclude-pattern>lib/templates</exclude-pattern>
+    <exclude-pattern>src/templates</exclude-pattern>
   </rule>
 
   <!-- Allow multiple PHP statements in the same line -->
   <rule ref="Generic.Formatting.DisallowMultipleStatements.SameLine">
-    <exclude-pattern>lib/templates</exclude-pattern>
+    <exclude-pattern>src/templates</exclude-pattern>
   </rule>
 
   <!-- Disable PSR-2 indentation rules that are buggy with 2 spaces -->
   <rule ref="PSR2.ControlStructures.SwitchDeclaration.BreakIndent">
-    <exclude-pattern>lib/templates</exclude-pattern>
+    <exclude-pattern>src/templates</exclude-pattern>
   </rule>
 
   <!-- Don't require a blank line after the last `use` -->
   <rule ref="PSR2.Namespaces.UseDeclaration.SpaceAfterLastUse">
-    <exclude-pattern>lib/templates</exclude-pattern>
+    <exclude-pattern>src/templates</exclude-pattern>
   </rule>
 
   <!-- Allow long lines -->
   <rule ref="Generic.Files.LineLength.TooLong">
-    <exclude-pattern>lib/templates</exclude-pattern>
+    <exclude-pattern>src/templates</exclude-pattern>
   </rule>
 
   <!-- Ignore indentation rules -->
   <rule ref="Generic.WhiteSpace.ScopeIndent">
-    <exclude-pattern>lib/templates</exclude-pattern>
+    <exclude-pattern>src/templates</exclude-pattern>
   </rule>
 
   <!-- Allow PHP closing tags -->
   <rule ref="PSR2.Files.ClosingTag.NotAllowed">
-    <exclude-pattern>lib/templates</exclude-pattern>
+    <exclude-pattern>src/templates</exclude-pattern>
   </rule>
 </ruleset>

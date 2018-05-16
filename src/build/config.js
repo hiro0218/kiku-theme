@@ -11,7 +11,6 @@ const rootPath = (userConfig.paths && userConfig.paths.root)
 
 const config = merge({
   copy: 'images/**/*',
-  cacheBusting: '[name]_[hash]',
   paths: {
     root: rootPath,
     src: path.join(rootPath, 'src'),
@@ -20,7 +19,6 @@ const config = merge({
   enabled: {
     sourceMaps: !isProduction,
     optimize: isProduction,
-    cacheBusting: isProduction,
   },
 }, userConfig);
 

@@ -9,11 +9,10 @@ const CopyGlobsPlugin = require('copy-globs-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = require('./config');
 const { jsLoaders, cssLoaders, sassLoaders } = require('./loader.conf');
-
-const assetsFilenames = (config.enabled.cacheBusting) ? config.cacheBusting : '[name]';
 
 let webpackConfig = {
   context: config.paths.src,
@@ -22,7 +21,7 @@ let webpackConfig = {
   output: {
     path: config.paths.dist,
     publicPath: config.publicPath,
-    filename: `scripts/${assetsFilenames}.js`,
+    filename: `scripts/[name].js?[hash:8]`,
   },
   stats: {
     hash: false,
@@ -128,7 +127,7 @@ let webpackConfig = {
         loader: 'url',
         options: {
           limit: 1024,
-          name: `[path]${assetsFilenames}.[ext]`,
+          name: `[path][name].[ext]?[hash:8]`,
         },
       },
       {
@@ -138,8 +137,12 @@ let webpackConfig = {
         options: {
           limit: 1024,
           outputPath: 'vendor/',
-          name: `${config.cacheBusting}.[ext]`,
+          name: `[name].[ext]?[hash:8]`,
         },
+      },
+      {
+        test: /\.php$/,
+        loader: 'html-loader',
       },
     ],
   },
@@ -176,11 +179,11 @@ let webpackConfig = {
     }),
     new CopyGlobsPlugin({
       pattern: config.copy,
-      output: `[path]${assetsFilenames}.[ext]`,
+      output: `[path][name].[ext]`,
       manifest: config.manifest,
     }),
     new ExtractTextPlugin({
-      filename: `styles/${assetsFilenames}.css`,
+      filename: `styles/[name].css?[hash:8]`,
       allChunks: true,
     }),
     new webpack.DefinePlugin({
@@ -202,6 +205,10 @@ let webpackConfig = {
       options: {
         eslint: { failOnWarning: false, failOnError: true },
       },
+    }),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, '../template/index.php'),
+      filename: 'index.php',
     }),
     new FriendlyErrorsWebpackPlugin(),
   ],
@@ -231,20 +238,6 @@ if (config.env.production) {
     reportFilename: path.resolve(__dirname, '../../.report/bundle-analyzer.html'),
     openAnalyzer: false,
   }));
-}
-
-if (config.enabled.cacheBusting) {
-  const WebpackAssetsManifest = require('webpack-assets-manifest');
-
-  webpackConfig.plugins.push(
-    new WebpackAssetsManifest({
-      output: 'assets.json',
-      space: 2,
-      writeToDisk: false,
-      assets: config.manifest,
-      replacer: require('./util/assetManifestsFormatter'),
-    })
-  );
 }
 
 module.exports = webpackConfig;
