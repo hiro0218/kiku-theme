@@ -211,6 +211,10 @@ let webpackConfig = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../template/index.php'),
       filename: 'index.php',
+      minify: config.env.production ? {
+        collapseWhitespace: true,
+        removeScriptTypeAttributes: true,
+      } : false,
     }),
     new ScriptExtHtmlWebpackPlugin({
       defaultAttribute: 'async',
