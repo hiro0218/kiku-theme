@@ -2,11 +2,9 @@
   "entry": {
     "main": [
       "./scripts/polyfill.js",
+      "./scripts/prism.js",
       "./scripts/app.js",
       "./assets/styles/main.scss"
-    ],
-    "prism": [
-      "./scripts/prism.js"
     ]
   },
   "publicPath": "/wp-content/themes/kiku-theme",

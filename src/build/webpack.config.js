@@ -10,6 +10,7 @@ const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 
 const config = require('./config');
 const { jsLoaders, cssLoaders, sassLoaders } = require('./loader.conf');
@@ -22,6 +23,7 @@ let webpackConfig = {
     path: config.paths.dist,
     publicPath: config.publicPath,
     filename: `scripts/[name].js?[hash:8]`,
+    chunkFilename: 'scripts/[name].bundle.js?[hash:8]',
   },
   stats: {
     hash: false,
@@ -209,6 +211,9 @@ let webpackConfig = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../template/index.php'),
       filename: 'index.php',
+    }),
+    new ScriptExtHtmlWebpackPlugin({
+      defaultAttribute: 'async',
     }),
     new FriendlyErrorsWebpackPlugin(),
   ],
