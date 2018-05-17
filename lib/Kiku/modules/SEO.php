@@ -10,7 +10,6 @@ class SEO {
     public function render() {
         echo $this->basic_tag();
         echo $this->next_prev_tags();
-        echo $this->mics_tag();
     }
 
     private function basic_tag() {
@@ -82,17 +81,6 @@ class SEO {
         return $hints;
     }
 
-    private function mics_tag() {
-        $tag = '';
-
-        $tag .= PHP_EOL;
-        $tag .= '<meta name="google" content="notranslate" />'. PHP_EOL;
-        $tag .= '<meta name="format-detection" content="telephone=no">'. PHP_EOL;
-        $tag .= '<meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE">'. PHP_EOL;
-        $tag .= PHP_EOL;
-
-        return $tag;
-    }
 }
 
 $SEO = new SEO();
