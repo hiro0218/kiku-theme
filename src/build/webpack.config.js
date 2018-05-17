@@ -124,7 +124,7 @@ let webpackConfig = {
         ],
       },
       {
-        test: /\.(ttf|eot|woff2?|png|jpe?g|gif|ico)$/,
+        test: /\.(woff2?|png|jpe?g|gif|ico)$/,
         include: config.paths.src,
         loader: 'url',
         options: {
