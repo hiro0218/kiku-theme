@@ -107,7 +107,7 @@ let webpackConfig = {
             loader: 'svg-sprite-loader',
             options: {
               extract: true,
-              spriteFilename: 'sprite.svg',
+              spriteFilename: 'sprite_[hash:8].svg',
             },
           },
           'svg-transform-loader',
