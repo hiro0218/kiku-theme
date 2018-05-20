@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import { cloneDeep } from 'lodash-es';
+import copy from 'fast-copy';
 
 export default {
   name: 'Share',
@@ -45,7 +45,7 @@ export default {
     };
   },
   computed: {
-    is_display: () => cloneDeep(WP.is_shared),
+    is_display: () => copy(WP.is_shared),
     twitter_url: function() {
       return `https://twitter.com/intent/tweet?url=${this.link}&text=${encodeURIComponent(this.title)}`;
     },

@@ -1,6 +1,6 @@
 import localforage from 'localforage';
 import { setupCache } from 'axios-cache-adapter';
-import { cloneDeep } from 'lodash-es';
+import copy from 'fast-copy';
 
 export default {
   api: null,
@@ -67,7 +67,7 @@ export default {
   },
   getPostList({ meta, params }) {
     var client = this.getInstance();
-    const defaultParams = cloneDeep(this.settings.params);
+    const defaultParams = copy(this.settings.params);
 
     return client.get('/posts/?list', {
       params: Object.assign(

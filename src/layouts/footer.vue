@@ -16,12 +16,12 @@
 </template>
 
 <script>
-import { cloneDeep } from 'lodash-es';
+import copy from 'fast-copy';
 
 export default {
   name: 'Footer',
   computed: {
-    site: () => cloneDeep(WP.site),
+    site: () => copy(WP.site),
   },
 };
 </script>

@@ -1,4 +1,4 @@
-import { cloneDeep } from 'lodash-es';
+import copy from 'fast-copy';
 import api from '@scripts/api';
 import { MODEL_POST, MODEL_POST_LIST } from '@scripts/models';
 
@@ -79,7 +79,7 @@ export default {
     });
   },
   resetPost({ commit }) {
-    commit('setPost', cloneDeep(MODEL_POST));
+    commit('setPost', copy(MODEL_POST));
   },
   resetPostList({ commit }) {
     commit('setPostLists', MODEL_POST_LIST);

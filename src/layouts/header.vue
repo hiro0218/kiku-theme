@@ -16,7 +16,7 @@
 import search from '@components/menu/search.vue';
 import drawer from '@components/menu/drawer.vue';
 import headerScroll from 'header-scroll-up';
-import { cloneDeep } from 'lodash-es';
+import copy from 'fast-copy';
 
 export default {
   name: 'Header',
@@ -25,7 +25,7 @@ export default {
     drawer,
   },
   computed: {
-    site: () => cloneDeep(WP.site),
+    site: () => copy(WP.site),
   },
   mounted: function() {
     headerScroll.setScrollableHeader('.header-navigation', {

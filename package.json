@@ -48,7 +48,6 @@
     "@babel/preset-env": "7.0.0-beta.46",
     "babel-eslint": "^8.2.3",
     "babel-loader": "^8.0.0-beta.0",
-    "babel-plugin-lodash": "^3.3.2",
     "cache-loader": "^1.2.2",
     "clean-webpack-plugin": "^0.1.19",
     "copy-globs-webpack-plugin": "^0.2.0",
@@ -103,9 +102,9 @@
   "dependencies": {
     "axios": "^0.18.0",
     "axios-cache-adapter": "^2.0.0",
+    "fast-copy": "^1.2.1",
     "header-scroll-up": "^0.1.1",
     "localforage": "^1.7.1",
-    "lodash-es": "^4.17.10",
     "medium-zoom": "^0.4.0",
     "mokuji.js": "^1.4.1",
     "normalize.css": "^8.0.0",

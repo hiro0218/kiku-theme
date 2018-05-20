@@ -1,4 +1,4 @@
-import { cloneDeep } from 'lodash-es';
+import copy from 'fast-copy';
 import { MODEL_THEMES, MODEL_POST, MODEL_POST_LIST, MODEL_REQUEST_HEADER, MODEL_ADS } from '@scripts/models';
 
 export default {
@@ -6,8 +6,8 @@ export default {
   isOpenSidebar: false,
   isLoading: false,
   themes: MODEL_THEMES,
-  requestHeader: cloneDeep(MODEL_REQUEST_HEADER),
+  requestHeader: copy(MODEL_REQUEST_HEADER),
   postLists: MODEL_POST_LIST,
-  post: cloneDeep(MODEL_POST),
-  advertise: cloneDeep(MODEL_ADS),
+  post: copy(MODEL_POST),
+  advertise: copy(MODEL_ADS),
 };
