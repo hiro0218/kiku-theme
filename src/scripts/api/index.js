@@ -14,7 +14,7 @@ export default {
       store: localforage.createInstance({
         driver: [localforage.INDEXEDDB, localforage.LOCALSTORAGE],
         name: 'kiku-cache',
-        version: 1.1,
+        version: 2,
         storeName: 'kiku-store',
       }),
       maxAge: 15 * 60 * 1000, // 15 minutes
