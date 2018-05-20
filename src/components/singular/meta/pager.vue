@@ -59,19 +59,18 @@ export default {
   display: flex;
   width: 50%;
 
-  @include mobile {
-    flex: none;
-    width: 100%;
-  }
-
-  &:hover {
-    .title {
-      color: $blue-300;
-    }
+  &:hover,
+  &:focus {
+    opacity: 0.6;
   }
 
   &:only-child {
     flex-grow: 1;
+  }
+
+  @include mobile {
+    flex: none;
+    width: 100%;
   }
 }
 

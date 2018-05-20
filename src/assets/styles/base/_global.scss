@@ -37,14 +37,12 @@ body {
 
 // Links
 a {
-  transition: color .3s ease, border .4s linear, background .3s $animation-curve-fast-out-slow-in, opacity .3s ease;
-  color: $link-color;
+  transition: color .3s ease,
+              background-color .3s $animation-curve-fast-out-slow-in,
+              border .4s linear,
+              opacity .4s $animation-curve-fast-out-slow-in;
   text-decoration: none;
 
-  &:hover,
-  &:focus {
-    color: $link-hover-color;
-  }
   &:focus {
     outline: 0;
   }

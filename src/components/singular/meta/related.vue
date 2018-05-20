@@ -45,15 +45,15 @@ export default {
     display: block;
     width: 15rem;
     overflow: hidden;
+
+    &:hover,
+    &:focus {
+      opacity: 0.6;
+    }
   }
 }
 
 .related-section {
-  &:hover {
-    .related-title {
-      color: $blue-300;
-    }
-  }
   & + & {
     margin-left: 2rem;
   }

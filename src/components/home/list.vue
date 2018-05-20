@@ -84,6 +84,12 @@ $entry-thumbnail-size: 5rem; // 80px;
     display: block;
     color: inherit;
     padding: 1.75rem 0;
+
+    &:hover,
+    &:focus {
+      opacity: 0.6;
+    }
+
     & + a {
       border-top: 1px solid $grey-200;
     }
@@ -91,12 +97,6 @@ $entry-thumbnail-size: 5rem; // 80px;
 
   .entry-container {
     display: flex;
-
-    &:hover {
-      .entry-title {
-        color: $blue-300;
-      }
-    }
   }
 
   .entry-image,
