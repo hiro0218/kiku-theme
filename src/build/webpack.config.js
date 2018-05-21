@@ -2,7 +2,6 @@
 
 const path = require('path');
 const webpack = require('webpack');
-const merge = require('webpack-merge');
 const CleanPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyGlobsPlugin = require('copy-globs-webpack-plugin');
@@ -166,6 +165,9 @@ let webpackConfig = {
   resolveLoader: {
     moduleExtensions: ['-loader'],
   },
+  optimization: {
+    minimizer: [],
+  },
   plugins: [
     new SpriteLoaderPlugin(),
     new LodashModuleReplacementPlugin({
@@ -190,10 +192,6 @@ let webpackConfig = {
     }),
     new webpack.DefinePlugin({
       WEBPACK_PUBLIC_PATH: false,
-    }),
-    new webpack.LoaderOptionsPlugin({
-      minimize: config.enabled.optimize,
-      stats: { colors: true },
     }),
     new webpack.LoaderOptionsPlugin({
       test: /\.s?css$/,
@@ -225,23 +223,19 @@ let webpackConfig = {
 
 /* eslint-disable global-require */ /** Let's only load dependencies as needed */
 
-if (config.enabled.optimize) {
-  webpackConfig = merge(webpackConfig, require('./webpack.config.optimize'));
-}
-
 if (config.env.production) {
   const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
   const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
-  webpackConfig.plugins.push(new webpack.NoEmitOnErrorsPlugin());
-  webpackConfig.plugins.push(new webpack.optimize.ModuleConcatenationPlugin());
+  webpackConfig.optimization.minimizer.push(
+    new UglifyJsPlugin({
+      cache: true,
+      uglifyOptions: {
+        ecma: 8,
+      },
+    })
+  );
   webpackConfig.plugins.push(new webpack.optimize.AggressiveMergingPlugin());
-  webpackConfig.plugins.push(new UglifyJsPlugin({
-    cache: true,
-    uglifyOptions: {
-      ecma: 8,
-    },
-  }));
   webpackConfig.plugins.push(new BundleAnalyzerPlugin({
     analyzerMode: 'static',
     reportFilename: path.resolve(__dirname, '../../.report/bundle-analyzer.html'),

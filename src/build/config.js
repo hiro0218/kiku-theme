@@ -18,7 +18,6 @@ const config = merge({
   },
   enabled: {
     sourceMaps: !isProduction,
-    optimize: isProduction,
   },
 }, userConfig);
 
