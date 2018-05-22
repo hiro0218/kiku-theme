@@ -21,10 +21,6 @@ html {
     font-size: $font-size-sm;
   }
 
-  @include from($desktop) {
-    font-size: $font-size-lg;
-  }
-
 }
 
 body {
@@ -146,11 +142,6 @@ textarea {
 button,
 input {
   overflow: visible;
-}
-
-button,
-select {
-  text-transform: none;
 }
 
 hr {
