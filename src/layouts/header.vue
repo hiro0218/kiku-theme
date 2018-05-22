@@ -6,7 +6,6 @@
       </div>
       <div class="menu">
         <search class="menu-item" />
-        <drawer class="menu-item" />
       </div>
     </div>
   </header>
@@ -14,7 +13,6 @@
 
 <script>
 import search from '@components/menu/search.vue';
-import drawer from '@components/menu/drawer.vue';
 import headerScroll from 'header-scroll-up';
 import copy from 'fast-copy';
 
@@ -22,7 +20,6 @@ export default {
   name: 'Header',
   components: {
     search,
-    drawer,
   },
   computed: {
     site: () => copy(WP.site),
@@ -79,9 +76,6 @@ export default {
   .menu-item {
     display: flex;
     align-items: center;
-    & + .menu-item {
-      margin-left: 0.75rem;
-    }
   }
 }
 </style>
