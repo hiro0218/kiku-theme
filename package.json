@@ -54,7 +54,6 @@
     "css-loader": "^0.28.11",
     "css-mqpacker": "^6.0.2",
     "cssnano": "^3.10.0",
-    "es6-promise": "^4.2.4",
     "eslint": "^4.19.1",
     "eslint-config-prettier": "^2.9.0",
     "eslint-loader": "^2.0.0",
