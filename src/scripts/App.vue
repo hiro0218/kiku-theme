@@ -1,11 +1,10 @@
 <template>
-  <main :class="{ 'open-drawer': isOpenSidebar }" class="main">
+  <main class="main">
     <layout-header/>
     <section class="main-container">
       <router-view class="container"/>
     </section>
     <layout-footer/>
-    <layout-sidebar/>
     <loading/>
   </main>
 </template>
@@ -14,7 +13,6 @@
 import { mapState } from 'vuex';
 import layoutHeader from '@/layouts/header.vue';
 import layoutFooter from '@/layouts/footer.vue';
-import layoutSidebar from '@/layouts/sidebar.vue';
 import loading from '@components/loading.vue';
 import { htmlentities } from '@scripts/utils';
 
@@ -22,10 +20,9 @@ export default {
   components: {
     layoutHeader,
     layoutFooter,
-    layoutSidebar,
     loading,
   },
-  computed: mapState(['isOpenSidebar', 'pageTitle']),
+  computed: mapState(['pageTitle']),
   watch: {
     $route: function(to, from) {
       // 同一ページ内の変更時は処理を行わない

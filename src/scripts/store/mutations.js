@@ -10,9 +10,6 @@ export default {
   setThemes(state, payload) {
     state.themes = payload;
   },
-  toggleSidebar(state) {
-    state.isOpenSidebar = !state.isOpenSidebar;
-  },
   setReqestHeader(state, payload) {
     state.requestHeader = payload;
   },
