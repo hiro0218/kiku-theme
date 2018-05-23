@@ -6,8 +6,8 @@
     <li v-if="!isSameDay()" class="date-modified">
       <time :datetime="modified | dateToISOString" itemprop="dateModified">{{ modified | formatDate }}</time>
     </li>
-    <li v-if="edit.is_display">
-      <a :href="edit.link">Edit</a>
+    <li v-if="canEdit">
+      <a :href="editPostUrl">Edit</a>
     </li>
   </ul>
 </template>
@@ -27,13 +27,13 @@ export default {
       required: false,
     },
   },
-  data() {
-    return {
-      edit: {
-        is_display: WP.is_logined && this.$route.meta.type !== 'preview',
-        link: `/wp-admin/post.php?post=${this.$route.meta.id}&action=edit`,
-      },
-    };
+  computed: {
+    canEdit: function() {
+      return WP.is_logined && this.$route.meta.type !== 'preview';
+    },
+    editPostUrl: function() {
+      return `/wp-admin/post.php?post=${this.$route.meta.id}&action=edit`;
+    },
   },
   methods: {
     isSameDay: function() {
