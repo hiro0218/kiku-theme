@@ -1,7 +1,3 @@
-export const MODEL_THEMES = {
-  widget: '',
-};
-
 export const MODEL_POST = {
   link: '',
   title: {

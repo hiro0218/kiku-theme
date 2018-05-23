@@ -57,28 +57,6 @@ class REST_API {
     }
 
     public function original_api() {
-        register_rest_route(self::API_NAMESPACE, '/themes', [
-            'methods'  => WP_REST_Server::READABLE,
-            'callback' => function($data) {
-                $request_url = $_SERVER['REQUEST_URI'];
-
-                // transient で一時的にキャッシュしたデータをロード
-                $key = CACHE_PREFIX . md5($request_url);
-                $result = get_transient($key);
-
-                if ($result === false) {
-                    $array = [
-                        'widget' => $this->get_widget(),
-                    ];
-
-                    set_transient($key, $array, self::CACHE_EXPIRATION);
-                    return $array;
-                }
-
-                return $result;
-            }
-        ]);
-
         register_rest_route(self::API_NAMESPACE, '/advertise', [
             'methods'  => WP_REST_Server::READABLE,
             'callback' => function($data) {
