@@ -100,7 +100,6 @@
     "axios": "^0.18.0",
     "axios-cache-adapter": "^2.0.0",
     "fast-copy": "^1.2.1",
-    "header-scroll-up": "^0.1.1",
     "localforage": "^1.7.1",
     "medium-zoom": "^0.4.0",
     "mokuji.js": "^1.4.2",

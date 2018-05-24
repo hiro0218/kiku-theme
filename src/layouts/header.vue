@@ -13,7 +13,6 @@
 
 <script>
 import search from '@components/menu/search.vue';
-import headerScroll from 'header-scroll-up';
 import copy from 'fast-copy';
 
 export default {
@@ -21,13 +20,42 @@ export default {
   components: {
     search,
   },
+  data() {
+    return {
+      eleHeader: null,
+      classes: {
+        unpinned: 'unpin',
+      },
+      lastKnownScrollY: 0,
+      ticking: false,
+    };
+  },
   computed: {
     site: () => copy(WP.site),
   },
   mounted: function() {
-    headerScroll.setScrollableHeader('.header-navigation', {
-      topOffset: 0,
-    });
+    this.eleHeader = document.querySelector('.header-navigation');
+    document.addEventListener('scroll', this.handleScroll, false);
+  },
+  methods: {
+    onScroll() {
+      this.ticking = false;
+      let currentScrollY = window.pageYOffset;
+
+      if (currentScrollY < this.lastKnownScrollY) {
+        this.eleHeader.classList.remove(this.classes.unpinned);
+      } else {
+        this.eleHeader.classList.add(this.classes.unpinned);
+      }
+
+      this.lastKnownScrollY = currentScrollY;
+    },
+    handleScroll() {
+      if (!this.ticking) {
+        requestAnimationFrame(this.onScroll);
+      }
+      this.ticking = true;
+    },
   },
 };
 </script>
@@ -38,9 +66,16 @@ export default {
   top: 0;
   left: 0;
   height: $header-nav-height;
+  width: 100%;
   background: #fff;
   box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.25);
+  will-change: transform;
+  transition: transform 0.25s $animation-curve-fast-out-slow-in;
   z-index: 10;
+
+  &.unpin {
+    transform: translateY($header-nav-height * -1);
+  }
 
   > .container {
     display: flex;
