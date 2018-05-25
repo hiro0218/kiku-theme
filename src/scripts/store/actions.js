@@ -1,6 +1,6 @@
 import copy from 'fast-copy';
 import api from '@scripts/api';
-import { MODEL_POST, MODEL_POST_LIST } from '@scripts/models';
+import { MODEL_POST, MODEL_POST_LIST } from '@scripts/store/models';
 
 export default {
   loading({ commit }, flag) {

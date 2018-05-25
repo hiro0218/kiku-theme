@@ -1,5 +1,5 @@
 import copy from 'fast-copy';
-import { MODEL_POST, MODEL_POST_LIST, MODEL_REQUEST_HEADER, MODEL_ADS } from '@scripts/models';
+import { MODEL_POST, MODEL_POST_LIST, MODEL_REQUEST_HEADER, MODEL_ADS } from '@scripts/store/models';
 
 export default {
   pageTitle: document.title,

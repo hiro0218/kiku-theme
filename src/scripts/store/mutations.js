@@ -1,4 +1,4 @@
-import { MODEL_ADS } from '@scripts/models';
+import { MODEL_ADS } from '@scripts/store/models';
 
 export default {
   changeLoading(state, payload) {
