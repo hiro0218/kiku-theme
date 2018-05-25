@@ -5,38 +5,47 @@ const pageArchive = () => import(/* webpackChunkName: "pages" */ '@/pages/archiv
 
 let routes = [];
 
-for (let key in WP.routes) {
-  let route = WP.routes[key];
-  let type = route.meta.type;
-  let temp = {};
+for (let type in WP.routes) {
+  let wp_route = WP.routes[type];
 
-  temp = {
-    name: `${type}_${route.meta.id}`,
-    path: route.path,
-    meta: route.meta,
-  };
+  for (let key in wp_route) {
+    let route = wp_route[key];
+    let temp = {};
 
-  if (type === 'post' || type === 'page') {
-    if (route.path === '/archive') {
-      temp.name = 'archive';
-      temp.component = pageArchive;
-    } else {
-      temp.component = pageSingular;
-    }
-  } else {
-    // category, post_tag, etc
-    temp.component = pageHome;
-    temp.children = [
-      {
-        path: 'page/:page_number',
-        name: `${type}_${route.meta.id}_paged`,
-        meta: route.meta,
-        component: pageHome,
+    temp = {
+      name: `${type}_${route.meta.id}`,
+      path: route.path,
+      meta: {
+        type,
+        ...route.meta,
       },
-    ];
-  }
+    };
 
-  routes.push(temp);
+    if (type === 'post' || type === 'page') {
+      if (route.path === '/archive') {
+        temp.name = 'archive';
+        temp.component = pageArchive;
+      } else {
+        temp.component = pageSingular;
+      }
+    } else {
+      // category, post_tag, etc
+      temp.component = pageHome;
+      temp.children = [
+        {
+          path: 'page/:page_number',
+          name: `${type}_${route.meta.id}_paged`,
+          meta: {
+            type,
+            ...route.meta,
+          },
+          component: pageHome,
+        },
+      ];
+    }
+
+    routes.push(temp);
+  }
 }
 
 routes.push(

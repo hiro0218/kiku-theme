@@ -79,11 +79,10 @@ class FrontVariables {
                 $post_id = get_the_ID();
                 $post_type = get_post_type();
 
-                $routes[$post_id] = [
+                $routes[$post_type][] = [
                     'path' => '/' . basename(get_permalink()),
                     'meta' => [
-                        'id'   => $post_id,
-                        'type' => $post_type,
+                        'id' => $post_id,
                     ],
                 ];
             }
@@ -100,11 +99,10 @@ class FrontVariables {
         ]);
 
         foreach ($query->get_terms() as $term) {
-            $routes[] = [
+            $routes[$term->taxonomy][] = [
                 'path' => \Kiku\Util::base_path(get_term_link($term)),
                 'meta' => [
                     'id'    => $term->term_id,
-                    'type'  => $term->taxonomy,
                     'title' => $term->name,
                 ],
             ];
