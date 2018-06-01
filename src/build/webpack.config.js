@@ -233,6 +233,7 @@ if (config.env.production) {
   webpackConfig.optimization.minimizer.push(
     new UglifyJsPlugin({
       cache: true,
+      parallel: true,
       uglifyOptions: {
         ecma: 8,
       },
