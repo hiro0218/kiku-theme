@@ -12,7 +12,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 
 const config = require('./config');
-const { jsLoaders, cssLoaders, sassLoaders } = require('./loader.conf');
+const { cssLoaders, sassLoaders } = require('./loader.conf');
 
 let webpackConfig = {
   context: config.paths.src,
@@ -56,7 +56,10 @@ let webpackConfig = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: jsLoaders,
+        use: [
+          { loader: 'cache' },
+          { loader: 'babel?cacheDirectory' },
+        ],
       },
       {
         test: /\.css$/,

@@ -1,10 +1,5 @@
 const config = require('./config');
 
-const jsLoaders = [
-  { loader: 'cache' },
-  { loader: 'babel' },
-];
-
 const cssLoaders = [
   { loader: 'cache' },
   { loader: 'css', options: { sourceMap: config.enabled.sourceMaps } },
@@ -37,7 +32,6 @@ const sassLoaders = [
 ];
 
 module.exports = {
-  jsLoaders,
   cssLoaders,
   sassLoaders,
 }
