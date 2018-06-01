@@ -26,8 +26,7 @@
     "format:js": "eslint --fix --ext .js,.vue src/scripts/* src/components/*",
     "format:php": "vendor/bin/phpcbf",
     "php7cc": "vendor/bin/php7cc lib/",
-    "precommit": "lint-staged",
-    "test": "yarn run lint -s"
+    "precommit": "lint-staged"
   },
   "lint-staged": {
     "**/*.{js,vue}": [
