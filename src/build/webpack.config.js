@@ -42,7 +42,7 @@ let webpackConfig = {
       {
         enforce: 'pre',
         exclude: /node_modules/,
-        test: /\.js$/,
+        test: /\.(js|vue)$/,
         include: config.paths.src,
         use: [{
           loader: 'eslint-loader',
