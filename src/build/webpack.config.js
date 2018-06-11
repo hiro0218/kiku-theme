@@ -4,7 +4,6 @@ const path = require('path');
 const webpack = require('webpack');
 const CleanPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const CopyGlobsPlugin = require('copy-globs-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
@@ -184,11 +183,6 @@ let webpackConfig = {
     new CleanPlugin([config.paths.dist], {
       root: config.paths.root,
       verbose: false,
-    }),
-    new CopyGlobsPlugin({
-      pattern: config.copy,
-      output: `[path][name].[ext]`,
-      manifest: config.manifest,
     }),
     new ExtractTextPlugin({
       filename: `styles/[name]_[hash:8].css`,

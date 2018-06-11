@@ -49,7 +49,6 @@
     "babel-loader": "^8.0.0-beta.0",
     "cache-loader": "^1.2.2",
     "clean-webpack-plugin": "^0.1.19",
-    "copy-globs-webpack-plugin": "^0.2.0",
     "css-loader": "^0.28.11",
     "css-mqpacker": "^6.0.2",
     "cssnano": "^3.10.0",

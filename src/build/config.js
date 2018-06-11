@@ -10,7 +10,6 @@ const rootPath = (userConfig.paths && userConfig.paths.root)
   : process.cwd();
 
 const config = merge({
-  copy: 'images/**/*',
   paths: {
     root: rootPath,
     src: path.join(rootPath, 'src'),
@@ -27,5 +26,4 @@ Object.keys(config.entry).forEach(id =>
 module.exports = merge(config, {
   env: Object.assign({ production: isProduction, development: !isProduction }, argv.env),
   publicPath: `${config.publicPath}/${path.basename(config.paths.dist)}/`,
-  manifest: {},
 });
