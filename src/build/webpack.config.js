@@ -188,9 +188,6 @@ let webpackConfig = {
       filename: `styles/[name]_[hash:8].css`,
       allChunks: true,
     }),
-    new webpack.DefinePlugin({
-      WEBPACK_PUBLIC_PATH: false,
-    }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../template/index.php'),
       filename: 'index.php',
