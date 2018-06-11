@@ -21,8 +21,8 @@ let webpackConfig = {
   output: {
     path: config.paths.dist,
     publicPath: config.publicPath,
-    filename: `scripts/[name].js?[hash:8]`,
-    chunkFilename: 'scripts/[name].bundle.js?[hash:8]',
+    filename: `scripts/[name]_[hash:8].js`,
+    chunkFilename: 'scripts/[name]_[hash:8].bundle.js',
   },
   stats: {
     hash: false,
@@ -81,7 +81,6 @@ let webpackConfig = {
         test: /\.vue$/,
         loader: 'vue',
         options: {
-          extractCSS: true,
           loaders: {
             scss: ExtractTextPlugin.extract({
               fallback: 'vue-style',
@@ -131,7 +130,7 @@ let webpackConfig = {
         loader: 'url',
         options: {
           limit: 1024,
-          name: `[path][name].[ext]?[hash:8]`,
+          name: `[path][name]_[hash:8].[ext]`,
         },
       },
       {
@@ -141,7 +140,7 @@ let webpackConfig = {
         options: {
           limit: 1024,
           outputPath: 'vendor/',
-          name: `[name].[ext]?[hash:8]`,
+          name: `[name]_[hash:8].[ext]`,
         },
       },
       {
@@ -190,7 +189,7 @@ let webpackConfig = {
       manifest: config.manifest,
     }),
     new ExtractTextPlugin({
-      filename: `styles/[name].css?[hash:8]`,
+      filename: `styles/[name]_[hash:8].css`,
       allChunks: true,
     }),
     new webpack.DefinePlugin({
