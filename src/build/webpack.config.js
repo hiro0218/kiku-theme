@@ -171,6 +171,11 @@ let webpackConfig = {
   optimization: {
     minimizer: [],
   },
+  performance: {
+    assetFilter: function(assetFilename) {
+      return assetFilename.endsWith('.js') || assetFilename.endsWith('.css');
+    },
+  },
   plugins: [
     new SpriteLoaderPlugin(),
     new LodashModuleReplacementPlugin({
