@@ -45,7 +45,7 @@ let webpackConfig = {
         exclude: /node_modules/,
         test: /\.js$/,
         include: config.paths.src,
-        use: 'eslint',
+        use: 'eslint-loader',
       },
       {
         enforce: 'pre',
@@ -57,15 +57,15 @@ let webpackConfig = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: [
-          { loader: 'cache' },
-          { loader: 'babel?cacheDirectory' },
+          { loader: 'cache-loader' },
+          { loader: 'babel-loader?cacheDirectory' },
         ],
       },
       {
         test: /\.css$/,
         include: config.paths.src,
         use: ExtractTextPlugin.extract({
-          fallback: 'style',
+          fallback: 'style-loader',
           use: cssLoaders,
         }),
       },
@@ -73,21 +73,21 @@ let webpackConfig = {
         test: /\.(sass|scss)$/,
         include: config.paths.src,
         use: ExtractTextPlugin.extract({
-          fallback: 'style',
+          fallback: 'style-loader',
           use: sassLoaders,
         }),
       },
       {
         test: /\.vue$/,
-        loader: 'vue',
+        loader: 'vue-loader',
         options: {
           loaders: {
             scss: ExtractTextPlugin.extract({
-              fallback: 'vue-style',
+              fallback: 'vue-style-loader',
               use: [
                 ...sassLoaders,
                 {
-                  loader: 'sass-resources',
+                  loader: 'sass-resources-loader',
                   options: {
                     resources: [
                       path.resolve(__dirname, '../assets/styles/config/_colors.scss'),
@@ -127,7 +127,7 @@ let webpackConfig = {
       {
         test: /\.(woff2?|png|jpe?g|gif|ico)$/,
         include: config.paths.src,
-        loader: 'url',
+        loader: 'url-loader',
         options: {
           limit: 1024,
           name: `[path][name]_[hash:8].[ext]`,
@@ -136,7 +136,7 @@ let webpackConfig = {
       {
         test: /\.(ttf|eot|woff2?|png|jpe?g|gif|ico)$/,
         include: /node_modules/,
-        loader: 'url',
+        loader: 'url-loader',
         options: {
           limit: 1024,
           outputPath: 'vendor/',
@@ -163,9 +163,6 @@ let webpackConfig = {
       'node_modules',
     ],
     enforceExtension: false,
-  },
-  resolveLoader: {
-    moduleExtensions: ['-loader'],
   },
   optimization: {
     minimizer: [],
