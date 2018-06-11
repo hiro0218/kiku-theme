@@ -1,34 +1,46 @@
 const config = require('./config');
+const enablesourceMap = config.enabled.sourceMaps;
+
+const commonLoader = {
+  css: {
+    loader: 'css',
+    options: {
+      sourceMap: enablesourceMap,
+    },
+  },
+  postcss: {
+    loader: 'postcss',
+    options: {
+      config: { path: __dirname, ctx: config },
+      sourceMap: enablesourceMap,
+    },
+  },
+};
 
 const cssLoaders = [
   { loader: 'cache' },
-  { loader: 'css', options: { sourceMap: config.enabled.sourceMaps } },
-  {
-    loader: 'postcss', options: {
-      config: { path: __dirname, ctx: config },
-      sourceMap: config.enabled.sourceMaps,
-    },
-  },
+  commonLoader.css,
+  commonLoader.postcss,
 ];
 
 const sassLoaders = [
   { loader: 'cache' },
-  { loader: 'css', options: { sourceMap: config.enabled.sourceMaps } },
+  commonLoader.css,
   { loader: 'svg-transform-loader/encode-query-loader' },
-  {
-    loader: 'postcss', options: {
-      config: { path: __dirname, ctx: config },
-      sourceMap: config.enabled.sourceMaps,
-    },
-  },
+  commonLoader.postcss,
   {
     loader: 'resolve-url',
     options: {
       keepQuery: true,
-      sourceMap: config.enabled.sourceMaps,
+      sourceMap: enablesourceMap,
     }
   },
-  { loader: 'sass', options: { sourceMap: config.enabled.sourceMaps } },
+  {
+    loader: 'sass',
+    options: {
+      sourceMap: enablesourceMap,
+    },
+  },
 ];
 
 module.exports = {
