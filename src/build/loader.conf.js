@@ -5,6 +5,8 @@ const commonLoader = {
   css: {
     loader: 'css-loader',
     options: {
+      output: { path: config.paths.dist },
+      context: config.paths.src,
       sourceMap: enablesourceMap,
     },
   },
@@ -38,6 +40,8 @@ const sassLoaders = [
   {
     loader: 'sass-loader',
     options: {
+      output: { path: config.paths.dist },
+      context: config.paths.src,
       sourceMap: enablesourceMap,
     },
   },

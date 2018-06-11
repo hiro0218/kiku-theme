@@ -45,7 +45,12 @@ let webpackConfig = {
         exclude: /node_modules/,
         test: /\.js$/,
         include: config.paths.src,
-        use: 'eslint-loader',
+        use: [{
+          loader: 'eslint-loader',
+          options: {
+            eslint: { failOnWarning: false, failOnError: true },
+          },
+        }],
       },
       {
         enforce: 'pre',
@@ -191,19 +196,6 @@ let webpackConfig = {
     }),
     new webpack.DefinePlugin({
       WEBPACK_PUBLIC_PATH: false,
-    }),
-    new webpack.LoaderOptionsPlugin({
-      test: /\.s?css$/,
-      options: {
-        output: { path: config.paths.dist },
-        context: config.paths.src,
-      },
-    }),
-    new webpack.LoaderOptionsPlugin({
-      test: /\.js$/,
-      options: {
-        eslint: { failOnWarning: false, failOnError: true },
-      },
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../template/index.php'),
