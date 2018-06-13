@@ -8,7 +8,7 @@ const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
+const HtmlWebpackExcludeEmptyAssetsPlugin = require('html-webpack-exclude-empty-assets-plugin');
 
 const config = require('./config');
 const { cssLoaders, sassLoaders } = require('./loader.conf');
@@ -201,9 +201,7 @@ let webpackConfig = {
         removeScriptTypeAttributes: true,
       } : false,
     }),
-    new ScriptExtHtmlWebpackPlugin({
-      defaultAttribute: 'async',
-    }),
+    new HtmlWebpackExcludeEmptyAssetsPlugin(),
     new FriendlyErrorsWebpackPlugin(),
   ],
 };
