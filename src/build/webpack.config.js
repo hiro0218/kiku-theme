@@ -170,6 +170,16 @@ let webpackConfig = {
   },
   optimization: {
     minimizer: [],
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendor',
+          chunks: 'initial',
+          enforce: true,
+        },
+      },
+    },
   },
   performance: {
     assetFilter: function(assetFilename) {
