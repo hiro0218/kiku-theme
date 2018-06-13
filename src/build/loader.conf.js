@@ -20,13 +20,11 @@ const commonLoader = {
 };
 
 const cssLoaders = [
-  { loader: 'cache-loader' },
   commonLoader.css,
   commonLoader.postcss,
 ];
 
 const sassLoaders = [
-  { loader: 'cache-loader' },
   commonLoader.css,
   { loader: 'svg-transform-loader/encode-query-loader' },
   commonLoader.postcss,

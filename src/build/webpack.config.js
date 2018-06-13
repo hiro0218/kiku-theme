@@ -78,7 +78,10 @@ let webpackConfig = {
         include: config.paths.src,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: sassLoaders,
+          use: [
+            { loader: 'cache-loader' },
+            ...sassLoaders
+          ],
         }),
       },
       {
@@ -89,6 +92,7 @@ let webpackConfig = {
             scss: ExtractTextPlugin.extract({
               fallback: 'vue-style-loader',
               use: [
+                { loader: 'cache-loader' },
                 ...sassLoaders,
                 {
                   loader: 'sass-resources-loader',
