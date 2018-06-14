@@ -18,6 +18,7 @@ module.exports = ctx => ({
   parser: require('postcss-safe-parser'),
   plugins: [
     require('cssnano')(cssnanoConfig),
+    require('postcss-zindex'),
     require('postcss-flexbugs-fixes'),
     require('postcss-preset-env')({
       browsers: config.browsers,

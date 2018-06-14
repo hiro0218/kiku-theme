@@ -72,6 +72,7 @@
     "postcss-loader": "^2.1.5",
     "postcss-preset-env": "^5.1.0",
     "postcss-safe-parser": "^3.0.1",
+    "postcss-zindex": "^2.2.0",
     "prettier": "1.13.5",
     "resolve-url-loader": "^2.3.0",
     "rimraf": "^2.6.2",
