@@ -1,38 +1,28 @@
+const path = require('path');
 const config = require('./config');
-const enablesourceMap = config.enabled.sourceMaps;
 
-const commonLoader = {
-  css: {
+const styleLoaders = [
+  {
     loader: 'css-loader',
     options: {
       output: { path: config.paths.dist },
       context: config.paths.src,
-      sourceMap: enablesourceMap,
+      sourceMap: config.enabled.sourceMaps,
     },
   },
-  postcss: {
+  { loader: 'svg-transform-loader/encode-query-loader' },
+  {
     loader: 'postcss-loader',
     options: {
       config: { path: __dirname, ctx: config },
-      sourceMap: enablesourceMap,
+      sourceMap: config.enabled.sourceMaps,
     },
   },
-};
-
-const cssLoaders = [
-  commonLoader.css,
-  commonLoader.postcss,
-];
-
-const sassLoaders = [
-  commonLoader.css,
-  { loader: 'svg-transform-loader/encode-query-loader' },
-  commonLoader.postcss,
   {
     loader: 'resolve-url-loader',
     options: {
       keepQuery: true,
-      sourceMap: enablesourceMap,
+      sourceMap: config.enabled.sourceMaps,
     }
   },
   {
@@ -40,12 +30,21 @@ const sassLoaders = [
     options: {
       output: { path: config.paths.dist },
       context: config.paths.src,
-      sourceMap: enablesourceMap,
+      sourceMap: config.enabled.sourceMaps,
+    },
+  },
+  {
+    loader: 'sass-resources-loader',
+    options: {
+      resources: [
+        path.resolve(__dirname, '../assets/styles/config/_colors.scss'),
+        path.resolve(__dirname, '../assets/styles/config/_variables.scss'),
+        path.resolve(__dirname, '../assets/styles/config/_mixins.scss'),
+      ]
     },
   },
 ];
 
 module.exports = {
-  cssLoaders,
-  sassLoaders,
+  styleLoaders
 }

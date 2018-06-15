@@ -11,7 +11,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackExcludeEmptyAssetsPlugin = require('html-webpack-exclude-empty-assets-plugin');
 
 const config = require('./config');
-const { cssLoaders, sassLoaders } = require('./loader.conf');
+const { styleLoaders } = require('./loader.conf');
 
 let webpackConfig = {
   context: config.paths.src,
@@ -66,21 +66,13 @@ let webpackConfig = {
         ],
       },
       {
-        test: /\.css$/,
-        include: config.paths.src,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: cssLoaders,
-        }),
-      },
-      {
-        test: /\.(sass|scss)$/,
+        test: /\.(sass|scss|css)$/,
         include: config.paths.src,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
             { loader: 'cache-loader' },
-            ...sassLoaders
+            ...styleLoaders,
           ],
         }),
       },
@@ -93,17 +85,7 @@ let webpackConfig = {
               fallback: 'vue-style-loader',
               use: [
                 { loader: 'cache-loader' },
-                ...sassLoaders,
-                {
-                  loader: 'sass-resources-loader',
-                  options: {
-                    resources: [
-                      path.resolve(__dirname, '../assets/styles/config/_colors.scss'),
-                      path.resolve(__dirname, '../assets/styles/config/_variables.scss'),
-                      path.resolve(__dirname, '../assets/styles/config/_mixins.scss'),
-                    ]
-                  },
-                },
+                ...styleLoaders,
               ],
             }),
           }
