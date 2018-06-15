@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 const config = require('./config.js');
 const cssnanoConfig = {
     autoprefixer: false,
@@ -18,14 +16,15 @@ const cssnanoConfig = {
 
 module.exports = ctx => ({
   parser: require('postcss-safe-parser'),
-  plugins: {
-    cssnano: cssnanoConfig,
-    'postcss-flexbugs-fixes': require('postcss-flexbugs-fixes'),
-    'postcss-cssnext': {
+  plugins: [
+    require('cssnano')(cssnanoConfig),
+    require('postcss-zindex'),
+    require('postcss-flexbugs-fixes'),
+    require('postcss-preset-env')({
       browsers: config.browsers,
-      cascade: false,
-    },
-    'css-mqpacker': require('css-mqpacker'),
-    csswring: ctx.env === 'production',
-  },
+      stage: 3,
+    }),
+    require('css-mqpacker'),
+    ctx.env === 'production' && require('csswring'),
+  ],
 });

@@ -4,15 +4,14 @@ const path = require('path');
 const webpack = require('webpack');
 const CleanPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const CopyGlobsPlugin = require('copy-globs-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
+const HtmlWebpackExcludeEmptyAssetsPlugin = require('html-webpack-exclude-empty-assets-plugin');
 
 const config = require('./config');
-const { jsLoaders, cssLoaders, sassLoaders } = require('./loader.conf');
+const { styleLoaders } = require('./loader.conf');
 
 let webpackConfig = {
   context: config.paths.src,
@@ -21,8 +20,8 @@ let webpackConfig = {
   output: {
     path: config.paths.dist,
     publicPath: config.publicPath,
-    filename: `scripts/[name].js?[hash:8]`,
-    chunkFilename: 'scripts/[name].bundle.js?[hash:8]',
+    filename: `scripts/[name]_[hash:8].js`,
+    chunkFilename: 'scripts/[name]_[hash:8].bundle.js',
   },
   stats: {
     hash: false,
@@ -43,9 +42,14 @@ let webpackConfig = {
       {
         enforce: 'pre',
         exclude: /node_modules/,
-        test: /\.js$/,
+        test: /\.(js|vue)$/,
         include: config.paths.src,
-        use: 'eslint',
+        use: [{
+          loader: 'eslint-loader',
+          options: {
+            eslint: { failOnWarning: false, failOnError: true },
+          },
+        }],
       },
       {
         enforce: 'pre',
@@ -56,44 +60,32 @@ let webpackConfig = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: jsLoaders,
+        use: [
+          { loader: 'cache-loader' },
+          { loader: 'babel-loader?cacheDirectory' },
+        ],
       },
       {
-        test: /\.css$/,
+        test: /\.(sass|scss|css)$/,
         include: config.paths.src,
         use: ExtractTextPlugin.extract({
-          fallback: 'style',
-          use: cssLoaders,
-        }),
-      },
-      {
-        test: /\.(sass|scss)$/,
-        include: config.paths.src,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style',
-          use: sassLoaders,
+          fallback: 'style-loader',
+          use: [
+            { loader: 'cache-loader' },
+            ...styleLoaders,
+          ],
         }),
       },
       {
         test: /\.vue$/,
-        loader: 'vue',
+        loader: 'vue-loader',
         options: {
-          extractCSS: true,
           loaders: {
             scss: ExtractTextPlugin.extract({
-              fallback: 'vue-style',
+              fallback: 'vue-style-loader',
               use: [
-                ...sassLoaders,
-                {
-                  loader: 'sass-resources',
-                  options: {
-                    resources: [
-                      path.resolve(__dirname, '../assets/styles/config/_colors.scss'),
-                      path.resolve(__dirname, '../assets/styles/config/_variables.scss'),
-                      path.resolve(__dirname, '../assets/styles/config/_mixins.scss'),
-                    ]
-                  },
-                },
+                { loader: 'cache-loader' },
+                ...styleLoaders,
               ],
             }),
           }
@@ -125,20 +117,20 @@ let webpackConfig = {
       {
         test: /\.(woff2?|png|jpe?g|gif|ico)$/,
         include: config.paths.src,
-        loader: 'url',
+        loader: 'url-loader',
         options: {
           limit: 1024,
-          name: `[path][name].[ext]?[hash:8]`,
+          name: `[path][name]_[hash:8].[ext]`,
         },
       },
       {
         test: /\.(ttf|eot|woff2?|png|jpe?g|gif|ico)$/,
         include: /node_modules/,
-        loader: 'url',
+        loader: 'url-loader',
         options: {
           limit: 1024,
           outputPath: 'vendor/',
-          name: `[name].[ext]?[hash:8]`,
+          name: `[name]_[hash:8].[ext]`,
         },
       },
       {
@@ -162,11 +154,23 @@ let webpackConfig = {
     ],
     enforceExtension: false,
   },
-  resolveLoader: {
-    moduleExtensions: ['-loader'],
-  },
   optimization: {
     minimizer: [],
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendor',
+          chunks: 'initial',
+          enforce: true,
+        },
+      },
+    },
+  },
+  performance: {
+    assetFilter: function(assetFilename) {
+      return assetFilename.endsWith('.js') || assetFilename.endsWith('.css');
+    },
   },
   plugins: [
     new SpriteLoaderPlugin(),
@@ -181,30 +185,9 @@ let webpackConfig = {
       root: config.paths.root,
       verbose: false,
     }),
-    new CopyGlobsPlugin({
-      pattern: config.copy,
-      output: `[path][name].[ext]`,
-      manifest: config.manifest,
-    }),
     new ExtractTextPlugin({
-      filename: `styles/[name].css?[hash:8]`,
+      filename: `styles/[name]_[hash:8].css`,
       allChunks: true,
-    }),
-    new webpack.DefinePlugin({
-      WEBPACK_PUBLIC_PATH: false,
-    }),
-    new webpack.LoaderOptionsPlugin({
-      test: /\.s?css$/,
-      options: {
-        output: { path: config.paths.dist },
-        context: config.paths.src,
-      },
-    }),
-    new webpack.LoaderOptionsPlugin({
-      test: /\.js$/,
-      options: {
-        eslint: { failOnWarning: false, failOnError: true },
-      },
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../template/index.php'),
@@ -214,9 +197,7 @@ let webpackConfig = {
         removeScriptTypeAttributes: true,
       } : false,
     }),
-    new ScriptExtHtmlWebpackPlugin({
-      defaultAttribute: 'async',
-    }),
+    new HtmlWebpackExcludeEmptyAssetsPlugin(),
     new FriendlyErrorsWebpackPlugin(),
   ],
 };
@@ -230,6 +211,7 @@ if (config.env.production) {
   webpackConfig.optimization.minimizer.push(
     new UglifyJsPlugin({
       cache: true,
+      parallel: true,
       uglifyOptions: {
         ecma: 8,
       },
