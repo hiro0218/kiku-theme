@@ -88,7 +88,7 @@ export default {
 
 .icon {
   margin-right: 1.5rem;
-  @include svg-icon(1.5rem);
+  @include svg-icon(2rem);
 
   &:hover {
     opacity: 0.8;
