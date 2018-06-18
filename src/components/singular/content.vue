@@ -33,15 +33,12 @@ export default {
       });
     },
   },
-  created() {
-    this.styleElement = document.getElementById('custom_style');
-  },
   methods: {
     initStyleElement: function() {
       if (!this.styleElement) {
         let element = document.createElement('style');
         element.id = 'custom_style';
-        document.head.appendChild(element);
+        this.$el.parentNode.insertBefore(element, this.$el.nextSibling);
         this.styleElement = document.getElementById('custom_style');
       }
 
