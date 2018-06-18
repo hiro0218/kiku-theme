@@ -9,7 +9,15 @@ import { mapState } from 'vuex';
 
 export default {
   name: 'Loading',
-  computed: mapState(['isLoading']),
+  computed: {
+    elementHTML: () => document.querySelector('html'),
+    ...mapState(['isLoading']),
+  },
+  watch: {
+    isLoading: function(bool) {
+      this.elementHTML.classList.toggle('lock-scroll', this.isLoading);
+    },
+  },
 };
 </script>
 
