@@ -24,15 +24,6 @@ export default {
   },
   computed: mapState(['pageTitle']),
   watch: {
-    $route: function(to, from) {
-      // 同一ページ内の変更時は処理を行わない
-      if (to.path === from.path) {
-        return;
-      }
-
-      this.$store.dispatch('resetPost');
-      this.$store.dispatch('resetPostList');
-    },
     pageTitle: 'setTitle',
   },
   created: function() {

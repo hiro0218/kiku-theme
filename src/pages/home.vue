@@ -15,6 +15,12 @@ import pagination from '@components/home/pagination.vue';
 
 export default {
   name: 'Home',
+  beforeRouteLeave(to, from, next) {
+    if (to.path !== from.path) {
+      this.$store.dispatch('resetPostList');
+    }
+    next();
+  },
   components: {
     list,
     advertise,

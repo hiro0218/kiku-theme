@@ -26,6 +26,12 @@ import entryFooter from '@components/singular/footer.vue';
 
 export default {
   name: 'Singular',
+  beforeRouteLeave(to, from, next) {
+    if (to.path !== from.path) {
+      this.$store.dispatch('resetPost');
+    }
+    next();
+  },
   components: {
     amazon,
     advertise,
