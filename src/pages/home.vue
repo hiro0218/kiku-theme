@@ -37,7 +37,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(['requestHeader', 'postLists', 'advertise']),
+    ...mapState(['postLists', 'advertise']),
   },
   watch: {
     '$route.path': 'requestPostData',
