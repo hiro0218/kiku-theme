@@ -151,10 +151,6 @@ class REST_API {
     }
 
     public function get_amazon_product($object, $field_name, $request, $type) {
-        if (!$this->is_postId_route($request, $type)) {
-            return null;
-        }
-
         global $post;
         $post = get_post($object['id']);
         $product_data = json_decode(get_post_meta($post->ID, CF_AMAZON_PRODUCT_TAG, true));
