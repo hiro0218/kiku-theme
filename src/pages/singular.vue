@@ -51,7 +51,9 @@ export default {
   computed: mapState(['post', 'advertise']),
   watch: {
     '$route.path': function() {
-      this.$store.dispatch('requestSinglePost', this.$route).then(() => this.updateAppearance());
+      this.$store.dispatch('resetPost').then(() => {
+        this.requestPostData();
+      });
     },
     'post.title.rendered': function(title) {
       if (!title) {

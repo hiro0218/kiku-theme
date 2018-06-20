@@ -18,22 +18,22 @@ export default {
     };
   },
   watch: {
-    '$route.path': function() {
-      this.initStyleElement();
-    },
     'post.content.rendered': function() {
-      if (!this.post.content.rendered) {
-        return;
-      }
       this.$nextTick().then(() => {
-        if (this.post.hasOwnProperty('attach')) {
-          this.setCustomStyle();
-          this.setCustomScript();
-        }
+        this.fireCustomAppearance();
       });
     },
   },
+  mounted() {
+    this.fireCustomAppearance();
+  },
   methods: {
+    fireCustomAppearance: function() {
+      if (this.post.hasOwnProperty('attach')) {
+        if (this.post.attach.custom.style) this.setCustomStyle();
+        if (this.post.attach.custom.script) this.setCustomScript();
+      }
+    },
     initStyleElement: function() {
       if (!this.styleElement) {
         let element = document.createElement('style');

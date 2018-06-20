@@ -69,7 +69,7 @@ export default {
     var client = this.getInstance();
     const defaultParams = copy(this.settings.params);
 
-    return client.get('/posts/?list', {
+    return client.get('/posts/?list&_embed', {
       params: Object.assign(
         defaultParams,
         { orderby: 'modified' },

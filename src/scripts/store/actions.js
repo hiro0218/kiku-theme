@@ -57,7 +57,12 @@ export default {
         dispatch('loading', false);
       });
   },
-  requestSinglePost({ commit, dispatch }, route) {
+  requestSinglePost({ commit, dispatch, state }, route) {
+    // 記事データを保持している場合は通信は行わない
+    if (route.meta.type === 'post' && state.post.id > 0) {
+      return true;
+    }
+
     dispatch('loading', true);
 
     const response = (function() {
@@ -77,6 +82,9 @@ export default {
       commit('setPost', response.data);
       dispatch('loading', false);
     });
+  },
+  setPost({ commit }, data) {
+    commit('setPost', data);
   },
   resetPost({ commit }) {
     commit('setPost', copy(MODEL_POST));

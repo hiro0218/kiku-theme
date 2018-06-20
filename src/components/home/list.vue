@@ -6,7 +6,7 @@
       </div>
     </template>
 
-    <router-link v-for="(post,index) in postLists" :to="post.link" :key="index">
+    <a v-for="(post,index) in postLists" :key="index" href="javascript:void(0)" @click="transitionPage(index, post.link)">
       <article class="entry-container">
         <div class="entry-image">
           <div class="image-container">
@@ -25,7 +25,7 @@
           </footer>
         </div>
       </article>
-    </router-link>
+    </a>
 
   </div>
 </template>
@@ -69,6 +69,13 @@ export default {
         img.src = imageUrl;
         img = null;
       }
+    },
+    transitionPage: function(index, path) {
+      this.$store.dispatch('setPost', this.postLists[index]).then(() => {
+        this.$router.push({
+          path: path,
+        });
+      });
     },
   },
 };

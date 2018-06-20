@@ -1,4 +1,5 @@
 export const MODEL_POST = {
+  id: 0,
   link: '',
   title: {
     rendered: '',
