@@ -94,4 +94,7 @@ routes.push(
   },
 );
 
+// unset
+WP.routes = null;
+
 export default routes;
