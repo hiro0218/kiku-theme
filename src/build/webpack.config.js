@@ -5,7 +5,6 @@ const webpack = require('webpack');
 const CleanPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
-const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackExcludeEmptyAssetsPlugin = require('html-webpack-exclude-empty-assets-plugin');
@@ -81,13 +80,11 @@ let webpackConfig = {
         loader: 'vue-loader',
         options: {
           loaders: {
-            scss: ExtractTextPlugin.extract({
-              fallback: 'vue-style-loader',
-              use: [
-                { loader: 'cache-loader' },
-                ...styleLoaders,
-              ],
-            }),
+            scss: [
+              { loader: 'cache-loader' },
+              { loader: 'vue-style-loader' },
+              ...styleLoaders,
+            ],
           }
         },
       },
@@ -95,10 +92,9 @@ let webpackConfig = {
         test: /\.svg(\?.*)?$/,
         use: [
           {
-            loader: 'svg-sprite-loader',
+            loader: 'url-loader',
             options: {
-              extract: true,
-              spriteFilename: 'sprite_[hash:8].svg',
+              name: `[path][name]_[hash:8].[ext]`,
             },
           },
           'svg-transform-loader',
@@ -173,7 +169,6 @@ let webpackConfig = {
     },
   },
   plugins: [
-    new SpriteLoaderPlugin(),
     new LodashModuleReplacementPlugin({
       'caching': true,
     }),
