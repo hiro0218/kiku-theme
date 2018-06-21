@@ -2,6 +2,7 @@
 
 const path = require('path');
 const webpack = require('webpack');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const CleanPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
@@ -169,6 +170,7 @@ let webpackConfig = {
     },
   },
   plugins: [
+    new VueLoaderPlugin(),
     new LodashModuleReplacementPlugin({
       'caching': true,
     }),
