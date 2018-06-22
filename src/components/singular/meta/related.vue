@@ -8,7 +8,6 @@
             <div :style="entry.image ? 'background-image: url('+ entry.image +')' : ''" class="image-sheet"/>
           </div>
           <div class="related-title" v-html="$options.filters.escapeBrackets(entry.title)"/>
-          <div class="related-description" v-html="$options.filters.escapeBrackets(entry.description)"/>
         </router-link>
       </div>
     </div>
@@ -62,16 +61,9 @@ export default {
 .related-title {
   display: block;
   max-width: 100%;
-  margin-bottom: 0.5rem;
-  transition: color 0.3s $animation-curve-fast-out-slow-in;
+  font-size: $font-size-sm;
   color: $grey-800;
-  @include text-overflow;
-}
-
-.related-description {
-  color: $grey-500;
-  font-size: $font-size-xs;
-  @include text-overflow;
+  transition: color 0.3s $animation-curve-fast-out-slow-in;
 }
 
 .related-image {

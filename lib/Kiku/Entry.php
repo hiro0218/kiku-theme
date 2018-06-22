@@ -76,7 +76,6 @@ class Entry {
                 $arr[] = [
                     "uri"   => '/' . basename(get_permalink()),
                     "title" => $title,
-                    "description" => \Kiku\Util::get_excerpt_content(),
                     "image" => $Image->get_entry_image(get_the_ID(), false),
                 ];
             }
