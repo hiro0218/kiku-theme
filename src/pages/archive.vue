@@ -78,7 +78,7 @@ li {
 time {
   flex: 0 0 6rem;
   margin-right: 2rem;
-  color: $grey-400;
+  color: $grey-600;
 }
 
 .archive-list {

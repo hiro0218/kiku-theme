@@ -63,20 +63,6 @@ export default {
 .entry-content /deep/ {
   margin-bottom: 1rem;
 
-  a {
-    padding-bottom: 1px;
-    border-bottom: 1px solid $link-border-color;
-    color: $link-color;
-
-    &:hover {
-      border-color: $link-hover-border-color;
-    }
-    &:focus {
-      outline: thin dotted;
-      outline-offset: -2px;
-    }
-  }
-
   .anchor {
     position: absolute;
     right: 100%;
