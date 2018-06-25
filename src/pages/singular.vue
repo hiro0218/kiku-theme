@@ -8,6 +8,7 @@
                  :content="ads.content"
                  :script="ads.script" />
       <amazon :product="post.amazon_product"/>
+      <entry-share :title="post.title.rendered"/>
       <entry-footer :post="post"/>
     </article>
   </div>
@@ -23,6 +24,7 @@ import advertise from '@components/advertise.vue';
 import entryHeader from '@components/singular/header.vue';
 import entryContent from '@components/singular/content.vue';
 import entryFooter from '@components/singular/footer.vue';
+import entryShare from '@components/singular/share.vue';
 
 export default {
   name: 'Singular',
@@ -38,6 +40,7 @@ export default {
     entryHeader,
     entryContent,
     entryFooter,
+    entryShare,
   },
   data() {
     return {
