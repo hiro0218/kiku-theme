@@ -5,7 +5,12 @@
       <div v-for="(entry,index) in related" :key="index" class="related-section">
         <router-link :to="entry.uri">
           <div class="related-image">
-            <div :style="entry.image ? 'background-image: url('+ entry.image +')' : ''" class="image-sheet"/>
+            <template v-if="entry.image">
+              <img :src="entry.image">
+            </template>
+            <template v-else>
+              <div class="no-image"/>
+            </template>
           </div>
           <div class="related-title" v-html="$options.filters.escapeBrackets(entry.title)"/>
         </router-link>
@@ -67,14 +72,25 @@ export default {
 }
 
 .related-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10rem;
   margin-bottom: 0.5rem;
-  .image-sheet {
-    height: 10rem;
-    border: 1px solid $grey-200;
+  background: $grey-50;
+  overflow: hidden;
+
+  img {
+    max-width: 85%;
+    max-height: 85%;
+  }
+
+  .no-image {
+    width: 4.5rem;
+    height: 4.5rem;
     background: $grey-50 50% no-repeat;
-    background-image: url('~@images/no-image.png');
+    background-image: url('~@images/icon/photo.svg?fill=#{$grey-400} svg');
     background-size: cover;
-    overflow: hidden;
   }
 }
 </style>
