@@ -1,17 +1,25 @@
 <template>
-  <div>
-    <article class="entry">
-      <entry-header :post="post"/>
-      <entry-content :post="post"/>
-      <advertise :id-name="ads.id"
-                 :display="advertise.ads2.display.includes($route.meta.type)"
-                 :content="ads.content"
-                 :script="ads.script" />
-      <amazon :product="post.amazon_product"/>
-      <entry-share :title="post.title.rendered"/>
-      <entry-footer :post="post"/>
-    </article>
-  </div>
+  <article class="entry">
+    <header class="entry-header">
+      <h1 class="entry-title" v-html="$options.filters.escapeBrackets(post.title.rendered)"/>
+      <div class="entry-meta">
+        <entry-time :date="post.date" :modified="post.modified"/>
+        <entry-category v-if="$route.meta.type === 'post'" :categories="post._embedded['wp:term'][0]"/>
+      </div>
+    </header>
+    <entry-content :post="post"/>
+    <advertise :id-name="ads.id"
+               :display="advertise.ads2.display.includes($route.meta.type)"
+               :content="ads.content"
+               :script="ads.script" />
+    <amazon :product="post.amazon_product"/>
+    <entry-share :title="post.title.rendered"/>
+    <footer v-if="$route.meta.type === 'post'" class="entry-footer">
+      <entry-tag :tags="post._embedded['wp:term'][1]"/>
+    </footer>
+    <entry-related :related="post.attach.related"/>
+    <entry-pager :pager="post.attach.pager"/>
+  </article>
 </template>
 
 <script>
@@ -21,10 +29,13 @@ import updateSingularAppearance from '@scripts/utils/singular';
 import amazon from '@components/singular/amazon.vue';
 import advertise from '@components/advertise.vue';
 
-import entryHeader from '@components/singular/header.vue';
 import entryContent from '@components/singular/content.vue';
-import entryFooter from '@components/singular/footer.vue';
+import entryTime from '@components/singular/meta/time.vue';
+import entryCategory from '@components/singular/meta/category.vue';
+import entryTag from '@components/singular/meta/tag.vue';
 import entryShare from '@components/singular/share.vue';
+import entryRelated from '@components/singular/related.vue';
+import entryPager from '@components/singular/pager.vue';
 
 export default {
   name: 'Singular',
@@ -37,10 +48,13 @@ export default {
   components: {
     amazon,
     advertise,
-    entryHeader,
     entryContent,
-    entryFooter,
+    entryTime,
+    entryCategory,
+    entryTag,
     entryShare,
+    entryRelated,
+    entryPager,
   },
   data() {
     return {
@@ -94,8 +108,27 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .entry {
   margin-bottom: 1rem;
+}
+
+.entry-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.entry-title {
+  word-wrap: break-word;
+}
+
+.entry-meta {
+  color: $grey-400;
+
+  ul {
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+  }
 }
 </style>
