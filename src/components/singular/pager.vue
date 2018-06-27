@@ -1,5 +1,5 @@
 <template>
-  <div v-if="pager" class="pager-container">
+  <div v-if="pager" class="pager-container container">
     <router-link v-if="pager.prev" :to="pager.prev.url" :title="pager.prev.title" class="prev">
       <div class="icon-container">
         <div class="icon icon-arrow-back"/>
@@ -50,8 +50,7 @@ export default {
 .pager-container {
   display: flex;
   flex-wrap: wrap;
-  margin: 2rem 0;
-  padding: 1rem 0;
+  padding: 2rem 0;
 }
 
 .prev,

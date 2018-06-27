@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <h1 class="title">{{ pageTitle }}</h1>
     <p class="description">The page you were looking for could not be found.</p>
   </div>

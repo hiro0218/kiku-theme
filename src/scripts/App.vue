@@ -2,7 +2,7 @@
   <main class="main">
     <layout-header/>
     <section class="main-container">
-      <router-view class="container"/>
+      <router-view/>
     </section>
     <layout-footer/>
     <loading/>

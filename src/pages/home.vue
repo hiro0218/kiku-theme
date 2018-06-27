@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <h1 class="page-header" v-html="$options.filters.escapeBrackets(pageTitle)"/>
     <list/>
     <advertise :id-name="ads.id" :content="ads.content" :script="ads.script" />

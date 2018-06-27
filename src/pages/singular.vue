@@ -1,25 +1,29 @@
 <template>
-  <article class="entry">
-    <header class="entry-header">
-      <h1 class="entry-title" v-html="$options.filters.escapeBrackets(post.title.rendered)"/>
-      <div class="entry-meta">
-        <entry-time :date="post.date" :modified="post.modified"/>
-        <entry-category v-if="$route.meta.type === 'post'" :categories="post._embedded['wp:term'][0]"/>
-      </div>
-    </header>
-    <entry-content :post="post"/>
-    <advertise :id-name="ads.id"
-               :display="advertise.ads2.display.includes($route.meta.type)"
-               :content="ads.content"
-               :script="ads.script" />
-    <amazon :product="post.amazon_product"/>
-    <entry-share :title="post.title.rendered"/>
-    <footer v-if="$route.meta.type === 'post'" class="entry-footer">
-      <entry-tag :tags="post._embedded['wp:term'][1]"/>
-    </footer>
-    <entry-related :related="post.attach.related"/>
-    <entry-pager :pager="post.attach.pager"/>
-  </article>
+  <div>
+    <div class="singular container">
+      <article class="entry">
+        <header class="entry-header">
+          <h1 class="entry-title" v-html="$options.filters.escapeBrackets(post.title.rendered)"/>
+          <div class="entry-meta">
+            <entry-time :date="post.date" :modified="post.modified"/>
+            <entry-category v-if="$route.meta.type === 'post'" :categories="post._embedded['wp:term'][0]"/>
+          </div>
+        </header>
+        <entry-content :post="post"/>
+        <advertise :id-name="ads.id"
+                   :display="advertise.ads2.display.includes($route.meta.type)"
+                   :content="ads.content"
+                   :script="ads.script" />
+        <amazon :product="post.amazon_product"/>
+        <entry-share :title="post.title.rendered"/>
+        <entry-tag v-if="$route.meta.type === 'post'" :tags="post._embedded['wp:term'][1]"/>
+        <entry-related :related="post.attach.related"/>
+      </article>
+    </div>
+    <div>
+      <entry-pager :pager="post.attach.pager"/>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -109,6 +113,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.singular {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+}
+
 .entry-header {
   margin-bottom: 2rem;
   text-align: center;
