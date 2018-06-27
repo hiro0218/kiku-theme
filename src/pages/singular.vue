@@ -109,10 +109,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.entry {
-  margin-bottom: 1rem;
-}
-
 .entry-header {
   margin-bottom: 2rem;
   text-align: center;
