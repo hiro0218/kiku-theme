@@ -67,6 +67,7 @@ export default {
   display: block;
   max-width: 100%;
   font-size: $font-size-sm;
+  text-align: center;
   color: $grey-800;
   transition: color 0.3s $animation-curve-fast-out-slow-in;
 }
