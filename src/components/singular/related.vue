@@ -79,6 +79,7 @@ export default {
   margin-bottom: 0.5rem;
   background: $grey-50;
   overflow: hidden;
+  user-select: none;
 
   img {
     max-width: 85%;
