@@ -1,24 +1,26 @@
 <template>
-  <div v-if="pager" class="pager-container container">
-    <router-link v-if="pager.prev" :to="pager.prev.url" :title="pager.prev.title" class="prev">
-      <div class="icon-container">
-        <div class="icon icon-arrow-back"/>
-      </div>
-      <div class="pager">
-        <span class="label">previous</span>
-        <div class="title">{{ pager.prev.title }}</div>
-      </div>
-    </router-link>
-    <router-link v-if="pager.next" :to="pager.next.url" :title="pager.next.title" class="next">
-      <div class="pager">
-        <span class="label">next</span>
-        <div class="title">{{ pager.next.title }}</div>
-      </div>
-      <div class="icon-container">
-        <div class="icon icon-arrow-forward"/>
-      </div>
-    </router-link>
-  </div>
+  <nav v-if="Object.keys(pager).length !== 0" class="pager-container">
+    <div class="pager-content container">
+      <router-link v-if="pager.prev" :to="pager.prev.url" :title="pager.prev.title" class="prev">
+        <div class="icon-container">
+          <div class="icon icon-arrow-back"/>
+        </div>
+        <div class="pager">
+          <span class="label">previous</span>
+          <div class="title">{{ pager.prev.title }}</div>
+        </div>
+      </router-link>
+      <router-link v-if="pager.next" :to="pager.next.url" :title="pager.next.title" class="next">
+        <div class="pager">
+          <span class="label">next</span>
+          <div class="title">{{ pager.next.title }}</div>
+        </div>
+        <div class="icon-container">
+          <div class="icon icon-arrow-forward"/>
+        </div>
+      </router-link>
+    </div>
+  </nav>
 </template>
 
 <script>
@@ -48,9 +50,13 @@ export default {
 }
 
 .pager-container {
+  padding: 2rem 0;
+  background: $grey-100;
+}
+
+.pager-content {
   display: flex;
   flex-wrap: wrap;
-  padding: 2rem 0;
 }
 
 .prev,
@@ -87,7 +93,7 @@ export default {
 
 .label {
   margin-bottom: 0.25rem;
-  color: $grey-400;
+  color: $grey-500;
   font-weight: bold;
   text-transform: capitalize;
 }
