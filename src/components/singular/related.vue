@@ -6,7 +6,7 @@
         <router-link :to="entry.uri">
           <div class="related-image">
             <template v-if="entry.image">
-              <img :src="entry.image">
+              <img :src="entry.image" class="entry-image">
             </template>
             <template v-else>
               <div class="no-image"/>
@@ -38,6 +38,7 @@ export default {
 }
 
 .related-heading {
+  font-weight: normal;
   text-align: center;
 }
 
@@ -77,12 +78,12 @@ export default {
   align-items: center;
   justify-content: center;
   height: 10rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
   background: $grey-50;
   overflow: hidden;
   user-select: none;
 
-  img {
+  .entry-image {
     max-width: 85%;
     max-height: 85%;
   }
