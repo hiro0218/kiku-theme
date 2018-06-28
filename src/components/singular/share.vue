@@ -83,19 +83,18 @@ export default {
 .entry-share {
   display: flex;
   justify-content: center;
-  margin: 2rem 0;
+  margin: 4rem 0;
 }
 
 .icon {
-  margin-right: 1.5rem;
   @include svg-icon(2rem);
 
   &:hover {
     opacity: 0.8;
   }
 
-  &:last-child {
-    margin-right: 0;
+  & + & {
+    margin-left: 2rem;
   }
 }
 
