@@ -1,5 +1,5 @@
 <template>
-  <div v-cloak v-if="related.length !== 0" class="related">
+  <section v-cloak v-if="related.length !== 0" class="related container">
     <h2 class="related-heading">Related Posts</h2>
     <div class="entry-related">
       <div v-for="(entry,index) in related" :key="index" class="related-section">
@@ -16,7 +16,7 @@
         </router-link>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
