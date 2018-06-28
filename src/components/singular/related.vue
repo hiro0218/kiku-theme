@@ -34,7 +34,11 @@ export default {
 
 <style lang="scss" scoped>
 .related {
-  margin: 2rem 0;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  &.container {
+    padding: 0;
+  }
 }
 
 .related-heading {

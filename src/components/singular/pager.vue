@@ -57,6 +57,9 @@ export default {
 .pager-content {
   display: flex;
   flex-wrap: wrap;
+  &.container {
+    padding: 0;
+  }
 }
 
 .prev,
