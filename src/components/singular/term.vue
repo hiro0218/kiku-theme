@@ -63,6 +63,8 @@ export default {
 }
 
 .entry-category {
+  color: $grey-500;
+
   a {
     color: inherit;
     &:hover {
@@ -98,7 +100,7 @@ export default {
     padding: 0 0.65rem;
     border-radius: $radius-sm;
     background: $grey-100;
-    color: $grey-700;
+    color: $grey-600;
     &:hover {
       background: $grey-200;
     }
