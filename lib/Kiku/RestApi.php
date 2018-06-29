@@ -166,38 +166,27 @@ class REST_API {
     }
 
     public function get_post_attach($object, $field_name, $request, $type) {
-        $request_url = $_SERVER['REQUEST_URI'];
+        global $Entry, $post;
 
-        // transient で一時的にキャッシュしたデータをロード
-        $key = CACHE_PREFIX . md5($request_url);
-        $result = get_transient($key);
+        $post_id = $object['id'];
+        $array = [];
 
-        if ($result === false) {
-            global $Entry, $post;
+        // related posts
+        $related = $Entry->get_similar_posts(RELATED_POST_NUM, $post_id);
+        // pager
+        $pager = $Entry->pager($post_id);
 
-            $post_id = $object['id'];
-            $array = [];
+        // set
+        $array = [
+            'related' => $related,
+            'pager' => $pager,
+            'custom' => [
+                'script' => get_post_meta($post_id, '_custom_js', true),
+                'style'  => get_post_meta($post_id, '_custom_css', true),
+            ],
+        ];
 
-            // related posts
-            $related = $Entry->get_similar_posts(RELATED_POST_NUM, $post_id);
-            // pager
-            $pager = $Entry->pager($post_id);
-
-            // set
-            $array = [
-                'related' => $related,
-                'pager' => $pager,
-                'custom' => [
-                    'script' => get_post_meta($post_id, '_custom_js', true),
-                    'style'  => get_post_meta($post_id, '_custom_css', true),
-                ],
-            ];
-
-            set_transient($key, $array, self::CACHE_EXPIRATION);
-            return $array;
-        }
-
-        return $result;
+        return $array;
     }
 
     private function is_postId_route($request, $type) {
