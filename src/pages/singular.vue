@@ -3,9 +3,7 @@
     <article class="entry container">
       <header class="entry-header">
         <h1 class="entry-title" v-html="$options.filters.escapeBrackets(post.title.rendered)"/>
-        <div class="entry-meta">
-          <entry-time :date="post.date" :modified="post.modified"/>
-        </div>
+        <entry-time :date="post.date" :modified="post.modified"/>
       </header>
       <entry-content :post="post"/>
       <advertise :id-name="ads.id"
@@ -13,11 +11,15 @@
                  :content="ads.content"
                  :script="ads.script" />
       <amazon :product="post.amazon_product"/>
-      <entry-share :title="post.title.rendered"/>
-      <entry-term v-if="$route.meta.type === 'post'" :categories="post._embedded['wp:term'][0]" :tags="post._embedded['wp:term'][1]"/>
-      <entry-related :related="post.attach.related"/>
+      <template v-if="$route.meta.type === 'post'">
+        <entry-share :title="post.title.rendered"/>
+        <entry-term :categories="post._embedded['wp:term'][0]" :tags="post._embedded['wp:term'][1]"/>
+        <entry-related :related="post.attach.related"/>
+      </template>
     </article>
-    <entry-pager :pager="post.attach.pager"/>
+    <template v-if="$route.meta.type === 'post'">
+      <entry-pager v-if="$route.meta.type === 'post'" :pager="post.attach.pager"/>
+    </template>
   </div>
 </template>
 
@@ -29,7 +31,7 @@ import amazon from '@components/singular/amazon.vue';
 import advertise from '@components/advertise.vue';
 
 import entryContent from '@components/singular/content.vue';
-import entryTime from '@components/singular/meta/time.vue';
+import entryTime from '@components/singular/time.vue';
 import entryTerm from '@components/singular/term.vue';
 import entryShare from '@components/singular/share.vue';
 import entryRelated from '@components/singular/related.vue';
@@ -114,21 +116,13 @@ export default {
 }
 
 .entry-header {
-  margin-bottom: 2rem;
+  width: 80%;
+  margin: 0 auto 2rem;
   text-align: center;
 }
 
 .entry-title {
+  margin: 0 0 1rem;
   word-wrap: break-word;
-}
-
-.entry-meta {
-  color: $grey-400;
-
-  ul {
-    margin-bottom: 0;
-    padding-left: 0;
-    list-style: none;
-  }
 }
 </style>

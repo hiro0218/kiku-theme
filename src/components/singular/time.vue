@@ -61,14 +61,15 @@ a {
 }
 
 ul {
-  display: flex;
-  justify-content: center;
+  margin-bottom: 0;
+  padding-left: 0;
 }
 
 li {
   display: inline-flex;
   align-items: center;
   margin-bottom: 0;
+  color: $grey-500;
 
   & + li::before {
     content: '';
