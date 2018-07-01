@@ -27,8 +27,29 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+a {
+  color: inherit;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+ul {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+li {
+  display: inline-block;
+
+  & + li {
+    margin-left: 1rem;
+  }
+}
+
 .footer-navigation {
-  padding: 2rem 0;
+  padding: 3rem 0;
   background: $grey-300;
   color: $grey-600;
   font-size: $font-size-sm;
@@ -38,27 +59,6 @@ export default {
     align-items: center;
     @include mobile {
       flex-direction: column;
-    }
-  }
-
-  a {
-    color: $grey-500;
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-
-  ul {
-    margin: 0;
-    padding-left: 0;
-    list-style: none;
-  }
-
-  li {
-    display: inline-block;
-
-    &:not(:last-child) {
-      margin-right: 1rem;
     }
   }
 }
