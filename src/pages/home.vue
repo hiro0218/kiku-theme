@@ -96,6 +96,6 @@ export default {
 <style lang="scss" scoped>
 .page-header {
   text-align: center;
-  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 </style>
