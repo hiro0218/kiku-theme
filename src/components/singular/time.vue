@@ -44,9 +44,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$text-color: $grey-500;
+
 .icon-update {
   margin-right: 0.25rem;
-  background-image: url('~@images/icon/update.svg?fill=#{$grey-400}');
+  background-image: url('~@images/icon/update.svg?fill=#{$text-color}');
   @include svg-icon(1rem);
 }
 
@@ -69,7 +71,7 @@ li {
   display: inline-flex;
   align-items: center;
   margin-bottom: 0;
-  color: $grey-500;
+  color: $text-color;
 
   & + li::before {
     content: '';
@@ -77,7 +79,7 @@ li {
     width: 1rem;
     height: 1rem;
     margin: 0 0.125rem;
-    background: url('~@images/icon/arrow_right.svg') no-repeat;
+    background: url('~@images/icon/arrow_right.svg?fill=#{$text-color} svg') no-repeat;
     background-size: contain;
   }
 }
