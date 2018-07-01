@@ -70,10 +70,10 @@
     "node-sass": "^4.9.0",
     "postcss-flexbugs-fixes": "^3.3.1",
     "postcss-loader": "^2.1.5",
-    "postcss-preset-env": "^5.2.0",
+    "postcss-preset-env": "^5.2.1",
     "postcss-safe-parser": "^3.0.1",
     "postcss-zindex": "^2.2.0",
-    "prettier": "1.13.5",
+    "prettier": "1.13.7",
     "resolve-url-loader": "^2.3.0",
     "rimraf": "^2.6.2",
     "sass-lint": "^1.12.1",
@@ -88,11 +88,11 @@
     "vue-eslint-parser": "^2.0.3",
     "vue-loader": "^15.2.4",
     "vue-template-compiler": "^2.5.16",
-    "webpack": "^4.12.0",
+    "webpack": "^4.14.0",
     "webpack-bundle-analyzer": "^2.13.1",
     "webpack-cli": "^3.0.6",
     "webpack-merge": "^4.1.2",
-    "yargs": "^11.0.0"
+    "yargs": "^12.0.1"
   },
   "dependencies": {
     "axios": "^0.18.0",
