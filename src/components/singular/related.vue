@@ -6,7 +6,7 @@
         <router-link :to="entry.uri">
           <div class="related-image">
             <template v-if="entry.image">
-              <img :src="entry.image" class="entry-image">
+              <img :src="entry.image" class="entry-thumbnail">
             </template>
             <template v-else>
               <div class="no-image"/>
@@ -87,7 +87,7 @@ export default {
   overflow: hidden;
   user-select: none;
 
-  .entry-image {
+  .entry-thumbnail {
     max-width: 85%;
     max-height: 85%;
   }
@@ -95,9 +95,6 @@ export default {
   .no-image {
     width: 4.5rem;
     height: 4.5rem;
-    background: $grey-50 50% no-repeat;
-    background-image: url('~@images/icon/photo.svg?fill=#{$grey-400} svg');
-    background-size: cover;
   }
 }
 </style>

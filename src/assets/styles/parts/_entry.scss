@@ -21,3 +21,9 @@
     }
   }
 }
+
+.no-image {
+  background: $grey-50 50% no-repeat;
+  background-image: url('~@images/icon/photo.svg?fill=#{$grey-400} svg');
+  background-size: cover;
+}
