@@ -9,9 +9,12 @@
     <a v-for="(post,index) in postLists" :key="index" href="javascript:void(0)" @click="transitionPage(index, post.link)">
       <article class="entry-container">
         <div class="entry-image">
-          <div class="image-container">
-            <div :data-thumbnail-image="post.thumbnail" class="image-sheet"/>
-          </div>
+          <template v-if="post.thumbnail">
+            <img :src="post.thumbnail" class="entry-thumbnail">
+          </template>
+          <template v-else>
+            <div class="no-image"/>
+          </template>
         </div>
         <div class="entry-body">
           <header class="entry-header">
@@ -19,7 +22,7 @@
           </header>
           <div class="entry-summary" v-html="$options.filters.escapeBrackets(post.excerpt.rendered)"/>
           <footer class="entry-footer">
-            <div class="entry-meta">
+            <div class="entry-time">
               <span class="icon-update"/>{{ post.date | formatDate }}
             </div>
           </footer>
@@ -83,95 +86,78 @@ export default {
 
 <style lang="scss" scoped>
 $entry-thumbnail-size: 5rem; // 80px;
+$image-size: 8rem;
+$text-color: $grey-500;
 
-.entry-list {
-  overflow: hidden;
+a {
+  display: block;
+  color: inherit;
+  padding: 1.75rem 0;
 
-  a {
-    display: block;
-    color: inherit;
-    padding: 1.75rem 0;
-
-    &:hover,
-    &:focus {
-      opacity: 0.6;
-    }
-
-    & + a {
-      border-top: 1px solid $grey-200;
-    }
+  &:hover,
+  &:focus {
+    opacity: 0.6;
   }
 
-  .entry-container {
-    display: flex;
-  }
-
-  .entry-image,
-  .entry-body {
-    display: flex;
-    flex-basis: 0;
-    flex-grow: 1;
-    flex-shrink: 1;
-  }
-
-  .entry-image {
-    flex: none;
-    width: $entry-thumbnail-size;
-    margin-right: 1rem;
-  }
-
-  .entry-body {
-    flex-direction: column;
-    justify-content: space-between;
-    min-width: 0; // for flex and text-overflow
-  }
-
-  .entry-title,
-  .entry-summary {
-    margin: 0 0 0.5rem 0;
-    line-height: 2rem;
-    @include text-overflow;
-  }
-
-  .entry-title {
-    transition: color 0.3s $animation-curve-fast-out-slow-in;
-    font-size: $font-size-h3;
-    font-weight: normal;
-  }
-
-  .entry-summary {
-    color: $grey-600;
-    font-size: $font-size-sm;
-    word-break: break-all;
-  }
-
-  .entry-meta {
-    color: $grey-400;
-    text-align: right;
+  & + a {
+    border-top: 1px solid $grey-200;
   }
 }
 
-// image
+.entry-container {
+  display: flex;
+}
+
+.entry-header,
+.entry-summary {
+  margin-bottom: 0.5rem;
+}
+
 .entry-image {
-  .image-container {
-    width: $entry-thumbnail-size;
-    height: $entry-thumbnail-size;
-    border: 1px solid $grey-200;
-    overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: $image-size;
+  width: $image-size;
+  background: $grey-50;
+  overflow: hidden;
+  user-select: none;
+
+  .entry-thumbnail {
+    max-width: 80%;
+    max-height: 80%;
   }
 
-  .image-sheet {
-    width: $entry-thumbnail-size;
-    height: $entry-thumbnail-size;
-    background: $grey-50 50% no-repeat;
-    background-image: url('~@images/no-image-128x128.png');
-    background-size: cover;
+  .no-image {
+    width: 4rem;
+    height: 4rem;
   }
+}
+
+.entry-body {
+  flex: 1;
+  margin-left: 1.5rem;
+}
+
+.entry-title {
+  margin: 0;
+  font-size: $font-size-h3;
+  font-weight: normal;
+}
+
+.entry-summary {
+  color: $grey-600;
+  word-break: break-all;
+}
+
+.entry-time {
+  color: $text-color;
+  text-align: right;
 }
 
 .icon-update {
   margin-right: 0.25rem;
-  background-image: url('~@images/icon/update.svg?fill=#{$grey-400} svg');
+  background-image: url('~@images/icon/update.svg?fill=#{$text-color} svg');
   @include svg-icon(1rem);
 }
 </style>
