@@ -1,15 +1,13 @@
 <template>
-  <div v-cloak v-if="product">
-    <div :style="{ 'background-image': 'url('+ product.LargeImage +')' }" class="amazon-product">
-      <a :href="product.DetailPageURL" target="_blank">
-        <div class="product-image">
-          <img :src="product.LargeImage" data-zoom-disabled="true">
-        </div>
-        <div class="product-title">
-          <span class="amazon-title">{{ product.Title }}</span>
-        </div>
-      </a>
-    </div>
+  <div v-cloak v-if="product" :style="{ 'background-image': 'url('+ product.LargeImage +')' }" class="amazon-product">
+    <a :href="product.DetailPageURL" target="_blank">
+      <div class="product-image">
+        <img :src="product.LargeImage" data-zoom-disabled="true">
+      </div>
+      <div class="product-title">
+        <span class="amazon-title">{{ product.Title }}</span>
+      </div>
+    </a>
   </div>
 </template>
 
