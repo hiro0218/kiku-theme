@@ -85,4 +85,8 @@ time {
   display: flex;
   flex-direction: column-reverse;
 }
+
+.archive-year {
+  font-weight: normal;
+}
 </style>
