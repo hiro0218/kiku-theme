@@ -116,13 +116,15 @@ export default {
 }
 
 .entry-header {
-  width: 80%;
   margin: 0 auto 2rem;
   text-align: center;
+  @include from($desktop) {
+    width: 80%;
+  }
 }
 
 .entry-title {
   margin: 0 0 1rem;
-  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 </style>
