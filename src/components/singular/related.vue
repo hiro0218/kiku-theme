@@ -6,7 +6,7 @@
         <router-link :to="entry.uri">
           <div class="related-image">
             <template v-if="entry.image">
-              <img :src="entry.image" class="entry-thumbnail">
+              <img :data-src="entry.image" class="entry-thumbnail" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
             </template>
             <template v-else>
               <div class="no-image"/>
@@ -27,6 +27,26 @@ export default {
       type: Array,
       default: () => [],
       required: false,
+    },
+  },
+  watch: {
+    related: function() {
+      this.$nextTick(() => {
+        this.loadImages();
+      });
+    },
+  },
+  mounted: function() {
+    this.$nextTick(() => {
+      this.loadImages();
+    });
+  },
+  methods: {
+    loadImages: function() {
+      let images = document.querySelectorAll('[data-src]');
+      for (let i = 0; i < images.length; i++) {
+        images[i].src = images[i].dataset.src;
+      }
     },
   },
 };

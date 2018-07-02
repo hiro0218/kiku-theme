@@ -10,7 +10,7 @@
       <article class="entry-container">
         <div class="entry-image">
           <template v-if="post.thumbnail">
-            <img :src="post.thumbnail" class="entry-thumbnail">
+            <img :data-src="post.thumbnail" class="entry-thumbnail" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
           </template>
           <template v-else>
             <div class="no-image"/>
@@ -47,30 +47,15 @@ export default {
   watch: {
     postLists: function() {
       this.$nextTick(() => {
-        this.setThumbnailImage();
+        this.loadImages();
       });
     },
   },
   methods: {
-    setThumbnailImage: function() {
-      const imageSheet = document.querySelectorAll('.image-sheet');
-      const length = imageSheet.length;
-
-      for (let i = 0; i < length; i++) {
-        let sheet = imageSheet[i];
-        let imageUrl = sheet.dataset.thumbnailImage;
-        sheet.style.backgroundImage = null;
-
-        if (!imageUrl) {
-          continue;
-        }
-
-        let img = new Image();
-        img.onload = (function(element, url) {
-          element.style.backgroundImage = `url(${url})`;
-        })(sheet, imageUrl);
-        img.src = imageUrl;
-        img = null;
+    loadImages: function() {
+      let images = document.querySelectorAll('[data-src]');
+      for (let i = 0; i < images.length; i++) {
+        images[i].src = images[i].dataset.src;
       }
     },
     transitionPage: function(index, path) {
