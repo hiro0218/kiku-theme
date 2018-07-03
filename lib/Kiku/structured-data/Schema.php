@@ -15,7 +15,7 @@ class Schema {
     }
 
     private function array_to_json($array) {
-        return json_encode($array, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT ). PHP_EOL;
+        return json_encode($array, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ). PHP_EOL;
     }
 
     public function make_article() {
