@@ -143,4 +143,4 @@ class FrontVariables {
 }
 
 $fv = new FrontVariables();
-add_action('wp_head', [$fv, 'output_variables']);
+add_action('wp_footer', [$fv, 'output_variables']);
