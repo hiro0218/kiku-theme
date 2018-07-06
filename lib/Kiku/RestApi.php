@@ -41,6 +41,9 @@ class REST_API {
         unset($response->data['author']);
         unset($response->data['slug']);
         unset($response->data['status']);
+        unset($response->data['meta']);
+        unset($response->data['categories']);
+        unset($response->data['tags']);
         unset($response->data['featured_media']);
         unset($response->data['comment_status']);
         unset($response->data['ping_status']);
