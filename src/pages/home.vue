@@ -15,6 +15,9 @@ import pagination from '@components/home/pagination.vue';
 
 export default {
   name: 'Home',
+  title() {
+    return this.pageTitle;
+  },
   beforeRouteLeave(to, from, next) {
     if (to.path !== from.path) {
       this.$store.dispatch('resetPostList');

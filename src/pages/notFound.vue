@@ -8,6 +8,9 @@
 <script>
 export default {
   name: 'NotFound',
+  title() {
+    return this.pageTitle;
+  },
   computed: {
     pageTitle: () => 'Page Not Found',
   },
