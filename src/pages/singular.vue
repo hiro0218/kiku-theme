@@ -39,6 +39,11 @@ import entryPager from '@components/singular/pager.vue';
 
 export default {
   name: 'Singular',
+  metaInfo() {
+    return {
+      title: this.pageTitle,
+    };
+  },
   beforeRouteLeave(to, from, next) {
     if (to.path !== from.path) {
       this.$store.dispatch('resetPost');
@@ -64,7 +69,7 @@ export default {
       },
     };
   },
-  computed: mapState(['post', 'advertise']),
+  computed: mapState(['pageTitle', 'post', 'advertise']),
   watch: {
     '$route.path': function() {
       this.$store.dispatch('resetPost').then(() => {

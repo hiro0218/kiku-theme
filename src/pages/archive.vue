@@ -28,8 +28,10 @@ import api from '@scripts/api';
 
 export default {
   name: 'Archive',
-  title() {
-    return this.pageTitle;
+  metaInfo() {
+    return {
+      title: this.pageTitle,
+    };
   },
   filters: {
     formatDate: function(date) {

@@ -79,11 +79,14 @@ export default {
     })();
 
     return response.then(response => {
-      commit('setPost', response.data);
+      dispatch('setPost', response.data);
       dispatch('loading', false);
     });
   },
   setPost({ commit }, data) {
+    if (data.title.rendered) {
+      commit('setPageTitle', data.title.rendered);
+    }
     commit('setPost', data);
   },
   resetPost({ commit }) {

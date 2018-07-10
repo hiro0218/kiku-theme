@@ -1,7 +1,9 @@
 import VueRouter from 'vue-router';
+import VueMeta from 'vue-meta';
 import routes from './routes.js';
 
 Vue.use(VueRouter);
+Vue.use(VueMeta);
 
 const router = new VueRouter({
   mode: 'history',

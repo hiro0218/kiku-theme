@@ -10,18 +10,21 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
 import layoutHeader from '@/layouts/header.vue';
 import layoutFooter from '@/layouts/footer.vue';
 import loading from '@components/loading.vue';
 
 export default {
+  metaInfo: {
+    titleTemplate: titleChunk => {
+      return titleChunk ? `${titleChunk} - ${WP.site.name}` : `${WP.site.name}`;
+    },
+  },
   components: {
     layoutHeader,
     layoutFooter,
     loading,
   },
-  computed: mapState(['pageTitle']),
   created: function() {
     this.$store.dispatch('requestAdvertise');
   },
