@@ -28,6 +28,11 @@ import api from '@scripts/api';
 
 export default {
   name: 'Archive',
+  metaInfo() {
+    return {
+      title: this.pageTitle,
+    };
+  },
   filters: {
     formatDate: function(date) {
       if (typeof date === 'string') {

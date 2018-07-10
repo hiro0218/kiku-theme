@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1 class="page-header" v-html="$options.filters.escapeBrackets(pageTitle)"/>
+    <h1 class="page-header" v-html="$options.filters.escapeBrackets(pageHeading)"/>
     <list/>
     <advertise :id-name="ads.id" :content="ads.content" :script="ads.script" />
     <pagination v-show="postLists.length !== 0"/>
@@ -15,6 +15,11 @@ import pagination from '@components/home/pagination.vue';
 
 export default {
   name: 'Home',
+  metaInfo() {
+    return {
+      title: this.pageTitle,
+    };
+  },
   beforeRouteLeave(to, from, next) {
     if (to.path !== from.path) {
       this.$store.dispatch('resetPostList');
@@ -33,11 +38,11 @@ export default {
         content: '',
         script: '',
       },
-      pageTitle: '',
+      pageHeading: '',
     };
   },
   computed: {
-    ...mapState(['postLists', 'advertise']),
+    ...mapState(['pageTitle', 'postLists', 'advertise']),
   },
   watch: {
     '$route.path': 'requestPostData',
@@ -51,31 +56,36 @@ export default {
       this.ads.content = this.advertise.ads3.content;
       this.ads.script = this.advertise.ads3.script;
     },
-    pageTitle: function(title) {
-      this.$store.commit('setPageTitle', title);
-    },
   },
   created: function() {
     this.requestPostData();
   },
   methods: {
     requestPostData: function() {
-      this.setPageTitle();
+      this.setPageHeading();
       this.$store.dispatch('requestPostList', this.$route);
     },
-    setPageTitle: function() {
+    setPageHeading: function() {
       let type = this.$route.meta.type;
       let title = this.$route.meta.title || this.$route.params.search_query;
 
-      // archive
-      if (type === 'category') {
-        this.pageTitle = `Category: ${title}`;
-      } else if (type === 'post_tag') {
-        this.pageTitle = `Tag: ${title}`;
-      } else if (type === 'search') {
-        this.pageTitle = `Search results: '${title}'`;
-      } else {
-        this.pageTitle = 'Recent Posts';
+      switch (type) {
+        case 'category':
+          this.pageHeading = `Category: ${title}`;
+          this.$store.commit('setPageTitle', this.pageHeading);
+          break;
+        case 'post_tag':
+          this.pageHeading = `Tag: ${title}`;
+          this.$store.commit('setPageTitle', this.pageHeading);
+          break;
+        case 'search':
+          this.pageHeading = `Search results: '${title}'`;
+          this.$store.commit('setPageTitle', this.pageHeading);
+          break;
+        default:
+          this.pageHeading = 'Recent Posts';
+          this.$store.commit('setPageTitle', '');
+          break;
       }
     },
   },

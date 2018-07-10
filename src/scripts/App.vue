@@ -10,38 +10,23 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
 import layoutHeader from '@/layouts/header.vue';
 import layoutFooter from '@/layouts/footer.vue';
 import loading from '@components/loading.vue';
-import { htmlentities } from '@scripts/utils';
 
 export default {
+  metaInfo: {
+    titleTemplate: titleChunk => {
+      return titleChunk ? `${titleChunk} - ${WP.site.name}` : `${WP.site.name}`;
+    },
+  },
   components: {
     layoutHeader,
     layoutFooter,
     loading,
   },
-  computed: mapState(['pageTitle']),
-  watch: {
-    pageTitle: 'setTitle',
-  },
   created: function() {
     this.$store.dispatch('requestAdvertise');
-  },
-  methods: {
-    setTitle: function(afterTitle, beforeTitle) {
-      if (!WP.site.name || afterTitle === beforeTitle) {
-        return;
-      }
-
-      if (this.$route.path === '/' || !afterTitle) {
-        document.title = WP.site.name;
-      } else {
-        let pageTitle = htmlentities.decode(afterTitle);
-        document.title = `${pageTitle} - ${WP.site.name}`;
-      }
-    },
   },
 };
 </script>

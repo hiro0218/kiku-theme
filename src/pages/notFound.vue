@@ -8,6 +8,11 @@
 <script>
 export default {
   name: 'NotFound',
+  metaInfo() {
+    return {
+      title: this.pageTitle,
+    };
+  },
   computed: {
     pageTitle: () => 'Page Not Found',
   },
