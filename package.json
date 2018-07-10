@@ -67,7 +67,7 @@
     "import-glob": "^1.5.0",
     "lint-staged": "^7.2.0",
     "lodash-webpack-plugin": "^0.11.5",
-    "node-sass": "^4.9.0",
+    "node-sass": "^4.9.2",
     "postcss-flexbugs-fixes": "^3.3.1",
     "postcss-loader": "^2.1.5",
     "postcss-preset-env": "^5.2.1",
@@ -97,7 +97,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "axios-cache-adapter": "^2.1.0",
-    "fast-copy": "^1.2.1",
+    "fast-copy": "^1.2.2",
     "localforage": "^1.7.1",
     "medium-zoom": "^0.4.0",
     "mokuji.js": "^1.4.2",
