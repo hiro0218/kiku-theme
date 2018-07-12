@@ -11,55 +11,6 @@ export default {
       default: () => '',
       require: true,
     },
-    attach: {
-      type: Object,
-      default: () => {},
-      require: false,
-    },
-  },
-  data() {
-    return {
-      styleElement: null,
-    };
-  },
-  watch: {
-    attach: function() {
-      this.fireCustomAppearance();
-    },
-  },
-  mounted() {
-    this.fireCustomAppearance();
-  },
-  methods: {
-    fireCustomAppearance: function() {
-      this.$nextTick().then(() => {
-        if (this.attach) {
-          if (this.attach.custom.style) this.setCustomStyle();
-          if (this.attach.custom.script) this.setCustomScript();
-        }
-      });
-    },
-    initStyleElement: function() {
-      if (!this.styleElement) {
-        let element = document.createElement('style');
-        element.id = 'custom_style';
-        this.$el.parentNode.insertBefore(element, this.$el.nextSibling);
-        this.styleElement = document.getElementById('custom_style');
-      }
-
-      this.styleElement.innerHTML = '';
-    },
-    setCustomStyle: function() {
-      this.initStyleElement();
-      if (this.attach.custom.style) {
-        this.styleElement.innerHTML = this.attach.custom.style;
-      }
-    },
-    setCustomScript: function() {
-      if (this.attach.custom.script) {
-        eval(this.attach.custom.script);
-      }
-    },
   },
 };
 </script>
