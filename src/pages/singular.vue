@@ -5,7 +5,7 @@
         <h1 class="entry-title" v-html="$options.filters.escapeBrackets(post.title.rendered)"/>
         <entry-time :date="post.date" :modified="post.modified"/>
       </header>
-      <entry-content :post="post"/>
+      <entry-content :content="post.content.rendered" :attach="post.attach" />
       <advertise :id-name="ads.id"
                  :display="advertise.ads2.display.includes($route.meta.type)"
                  :content="ads.content"
