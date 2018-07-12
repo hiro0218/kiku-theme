@@ -11,7 +11,7 @@
   </head>
   <body>
     <div id="app"></div>
-    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=default-3.4,Array.prototype.includes"></script>
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=default-3.4,Array.prototype.includes,IntersectionObserver"></script>
     <?php wp_footer(); ?>
   </body>
 </html>
