@@ -23,7 +23,7 @@ export default {
     };
   },
   watch: {
-    'post.content.rendered': function() {
+    attach: function() {
       this.fireCustomAppearance();
     },
   },
