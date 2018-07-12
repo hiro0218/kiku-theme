@@ -20,6 +20,8 @@
 </template>
 
 <script>
+import lozad from 'lozad';
+
 export default {
   name: 'Related',
   props: {
@@ -44,8 +46,9 @@ export default {
   methods: {
     loadImages: function() {
       let images = document.querySelectorAll('[data-src]');
-      for (let i = 0; i < images.length; i++) {
-        images[i].src = images[i].dataset.src;
+      if (images) {
+        const observer = lozad(images);
+        observer.observe();
       }
     },
   },
