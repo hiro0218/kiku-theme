@@ -6,6 +6,23 @@ export const wait = (TIMER = 200) => {
   });
 };
 
+export const checkSupportsPassive = () => {
+  window.supportsPassive = false;
+
+  try {
+    const opts = Object.defineProperty({}, 'passive', {
+      get: function() {
+        window.supportsPassive = true;
+      },
+    });
+    const handler = function() {};
+    window.addEventListener('testPassiveEventSupport', handler, opts);
+    window.removeEventListener('testPassiveEventSupport', handler, opts);
+  } catch (e) {
+    //
+  }
+};
+
 export const htmlentities = {
   encode(str) {
     var buf = [];

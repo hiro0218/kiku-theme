@@ -35,7 +35,7 @@ export default {
   },
   mounted: function() {
     this.eleHeader = document.querySelector('.header-navigation');
-    document.addEventListener('scroll', this.handleScroll, false);
+    document.addEventListener('scroll', this.handleScroll, window.supportsPassive ? { passive: false } : false);
   },
   methods: {
     onScroll() {
