@@ -5,7 +5,8 @@
         <h1 class="entry-title" v-html="$options.filters.escapeBrackets(post.title.rendered)"/>
         <entry-time :date="post.date" :modified="post.modified"/>
       </header>
-      <entry-content :post="post"/>
+      <entry-content :content="post.content.rendered" />
+      <entry-attach :attach="post.attach" />
       <advertise :id-name="ads.id"
                  :display="advertise.ads2.display.includes($route.meta.type)"
                  :content="ads.content"
@@ -31,6 +32,7 @@ import amazon from '@components/singular/amazon.vue';
 import advertise from '@components/advertise.vue';
 
 import entryContent from '@components/singular/content.vue';
+import entryAttach from '@components/singular/attach.vue';
 import entryTime from '@components/singular/time.vue';
 import entryTerm from '@components/singular/term.vue';
 import entryShare from '@components/singular/share.vue';
@@ -54,6 +56,7 @@ export default {
     amazon,
     advertise,
     entryContent,
+    entryAttach,
     entryTime,
     entryTerm,
     entryShare,

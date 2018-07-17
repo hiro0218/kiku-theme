@@ -1,59 +1,15 @@
 <template>
-  <section class="entry-content" v-html="post.content.rendered"/>
+  <section class="entry-content" v-html="content"/>
 </template>
 
 <script>
 export default {
   name: 'EntryContent',
   props: {
-    post: {
-      type: Object,
-      default: () => {},
+    content: {
+      type: String,
+      default: () => '',
       require: true,
-    },
-  },
-  data() {
-    return {
-      styleElement: null,
-    };
-  },
-  watch: {
-    'post.content.rendered': function() {
-      this.$nextTick().then(() => {
-        this.fireCustomAppearance();
-      });
-    },
-  },
-  mounted() {
-    this.fireCustomAppearance();
-  },
-  methods: {
-    fireCustomAppearance: function() {
-      if (this.post.hasOwnProperty('attach')) {
-        if (this.post.attach.custom.style) this.setCustomStyle();
-        if (this.post.attach.custom.script) this.setCustomScript();
-      }
-    },
-    initStyleElement: function() {
-      if (!this.styleElement) {
-        let element = document.createElement('style');
-        element.id = 'custom_style';
-        this.$el.parentNode.insertBefore(element, this.$el.nextSibling);
-        this.styleElement = document.getElementById('custom_style');
-      }
-
-      this.styleElement.innerHTML = '';
-    },
-    setCustomStyle: function() {
-      this.initStyleElement();
-      if (this.post.attach.custom.style) {
-        this.styleElement.innerHTML = this.post.attach.custom.style;
-      }
-    },
-    setCustomScript: function() {
-      if (this.post.attach.custom.script) {
-        eval(this.post.attach.custom.script);
-      }
     },
   },
 };
