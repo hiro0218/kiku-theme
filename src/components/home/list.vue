@@ -55,7 +55,12 @@ export default {
   methods: {
     loadImages: function() {
       let images = document.querySelectorAll('[data-src]');
+
       if (images) {
+        for (let i = 0; i < images.length; i++) {
+          images[i].removeAttribute('data-loaded');
+        }
+
         const observer = lozad(images);
         observer.observe();
       }
