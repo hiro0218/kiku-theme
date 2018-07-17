@@ -151,6 +151,12 @@ class REST_API {
             'update_callback' => null,
             'schema' => null,
         ]);
+
+        register_rest_field('page', 'attach', [
+            'get_callback' => [$this, 'get_post_attach'],
+            'update_callback' => null,
+            'schema' => null,
+        ]);
     }
 
     public function get_amazon_product($object, $field_name, $request, $type) {
