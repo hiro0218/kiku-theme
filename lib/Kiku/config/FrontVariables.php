@@ -128,9 +128,9 @@ class FrontVariables {
             foreach ((array)$menus as $menu) {
                 $menu_array = (array) $menu;
                 $array[] = [
-                    'ID' => $menu_array['ID'],
-                    'title' => $menu_array['title'],
-                    'url' => $menu_array['url'],
+                    'ID' => isset($menu_array['ID']) ? $menu_array['ID'] : '',
+                    'title' => isset($menu_array['title']) ? $menu_array['title'] : '',
+                    'url' => isset($menu_array['url']) ? $menu_array['url'] : '',
                 ];
             }
 
