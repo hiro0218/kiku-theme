@@ -1,0 +1,26 @@
+.alert {
+  padding: 1rem;
+  border: 1px solid transparent;
+  border-radius: $radius-base;
+}
+
+.alert-success {
+  border-color: $green-100;
+  background: $green-50;
+  color: $light-green-400;
+}
+.alert-info {
+  border-color: $blue-100;
+  background: $blue-50;
+  color: $blue-400;
+}
+.alert-warning {
+  border-color: $orange-100;
+  background: $orange-50;
+  color: $orange-400;
+}
+.alert-danger {
+  border-color: $red-100;
+  background: $red-50;
+  color: $red-400;
+}

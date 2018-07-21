@@ -1,0 +1,19 @@
+.container {
+  $gap: 1.5rem;
+  position: relative;
+  max-width: calc(#{$tablet} - (2 * #{$gap}));
+  margin: 0 auto;
+  padding: 0 1rem;
+
+  @include desktop-only {
+    max-width: calc(#{$desktop} - (2 * #{$gap}));
+  }
+
+  @include widescreen {
+    max-width: calc(#{$widescreen} - (2 * #{$gap}));
+  }
+
+  // @include fullhd {
+  //   max-width: calc(#{$fullhd} + (2 * 1.5rem));
+  // }
+}

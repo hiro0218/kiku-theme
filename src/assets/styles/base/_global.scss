@@ -1,0 +1,151 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+@include selection {
+  background: $grey-300;
+  color: $grey-900;
+}
+
+// Body reset
+html {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+
+  @include from($tablet) {
+    font-size: $font-size-sm;
+  }
+
+}
+
+body {
+  background: $white;
+  color: $grey-800;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+// Links
+a {
+  transition: color .3s ease,
+              background-color .3s $animation-curve-fast-out-slow-in,
+              border .4s linear,
+              opacity .4s $animation-curve-fast-out-slow-in;
+  text-decoration: none;
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+// Figures
+figure {
+  margin: 0 0 2rem;
+  text-align: center;
+  img {
+    margin-bottom: 0;
+  }
+}
+figcaption {
+  color: $grey-400;
+  font-size: $font-size-xs;
+}
+
+// Images
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+// Tables
+table {
+  margin: 0 auto 2rem;
+  border: $table-border-width solid $table-border-color;
+  background: #fff;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 1rem;
+  border: $table-border-width solid $table-border-color;
+  border-top: $table-border-width solid $table-border-color;
+  vertical-align: top;
+}
+
+thead {
+  th {
+    border-bottom: ($table-border-width * 2) solid $table-border-color;
+    background: $table-head-bg-color;
+    vertical-align: bottom;
+  }
+  th,
+  td {
+    border-bottom-width: (2 * $table-border-width);
+  }
+}
+
+tbody {
+  tr {
+    transition: background .3s $animation-curve-fast-out-slow-in;
+    &:hover {
+      background: $table-hover-color;
+    }
+  }
+  & + & {
+    border-top: ($table-border-width * 2) solid $table-border-color;
+  }
+}
+
+.table-container {
+  width: 100%;
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+// define list
+dl {
+  margin-bottom: 2rem;
+}
+
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-bottom: .5rem;
+  margin-left: 0;
+}
+
+// input
+input,
+button,
+select,
+textarea {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+button,
+input {
+  overflow: visible;
+}
+
+hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, .1);
+}

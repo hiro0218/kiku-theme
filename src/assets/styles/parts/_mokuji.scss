@@ -1,0 +1,37 @@
+.mokuji-container {
+  margin: 2rem 0;
+  padding: 1rem 2rem;
+  border-left: .2rem solid $grey-300;
+}
+
+.mokuji-title {
+  display: block;
+  margin-bottom: .5rem;
+  color: $font-color-h2;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.mokuji-content {
+  ol {
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+    list-style-position: inside;
+    counter-reset: number;
+
+    li::before {
+      content: counters(number, '-') '. ';
+      counter-increment: number;
+    }
+
+    ol {
+      margin-bottom: .5rem;
+      padding-left: 1rem;
+    }
+  }
+
+  > ol > li > a {
+    font-weight: bold;
+  }
+}

@@ -1,15 +1,16 @@
 {
   "root": true,
-  "parser": "babel-eslint",
   "parserOptions": {
+    "parser": "babel-eslint",
     "sourceType": "module"
   },
   "extends": [
     "eslint:recommended",
+    "plugin:vue/recommended",
     "prettier"
   ],
   "plugins": [
-    "html",
+    "vue",
     "prettier"
   ],
   "env": {
@@ -28,12 +29,13 @@
   },
   "rules": {
     "prettier/prettier": ["error", {
+      "printWidth": 120,
       "trailingComma": "all",
       "singleQuote": true,
       "semi": true
     }],
     "no-var": 0,
-    "no-unused-vars": 0,
+    "no-unused-vars": ["error", { "args": "none" }],
     "no-underscore-dangle": 0,
     "no-inner-declarations": 0,
     "comma-dangle": ["error", "always-multiline"],
@@ -46,6 +48,7 @@
     "vars-on-top": 0,
     "func-names": 0,
     "consistent-return": 0,
-    "global-require": 0
+    "global-require": 0,
+    "vue/max-attributes-per-line": 0
   }
 }

@@ -1,0 +1,44 @@
+[v-cloak] {
+  display: none !important;
+}
+
+// WordPress
+#wpstats {
+  display: none;
+}
+
+html {
+  &.lock-scroll,
+  &.lock-scroll body {
+    height: 100%;
+    overflow: hidden;
+  }
+}
+
+.element-hide {
+  display: none !important;
+}
+
+.element-show {
+  display: block !important;
+}
+
+.element-visible {
+  visibility: visible !important;
+}
+
+.element-invisible {
+  visibility: hidden !important;
+}
+
+// icon
+.icon-open_in_new {
+  &::after {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    background: url('../images/icon/open_in_new.svg') no-repeat;
+    background-size: contain;
+    content: "";
+  }
+}

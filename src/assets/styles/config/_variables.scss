@@ -1,0 +1,69 @@
+//
+// Font
+// -------------------------
+
+$font-family-base:        YakuHanJP, "Noto Sans Japanese", -apple-system-subset, BlinkMacSystemFont, "Yu Gothic", YuGothic, "Hiragino Kaku Gothic ProN", Meiryo, Emoji, sans-serif !default;
+$font-family-monospace:   Consolas, "Liberation Mono", Menlo, Courier, Emoji, monospace !default;
+
+$font-size-base:          14px;
+$font-size-lg:            1.0625rem;
+$font-size-sm:            .9375rem;
+$font-size-xs:            .875rem;
+
+$line-height-base:        2;
+
+$font-size-h1:            2rem;
+$font-size-h2:            1.5rem;
+$font-size-h3:            1.17rem;
+$font-size-h4:            1rem;
+$font-size-h5:            .83rem;
+$font-size-h6:            $font-size-h5;//.67rem;
+
+
+$table-border-width: 1px;
+
+
+//
+// Layout
+// -------------------------
+
+// Responsiveness
+$tablet:                   769px;
+$desktop:                  960px;
+$widescreen:               $desktop; //1152px;
+$fullhd:                   $desktop; //1344px;
+
+// radius
+$radius-base:              .2rem;
+$radius-sm:                .125rem;
+$radius-lg:                .25rem;
+
+// component layout
+$header-nav-height:        4rem;
+$article-padding-side:     1.5rem;
+
+
+//
+// Colors
+// -------------------------
+
+$link-color:                  $grey-600;
+$link-hover-color:            $grey-700;
+$link-border-color:           $grey-500;
+$link-hover-border-color:     $grey-600;
+$link-visited-color:          $grey-500;
+
+$table-head-bg-color:    $grey-100;
+$table-border-color:     $grey-200;
+$table-hover-color:      lighten($blue-50, 5%);
+
+$font-color-h1:         $grey-900;
+$font-color-h2:         $grey-800;
+$font-color-h3:         $grey-700;
+$font-color-h4:         $grey-600;
+$font-color-h5:         $grey-500;
+$font-color-h6:         $grey-400;
+
+
+// animation
+$animation-curve-fast-out-slow-in: cubic-bezier(.4, 0, .2, 1);

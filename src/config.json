@@ -1,0 +1,14 @@
+{
+  "entry": {
+    "main": [
+      "./scripts/prism.js",
+      "./scripts/app.js",
+      "./assets/styles/main.scss"
+    ]
+  },
+  "publicPath": "/wp-content/themes/kiku-theme",
+  "browsers": [
+    "ie >= 11",
+    "safari >= 10"
+  ]
+}
